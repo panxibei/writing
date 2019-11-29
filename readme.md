@@ -1,0 +1,1 @@
+I am a writer and I am training writing.
