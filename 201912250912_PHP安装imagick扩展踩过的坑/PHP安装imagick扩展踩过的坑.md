@@ -21,7 +21,6 @@ PHP安装imagick扩展踩过的坑
 <center><strong>- 1 -</strong></center>
 
 
-
 老一套，网上一顿猛搜索，找到了我当前环境所匹配的扩展包。
 
 解压扩展包中的 `php_imagick.dll` 到php环境的ext目录中。
@@ -30,10 +29,11 @@ PHP安装imagick扩展踩过的坑
 
 图2
 
+图3
+
 
 
 <center><strong>- 2 -</strong></center>
-
 
 
 轻车熟路，修改配置文件 `php.ini` ，开启加载 `php_imagick.dll` 扩展。
@@ -48,12 +48,11 @@ OK，重启服务加载扩展......
 
 打开phpinfo页面，居然没有找到imagck扩展。（失败了当然找不到了）
 
-图3
+图4
 
 
 
 <center><strong>- 3 -</strong></center>
-
 
 
 我经历过的坑，总结如下，少走弯路：
@@ -83,7 +82,6 @@ OK，重启服务加载扩展......
 <center><strong>- 4 -</strong></center>
 
 
-
 好了，折腾得也够累了，给出最终答案吧。
 
 其实很简单，只需两步即可。（php.ini开启扩展别忘记）
@@ -92,11 +90,15 @@ OK，重启服务加载扩展......
 
 第二步，在系统变量Path中添加php的ext扩展目录路径。
 
+图5
+
+
+
 打完收功！就这么简单！给出最终抓图。
 
-图4
+图6
 
-图5
+图7
 
 
 
