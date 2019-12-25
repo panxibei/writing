@@ -1,0 +1,2 @@
+PHP安装imagick扩展踩过的坑
+
