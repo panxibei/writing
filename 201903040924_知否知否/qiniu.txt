@@ -1,0 +1,6 @@
+AK: WywPElBNnqYE7XQgRH-nsd5Q410R1VrRsyEyTMkm
+SK: VU0RoDqiXk75BUX17ZHE6bcz7Er7M6lLqcZXieN7
+
+BucketName: jianshu
+BucketDomain: pntgd7wxr.bkt.clouddn.com
+
