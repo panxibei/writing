@@ -20,7 +20,6 @@ PHP安装imagick扩展踩过的坑
 
 <center><strong>- 1 -</strong></center>
 
-
 老一套，网上一顿猛搜索，找到了我当前环境所匹配的扩展包。
 
 解压扩展包中的 `php_imagick.dll` 到php环境的ext目录中。
@@ -34,7 +33,6 @@ PHP安装imagick扩展踩过的坑
 
 
 <center><strong>- 2 -</strong></center>
-
 
 轻车熟路，修改配置文件 `php.ini` ，开启加载 `php_imagick.dll` 扩展。
 
@@ -53,7 +51,6 @@ OK，重启服务加载扩展......
 
 
 <center><strong>- 3 -</strong></center>
-
 
 我经历过的坑，总结如下，少走弯路：
 
@@ -81,7 +78,6 @@ OK，重启服务加载扩展......
 
 <center><strong>- 4 -</strong></center>
 
-
 好了，折腾得也够累了，给出最终答案吧。
 
 其实很简单，只需两步即可。（php.ini开启扩展别忘记）
@@ -105,3 +101,31 @@ OK，重启服务加载扩展......
 
 
 生命在于折腾，但也要少折腾！希望能帮到爱学习的小伙伴们！
+
+
+
+附imagick 3.4.4 for Windows Dll文件下载：
+
+PHP 7.4
+7.4 Non Thread Safe (NTS) x64
+7.4 Thread Safe (TS) x64
+7.4 Non Thread Safe (NTS) x86
+7.4 Thread Safe (TS) x86
+
+PHP 7.3
+7.3 Non Thread Safe (NTS) x64
+7.3 Thread Safe (TS) x64
+7.3 Non Thread Safe (NTS) x86
+7.3 Thread Safe (TS) x86
+
+PHP 7.2
+7.2 Non Thread Safe (NTS) x64
+7.2 Thread Safe (TS) x64
+7.2 Non Thread Safe (NTS) x86
+7.2 Thread Safe (TS) x86
+
+PHP 7.1
+7.1 Non Thread Safe (NTS) x64
+7.1 Thread Safe (TS) x64
+7.1 Non Thread Safe (NTS) x86
+7.1 Thread Safe (TS) x86 
