@@ -128,7 +128,7 @@ Laravel的任务调度很棒，统一把任务定义在源代码中而非操作�
 
 4、执行程序 `foo.bat` 中也应该是完全路径。
 
-如：`C:\php\phpx.x.x\php.exe C:\laravelproject\artisan schedule:run`
+如：`C:\php\php7.x.x\php.exe C:\laravelproject\artisan schedule:run`
 
 
 
@@ -142,7 +142,11 @@ Laravel的任务调度很棒，统一把任务定义在源代码中而非操作�
 
 程序源代码
 
+[程序安装包](https://t.cn/A6zC8j5p) 密码：l0v7（可直接使用）
 
+[程序源代码](https://t.cn/A6zC8reo) 密码：232b
+
+**公众号：网管小贾**
 
 
 
