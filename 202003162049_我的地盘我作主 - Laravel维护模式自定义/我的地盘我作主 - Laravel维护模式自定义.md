@@ -119,7 +119,9 @@ if($request->ajax()){
 
 还是不会？那你可以留言给我。
 
+复制代码太麻烦？这有下载链接，拿去。
 
+[CheckForMaintenanceMode.php 源码下载](https://t.cn/A6z0he5w) 密码：7t33
 
 **公众号：网管小贾**
 
