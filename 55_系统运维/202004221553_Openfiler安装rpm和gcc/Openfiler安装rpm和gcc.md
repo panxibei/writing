@@ -1,4 +1,4 @@
-Openfiler安装rpm及gcc所需包及方法
+Openfiler安装rpm和gcc
 
 副标题：Openfiler手动安装网卡
 
