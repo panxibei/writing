@@ -134,6 +134,14 @@ Connecting to 127.0.0.1:1688 ... successful
 Sending activation request (KMS V6) 1 of 1  -> 03612-00206-562-301419-03-5124-17763.0000-0252020 (3A1C049600B60076)
 ```
 
+实际激活Windows，应该使用管理员权限执行以下命令：
+
+```powershell
+slmgr.vbs /skms x.x.x.x    # 设置kms服务器
+slmgr.vbs /ato    # 激活
+slmgr.vbs /xpr    # 查看激活时效
+```
+
 
 
 好了，如果你想用Windows做服务器，那么只要找到压缩包中Windows目录中的服务程序并运行它就可以了，和Linux并无太大差别。
