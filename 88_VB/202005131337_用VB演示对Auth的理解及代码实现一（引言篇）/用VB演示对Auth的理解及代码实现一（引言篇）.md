@@ -1,53 +1,65 @@
 用VB演示对Auth的理解及代码实现一（引言篇）
 
-副标题：项目中绕不开的权限问题
+副标题：各位主子居所的权限问题亟待改善啊
 
 
 
+曹先生笔下的《红楼梦》不愧是文学史上的瑰宝。
 
+其中刘姥姥二进荣国府一回，人物展现得生动有趣、非常经典。
 
-1、创建用户表（user）
+刘姥姥一介乡下村妇，平日里粗茶淡饭惯了的她进府后却吃了些油腻食物，又去栊翠庵吃了妙玉几盏茶水，结果闹了肚子。
 
-```sql
-CREATE TABLE "user"(
-  [id] INTEGER PRIMARY KEY AUTOINCREMENT, 
-  [name] VARCHAR NOT NULL, 
-  [password] VARCHAR NOT NULL, 
-  [status] TINYINT NOT NULL DEFAULT 1);
-```
+如完厕后不见了众人，于是自己胡乱行走，竟误入了怡红院，还睡了宝玉的床。
 
+出事儿了，出大事儿了！
 
+如果有人看着点姥姥，如果大观园有权限机制，是不是不会出现这样的乌龙事件？
 
-2、创建用户组表（group）
-
-```sql
-CREATE TABLE [group](
-  [id] INTEGER PRIMARY KEY AUTOINCREMENT, 
-  [name] VARCHAR NOT NULL, 
-  [rules] VARCHAR NOT NULL, 
-  [status] TINYINT NOT NULL DEFAULT 1);
-```
+好了，让我们一起来看看，怎么把 `Auth` 权限认证套到大观园的安保权限问题上！
 
 
 
-3、创建规则表（rule）
+先来简单介绍一下 `Auth` 权限认证是个啥。
 
-```sql
-CREATE TABLE [rule](
-  [id] INTEGER PRIMARY KEY AUTOINCREMENT, 
-  [name] VARCHAR NOT NULL, 
-  [status] TINYINT NOT NULL DEFAULT 1);
-```
+它是通过给用户赋予不同的角色来实现权限认证，而不同角色具有不同权限。
 
+而相较于其他一些权限认证（如 `RBAC`）的好处是，它可以实现更细化的权限认证。
 
+比如，在一个大HOUSE里，有很多很多的房间，`Auth` 可以实现每个房间一把不同于其他房间的钥匙。
 
-4、创建用户组与规则关系表（group_access）
+像大观园这种级别的HOUSE，放眼现今绝对算是房地产的翘楚，城市后花园档次的标志性建筑。
 
-```sql
-CREATE TABLE [group_access](
-  [uid] INTEGER NOT NULL, 
-  [gid] INTEGER NOT NULL);
-```
+在建筑群中，它排第三没谁敢说自己是第二。（别扛，第一是紫禁城，这个没得说）
+
+`Auth` 权限认证可以说和大观园很配哦！
 
 
+
+好，我们看看当前的需求。
+
+先来罗列一下居所和主子、丫环们的关系：
+
+| 序号 | 房子   | 主人 | 主丫鬟                 |
+| ---- | ------ | ---- | ---------------------- |
+| 1    | 怡红院 | 宝玉 | 袭人、晴雯、麝月、秋纹 |
+| 2    | 潇湘馆 | 黛玉 | 雪雁、紫鹃             |
+| 3    | 蘅芜苑 | 宝钗 | 莺儿                   |
+
+再看看权限说明：
+
+1. 各房子的主人可自由出入每个房子。
+2. 自家丫鬟只可出入自家房子。
+3. 袭人、晴雯可以出入潇湘馆。
+4. 莺儿可以出入怡红院。
+
+
+
+为了小白们都能看得懂，以上是简化版的大概需求。
+
+那么，使用 `Auth` 实现权限认证具体从何入手呢？
+
+别着急，我想宝二爷的心情也和你一样，敬请期待下一篇《用VB演示对Auth的理解及代码实现二（原理篇）》。
+
+关注网管小贾博客，阅读更多。
 
