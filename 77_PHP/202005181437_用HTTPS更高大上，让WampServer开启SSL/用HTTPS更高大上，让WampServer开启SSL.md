@@ -10,15 +10,25 @@
 
 
 
-HTTPS在现今时代背景下已经日渐流行，而且各大网站早已经支持HTTPS了。
+如今的互联网时代就是个看脸的时代，颜值就是一切！
 
-既安全可靠，同时也显示正规范十足，出门还用HTTP你都不好意思和人打招呼！
+不信？看看那些直播带货的就知道了，颜值与出货量绝对成正比！
 
-但是在平时用WampServer调试程序的时候，还是用着HTTP，好像也没啥大问题嘛！
+而相对于HTTP来说，HTTPS绝对算得上是高颜值的帅哥，即安全又有范，拉出去逛街都倍儿有面！
 
-其实有很多情况下，还是要用到HTTPS的，比如新版的 `webrtc`，它就看上了HTTPS，非HTTPS不嫁。
+在互联网时代背景下，HTTPS早已是流行标配，只要你是正规网站，那妥妥地支持HTTPS。
 
-好吧，那就一起来看看WampServer开启SSL的正确姿势吧！
+WampServer作为常用的Windows下开发调试PHP的神器，自然也是支持HTTPS的，只是默认并未开启。
+
+你说啥？还用着HTTP呢？出门还好意思和人打招呼吗？
+
+那位说，我用HTTP也好使着呢，没必要啊。
+
+好吧，其实吧有很多情况，还是要用到HTTPS的。
+
+比如新版的 `webrtc`，它就看上了HTTPS，非HTTPS不嫁啊！
+
+HTTPS这么牛，以后早晚都是它了，那赶紧一起来看看WampServer开启SSL的正确姿势吧！
 
 
 
@@ -32,15 +42,15 @@ HTTPS在现今时代背景下已经日渐流行，而且各大网站早已经支
 
 
 
-**Step 1 确认以下文件是否存在并确保正确**
+**Step 1 - 确认以下文件是否存在并确保正确**
 
-* a. [Apache安装目录]/modules/ mod_ssl.so
-* b. [Apache安装目录]/bin/ openssl.exe, libeay32.dll, ssleay32.dll
-* c. [Apache安装目录]/conf/ openssl.cnf
+* a. [Apache安装目录]/modules/mod_ssl.so
+* b. [Apache安装目录]/bin/openssl.exe, libeay32.dll, ssleay32.dll
+* c. [Apache安装目录]/conf/openssl.cnf
 
 
 
-**Step 2 修改配置文件 `httpd.conf` (用于载入 ssl 模块和其配置文件)**
+**Step 2 - 修改配置文件 `httpd.conf` (用于载入 ssl 模块和其配置文件)**
 
 ```ini
 # 去掉下面行首的#号
@@ -50,7 +60,7 @@ Include conf/extra/httpd-ssl.conf
 
 
 
-**Step 3 生成证书**
+**Step 3 - 生成自签名证书**
 
 1. 请求认证文件生成
    在命令行下进入Apache安装目录下\bin文件夹，输入命令：
@@ -65,7 +75,7 @@ Include conf/extra/httpd-ssl.conf
 
 
 
-**Step 4 修改httpd-ssl.conf**
+**Step 4 - 修改httpd-ssl.conf**
 
 打开 `[Apache安装目录]\conf\extra\httpd-ssl.conf ` 文件，设置 `SSLCertificateFile` 和 `SSLCertificateKeyFile` 语句对应的路径。
 
@@ -86,7 +96,7 @@ SSLCertificateKeyFile "C:/wamp/bin/apache/apache2.4.9/conf/ssl/server.key"
 
 可能会遇到的坑：
 
-1、如果使用shmcb
+1、如果要使用shmcb
 
 ```ini
 # 应该在 httpd-ssl.conf 文件中开启模块
@@ -127,3 +137,18 @@ CustomLog "C:/wamp/bin/apache/apache2.4.39/logs/ssl_request.log" \
 
 
 
+好了，调试一番后如果你能顺利地在浏览器中打开 `https://` 开头的页面，那么恭喜你，成功啦！
+
+不过，注意到网址前面有把小锁了吗？
+
+它带有感叹号，说明我们用的是自签名证书。
+
+这个证书不能被浏览器的权威证书机构承认，只能自己用用，其实问题不大，只是有些警告而已。
+
+嗯，时间不早了，就介绍到这里，希望对你有所帮助，我们下期再见！
+
+
+
+> 微信公众号：@网管小贾
+>
+> 技术博客：@www.sysadm.cc
