@@ -66,21 +66,53 @@ OK，咱们顺势走起。。。
 
 
 
-#### Part. 2 开启PHP的ODBC扩展，以便PHP可以使用ODBC驱动
+#### Part. 2 开启PHP的sqlsrv扩展
 
-在 `php.ini` 中开启 `odbc` 扩展：
+1、到 `https://pecl.php.net` 上搜索sqlsrv，能看到有两个，分别是 `pdo_sqlsrv` 和 `sqlsrv`，这两个我们全都要。
+
+图4
+
+
+
+2、分别找到对应的最新版本，点击右侧有Windows图标的DLL。
+
+图5
+
+
+
+3、找和你PHP版本一致的项目下载。
+
+如果你不清楚下载哪个，可以在 `phpinfo` 页面最上部看到对应信息。
+
+x64和x86分别对应**64位**还是**32位**，NTS和TS分别对应**非线程安全**还是**线程安全**。
+
+下载下来的压缩包中，将 `dll` 文件解压后，释放到 `php` 的扩展 `ext` 文件夹内。
+
+`ext` 文件夹不知道在哪儿？还是看 `phpinfo` 页面！
+
+图6
+
+图7
+
+图8
+
+
+
+4、在 `php.ini` 中开启 `sqlsrv` 扩展。
 
 ```ini
-; 在php.ini中找到以下两项，并去掉前面的分号，记得重启服务
-extension=odbc
-extension=pdo_odbc
+; 在php.ini中添加以下两项，记得重启服务生效
+extension=php_sqlsrv.dll
+extension=php_pdo_sqlsrv.dll
 ```
 
-查看 `phpinfo` 中的信息是否有 `ODBC` 和 `PDO_ODBC` 字样。
+
+
+5、查看 `phpinfo` 中的信息是否有 `sqlsrv` 和 `pdo_sqlsrv` 字样。
 
 如果没有，看看是不是没重启。
 
-图4
+图9
 
 
 
@@ -123,7 +155,7 @@ if ($conn) {
 * 即便是本地测试，SQL Server连接也需要开启TCP/IP，并且保证SQL Browse服务正常运行。
 * 注意WampServer是32位的还是64位的，对应的驱动要区分。
 
-图5
+图10
 
 
 
