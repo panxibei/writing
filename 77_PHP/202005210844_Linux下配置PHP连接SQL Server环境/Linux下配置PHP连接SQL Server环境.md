@@ -1,4 +1,4 @@
-Linux下配置PHP连接MsSql环境
+Linux下配置PHP连接SQL Server环境
 
 副标题：小朋友打架，看看怎么劝架
 
