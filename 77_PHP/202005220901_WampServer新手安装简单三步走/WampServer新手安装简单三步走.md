@@ -1,6 +1,6 @@
-WampServer新手安装指南
+WampServer新手安装简单三步走
 
-副标题：欢迎入坑~
+副标题：小白也能成为时间管理大师~
 
 
 
@@ -89,6 +89,8 @@ WampServer作为一款在Windows下编写调试PHP代码的神器，一度受到
 > 数据库WampServer默认安装的是MariaDB。
 >
 > PHP7.2可能官方到2021年就不维护了，建议使用PHP7.3以上。
+>
+> MariaDB和MySQL使用上可能存在冲突，你喜欢哪个，最好二选一。
 
 图4
 
@@ -144,15 +146,37 @@ WampServer作为一款在Windows下编写调试PHP代码的神器，一度受到
 
 
 
+#### Final - 最后的测试
+
+让我们来验证WampServer是否已经正常工作。
+
+打开你喜欢的浏览器，在地址栏中输入 `http://localhost` ，回车。
+
+出现如下画面，那么恭喜你，WampServer已经开始为你工作了！
+
+图10
 
 
-和之前的教程差不多，通过最多三个步骤即可完成。
 
 
 
+怎么样？三步走大法好用不？
+
+如上几个步骤即可完成WampServer的安装，省时省力，让你也能迅速成为时间管理大师哦！
+
+如果在安装过程中，或者在使用过程中有什么疑问，欢迎留言讨论！
+
+>  扩展阅读：
+>
+> [1. WAMPSERVER仓库镜像（中文）](https://www.sysadm.cc/index.php/xitongyunwei/720-repository-of-wampserver-files)
+>
+> [2. WampServer官方下载去哪儿了？](https://www.sysadm.cc/index.php/xitongyunwei/692-wampserver)
+>
+> [3. 用HTTPS更高大上，让WampServer开启SSL](https://www.sysadm.cc/index.php/webxuexi/729-https-wampserver-ssl)
 
 
 
-
-
+> WeChat: @网管小贾
+>
+> Blog: @www.sysadm.cc
 
