@@ -14,13 +14,15 @@ WampServer作为一款在Windows下编写调试PHP代码的神器之一，一度
 >
 > 免去了开发人员将时间花费在繁琐的配置环境过程，从而腾出更多精力去做开发。
 
-就像孙悟空初见定海神针，一眼瞧上了，说道“要是再细些再小些就好”，金箍棒也就成了称手的兵器。
+
+
+孙悟空初见定海神针，一眼瞧上了，说道“再短细些更妙！”，金箍棒也就成了称手的兵器。
 
 咱们的愿望也挺简单啊，就是想让WampServer的安装再简单些就好了。
 
-麻烦不？怕麻烦也没用不是？
+愿望能实现吗？
 
-好了，话说得再多也没用，咱们这次就来好好整理精练一下WampServer的安装过程。
+好了，少说话多做事，咱们这次就来好好整理精练一下WampServer的安装过程。
 
 还是经典的三步走，思路清晰明了，以飨各位新手小白。
 
@@ -34,7 +36,7 @@ WampServer作为一款在Windows下编写调试PHP代码的神器之一，一度
 >
 > check_vcredist.exe    # 检查VC++包是否正确安装的宝物
 >
-> all_vc_redist_x86_x64.zip    # WampServer需要的所有VC++安装包
+> all_vc_redist_x86_x64.zip    # WampServer需要的所有VC++安装包（官网的不全）
 >
 > wampserver3.2.0_x64.exe    # WampServer本尊，版本3.2.0
 >
@@ -45,6 +47,12 @@ WampServer作为一款在Windows下编写调试PHP代码的神器之一，一度
 
 
 **以上文件可以到 [WAMPSERVER仓库镜像（中文）](https://www.sysadm.cc/index.php/xitongyunwei/720-repository-of-wampserver-files) 下载。**
+
+`all_vc_redist_x86_x64.zip` 官网的可能不全，
+
+请到 [这里](https://o8.cn/YWjUEE) 下载，密码：62v9，
+
+解压密码是本站网址（www.sysadm.cc）。
 
 > 扩展阅读：[WampServer官方下载去哪儿了？](https://www.sysadm.cc/index.php/xitongyunwei/692-wampserver)
 
@@ -78,11 +86,13 @@ WampServer作为一款在Windows下编写调试PHP代码的神器之一，一度
 
 
 
-说实话，官网不仅查找安装包麻烦而且下载还慢，而且还不完整缺这个包那个包，这就是WampServer被很多人诟病的原因之一吧。
+说实话，官网不仅查找安装包麻烦而且下载还慢，而且还不完整，缺这个包那个包，这就是WampServer被很多人诟病的原因之一吧。
 
 不过不用担心哦，我这已经打包好了所需的安装包，一次搞定，想要节省时间就速速下载吧。
 
-链接：解压密码是本站网址（www.sysadm.cc）
+链接：[https://o8.cn/YWjUEE](https://o8.cn/YWjUEE) ，密码：62v9
+
+解压密码是本站网址（www.sysadm.cc）
 
 
 
