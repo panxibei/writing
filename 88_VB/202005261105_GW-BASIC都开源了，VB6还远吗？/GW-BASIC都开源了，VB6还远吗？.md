@@ -2,13 +2,17 @@ GW-BASIC都开源了，VB6还远吗？
 
 副标题：坐等VB6开源，哈哈~~
 
+> WeChat: @网管小贾
+>
+> Blog: @www.sysadm.cc
+
 
 
 前几天手机上蹦出一条新闻：**微软宣布开源GW-BASIC解释器**。
 
 BASIC开源了？
 
-我激动地打开了新闻，看后才知道，这个GW-BASIC也是一位众多编程语言界的老前辈。
+我激动地打开了新闻，看后才知道，这个GW-BASIC也是一位编程语言界的老前辈。
 
 > 1983 年的时候，微软发布了面向 IBM PC XT 计算机（及其兼容产品）的 GW-BASIC 。作为一款 BASIC 编程语言解释器，GW-BASIC 由 IBM Advanced BASIC / BASICA 衍生而来（算是 Microsoft BASIC 的一项移植）。不过今日，微软已经正式将它开源，感兴趣的朋友可到 GitHub 上查看完整的源码。
 
