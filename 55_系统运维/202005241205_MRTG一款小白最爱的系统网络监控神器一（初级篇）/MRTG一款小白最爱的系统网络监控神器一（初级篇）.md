@@ -125,6 +125,13 @@ perl mrtg
 
 4、生成配置文件
 
+```shell
+cd c:\mrtg\bin
+perl cfgmaker public@192.168.1.99 --global "WorkDir: "
+```
+
+
+
 
 
 5、访问测试页面
