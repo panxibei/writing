@@ -126,15 +126,29 @@ perl mrtg
 4、生成配置文件
 
 ```shell
+# WorkDir 生成页面和数据日志存放的路径
+# output 生成的配置文件
+md c:\wamp64\www\mrtg_192_168_1_99
 cd c:\mrtg\bin
-perl cfgmaker public@192.168.1.99 --global "WorkDir: "
+perl cfgmaker public@192.168.1.99 --global "WorkDir: c:\wamp64\www\mrtg_192_168_1_99" --output c:\wamp64\www\mrtg_192_168_1_99\mrtg_192_168_1_99.cfg
+```
+
+
+
+5、生成图表页面
+
+用刚才生成的配置文件来生成展示的页面文件。
+
+```shell
+cd c:\mrtg\bin
+perl indexmaker --output=c:\wamp64\www\mrtg_192_168_1_99\mrtg_192_168_1_99.html c:\wamp64\www\mrtg_192_168_1_99\mrtg_192_168_1_99.cfg
 ```
 
 
 
 
 
-5、访问测试页面
+6、访问测试页面
 
 
 
