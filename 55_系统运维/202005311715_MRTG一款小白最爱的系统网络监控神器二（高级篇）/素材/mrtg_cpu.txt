@@ -1,0 +1,14 @@
+Target[cpu]:.1.3.6.1.2.1.25.3.3.1.2.4&.1.3.6.1.2.1.25.3.3.1.2.5:public@192.168.1.99:
+MaxBytes[cpu]: 100
+Unscaled[cpu]: dwmy
+Options[cpu]: gauge, absolute, growright, noinfo, nopercent                                    
+YLegend[cpu]: CPU Load (%)
+ShortLegend[cpu]: %
+Legend1[cpu]: CPU core1 use in percent
+Legend2[cpu]: CPU core2 use in percent
+Legend3[cpu]: .
+Legend4[cpu]: .
+LegendI[cpu]: CPU core1 use in percent
+LegendO[cpu]: CPU core2 use in percent
+Title[cpu]: CPU Load Average
+PageTop[cpu]: <H1>CPU Load Average</H1>

@@ -1,0 +1,13 @@
+#memory //内存抓取
+Target[memory]:1.3.6.1.2.1.25.2.3.1.6.4&1.3.6.1.2.1.25.2.3.1.5.4:public@192.168.1.99 * 65536 / 1024 / 1024
+MaxBytes[memory]: 2048
+Title[memory]: Memory usage (RigolBuckUp)
+PageTop[memory]: <H1>Memory (RigolBuckUp)</H1>
+kMG[memory]: M,G,T,P,X
+YLegend[memory]: Memory
+ShortLegend[memory]: bytes
+Legend1[memory]: Commited Memory
+Legend2[memory]: Total Memory
+LegendI[memory]: Memory Used
+LegendO[memory]: Memory Total
+Options[memory]: growright,nopercent,gauge
