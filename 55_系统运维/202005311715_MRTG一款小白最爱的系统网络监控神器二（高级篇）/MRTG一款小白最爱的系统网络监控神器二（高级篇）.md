@@ -130,7 +130,7 @@ http://localhost/mrtg/cpu.html
 
 4. 这三项它们之间的关系是：
 
-   * `实际总容量 = 分配单元(hrStorageAllocationUnit) * 总容量(`hrStorageSize)`
+   * `实际总容量 = 分配单元(hrStorageAllocationUnit) * 总容量(hrStorageSize)`
    * `实际已使用容量 = 分配单元（hrStorageAllocationUnit） * 已使用容量(hrStorageUsed)`
    * `占用率` = `实际已使用容量`  / `实际总容量`
 
