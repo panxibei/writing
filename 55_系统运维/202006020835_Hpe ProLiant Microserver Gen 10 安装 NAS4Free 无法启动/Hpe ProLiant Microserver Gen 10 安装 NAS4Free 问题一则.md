@@ -1,4 +1,4 @@
-Hpe ProLiant Microserver Gen 10 安装 NAS4Free 无法启动
+Hpe ProLiant Microserver Gen 10 安装 XigmaNas 无法启动
 
 副标题：小白前进的道路上总会有些沟沟坎坎，不要怕跨过去就是了~
 
@@ -14,7 +14,7 @@ Hpe ProLiant Microserver Gen 10 安装 NAS4Free 无法启动
 
 网上各种天花乱坠的功能介绍，其中居然说还能安装Win10当台式机用。
 
-这个有点意思哈，对于一般非专业的用户倒是很容易上手。
+这个有点意思哈，对于一般非专业的用户倒是很容易上手，不过我使用的是 `XigmaNas` ，就是原来的 `NAS4Free` 。
 
 看了好几款，最终综合考虑后，还是选择了它。
 
@@ -28,7 +28,7 @@ Hpe ProLiant Microserver Gen 10 安装 NAS4Free 无法启动
 
 这货启动巨慢，假装自己是台服务器吗？
 
-好吧，这个我能忍，但是开始安装 `NAS4Free` 时，我才发现无论怎么启动都会卡在一个地方不动，安装也就无法继续下去了。
+好吧，这个我能忍，但是开始安装 `XigmaNas` 时，我才发现无论怎么启动都会卡在一个地方不动，安装也就无法继续下去了。
 
 无法继续启动，大概会提示这个样子：
 
@@ -58,7 +58,7 @@ To Fix the problem of Stuck Console Issue you should ......
 
 好吧，我说人话。
 
-虽然老外用的是 `FreeNAS` ，而我用的是 `NAS4free` ，但其实都一样。
+虽然老外用的是 `FreeNAS` ，而我用的是 `XigmaNas` ，但其实都一样。
 
 老外说了，首先原因其实是由于启动时某项参数错误导致的问题，可能是个BUG。
 
@@ -66,7 +66,7 @@ To Fix the problem of Stuck Console Issue you should ......
 
 1. WEB页面修改启动参数
 2. 启动时编辑 `Grub`
-3. 定制NAS4Free安装镜像
+3. 定制XigmaNas安装镜像
 
 
 
@@ -94,8 +94,6 @@ set kFreeBSD.hw.usb.no_shudown_wait = 1
 
 
 好了，以上步骤虽然很简单，但的确能解决问题哦，系统顺利加载到安装界面，可以开始安装啦！
-
-
 
 心情一下就变好了有木有，但就这样结束了吗？
 
@@ -126,11 +124,11 @@ hw.usb.no_shudown_wait = 1
 
 
 
-保存后再重启看看，是不是可以顺利启动 `NAS4free` 系统了？
+保存后再重启看看，是不是可以顺利启动 `XigmaNas` 系统了？
 
 至于第三个方法，通过定制ISO镜像，这个过程太过复杂，不符合我等小白们应用为王的时间大师管理理念，就不在此介绍了。
 
-下次有机会，我们会介绍关于 `UrBackup` 在 `NAS4Free` 上的安装使用，是一个针对个人主机备份的有效解决方案。
+下次有机会，我们会介绍关于 `UrBackup` 在 `XigmaNas` 上的安装使用，是一个针对个人主机备份的有效解决方案。
 
 最后希望你的NAS安装顺利，使用愉快！
 
