@@ -52,7 +52,7 @@ pci0: <ACPI PCI bus> on pcib0
 
 哎，你别看我废话这么多，还真被我找着了，只不过是在老外的网站上看到的。
 
-To Fix the issue of the problem you should ......
+To Fix the problem of Stuck Console Issue you should ......
 
 
 
