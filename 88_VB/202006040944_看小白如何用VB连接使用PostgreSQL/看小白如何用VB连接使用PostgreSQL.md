@@ -76,6 +76,8 @@
 
 也就点了两下鼠标，安装完成了。
 
+图6
+
 打开 `控制面板` ，搜索 `odbc` ，看看 `PostgreSQL` 驱动是否OK。
 
 有两项 `设置ODBC数据源` ，一个是32位，另一个是64位。
@@ -83,6 +85,8 @@
 图7
 
 图8
+
+图9
 
 
 
@@ -130,7 +134,7 @@ Set rs = SelectSQL(strSql, strMsg)
 Set DataGrid1.DataSource = rs
 ```
 
-图9演示图
+图10演示图
 
 
 
@@ -138,7 +142,7 @@ Set DataGrid1.DataSource = rs
 
 在使用演示程序时，可能会出现如下报错提示。
 
-图10
+图11
 
 
 
