@@ -156,3 +156,19 @@ regsvr32 msstdfmt.dll
 本文旨在为新手小白们入门带路， 同时也为VB老玩家们抛砖引玉，希望能带给你们些许助益。
 
 快快关注我的微信公众号@网管小贾，要不我除了搬砖还得去摆摊儿，谢谢你们！
+
+
+
+---
+
+**以下演示数据库的导入方法，其中有网管小贾的靓照哦！**
+
+下载文件后解压，使用以下命令导入 `PostgreSQL` 数据库。
+
+```
+# postgres是你的用户名
+# db: database1 | schema: schema1 | table: table1
+psql -Upostgres database1 < database1.sql
+```
+
+下载链接：https://o8.cn/uCQgae 密码：0u74
