@@ -108,11 +108,13 @@
 "Driver=PostgreSQL Unicode;Server=x.x.x.x;Port=5432;Database=dbname;Uid=postgres;Pwd=12345678;"
 ```
 
+
+
 具体怎么做，我已经做成了一个演示程序。
 
 里面基本的增删改查已经模块化，具体可以参考里面的源代码。（后面有下载）
 
-随便举个例子：
+随便举个查询的例子：
 
 ```vb
 ' 定义变量
@@ -145,6 +147,7 @@ Set DataGrid1.DataSource = rs
 而单纯注册 `DataGrid` 控件自身还不能解决错误，还需要注册另一个动态库 `msstdfmt.dll` ，应该像这个样子：
 
 ```powershell
+# 这两个文件在下载的文件中都有
 regsvr32 msdatgrd.ocx
 regsvr32 msstdfmt.dll
 ```
@@ -161,7 +164,7 @@ regsvr32 msstdfmt.dll
 
 ---
 
-**以下演示数据库的导入方法，其中有网管小贾的靓照哦！**
+**附：以下演示数据库的导入方法，其中有网管小贾的靓照哦！**
 
 下载文件后解压，使用以下命令导入 `PostgreSQL` 数据库。
 
