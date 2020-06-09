@@ -146,6 +146,8 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 #### 三、拉取 `UrBackup` 镜像
 
+镜像你可以简单理解为模板，而容器是根据镜像生成的，所以要想使用容器，必须先有镜像。
+
 点击进入本地 `Docker` 环境，点击 `image` 镜像。
 
 图9
@@ -164,15 +166,19 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 #### 四、创建并运行 `UrBackup` 容器
 
-找到 `Containers` 中的 `Add container` ，我们来添加 `UrBackup` 容器。
+有了镜像，我们就可以用它来生成容器了，一个镜像可以生成一个或多个容器。
+
+找到 `Containers` 中的 `Add container` ，我们来点击它添加 `UrBackup` 容器。
 
 图12
 
 
 
-这里要啰嗦几句了。
+对于新手小白们，这里要啰嗦几句。
 
-按照官网手册描述，如果你熟悉Docker指令，那么运行它就是一条命令的事。
+按照官网手册描述，如果你熟悉 `Docker` 指令，那么运行它就是一条命令的事。
+
+就像下面这个样子，`\` 是一条命令一行放不下而换行的意思。
 
 ```
 docker run -d \
@@ -189,31 +195,37 @@ docker run -d \
 
 用命令是简单，但我们是新手小白啊，无知者无畏哈，不懂不是问题，问题是不会用啊！
 
-好吧，`Portainer` 可以帮到我们，往下看。
+好吧，这时 `Portainer` 就可以帮到我们，往下看。
 
-我们按照命令，一项一项往 `Portainer` 上面套就行了。
+我们按照命令参数，一项一项往 `Portainer` 上面套就行了。
 
 
 
-1、名字这个随便起，我这写的是 `urbackup-server` 。
+##### 1、容器命名
 
-2、镜像一栏填写`uroni/urbackup-server:latest` 。
+`--name urbackup`
+
+这个名字随便起，我这儿写的是 `urbackup-server` 。
+
+
+
+##### 2、镜像一栏填写 `uroni/urbackup-server:latest`
 
 图13
 
 
 
-3、重启模式，停止后自动重启。
+##### 3、重启模式，停止后自动重启。
 
---restart unless-stopped
+`--restart unless-stopped`
 
 图14
 
 
 
-4、环境变量参数
+##### 4、环境变量参数
 
--e PUID=1000 和  -e PGID=100  和 -e TZ=Europe/Berlin。
+`-e PUID=1000` 、 ` -e PGID=100`  和 `-e TZ=Europe/Berlin`。
 
 最后一项是时区，我们这里写成 `Asia/Shanghai` 。
 
@@ -221,31 +233,31 @@ docker run -d \
 
 
 
-5、卷重定向
+##### 5、目录映射
 
--v /path/to/your/backup/folder:/backups 
+`-v /path/to/your/backup/folder:/backups`
 
--v /path/to/your/database/folder:/var/urbackup
+`-v /path/to/your/database/folder:/var/urbackup`
 
-首先，查看想要备份的目标挂载点，我这儿是 `/srv/dev-disk-by-label-urbackup` 。
+首先，查看想要备份到哪儿的目标挂载点，用 `df -h` 命令查看，我这儿是 `/srv/dev-disk-by-label-urbackup` 。
 
 图16
 
 
 
-其次，按下图选择参数，记得要点下Bind。
+其次，按下图选择参数，记得要点下 `Bind` 。
 
 图17
 
 
 
-6、网络模式，按照官方选择host。
+##### 6、网络模式，按照官方选择 `host` 。
 
 图18
 
 
 
-7、所有参数准备就绪，找到按钮 `Deploy the container` 点下去。
+##### 7、所有参数准备就绪，找到按钮 `Deploy the container` 点下去。
 
 OK！新的容器创建成功啦！
 
@@ -253,5 +265,21 @@ OK！新的容器创建成功啦！
 
 
 
-我们创建的名称为 `urbackup-server` 的容器很顺利地在运行了，这时我们打开 `IP:55414` 看看，`UrBackup` 是不是成功显示了？
+可以看到，我们创建的名称为 `urbackup-server` 的容器很顺利地在运行了，这时我们打开浏览器，输入 `http://IP:55414` 回车看看，`UrBackup` 是不是成功显示了？
+
+
+
+收获成功，心情愉悦，`OMV` 手感爽快，感觉就是给小白们天生打造的神器，而 `Docker` 的加持又使得它如虎添翼、功能更加强大。
+
+除了能实现 `UrBackup` 外，还有很多值得挖掘的新功能，期待以后有机会和小伙伴们讨论分享！
+
+以上如有错误遗漏，欢迎批评指正，当然点赞也要同时进行哈！
+
+
+
+> WeChat@网管小贾
+>
+> Blog@www.sysadm.cc
+
+
 
