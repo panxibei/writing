@@ -6,7 +6,7 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 在此之前，我们有分享过关于 `XigmaNas` + `UrBackup` 来实现个人整机备份的方案。
 
->  原文链接：
+>  原文链接：《XigmaNas+UrBackup打造个人整机备份方案》
 
 不过有小伙伴说了，`XigmaNas` 比较专业，企业场景下使用得较多，我更多地喜欢用 `OpenMediaVault` ，能不能实现与 `UrBackup` 一起搭档组合呢？
 
@@ -65,6 +65,8 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 我这里安装的是最新版本 `openmediavault_5.3.9-amd64.iso` 。
 
 `Sourceforge` 下载巨慢，我下载好了放在网盘里，点击 这里 下载为你节省时间。（提取码：）
+
+`SHA256: c22a5abde6547d54f71d56ecca494175b8a23f8931a319523bc6e1a524fb1d17`
 
 后续安装，此处省略一万字.......
 
