@@ -4,13 +4,17 @@
 
 
 
-上文书我们说到XMail是如何安装的，其中给小伙伴们分享了我自制的一键安装程序包。
+上文书我们初步地说明了 `XMail` 是如何安装的，其中也给小伙伴们分享了我自制的**一键安装XMail程序包**。
 
 >  前文链接：[把XMail企业邮局应用到系统管理中（安装篇）](https://www.sysadm.cc/index.php/xitongyunwei/743-xmail-install)
 >
-> **<一键安装 `XMail` 程序包>** 下载请到前文中查找~
+> **<一键安装 `XMail` 程序包>** 免费下载请到前文中查找~
 
-程序安装好后，默认的设置是没办法直接使用的，那么自然要我们动手配置它了。
+程序安装好后，默认的设置是无法直接使用的，那么自然就要我们先动手配置它了。
+
+`XMail` 的官网文档有几百页纸，但简单基本的配置并不复杂，不要害怕哈，只要做好以下简单的几步就能实现我们想要的基本收发功能了。
+
+Let's go!
 
 
 
@@ -21,22 +25,24 @@
 1. `C:\MailRoot\bin\CtrlClnt.exe` ，主要系统管理程序
 2. `C:\MailRoot\bin\XMCrypt.exe` ，密码加密生成程序
 
+
+
 再有几个主要配置文件：
 
-1. `server.tab` ，服务端配置文件
+1. `server.tab` ，服务端主配置文件
 2. `ctrlaccounts.tab` ，管理用户配置文件
 3. `mailusers.tab` ，邮件用户配置文件
 4. `domains.tab` ，邮局域名配置文件
 
 
 
-在正式开始配置之前想说一个注意事项哈。
+在正式开始配置之前先说一个注意事项哈。
 
-在编辑配置文件的时候，最好不要用 `Windows` 的记事本程序，因为编码的问题，你最好用一些高级一点文本编辑器，比如 `Notepad++` 等等。
+在编辑配置文件的时候，最好不要用 `Windows` 的记事本程序，因为编码异常的问题，你最好用一些高级一点文本编辑器，比如 `Notepad++` 等等。
 
 
 
-接下来我们开始尝试手动配置 `XMail` ，在此之后我们也会用第三方的工具软件快捷方便地完成配置。
+好了，接下来我们开始尝试手动配置 `XMail` ，在此之后有机会的话我们也会用第三方的工具软件快捷方便地完成配置。
 
 
 
@@ -46,7 +52,9 @@
 
 ##### 1、修改邮局域名
 
-用文本编辑器打开 `C:\MailRoot\server.tab` ，将所有的 `xmailserver.test` 替换成 `sysadm.local` 。
+假定我们测试用的域名为 `sysadm.local` 。
+
+用高级一些的文本编辑器打开 `C:\MailRoot\server.tab` ，将所有的 `xmailserver.test` 替换成 `sysadm.local` 。
 
 比如：
 
@@ -72,7 +80,7 @@
 ##### 2、生成管理员加密密码
 
 ```
-# adminpass为密码明文，生成密文0401080c0b15041616
+# adminpass为密码明文，相应生成密文0401080c0b15041616
 C:\MailRoot\bin\XMCrypt.exe adminpass
 ```
 
@@ -80,7 +88,7 @@ C:\MailRoot\bin\XMCrypt.exe adminpass
 
 ##### 3、添加管理员信息
 
-编辑 `C:\MailRoot\ctrlaccounts.tab` ，添加如下内容：
+还是用高级一些的文本编辑器编辑 `C:\MailRoot\ctrlaccounts.tab` ，添加如下内容：
 
 ```
 admin	0401080c0b15041616
@@ -92,9 +100,11 @@ admin	0401080c0b15041616
 
 ##### 4、修改域
 
+看看以下命令的注释你就明白 了。
+
 ```
 # 查看域
-# 以下会返回测试域信息 "xmailserver.test"
+# 以下会返回域信息，如果是初次则域信息为 "xmailserver.test"
 C:\MailRoot\bin\ctrlclnt -s localhost -u admin -p adminpass domainlist
 
 # 删除域
@@ -102,7 +112,7 @@ C:\MailRoot\bin\ctrlclnt -s localhost -u admin -p adminpass domainlist
 C:\MailRoot\bin\ctrlclnt -s localhost -u admin -p adminpass domaindel xmailserver.test
 
 # 添加域
-# 添加我们自定义域 "sysadm.local"
+# 添加我们的自定义域 "sysadm.local"
 C:\MailRoot\bin\ctrlclnt -s localhost -u admin -p adminpass domainadd sysadm.local
 ```
 
@@ -124,11 +134,13 @@ C:\MailRoot\bin\ctrlclnt -s localhost -u admin -p adminpass useradd sysadm.local
 
 #### 三、测试
 
-OK，邮件域和用户都搞定了！接下来测试看看！
+OK，好像也不是很复杂哈，邮件域和用户都搞定了！接下来测试看看！
+
+
 
 1、域名解析
 
-在客户端电脑（不是XMail服务器）上，编辑 `C:\Windows\System32\drivers\etc` ，在最后追加：
+在客户端电脑（不是 `XMail` 服务器）上，编辑 `C:\Windows\System32\drivers\etc` ，在最后追加：
 
 ```
 x.x.x.x sysadm.local    # x.x.x.x 是XMail服务器的IP地址
@@ -189,13 +201,15 @@ x.x.x.x sysadm.local    # x.x.x.x 是XMail服务器的IP地址
 
 
 
-`OUTLOOK` 经过一番折腾后宣布成功添加帐户。
+`OUTLOOK` 经过一番折腾后宣布成功添加了帐户。
 
 图6
 
 
 
-用这个邮箱发送给自己一封邮件，发送成功的同时，自己也能收到邮件，那么说明配置测试基本完成。
+用这个邮箱给自己发送一封测试邮件，发送成功的同时，自己也能收到邮件，那么说明配置测试成功完成！
+
+以上测试环节可能会有些折腾，你也可以同时使用 `telnet` 命令辅助测试，先确保端口可以访问。
 
 
 
@@ -207,7 +221,11 @@ x.x.x.x sysadm.local    # x.x.x.x 是XMail服务器的IP地址
 
 另外我们还可以自己动手用VB编写开发自己想要的更多的便捷配置功能。
 
-那么我们下次再讨论吧！
+好了，我又要回去搬砖了，那才是我的工作，要不会被老板骂不务正业了！
+
+小伙伴们有空关注一下我的微信公众号吧，感谢！
+
+我们下期再见啦！
 
 
 
