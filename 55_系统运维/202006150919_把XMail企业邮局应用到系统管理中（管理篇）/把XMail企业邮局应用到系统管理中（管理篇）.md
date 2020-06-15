@@ -151,6 +151,12 @@ OK！使用管理工具就是辣么简单方便哈！
 
 
 
+**`setup_XMailAdmin.7z` 安装包**
+
+下载链接：https://o8.cn/4onOXt 密码：lix0
+
+
+
 > WeChat @网管小贾
 >
 > Blog @www.sysadm.cc
