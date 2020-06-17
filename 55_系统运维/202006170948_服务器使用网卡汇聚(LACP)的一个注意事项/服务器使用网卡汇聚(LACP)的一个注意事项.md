@@ -63,3 +63,8 @@ interface GigabitEthernet2/0/20
 记得以前似乎通过双网卡的NAS系统尝试过，使用 `故障转移` 或 `负载均衡` 都可以，用 `LACP` 好像网络就不通了。
 
 再深入的内容就不太懂了，还请前辈高手们批评！
+
+> WeChat @网管小贾
+>
+> Blog @www.sysadm.cc
+
