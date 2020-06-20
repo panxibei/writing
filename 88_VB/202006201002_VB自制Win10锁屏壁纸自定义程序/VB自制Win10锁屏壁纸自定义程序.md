@@ -67,6 +67,27 @@ Windows Registry Editor Version 5.00
 
 
 
+图3
+
+
+
+此外，他们如此高效的秘诀是在VB源码中使用了一个叫 `clsRegistry.cls` 的类，调用访问注册表简直不要太方便。
+
+```vb
+Dim c As New clsRegistry
+
+' 强制更换Win10默认锁屏壁纸
+With c
+    .ClassKey = HKEY_LOCAL_MACHINE
+    .SectionKey = "SOFTWARE\Policies\Microsoft\Windows\Personalization"
+    .ValueKey = "LockScreenImage"
+    .ValueType = REG_SZ
+    .Value = “c:\\yourfolder\\LockScreenImage.jpg"
+End With
+```
+
+
+
 他们告诉俺，以上这些修改注册表的方法，可以手动直接修改，也可以保存为 `*.reg` 文件后双击导入注册表中，之后即可定制你想要的锁屏壁纸。
 
 当然了，他们耸了耸肩膀，建议我直接使用配置程序来达到目的，因为那才是最高效简便靠谱的方式。
@@ -86,6 +107,8 @@ Windows Registry Editor Version 5.00
 链接：
 
 
+
+这里要补充一下，图片路径最好不要有中文。
 
 如果你尝试成功了，别忘记关注俺的微信公众号哦！
 
