@@ -4,7 +4,7 @@
 
 
 
-前一阵村里刚通网，虽然网速用蜗牛来形容有点贬低蜗牛，不过好歹我们村也算是进入了网络时代。
+前一阵村里刚通网，虽然网速用蜗牛来形容有点侮辱蜗牛，不过好歹我们村也算是进入了网络时代。
 
 赶上了网络时代，苟日新、日日新、又日新，村里家家户户也都用上了最新的Win10系统。
 
@@ -18,7 +18,7 @@
 
 话说有那么一回，同村的美女林妹妹跑来问我截图工具在哪儿？
 
-这还不好找，难道对我有意思？
+这还不好找，故意接近我，难道对我有意思？
 
 嘿呦，我发现我展示炫酷魅力的机会来了！
 
@@ -38,11 +38,11 @@
 
 还好，天赋异禀的我凭借小宇宙最强第六感终于把它给扒拉出来了。
 
-林妹妹向我道谢，看得出她对我很上心，临走时关心地说道：“你这程序也太多了吧，删掉点没用的呗！”。
+林妹妹向我道谢，看得出她对我很上心，临走时关心地说道：“你这程序也太多了，快删掉点没用的吧！”。
 
-望着林妹妹离去的背影，我能强烈地感觉到我的表演秀砸了，不，是稀碎！
+好吧，望着林妹妹离去的背影，我承认我能强烈地感觉到这次千载难逢的表演秀砸了，不，是稀碎！
 
-好吧，我决心把那些让我丢尽脸面的程序删光光！
+我紧咬后槽牙，发誓要把那些让我丢尽颜面的烂程序删光光！
 
 
 
@@ -52,9 +52,11 @@
 
 图1
 
-不过手动删除有些应用可能看不到，也就卸载不了。
+手动删除可能存在两个问题：
 
-另外卸载后就看不到了，也不方便再次安装。
+1、有些应用在列表中可能并不能被找到，自然也就卸载不了。
+
+2、另外列表中的应用一旦被卸载后，可能就看不到了，也不方便再次安装。
 
 
 
@@ -68,7 +70,9 @@ Windows10 中 `PowerShell` 内置了 `Get-AppxPackage` 、 `Remove-AppxPackage` 
 >
 > `Add-AppxPackage` ：用于安装 Win10 系统内置应用
 
-列举几种常见命令：
+
+
+以管理员身份运行以下几种常见命令：
 
 ```powershell
 # ******查询******
@@ -94,19 +98,19 @@ Add-AppxPackage -register "InstallLocation\appxmanifest.xml" -DisableDevelopment
 Get-AppxPackage -AllUsers| Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 ```
 
-命令行模式操作比较麻烦，不太适合新手小白。
+命令行模式操作比较靠谱，但比较专业、门槛较高，不太适合新手小白。
 
 
 
 #### 三、自制内置应用安装卸载程序
 
-要不说网络时代真是棒，上网啥都有了。
+要不说网络时代真是棒，资源都有浪里格浪~
 
 有很多大神早已造出了各种神奇的工具软件，其中就有针对Win10内置应用卸载的程序。
 
 这些程序有用 `Python` 做的，也有用 `C#` 做的，我嘛只会一点点 `VB` ，当然用 `VB` 做啦！
 
-嗯，看看样子，有点丑，不过能用就行哈！
+嗯，你瞧瞧，样子是有点丑，不过能用就行哈！
 
 图2
 
@@ -120,13 +124,15 @@ Get-AppxPackage -AllUsers| Foreach {Add-AppxPackage -DisableDevelopmentMode -Reg
 
 3、要是你觉得玩得太嗨了，删得不知道都是啥也没关系，有颗后悔药，点击 `重置所有应用` 就都可以帮你找回来哦。
 
+***这里要注意一下，有些应用是默认不能被移除的，否则对系统有影响。***
 
 
-其实这个程序用到了以前介绍的知识点。
 
-[《VB+SQLite组合，真香！（一）》](https://www.sysadm.cc/index.php/vbbiancheng/721-vb-sqlite)
+其实这个程序用到了一些以前介绍的知识点。
 
-[《VB+SQLite组合，真香！（二）》](https://www.sysadm.cc/index.php/vbbiancheng/723-vb-sqlite-2)
+> [《VB+SQLite组合，真香！（一）》](https://www.sysadm.cc/index.php/vbbiancheng/721-vb-sqlite)
+>
+> [《VB+SQLite组合，真香！（二）》](https://www.sysadm.cc/index.php/vbbiancheng/723-vb-sqlite-2)
 
 首先，利用 `PowerShell` 命令读入内置应用列表，再把读取的内容写到SQLite数据库中。
 
@@ -142,6 +148,11 @@ Get-AppxPackage -AllUsers| Foreach {Add-AppxPackage -DisableDevelopmentMode -Reg
 
 
 
-突然感觉这个程序很有范的样子，推荐给林妹妹会不会好感度飙升呢？
+哎？突然感觉这个程序很有范的样子，推荐给林妹妹她会不会对我回心转意、另眼相看呢？
 
 嘿嘿！我喜上眉梢，擦了擦口水，准备明天展开行动......
+
+
+
+> WeChat @网管小贾 | Blog @www.sysadm.cc
+
