@@ -199,6 +199,8 @@ setup.exe /r /f1"c:\foo\setup.iss"
 
 清楚了没？
 
+不需要特意安装 `InstallShield` 打包程序，也不需要麻烦地手工制作 `setup.iss` 文件。
+
 那么 `/s` 开关怎么用？其实和 `/r` 几乎一样用法，也是带 `/f1` 和 `/f2` 两个参数。
 
 
