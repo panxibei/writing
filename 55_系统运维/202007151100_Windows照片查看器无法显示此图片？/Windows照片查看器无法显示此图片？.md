@@ -78,7 +78,7 @@ https://superuser.com/questions/1509194/windows-photo-viewer-cant-run-because-no
 
 简易转换程序 `convert.exe`。
 
-下载链接：https://o8.cn/AEP1jP 密码：vgk2
+下载链接：https://o8.cn/KlsvYD 密码：6nn3
 
 ```shell
 convert BADFILE.jpg -strip GOODFILE.jpg
