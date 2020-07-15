@@ -4,6 +4,10 @@ Windows照片查看器无法显示此图片？
 
 
 
+前文：[《一招找回Win10的照片查看器》](https://www.sysadm.cc/index.php/xitongyunwei/15-win10-photo-viewer)
+
+
+
 提出问题：
 
 图1
@@ -63,6 +67,32 @@ ICC配置格式说明：[Embedding ICC profiles in image file formats](http://ww
 
 
 https://superuser.com/questions/1509194/windows-photo-viewer-cant-run-because-not-enough-memory
+
+
+
+图7
+
+下载链接：[ImageMagick-7.0.10-23-portable-Q16-x64.zip](https://imagemagick.org/download/binaries/ImageMagick-7.0.10-23-portable-Q16-x64.zip)
+
+简易转换程序 `convert.exe`。
+
+下载链接：https://o8.cn/AEP1jP 密码：vgk2
+
+```shell
+convert BADFILE.jpg -strip GOODFILE.jpg
+```
+
+
+
+如果你要批量转换图片
+
+```powershell
+mogrify.exe -format jpg -verbose -path C:\OUTPUT_DIR -strip *.jpg
+```
+
+Might be also used relative path like **-path OUTPUT_DIR** if You want them in subfolder.
+
+
 
 
 
