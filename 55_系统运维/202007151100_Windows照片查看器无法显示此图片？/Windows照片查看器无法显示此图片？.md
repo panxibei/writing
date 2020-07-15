@@ -72,6 +72,8 @@ https://superuser.com/questions/1509194/windows-photo-viewer-cant-run-because-no
 
 图7
 
+网址：https://imagemagick.org/script/download.php
+
 下载链接：[ImageMagick-7.0.10-23-portable-Q16-x64.zip](https://imagemagick.org/download/binaries/ImageMagick-7.0.10-23-portable-Q16-x64.zip)
 
 简易转换程序 `convert.exe`。
