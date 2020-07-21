@@ -172,7 +172,7 @@ Set-Cookie: laravel_session=sysadm.cc; SameSite=None; Secure
 
 最后经过修改，重新刷新配置缓存（`php artisan config:cache`），再打开调试控制台后警告信息消失了。
 
-谢天谢地，我又可以开始愉快的写代码了。
+谢天谢地，我腰也挺直了，眼也不花了，又可以开始愉快的写代码了。
 
 
 
