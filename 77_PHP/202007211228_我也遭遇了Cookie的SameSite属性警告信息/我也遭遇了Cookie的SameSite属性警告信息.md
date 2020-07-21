@@ -4,9 +4,9 @@
 
 
 
-有那么一天，我正愉快地敲着代码，突然，控制台上冒出了几行警告信息！
+某日，我正愉快地敲着代码，突然，浏览器控制台上冒出了几行警告信息！
 
-于是我眯缝着眼睛，仔细这么一瞧，坏了，整个人都不好了！
+我驼着背眯缝着眼睛，仔细这么一瞧，瞳孔瞬间放大，心里咯噔一下，整个人都不好了！
 
 它警告我，说是什么 `SameSite` 属性设置为 `none` ，但缺少 `secure` 属性，此 `Cookie` 未来将被拒绝。
 
@@ -14,29 +14,29 @@
 
 
 
-要说这只是个警告，咱选择性失明地忽略它也就完了，可是最让人不舒服的，就是那句“Cookie未来将被拒绝”。
+要说这只是个警告，咱选择性失明地忽略它也就完了，可是最让人不舒服的，就是那句“此Cookie未来将被拒绝”。
 
-说实话，我有点被吓到了！
+这还了得，我的生命中怎能没有 `Cookie` 啊，说实话，我当时害怕极了！
 
-还等啥，赶紧向大神们求助吧。
+瑟瑟发抖的我赶紧向大神们求助。
 
 
 
 ### SameSite 属性是个啥？
 
-我们都知道 `Cookie` ，小甜饼嘛，不过它在计算机中是指客户端保存用户信息状态的东东。
+我们都知道 `Cookie` ，小甜饼香又甜嘛，不过它在计算机中是指客户端保存用户信息状态的东东。
 
-有了这个玩意，用户登录啥的就方便了，不用每次都重复输入用户名和密码。
+有了这个东东，用户登录啥的就方便了，不用每次都重复输入用户名和密码。
 
-但是方便的同时也带来了安全问题，因为 `Cookie` 可以做到第三方登录，别有用心之人就可以做到跨站攻击（*CSRF跨站点请求伪造(Cross—Site Request Forgery)*）。
+但是方便的同时也带来了安全问题，因为 `Cookie` 可以做到第三方登录，而别有用心之人就可以利用它做到跨站攻击（*CSRF跨站点请求伪造(Cross—Site Request Forgery)*）。
 
 这是历史遗留问题，所以大神们就在 `Cookie` 中增加了 `SameSite` 属性，用它来标明是否是  `同站 cookie`。
 
-那么有了这个属性，就可以防止CSRF攻击或用户追踪。
+那么有了这个属性，就可以有效防止CSRF攻击或用户追踪。
 
 
 
-`SameSite` 属性有三个值，分别是
+`SameSite` 属性有三个属性值，分别是
 
 * Strict	严格
 * Lax	宽松
@@ -70,15 +70,15 @@ Set-Cookie: CookieName=CookieOfSysadm.cc; SameSite=Strict;
 
 
 
-另外，如果你设定了 `Strict` ，那么从第三方跳转至需要CSRF令牌验证的网站表单时，需要禁用CSRF令牌验证。
+另外，如果你设定了 `Strict` ，那么从第三方跳转至需要CSRF令牌验证的网站表单时，则需要禁用CSRF令牌验证，否则表单可能工作不正常。
 
-那么这个设定值，似乎也只能是适合基本不会第三方登录的系统，例如类似于一个很少用户使用的后台管理系统。
+于是乎这个设定值，似乎也只能是适合基本不会有第三方登录的系统，例如类似于一个很少用户使用的后台管理系统。
 
 
 
 #### Lax
 
-`Lax` 规则相对宽松一些，大多数情况也是不发送第三方 Cookie，但是导航到目标网址的 GET 请求除外。
+`Lax` 规则相对 `Strict` 宽松一些，大多数情况也是不发送第三方 Cookie，但是导航到目标网址的 GET 请求除外。
 
 ```
 Set-Cookie: CookieName=CookieOfSysadm.cc; SameSite=Lax;
@@ -109,7 +109,7 @@ Set-Cookie: CookieName=CookieOfSysadm.cc; SameSite=Lax;
 
 #### None
 
-未设定值，这个是目前的默认值，不过为了安全考虑 `Chrome` 计划将Lax变为默认设置。
+未设定值，这个是目前的默认值，不过为了安全考虑 `Chrome` 计划将 `Lax` 变为默认设置。
 
 **这也就是文章开关碰到的 “此Cookie未来将被拒绝” 警告信息出现的原因。**
 
@@ -117,9 +117,64 @@ Set-Cookie: CookieName=CookieOfSysadm.cc; SameSite=Lax;
 
 不过，前提是必须同时设置 `Secure` 属性（Cookie 只能通过 HTTPS 协议发送），否则无效。
 
+**这也是 “某些 Cookie 滥用推荐的“sameSite“属性” 的原因。**
+
 ```
 Set-Cookie: laravel_session=sysadm.cc; SameSite=None; Secure
 ```
 
 
+
+### SameSite 属性使用注意点
+
+1、修改 `SameSite` 需要后端语言的支持，而 `php` 的 `setcookie` 函数需要 `php7.3` 版本以上才可以支持。
+
+`php7.3` 以下版本需要通过 `header` 进行设置 `cookie` 的 `SameSite` 属性。
+
+>  关于php7.2即将过期的信息，请参考文章：[《WampServer官方下载去哪儿了？》](https://www.sysadm.cc/index.php/xitongyunwei/692-wampserver)
+
+
+
+2、使用 `Laravel` 的小伙伴们可以参考以下方法设定 `SameSite` 属性。
+
+找到 `项目根目录/config/session.php` 文件，按需修改即可。
+
+```php
+    /*
+    |--------------------------------------------------------------------------
+    | Same-Site Cookies
+    |--------------------------------------------------------------------------
+    |
+    | This option determines how your cookies behave when cross-site requests
+    | take place, and can be used to mitigate CSRF attacks. By default, we
+    | do not enable this as other CSRF protection services are in place.
+    |
+    | Supported: "lax", "strict"
+    |
+    */
+
+    'same_site' => "lax",
+```
+
+
+
+### 简单总结
+
+如果小伙伴们遇到没有正常发送 `Cookie` 的问题，那么看看会不会是以下两个问题没整好。
+
+1、跨站请求时，需要同时设置为  `SameSite=None` 和 `Secure` 时，才会发送 `Cookie` 。
+
+2、`Chrome` 浏览器默认 `SameSite` 属性设定为 `Lax` ，所以网站后端相应的  `SameSite` 属性应该设定为对应的非 `None` 值，否则会出现无法发送（或获取）Cookie的情况。
+
+
+
+好了，终于整明白了！
+
+最后经过修改，重新刷新配置缓存（`php artisan config:cache`），再打开调试控制台后警告信息消失了。
+
+谢天谢地，我又可以开始愉快的写代码了。
+
+
+
+> WeChat @网管小贾 | www.sysadm.cc
 
