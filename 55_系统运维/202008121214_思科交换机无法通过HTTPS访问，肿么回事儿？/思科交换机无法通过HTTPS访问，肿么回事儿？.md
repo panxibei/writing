@@ -8,7 +8,7 @@
 
 遂打开IE浏览器，输入 `https://x.x.x.x` ，一记潇洒的回车。
 
-哎...艾玛？怎么肥事？什么情况？
+哎...哎玛？怎么肥事？什么情况？
 
 图1
 
@@ -18,7 +18,7 @@
 
 对了，看看能不能 `Telnet` 上去。
 
-发现可以连接，并且确认虽然 `http` 没有开启，但 `https` 的确是开启的啊！
+发现可以连接，并且通过查看配置确认虽然 `http` 没有开启，但 `https` 的确是开启的啊！
 
 图2
 
@@ -64,9 +64,9 @@
 
 链接文章从原因到解决方法讲得非常详尽，如果你有的是时间，那么你可以研究一下。
 
-不过非常不幸，我要留点时间打游戏的。
+不过非常不幸，人生苦短，我要留点时间打游戏的。
 
-另外，我可是要争当时间管理大师的人，所以我总结了它给出的三种解决方法。
+另外，我可是要争当时间管理大师的人，所以我简短总结了它给出的三种解决方法。
 
 1. Obtain a valid certificate from a 3rd part Certificate Authority (CA)
 
@@ -82,13 +82,13 @@
 
 
 
-我的天，哪个都不简单，哪个都是磨人的小妖精。
+我的天，哪个都不省心，哪个都是磨人的小妖精。
 
-不好，懒癌发作，怎么办呢？
+不好，懒癌发作了，怎么办呢？
 
-你说巧不巧，就在这思科社区论坛里，我同时还找了其中一位网友针对这个问题的这么一段回复。
+你说巧不巧，就在这思科社区论坛里，我同时还找到了其中一位网友针对这个问题的这样一段回复。
 
->  thank you very mush. 
+>  thank you very much. 
 >
 > the link take me solved the question([https://www.cisco.com/c/en/us/support/docs/security-vpn/public-key-infrastructure-pki/215118-ios-self-signed-certificate-expiration-o.html)](https://www.cisco.com/c/en/us/support/docs/security-vpn/public-key-infrastructure-pki/215118-ios-self-signed-certificate-expiration-o.html).
 >
@@ -98,7 +98,7 @@
 
 
 
-翻译成文明语言就是
+翻译成现代文明语言就是
 
 > 非常感谢！
 >
@@ -122,7 +122,7 @@ Switch#clock set 08:08:08 Aug 8 2019
 
 我这么文明一社会人儿，咋就突然想骂人哩？
 
-虽然说可以使用了，但是回头一想，不对啊，时间不准会不会对系统有不良影响呢。
+虽然说可以使用了，但是回头一想，不对啊，时间不准会不会对系统有不良影响呢？
 
 于是回过来又把时间改了回来，恢复成正常时间。
 
@@ -135,6 +135,8 @@ Switch#clock set 08:08:08 Aug 8 2019
 不对，换台电脑试试，在另一台电脑的浏览器上再次访问 `https://x.x.x.x` ，问题完全消失，就跟没有发生过问题似的！
 
 不知道以后还会不会问题再现啊！
+
+今年奇迹太多，都被我们一一见证了。
 
 好了，没啥好多说了，希望小伙伴们少走弯路，我要去划水了，就到这儿吧......
 
