@@ -36,21 +36,180 @@
 
 
 
+前提必要条件：
+
+因为学习使用 `View UI` 时，往往会涉及到后台交互，所以在开始之前，强烈建议你务必先搭建个WEB环境。
+
+如果你想在Windows下搭建LAMP式的简单后台环境，那么推荐你使用 `WampServer` 。
+
+我这儿有参考链接：
+
+> [WampServer最新版一键安装](https://www.sysadm.cc/index.php/webxuexi/746-wampserver-one-click-install)
+>
+> [WAMPSERVER仓库镜像（中文）](https://www.sysadm.cc/index.php/xitongyunwei/720-repository-of-wampserver-files)
+
+
+
 打开官方网站，其中有很详细丰富的组件库使用说明。
 
 我们学习使用它，肯定会从如何安装入手。
 
+本教程是小白教程，所以怎么简单怎么容易实现怎么来。
+
 我们使用 `CDN` 方式引入，按照官网说明来做。
 
-先解释一下，所谓的 `CDN` 方式，我的理解是直接引用 `js` 和 `css` 等所需的文件。
+先解释一下，所谓的 `CDN` 方式，我的理解是像传统方式一样直接引用 `js` 和 `css` 等所需的文件。
+
+比如这个样子：
+
+```
+<!-- 引入 Vue.js -->
+<script src="//vuejs.org/js/vue.min.js"></script>
+
+<!-- 引入 stylesheet -->
+<link rel="stylesheet" href="//unpkg.com/view-design/dist/styles/iview.css">
+
+<!-- 引入 iView -->
+<script src="//unpkg.com/view-design/dist/iview.min.js"></script>
+```
 
 
 
+官网给出了一个简单示例，通过CDN引入方式即可快速实现组件运用。
+
+我来看看它的样子：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ViewUI example</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <i-button @click="show">Click me!</i-button>
+    <Modal v-model="visible" title="Welcome">Welcome to ViewUI</Modal>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            }
+        }
+    })
+  </script>
+</body>
+</html>
+```
 
 
 
+这个例子很简单，打开后页面只有一个按钮，按钮文字写着 `Click me!` 。
+
+点击这个按钮，会弹出写有 `Welcome to ViewUI` 字样的对话框。
+
+接下来我们一起做做看。
 
 
+
+打开你喜欢的文本编辑器，对，就是你喜欢的，用记事本也是可以的，不过我喜欢 `Notepad++` ，推荐你用这个。
+
+依葫芦画瓢，把代码原封不动地复制粘贴到文本编辑器中。
+
+图1
+
+
+
+我们把它保存下来，比如我这边在 `Wamp` 的 `www` 目录下新建了一个目录 `sysadm.cc` 。
+
+然后保存在 `test01` 目录中，命名为 `01.html` 。
+
+```
+C:\Wamp\www\sysadm.cc\test01\example01.html
+```
+
+
+
+保存好了，我们来打开测试一下。
+
+首先确保你的WEB环境运行正常，打开浏览器，在地址中输入网址 `http://127.0.0.1/sysadm.cc/test01/example01.html` 后回车。
+
+哎，这是什么鬼？
+
+怎么只有一串洋字码，除此之外一片空白？
+
+按下 `F12` 打开火狐的控制台，发现其中混入了奇怪的东西。
+
+图2
+
+
+
+**“已阻止载入混合活动内容”** 的提示似乎已经告诉我们，`View UI` 的 `js` 和 `css` 引入已经完全失败。
+
+所以页面只显示出英文字母，而没有任何效果。
+
+那这个问题怎么盘它呢？
+
+求人不如求己，只有一个笨却简单的办法，那就是把 `View UI` 保存到本地随时为我所用。
+
+
+
+打开 `View UI` 在 `GitHub` 的链接：`https://github.com/view-design/ViewUI/releases` 。
+
+找到最新版本 `Latest release` 字样，目前最新版为 `v4.3.2` ，我们下载那个 `zip` 文件吧。
+
+图3
+
+
+
+下载 `ViewUI-4.3.2.zip` 完成后，把其中的 `dist` 目录解压出来。
+
+图4
+
+
+
+在这个 `dist` 目录中，我们可以看到有很多文件。
+
+其中，带有 `min` 字样的是压缩过的、可用于生产环境的文件，等会我们直接用它们。
+
+把这个 `dist` 目录复制到我们的项目目录中，就像这样： `C:\Wamp\www\sysadm.cc\test01\dist\` 。
+
+图5
+
+
+
+好，我们有了 `View UI` ，不过我们还不能开始测试使用。
+
+为啥？
+
+原因很简单哈，因为 `View UI` 是基于 `Vue.js` 的，我们还需要找到 `Vue.js` ，否则单单有 `View UI` 也是玩不转的。
+
+如图，我们按网页上的链接直接下载 `vue.min.js`  文件。
+
+图6
+
+
+
+下载完成后，我们可以打开看一下这个 `vue.min.js` 文件。
+
+可以看到，文件版本是 `v2.6.11` ，是当前 `vue.js 2.x` 的最新版，而 `View UI` 正是需要 `2.x` 版的。
+
+好，我们把 `vue.min.js`复制到项目目录中，就像这样： ``C:\Wamp\www\sysadm.cc\test01\vue.min.js` 。
+
+图7
+
+
+
+OK，各大高手到齐，我们来修改一下前面的示例文件中的引用路径。
 
 
 
