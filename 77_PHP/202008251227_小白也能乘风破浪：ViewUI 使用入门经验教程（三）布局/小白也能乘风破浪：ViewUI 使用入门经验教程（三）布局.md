@@ -91,41 +91,155 @@
 
 纳尼？这是什么鬼？
 
+怎么和想像的不一样啊喂！
+
+就这儿别说颜值了，简直是面目全非啊！
+
+怎么回事呢？
+
+其实前面已经有说过哦，这些个 `Layout` 啊、`Header` 或 `content` 啥的，只是个约定的标记，真正要把架子搭起来，还是得靠样式表单。
+
+把官网的部分代码拿来修正一下做演示。
+
+```html
+<style scoped>
+.layout{
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.layout-logo{
+    width: 100px;
+    height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+}
+.layout-nav{
+    width: 420px;
+    margin: 0 auto;
+    margin-right: 20px;
+}
+    .layout-footer-center{
+    text-align: center;
+}
+</style>
+
+<div class="layout">
+	<Layout>
+		<Header>
+			<i-menu mode="horizontal" theme="dark" active-name="1">
+				<div class="layout-logo"></div>
+				<div class="layout-nav">
+					<Menu-Item name="1">
+						<Icon type="ios-navigate"></Icon>
+						Item 1
+					</Menu-Item>
+					<Menu-Item name="2">
+						<Icon type="ios-keypad"></Icon>
+						Item 2
+					</Menu-Item>
+					<Menu-Item name="3">
+						<Icon type="ios-analytics"></Icon>
+						Item 3
+					</Menu-Item>
+					<Menu-Item name="4">
+						<Icon type="ios-paper"></Icon>
+						Item 4
+					</Menu-Item>
+				</div>
+			</i-menu>
+		</Header>
+		<Layout>
+			<Sider hide-trigger :style="{background: '#fff'}">
+				<i-menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
+					<Submenu name="1">
+						<template slot="title">
+							<Icon type="ios-navigate"></Icon>
+							Item 1
+						</template>
+						<Menu-Item name="1-1">Option 1</Menu-Item>
+						<Menu-Item name="1-2">Option 2</Menu-Item>
+						<Menu-Item name="1-3">Option 3</Menu-Item>
+					</Submenu>
+					<Submenu name="2">
+						<template slot="title">
+							<Icon type="ios-keypad"></Icon>
+							Item 2
+						</template>
+						<Menu-Item name="2-1">Option 1</Menu-Item>
+						<Menu-Item name="2-2">Option 2</Menu-Item>
+					</Submenu>
+					<Submenu name="3">
+						<template slot="title">
+							<Icon type="ios-analytics"></Icon>
+							Item 3
+						</template>
+						<Menu-Item name="3-1">Option 1</Menu-Item>
+						<Menu-Item name="3-2">Option 2</Menu-Item>
+					</Submenu>
+				</i-menu>
+			</Sider>
+			<Layout :style="{padding: '0 24px 24px'}">
+				<Breadcrumb :style="{margin: '24px 0'}">
+					<Breadcrumb-Item>Home</Breadcrumb-Item>
+					<Breadcrumb-Item>Components</Breadcrumb-Item>
+					<Breadcrumb-Item>Layout</Breadcrumb-Item>
+				</Breadcrumb>
+				<Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+					WeChat @网管小贾 | www.sysadm.cc
+				</Content>
+			</Layout>
+		</Layout>
+        <Footer class="layout-footer-center">&copy; 2020 网管小贾 | 微信公众号 @网管小贾</Footer>
+	</Layout>
+</div>
+```
+
+图6
 
 
 
+现在再看看，这模样有点儿那个意思了吧！
+
+理清布局容器组件之间的关系，你就可以随心所欲地布局整个页面了。
+
+而代码中所涉及到的诸如导航菜单等其他的组件，我们会在以后的文章中陆续介绍。
+
+好了，布局就是这么一回事。
 
 
 
+不过嘛，小伙伴们看到现在，这栅格和布局两位兄弟感觉好像差不多意思哈，都是为了让一张脸上的五官摆放得错落有致。
 
+那他们总有不同之处吧，这个区别又是啥呢？
 
-
-
-
-
-看上去栅格和布局这两个兄弟感觉好像差不多意思，都是为了让一张脸上的五官摆放得错落有致。
-
-那他们总有不同之处吧，这个区别是啥呢？
-
-其实上文书末尾已经简述过，简单地讲就是，栅格可以用于局部也可以用于整体，而布局则是个整体概念。
+其实上文书末尾已经简述过，简单地讲就是，**栅格可以用于局部也可以用于整体，而布局则是个整体概念。**
 
 看这张图，你就容易理解了。
 
-图1
+图7
 
 
 
 
 
-栅格可以在
+栅格可以在任意区域放置内容组件（菜单、按钮等），而布局就是用来划分不同区域的。
 
-有了栅格系统的概念，我们才能进一步了解如何布局界面。
+OK，看样子大家都了解得差不多了，收获不小吧？
 
-如果说栅格是为了确定某一行内容摆放，那么布局概念就是要来解决页面整体布局。
+至于布局的其它使用细节，如固定头部、侧边收起等等功能，可以具体实际使用情况参考官网内容。
 
+好了，我们有了布局模式的概念，那么就可以按照自己的意思来摆放具体的UI组件了。
 
+接下来我们将要具体介绍各种不同的UI组件，来具体实现界面效果。
 
-
+敬请期待一回！
 
 
 
@@ -135,7 +249,7 @@ vue.min.js.7z：https://o8.cn/4JnupS    密码：zyc8
 
 ViewUI-4.3.2.zip：https://o8.cn/ilEeNU    密码：88pi
 
-test02.7z：https://o8.cn/fP8wcG    密码：1zn0
+test02.7z：https://o8.cn/AzESBn    密码：0b93
 
 
 

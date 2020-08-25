@@ -280,7 +280,7 @@ vue.min.js.7z：https://o8.cn/4JnupS    密码：zyc8
 
 ViewUI-4.3.2.zip：https://o8.cn/ilEeNU    密码：88pi
 
-test02.7z：https://o8.cn/fP8wcG    密码：1zn0
+test02.7z：https://o8.cn/Du5mwg    密码：4633
 
 
 
