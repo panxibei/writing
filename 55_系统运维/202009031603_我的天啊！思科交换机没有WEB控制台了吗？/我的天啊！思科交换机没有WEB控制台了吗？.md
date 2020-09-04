@@ -278,5 +278,19 @@ WELL，不管怎么说，我们期待的WEB管理界面终于回归了。
 
 
 
+本文相关下载：
+
+**c2960x-universalk9-tar.152-7.E2.tar**
+
+链接：https://o8.cn/6eysDY    密码：gf44
+
+
+
+**tftpd32**
+
+链接：https://o8.cn/rp9IQ3    密码：7km9
+
+
+
 > WeChat @网管小贾 | www.sysadm.cc
 
