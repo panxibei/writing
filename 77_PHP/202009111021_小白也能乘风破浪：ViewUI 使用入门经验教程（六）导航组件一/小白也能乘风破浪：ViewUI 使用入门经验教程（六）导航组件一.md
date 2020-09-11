@@ -302,3 +302,41 @@ new Vue({
 
 还有一些活学活用的方法，例如标签可右击弹出菜单，另外也可以拖动互换位置，这些个就属于较高阶的运用了，小白慎用。
 
+
+
+#### 三、下拉菜单 - Dropdown
+
+我们前面说了导航菜单，正在又来了个下拉菜单，它们是亲戚还是什么关系？
+
+你还别说，它们之间有点类似，但可没什么必然联系。
+
+要说都是菜单，但导航菜单一般用在整体范围，而下拉菜单你哪儿都可以用，属于局部范围。
+
+我看这个下拉菜单就是我们通常意义上说的那个菜单了。
+
+
+
+基本用法：
+
+```html
+<Dropdown>
+	<a href="javascript:void(0)">
+		我是菜单，点我试试...
+		<Icon type="ios-arrow-down"></Icon>
+	</a>
+	<Dropdown-Menu slot="list">
+		<Dropdown-Item>石雕艺术</Dropdown-Item>
+		<Dropdown-Item>砖雕艺术</Dropdown-Item>
+		<Dropdown-Item disabled>沙雕艺术</Dropdown-Item>
+		<Dropdown-Item>木雕艺术</Dropdown-Item>
+		<Dropdown-Item divided>冰雕艺术</Dropdown-Item>
+	</Dropdown-Menu>
+</Dropdown>
+```
+
+图8
+
+
+
+
+
