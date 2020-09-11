@@ -31,3 +31,33 @@
 
 
 ## 第六弹：导航组件一
+
+
+
+#### 一、导航菜单 - Menu
+
+作为导航标识，用于引导用户进入相关的内容，传统中最土的办法就是放上几个超链接。
+
+不过你也知道，土办法不好看，那么我们就来点好看的，这个导航菜单就是我们最先要提到的。
+
+它作为菜单，不仅具有导航作用，还兼具菜单作用，可收罗大量的导航指令信息，不得不说是很高大上的，反正我常用到它。
+
+基本代码框架是这个样子的：
+
+```html
+<i-Menu mode="horizontal" theme="light" active-name="1">
+    <Menu-Item name="1">
+        <Icon type="ios-paper"></Icon>
+        内容管理
+    </Menu-Item>
+    <Menu-Item name="2">
+        <Icon type="ios-people"></Icon>
+        用户管理
+    </Menu-Item>
+    <Menu-Item name="3">
+        <Icon type="ios-construct"></Icon>
+        综合设置
+    </Menu-Item>
+</i-Menu>
+```
+
