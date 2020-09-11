@@ -42,22 +42,263 @@
 
 它作为菜单，不仅具有导航作用，还兼具菜单作用，可收罗大量的导航指令信息，不得不说是很高大上的，反正我常用到它。
 
+
+
 基本代码框架是这个样子的：
+
+```html
+<i-Menu mode="" theme="" active-name="">
+    <Menu-Item name="1">
+        菜单项一
+    </Menu-Item>
+    <Menu-Item name="2">
+        菜单项二
+    </Menu-Item>
+    <Menu-Item name="3">
+        菜单项三
+    </Menu-Item>
+</i-Menu>
+```
+
+
+
+其中的参数， `mode` 是指菜单水平横向放置还是垂直放置，`theme` 主题可选黑色的还是白色， `active-name` 表示当前激活的是哪个菜单项。
+
+我们来点实际的。
 
 ```html
 <i-Menu mode="horizontal" theme="light" active-name="1">
     <Menu-Item name="1">
         <Icon type="ios-paper"></Icon>
-        内容管理
+        石雕
     </Menu-Item>
     <Menu-Item name="2">
-        <Icon type="ios-people"></Icon>
-        用户管理
+        <Icon type="ios-book"></Icon>
+        砖雕
     </Menu-Item>
     <Menu-Item name="3">
         <Icon type="ios-construct"></Icon>
-        综合设置
+        木雕
+    </Menu-Item>
+    <Menu-Item name="4">
+        <Icon type="ios-sad"></Icon>
+        沙雕
     </Menu-Item>
 </i-Menu>
 ```
+
+图1
+
+
+
+上面的导航菜单是横向的，要想竖着放，其他都不用动，改个 `mode` 参数即可 `mode="vertical"` 。
+
+图2
+
+
+
+这里要多说一句，每个菜单项的 `name` 并不一定是数字，名字你随便起，只要你能区别开来就行，所以 `active-name` 也就不一定是数字了，只要和 `name` 能对得上就行。
+
+
+
+好，有了导航菜单项，我们就可以点击它进去浏览内容了，但是你可能会想到，如果有子菜单怎么办？
+
+是啊，对于内容丰富、层次多样的导航来说，单单这样设计显示有点太简单了不是。
+
+还好它叫菜单，是菜单它就有子菜单，子菜单还有子子菜单......
+
+瞧下面，子菜单来了。
+
+```html
+<i-Menu mode="vertical" theme="light" open-names="['2']" active-name="2-3">
+    <Submenu name="1">
+        <template slot="title">
+            <Icon type="ios-construct"></Icon>
+            木雕
+        </template>
+        <Menu-Item name="1-1">木雕</Menu-Item>
+        <Menu-Item name="1-2">木雕</Menu-Item>
+        <Menu-Item name="1-3">木雕</Menu-Item>
+    </Submenu>
+    <Submenu name="2">
+        <template slot="title">
+            <Icon type="ios-sad"></Icon>
+            沙雕
+        </template>
+        <Menu-Item name="2-1">你是沙雕</Menu-Item>
+        <Menu-Item name="2-2">你才是沙雕</Menu-Item>
+        <Menu-Item name="2-3">你才是大沙雕</Menu-Item>
+    </Submenu>
+</i-Menu>
+```
+
+图3
+
+
+
+不错吧？很容易就能看出，比前面介绍的代码中增加了 `Submenu` 的标记。
+
+是的，它就是传说中的子菜单，然后再在 `Submen` 中包含各种菜单项 `Menu-Item` 就欧了！
+
+啊？你说什么，一层子菜单哪儿够？
+
+如果一层不够那就再加一层，加一层爽一次，一直加一直爽！
+
+```html
+<Submenu>
+    <template slot="title">
+        ...
+    </template>
+    <MenuItem></MenuItem>
+    <MenuItem></MenuItem>
+    
+    <Submenu>
+        <template slot="title">
+        	...
+        </template>
+        <MenuItem></MenuItem>
+        <MenuItem></MenuItem>
+    </Submenu>
+</Submenu>
+```
+
+
+
+有了这么多层的菜单项，我们就可以引导用户点击进入所选内容了。
+
+哎，点击没反应？
+
+呵呵哒，当然没反应了，你要给它加事件它才有反应呀，要不它也不知道要干吗！
+
+最简单地，加个 `on-select` 事件一般就够用了。
+
+```html
+<i-Menu @on-select="name=>foo(name)">
+    ...
+</i-Menu>
+```
+
+图4
+
+
+
+通过传参把菜单项的 `name` 传递给函数 `foo` 后，这个函数就可以拿着参数 `name` 的值干活了。
+
+想要干什么活，当然是你想让用户干的事儿了，比如链接跳转等等，一般是导航用。
+
+
+
+嘿嘿，导航菜单真强大，不过也不是哪儿都要用它的。
+
+比如非顶部或侧边栏的一些区域，你放上一堆导航菜单项就显得有些小题大做了。
+
+这个时候标签面 `Tabs` 可以登场了。
+
+
+
+#### 二、标签页 - Tabs
+
+说实话，这个标签页感觉应该属于布局方面的组件。
+
+为什么这么说，只要你用过就知道，它完全是一种为了节省空间，把页面这种有限的2平面D世界活生生地变成了3D立体空间的布局高端利器。
+
+这么简单地说吧，如果你一个页面放不下那么多的东西，没事儿，找标签页，妥妥地把它们都收纳进去。
+
+就是这么神奇的存在，我们马上来瞄瞄。
+
+```html
+<Tabs value="name1">
+	<Tab-Pane label="标签一" name="name1">标签一的内容</Tab-Pane>
+	<Tab-Pane label="标签二" name="name2">标签二的内容</Tab-Pane>
+	<Tab-Pane label="标签三" name="name3">标签三的内容</Tab-Pane>
+</Tabs>
+```
+
+
+
+来点实际的，还带上个小图标：
+
+```html
+<Tabs value="name1">
+    <Tab-Pane label="HarmonyOS" name="name1" icon="ios-help-circle">
+        HarmonyOS的内容
+    </Tab-Pane>
+    <Tab-Pane label="Android" name="name2" icon="logo-android">
+        Android的内容
+    </Tab-Pane>
+    <Tab-Pane label="IOS" name="name3" icon="logo-apple">
+        IOS的内容
+    </Tab-Pane>
+</Tabs>
+```
+
+图5
+
+
+
+如果想要像传统的桌面应用那样的标签样式，可以把它的类型设定成卡片。
+
+```html
+<Tabs type="card">
+    ...
+</Tabs>
+```
+
+效果是这样：
+
+图6
+
+
+
+我比较喜欢卡片式的，就像看书时的书中插入的书签一样，毕竟一目了然。
+
+在此基础上，你可以加上一个叉叉用于关闭这个标签。
+
+```html
+<Tabs type="card" closable>
+    ...
+</Tabs>
+```
+
+图7
+
+
+
+当有消息更新或内容变动时，标签上也可以附加徽标数来提醒用户。
+
+通过绑定的标签页的 `label` 变量，然后再设置这个变量的 `Render` 函数就可以自定义标签页内容了。
+
+```html
+<Tabs value="name1">
+	<TabPane :label="label1" name="name1">标签一的内容</TabPane>
+	<TabPane label="标签二" name="name2">标签二的内容</TabPane>
+	<TabPane label="标签三" name="name3">标签三的内容</TabPane>
+</Tabs>
+
+new Vue({
+	el: '#app',
+	data: {
+		label: (h) => {
+			return h('div', [
+				h('span', '标签一'),
+				h('Badge', {
+					props: {
+						count: 66
+					}
+				})
+			])
+		}
+	},
+})
+```
+
+图8
+
+
+
+这个 `Render` 函数比较复杂，在 `View UI` 中有很多自定义场景会用到它，但是不要怕，通常你直接按代码套用即可。
+
+另外带有徽标数这种自定义情况下，就不能再用卡片式的样式了，当然也不能带有关闭项了。
+
+还有一些活学活用的方法，例如标签可右击弹出菜单，另外也可以拖动互换位置，这些个就属于较高阶的运用了，小白慎用。
 
