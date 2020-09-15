@@ -334,7 +334,62 @@ new Vue({
 </Dropdown>
 ```
 
-图8
+图9
+
+
+
+打开菜单的触发方式有这么几种。
+
+一个是鼠标悬停 `hover` ，这个是默认的，鼠标放上去菜单就自动打开了。
+
+```html
+<Dropdown trigger="hover">
+	......
+</Dropdown>
+```
+
+
+
+另一个是鼠标点击 `click` 。
+
+```html
+<Dropdown trigger="click">
+	......
+</Dropdown>
+```
+
+
+
+还有一个是鼠标右键点击 `contextMenu` 。
+
+```html
+<Dropdown trigger="contextMenu">
+	......
+</Dropdown>
+```
+
+
+
+最后一个就是自定义触发 `custom` ，这时就需要你设定一个变量来控制菜单的显示和隐藏。
+
+如下代码，当变量 `visible` 为 `true` 时，菜单就被打开啦，任由你控制哦！
+
+```html
+<Dropdown trigger="custom" :visible="visible">
+	......
+</Dropdown>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+			visible: false
+        },
+    })
+</script>
+```
+
+
 
 
 
