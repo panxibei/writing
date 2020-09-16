@@ -338,7 +338,13 @@ new Vue({
 
 
 
-打开菜单的触发方式有这么几种。
+这里先解释一下，此处的菜单标题为啥要加 `<a href="javascript:void(0)"></a>` 这个链接呢？
+
+其实原因没你想得那么复杂，它只是单纯让鼠标放在菜单上可以显示为手形，这不显得上档次嘛！
+
+
+
+我们接着讲，打开菜单的触发方式有这么几种。
 
 一个是鼠标悬停 `hover` ，这个是默认的，鼠标放上去菜单就自动打开了。
 
@@ -370,7 +376,7 @@ new Vue({
 
 
 
-最后一个就是自定义触发 `custom` ，这时就需要你设定一个变量来控制菜单的显示和隐藏。
+最后一个就是自定义触发 `custom` ，这时就需要你设定一个变量来控制菜单的显示和隐藏了。
 
 如下代码，当变量 `visible` 为 `true` 时，菜单就被打开啦，任由你控制哦！
 
@@ -391,7 +397,82 @@ new Vue({
 
 
 
+直接使用上面的代码，你会发现点击菜单没有任何反应。
 
+实际上这时是需要用变量来控制菜单的打开关闭状态的。
+
+作为演示，我在旁边放一个按钮，这个按钮控制着显示变量的真假值。
+
+```html
+<i-button @click="visible=!visible">点我 [打开/关闭] 菜单</i-button>
+```
+
+好了，你会欣喜地发现菜单会随着这个按钮的点击而被打开或关闭，神奇不？
+
+图10
+
+
+
+另外，菜单还可以嵌套实现级联效果，代码大概是这样子。
+
+```html
+<Dropdown>
+	<a href="javascript:void(0)">
+		我是菜单，快打开看看...
+		<Icon type="ios-arrow-down"></Icon>
+	</a>
+	<Dropdown-Menu slot="list">
+		<Dropdown-Item>石雕艺术</Dropdown-Item>
+		......
+        
+		<Dropdown placement="right-start">
+			<Dropdown-Item>
+				沙雕艺术
+				<Icon type="ios-arrow-forward"></Icon>
+			</Dropdown-Item>
+			<Dropdown-Menu slot="list">
+				<Dropdown-Item>讲文明</Dropdown-Item>
+				<Dropdown-Item>懂礼貌</Dropdown-Item>
+                <Dropdown-Item>树新风</Dropdown-Item>
+				<Dropdown-Item divided>做个好孩子</Dropdown-Item>
+			</Dropdown-Menu>
+		</Dropdown>
+		
+        ......
+		<Dropdown-Item>木雕艺术</Dropdown-Item>
+	</Dropdown-Menu>
+</Dropdown>
+```
+
+图11
+
+
+
+怎么样？有感觉了没？
+
+以后不管是导航菜单还是具体细节的下拉菜单，你多多少少可以算是运用自如了吧。
+
+总结一下，这一弹给小伙伴们介绍了另外三个布局组件：分割面板、分隔线和单元格。
+
+用得比较多的当属分隔线，当然另外两位小朋友也是值得学习了解的，就看你今后具体怎么运用它们了。
+
+好了，准备下课啦！
+
+
+
+
+
+**本文相关文件下载：**
+
+vue.min.js.7z：https://o8.cn/4JnupS    密码：zyc8
+
+ViewUI-4.3.2.zip：https://o8.cn/ilEeNU    密码：88pi
+
+test06.7z：https://o8.cn/a539KZ    密码：xp55
+
+
+
+> WeChat @网管小贾 | www.sysadm.cc
 
 
 
