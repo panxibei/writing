@@ -1,0 +1,27 @@
+<Map user="Admin_AOTA" pc="A00512">
+  <Devices>
+    <Device id="42" name="主交换机" type-id="Switch" x="272" y="68" scale="3" show-status="true" />
+    <Device id="43" name="交换机 21" type-id="Switch" x="80" y="200" scale="3" />
+    <Device id="44" name="交换机 22" type-id="Switch" x="300" y="308" scale="3" />
+  </Devices>
+  <Lines>
+    <Line nodes="200 232 392 100" width="2" />
+    <Line nodes="392 108 200 240" width="2" />
+    <Line nodes="188 244 420 352" width="2" />
+    <Line nodes="188 232 420 340" width="2" />
+  </Lines>
+  <Textes>
+    <Text id="1" x="256" y="220" width="32" height="8" color="White">
+      <Description><![CDATA[[font face=宋体]<交换机21>上级联<主交换机>，下级联<交换机22>]]></Description>
+    </Text>
+    <Text id="2" x="76" y="324" width="32" height="8" color="White">
+      <Description><![CDATA[[font face=宋体]<交换机22>上级联<交换机21>]]></Description>
+    </Text>
+    <Text id="3" x="108" y="384" width="32" height="8" color="White">
+      <Description><![CDATA[[b][font face=宋体]<交换机22>与<交换机21>之间采用双线冗余的方法连接]]></Description>
+    </Text>
+  </Textes>
+  <Layers>
+    <Layer id="0" name="Layer 1" />
+  </Layers>
+</Map>
