@@ -247,13 +247,17 @@ Switch#show cdp neighbors
 
 最后回头确认 `vtp` 等信息已经全都OK了！
 
+图8
+
+
+
 事情就是这么惊悚、刺激、辣眼睛，小伙伴们，你们Get到了没？
 
 而这个问题的出现给了我一个深刻而惨痛的教训：柜子一定要上锁！！
 
 
 
-WeChat @网管小贾 | www.sysadm.cc
+> WeChat @网管小贾 | www.sysadm.cc
 
 
 
