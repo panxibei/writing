@@ -20,6 +20,97 @@ Linux版Microsoft Edge新鲜出炉，来尝尝味道怎样~
 
 
 
+
+
+如果你用的是 `CentOS7` ，那么它默认是没有安装 `dnf` 的，所以需要先安装 `dnf` 。
+
+```shell
+# yum install epel-release
+# yum install dnf
+```
+
+
+
+我用的是 `CentOS8` ，默认已经包含 `dnf` 了。
+
+我们可以直接开始。
+
+
+
+```shell
+### 下载并导入 Microsoft 的 GPG 公钥
+$ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+### 添加程序安装源
+$ sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+
+### 修正安装源的文件名称
+$ sudo mv /etc/yum.repos.d/packages.microsoft.com_yumrepos_edge.repo /etc/yum.repos.d/microsoft-edge-dev.repo
+
+### 开始安装
+$ sudo dnf install microsoft-edge-dev
+```
+
+
+
+以下是安装时的截图。
+
+开始安装 `Microsoft Edge Dev` ，输入 `y` 继续安装。
+
+图5
+
+
+
+提示验证公钥是否OK，大胆按下 `y` 后回车。
+
+图6
+
+
+
+开始下载安装了，看你的网速，等待一定的时间后安装结束，可以看到我的 `Microsoft Edge Dev` 版本是 `88` 。
+
+图7
+
+
+
+安装好了，让我们打开看看吧。
+
+哎，怎么桌面上没有啊，你当是 `Windows` 呢？
+
+好吧，打开 `所有程序` ，果然 `Microsoft Edge Dev` 好端端地躺在里面，双击打开它吧！
+
+图8
+
+
+
+依次找到 `Settings` > `About Microsoft Edge` ，可查看关于信息。
+
+似乎没有看到哪里写着版本信息啊，毕竟是刚出来的版本，可能将来更新完善后会有。
+
+图9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 **在 Debian/Ubuntu 上安装**
 
 >设置微软存储库
