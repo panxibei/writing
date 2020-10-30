@@ -1,4 +1,4 @@
-Linux版Microsoft Edge新鲜出炉，来尝尝味道怎样~
+Linux 版 Microsoft Edge 新鲜出炉啰，来尝尝味道如何~
 
 副标题：终于还是来了，等的就是你~
 
