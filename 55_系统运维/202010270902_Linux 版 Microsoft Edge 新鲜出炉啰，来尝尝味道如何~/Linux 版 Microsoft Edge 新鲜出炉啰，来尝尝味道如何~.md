@@ -28,9 +28,19 @@ Linux 版 Microsoft Edge 新鲜出炉啰，来尝尝味道如何~
 
 > 官方下载链接：https://www.microsoftedgeinsider.com/zh-cn/download
 
+**嫌官网下载慢？这儿有快速备份下载给你留好了。**
+
+> microsoft-edge-dev_88.0.680.1-1_amd64.deb
+>
+> https://www.90pan.com/b2145697    密码：0157
+>
+> microsoft-edge-dev-88.0.680.1-1.x86_64.rpm
+>
+> https://www.90pan.com/b2145694    密码：9x3h
 
 
-打开链接后，我们能看到有三个不同的渠道。
+
+打开官方链接后，我们能看到有三个不同的渠道。
 
 三个大小伙儿都长得挺帅的，可姑娘只嫁一个意中人，该怎么选呢？
 
@@ -240,6 +250,24 @@ $ sudo dnf install microsoft-edge-dev
 根据相关报道，继停止对 `IE` 的支持之后，微软又将于明年（2021年）停止对旧版 `Edge` 的支持，转而全面支持新版 `Edge` 浏览器，并积极推荐用户使用。
 
 > 小知识：旧版 `Edge` 被称为 `Legacy Edge` ，而新版 `Edge` 被称为 `Chromium Edge` 。
+
+
+
+至于 `Ubuntu` 下安装 `Edge` 可以参考以下方法，不过我还没有测试过，小伙伴们有兴趣可以安装试试哦。
+
+> **Debian/Ubuntu** 下安装 **Edge** 的参考命令：
+>
+> ```
+> ## 安装微软的签名密钥和 sources.lst
+> curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+> sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+> sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+> sudo rm microsoft.gpg
+> 
+> ## 开始安装 Micorsoft Edge Dev
+> sudo apt update
+> sudo apt install microsoft-edge-dev
+> ```
 
 
 
