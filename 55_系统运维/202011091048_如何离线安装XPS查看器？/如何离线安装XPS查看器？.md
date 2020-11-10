@@ -1,6 +1,6 @@
 如何离线安装XPS查看器？
 
-副标题：打印不一定要连接打印机，怎么做到的？
+副标题：我想打印，可是电脑没连打印机，怎么办？
 
 
 
@@ -158,7 +158,7 @@ Dism /Online /Add-Capability /CapabilityName:XPS.Viewer~~~~0.0.1.0 /LimitAccess 
 
 
 
-这样离线安装就成功了！
+OK，这样离线安装就成功了！
 
 
 
@@ -174,7 +174,7 @@ Dism /Online /Add-Capability /CapabilityName:XPS.Viewer~~~~0.0.1.0 /LimitAccess 
 
 本文测试环境，系统版本是 `Windows 10 x64 2004 (19041.208)` ，仅供小伙伴们参考。
 
-XPS查看器安装包下载链接：
+XPS查看器离线安装包下载链接：
 
 关注微信公众号号下载
 
