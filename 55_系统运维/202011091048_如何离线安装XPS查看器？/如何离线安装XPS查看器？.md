@@ -86,6 +86,8 @@ PS C:\> Get-WindowsOptionalFeature -Online | findstr "XPS"
 
 其他方法，诸如在 `Windows2016` 镜像中寻找等方法，我也已经折腾过了，建议小伙伴们不要学我浪费了时间。
 
+最后经过查证才得知，默认支持镜像安装 `XPS查看器` 只提供到 `Windows 10 Version 1709` ，之后的 `Windows 10 Version 1803` 开始就不再提供了。
+
 
 
 最后搜索到网上相关的帖子，链接如下：
