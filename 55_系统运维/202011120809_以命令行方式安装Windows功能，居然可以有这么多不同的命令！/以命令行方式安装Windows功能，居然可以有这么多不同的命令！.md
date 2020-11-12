@@ -1,6 +1,6 @@
 以命令行方式安装Windows功能，居然可以有这么多不同的命令！
 
-副标题：一文区分不同的Windows功能安装命令
+副标题：让人眼晕的多个Windows功能安装命令~
 
 
 
@@ -86,9 +86,9 @@ A = An alias for Install-WindowsFeature（Install WindowsFeature的别名）
 
 如果你要在一般的客户端计算机上使用，那么不好意思请使用 `Dism` 命令。
 
- 同时为了彻底的安全起见，请使用 `dism.exe` 。
+同时为了彻底的安全起见，请使用 `dism.exe` 。
 
- 如果你还在用 `Vista/Server 2008`，那么你还是看看 `pkgmgr.exe` 吧。
+如果你还在用 `Vista/Server 2008`，那么你还是看看 `pkgmgr.exe` 吧。
 
 
 
