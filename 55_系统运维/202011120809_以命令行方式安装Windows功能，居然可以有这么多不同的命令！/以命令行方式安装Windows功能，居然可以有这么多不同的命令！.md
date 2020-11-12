@@ -212,7 +212,7 @@ if(($WinFeatures | Where-Object {$_.Name.Trim() -eq "WirelessNetworking"}) -eq $
 
 
 
-### 最后总结发言
+### 最后总结性发言
 
 说了这么多，其实可以总结为以下几点。
 
