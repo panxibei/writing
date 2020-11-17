@@ -1,4 +1,4 @@
-Windows 10 LTSC 遇到 Windows Terminal ，留给我们的只有遗憾吗？
+当 Windows 10 LTSC 遭遇 Windows Terminal ，留给我们的仅仅只有遗憾吗？
 
 副标题：我已经帮你折腾过了，不信你瞧~
 
