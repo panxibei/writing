@@ -56,7 +56,9 @@
 
 好了，找到发布页面 `Releases Page` ，选择最新版本 `Lastest Release` ，在最下方点击下载 `msixbundle` 文件。
 
-备用下载链接：Microsoft.WindowsTerminal_1.4.3141.0_8wekyb3d8bbwe.msixbundle
+Microsoft.WindowsTerminal_1.4.3141.0_8wekyb3d8bbwe.msixbundle
+
+备用下载链接：https://www.90pan.com/b2162083    密码：35n7
 
 图3
 
