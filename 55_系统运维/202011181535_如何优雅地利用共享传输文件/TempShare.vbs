@@ -156,7 +156,9 @@ Function ModifyFolderPermissions(ByVal strFolder)
    strCmd = "cmd /c ""ICACLS " & strFolder & " /inheritance:d"""
    CreateObject("WScript.Shell").Run strCmd, 0
    
-   'strCmd = "cmd /c ""ICACLS " & strFolder & " /remove ""TempShare"""
+   strCmd = "cmd /c ""ICACLS " & strFolder & " /remove ""TempShare"""
+   CreateObject("WScript.Shell").Run strCmd, 0
+
    strCmd = "cmd /c ""ICACLS " & strFolder & " /remove ""Domain Users"""
    CreateObject("WScript.Shell").Run strCmd, 0
 
@@ -170,7 +172,7 @@ Function ModifyFolderPermissions(ByVal strFolder)
 		  'CreateObject("WScript.Shell").Run strCmd, 0
 
 		  ' ©ип╢х╗оч
-		  strCmd = "cmd /c ""ICACLS " & strFolder & " /grant:r " & strArgUser & ":(RC,S,RD,WD,AD,DC,REA,WEA,X,RA,WA)"""
+		  strCmd = "cmd /c ""ICACLS " & strFolder & " /grant:r " & strArgUser & ":(OI)(CI)(RC,S,RD,WD,AD,DC,REA,WEA,X,RA,WA)"""
 		  CreateObject("WScript.Shell").Run strCmd, 0
 	   
 	      If Err.Number <> 0 Then
