@@ -81,7 +81,7 @@ Oracle Linux 官网：https://linux.oracle.com/switch/centos/
 
 
 
-这是官网介绍，你看它的标题，号称“最佳CentOS替代方案”。
+这是官网介绍，你看它的标题，号称“最佳CentOS替换方案”。
 
 说实话，我以前听说过它，可也没怎么去深入了解，现在好了，终于有充分的理由去了解了。
 
@@ -127,27 +127,42 @@ Oracle Linux 7.9
 
 
 
-尝试安装 `Oracle Linux` 。
+#### 尝试安装 `Oracle Linux` 
+
+新建虚拟机，加载安装镜像到光驱，启动进入安装界面，一切都如往常那样操作。
+
+安装界面正常加载完毕，可以看到除了左上角的标志不同，其他感觉和 `CentOS` 差不多。
+
+这个左上角的标志，是 Linux 企鹅穿着 Oracle 的小马甲，与其在官方网页上的介绍一样，它也是个 RHEL 的翻版，这个标志倒是挺形象的哈。
+
+图4
+
+图5
 
 
 
-除了左上角的标志不同，其他感觉和 `CentOS` 差不多。
-
-左上角的标志，企鹅穿着 Oracle 的马甲，与其在官方网页上的介绍它也是REHL的翻版，这点倒是挺形象的。
-
-图2
-
-图3
+你要是安装过 CentOS ，那么对你来说整个安装过程应该是毫无违和感，不看那个标志，肯定还以为在安装 `CentOS` 。
 
 
-
-整个安装过程毫无违和感，不看那个标志，还以为仍在安装 `CentOS` 。
 
 安装完成后，很显然启动菜单项上的单词与 `CentOS` 不同。
 
-官方介绍说使用的是 `Oracle` 自己的 `yum` 仓库，来看看。
+直到启动完成出现登录提示，发现两者的内核版本完全不一样。
 
-查看 `yum` 仓库，果然有 `oracle-linux` 的仓库。
+CentOS的内核版本为了保持所谓的稳定还是用着旧版的，而 Oracle Linux 就比较新。
+
+* Oracle Linux Server 7.9 （内核 5.4.17）
+* CentOS 7.9 （内核 3.10.0）
+
+图6
+
+图7
+
+
+
+另外，官方介绍说与 CentOS 的另一个不同之处是，Oracle 使用的是官方自己 `yum` 仓库，我看看。
+
+查看 `yum` 仓库，果然是 `oracle-linux` 的仓库。
 
 ```shell
 [root@localhost yum.repos.d]# ls
@@ -156,15 +171,31 @@ oracle-linux-ol7.repo  uek-ol7.repo  virt-ol7.repo
 
 
 
+至于其他方面，毕竟还没有正式使用它，所以我也没有更深入的确认还有没有其他不一样的地方，反正打了几条命令，结果和使用方法都和原来的 CentOS 没有啥区别。
 
 
-内核版本存在很大的差异
 
-Oracle Linux Server 7.9 （内核 5.4.17）
+这就欧了吗？
 
-图
+直接开用就得了呗？
 
-CentOS 7.9 （内核 3.10.0）
+别着急，还有一项没有介绍，那就是官网提供的**在线切换脚本**。
 
-图
+`Oracle Linux` 既然号称最佳替换方案，那么能否让用户快速切换就成了重中之重了，否则不好切换也可能会让人失去尝试使用的兴趣。
+
+项目：https://github.com/oracle/centos2ol
+
+脚本：https://github.com/oracle/centos2ol/blob/main/centos2ol.sh
+
+
+
+使用方法很简单：
+
+1. 登录到 CentOS 6, 7 或 8 ，确保有管理员 sudo 权限。
+2. 克隆本项目或直接下载 [`centos2ol.sh`](https://github.com/oracle/centos2ol/blob/main/centos2ol.sh) 脚本。
+3. 执行 `sudo bash centos2ol.sh` 即可从 CentOS 切换到 Oracle Linux。
+
+
+
+
 
