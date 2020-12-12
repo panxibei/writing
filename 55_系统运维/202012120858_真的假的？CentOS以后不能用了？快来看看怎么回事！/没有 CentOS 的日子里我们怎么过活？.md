@@ -1,4 +1,4 @@
-真的假的？CentOS以后不能用了？快来看看怎么回事！
+没有 CentOS 的日子里我们怎么过活？
 
 副标题：把有限的生命投入到无限的白嫖中去~
 
@@ -6,17 +6,17 @@
 
 
 
-传闻 CentOS 将死，不信吧，我也不信，今年假新闻太多！
+近日传闻 CentOS 将死，不信吧，我也不信，今年假新闻太多！
 
-可是很遗憾，这个传闻它是真的！
+可是非常遗憾啊，这传闻它喵是真的！
 
-CentOS 官方发布消息，称将在明年（2021年）逐步把开发工作重心从 CentOS Linux 往 CentOS Stream 转移。
+CentOS 官方近期发布消息，称将在明年（2021年）逐步把开发工作重心从 CentOS Linux 往 CentOS Stream 转移。
 
 官方进一步说，CentOS Stream 才是未来，什么 CentOS 7 或 8 都将被 CentOS Stream 取而代之。
 
-什么意思？
+什么意思，他在说啥呢？
 
-简单地讲，就是以后没有 CentOS 7 或 8 了，CentOS 8 都将在2021年年底（原定2029年）结束维护。
+简单地讲，就是以后没有 CentOS 7 或 8 了，CentOS 8 都将在2021年年底（原定2029年）提前结束维护。
 
 而针对 CentOS 7 ，官方考虑到其用户基数较多，暂时按照原计划维护到2024年6月30日，也就是说你还可以使用它不到4年的时间。
 
@@ -24,9 +24,9 @@ CentOS 官方发布消息，称将在明年（2021年）逐步把开发工作重
 
 
 
-些时有的小伙伴儿们肯定会有些失落，发出“怎么会这样”的感叹吧。
+此时有的小伙伴儿们肯定会有些失落，发出“怎么会这样”的感叹吧。
 
-实际上我们应该先搞清楚，这个 CentOS Stream 它到底是个什么东西。
+实际上我们应当先搞清楚，这个 CentOS Stream 它到底是个什么东西。
 
 以我浅薄的阅读和理解力对其研究一番，大概得出这么个结论。
 
@@ -175,11 +175,9 @@ oracle-linux-ol7.repo  uek-ol7.repo  virt-ol7.repo
 
 
 
-这就欧了吗？
+这就欧了吗？直接开用就得了呗？
 
-直接开用就得了呗？
-
-别着急，还有一项没有介绍，那就是官网提供的**在线切换脚本**。
+嘿嘿，别着急，还有一项没有介绍，那就是官网提供的**在线切换脚本**。
 
 `Oracle Linux` 既然号称最佳替换方案，那么能否让用户快速切换就成了重中之重了，否则不好切换也可能会让人失去尝试使用的兴趣。
 
@@ -191,11 +189,54 @@ oracle-linux-ol7.repo  uek-ol7.repo  virt-ol7.repo
 
 使用方法很简单：
 
-1. 登录到 CentOS 6, 7 或 8 ，确保有管理员 sudo 权限。
+1. 登录到 `CentOS` 6, 7 或 8 ，确保有管理员 `sudo` 权限。
 2. 克隆本项目或直接下载 [`centos2ol.sh`](https://github.com/oracle/centos2ol/blob/main/centos2ol.sh) 脚本。
-3. 执行 `sudo bash centos2ol.sh` 即可从 CentOS 切换到 Oracle Linux。
+3. 执行 `sudo bash centos2ol.sh` 即可从 `CentOS` 切换到 `Oracle Linux`。
 
 
+
+按以下命令执行即可。
+
+```shell
+yum -y install wget unzip
+wget https://github.com/oracle/centos2ol/archive/main.zip
+unzip main.zip
+cd centos2ol
+chmod +x ./centos2ol.sh
+sudo ./centos2ol.sh
+```
+
+
+
+如果你没有安装或不想安装 `Git` ，那么使用脚本就行了。
+
+下载脚本不方便的话，可以下载我给你们准备好的备份链接。
+
+在线切换脚本备份下载：
+
+下载下来是个 `zip` 压缩包，按前面的命令解压、赋予执行权限，再执行脚本就OK啦！
+
+
+
+整个切换过程大概在几十分钟不等，猜测主要是修改源仓库以及下载一些更新吧。
+
+反正全自动更新，耐心等待就是了。
+
+此外你也能看到，不管是CentOS 6、7还是8，都是可以切换的。
+
+如果切换失败也不用担心，它会保持系统原来的样子。
+
+
+
+
+
+
+
+Oracle Linux 7.9 下载：
+
+
+
+WeChat@网管小贾 | www.sysadm.cc
 
 
 
