@@ -212,7 +212,13 @@ sudo ./centos2ol.sh
 
 下载脚本不方便的话，可以下载我给你们准备好的备份链接。
 
-在线切换脚本备份下载：
+
+
+**在线切换脚本（CentOS2Oracle）备用下载（37.03 K）：**
+
+https://www.90pan.com/b2193116
+
+提取码：s810
 
 
 
@@ -244,7 +250,19 @@ sudo ./centos2ol.sh
 
 
 
-Oracle Linux 7.9 下载：
+**Oracle Linux 7.9 完整版**
+
+百度下载链接：https://pan.baidu.com/s/1bQQdavET-2m8H30ZdH94VA
+
+提取码：ub7v 
+
+
+
+**在线切换脚本（CentOS2Oracle）备用下载（37.03 K）：**
+
+https://www.90pan.com/b2193116
+
+提取码：s810
 
 
 
