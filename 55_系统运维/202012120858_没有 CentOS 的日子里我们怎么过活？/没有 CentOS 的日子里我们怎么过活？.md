@@ -30,8 +30,8 @@ CentOS 官方近期发布消息，称将在明年（2021年）逐步把开发工
 
 以我浅薄的阅读理解能力对其研究一番，大概得出这么个结论。
 
-* 原先的模式：Fedora > RHEL > CentOS
-* 将来的模式：Fedora > CentOS Stream/RHEL
+* 原先的更新模式：Fedora > RHEL > CentOS
+* 将来的更新模式：Fedora > CentOS Stream/RHEL
 
 
 
@@ -113,15 +113,13 @@ Oracle Linux 官网：https://linux.oracle.com/switch/centos/
 
 官网下载需要注册帐号，如果你想直接下载，我这放了个备用下载链接。
 
-Oracle Linux 7.9
-
-百度链接
 
 
+**Oracle Linux 7.9 完整版**
 
+百度下载链接：https://pan.baidu.com/s/1bQQdavET-2m8H30ZdH94VA
 
-
-
+提取码：ub7v 
 
 
 
@@ -216,6 +214,8 @@ sudo ./centos2ol.sh
 
 在线切换脚本备份下载：
 
+
+
 下载下来是个 `zip` 压缩包，按前面的命令解压、赋予执行权限，再执行脚本就OK啦！
 
 
@@ -228,11 +228,17 @@ sudo ./centos2ol.sh
 
 如果切换失败也不用担心，它会保持系统原来的样子。
 
+图10
+
+图11
 
 
-最后它到底好不好用呢，小伙伴儿们有兴趣的话那就尝试一下。
 
-如果在使用过程中有什么新的发现，欢迎在留言区评论分享！
+更新完毕，重启后启动菜单就和正常安装 `Oracle Linux` 的一样了。
+
+最后在实际使用中它到底好不好用呢，小伙伴儿们有兴趣的话那就尝试一下。
+
+在使用过程中如有什么新的发现，欢迎在留言区评论分享！
 
 
 
