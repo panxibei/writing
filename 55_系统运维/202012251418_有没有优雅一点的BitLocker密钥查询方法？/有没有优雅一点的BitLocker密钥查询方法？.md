@@ -171,7 +171,7 @@ Windows10远程服务器管理工具，日常管理AD之重器。
 
 想图个方便就在这儿下载吧，Win10/Win2016 都可安装使用哦。
 
-**WindowsTH-RSAT_WS2016-x64.msu**
+**WindowsTH-RSAT_WS2016-x64.msu（92.33M）**
 
 下载链接：https://www.90pan.com/b2217169
 
@@ -230,7 +230,7 @@ Windows10远程服务器管理工具，日常管理AD之重器。
 
 
 
-**网管小贾的BitLocker查询器**
+**网管小贾的BitLocker查询器（46.35K）**
 
 下载链接：https://www.90pan.com/b2217160
 
