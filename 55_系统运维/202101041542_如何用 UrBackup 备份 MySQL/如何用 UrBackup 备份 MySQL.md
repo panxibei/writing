@@ -88,3 +88,7 @@ rpm -ivh epel-release-latest-7.noarch.rpm
 
 好，有了 `dattobd` 再来安装 `UrBackup` 。
 
+图7
+
+
+
