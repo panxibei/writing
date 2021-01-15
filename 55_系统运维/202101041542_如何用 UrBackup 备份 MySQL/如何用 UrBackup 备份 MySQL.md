@@ -50,6 +50,10 @@ TF=$(mktemp) && wget "https://hndl.urbackup.org/Client/2.4.11/UrBackup%20Client%
 
 
 
+官方解释是，用于获取Linux块设备的块级快照和增量备份的内核模块。
+
+感觉好像是类似于 Windows 的卷影服务，反正先安装了再说，请原谅我知识的匮乏，以后有空再细细研究。
+
 找到其 github 上的项目页，按其 INSTALL.md 上的介绍执行安装命令。
 
 ```shell
