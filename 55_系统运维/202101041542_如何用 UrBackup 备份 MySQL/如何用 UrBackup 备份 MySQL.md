@@ -92,3 +92,72 @@ rpm -ivh epel-release-latest-7.noarch.rpm
 
 
 
+
+
+#### 需要修改一共**两个地方和三个文件**。
+
+##### 先说两个地方：
+
+一个是用户参数配置所在地
+
+```
+/usr/local/etc/urbackup/
+```
+
+另一个是 UrBackup 自己的配置所在地
+
+```
+/usr/local/share/urbackup/scripts/
+```
+
+
+
+下面就是针对这两个所在地修改三个文件，即可达到定制备份的目的。
+
+
+
+##### 修改三个配置文件：
+
+1、你自己的参数配置
+
+```
+cp /usr/local/etc/urbackup/mariadbdump.conf /usr/local/etc/urbackup/mysql_for_dump.conf
+```
+
+
+
+```shell
+vim /usr/local/etc/urbackup/mysql_for_dump.conf
+```
+
+
+
+2、UrBackup 总列表 List
+
+其中添加两点：
+
+a、你自己的参数配置文件
+
+b、给 UrBackup 看的配置文件
+
+
+
+
+
+3、给 UrBackup 看的配置文件
+
+
+
+```shell
+cp /usr/local/share/urbackup/scripts/mariadbdump /usr/local/share/urbackup/scripts/mysql_for_dump
+```
+
+
+
+将其中的
+
+ `. /usr/local/etc/urbackup/mariadbdump.conf`
+
+修改为
+
+`. /usr/local/etc/urbackup/mysql_for_dump.conf`
