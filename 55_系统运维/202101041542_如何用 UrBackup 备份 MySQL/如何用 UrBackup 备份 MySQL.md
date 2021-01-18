@@ -342,6 +342,25 @@ cp /usr/local/share/urbackup/scripts/setup-mariadbbackup /usr/local/share/urback
 
 
 
+执行 `/usr/local/share/urbackup/scripts/setup-mysql_for_xtrabackup` 。
+
+其中生成的两个文件都需要修改一下才可以正常工作。
+
+```
+/usr/local/etc/urbackup/prefilebackup
+/usr/local/etc/urbackup/postfilebackup
+```
+
+将其中的大概第26行的
+
+ `. /usr/local/etc/urbackup/mariadbxtrabackup.conf`
+
+修改为
+
+`. /usr/local/etc/urbackup/mysql_for_xtrabackup.conf`
+
+
+
 
 
 ##### 测试备份与恢复
