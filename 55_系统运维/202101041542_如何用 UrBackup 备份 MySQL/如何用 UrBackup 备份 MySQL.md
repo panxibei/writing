@@ -4,9 +4,21 @@
 
 
 
+移动互联网如此发达的今天，伴随其一起成长起来的 `MySQL` 可以说是众多重要元老之一了。
+
+`MySQL` 是最流行的关系型数据库，很显然它的备份非常重要，备份方式也是五花八门、不尽相同。
+
+而 `UrBackup` 作为开源免费的备份解决方案，也同样提供对 `MySQL` 备份的支持。
+
+那么今天我们就来看看，这哥俩能不能互相配合默契、一块有效工作。
 
 
-运行环境：Oracle Linux 7.9
+
+> 测试运行环境
+>
+> 操作系统：Oracle Linux 7.9
+>
+> 数据库：Percona MySQL 5.7
 
 
 
@@ -16,17 +28,13 @@
 
 安装 `MySQL` ，我这里用的是 `Percona MySQL 5.7` 作例子，具体安装过程就不赘述了。
 
-反正假定你已经安装好 `MySQL` ，注意哦不是 `Mariadb` ，当然其实都是一样的，只是接下来的测试中脚本内容会不一样。
+反正假定你已经安装好 `MySQL` ，注意哦不是 `MariaDB` ，当然其实都是一样的，只是接下来的测试中脚本内容会不一样。
 
-好了，新建一个数据库，对其增删用于测试备份恢复情况。
+好了，新建一个数据库，对其增删好用于测试备份恢复情况。
 
 ```mysql
 CREATE DATABASE `www.sysadm.cc`
 ```
-
-
-
-就像众多美食节目一样，各种菜品出炉前的食材都已经准备就绪。
 
 图1
 
@@ -36,17 +44,19 @@ CREATE DATABASE `www.sysadm.cc`
 
 #### 准备 `UrBackup` 备份系统
 
-在 Linux 下安装 UrBackup，按照官网说明直接使用一行命令。
+在 `Linux` 下安装 `UrBackup`，按照官网说明直接使用一行命令。
 
 注意：可能会提示找不到 `wget` 命令，用 `yum install wget` 安装它即可。
+
+官网链接：https://www.urbackup.org
 
 ```shell
 TF=$(mktemp) && wget "https://hndl.urbackup.org/Client/2.4.11/UrBackup%20Client%20Linux%202.4.11.sh" -O $TF && sudo sh $TF; rm -f $TF
 ```
 
-按 Y 继续安装......
+按 `Y` 继续安装......
 
-下载过程可能会花些时间，别着急，先关注@网管小贾，后面可能会用到哦。
+下载过程可能会花些时间，别着急，可以先关注一下@网管小贾，后面可能会用到哦。
 
 图2
 
@@ -76,9 +86,13 @@ OK！`UrBackup` 也很顺利地安装完成了！
 
 
 
+好了，就像众多美食节目一样，各种菜品出炉前的食材都已经准备就绪，接下来正式上手！
 
 
-#### 最简单易上手的，使用 SQL DUMP 来备份 MySQL
+
+
+
+#### 最简单易上手的方法，使用 SQL DUMP 来备份 MySQL
 
 我们这次不完全按照官网的说明来操作，我们按照模板自己来定义配置参数和脚本，这样做的好处就是可以做到多个目标服务的备份。
 
@@ -202,7 +216,9 @@ PS: 如果你在测试过程中遇到错误或失败，那么仔细对照前面�
 
 
 
-#### 专业却有些复杂的，使用 Percona XtraBackup 备份
+
+
+#### 专业却有些复杂的方法，使用 Percona XtraBackup 备份
 
 前面使用的 `sqldump` 简单易用，但它有个重大缺陷，通常只能满足数据库本身容量不大的场景（官方建议大小不超过1GB）。
 
@@ -356,6 +372,14 @@ c、最后，用官方的 `setup` 脚本生成并修改另外两个脚本文件�
 
 
 
+PS：`setup` 脚本的作用，是在服务端生成一个虚拟的客户端，其名称为当前客户端名称后再加个 `[incr]` ，用作增量备份。
+
+官方建议增量备份时间间隔设定足够小，完整备份时间间隔设定足够大。
+
+图19
+
+
+
 ##### 测试备份与恢复
 
 如果正确按以上配置好文件参数，那么备份很可能已经自动开始了。
@@ -372,7 +396,7 @@ c、最后，用官方的 `setup` 脚本生成并修改另外两个脚本文件�
 
 之前因为参数配置不完整所以报错，现在OK。
 
-图19
+图20
 
 
 
@@ -398,7 +422,7 @@ cp /usr/local/share/urbackup/scripts/restore-mariadbbackup /usr/local/share/urba
 vim /usr/local/share/urbackup/scripts/restore-mysql_for_xtrabackup
 ```
 
-图20
+图21
 
 
 
@@ -408,7 +432,7 @@ vim /usr/local/share/urbackup/scripts/restore-mysql_for_xtrabackup
 /usr/local/share/urbackup/scripts/restore-mysql_for_xtrabackup
 ```
 
-图21
+图22
 
 
 
@@ -424,11 +448,18 @@ yum install jq
 
 此时要注意，如果出现恢复失败的情况，那么就要根据提示来判断问题，通常应该是脚本程序没配置好。
 
-图22
+图23
 
 
 
 出现如图错误，通过对比恢复脚本中的代码与实际 `mysql`  服务名称后才发现，脚本中服务名称少了一个字母 `d`  。
+
+```
+# systemctl -a | grep mysql
+mysqld.service		loaded	active	running MySQL Server
+```
+
+
 
 遂打开 `vim` 将脚本中的 `mysql.service` 全部替换成 `mysqld.service` 。
 
@@ -447,17 +478,37 @@ echo "Restoring full database backup..."
 urbackupclientctl restore-start -b $RESTORE_FULL_BACKUP -d urbackup_backup_scripts/mysql_for_xtrabackup
 ```
 
-图23
+图24
 
 
 
 保存退出后再试一次，这次终于成功了！
 
-图24
+图25
 
 
 
 需要额外说明一下，在以上完成恢复的过程中如果你看到了 `mariadb.service: Unit not found`  之类的错误提示的话，也不用太在意。
 
 因为我们根本就没有安装 `mariadb` 服务，`UrBackup` 实际上是自动判断、执行和重启 `mysql` 和 `mariadb` 两个服务的，并无特别影响。
+
+
+
+
+
+#### 写在最后
+
+本篇以我个人惨痛的填坑经历简要地给小伙伴们说明了如何使用 `UrBackup` 来备份 `MySQL` 的过程和方法。
+
+`MySQL` 作为应用场景非常广泛的数据库，其数据备份自然也显得至关重要。
+
+通过本文的了解，也可以让小伙伴们多一个可选之项。
+
+当然我也是新手，经验不足，在此仅做抛砖引玉，供小伙伴们参考。
+
+如果有什么疏漏之处还请先关注@网管小贾，然后再狠狠地批评指正，也欢迎在留言区发表你的看法哦！
+
+
+
+WeChat@网管小贾 | www.sysadm.cc
 
