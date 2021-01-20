@@ -1,6 +1,6 @@
 如何用 UrBackup 备份 MySQL
 
-副标题：官网说明太简单，我来踩踩坑了~
+副标题：官网说明太简单，我来踩踩坑~
 
 
 
@@ -14,7 +14,15 @@
 
 
 
-测试运行环境
+我们假定服务端已经安装好了，如果你还没有服务端，可以参考前文，最简单地使用 Windows 来做。
+
+> 《如何用 UrBackup 备份 SQL Server》
+>
+> https://www.sysadm.cc/index.php/xitongyunwei/800-how-to-backup-sql-server-with-urbackup
+
+
+
+MySQL客户端测试运行环境
 
 > 操作系统：Oracle Linux 7.9
 >
@@ -439,7 +447,7 @@ vim /usr/local/share/urbackup/scripts/restore-mysql_for_xtrabackup
 没想到准备了这么多，在这儿居然会出错，说什么缺少 `jq` ，遂安装之。
 
 ```
-yum install jq
+# yum install jq
 ```
 
 
