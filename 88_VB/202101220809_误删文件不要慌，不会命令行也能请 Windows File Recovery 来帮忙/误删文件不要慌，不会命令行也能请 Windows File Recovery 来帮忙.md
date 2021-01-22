@@ -6,23 +6,53 @@
 
 
 
+
+
+
+
 一、简介
 
 
 
+官方下载地址：https://www.microsoft.com/zh-cn/p/windows-file-recovery/9n26s50ln705?activetab=pivot:overviewtab
+
+也可以在 Windows 应用商店中搜索 `Windows File Recovery` 后下载。
+
+图1
 
 
 
+系统要求 `Windows 10` 版本 `19041.0` 或更高版本。
+
+图2
 
 
 
+点击获取，开始在线安装，根据网速大概不到十分钟安装完成。
 
+
+
+这个 `Windows File Recovery` 小工具在使用时只有一个命令：`winfr` ，所有的操作都是围绕着这个命令来的。
+
+一开始我很自信地打开一个命令提示符窗口，熟练地输入 `winfr` 并回车，没想到需要管理员权限的警告猝不及防地怼了我一脸。
+
+图3
+
+
+
+想想也是，读写磁盘文件这么高级的操作当然是需要管理员权限的，所以我立马以管理员身份又打开了一个新的命令提示符窗口，紧接着还是输入这条命令后回车，这次程序正常输出了说明文字。
+
+图4
 
 
 
 
 
 二、试用 Windows File Recovery
+
+
+
+
 
 
 
@@ -143,13 +173,15 @@ D:\WinFR\WinFR.exe
 
 至少我用下来没问题，也就是说，如果你还在运行着老版本的 Win10 系统，那么你有福了，可以通过这个方法来使用 `Windowns File Recovery` 了。
 
-我已经打包好了，
+我已经打包好了，免费下载哦~
+
+下载链接：https://www.90pan.com/b2250581
+
+提取码：f4ea
 
 
 
 
 
-
-
-
+WeChat@网管小贾 | www.sysadm.cc
 
