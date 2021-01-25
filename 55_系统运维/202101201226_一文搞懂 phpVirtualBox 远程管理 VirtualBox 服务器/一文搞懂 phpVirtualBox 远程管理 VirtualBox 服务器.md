@@ -1,30 +1,34 @@
 一文搞懂 phpVirtualBox 远程管理 VirtualBox 服务器
 
-副标题：还可以管理多台 VirtualBox 服务哦~
+副标题：远程管理多台 VirtualBox 服务不是梦~
 
 
 
-我相信一定有不少小伙伴使用过虚拟机软件，其中不乏大量的 `VirtualBox` 爱好者。
+我相信一定有不少小伙伴使用过虚拟机软件，其中不乏广大的 `VirtualBox` 爱好者。
 
-我自然也是其中一员，平时测试啥的也经常使用它。
+我自然也是其中一员，平时测试个系统啥的也经常用到它。
 
 至于说到如何操作管理 `VirtualBox` 虚拟系统，因为自己的水平有限，平时也就是用用它自带的 `GUI` 来操作。
 
-但是，可能你也会思考过一个问题，假如有一天，你需要远程管理它，或者还要管理多台 `VirtualBox` 服务呢？
+但是，你也可能曾经思考过一个问题，假如有一天，由于某些原因你不再能依靠 `GUI` 而需要远程管理它，甚至可能还要管理多台 `VirtualBox` 服务。
+
+这个可能在过生日的那一天真的会实现吗？
+
+我现在就可以告诉你，不用等到过生日那一天，现在就能实现！
 
 这就不得不提到的目前相对来说较为简便易上手的解决方案 `phpVirtualBox` 了。
 
 
 
-官网首页就有它。
+`VirtualBox` 的官网首页上就有它。
 
 图1
 
 
 
-其实说到 `phpVirtualBox` ，很可能有的小伙伴早就认识它了。
+其实说到 `phpVirtualBox` ，很可能有的小伙伴在以前过生日的时候就认识它了，怀念那时大家还毛发茂密的年轻态。
 
-因为它的身影实际上早就出现在各种操作系统平台上了。
+事实是它的身影早已出现在了各大流利操作系统平台之上。
 
 比如，我们使用过的网红 NAS 网盘等系统等（例如 `XigmaNas` ），都搭载预设了 `phpVirtualBox` 。
 
@@ -32,11 +36,13 @@
 
 
 
-只过嘛，这些内嵌的 `VirtualBox` 普遍版本太低，不是 `4.x` 的，就是 `5.x` 的。
+只不过嘛多少有那么一点点小遗憾，这些内嵌的 `VirtualBox` 普遍版本较低，不是 `4.x` 的，就是 `5.x` 的。
 
-现在官方最新版本是 `6.1` ，而 `phpVirtualBox` 的应用又如此广泛，那么即使没有远程管理的需求，我不禁思考自己徒手安装使用它可行吗？
+打开如今的 `VirtualBox` 官网，最新版本可是当红的 `6.1` 。
 
-答案当然是肯定的，而且自己安装还可以自由定义配置，我已经给小伙伴们踩过坑了，下面我们就来看看具体怎么做吧。
+而 `phpVirtualBox` 的应用又如此之广泛，那么即使没有远程管理的需求，我不禁在想如果自己徒手安装使用它可不可以呢？
+
+答案当然是肯定的，而且自己安装有好处可以自由定义配置，我已经给小伙伴们踩过坑了，下面我们就来看看具体怎么做吧。
 
 
 
@@ -44,15 +50,17 @@
 
 #### 先来个简单快速地搞定 `phpVirtualBox`
 
-开始前的先决条件（假定我们已经有这样的环境了）：
+开始前的先决条件（假定我们已经有这样的环境了）。
+
+当然你也可以在 `Linux` 上操作，都是类似的内容，只要保证有能解释 `php` 的 WEB 环境即可。
 
 > 1、本机 Windows 系统上已安装有 VirtualBox 6.1.x
 >
 > 2、本机 Windows 系统上已安装有 WampServer 3.2.x （WEB环境支持PHP，版本>=5.2）
 >
-> 参考文章：[《WampServer最新版一键安装》](https://www.sysadm.cc/index.php/webxuexi/746-wampserver-one-click-install)
+> ​    参考文章：[《WampServer最新版一键安装》](https://www.sysadm.cc/index.php/webxuexi/746-wampserver-one-click-install)
 >
-> 文章链接：https://www.sysadm.cc/index.php/webxuexi/746-wampserver-one-click-install
+> ​    文章链接：https://www.sysadm.cc/index.php/webxuexi/746-wampserver-one-click-install
 
 
 
@@ -64,7 +72,9 @@
 https://github.com/phpvirtualbox/phpvirtualbox/archive/develop.zip
 ```
 
-如果你嫌下载慢，我这儿有国内备用下载，速度会快很多。
+如果你嫌下载慢，我这儿有国内备用下载，我怕 `GitHub` 崩了自己留了一份，速度会快很多。
+
+**phpvirtualbox-develop.zip（4.33M）**
 
 下载链接：https://www.90pan.com/b2249063
 
@@ -78,14 +88,14 @@ https://github.com/phpvirtualbox/phpvirtualbox/archive/develop.zip
 
 再将这个文件夹移动到 Web 服务发布的根目录下，并重命名为 `phpvirtualbox` 。
 
-我们这儿使用的是 `WampServer`，所以默认情况下应该像下面这样放置文件夹。
+我这儿使用的是 `WampServer`，所以默认情况下应该像下面这样放置文件夹。
 
 ```
 # 32位 WampServer
-C:\Wamp\www\phpvirtualbox
+C:\Wamp\www\phpvirtualbox\
 
 # 64位 WampServer
-C:\Wamp64\www\phpvirtualbox
+C:\Wamp64\www\phpvirtualbox\
 ```
 
 图3
@@ -94,9 +104,9 @@ C:\Wamp64\www\phpvirtualbox
 
 ##### 三、配置 `phpVirtualBox`
 
-我们在刚才移动好的文件夹中找一个叫作 `config.php-example` 的文件，它是一份配置模板文件，将它复制为一份新文件并重命名为 `config.php` 。
+我们在刚才移动好的文件夹中找一个叫作 `config.php-example` 的文件，它是一份配置模板文件，将它复制为一份新文件并将其重命名为 `config.php` 。
 
-嗯，你没猜错，这就是我们接下来要对其大动手术的 `phpVirtualBox` 的主要配置文件。
+嗯，你没猜错，这个新复制的文件就是我们接下来要对其大动手术的 `phpVirtualBox` 的主要配置文件。
 
 
 
@@ -118,13 +128,13 @@ var $password = 'pass';
 
 说实话我一开始也是懵的，难道是 `phpVirtualBox` 的登录帐号和密码吗？
 
-其实不是的，这里的帐号密码是指运行 `VirtualBox` 的 WEB 服务（ `vboxwebsrv` ）的用户和密码。
+其实不是的，这里的用户和密码是指运行 `VirtualBox` 的 WEB 服务（ `vboxwebsrv` ）的用户和密码。
 
 纳尼纳尼，从哪儿冒出来个 `VirtualBox` 的 WEB 服务？
 
 好吧，怪我没先说清楚，骚瑞！
 
-我们先来恶补一下官方的一张 `phpVirtualBox` 运行原理图。
+我们先来快速恶补一下官方的一张 `phpVirtualBox` 运行原理图。
 
 
 
@@ -150,23 +160,23 @@ var $password = 'pass';
 
 
 
-有的小伙伴可能要骂人了，欺负我看不懂鸟语是吧。
+有的小伙伴可能要骂人了，乖乖，欺负我看不懂鸟语是吧。
 
 我再次骚瑞，其实我也不是很懂，不过你只要理解一点，使用 `phpVirtualBox` 来管理 `VirtualBox` ，是需要通过运行 `vboxwebsrv` 服务的。
 
-第一，`vboxwebsrv` 服务与 `VirtualBox` 交互，提供了访问 `VirtualBox` 的接口。
+**第一，`vboxwebsrv` 服务与 `VirtualBox` 交互，提供了访问 `VirtualBox` 的接口。**
 
-第二，`phpVirtualBox` 连接 `vboxwebsrv` 服务，通过 `vboxwebsrv` 服务接口达到访问 `VirtualBox` 的目的。
+**第二，`phpVirtualBox` 连接 `vboxwebsrv` 服务，通过 `vboxwebsrv` 服务接口达到访问 `VirtualBox` 的目的。**
 
 
 
-似懂非懂？
+朦朦胧胧，迷迷糊糊，似懂非懂？
 
-好吧，不管那么多了，总而言之我们先找到这个 `vboxwebsrv` ，然后将它运行起来就行了。
+好吧，不管那么多了，总而言之我们要先找到这个 `vboxwebsrv` 服务，然后将它运行起来就行了。
 
-实际上只要你正常安装了 `VirtualBox` ，那么其实它就躺在程序的根目录下。
+告诉你个好消息，实际上只要你正常安装了 `VirtualBox` ，那么其实它就随着主程序默认地躺在了根目录下。
 
-比如 Windows 系统下，它在这儿：
+比如 Windows 系统下，它在这儿（就是个可执行文件）：
 
 ```
 %ProgramFiles%\Oracle\VirtualBox\VBoxWebSrv.exe
@@ -176,17 +186,17 @@ var $password = 'pass';
 
 
 
-而根据官方说明，`Windows` 或 `MacOS` 两种系统环境下，其 `vboxwebsrv` 服务使用的应该是与当前登录的帐号和密码相同。
+而根据官方说明，`Windows` 或 `MacOS` 两种系统环境下，其 `vboxwebsrv` 服务运行使用的应该是与当前登录系统的帐号和密码相同。
 
-好了，这回总算是明白了，其实就是看运行 `VBoxWebSrv.exe` 时，用的是什么用户和密码。
+大白话也就是说，你现在的 Windows 当前登录的用户名叫“狗蛋”，密码是“5201314”，那么这个服务要运行起来，用的就是“狗蛋”和“5201314“了。
 
-那我们马上来试一试。
+好了，这回总算是看明白了，那我们马上来试一试。
 
 
 
 **1、修改 `config.php` 中的帐号和密码**
 
-比如你当前登录的 Windows 帐号是 “admin”，密码是 “www.sysadm.cc” 。
+比如你当前登录的 Windows 帐号是 “admin”，密码是 “www.sysadm.cc” ，那么应该这样修改。
 
 ```
 /* Username / Password for system user that runs VirtualBox */
@@ -198,7 +208,7 @@ var $password = 'www.sysadm.cc';
 
 **2、运行 `vboxwebsrv` 服务**
 
-打开一个命令控制台，输入以下命令行（因为引用了环境变量，最好带上引号）。
+打开一个命令控制台，输入以下命令行（因为引用了环境变量，实际运行时最好带上两侧的引号）。
 
 ```
 "%ProgramFiles%\Oracle\VirtualBox\VBoxWebSrv.exe"
@@ -212,7 +222,7 @@ var $password = 'www.sysadm.cc';
 
 其实不加参数直接拿来用可以作为调试之用，在实际后台运行时可以加上管道符 `> nul` ，避免无用信息输出。
 
-比如：
+实际把服务放到后台运行，可以这样：
 
 ```
 "%ProgramFiles%\Oracle\VirtualBox\VBoxWebSrv.exe" -H 127.0.0.1 > nul
@@ -235,7 +245,7 @@ var $location = 'http://127.0.0.1:18083/';
 
 
 
-好，接下来我们就可以尝试访问登录了。
+好，服务运行起来了，接下来我们就可以尝试访问登录了。
 
 
 
@@ -253,9 +263,11 @@ http://127.0.0.1/phpvirtualbox
 
 
 
-看来能正常访问了，但这 WEB 登录的用户和密码又是多少呢？
+看来访问站点没问题，但这 WEB 登录的用户和密码又是多少呢？
 
-官网有说明，默认是 “admin” 和 “admin”，那就试试看。
+注意，和前面说的配置文件中的用户和密码不是一回事哦！
+
+官网上有说明，默认是 “admin” 和 “admin”，那就试试看。
 
 
 
@@ -271,17 +283,17 @@ http://127.0.0.1/phpvirtualbox
 
 有时候，Windows 的登录用户是没有设定密码（空密码）的，所以**一定要给用户设定一个密码**。
 
-或者你另外新建一个用户，并给它设定密码，然后以这个新建用户的身份运行 `VBoxWebSrv` 服务也可以。
+或者你另外新建一个用户，并给它设定密码，然后以这个新建用户的身份运行 `VBoxWebSrv` 服务也是可以的。
 
 
 
-另外需要提一嘴的是，当你忘记登录密码时，可以用下列方法尝试重置登录密码。
+另外需要提一嘴的是，当你忘记 WEB 登录密码时，可以用下列方法尝试重置登录密码。
 
 1. 到 `phpVirtualBox` 根目录中找到 `recovery.php-disabled` ，将它复制一份并重命名为 `recovery.php` 。
 
    
 
-2. 用浏览器打开 `recovery.php` ，会出现重置登录密码的页面。
+2. 用浏览器直接打开 `recovery.php` ，会出现重置登录密码的页面。
 
    ```
    http://主机名和IP地址/phpvirtualbox/recovery.php
@@ -303,7 +315,7 @@ http://127.0.0.1/phpvirtualbox
 
 
 
-一切调整好后，再来尝试登录。
+OK，一切调整好后，再来尝试登录。
 
 随着控制台不断翻滚着字符，终于顺利进入界面啦！
 
