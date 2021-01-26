@@ -28,6 +28,14 @@ MySQL客户端测试运行环境
 >
 > 数据库：Percona MySQL 5.7
 
+注：`Oracle Linux` 与 `CentOS` 类似，因 `CentOS` 被官方和谐，故使用 `Oracle Linux` 。
+
+
+
+> 另请参考文章：《没有 CentOS 的日子里我们怎么过活？》
+>
+> 链接：https://www.sysadm.cc/index.php/xitongyunwei/792-how-can-we-live-without-centos
+
 
 
 
