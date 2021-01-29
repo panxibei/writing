@@ -92,7 +92,7 @@ C:\> winfr source-drive: desination-folder [/switches]
 
 > 参考文章：《尝试自制 Windows File Recovery 文件恢复便捷工具》
 >
-> 文章链接：
+> 文章链接：https://www.sysadm.cc/index.php/vbbiancheng/804-i-made-a-convenient-tool-for-windows-file-recovery
 
 
 
@@ -251,7 +251,7 @@ D:\WinFR\WinFR.exe
 
 > 《尝试自制 Windows File Recovery 文件恢复便捷工具》
 >
-> 文章链接：
+> 文章链接：https://www.sysadm.cc/index.php/vbbiancheng/804-i-made-a-convenient-tool-for-windows-file-recovery
 
 
 

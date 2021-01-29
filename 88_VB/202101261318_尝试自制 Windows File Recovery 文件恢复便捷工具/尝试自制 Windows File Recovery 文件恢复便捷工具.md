@@ -8,7 +8,7 @@
 
 > 《误删文件不要慌，请出 Windows File Recovery 来帮忙》
 >
-> 文章链接：
+> 文章链接：https://www.sysadm.cc/index.php/xitongyunwei/803-using-windows-file-recovery-when-deleting-files-by-mistake
 
 
 
