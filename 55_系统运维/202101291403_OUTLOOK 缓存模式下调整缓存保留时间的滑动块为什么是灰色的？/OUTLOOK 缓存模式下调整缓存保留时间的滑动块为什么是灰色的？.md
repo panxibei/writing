@@ -215,11 +215,13 @@ HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\xx.0\Outlook\Cached Mode
 
 
 
-记得每次调整或解锁后，`Outlook` 都要重新打开才能生效。
+记得要管理员权限运行，每次调整或解锁后，`Outlook` 都要重新打开才能生效。
 
 小工具，大用场，如果小伙伴们用着挺爽，记得点赞在看走一波哦！
 
 
+
+**网管小贾的Outlook邮件缓存保留时间调节器**
 
 下载链接：https://www.90pan.com/b2267073
 

@@ -1,6 +1,14 @@
-Symantec 备份软件安装
+备份软件 Symantec Backup Exec 的安装以及与磁带库 Dell EMC ML3 的连接
 
 副标题：
+
+
+
+
+
+兼容列表
+
+官网链接：https://www.veritas.com/content/support/en_US/article.100040087
 
 
 
