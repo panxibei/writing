@@ -176,13 +176,43 @@ OK，这样离线安装就成功了！
 
 本文测试环境，系统版本是 `Windows 10 x64 2004 (19041.208)` ，仅供小伙伴们参考。
 
-XPS查看器离线安装包下载链接：
-
-关注微信公众号号下载
-
-[Microsoft-Windows-Xps-Xps-Viewer-Opt-Package~31bf3856ad364e35~amd64~~.cab](http://#)
 
 
+**XPS查看器离线安装包下载链接：**
+
+应小伙伴们的要求，我多测试了几个平台。
+
+如果好用，请小伙伴们务必关注微信公众号@网管小贾，并多多分享给他人。
+
+Xps-Viewer-Win10_2004.7z
+
+Xps-Viewer-Win10_1909.7z
+
+Xps-Viewer-Win10_LTSC.7z
+
+
+
+**Xps-Viewer-Win10_2004.7z**
+
+下载链接：https://www.90pan.com/b2153339
+
+提取码：71b9
+
+
+
+**Xps-Viewer-Win10_1909.7z**
+
+下载链接：https://www.90pan.com/b2279678
+
+提取码：aby9
+
+
+
+**Xps-Viewer-Win10_LTSC.7z**
+
+下载链接：https://www.90pan.com/b2279679
+
+提取码：7r3b
 
 
 
