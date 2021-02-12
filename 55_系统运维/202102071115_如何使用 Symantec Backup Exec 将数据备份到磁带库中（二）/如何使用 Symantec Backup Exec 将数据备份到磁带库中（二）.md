@@ -18,7 +18,7 @@
 
 > 《如何使用 Symantec Backup Exec 将数据备份到磁带库中（一）》
 >
-> 链接：https://
+> 链接：https://www.sysadm.cc/index.php/xitongyunwei/807-how-to-use-symantec-backup-exec-with-tape-library-1
 
 
 
@@ -270,13 +270,23 @@ IP地址连接更快，但如果服务器有可能会变动IP地址，那么最�
 
 
 
-我是从官网直接下载的，完整文件大小 3.6 G 左右，如果你连不上微软的官网或赚速度慢，可以用这儿的国内备用下载链接。
+以上 `adksetup.exe` 中是个安装引导文件，我花了个把小时间把完整文件下载了下来，大小 3.6GB 左右，如果你连不上微软的官网或赚速度慢，可以用这儿的国内备用下载链接。
 
-**ADK（Win10/Win2016 1607 版本）备用下载**
 
-下载链接：https://
 
-提取码：
+**ADK（Win10/Win2016 1607 版本）完整安装包**
+
+下载链接：https://pan.baidu.com/s/16G1YUyl63vctOPNaOHmaUg
+
+提取码：d740
+
+
+
+**ADK（Win10/Win2016 2004 版本）完整安装包**
+
+下载链接：https://pan.baidu.com/s/17VoSCE5xwSPzB2BI6_X1pA
+
+提取码：gham
 
 
 
@@ -415,6 +425,19 @@ C:\Program Files\Veritas\Backup Exec\sdr\DRPrepWizard.exe
 至于如何使用恢复磁盘来实现备份的恢复，限于篇幅以后有机会我们再来讨论吧。
 
 
+
+**ADK（Win10/Win2016 1607 版本）完整安装包**
+
+下载链接：https://pan.baidu.com/s/16G1YUyl63vctOPNaOHmaUg
+
+提取码：d740
+
+
+**ADK（Win10/Win2016 2004 版本）完整安装包**
+
+下载链接：https://pan.baidu.com/s/17VoSCE5xwSPzB2BI6_X1pA
+
+提取码：gham
 
 
 
