@@ -74,6 +74,46 @@ cd openlitespeed
 
 
 
+使用终端命令查看 `PHP` 版本。
+
+图？
+
+
+
+使用 `phpinfo` 查看更多 `php` 及其扩展的支持信息。
+
+图？
+
+
+
+如果你想加载更多的 `php` 扩展，那么可以手动添加它们。
+
+比如想添加 `redis` 扩展，那么应该这样子做。
+
+```
+yum install lsphp-perl-redis
+```
+
+
+
+具体每个扩展包的名称可能与传统的有所不同，可以通过 `yum search` 查询来确定。
+
+此外，因为按二进制包的安装方法，系统已经有 `OLS` 官方的安装源，可以直接找到并安装相应扩展。
+
+如果系统中没有安装源，则可以手动添加，以 `CentOS7` 为例如下。
+
+```
+rpm -Uvh http://rpms.litespeedtech.com/centos/litespeed-repo-1.1-1.el7.noarch.rpm
+```
+
+不同平台具体可以参考：
+
+```
+https://openlitespeed.org/kb/install-ols-from-litespeed-repositories/
+```
+
+
+
 
 
 ### OpenLiteSpeed 的服务
@@ -111,6 +151,58 @@ systemctl disable lsws
 
 
 ### OpenLiteSpeed 的各项配置
+
+`OLS` 我们已经安装好了，那么它被安装在哪里了呢？
+
+如果你是按照前面二进制的方法安装的，那么 `OLS` 的根目录是 `/usr/local/lsws` 。
+
+一定要记住这个，因为之后所有的配置、缓存、应用统统都以这个根目录为基础。
+
+
+
+OK，接下来自然是配置文件，大体有两种。
+
+第一种，是 `OLS` 服务器主配置文件。
+
+它放在了 `/usr/local/lsws/conf/` 下面，名字叫 `httpd_config.conf` 。
+
+```
+/usr/local/lsws/conf/httpd_config.conf
+```
+
+
+
+第二种，是虚拟主机的配置文件。
+
+在根目录下专门有个放虚拟主机配置的目录 `/usr/local/lsws/conf/vhosts/` ，不同的虚拟主机则以其名称为子目录分别保存自己相应的配置文件。
+
+比如我们安装好 `OLS` 后它自带有一个叫做 `Example` 的虚拟主机，那么它的配置文件就在这儿。
+
+```
+/usr/local/lsws/conf/vhosts/Example/vhconf.conf
+```
+
+
+
+不管是服务器主配置文件也好，还是虚拟主机配置文件也好，其中参数众多，设定纷繁复杂。
+
+还好有个好消息，我们不必自己动手修改这些配置文件。
+
+在 `OLS` 安装完毕后，我们就已经拥有了一个 `WebAdmin Console` 的 WEB 形式的控制面板，这也是官方建议的最佳配置编辑方法。
+
+它除了帮助我们免于记忆复杂的参数语法外，我感觉有一个点对来我们很有用的就是可以一键平滑重启服务。
+
+`WebAdmin` 的访问链接：`https://servername:7080/`
+
+
+
+
+
+### 导入 Laravel 项目
+
+
+
+
 
 
 
