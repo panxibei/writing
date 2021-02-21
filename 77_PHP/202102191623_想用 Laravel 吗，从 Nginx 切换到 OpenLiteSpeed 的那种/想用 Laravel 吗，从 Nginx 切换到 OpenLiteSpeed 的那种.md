@@ -84,13 +84,21 @@ cd openlitespeed
 
 安装完成后你就可以看到这句话，表明安装成功，就是这么简单。
 
-`Installation finished, Enjoy!`
+```
+Installation finished, Enjoy!
+```
 
 图？
 
 
 
 这时你需要注意一点，安装程序在最后给出了一个 `WebAdmin` 的访问密码，如图中的红字。
+
+```
+Your webAdmin password is M2YzM2U2, written to file /usr/local/lsws/adminpasswd.
+```
+
+如果你不小心忘记把它记下来了，那么也别担心，可以在 `/usr/local/lsws/adminpasswd` 中找到它。
 
 至于 `WebAdmin` 是什么、怎么用，等一会儿后面会有详细介绍，你先记住这个密码吧。
 
@@ -106,7 +114,7 @@ cd openlitespeed
 
 其实它已经好好地躺在系统里了，目前最新版本可支持到 `7.4` 及 `8.0` 。
 
-在安装过程中我们就能观察到，它偷偷帮你装了 `lsphp74` 。
+在安装过程中我们也能观察到，它偷偷帮你装了 `lsphp74` 。
 
 图？
 
@@ -124,29 +132,33 @@ cd openlitespeed
 
 
 
-太棒了，我正需要 `PHP 7.4` ，要知道 `7.3` 将于2021年年底终止支持。
+太棒了，我正需要 `PHP 7.4` ，要知道 `7.3` 将于2021年年底终止支持哦！
 
-当然，如果你想安装多个版本的 `PHP` ，那样就可以自由切换不同的版本环境用于测试了。
+当然，如果你完全可以安装多个版本的 `PHP` ，那样就可以自由切换不同的版本环境用于测试了。
 
 你可以参考官方的相关知识库，或者有机会的话我会另外写一篇文章专门说一说如何安装多个版本的 `PHP` 。
 
 
 
-如果你想加载更多的 `php` 扩展，那么可以手动添加它们。
+`PHP` 有了，接着如果你想加载更多的 `php` 扩展，那么可以手动添加它们。
 
 比如想添加 `redis` 扩展，那么应该这样子做。
 
 ```
-yum install lsphp-pecl-redis
+yum install lsphp74-pecl-redis
 ```
 
+图？
+
+图？
 
 
-具体每个扩展包的名称可能与传统的有所不同，可以通过 `yum search` 查询来确定。
 
-此外，因为按二进制包的安装方法，系统已经有 `OLS` 官方的安装源，可以直接找到并安装相应扩展。
+具体每个扩展包的名称可能与以往传统的有所不同，可以通过 `yum search` 查询来确定。
 
-如果系统中没有安装源，则可以手动添加，以 `CentOS7` 为例如下。
+此外，因为我们是按二进制包的安装方法，所以在安装过程中系统已经自动具有 `OLS` 官方的安装源，因此可以直接找到并安装相应的扩展。
+
+如果系统中没有官方安装源，则可以手动添加，以 `CentOS7` 为例如下。
 
 ```
 rpm -Uvh http://rpms.litespeedtech.com/centos/litespeed-repo-1.1-1.el7.noarch.rpm
@@ -183,14 +195,48 @@ systemctl status lsws
 那么我们就可以随意启动、停止或启用禁用 `OLS` 服务了。
 
 ```
-# 启动/停止服务
-systemctl start lsws
-systemctl stop lsws
-
 # 启用/禁用服务
 systemctl enable lsws
 systemctl disable lsws
+
+# 启动/停止服务
+systemctl start lsws
+systemctl stop lsws
 ```
+
+图？
+
+
+
+服务启动完毕，我们就可以登录 `WebAdmin` 了。
+
+```
+https://服务器名称或IP:7080
+```
+
+
+
+还记得前面让你记住的那个密码吗？
+
+对了，就在这里登录 `WebAdmin`  用的，登录进入系统后可以自行修改密码。
+
+图？
+
+
+
+还是那句话，如果你忘记了这个初始密码，可以用下面这个命令来查看。
+
+```
+cat /usr/local/lsws/adminpasswd
+```
+
+
+
+登录进 `WebAdmin` 后，我们可以点击右上角的语言选项，将它改为中文。
+
+
+
+
 
 
 
