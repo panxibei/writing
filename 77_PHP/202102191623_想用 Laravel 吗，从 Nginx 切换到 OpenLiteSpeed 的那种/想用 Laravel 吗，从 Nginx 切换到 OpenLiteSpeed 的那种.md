@@ -8,17 +8,33 @@
 
 ### OpenLiteSpeed 简介
 
+OpenLiteSpeed （以下简称 `OLS` ）是和 Apache 或 Nginx 相似的 WEB 服务引擎，是 LiteSpeed EnterPrise 的社区版本。
+
+`OLS` 好处多多，不仅仅提供了诸如 `WordPress` 、 `Joomla` 、`OpenCart` 或 `Drupal` 等应用的插件支持，而且还支持新一代的 `HTTP3` 。
+
+虽然社区版的 `OLS` 与企业版相对有部分限制功能，但一般的个人博客或小型站点基本够用。
+
+你看看 `OLS` 与 `Nginx` 和 `Apache` 的性能对比，我可以猜到你肯定先是大吃一鲸，然后口水横流。
+
+图？
 
 
-OpenLiteSpeed 和 LiteSpeed 的区别
+
+好吧，我承认流口水的是我，所以接下来我就开始尝试安装使用它了。
 
 
 
-知识库链接：https://openlitespeed.org/kb/
+> 官网链接：https://openlitespeed.org
+>
+> 知识库链接：https://openlitespeed.org/kb/
 
 
 
 ### OpenLiteSpeed 的安装
+
+
+
+> 安装环境：CentOS 7 (2009)
 
 
 
@@ -42,7 +58,7 @@ wget https://openlitespeed.org/packages/openlitespeed-1.7.8.tgz
 
 
 
-我安装的是官方最新版本 `1.7.8` ，这个包大概 71.6 MB，官网下载比较慢，在这我留个国内的备用下载链接。
+我安装的是官方最新版本 `1.7.8` ，这个包大概 71.6 MB，官网下载比较慢，为了方便小伙伴们，在这我留个国内的备用下载链接。
 
 **openlitespeed-1.7.8.tgz**
 
@@ -58,11 +74,29 @@ cd openlitespeed
 ./install.sh
 ```
 
+图？
 
+图？
+
+
+
+全程自动下载、自动安装，请耐心等待。
 
 安装完成后你就可以看到这句话，表明安装成功，就是这么简单。
 
-`[OK] The startup script has been successfully installed!`
+`Installation finished, Enjoy!`
+
+图？
+
+
+
+这时你需要注意一点，安装程序在最后给出了一个 `WebAdmin` 的访问密码，如图中的红字。
+
+至于 `WebAdmin` 是什么、怎么用，等一会儿后面会有详细介绍，你先记住这个密码吧。
+
+图？
+
+
 
 
 
@@ -71,6 +105,10 @@ cd openlitespeed
 根据以往的 `Apache` 或 `Nginx` 等安装经验，我们接下来应该安装 `PHP` 对不对？
 
 其实它已经好好地躺在系统里了，目前最新版本可支持到 `7.4` 及 `8.0` 。
+
+在安装过程中我们就能观察到，它偷偷帮你装了 `lsphp74` 。
+
+图？
 
 
 
@@ -86,12 +124,20 @@ cd openlitespeed
 
 
 
+太棒了，我正需要 `PHP 7.4` ，要知道 `7.3` 将于2021年年底终止支持。
+
+当然，如果你想安装多个版本的 `PHP` ，那样就可以自由切换不同的版本环境用于测试了。
+
+你可以参考官方的相关知识库，或者有机会的话我会另外写一篇文章专门说一说如何安装多个版本的 `PHP` 。
+
+
+
 如果你想加载更多的 `php` 扩展，那么可以手动添加它们。
 
 比如想添加 `redis` 扩展，那么应该这样子做。
 
 ```
-yum install lsphp-perl-redis
+yum install lsphp-pecl-redis
 ```
 
 
