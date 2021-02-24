@@ -28,7 +28,7 @@
 
 
 
-### OpenLiteSpeed 是个啥
+### 一、OpenLiteSpeed 是个啥
 
 哎？不是正说着 `LiteSpeed` 吗，怎么变成了 `OpenLiteSpeed` ？
 
@@ -62,7 +62,7 @@
 
 
 
-### 安装 OpenLiteSpeed 很简单
+### 二、安装 OpenLiteSpeed 很简单
 
 
 
@@ -151,7 +151,7 @@ Your webAdmin password is XXXXXXXX, written to file /usr/local/lsws/adminpasswd.
 
 
 
-### 安装 PHP
+### 三、安装 PHP
 
 要想用 `Laravel` ，那么肯定少不了要安装 `PHP` 。
 
@@ -252,7 +252,7 @@ https://openlitespeed.org/kb/install-ols-from-litespeed-repositories/
 
 
 
-### 安装 MariaDB
+### 四、安装 MariaDB
 
 几乎任何项目都少不了数据库，在这里虽然我们只是作为演示，但还是规矩规矩地安装最新版本的 `MariaDB` 。
 
@@ -304,7 +304,7 @@ yum install MariaDB-server MariaDB-client
 
 
 
-### 初识 OpenLiteSpeed 服务
+### 五、初识 OpenLiteSpeed 服务
 
 在 `CentOS` 下， `OLS` 的服务名称为 `lshttpd` ，所以可以这样查看它的服务。
 
@@ -342,7 +342,7 @@ systemctl stop lsws
 
 
 
-### OpenLiteSpeed 大概有哪些配置
+### 六、OpenLiteSpeed 大概有哪些配置
 
 `OLS` 安装好后，小伙伴们应该会比较关心两个问题，一个是它被安装在哪里了，另外一个是它的配置文件在哪里。
 
@@ -388,7 +388,7 @@ OK，那么接下来的问题就是配置文件，它大体分为两种。
 
 
 
-### 对小白友好的 WebAdmin 控制台
+### 七、对小白友好的 WebAdmin 控制台
 
 `OLS` 服务一旦启动完毕，我们就可以登录 `WebAdmin` 了。
 
@@ -450,7 +450,7 @@ cat /usr/local/lsws/adminpasswd
 
 
 
-### 如何导入 Laravel 项目
+### 八、如何导入 Laravel 项目
 
 前面准备了那么多，但到这儿总算是该敲黑板、划重点了，因为这里多多少少会有些坑。
 
