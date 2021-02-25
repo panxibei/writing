@@ -1,6 +1,6 @@
 桌面版 FreeBSD 系统 HelloSystem 初体验
 
-副标题：
+副标题：BSD也在发力~
 
 
 
@@ -74,11 +74,13 @@
 
 费了老牛鼻子劲，中间下载时老是断，花了好几天的时间才把它下载下来，GitHub这网速是真不敢恭维啊！
 
-想要 `0.5` 体验版的小伙伴们可以到我这儿的百度链接下载。
+想要 `0.5` 最新体验版的小伙伴们可以到我这儿的百度链接下载。
 
-**hello-0.5.0_0E12-FreeBSD-12.2-amd64.iso**
+**hello-0.5.0_0E12-FreeBSD-12.2-amd64.iso (1.74G)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1jhOwF1cXSdvgJZx4apNBQw 
+
+提取码：dm80
 
 
 
@@ -122,13 +124,11 @@
 
 简单而又基础的应用软件，虽然不多，但开发者仍在努力开发适用于系统的应用程序。
 
-图7
+图8
 
 
 
 如上图菜单中，找到 `System` > `Application -> Utilities`  > `Install FreeBSD` 。
-
-图8
 
 
 
