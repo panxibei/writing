@@ -48,7 +48,11 @@
 
 国内备用下载：https://
 
-**cloudready-free-87.4.22-64bit.zip (1.16G)**
+**cloudready-free-87.4.22-64bit.zip (1.17G)**
+
+下载链接：https://pan.baidu.com/s/13l4iQjsvVKOlvkfVfavHeA
+
+提取码：aj73
 
 
 
@@ -60,7 +64,9 @@
 
 我经常使用 `VirtualBox` ，虽然可以通过先烧录 U 盘，然后再变相从 U 盘启动虚拟机系统，但这个方法有点绕远路了。
 
-其实不用这么麻烦，在这儿我们可以直接将刚下载的镜像转换成 `VirtualBox` 识别的硬盘文件。
+这个方法还有一个麻烦，就是需要用到 `Google` 的烧录扩展程序 `Chromebook Recovery Utility` ，如果无法科学上网，那可能就安装不上这个扩展，也就没办法进行烧录了。
+
+其实吧不用搞这么麻烦，在这儿我们可以直接将刚下载的镜像转换成 `VirtualBox` 识别的硬盘文件。
 
 通过以下命令，将解压缩出来的 `.bin` 文件转换成 `.vdi` 文件。
 
@@ -126,11 +132,11 @@ C:\Program Files\Oracle\VirtualBox\VBoxManage.exe convertfromraw .\cloudready-fr
 >
 > 嫌慢还有国内备用地址：
 >
-> f
+> **CloudReady-Home-v83-x64.ova (2.39G)**
 >
-> 
+> 下载链接：https://pan.baidu.com/s/1W9ORYdg9oAIBxoqiLtQmRw
 >
-> 
+> 提取码：p6n7
 
 
 
@@ -152,11 +158,11 @@ C:\Program Files\Oracle\VirtualBox\VBoxManage.exe convertfromraw .\cloudready-fr
 
 直接到官网下载了最新 `16` 版本，也可以用我这儿的备用下载。
 
-**VMware-player-16.1.0-17198959.exe (215M)**
+**VMware-player-16.1.0-17198959.exe (215.38M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1SE6UMzB5xW0WvRhby2gbXw
 
-
+提取码：uh51
 
 
 
