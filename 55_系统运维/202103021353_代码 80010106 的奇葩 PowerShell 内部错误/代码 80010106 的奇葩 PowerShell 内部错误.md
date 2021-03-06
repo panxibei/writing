@@ -136,5 +136,5 @@ https://grzegorzkulikowski.info/2011/05/16/internal-windows-powershell-error-com
 
 
 
-WeChat@网管小贾 | www.sysadm.cc
-
+**关注@网管小贾，阅读更多**
+网管小贾的博客 | www.sysadm.cc
