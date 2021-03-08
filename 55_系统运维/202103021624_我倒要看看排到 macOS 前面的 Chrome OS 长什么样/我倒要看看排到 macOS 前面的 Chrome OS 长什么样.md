@@ -46,7 +46,7 @@
 
 家庭版可以免费使用，作为测试够用了，下载64位镜像，最新版本 `87.4.22` 。
 
-国内备用下载：https://
+国内备用下载：
 
 **cloudready-free-87.4.22-64bit.zip (1.17G)**
 
@@ -130,9 +130,7 @@ C:\Program Files\Oracle\VirtualBox\VBoxManage.exe convertfromraw .\cloudready-fr
 > https://cloudready-free-downloads.neverware.com/vmware/CloudReady-Home-v83-x64.ova
 > ```
 >
-> 嫌慢还有国内备用地址：
->
-> **CloudReady-Home-v83-x64.ova (2.39G)**
+> 嫌慢还有国内备用地址：**CloudReady-Home-v83-x64.ova (2.39G)**
 >
 > 下载链接：https://pan.baidu.com/s/1W9ORYdg9oAIBxoqiLtQmRw
 >
