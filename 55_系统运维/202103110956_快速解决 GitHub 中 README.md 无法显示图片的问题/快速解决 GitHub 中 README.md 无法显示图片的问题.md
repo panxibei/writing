@@ -1,6 +1,6 @@
 快速解决 GitHub 中 README.md 无法显示图片的问题
 
-副标题：
+副标题：没有图片的互联网是无趣的~
 
 
 
@@ -105,4 +105,4 @@ C:\Windows\System32\drivers\etc\hosts
 
 **关注@网管小贾，阅读更多**
 
-网管小贾的博客 | www.sysadm.cc
+网管小贾的博客 / www.sysadm.cc
