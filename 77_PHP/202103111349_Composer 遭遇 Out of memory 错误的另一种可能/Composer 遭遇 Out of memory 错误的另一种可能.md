@@ -6,7 +6,7 @@ Composer 遭遇 Out of memory 错误的另一种可能
 
 当我使用 `Composer` 引入所需的 `PHP` 依赖包时，居然遇到了前所未有的错误。
 
-它给出了如下错误提示，好像告诉我内存溢出。
+它给出了如下错误提示，好像是告诉我内存溢出了。
 
 ```
 Fatal error: Out of memory (allocated 1163919360) (tried to allocate 50331656 bytes) in phar://C:/composer/composer.phar/src/Composer/DependencyResolver/RuleSet.php on line 84
@@ -16,9 +16,9 @@ Fatal error: Out of memory (allocated 1163919360) (tried to allocate 50331656 by
 
 
 
-有没有搞错？开玩笑的吧！
+有没有搞错？确定不是在和我开玩笑？
 
-小伙伴们给我评评理，我已经有了 `1163919360` 这么大的内存，居然连 `50331656` 都用不了？
+咳咳，小伙伴们给我评评理啊，我已经有了 `1163919360` 这么大的内存，居然连 `50331656` 都分配不了？
 
 还有王法吗，还有法律吗？
 
@@ -30,21 +30,21 @@ Fatal error: Out of memory (allocated 1163919360) (tried to allocate 50331656 by
 
 结果发现像下面那样以前早已经分配了不小的内存。
 
-`PHP` 此参数的默认值是 `128M` ，我已经给了它 `512M` 。
-
-这么大内存不够用？
-
-我电脑一共才多少内存，也太贪了吧！
-
 ```
 ; Maximum amount of memory a script may consume (128MB)
 ; http://php.net/memory-limit
 memory_limit = 512M
 ```
 
+`PHP` 此参数的默认值是 `128M` ，我已经给了它 `512M` 。
+
+这么大内存不够用？
+
+我电脑一共才多少内存，也太贪了吧！
 
 
-感觉这说法很不靠谱，再仔细瞧瞧这错误提示，哎，发现 `Composer` 被提示版本过低。
+
+感觉这说法很不靠谱，再仔细瞧了瞧这错误提示，哎，发现 `Composer` 被提示版本过低。
 
 会不会和这有什么关系呢？
 
@@ -77,13 +77,13 @@ composer -V
 
 再试着安装，发现问题已经被顺利解决了！
 
-你看这问题闹的，根本就不是 `PHP` 配置的问题啊！
+你看这事闹的，根本就不是 `PHP` 配置的问题啊！
 
 图4
 
 
 
-`PHP` 之所以常被小伙伴们笑称为世界上最好的语言，正是由于它的库文件依赖关系等管理起来非常麻烦。
+`PHP` 之所以常被小伙伴们戏谑为世界上最好的语言，正是由于它的库文件依赖关系管理起来非常麻烦。
 
 好在有大神发明了 `Composer` 这个管理神器，让我等小白们使用 `PHP` 起来方便了不少。
 
