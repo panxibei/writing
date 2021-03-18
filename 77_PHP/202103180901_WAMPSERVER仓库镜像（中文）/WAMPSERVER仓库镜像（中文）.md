@@ -10,13 +10,7 @@ WAMPSERVER仓库镜像（中文）
 
 怕官网挂掉，以备不时之需！
 
-扫描本站二维码关注@网管小贾，公众号内发送 `wamp` 或 `wampserver` 即可获取相关文章及干货下载。
-
-未兼顾老版本用户，我将之前的部分旧版本内容做了保留。
-
-如有内容纰漏或链接失效之情况，务必恳请小伙伴们及时留言提醒，感谢关注！
-
-备用链接下载解压密码：www.sysadm.cc
+**扫描本站二维码关注@网管小贾，公众号内发送 `wamp` 或 `wampserver` 即可获取相关文章及干货下载。**
 
 
 
@@ -24,11 +18,19 @@ WAMPSERVER仓库镜像（中文）
 >
 > **最新 `Wampserver` 版本 `3.2.3` - 最新更新补丁 `3.2.5` **
 >
-> **Aestan Tray Menu 3.2.3.8 - PhpSysInfo 3.3.3.1 - Language files - VC++ Packages 2019 14.28.29910 - PHP 7.4.16, 8.0.3 - PhpMyAdmin 5.1.0**
+> `Aestan Tray Menu 3.2.3.8 - PhpSysInfo 3.3.3.1 - Language files - VC++ Packages 2019 14.28.29910 - PHP 7.4.16, 8.0.3 - PhpMyAdmin 5.1.0`
 
-<hr id="system-readmore" />
 
-<br>
+
+为兼顾老版本用户，我将之前的部分旧版本内容做了保留。
+
+如有内容纰漏或链接失效之情况，务必恳请小伙伴们及时留言提醒，感谢关注！
+
+备用链接下载解压密码：www.sysadm.cc
+
+
+
+
 
 ## 一、Wampserver 最新完整安装包
 
