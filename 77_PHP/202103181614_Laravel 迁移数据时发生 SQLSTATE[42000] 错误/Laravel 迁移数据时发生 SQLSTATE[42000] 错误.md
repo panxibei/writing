@@ -1,6 +1,8 @@
 Laravel 迁移数据时发生 SQLSTATE[42000] 错误
 
-副标题：
+laravel-sqlstate-42000-error-occurred-while-migrating-data
+
+副标题：又是 MySQL 的锅？
 
 
 
