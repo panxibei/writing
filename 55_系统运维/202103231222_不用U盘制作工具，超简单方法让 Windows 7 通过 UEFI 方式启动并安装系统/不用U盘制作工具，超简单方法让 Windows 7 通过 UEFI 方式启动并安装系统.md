@@ -1,5 +1,7 @@
 不用U盘制作工具，超简单方法让 Windows 7 通过 UEFI 方式启动并安装系统
 
+simple-way-usb-stick-install-windows-7-through-uefi-without-usb-making- tools
+
 副标题：真的很简单哦~
 
 
