@@ -1,4 +1,4 @@
-虚拟机通过 UEFI 方式安装 Windows 7
+通过 UEFI 方式将 Windows 7 安装到虚拟机
 
 install-windows-7-to-virtual-machine-by-uefi
 
