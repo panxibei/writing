@@ -64,7 +64,11 @@ Windows 10
 
 有需要 `XigmaNAS` 最新镜像文件的小伙伴可以下载我这儿的国内备用文件。
 
-下载链接：
+**XigmaNAS-x64-LiveCD-12.2.0.4.8125.iso（530M）**
+
+下载链接：https://pan.baidu.com/s/1j8vgTLHIUXS9HG2rHX2yRQ
+
+提取码：p9jw
 
 
 
@@ -262,7 +266,11 @@ Windows Registry Editor Version 5.00
 
 图方便就直接下载我这儿的注册表文件导入即可。
 
-下载链接：RequireSecuritySignature.reg.7z
+**RequireSecuritySignature.reg.7z（28K）**
+
+下载链接：https://pan.baidu.com/s/1lkwiJMRHa71uyy2NFv6Vzw
+
+提取码：876v
 
 
 
