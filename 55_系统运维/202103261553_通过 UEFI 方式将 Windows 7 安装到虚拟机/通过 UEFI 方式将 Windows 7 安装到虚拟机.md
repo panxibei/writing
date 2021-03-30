@@ -30,7 +30,7 @@ install-windows-7-to-virtual-machine-by-uefi
 
 关于如何快速制作支持 `UEFI` 启动方式的U盘，请参考之前的文章。
 
-> 《不用U盘制作工具，超简单方法让 Windows 7 通过 UEFI 方式启动并安装系统》
+> [《不用U盘制作工具，超简单方法让 Windows 7 通过 UEFI 方式启动并安装系统》](https://www.sysadm.cc/index.php/xitongyunwei/824-simple-way-usb-stick-install-windows-7-through-uefi-without-usb-making-tools)
 
 
 
