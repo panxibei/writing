@@ -250,15 +250,14 @@ C:\> rundll32 printui, PrintUIEntry /Xs /n "打印机名称" attributes +direct
 
 
 
+**PS：就在本文发表前不久，微软官方已经发布了新的修复补丁。**
+
+以下为官方 `KB5001566` 更新的下载链接，如果你下载不了也可以问我要，祝你好运！
+
+下载链接：https://www.catalog.update.microsoft.com/Search.aspx?q=5001566
+
+
+
 **扫码关注@网管小贾，阅读更多**
 
 **网管小贾的博客 / www.sysadm.cc**
-
-
-
-
-
-
-
-
-
