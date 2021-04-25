@@ -1,6 +1,6 @@
 可以假装自己在用 Windows 的 Linux 系统是个什么样子？
 
-英文：
+英文：how-to-pretend-to-use-linux-looks-like-windows
 
 副标题：仿真 Windows 了解一下~
 
@@ -237,10 +237,3 @@ OK，所以特意下载了个 `QQ` 安装了一下试试。
 **扫码关注@网管小贾，阅读更多**
 
 **网管小贾的博客 / www.sysadm.cc**
-
-
-
-
-
-
-
