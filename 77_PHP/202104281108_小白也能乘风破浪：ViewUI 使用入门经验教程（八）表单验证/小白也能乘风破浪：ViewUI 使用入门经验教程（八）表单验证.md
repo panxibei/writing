@@ -1,4 +1,4 @@
-小白也能乘风破浪：ViewUI 使用入门经验教程（八）表单验证
+小白也能乘风破浪：ViewUI 使用入门经验教程（八）表单校验
 
 副标题：
 
@@ -30,15 +30,15 @@
 
 在此我们只简单地讨论如何用 `View UI` 来实现这样一份简单的申请表单。
 
-那么问题来了，表单项设计很容易做到，但是如何实现表单项的合法输入验证呢？
+那么问题来了，表单项设计很容易做到，但是如何实现表单项的合法输入校验呢？
 
 `View UI` 已经有这方面的功能，让我们一一道来。
 
 
 
-一、实现表单项数据验证的方法和要点
+### 一、实现表单项数据校验的方法和要点
 
-1、`Form` 标签必须同时实现 `:model` 绑定数据（比如： `formValidate` ），以及 `:rules` 绑定验证规则（比如：`ruleValidate` ）。
+1、`Form` 标签必须同时实现 `:model` 绑定数据（比如： `formValidate` ），以及 `:rules` 绑定校验规则（比如：`ruleValidate` ）。
 
 ```
 <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
@@ -48,9 +48,11 @@
 
 
 
-2、数据及验证规则通常为 `json` 格式，就是用大括号包含起来，其中有多个具体的数据项。
+2、数据及校验规则通常为 `json` 格式，就是用大括号包含起来，其中有多个具体的数据项。
 
-比如下列代码中，`formValidate` 为数据， `ruleValidate` 为验证规则。 
+比如下列代码中，`formValidate` 为数据， `ruleValidate` 为校验规则。 
+
+其中具体的某项校验规则为数组形式，可同时设定多种校验规则，比如某项必须同时满足必填以及数字格式等。
 
 ```
 <script>
@@ -58,11 +60,13 @@
     data () {
       return {
         formValidate: {    // 数据
-          name: ''
+          name: '',
+          ...
         },
-        ruleValidate: {    // 验证规则
+        ruleValidate: {    // 校验规则
 		  name: [
-			{ required: true, message: '姓名不可为空', trigger: 'blur' }
+			{ required: true, message: '姓名不可为空', trigger: 'blur' },
+			{ ... }
 		  ],
 		}
       }
@@ -75,7 +79,7 @@
 
 3、回到 `Form` 表单组件，在具体的表单项 `FormItem` 标签中， `prop` 属性设定为某个数据项。
 
-比如，将姓名表单项的 `prop` 属性设定为 `formValidate` 中的 `name` 数据项。
+比如，将姓名表单项的 `prop` 属性设定为数据 `formValidate` 中的 `name` 数据项。
 
 ```
 <Form>
@@ -87,19 +91,57 @@
 
 
 
-
-
-
-
-2、`FormItem` 标签中 `prop` 属性设定为 `data` 中的数据项。
-
-
+4、综上所述，完整示例代码。
 
 ```
 <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
 	<FormItem label="Name" prop="name">
-    	<Input v-model="formValidate.name" placeholder="Enter your name"></Input>
+    	<Input v-model="formValidate.name"></Input>
 	</FormItem>
 <Form>
+
+<script>
+  export default {
+    data () {
+      return {
+        formValidate: {    // 数据
+          name: ''
+        },
+        ruleValidate: {    // 校验规则
+		  name: [
+			{ required: true, message: '姓名不可为空', trigger: 'blur' }
+		  ],
+		}
+      }
+    }
+  }
+</script>
 ```
 
+
+
+### 二、各种不同的校验规则
+
+我们都知道变量或数据库字段有各种不同的类型，比如大概地有字符型啊数字型等等。
+
+而不同类型的变量或字段是不可以直接拿来使用和存储的，所以必须要事先想办法规范（或称为格式化）输入，以保证其内容符合变量或字段的正常使用。
+
+当我们自己写程序的时候，可以在程序中标准化符合使用类型的代码变量，这个不是什么大问题。
+
+但用户呢？
+
+他们并不懂你什么类型，只要是键盘上有的都可以敲不是吗？
+
+所以，程序中特别是用户输入端必须做好规范的内容输入工作，这就不得不说到校验规则。
+
+
+
+简而言之，校验规则就是规范用户输入的那么一个隐性的程序设定。
+
+自然这也是要用代码来实现的，只是每一种规则都不尽相同，需要我们分别对待。
+
+
+
+
+
+1、
