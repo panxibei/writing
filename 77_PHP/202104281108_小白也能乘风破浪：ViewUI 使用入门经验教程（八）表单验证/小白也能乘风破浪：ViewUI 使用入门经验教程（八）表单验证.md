@@ -142,6 +142,245 @@
 
 
 
+通常校验规则的格式如下：
+
+```
+规则名称: [
+  { required: true, type: 'string', message: '姓名不可为空', trigger: 'blur' }
+],
+```
+
+规则关键字 `required` ，意为必填项；
+
+`type` 为输入类型，默认为字符型 `string` ；
+
+`message` 为校验失败后的提示内容；
+
+`trigger` 为触发方式，其值 `blur` 是指失去焦点，即光标离开输入框时触发，而 `change` 表示输入有变更时就触发。
 
 
-1、
+
+同一字段可以有一个或多个检验规则。
+
+接下来我们举几个典型的例子吧。
+
+
+
+##### 1、必填项规则
+
+比如前面提到的姓名，这个肯定是要填写的，否则不知道你是谁，那其他信息写得再多也没有意义对吧。
+
+这里用到了一个关键字 `required` ，意为必填项，取值 `true` 或 `false` 。
+
+```
+ruleValidate: {
+  name: [
+    { required: true, message: '姓名不可为空', trigger: 'blur' }
+  ],
+}
+```
+
+图？
+
+
+
+##### 2、数字类型规则
+
+当用户填写类似于电话号码这样的内容时，你肯定希望他们能自觉输入数字，因为很显然电话号码是一堆数字。
+
+但是即使用户不想输入其他的字符，也有可能因为他们天天996而一时昏了头给你输了几个英文字母。
+
+因此你可以按如下例子能帮他们一把就帮他们一把。
+
+```
+ruleValidate: {
+  phonenumber: [
+    {
+      type: "number",
+      message: "电话号码只能包含数字",
+      trigger: "blur",
+      transform: (value) => {
+        return value || value === 0 ? Number(value) : ""; // 转为数字
+      },
+    },
+  ],
+}
+```
+
+
+
+从上面的代码中可以看出来，仅仅简单地将规则类型 `type` 设定为 `number` 是无法过滤非数字输入的。
+
+图？
+
+
+
+##### 3、日期时间类型规则
+
+日期时间很明显不同于其他类型，它有它自身的格式规范和一定的取值范围。
+
+在这里需要注意的是，有 `date` 类型，但并没有 `time` 类型，所以只好使用正则来补充了。
+
+```
+date: [
+  { required: true, type: 'date', message: '请注意日期格式哦~', trigger: 'change' }
+],
+time: [
+  { type: 'string',
+    pattern: /^(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/,
+    message: '请注意时间格式哦~',
+    trigger: 'change'
+  }
+],
+```
+
+
+
+##### 4、邮件类型规则
+
+电子邮件有默认的规则类型 `email` ，可以直接拿来用，挺爽的。
+
+```
+ruleValidate: {
+  mail: [
+  	{ type: 'email', message: '邮箱地址格式有点儿怪怪的~', trigger: 'blur' }
+  ],
+}
+```
+
+
+
+##### 5、URL类型规则
+
+除电子邮件外还有一个可以直接拿来用的规则类型 `url` 。
+
+不过在实际输入时似乎需要用户一定要输入 `url` 前缀，比如 `http(s)://` 等等之类的形式。
+
+```
+ruleValidate: {
+  url: [
+  	{ type: 'url', message: '个人主页请以 "http(s)://域名" 的形式填写吧~', trigger: 'blur' },
+  ],
+}
+```
+
+
+
+##### 6、多选数组类型规则
+
+比如勾选你喜欢的明星，规则限制你只能至少挑一个或最多挑三个。
+
+这时就要用到类型 `array` ，同时设定最小值 `min` 等于1，最大值 `max` 等于3。
+
+```
+ruleValidate: {
+	idol: [
+		{ type: 'array', min: 1, message: '亲，最少选择一个~', trigger: 'change' },
+		{ type: 'array', max: 3, message: '亲，最多选择三个~', trigger: 'change' }
+	],
+}
+```
+
+
+
+##### 7、利用正则表达式自定义规则
+
+在实际输入时总会有一些比较复杂的情况出现，通常就不会是如单纯的数字或日期那么简单了。
+
+那么这个时候就可以利用正则表达式来实现比较复杂的输入规则校验。
+
+以我们日常常见的身份证输入来说，身份证应该是除最后一位可能是X外其他都由数字15或17或18位数字组成。
+
+只要将这些规则写成正则表达式，放到 `pattern` 关键字后面即可。
+
+```
+ruleValidate: {
+  identity: [
+	{
+	  type: 'string',
+	  pattern: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
+	  message: "身份证号码只能包含15、17或18位数字，且最后一位可能为X~",
+	  trigger: 'blur',
+	},
+  ],
+}
+```
+
+图？
+
+
+
+### 三、提交整体验证
+
+##### 1、首先在按钮上绑定方法
+
+提交按钮绑定方法：`handleSubmit('formValidate')`
+
+重置按钮绑定方法：`handleReset('formValidate')`
+
+```
+<Form>
+  <FormItem>
+    <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
+    <Button @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+  </FormItem>
+</Form>
+```
+
+
+
+##### 2、其次在 `methods` 中设定方法来判定是否校验OK
+
+这里要十分注意一点，`Form` 标签中的 `ref` 值一定要和方法参数保持一致。
+
+比如本例的 `ref="formValidate"` 和方法 `handleSubmit('formValidate')` ，前者的值和后者的参数是一致的。
+
+```
+methods: {
+  // 提交校验
+  handleSubmit (name) {
+	this.$refs[name].validate((valid) => {
+	  if (valid) {
+		this.$Message.success('不容易啊，校验成功了！');
+		
+		...... // 接着干点啥都行~
+		
+	  } else {
+		this.$Message.error('怎么肥四？校验失败！');
+	  }
+	})
+  },
+  // 重置所有输入
+  handleReset (name) {
+	this.$refs[name].resetFields();
+  }
+}
+```
+
+
+
+
+
+
+
+### 最后收尾
+
+以上即是我关于表单校验的一些粗略总结。
+
+如果你使用过 `View UI` 这套组件，那应该知道其实它已经有很多丰富的输入型组件，比如文本框、日期框等等。
+
+这些组件已经为我们很好地过滤了一些用户的不合理输入，但细化到更详细的规则要求，那么本文的表单校验就变得非常有意义了。
+
+另外活用正则表达式，可以让你秒变超人，它给我的感觉就好像是万能的。
+
+不过也要注意其校验规则的类型，它并不一定很作用，前文也有提到，要小心。
+
+好了，就说这么多吧，说多了你也记不住，学习是个漫长的过程对吧，不要急于一时。
+
+请小伙伴们有什么想说的，评论区走起，素质三连，谢谢啦！
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+**网管小贾的博客 / www.sysadm.cc**
