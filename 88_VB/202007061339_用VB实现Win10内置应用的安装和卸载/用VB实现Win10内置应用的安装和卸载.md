@@ -140,7 +140,7 @@ Get-AppxPackage -AllUsers| Foreach {Add-AppxPackage -DisableDevelopmentMode -Reg
 
 
 
-放出下载链接：https://o8.cn/8av01r 密码：jxib
+放出下载链接：https://www.90pan.com/b1995420 提取码：jxib
 
 如需源码，请关注我的公众号并留言给我。
 
