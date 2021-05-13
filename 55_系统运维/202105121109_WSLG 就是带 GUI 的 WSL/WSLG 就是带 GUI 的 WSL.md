@@ -226,6 +226,24 @@ dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norest
 
 
 
+先下载 Linux 子系统独立安装文件，然后择机安装，方便快捷。
+
+https://docs.microsoft.com/en-us/windows/wsl/install-manual
+
+例举 Ubuntu 熟练下载链接：
+
+`Ubuntu 20.04` https://aka.ms/wslubuntu2004
+
+`Ubuntu 18.04` https://aka.ms/wsl-ubuntu-1804
+
+下载后在 `PowerShell` 中打条命令就可以快速本地安装。
+
+```
+# 命令基本格式 Add-AppxPackage .\app_name.appx
+# 例如安装 C:\sysadm.cc 中的 wsl-ubuntu-1804
+Add-AppxPackage C:\sysadm.cc\wsl-ubuntu-1804
+```
+
 
 
 
