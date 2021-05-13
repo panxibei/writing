@@ -207,11 +207,11 @@ wsl --update
 
 ### 五、一些注意事项
 
-不能在虚拟机上直接尝试 `WSL2` ，因为它需要虚拟化支持。
+1、不能在虚拟机上直接尝试使用 `WSLg` ，似乎还不支持，反正我没有成功。
 
 
 
-手动安装所需组件。
+2、手动安装 `WSL` 所需组件，这些是不需要联网的。
 
 ```powershell
 # 启用适用于 Linux 的 Windows 子系统
@@ -226,7 +226,7 @@ dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norest
 
 
 
-先下载 Linux 子系统独立安装文件，然后择机安装，方便快捷。
+3、先下载 Linux 子系统独立安装文件，然后择机安装，方便快捷。
 
 https://docs.microsoft.com/en-us/windows/wsl/install-manual
 
@@ -250,44 +250,36 @@ Add-AppxPackage C:\sysadm.cc\wsl-ubuntu-1804
 
 ### 最后结语
 
+即使 `WSLg` 目前仍处于测试阶段，但个人感觉效果还是挺不错的，在不久的将来会很快发布到新的正式版本中。
 
+根据官网文档说明，现在已经有很多图形软件被支持。
 
+其中比较有意思的是，你还可以在 `Ubuntu` 上安装 `Microsoft-Edge` 浏览器。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```shell
-# 备份 ubuntu 默认官方源
-sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-# 新建国内自定义源
-sudo vi /etc/apt/sources.list
+```
+## Microsoft Edge Browser
+sudo curl https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/microsoft-edge-dev_91.0.852.0-1_amd64.deb -o /tmp/edge.deb
+sudo apt install /tmp/edge.deb -y
 ```
 
 
 
-```shell
-sudo apt-get update
-```
+为什么说它比较有意思呢？
+
+有的小伙伴可能会说，我 `Windows` 上都有 `Edge` 了，干吗还要脱裤子放屁费二遍事在 `Linux` 子系统上再安一个呢？
+
+其实不然，我想它的应该是出于 `Linux` 系统上测试的目的，直接在 `Windows` 上就可以做到测试 `Linux` 程序，这么牛掰难道它不香吗？
+
+说到这儿，网上有些小伙伴不得不发出感叹，在未来我们到底会用到一个什么样的系统呢？
+
+Linux 里有 Windows 程序，亦或是 Windows 里有 Linux 程序？
+
+估计此时此刻又有众多小伙伴正在摇旗呐喊、齐声欢呼，伟大而崭新的 `Winux` 系统或将诞生！
 
 
 
-```
-sudo apt-get install gedit
-```
+**扫码关注@网管小贾，阅读更多**
 
+**网管小贾的博客 / www.sysadm.cc**
 
 
