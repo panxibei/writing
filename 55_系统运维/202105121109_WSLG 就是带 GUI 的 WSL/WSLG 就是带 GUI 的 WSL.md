@@ -242,6 +242,24 @@ https://docs.microsoft.com/en-us/windows/wsl/install-manual
 
 `Ubuntu 18.04` https://aka.ms/wsl-ubuntu-1804
 
+
+
+`Ubuntu 20.04`
+
+链接：https://pan.baidu.com/s/13JSInkNVBX2xIL6gLrNlZw
+
+提取码：4gdi
+
+
+
+`Ubuntu 18.04`
+
+链接：https://pan.baidu.com/s/1k6qFBcABOvrblsle6HZIqg
+
+提取码：est7
+
+
+
 下载后在 `PowerShell` 中打条命令就可以快速本地安装。
 
 ```
