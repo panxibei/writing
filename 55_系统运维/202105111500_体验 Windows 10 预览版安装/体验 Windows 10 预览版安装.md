@@ -191,9 +191,9 @@ Windows Registry Editor Version 5.00
 
 **AllowTelemetry.7z (29KB)**
 
-下载链接：
+下载链接：https://www.90pan.com/b2546184
 
-
+提取码：1eb2
 
 执行完毕后不需要重启电脑，再次打开 `Windows 预览体验计划` 后你就能继续安装预览版的进程了。
 
