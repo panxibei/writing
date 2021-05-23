@@ -258,7 +258,7 @@ https://openlitespeed.org/kb/install-ols-from-litespeed-repositories/
 
 我们采用安装源的方式来安装 `MariaDB` ，打开官网来到下载页面，在其中选择好相应平台及所需版本，按给出的信息保存安装源文件。
 
-我们要在 `CentOS 7` 上安装 `MariaDB 10.5` ，所以将以下内容保存到 `/etc/yum.repo.d/MariaDB.repo` 。
+我们要在 `CentOS 7` 上安装 `MariaDB 10.5` ，所以将以下内容保存到 `/etc/yum.repos.d/MariaDB.repo` 。
 
 ```
 # MariaDB 10.5 CentOS repository list - created 2021-02-21 04:48 UTC
@@ -276,7 +276,7 @@ gpgcheck=1
 
 什么，你问我怎么保存？
 
-好吧，我晓得你懒，你下载这个，解压缩后放到 `/etc/yum.repo.d/` 目录下就可以了。
+好吧，我晓得你懒，你下载这个，解压缩后放到 `/etc/yum.repos.d/` 目录下就可以了。
 
 **MariaDB.repo.zip (1K)**
 
