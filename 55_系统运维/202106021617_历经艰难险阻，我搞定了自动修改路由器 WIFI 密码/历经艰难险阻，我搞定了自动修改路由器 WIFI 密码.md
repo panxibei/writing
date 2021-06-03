@@ -2,7 +2,7 @@
 
 副标题：宝宝再也不怕被蹭网了~
 
-英文：
+英文：after-a-lot-of-difficulties-i-resolved-issue-to-change-wifi-password-of-router-automatically
 
 关键字：tplink,wifi,router,路由器,密码
 
@@ -41,6 +41,8 @@
 于是我找来一台旧版管理页面的 `Tp-link` 路由器（型号 TL-WR880N），就它了！
 
 
+
+### 组织代码，编写程序
 
 首先，我们要搞定自动登录。
 
@@ -443,15 +445,162 @@ parent.frames.bottomLeftFrame.document.getElementById('a9').click();
 
 就是说，我想将某些信息保存到本地文件中，但这实现不了。
 
-所以说，只能是一个程序跑到底，让这个变量永远不丢弃。
+所以说，只能是一次程序跑到底，让这个变量永远保存到内存中不丢弃。
+
+这也是前面不让页面重新加载的另一个原因。
 
 
 
+### 完整代码示例
+
+有了算法，再加上前面杂七杂八，终于第一版的代码形成了。
 
 
 
+```javascript
+// ==UserScript==
+// @name         定时修改路由器 WIFI 密码
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  关注@网管小贾公众号 / www.sysadm.cc
+// @author       @网管小贾
+// @match        http://172.22.15.213/
+// @icon         https://www.google.com/s2/favicons?domain=15.213
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Your code here...
+
+    //页面完全加载后运行
+	window.onload=function autorun() {
+		
+		console.log('页面加载完毕，可以执行代码！！');
+
+		Date.prototype.Format = function (fmt) {
+			let o = {
+				"M+": this.getMonth() + 1, //月份
+				"d+": this.getDate(), //日
+				"h+": this.getHours(), //小时
+				"m+": this.getMinutes(), //分
+				"s+": this.getSeconds(), //秒
+				"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+				"S": this.getMilliseconds() //毫秒
+			};
+			if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+			for (let k in o) {
+				if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+			}
+			return fmt;
+		};
+		
+        var currentDate = (new Date()).Format("yyyyMMdd");
+        var checkDate = '';
+		
+		function changeWifi() {
+			
+			currentDate = (new Date()).Format("yyyyMMdd");
+
+			if (currentDate != checkDate) {
+				console.log('Different! - currentDate: ' + currentDate + ' | checkDate: ' + checkDate);
+
+				setTimeout(function() {
+					try {
+						// 登录
+						document.getElementById('pcPassword').value = '123456';
+						document.getElementById('loginBtn').click();
+					}
+					catch (e) {
+					}
+
+					setTimeout(function() {
+						try {
+							// 跳转至修改 WIFI 密码页面
+							parent.frames.bottomLeftFrame.document.getElementById('a9').click();
+						}
+						catch (e) {
+						}
+
+						currentDate = (new Date()).Format("yyyyMMdd");
+
+						setTimeout(function() {
+							
+							try {
+								// 修改 WIFI 密码
+								parent.frames.mainFrame.document.getElementById('pskSecret').value = 'Sysadm' + currentDate;
+								// 保存
+								parent.frames.mainFrame.document.getElementById('Save').click();
+
+								setTimeout(function() {
+									// 跳转至重启页面
+									parent.frames.bottomLeftFrame.document.getElementById('a44').click();
+
+									setTimeout(function() {
+										// 修改重启提示为 true
+										parent.frames.mainFrame.document.getElementsByTagName("form")[0].onsubmit=true;
+										checkDate = currentDate;
+										// 确认重启
+										parent.frames.mainFrame.document.getElementById('reboot').click();
+
+										setTimeout(function() {
+											// 跳转到其他页面，以防真的重启而导致刷新页面重新加载JS
+											parent.frames.bottomLeftFrame.document.getElementById('a9').click();
+										}, 1000);
+										
+									}, 1000);
+
+								}, 1000);
+							
+							}
+							catch (e) {
+							}
+
+						}, 1000);
+
+					}, 1000);
+
+				}, 2000);
+		
+			} else {
+				console.log('Same! - currentDate: ' + currentDate + ' | checkDate: ' + checkDate);
+			}
+		}
+		var myVar;
+		myVar = setInterval(changeWifi, 1 * 10 * 1000);
+        // console.log(myVar);
+	}
+
+})();
+```
 
 
 
+代码中，默认登录密码是 `123456` ，修改的 `WIFI` 密码是 `前缀 Sysadm + 当前日期` 。
+
+程序每 10 秒循环执行一次。
+
+同时判断当前日期 `currentDate`  与 检查日期 `checkDate` 是否一致。
+
+如果两者一致，则跳过待机，如果不一致，则修改密码。
 
 
+
+### 写在最后
+
+经过几天的测试，其效果基本可以做到自动修改为当天的密码，高效拉风、省时省力！
+
+本文测试所用 `Tp-link` 路由器为常见家用式路由器，管理网页界面为旧版风格。
+
+如果你用的就是这个旧版式风格的网页管理，就可以直接拿来测试使用。
+
+有机会我还会做一篇新版风格界面的相关文章。
+
+本文涉及的坑点比较多，故囿于语言组织能力，表述上可能有所不准，请小伙伴海涵！
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+**网管小贾的博客 / www.sysadm.cc**
