@@ -499,10 +499,11 @@ parent.frames.bottomLeftFrame.document.getElementById('a9').click();
 
 ```javascript
 // ==UserScript==
+// TP-Link 路由器 型号 TL-WR880N 测试通过
 // @name         定时修改路由器 WIFI 密码
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  关注@网管小贾公众号 / www.sysadm.cc
+// @description  网管小贾的博客 / www.sysadm.cc
 // @author       @网管小贾
 // @match        http://192.168.1.1/
 // @icon         https://www.google.com/s2/favicons?domain=15.213
@@ -617,7 +618,7 @@ parent.frames.bottomLeftFrame.document.getElementById('a9').click();
 
 
 
-代码中，默认登录密码是 `123456` ，修改的 `WIFI` 密码是 `前缀 Sysadm + 当前日期` 。
+代码中，默认管理员登录密码是 `123456` ，修改的 `WIFI` 密码是 `前缀 Sysadm + 当前日期` 。
 
 程序每 10 秒循环执行一次。
 
@@ -625,19 +626,35 @@ parent.frames.bottomLeftFrame.document.getElementById('a9').click();
 
 如果两者一致，则跳过待机，如果不一致，则修改密码。
 
+本程序代码在`Tp-link` 路由器（型号 `TL-WR880N` ）上测试通过。
+
+
+
+完整 JS 代码下载：
+
+**定时修改路由器 WIFI 密码.7z (29.5K)**
+
+下载链接：
+
+
+
 
 
 ### 写在最后
 
-经过几天的测试，其效果基本可以做到自动修改为当天的密码，高效拉风、省时省力！
+经过几天的测试，其效果基本上可以做到自动修改为当天的密码，程序高效、外貌拉风、省时省力，值得拥有！
 
 本文测试所用 `Tp-link` 路由器为常见家用式路由器，管理网页界面为旧版风格。
 
 如果你用的就是这个旧版式风格的网页管理，就可以直接拿来测试使用。
 
-有机会我还会做一篇新版风格界面的相关文章。
+当然，有机会我还会做一篇新版风格界面的相关文章。
 
-本文涉及的坑点比较多，故囿于语言组织能力，表述上可能有所不准，请小伙伴海涵！
+此外如果你是其他品牌的路由器，也可以利用本文的思路来定制适合自己品牌和型号路由器的程序代码，从而实现最终想要的效果。
+
+本文涉及的坑点比较多，故囿于语言组织能力，表述上可能有言不达意之处，还请小伙伴们海涵！
+
+希望小伙伴们积极关注我，多多点赞转发，多多批评指教！
 
 
 
