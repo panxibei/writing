@@ -647,6 +647,10 @@ parent.frames.bottomLeftFrame.document.getElementById('a9').click();
 
 
 
+**最终效果动图演示：**
+
+图17.gif
+
 
 
 ### 写在最后
