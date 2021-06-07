@@ -24,15 +24,197 @@ Rocky Linux，一款最有希望替代 CentOS 的 Linux 发行版
 
 
 
-Rocky Linux
+其实也不用太担心，天塌了有个高的顶着。
+
+互联网上大神太多了，这不在 `CentOS` 创始人 Gregory Kurtzer 的领导下，我们又迎来了一个新的社区。
+
+没错，大神们给我们带来一个新的项目 `Rocky Linux` 。
+
+这个新项目正是为接替 `CentOS` 而生！
+
+> 官方链接：https://rockylinux.org/
+
+
+
+最初社区建立时，还只是停留在讨论阶段，但最近好消息来了，社区已经放出了测试版本。
+
+只怨我不怎么逛，记得上一个星期还是 `8.3` ，现在最新版本已经出到了 `8.4` 。
+
+我抽空下载安装了一下，小伙伴们一起来瞧瞧吧！
+
+
+
+### 下载
+
+我们首先来到 `Rocky Linux` 的下载页面。
+
+官方放出了两种平台的镜像下载，分别是 `x86_64` 和 `ARM64` 。
+
+通常我们应该选择 `x86_64` ，如果你有 `ARM` 平台系统，那么你应该选择 `ARM64` 。
+
+图1
+
+
+
+按照以往的习惯，我一直是使用 `Minimal` 版本，因为小巧同时也不需要那么多包。
+
+不过 `Rocky Linux` 此处的 `Minimal` 版本的镜像大小是 1.8 GB，而 `DVD` 版本镜像大小是 9.3 GB。
+
+我的天呐，都这么庞大吗？！
+
+好吧，就选 `Minimal` 吧，已经最小了不是吗？
+
+
+
+### 安装
+
+和 `CentOS` 的安装几乎没什么两样，类似的界面，类似的步骤。
+
+从镜像光盘启动，选择 `Install Rocky Linux 8` 。
+
+图2
+
+
+
+默认语言选择英文，如果你想要安装桌面应用，也可以考虑用中文。
+
+图3
+
+
+
+各类安装选项界面，它将 `root` 用户及普通用户的密码设置都统一放在这里了。
+
+图4
+
+
+
+设置好各选项后开始安装，直至整个过程结束。
+
+图5
+
+图6
+
+
+
+我之前刚刚安装过 `8.3` ，和这次不同的是， `8.3` 明显是测试版本。
+
+你瞧，安装一开始就告诉你这是非稳定版本。
+
+图7
+
+
+
+安装过程中也提示这是测试版。
+
+图8
+
+
+
+等安装完成后启动，系统也很显眼地提示，这是测试版不要用于生产环境。
+
+图9
+
+
+
+怎么感觉现在安装的 `8.4` 版本已经没有了这些警告和提示信息了呢？
+
+难道这个是正式稳定版了？
+
+没想到还真是的，哈哈，我找到了 `Rocky Linux` 中文社区的更新文章，上面有提到计划正式版本的发布。
+
+图10
+
+
+
+### 启动
+
+熟悉的味道，熟悉的配方，只是开机启动项的内核版本是 `4.18` 。
+
+图？
+
+
+
+启动完毕并登录，并没有提示是测试版，难道这一版本是正式版了？
+
+图？
 
 
 
 
 
-Minimal 版本 1.8 GB
 
-DVD 版本 9.3 GB
 
-我的天呐，这么庞大吗？！
+
+
+### 切换更新源
+
+目前为止国内已经有很多大学提供 `Rocky Linux`  更新源了。
+
+> 官方镜像链接：https://mirror.rockylinux.org/mirrormanager/mirrors
+
+
+
+我们单独拿上海交大的更新源举例。
+
+```
+# 切换为上海交通大学的更新源
+sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.sjtug.sjtu.edu.cn/rocky|g' \
+    -i.bak \
+    /etc/yum.repos.d/Rocky-*.repo
+
+# 生成缓存
+dnf makecache
+```
+
+图？
+
+
+
+如要恢复官方默认源，可以这样。
+
+```
+# 恢复默认源
+sed -e 's|^#mirrorlist=|mirrorlist=|g' \
+    -e 's|^baseurl=https://mirrors.sjtug.sjtu.edu.cn/rocky|#baseurl=http://dl.rockylinux.org/$contentdir|g' \
+    -i.bak \
+    /etc/yum.repos.d/Rocky-*.repo
+
+# 生成缓存
+dnf makecache
+```
+
+
+
+### 与 CentOS 有啥不一样
+
+网上有网友说，`Rocky Linux` 的网络服务名称变了，以前还有 `network` 字样的命令已经不能用了。
+
+```
+# 这样用已经不行了
+systemctl status network
+```
+
+图？
+
+
+
+取而代之的应该用 `NetworkManager` ，比如：
+
+```
+# 用 NetworkManager 就可以
+systemctl status NetworkManager
+```
+
+图？
+
+
+
+因为还没有实际运用，上手的时间也不长，所以还没有发现有什么大的不同之处。
+
+其他异同有待日后真正地去运用它才能了解，我会注意比较、收集和整理，到时候分享给小伙伴们。
+
+
+
+### 写在最后
 
