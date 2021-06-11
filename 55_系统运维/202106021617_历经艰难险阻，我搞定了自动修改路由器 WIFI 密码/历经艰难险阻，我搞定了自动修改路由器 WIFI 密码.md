@@ -569,57 +569,82 @@ parent.frames.bottomLeftFrame.document.getElementById('a9').click();
 						try {
 							// 跳转至修改 WIFI 密码页面
 							parent.frames.bottomLeftFrame.document.getElementById('a9').click();
-						}
-						catch (e) {
-						}
 
-						currentDate = (new Date()).Format("yyyyMMdd");
+							currentDate = (new Date()).Format("yyyyMMdd");
 
-						setTimeout(function() {
-							
-							try {
-								// 修改 WIFI 密码
-								parent.frames.mainFrame.document.getElementById('pskSecret').value = 'Sysadm' + currentDate;
-								// 保存
-								parent.frames.mainFrame.document.getElementById('Save').click();
-
-								setTimeout(function() {
-									// 跳转至重启页面
-									parent.frames.bottomLeftFrame.document.getElementById('a44').click();
-
-									setTimeout(function() {
-										// 修改重启提示为 true
-										parent.frames.mainFrame.document.getElementsByTagName("form")[0].onsubmit=true;
-										checkDate = currentDate;
-										// 确认重启
-										parent.frames.mainFrame.document.getElementById('reboot').click();
+							setTimeout(function() {
+								
+								try {
+									// 避免重复修改
+									if (parent.frames.mainFrame.document.getElementById('pskSecret').value != 'Sysadm' + currentDate) {
+										
+										// 修改 WIFI 密码
+										parent.frames.mainFrame.document.getElementById('pskSecret').value = 'Sysadm' + currentDate;
+										// 保存
+										parent.frames.mainFrame.document.getElementById('Save').click();
 
 										setTimeout(function() {
-											// 跳转到其他页面，以防真的重启而导致刷新页面重新加载JS
-											parent.frames.bottomLeftFrame.document.getElementById('a9').click();
+											try {
+												// 跳转至重启页面
+												parent.frames.bottomLeftFrame.document.getElementById('a44').click();
+
+												setTimeout(function() {
+													try {
+														// 修改重启提示为 true
+														parent.frames.mainFrame.document.getElementsByTagName("form")[0].onsubmit = true;
+														
+														// 确认重启
+														parent.frames.mainFrame.document.getElementById('reboot').click();
+
+														setTimeout(function() {
+															// 跳转到其他页面，以防真的重启而导致刷新页面重新加载JS
+															parent.frames.bottomLeftFrame.document.getElementById('a9').click();
+															checkDate = currentDate;
+														}, 1000);
+													
+													}
+													catch (e) {
+														checkDate = '';
+													}
+													
+												}, 1000);
+												
+											}
+											catch (e) {
+												checkDate = '';
+											}
+
 										}, 1000);
-										
-									}, 1000);
+									
+									}
+								
+								}
+								catch (e) {
+									checkDate = '';
+								}
 
-								}, 1000);
-							
-							}
-							catch (e) {
-							}
+							}, 1000);
+						
+						}
+						catch (e) {
+							checkDate = '';
+						}
 
-						}, 1000);
 
 					}, 1000);
 
 				}, 2000);
-		
+				
 			} else {
 				console.log('Same! - currentDate: ' + currentDate + ' | checkDate: ' + checkDate);
 			}
+
 		}
+
 		var myVar;
 		myVar = setInterval(changeWifi, 1 * 10 * 1000);
         // console.log(myVar);
+
 	}
 
 })();
