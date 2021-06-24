@@ -526,6 +526,84 @@ SSMS 客户端安装需要 `Net Framework 4.7.2` ，想要速度快些，可以�
 
 
 
+### 配置证书用于生成数据库可用性端点（非域环境）
+
+在域环境下，端点之间通讯可以依域信息来验证身份，所以不需要额外添加证书来证明各自的身份。
+
+而在非域环境下，端点之间的通讯就要依靠证书来验证身份了。
+
+本例中有两个节点服务器，所以就要在各自的节点上生成证书，然后交换后再各自导入对方的证书。
+
+生成并导入证书这一系列的操作要用到 `SSMS` ，所以我们先打开它，再按下面的脚本操作即可。
+
+
+
+##### 1、生成证书
+
+
+
+```
+USE master;
+
+GO
+
+-- 创建主密钥
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = '12345678';
+
+-- 创建证书，证书名称为 CERT_XXX，每个节点证书名不可相同
+CREATE CERTIFICATE CERT_XXX WITH SUBJECT = 'CERT_XXX', START_DATE = '2021-01-01', EXPIRY_DATE = '2099-12-30';
+
+-- 将证书备份到文件
+BACKUP CERTIFICATE CERT_XXX TO FILE = 'C:\CERT\CERT_XXX.CER';
+
+-- 根据证书创建端点 ag1_endpoint ，所有端点名称最好保持一致
+CREATE ENDPOINT [ag1_endpoint] AUTHORIZATION [sa] STATE=STARTED AS TCP (LISTENER_PORT = 5022, LISTENER_IP = ALL)
+FOR DATA_MIRRORING (ROLE = ALL,AUTHENTICATION = CERTIFICATE CERT_XXX, ENCRYPTION = REQUIRED ALGORITHM AES)
+
+GO
+```
+
+
+
+##### 2、删除证书
+
+如果操作失误，比如证书名称输错了想重新来过，那么就要先删除原先的证书。
+
+```
+-- 删除端点
+DROP ENDPOINT [ag1_endpoint]
+
+--删除证书
+DROP CERTIFICATE CERT_XXX
+
+--删除主密钥
+DROP MASTER KEY
+```
+
+
+
+##### 3、载入其他节点证书
+
+切记先将除自身以外的其他节点的证书文件复制过来，然后再使用以下脚本逐一导入。
+
+```
+USE master;
+
+GO
+
+-- 载入其它节点证书
+CREATE CERTIFICATE CERT_YYY
+FROM FILE = 'C:\CERT\CERT_YYY.CER';
+
+GO
+```
+
+
+
+证书生成并成功导入后，我们在创建 Alwasy On 可用性组或添加副本时就可以看到相应的端点名称。
+
+图6_01
+
 
 
 ### 创建 SQL Server 的 Always On 可用性组
