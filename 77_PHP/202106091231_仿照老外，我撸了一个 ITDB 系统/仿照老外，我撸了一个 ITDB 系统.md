@@ -216,7 +216,7 @@
 
 # 本文链接
 
-https://www.sysadm.cc/
+https://www.sysadm.cc/index.php/webxuexi/843-imitating-foreigner-i-built-an-it-item-database-system
 
 
 
@@ -311,10 +311,10 @@ APP_KEY=base64:WGXJiHq22RcETV5xbxYNHxo8PLyBctQ6wCLPeaiQ0X8=
 亦可使用以下 SQL 参数语句。
 
 ```sql
-	USE XJITDB;
-	UPDATE configs
-	  SET cfg_value = 'WGXJiHq22RcETV5xbxYNHxo8PLyBctQ6wCLPeaiQ0X8='
-	  WHERE cfg_name = 'SITE_KEY';
+USE XJITDB;
+UPDATE configs
+  SET cfg_value = 'WGXJiHq22RcETV5xbxYNHxo8PLyBctQ6wCLPeaiQ0X8='
+  WHERE cfg_name = 'SITE_KEY';
 ```
 
 
@@ -332,10 +332,10 @@ APP_KEY=base64:WGXJiHq22RcETV5xbxYNHxo8PLyBctQ6wCLPeaiQ0X8=
 亦可使用以下 SQL 参数语句。
 
 ```sql
-	USE XJITDB;
-	UPDATE configs
-	  SET cfg_value = 'WGXJiHq22RcETV5xbxYNHxo8PLyBctQ6wCLPeaiQ0X8='
-	  WHERE cfg_name = 'SITE_EXPIRED_DATE';
+USE XJITDB;
+UPDATE configs
+  SET cfg_value = 'WGXJiHq22RcETV5xbxYNHxo8PLyBctQ6wCLPeaiQ0X8='
+  WHERE cfg_name = 'SITE_EXPIRED_DATE';
 ```
 
 
