@@ -1,0 +1,35 @@
+<Map user="admin_aota" pc="A00603">
+  <Devices>
+    <Device id="1" name="A89230（SQL Server 节点一）" address="192.168.89.230" type-id="Database server" x="124" y="264" scale="2" show-status="true" />
+    <Device id="2" name="A89231（SQL Server 节点二）" address="192.168.89.231" type-id="Database server" x="496" y="264" scale="2" />
+    <Device id="3" name="A89220（AD服务器）" address="192.168.89.220" type-id="Server" x="232" y="84" scale="1.5">
+      <Description><![CDATA[AD]]></Description>
+    </Device>
+    <Device id="5" name="A89219（共享服务器）" address="192.168.89.219" type-id="Server" x="412" y="84" scale="1.5" />
+    <Device id="6" name="" type-id="Shared resource" x="452" y="116" />
+    <Device id="7" name="" type-id="Switch" x="324" y="232" />
+  </Devices>
+  <Lines>
+    <Line nodes="344 232 272 164" />
+    <Line nodes="420 172 360 232" />
+    <Line nodes="340 248 196 284" />
+    <Line nodes="356 248 504 280" />
+  </Lines>
+  <Textes>
+    <Text id="1" x="260" y="296" width="32" height="8" color="White">
+      <Description><![CDATA[[font face=宋体]<---- 1.连接 ---
+<--- 2.请求数据 ---
+ --- 3.运行LogScanner --->
+<--- 5.反馈进度 ---]]></Description>
+    </Text>
+    <Text id="2" x="480" y="408" width="132" height="8" color="White">
+      <Description><![CDATA[[font face=宋体]4.固化和重做日志]]></Description>
+    </Text>
+    <Text id="3" x="96" y="404" width="172" height="8" color="White">
+      <Description><![CDATA[3[font face=宋体].运行 [font face=Microsoft Sans Serif]Log Scanner]]></Description>
+    </Text>
+  </Textes>
+  <Layers>
+    <Layer id="0" name="Layer 1" />
+  </Layers>
+</Map>
