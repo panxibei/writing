@@ -1,0 +1,8 @@
+-- 删除端点
+DROP ENDPOINT [ag1_endpoint]
+
+--删除证书
+DROP CERTIFICATE CERT_XXX
+
+--删除主密钥
+DROP MASTER KEY

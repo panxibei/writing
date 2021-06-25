@@ -1,0 +1,9 @@
+USE master;
+
+GO
+
+-- 载入其它节点证书
+CREATE CERTIFICATE CERT_YYY
+FROM FILE = 'C:\CERT\CERT_YYY.CER';
+
+GO

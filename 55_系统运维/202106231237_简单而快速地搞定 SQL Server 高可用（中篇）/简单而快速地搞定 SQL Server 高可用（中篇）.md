@@ -387,6 +387,14 @@ GO
 
 
 
+**以上证书生成导入脚本下载：**
+
+下载链接：https://pan.baidu.com/s/1LmBitugDmnF8cwZ4LFgLJA
+
+提取码：92du
+
+
+
 证书生成并成功导入后，我们在创建 `Alwasy On` 可用性组或添加副本节点时就可以看到相应的端点名称了。
 
 图29
