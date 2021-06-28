@@ -50,9 +50,11 @@ Windows 11 ？
 
 好在现在修复了，如果怕再有问题，也可以在这里下载。
 
-**WindowsPCHealthCheckSetup.msi**
+**WindowsPCHealthCheckSetup.7z (3.36M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/15PK7YInsj89Jf5Qw_zq4dQ
+
+提取码：qpb0
 
 
 
