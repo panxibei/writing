@@ -1,6 +1,6 @@
 仿照老外，我撸了一个 ITDB 系统
 
-副标题：自制 IT 资产管理系统，不继完善中~
+副标题：自制 IT 资产管理系统，不断完善中~
 
 英文：imitating-foreigner-i-built-an-it-item-database-system
 
