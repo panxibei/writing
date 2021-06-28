@@ -4,7 +4,7 @@
 
 英文：tplink-router-how-to-change-wifi-password-automatically-everyday
 
-关键字：tplinke,router,wifi,password,change,ssid
+关键字：tplink,router,wifi,password,change,ssid
 
 
 
@@ -59,6 +59,8 @@ document.getElementById('lgPwd').value = '123456';
 // 按下确定登录按钮
 document.getElementById('loginSub').click();
 ```
+
+图2
 
 
 
@@ -195,9 +197,9 @@ document.getElementsByClassName('subBtn ok')[0].click();
 
 **完整代码下载：**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1rpV4vjiO8MmMUtmNDMQwDQ
 
-提取码：
+提取码：dal7
 
 
 
@@ -325,6 +327,10 @@ document.getElementsByClassName('subBtn ok')[0].click();
 })();
 ```
 
+
+
+**动态效果演示：**
+
 图7
 
 
@@ -345,6 +351,6 @@ document.getElementsByClassName('subBtn ok')[0].click();
 
 
 
-**扫码关注@网管小贾，阅读密码**
+**扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
