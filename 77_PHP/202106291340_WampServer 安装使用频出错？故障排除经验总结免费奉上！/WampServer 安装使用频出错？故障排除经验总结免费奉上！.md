@@ -1,26 +1,28 @@
-WampServer 安装出错了？故障排除集合免费奉上！
+WampServer 安装使用频出错？故障排除经验总结免费奉上！
 
 副标题：WampServer 小白特辑~
 
-英文：
+英文：troubleshooting-tips-after-installing-wampserver
 
-关键字：wamp,wampserver,php,web,apache,mysql,mariadb
+关键字：wamp,wampserver,php,web,apache,mysql,mariadb,check,problem,troubleshooting,tips
 
 
 
 众所周知，搞开发需要先搭建相应的编程和调试环境。
 
-对于 `PHPer` 来说，很多像我一样的新手小白们入门时的，通常会选择一些集成开发环境包，其中就有 `WampServer` 。
+对于 `PHPer` 来说，很多像我一样的新手小白们入门的时候，通常会选择一些集成开发环境包，其中就有 `WampServer` 。
 
-集成环境包被许多人所诟病，存在各种各样的问题，然后极力推荐 Linux 环境下开发。
+集成环境包被许多人所诟病，说它存在各种各样的问题，然后再极力推荐小白们尽量在 Linux 环境下开发。
 
-我作为有个几年经验的老菜鸟，很想说的是，集成包有集成包的好处，特别是对于刚入门的新手，大大简化了搭建环境的流程。
+我作为有个数十个月经验的老菜鸟，很想说的是，集成包有集成包的好处，特别是对于刚入门的新手，可以大大简化搭建环境的流程，以便尽快投入开发演习之中。
 
-而对于有一定经验的人来说，快速地建立一个测试用的开发环境，也是集成包的优势之一。
+而对于有一定经验的人来说，快速地建立一个测试用的开发环境，也是集成包的优势之一，并不是每个人都常用 Linux 的对吧。
 
-所以说，我们没有必要说一个好就说另一个坏，要看你用的场景，武器好与坏，关键要看你怎么用。
+所以说，我们没有必要说一个好就说另一个坏，要看你用的场景，武器好与坏、强与弱，关键要看你怎么用。
 
 
+
+之前我制作并打包了一个可以一键安装 `WampServer` 的批处理小程序，方便了不少新入门的小伙伴。
 
 > 前文参考：《WampServer最新版一键安装》
 >
@@ -28,23 +30,22 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 
 
-即便通过一键安装提高了不少效率，对于刚入门的小伙伴们也可能存在不少安装后遗症。
+可是即便通过一键安装提高了不少效率，但正是一些刚入门的小伙伴们，对于他们也可能存在不少安装后遗症。
 
-本文将就 WampServer 论坛上收集总结的关于故障排除的内容翻译成中文并增加一些具体的说明于此，以便为各位遇到困难的小伙伴们解惑。
+本文将就 `WampServer` 论坛上收集总结的关于故障排除的内容翻译成中文并增加了一些我个人经验性的具体说明于此，以便更进一步为各位遇到困难的小伙伴们解惑。
 
-需要注意的是，以下内容即使在你正式开始安装 WampServer 前，也是可以先来读上一读的，俗话说有备无患，只有好处没有坏处。
+需要特别注意的是，以下内容即使在你正式想开始安装 `WampServer` 之前，也是可以先读上一读的，俗话说有备而无患，只有好处没有坏处。
 
 
 
-安装完成后 `WampServer` 正常的先决条件
+**安装完成后 `WampServer` 运行正常的先决条件**
 
 * 任务栏中的 `WampServer` 图标正常情况下应该是绿色的。
+* 如果图标不是绿色的，那么这意味着 `Apache/PHP/MySQL/MariaDB` 这些服务中至少有一项未能正常启动。
 
 
 
-如果图标不是绿色的，那么这意味着 `Apache/PHP/MySQL/MariaDB` 这些服务中至少有一项未正常启动。
-
-那么接下来，让我们看看具体怎么处理问题。
+那么接下来，让我们看看具体怎么处理实际可能遇到的问题。
 
 
 
@@ -54,6 +55,8 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 如果还没开始升级，那么先看一遍是最佳选择。
 
+（如果想让我也翻译一下这个升级所需的内容，请关注并留言给我哦。）
+
 > http://forum.wampserver.com/read.php?2,123606
 
 
@@ -62,7 +65,7 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 必须以管理员身份安装 `WampServer` ，就是右键单击安装文件，然后从菜单中选择 `以管理员身份运行` 。
 
-墙裂建议将 `WampServer` 安装在分区的根目录，比如 `C:\Wamp` 或 `D:\Wamp` 之类），并且不要使用包含空格、特殊符号或中文之类的字符来做为文件夹名称，比如不要安装在 `C:\Program Files` 之类。
+墙裂建议将 `WampServer` 安装在分区的根目录，比如 `C:\Wamp` 或 `D:\Wamp` 之类），并且不要使用包含空格、特殊符号或中文之类的字符来做为文件夹名称，比如不要安装在类似 `C:\Program Files` 这样的文件夹路径中。
 
 
 
@@ -74,7 +77,7 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 图01
 
-在 Windows 8/8.1/10 平台上的APP版本的 `Skype` 可能无法直接更改此设置，因此可以先卸载 APP ，然后再下载安装后按前面的设置操作即可。
+在 Windows 8/8.1/10 平台上的 APP 版本的 `Skype` 可能无法直接更改此设置，因此可以先卸载 APP ，然后再下载安装后按前面的设置操作即可。
 
 
 
@@ -82,7 +85,7 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 如果 `WampServer` 图标不是绿色的，则表示至少有一项服务未启动成功。
 
-注意：从 `WampServer 3.0.7` 开始，一共有三个服务（Apache、MySQL 和 BariaDB），不再只有两个（Apache  和 MySQL）。
+注意：从 `WampServer 3.0.7` 开始，一共有三个服务（`Apache`、`MySQL` 和 `MariaDB`），不再只有两个（`Apache`  和 `MySQL`）。
 
 * 32 位版本：wampapache、wampmysqld 和 wampmariadb
 * 64 位版本：wampapache64、wampmysqld64 和 wampmariadb64
@@ -95,13 +98,13 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 方法二：右击 `WampManager` 图标，选择 `Tools` > `Check status of services` 。
 
-图a02
+图02
 
 
 
 可以看到，`wampapache64` 和 `wampmariadb64` 两个服务均已正常启动。
 
-图a03
+图03
 
 
 
@@ -137,7 +140,7 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 ### 0x08
 
-**你是否安装了 IIS ？**
+你是否安装了 IIS ？
 
 按不同的系统平台，可以这样来检查。
 
@@ -146,14 +149,14 @@ WampServer 安装出错了？故障排除集合免费奉上！
 
 
 
-**如何删除 IIS ？**
+如何删除 IIS ？
 
 * (XP/W7/W8) 取消选中：
   * Main Web Internet 服务实例 ( IIS)
   * 分支的所有项目: Internet services (IIS)
   * 分支的所有项目: Activation Windows service process
 
-图a04
+图04
 
 
 
@@ -161,7 +164,7 @@ WampServer 安装出错了？故障排除集合免费奉上！
   * Internet Information Services (IIS) 的主要实例 Web
   * 分支的所有项目：Internet Information Services
 
-图a05
+图05
 
 
 
@@ -521,37 +524,149 @@ https://wampserver.aviatechno.net/files/tools/check_vcredist.exe
 
 - 好吧，如果你真的没有做任何备份，那么你应该检查一下 MYSQL 日志中的相关信息，里面会建议一些可能的恢复机制。
 
-  亦或者，你只好自己阅读一下  [InnoDB Backup and Recovery](https://dev.mysql.com/doc/refman/5.6/en/innodb-backup.html) 。
+  亦或者，你只好自己阅读学习一下  [InnoDB Backup and Recovery](https://dev.mysql.com/doc/refman/5.6/en/innodb-backup.html) 。
 
   https://dev.mysql.com/doc/refman/5.6/en/innodb-backup.html
 
-- 为了减少这种情况发生的可能性，请确保您可以通过使用 wampmanager 菜单上的“退出”关闭 WAMPServer
-
-- - 右键单击 wampmanager -> 退出
-
-- 或停止使用 MYSQL 服务
-
-- - 左键单击 wampmanager ->
-在重新启动或关闭 WINDOWS 21之前停止所有服务-a为什么我需要在关闭 Windows 之前关闭 Wampserver 吗？
+- 为了减少这种耸人听闻的事情发生的可能性，请务必确保是使用 `wampmanager` 菜单上的“Exit”来退出 `WAMPServer` 的，或者通过菜单来停止使用 `MySQL` 服务。
 
 
-Wampserver 的“正常”关闭执行以下操作：
+
+另一个问题，为什么需要在关闭 Windows 之前关闭 `Wampserver` ？
+
+`Wampserver` 的“正常”关闭通常执行以下操作：
+
 - 停止 Apache 服务
 - 停止 MySQL 服务
 - 停止 mariaDB 服务
 
+
+
 当服务“正常”停止时会发生什么？
-- 对于 Apache：
-- 关闭 Apache 服务器
-- 关闭所有 Apache 进程
-- 关闭Apache的“子”服务器
 
-- 对于 MySQL 或 MariaDB
-- 清除队列。
--- Dumping buffer pool(s)
--- 删除临时表空间数据文件
--- Close MySQL server
+- 对于` Apache`：
+  - 关闭 `Apache` 服务器
+  - 关闭所有 `Apache` 进程
+  - 关闭 `Apache` 的子服务
 
-当Windows在没有之前关闭Wampserver的情况下关闭时，在某些情况下，服务没有正常停止，但任务httpd.exe和mysqld .exe 被“杀死”（TASKKILL）。
-因此，队列和缓冲区不会运行或转储，这可能会损坏数据库，这可能会导致以下症状：
-“昨天运行良好，但今天不起作用！”
+- 对于 `MySQL` 或 `MariaDB`
+  - 清除队列
+  - 导出缓存池
+  - 删除临时表空间数据文件
+  - 关闭 `MySQL` 服务
+
+
+
+在未正常关闭 `WampServer` 的情况下关闭了 Windows 时，通常这些服务并没有能正常停止，但任务进程 `httpd.exe` 和 `mysqld .exe`  却被直接“杀死”了（TASKKILL）。
+
+因此，队列和缓冲区不能再正常运行或转储，这就会损坏数据库，这可能会导致以下症状：
+
+“昨天运行正常，但今天却挂了！”
+
+
+
+### 0x22
+
+新版本 Aestan Tray Menu (wampmanager.exe)
+
+以下内容以 `Aestan Tray Menu (wampmanager.exe)` 的 `3.2.2.1` 和 `3.2.2.2` 版本来举例说明，并且假设 `Wampserver 64位` 安装文件夹为 `E:\wamp64` 。
+
+当然这些具体的设定可以根据你自己的实际安装版本和安装路径进行调整和修改。
+
+
+
+启动 `Wampserver` 时，你可以看到类似于以下内容的信息窗口：
+
+图06
+
+
+
+有新更新可用 - 当前版本 3.2.2.1 - 新版本 3.2.2.2
+
+这意味着 `Aestan Tray Menu (wampmanager.exe)` 有新版本可以升级。
+
+
+
+在此窗口中确认 OK 并且 `Wampmanager` 图标变为绿色后，双击该图标以显示“关于...”窗口。
+
+然后验证更新（Update）选项卡，然后点击验证（Verify）按钮。
+
+图07
+
+图08
+
+
+
+你正在使用版本 `3.2.2.1`  ，新版本 `3.2 .2.2` 可以在作者的网站上下载了，你想现在更新你的应用程序吗？
+
+点击“是”按钮。
+
+图09
+
+
+
+你想阅读信息文件吗？
+
+点击 “是” 获取所有更新信息内容。
+
+图10
+
+
+
+显示的信息中重要的是对如何更新 `wampmanager.exe` 的说明。
+
+请注意，下载的文件是 `AestanTrayMenu` 之一。
+
+它以 `ZIP` 格式存档，可解压缩后获取 `EXE` 。
+
+您必须将其重命名为应用程序的可执行文件。
+
+升级前备份旧版本文件，这是可能发生错误前的安全措施。
+
+点击确定。
+
+图11
+
+
+
+对话框中选择下载目标文件夹，默认情况下建议 `Wampserver` 的安装文件夹。
+
+确定下载。
+
+图12
+
+
+
+比如将更新下载到 `E:\wamp\AeTrayMenu_3222_64bits.zip` 。
+
+图13
+
+
+
+更新已下载，OK。
+
+
+
+退出“关于...”，退出 `Wampserver` 。
+
+
+
+打开文件资源管理器，转到 `Wampserver` 安装文件夹。
+
+将 `wampmanager.exe` 重命名为 `wampmanager3221.exe` 或任意其他名字，而 `3221` 正是当前（旧）版本号。
+
+将 `AeTrayMenu_3222_64bits.zip` 解压缩到 `wampserver` 安装文件夹而不是新文件夹中，你将获得文件 `E:\wamp64\AeTrayMenu.exe` ，将其重命名为 `E:\wamp\wampmanager.exe` 。
+
+现在你可以删除文件 `AeTrayMenu_3222_64bits.zip` ，并且可以启动 `Wampserver` 了。
+
+
+
+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+
+其他有需要的待日后补充，欢迎小伙伴们一起学习讨论！
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
