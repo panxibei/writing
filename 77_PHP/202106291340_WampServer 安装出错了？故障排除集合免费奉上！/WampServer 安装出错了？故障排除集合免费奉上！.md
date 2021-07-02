@@ -502,3 +502,56 @@ https://support.microsoft.com/en-gb/kb/2999226
 
 https://wampserver.aviatechno.net/files/tools/check_vcredist.exe
 
+将网站上所有的 `Visual C++ Redistribuable Packages` 都要安装，并且不要忘记：
+
+* 64位 Windows 上，32位和64位组件包都要安装
+* 必须以管理员身份运行来安装每一个组件包
+
+
+
+### 0x21
+
+昨天 `MySQL` 还是正常的，但是今天我的 `wampmanager` 图标变成了橙色，并且 `MySQL` 无法启动。
+
+- 相较于 `MYISAM` 数据库引擎而言，这种情况往往多发于 `INNODB` 数据库引擎。
+
+- 在“/wamp/logs/”中检查 MySQL 日志，如果你在日志中看到有提示信息说 MySQL 已尝试修复数据库或数据库表但失败了。无论出于其他何种原因，一般来说很可能是你的数据库已损坏从而导致 `MYSQL` 无法启动，因为它无法正确修复数据库。
+
+- 最简单的解决方案就是恢复上一次的备份。（当然是假设你有一个备份，你肯定会做备份的，因为你不会傻得忘记做备份，对吧！）
+
+- 好吧，如果你真的没有做任何备份，那么你应该检查一下 MYSQL 日志中的相关信息，里面会建议一些可能的恢复机制。
+
+  亦或者，你只好自己阅读一下  [InnoDB Backup and Recovery](https://dev.mysql.com/doc/refman/5.6/en/innodb-backup.html) 。
+
+  https://dev.mysql.com/doc/refman/5.6/en/innodb-backup.html
+
+- 为了减少这种情况发生的可能性，请确保您可以通过使用 wampmanager 菜单上的“退出”关闭 WAMPServer
+
+- - 右键单击 wampmanager -> 退出
+
+- 或停止使用 MYSQL 服务
+
+- - 左键单击 wampmanager ->
+在重新启动或关闭 WINDOWS 21之前停止所有服务-a为什么我需要在关闭 Windows 之前关闭 Wampserver 吗？
+
+
+Wampserver 的“正常”关闭执行以下操作：
+- 停止 Apache 服务
+- 停止 MySQL 服务
+- 停止 mariaDB 服务
+
+当服务“正常”停止时会发生什么？
+- 对于 Apache：
+- 关闭 Apache 服务器
+- 关闭所有 Apache 进程
+- 关闭Apache的“子”服务器
+
+- 对于 MySQL 或 MariaDB
+- 清除队列。
+-- Dumping buffer pool(s)
+-- 删除临时表空间数据文件
+-- Close MySQL server
+
+当Windows在没有之前关闭Wampserver的情况下关闭时，在某些情况下，服务没有正常停止，但任务httpd.exe和mysqld .exe 被“杀死”（TASKKILL）。
+因此，队列和缓冲区不会运行或转储，这可能会损坏数据库，这可能会导致以下症状：
+“昨天运行良好，但今天不起作用！”
