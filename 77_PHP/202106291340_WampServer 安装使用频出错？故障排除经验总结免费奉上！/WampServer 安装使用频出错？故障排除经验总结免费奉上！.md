@@ -661,6 +661,22 @@ https://wampserver.aviatechno.net/files/tools/check_vcredist.exe
 
 
 
+### 0x23
+
+无法启动 `WampServer` ，提示缺少 `msvcr110.dll` 文件。
+
+这是由于未正确安装 `Visual C++ Redistributable for Visual Studio 2012 Update 4` 组件引起的。
+
+类似的错提示误还有 `msvcr100.dll` 、 `msvcr71.dll` 或 `msvcr120.dll` 等文件缺失。
+
+只要重新安装这些 `VC++` 组件即可。
+
+不过需要注意的是，应该先卸载 `WampServer` ，在保证安装好 `VC++` 组件后重启电脑，然后再尝试安装 `WampServer` 。
+
+为确认是否正常安装了这些组件，可以使用本文第 `0x20` 项所提到的检查工具。
+
+
+
 -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
 其他有需要的待日后补充，欢迎小伙伴们一起学习讨论！
