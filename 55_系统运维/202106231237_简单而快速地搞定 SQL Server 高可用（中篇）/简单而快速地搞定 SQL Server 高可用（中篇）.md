@@ -16,7 +16,7 @@
 
 上一篇我们说到，为了给一台跑 `SQL Server` 的老爷机一条后路，不得不考虑高用可的问题。
 
-> 前篇链接：
+> 前篇链接：https://www.sysadm.cc/index.php/xitongyunwei/846-simple-and-fast-solution-to-always-on-high-availability-of-sql-server-1
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-**当前搬运最新版 18.9.1 (651M)**
+**当前搬运最新版 SSMS 18.9.1 (651M)**
 
 下载链接：https://pan.baidu.com/s/1xJFE9O0rYfA1pyiETFHxoQ
 
@@ -279,7 +279,7 @@ SSMS 客户端安装需要 `Net Framework 4.7.2` ，想要速度快些，也可�
 
 点击左侧 `SQL Server 服务` ，右击右侧 `SQL Sever (MSSQLSERVER)` ，选择 `属性` 。
 
-图3_25
+图25
 
 
 
@@ -306,6 +306,12 @@ SSMS 客户端安装需要 `Net Framework 4.7.2` ，想要速度快些，也可�
 
 
 ### 配置证书用于生成数据库可用性端点（非域环境）
+
+如果情况特殊，比如我手上就这么几台服务器，只是单纯为了实现 `SQL Server` 高可用，而不想建立域环境，那太麻烦还得额外搭建个域控制器，其实非域环境下高可用也是可行的。
+
+你的地盘你做主嘛，来，我们看看如何搞定非域环境情况下的高可用。
+
+
 
 在域环境下，端点之间通讯可以根据域信息来验证身份，所以不需要额外添加证书来证明各自的身份。
 
