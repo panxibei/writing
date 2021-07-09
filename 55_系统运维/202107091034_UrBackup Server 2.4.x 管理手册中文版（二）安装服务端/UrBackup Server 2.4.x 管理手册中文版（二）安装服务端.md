@@ -18,7 +18,13 @@ OK，那我们先来看看 `UrBackup` 的服务端是如何安装的。
 
 
 
-2.1.1 安装到 Windows 
+2.1.1 安装到 Windows
+
+**操作系统版本：Windows Server 2016**
+
+
+
+**a、直接安装**
 
 直接到官方首页即可下载到 `exe` 格式的安装软件包。
 
@@ -92,17 +98,107 @@ Format <Drive:> /FS:NTFS /L
 
 
 
+**b、用巧克力来安装**
+
+巧克力是啥？
+
+它就是 `Chocolatey` ，好嘛，等于没说！
+
+其实它类似于 `Linux` 下的包管理软件，只是它专用服务于 Windows 。
+
+我们平时在 Windows 上安装软件都是先双击后下一步，没一个统一下载管理的办法，所以 `Chocolatey` 应运而生了。
+
+如何安装 `Chocolatey` ：https://chocolatey.org/install#individual
+
+```
+# 开放安全限制
+Set-ExecutionPolicy Bypass -Scope Process
+
+# 安装 Chocolatey
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+
+
+用 `Chocolatey` 安装 `Urbackup` 。
+
+```
+choco install urbackup-server
+```
+
+
+
 接下来可以跳转至 `2.1.6` 节继续操作系统的安装步骤。
 
 
 
-2.1.2 在 Ubuntu 上安装服务器
+**2.1.2 在 Ubuntu 上安装服务器**
+
+**操作系统版本：Ubuntu 20.04.2 LTS**
 
 
 
+使用以下命令安装 `UrBackup` 服务端。
+
+```
+# 获取指向 UrBackup 的更新源
+sudo add-apt-repository ppa:uroni/urbackup
+
+# 更新系统源
+sudo apt-get update
+sudo apt-get install urbackup-server
+```
 
 
 
+获取 `UrBackup` 更新源时，需要回车确认一下。
+
+图05
+
+
+
+开始安装后，首先提示设定保存路径，这里指定为 `/BACKUP` 。
+
+图06
+
+
+
+之后再耐心等待一会儿就安装完成了。
+
+这里就可以打开 `http://serverip:55414` WEB管理界面。
+
+
+
+**2.1.3 在 Debian 上安装服务器**
+
+**操作系统版本：Debian 10.10**
+
+输入以下命令开始安装 `UrBackup` 。
+
+```
+sudo apt-get update
+wget https://hndl.urbackup.org/Server/2.4.13/urbackup-server_2.4.13_amd64.deb
+sudo dpkg -i urbackup-server_2.4.13_amd64.deb
+sudo apt-get -f install 
+```
+
+
+
+下载当前最新版本 `urbackup-server_2.4.13_amd64.deb` 。
+
+图07
+
+
+
+可能需要你安装一些依赖，比如 `sqlite3` 和 `libcurl3-nss` 。
+
+图08
+
+
+
+安装完成。
+
+图09
 
 
 
