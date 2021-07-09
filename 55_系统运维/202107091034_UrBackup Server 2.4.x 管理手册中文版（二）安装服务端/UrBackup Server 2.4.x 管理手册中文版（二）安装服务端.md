@@ -184,7 +184,7 @@ sudo apt-get -f install
 
 
 
-下载当前最新版本 `urbackup-server_2.4.13_amd64.deb` 。
+下载当前最新稳定版本 `urbackup-server_2.4.13_amd64.deb` 。
 
 图07
 
