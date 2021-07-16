@@ -32,6 +32,14 @@
 
 
 
+本文将重要放在**多用户不同权限**的设定上，如果想要更详细的共享设定，请参考以前的文章。
+
+>《XigmaNAS 文件共享服务的设定方法》
+>
+>https://www.sysadm.cc/index.php/xitongyunwei/826-setting-method-of-xigmanas-file-sharing-service
+
+
+
 ### 效果目标
 
 首先我们先设定一个小目标或者叫最终效果，达到效果才算成功。
