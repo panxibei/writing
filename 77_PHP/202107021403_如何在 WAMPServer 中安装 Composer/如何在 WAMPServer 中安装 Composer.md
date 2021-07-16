@@ -64,7 +64,11 @@
 
 可以直接下载批处理文件，也可参考如下内容。
 
-下载链接：
+**phppath.7z (29KB)**
+
+下载链接：https://pan.baidu.com/s/1tnztK20hFhgseIJClmJiww
+
+提取码：ozhk
 
 
 
