@@ -2,7 +2,7 @@ UrBackup Server 2.4.x 管理手册中文版（二）安装服务端
 
 副标题：安装服务端~
 
-英文：administration-manual-for-urbackup-server-1
+英文：administration-manual-for-urbackup-server-2
 
 关键字：administration,manual,urbackup,backup,server,client
 
@@ -19,6 +19,8 @@ OK，那我们先来了解 `UrBackup` 的服务端是如何安装的。
 当前演示版本为 **`UrBackup Server 2.4.13`** 。
 
 
+
+### 2.1 服务端的安装
 
 ##### 2.1.1 在 Windows上安装服务器
 
@@ -361,15 +363,19 @@ chown urbackup:urbackup /mnt/backups/backups
 
 
 
+本节为小伙伴们演示说明了各个服务器平台上安装 `UrBackup` 的要领方法。
+
+作为开始了解 `UrBackup` 的重要一环，服务端安装有很多讲究，而且还包含了使用前的一些准备设定工作，比如备份路径、服务器IP地址等，需要我们认真仔细地阅读前面所述内容。
+
+好，在下一节我们为大家介绍客户端的安装和注意事项。
+
+如果对本节还不太熟悉，请大家转发分享后再来看看吧！
 
 
 
+**扫码关注@网管小贾，阅读更多**
 
-
-
-
-
-
+网管小贾的博客 / www.sysadm.cc
 
 
 
