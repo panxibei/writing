@@ -127,6 +127,8 @@ https://packages.microsoft.com/cbl-mariner/1.0/prod/
 
 ##### 创建 `VHD` 或 `VHDX` 映像文件
 
+执行以下命令，可分别创建映像，其主要区别为一个是支持 `EFI` 启动而另一个 `legacy` 是支持传统启动的。
+
 ```shell
 # 进入 CBL-Mariner 目录中，再切换到 toolkit 目录
 cd toolkit
@@ -145,9 +147,120 @@ sudo make image REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/co
 
 图b5
 
-科学的方法是，将 `go` 包管理代理原网址 `proxy.golang.org` 更换为 `goproxy.cn` 。
+科学的方法是，将 `go` 包管理代理由原网址 `proxy.golang.org` 更换为 `goproxy.cn` 。
+
+可以这么干：
 
 ```shell
-go env -w GOPROXY=https://goproxy.cn
+sudo go env -w GOPROXY=https://goproxy.cn
 ```
+
+
+
+随后按前面介绍的命令正常创建映像就可以了。
+
+在创建过程中，我们也能看到它在下载很多 `rpm` 包，这也正是前面说过的 `RPMs` 仓库的那些软件包。
+
+只不过创建映像时它会自动下载打包，不需要我们人工干预，而且它下载一次就可以了，之后再生成映像会很快。
+
+图b6
+
+
+
+此外，从上面的命令行中我们也能看出来，生成映像的配置文件官方已经是设定好的，存放路径就在 `./CBL-Mariner/toolkit/imageconfigs` 中。
+
+实际上在这个路径下有很多配置文件，用哪个文件就能按照哪个的配置生成相应的映像文件。
+
+图b7
+
+
+
+需要一点点耐心，创建完成会是这样。
+
+`CBL-Mariner/out/images/core-legacycore-1.0.20210728.1236.vhdx`
+
+图b8
+
+
+
+`CBL-Mariner/out/images/core-legacycore-1.0.20210728.1250.vhd`
+
+图b9
+
+
+
+
+
+##### 创建 cloud-init 配置映像
+
+还有一点，刚才我们生成的 `VHDX` 也好或是 `VHD` 也好，这些映像只是个核心，默认并不包含用户。
+
+所以想要让用户登录的话，还需要再生成一个用户数据映像，将这个映像加载到光驱后就可以登录了。
+
+生成这个用户数据映像很简单，一条简单的命令。
+
+```shell
+# 创建 cloud-init 配置映像
+# 输出路径为 CBL-Mariner/out/images/meta-user-data.iso
+sudo make meta-user-data
+```
+
+
+
+图b10
+
+
+
+通过这个映像启动后，就可以用下面的用户名和密码登录 `CBL-Mariner` 系统了。
+
+```
+用户名：mariner_user
+密码：p@ssw0rd
+```
+
+
+
+### 创建完整版 `ISO` 映像文件
+
+前面搞得挺热闹，也挺复杂麻烦的，其实对于只是尝试用用 `CBL-Mariner` 的小伙伴来说，还有一个好办法，就是创建生成一个完整的可启动的 `ISO` 映像文件。
+
+`ISO` 映像地球人都知道，直接挂载光驱即可启动安装系统了，简单粗暴疗效更棒！
+
+那么这玩意咋整呢？
+
+嘿嘿，官方还真有介绍，我们马上开干！
+
+
+
+说简单是真简单，就一条命令完事。
+
+```
+# 切换到 toolkit 目录
+cd toolkit
+
+# 生成 iso 映像，它放到了 ../out/images/full 这个目录中
+sudo make iso REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/full.json
+```
+
+
+
+这条命令挺眼熟不？
+
+对了，除前面指定映像为 `iso` 外，后面的配置文件其实也是 `imagconfigs` 目录中的现成文件。
+
+有了之前的下载的软件包缓存，这个映像生成很快就完成了！
+
+图b11
+
+
+
+所有都完成后，你的 `Ubuntu` 上应该会有这样的目录和文件生成。
+
+图b12
+
+
+
+
+
+
 
