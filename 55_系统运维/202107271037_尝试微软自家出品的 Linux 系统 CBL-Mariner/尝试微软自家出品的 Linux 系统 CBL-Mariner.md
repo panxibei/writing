@@ -1,10 +1,32 @@
 
 
-尝试微软家的 Linux 系统 CBL-Mariner
+尝试微软自家出品的 Linux 系统 CBL-Mariner
+
+副标题：微软有了自己的 Linux ？
+
+英文：test-cbl-mariner-which-is-linux-from-microsoft
+
+关键字：cbl-mariner,cbl,linux,ubuntu,redhat,microsoft,mariner,windows
 
 
 
+微软的 `Windows` 系统上早就搭载了 `Linux` 系统，也就是传说中的 `WSL` 。
 
+而这个 `WSL` 现在已经发展到了 `WSL2` ，并且支持了图形界面的 `Linux` 软件，其被称为 `WSLg` 。
+
+可是令人意想不到的是，你听说过微软其实他们家还有自己的 `Linux` 系统吗？
+
+微软有自己的 `Linux` ，啥时候的事，我怎么不知道？
+
+
+
+其实 `WSL` 是怎么搞出来的，那肯定他们要有个测试的平台作为基础嘛，然后才能将 `WSL` 整合到 `Windows` 上。
+
+对了，这个微软自家的测试平台 `Linux` 系统，它的名字就是 `CBL-Mariner` 。
+
+别打我，我也是知道没几天，所以我立刻、马上动手开展实验。
+
+感兴趣的小伙伴们一起来吧！
 
 
 
@@ -52,11 +74,7 @@ sudo usermod -aG docker $USER
 
 
 
-
-
-
-
-安装 `python-minimal` 时会报错，实际上是因为我们需要安装的是 `python2` 版本，系统认为的是 `python3` 版本，所以找不到而报错。
+这里要注意一下，在安装 `python-minimal` 时会报错，实际上是因为我们需要安装的是 `python2` 版本，系统默认认为你要的是 `python3` 版本，所以找不到而报错。
 
 那么我们可以这样安装它。
 
@@ -64,17 +82,15 @@ sudo usermod -aG docker $USER
 sudo apt install python2-minimal
 ```
 
+如果你使用的是 `Ubuntu 18.04` 版本，则不会有这个报错，因为它默认就是 `python2` 版本。
 
 
 
-
-接下来我们通过官网的快速参考 `Quick Start Guide` 来把玩一下 `CBL-Mariner` 。
+接下来我们通过官网的“快速参考” `Quick Start Guide` 来把玩一下 `CBL-Mariner` 。
 
 ```
 https://github.com/microsoft/CBL-Mariner/blob/1.0/toolkit/docs/quick_start/quickstart.md
 ```
-
-
 
 
 
@@ -99,9 +115,13 @@ git checkout 1.0-stable
 
 注意，这个打包文件不包含映像文件，后面我们才会创建。
 
-下载链接：
 
 
+**CBL-Mariner.7z (483M)**
+
+下载链接：https://pan.baidu.com/s/1KbcC3UmbBg9zl6Sky-musA
+
+提取码：4n10
 
 
 
@@ -120,8 +140,6 @@ https://packages.microsoft.com/cbl-mariner/1.0/prod/
 有兴趣可以去看看，都是大部分 `Linux` 发行版常用的程序软件。
 
 当然了，我们不必将这些软件包手动处理，官方已经帮我们准备好了配置文件，我们直接拿来用就可以生成包含这些软件包的映像文件了。
-
-
 
 
 
@@ -183,11 +201,25 @@ sudo go env -w GOPROXY=https://goproxy.cn
 
 
 
+**core-legacycore-1.0.20210728.1236.vhdx (632.00M)**
+
+下载链接：https://pan.baidu.com/s/1SZeNkkYjkkQFlvSAsqeRdQ
+
+提取码：0qyv
+
+
+
 `CBL-Mariner/out/images/core-legacycore-1.0.20210728.1250.vhd`
 
 图b9
 
 
+
+**core-legacycore-1.0.20210728.1250.vhd (2.00G)**
+
+下载链接：https://pan.baidu.com/s/1YFhYB-6aYCkdoTn2LeGBHw
+
+提取码：gyok
 
 
 
@@ -195,7 +227,7 @@ sudo go env -w GOPROXY=https://goproxy.cn
 
 还有一点，刚才我们生成的 `VHDX` 也好或是 `VHD` 也好，这些映像只是个核心，默认并不包含用户。
 
-所以想要让用户登录的话，还需要再生成一个用户数据映像，将这个映像加载到光驱后就可以登录了。
+所以想要让用户登录的话，还需要再生成一个用户数据映像，将这个映像加载到光驱，并通过光驱启动后就可以登录了。
 
 生成这个用户数据映像很简单，一条简单的命令。
 
@@ -211,7 +243,15 @@ sudo make meta-user-data
 
 
 
-通过这个映像启动后，就可以用下面的用户名和密码登录 `CBL-Mariner` 系统了。
+**meta-user-data.iso (366K)**
+
+下载链接：https://pan.baidu.com/s/1Qtgw1Qi2xLywUW7pmneW6w
+
+提取码：5yqz
+
+
+
+挂载 `VHD` 或 `VHDX` 映像，然后通过这个映像启动后，就可以用下面的用户名和密码登录 `CBL-Mariner` 系统了。
 
 ```
 用户名：mariner_user
@@ -257,6 +297,134 @@ sudo make iso REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/full
 所有都完成后，你的 `Ubuntu` 上应该会有这样的目录和文件生成。
 
 图b12
+
+
+
+**完整版可引导 full-1.0.20210728.1317.iso (677.03M)**
+
+下载链接：链接：https://pan.baidu.com/s/11dEA6ceo292WynXYmdYdSg
+
+提取码：25w0
+
+
+
+### 尝试使用完整版 ISO 映像启动并安装 `CBL-Mariner`
+
+我使用 `VirtualBox` 创建了一个虚拟机，当然你用 `VMWare` 也是一样的。
+
+不过我的 `VirtualBox` 感觉和其他虚拟机有冲突，启动时死过两次机，所以建议用 `VirtualBox` 的小伙伴们最好只单开一个虚拟机来做测试。
+
+这个虚拟机平台应该是哪个呢？
+
+我感觉既然用了 `RPMs` 包，那么应该可以用 `RedHat` ，不过我用 `Ubuntu` 也通过了测试，所以只要是通常的 `Linux` 平台版本应该都可以。
+
+好了，创建好虚拟机，然后挂载 `ISO` 文件，光驱启动。
+
+
+
+不一会儿启动界面出现了，第三项是图形安装界面，我是小白我选它。
+
+图a1
+
+
+
+我是小白，安装类型我就选完整安装。
+
+图a2
+
+
+
+协议内容即使是空的我也得同意，主要是我不同意它也不给我点下一步啊。
+
+图a3
+
+
+
+磁盘分区选项，没有啥特殊情况，我就先全部清除。
+
+图a4
+
+
+
+主机名、用户名和密码，按自己喜欢的来。
+
+注意密码要求挺高的，不要用弱密码，比如连续数字等。
+
+图a5
+
+
+
+要开始安装了，挺激动的，按下“现在就安装” `Install now` 。
+
+图a6
+
+
+
+安装起来并不慢，就几分钟吧。
+
+图a7
+
+
+
+安装结束后还给出了耗费的时间，我这儿是 86 秒。
+
+另外非图形界面下安装时，我这儿测试是用了 74 秒。
+
+按下完成 `Done` 按钮，重启看看这个 `CBL-Mariner` 系统到底是个什么庐山真面目。
+
+图a8
+
+
+
+系统启动了，输入用户名和密码登录进入系统。
+
+图a9
+
+
+
+单单从这里可以看出 `Linux` 的内核版本是 `5.10` ，输入 `uname -a` 看看。
+
+图a10
+
+
+
+### 写在最后
+
+之后我又试试其他的，比如一些常见的命令，都没问题。
+
+不过当我尝试修改它的 IP 地址时，发现静态地址设定后网络服务无法正常启动。
+
+研究了半天，感觉应该是它是由 `docker` 驱动的，可能无法直接修改它的网络配置。
+
+由于没有更多的时间，所以以后有空再进一步深入研究看看。
+
+基本上这是一个具有一般 `Linux` 发行版通常功能的又一款发行版，正如微软官方所说，它是用于研究 `Linux` 与 `Windows` 整合功能的测试版本。
+
+随着微软的努力，使得两者结合得更加紧密，比如 `WSL2` 在新版的 `Win10` 中已经支持图形界面软件。
+
+> 参考文章：《WSLg 就是带 GUI 的 WSL》
+>
+> 链接：https://www.sysadm.cc/index.php/xitongyunwei/836-wslg-is-short-for-windows-subsystem-for-linux-gui
+
+
+
+小伙伴们，如果你也有兴趣尝试一下微软家的 `Linux` ，那么可以参照本文来尝试。
+
+同时为了节省时间，你也可以直接下载文中的映像文件直接测试。
+
+如果你在此过程中发现什么其他有趣的东西，别忘记一起讨论，与大家分享！
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
+
+
+
+
+
+
 
 
 
