@@ -47,13 +47,13 @@
 * Ubuntu 系统，官方演示版本为 `18.04` ，而我连带 `20.04` 版本也测试 OK 了。
 * `GO` 运行环境
 * `PYTHON` 运行环境
-* `DOCKER`
+* `DOCKER` 容器环境
 * 其他一些相关的小程序，比如 make、tar、git 等等
 
 
 
 ```shell
-# Add a backports repo in order to install the latest version of Go.
+# 添加后备仓库以便安装最新版的 Go
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt-get update
 
@@ -74,7 +74,23 @@ sudo usermod -aG docker $USER
 
 
 
+添加后备仓库以便安装最新版的 Go 。
+
+图01
+
+
+
+`Docker` 安装完成。
+
+图02
+
+
+
 这里要注意一下，在安装 `python-minimal` 时会报错，实际上是因为我们需要安装的是 `python2` 版本，系统默认认为你要的是 `python3` 版本，所以找不到而报错。
+
+图03
+
+
 
 那么我们可以这样安装它。
 
@@ -108,6 +124,8 @@ cd CBL-Mariner
 # 同步到最新稳定版本，通常克隆完成即为最新稳定版
 git checkout 1.0-stable
 ```
+
+图04
 
 
 
@@ -163,7 +181,9 @@ sudo make image REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/co
 
 **注意，如果遇到无法正常安装 `golang` 时，可能是无法连接 `proxy.golang.org` 造成的。**
 
-图b5
+图05
+
+
 
 科学的方法是，将 `go` 包管理代理由原网址 `proxy.golang.org` 更换为 `goproxy.cn` 。
 
@@ -181,7 +201,7 @@ sudo go env -w GOPROXY=https://goproxy.cn
 
 只不过创建映像时它会自动下载打包，不需要我们人工干预，而且它下载一次就可以了，之后再生成映像会很快。
 
-图b6
+图06
 
 
 
@@ -189,7 +209,7 @@ sudo go env -w GOPROXY=https://goproxy.cn
 
 实际上在这个路径下有很多配置文件，用哪个文件就能按照哪个的配置生成相应的映像文件。
 
-图b7
+图07
 
 
 
@@ -197,7 +217,7 @@ sudo go env -w GOPROXY=https://goproxy.cn
 
 `CBL-Mariner/out/images/core-legacycore-1.0.20210728.1236.vhdx`
 
-图b8
+图08
 
 
 
@@ -211,7 +231,7 @@ sudo go env -w GOPROXY=https://goproxy.cn
 
 `CBL-Mariner/out/images/core-legacycore-1.0.20210728.1250.vhd`
 
-图b9
+图09
 
 
 
@@ -239,7 +259,7 @@ sudo make meta-user-data
 
 
 
-图b10
+图10
 
 
 
@@ -290,13 +310,13 @@ sudo make iso REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/full
 
 有了之前的下载的软件包缓存，这个映像生成很快就完成了！
 
-图b11
+图11
 
 
 
 所有都完成后，你的 `Ubuntu` 上应该会有这样的目录和文件生成。
 
-图b12
+图12
 
 
 
@@ -324,25 +344,25 @@ sudo make iso REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/full
 
 不一会儿启动界面出现了，第三项是图形安装界面，我是小白我选它。
 
-图a1
+图13
 
 
 
 我是小白，安装类型我就选完整安装。
 
-图a2
+图14
 
 
 
 协议内容即使是空的我也得同意，主要是我不同意它也不给我点下一步啊。
 
-图a3
+图15
 
 
 
 磁盘分区选项，没有啥特殊情况，我就先全部清除。
 
-图a4
+图16
 
 
 
@@ -350,19 +370,19 @@ sudo make iso REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/full
 
 注意密码要求挺高的，不要用弱密码，比如连续数字等。
 
-图a5
+图17
 
 
 
 要开始安装了，挺激动的，按下“现在就安装” `Install now` 。
 
-图a6
+图18
 
 
 
 安装起来并不慢，就几分钟吧。
 
-图a7
+图19
 
 
 
@@ -372,19 +392,19 @@ sudo make iso REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/full
 
 按下完成 `Done` 按钮，重启看看这个 `CBL-Mariner` 系统到底是个什么庐山真面目。
 
-图a8
+图20
 
 
 
 系统启动了，输入用户名和密码登录进入系统。
 
-图a9
+图21
 
 
 
 单单从这里可以看出 `Linux` 的内核版本是 `5.10` ，输入 `uname -a` 看看。
 
-图a10
+图22
 
 
 
