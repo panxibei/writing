@@ -90,7 +90,7 @@ https://flings.vmware.com/usb-network-native-driver-for-esxi
 
   
 
-* ** `ESXi 7.0U2a` 扩展包**
+* **`ESXi 7.0U2a` 扩展包**
 
   **VMware-ESXi-7.0U2a-17867351-depot.zip**
 
