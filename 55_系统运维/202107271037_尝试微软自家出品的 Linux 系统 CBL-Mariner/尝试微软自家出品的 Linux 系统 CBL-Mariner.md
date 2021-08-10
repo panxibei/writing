@@ -57,16 +57,16 @@
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt-get update
 
-# Install required dependencies.
+# 安装所需依赖
 sudo apt -y install make tar wget curl rpm qemu-utils golang-1.15-go genisoimage python-minimal bison gawk parted git
 
-# Recommended but not required: `pigz` for faster compression operations.
+# 推荐但非必需：`pigz` 可以加快压缩速度
 sudo apt -y install pigz
 
-# Fix go 1.15 link
+# 修正添加连接到 go 1.15 的软链接
 sudo ln -vsf /usr/lib/go-1.15/bin/go /usr/bin/go
 
-# Install Docker.
+# 安装 Docker 容器
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
@@ -172,8 +172,7 @@ cd toolkit
 # 创建 VHDX 映像，它放在了 ../out/images/core-efi 中
 sudo make image REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/core-efi.json
 
-# Build VHD Image
-# Image is placed in ../out/images/core-legacy
+# 创建 VHD 映像，它放在了 ../out/images/core-legacy 中
 sudo make image REBUILD_TOOLS=y REBUILD_PACKAGES=n CONFIG_FILE=./imageconfigs/core-legacy.json
 ```
 
