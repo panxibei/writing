@@ -133,7 +133,9 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
 
 **OSX-KVM.zip(15.6M)**
 
-下载链接：
+下载链接：链接：https://pan.baidu.com/s/1J8YYXroOwJQJiX-zV6onUg
+
+提取码：mtqe
 
 
 
@@ -147,7 +149,9 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
 
 ***切记：需要将它们转换成 `img` 后才能加载使用哦！***
 
-下载链接：
+下载链接：链接：https://pan.baidu.com/s/164XkIjobx8oaWAsmPtG9OQ
+
+提取码：n7i6
 
 
 
@@ -310,7 +314,9 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
 
 **MacOSX.xml.zip(29.9K)**
 
-下载链接：
+下载链接：链接：https://pan.baidu.com/s/1gRUYtxHqe1oKJYQw0sBYCA
+
+提取码：me4f
 
 
 
