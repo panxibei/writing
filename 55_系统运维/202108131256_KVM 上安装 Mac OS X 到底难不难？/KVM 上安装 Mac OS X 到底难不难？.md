@@ -213,9 +213,35 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
 
 
 
-##### 2、启动关键点
+##### 2、启动关键点一
 
-安装启动的关键，是通过 `OpenCore.qcow2` 映像以 `EFI` 方式加载 `BaseSystem.img` 安装映像。
+这个关键点决定着你能不能看到启动项选择画面。
+
+在此之前，我都没有成功启动过某些在其他平台能正常启动的 `ISO` 镜像。
+
+所以关键问题就在于，我没有正确选择对 `EFI` 启动所需的内核。
+
+如下，两个 `fd` 文件一个都不能少，这两个文件就在 `OSX-KVM` 目录中，照着做就是了。
+
+```
+  <os>
+    <type arch="x86_64" machine="pc-q35-6.1">hvm</type>
+    <loader readonly="yes" type="pflash">/your_path_for_osx/OSX-KVM/OVMF_CODE.fd</loader>
+    <nvram>/your_path_for_osx/OSX-KVM/OVMF_VARS-1024x768.fd</nvram>
+  </os>
+```
+
+
+
+需要小心的是，有时可能会误操作，导致 `OVMF_VARS-1024x768.fd` 这个文件会丢失。
+
+解决的办法就是将它从 `OSX-KVM.zip` 压缩包中再释放出来，确保它务必存在。
+
+
+
+##### 3、启动关键点二
+
+安装启动的另一个关键，是通过 `OpenCore.qcow2` 映像以 `EFI` 方式加载 `BaseSystem.img` 安装映像。
 
 除去它们的顺序不能搞错之外，实际上安装映像是可以换的，换句话说，这个 `BaseSystem.img` 是可以换成其他的安装介质，甚至可以换成光盘。
 
@@ -264,7 +290,7 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
 
 
 
-##### 3、关于网卡的破事儿
+##### 4、关于网卡的破事儿
 
 没有网络，安装程序从一开始就没办法进行下去，所以必须保证网络正常。
 
