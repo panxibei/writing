@@ -1,5 +1,3 @@
-
-
 标题：KVM 上安装 Mac OS X 到底难不难？
 
 副标题：让你的 KVM 彻底爱上黑苹果~
@@ -225,7 +223,14 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
 
 具体可以参考如下代码，其中的 `OSX-KVM` 目录以及目标磁盘文件的路径可自行修改。
 
+比如：
+
+我将 `OSX-KVM` 放在了 `/sysadm` 中，所以将 `your_path_for_osx` 替换为 `/sysadm` 。
+
+我的目标磁盘文件放在了 `/mydisk` 中，那么我就将 `/your_path_for_macosx_img` 替换为 `/mydisk` 。
+
 ```xml
+<!-- OpenCore.qcow2 ，EFI 启动 -->
 <disk type="file" device="disk">
     <driver name="qemu" type="qcow2" cache="writeback" io="threads"/>
     <source file="/your_path_for_osx/OSX-KVM/OpenCore-Catalina/OpenCore.qcow2"/>
@@ -233,6 +238,8 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
     <boot order="1"/>
     <address type="drive" controller="0" bus="0" target="0" unit="0"/>
 </disk>
+
+<!-- BaseSystem.img ，安装映像文件 -->
 <disk type="file" device="disk">
     <driver name="qemu" type="raw" cache="writeback"/>
     <source file="/your_path_for_osx/OSX-KVM/BaseSystem.img"/>
@@ -240,6 +247,8 @@ qemu-img create -f qcow2 mac_hdd_ng.img 128G
     <boot order="2"/>
     <address type="drive" controller="0" bus="0" target="0" unit="1"/>
 </disk>
+
+<!-- MacOSX.img ，目标磁盘文件 -->
 <disk type="file" device="disk">
     <driver name="qemu" type="raw" cache="writeback" io="threads"/>
     <source file="/your_path_for_macosx_img/MacOSX.img"/>
@@ -313,6 +322,16 @@ virsh define MacOSX.xml
 ```
 
 注意：如果要建立多台虚拟机，别忘记修改主机名称和 `UUID` 。
+
+
+
+**总结一下：**
+
+**1、按自己的需求修改 `MacOSX.xml` 文件。**
+
+**2、然后用 `virsh define MacOSX.xml` 命令生成虚拟机。**
+
+**3、开始安装 `Mac OS X` 。**
 
 
 
@@ -420,7 +439,7 @@ GLib-WARNING **: gmem.c:489: custom memory allocation vtable not supported
 
 虽然文章里说得挺简单，感觉一看就会，其实在实际操作中可能会遇到各种各样的问题。
 
-这就比较考验大家的填坑能力了，本文也希望能通过这样的方式能让大家最大限制地减少遇坑的概率。
+这就比较考验大家的填坑能力了，本文也希望通过这样的方式能让大家最大限制地减少遇坑的概率。
 
 各位亲爱的小伙伴，你们学废了吗？
 
