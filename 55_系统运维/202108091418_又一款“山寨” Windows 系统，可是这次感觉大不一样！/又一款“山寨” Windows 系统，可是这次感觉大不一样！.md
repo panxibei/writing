@@ -72,7 +72,9 @@
 
 **ReactOS-0.4.13-release-28-g5724391-iso.zip(120M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1AivPDpDS7XoIlqunxQRMcw
+
+提取码：xtfw
 
 
 
