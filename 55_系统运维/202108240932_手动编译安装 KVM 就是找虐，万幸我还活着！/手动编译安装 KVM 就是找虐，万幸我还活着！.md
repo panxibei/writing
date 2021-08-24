@@ -1,8 +1,8 @@
 手动编译安装 KVM 就是找虐，万幸我还活着！
 
-副标题：
+副标题：总结纷繁复杂的 KVM 手动安装步骤~
 
-英文：
+英文：compiling-and-installing-of-kvm-is-very-troublesome-thanks-god i-am-still-alive
 
 关键字：kvm,qemu,xen,libvirt,libvirtd,virt-viewer,virt-manager,virtmanager,virt
 
