@@ -39,6 +39,26 @@
 
 
 
+
+
+### 所需组件
+
+```
+dnf install tar unzip bzip2 make wget curl curl-devel gcc gcc-c++ automake autoconf libtool pixman pixman-devel zlib-devel lzo-devel glib2-devel pam-devel
+
+python3 python3-devel
+
+
+
+
+
+dnf config-manager --set-enabled powertools
+dnf install libfdt-devel SDL SDL-devel SDL2 SDL2-devel vte291-devel
+dnf install libevdev-devel spice-* xorg-x11-server-Xspice libssh-devel
+```
+
+
+
 ### 安装 `ninja`
 
 项目下载链接：https://github.com/ninja-build/ninja/releases
@@ -53,19 +73,6 @@ https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip
 
 ```
 mv ninja /usr/bin/
-```
-
-
-
-### 所需组件
-
-```
-tar unzip bzip2 make python3 python3-devel ninja
-
-gcc gcc-c++ automake autoconf libtool pixman pixman-devel zlib-devel
-
-lzo-devel glib2-devel libfdt-devel SDL SDL-devel SDL2 SDL2-devel vte291-devel pam-devel
-libevdev-devel spice-* xorg-x11-server-Xspice libssh-devel
 ```
 
 
