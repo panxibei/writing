@@ -46,7 +46,7 @@
 ```
 dnf install tar unzip bzip2 make wget curl curl-devel gcc gcc-c++ automake autoconf libtool pixman pixman-devel zlib-devel lzo-devel glib2-devel pam-devel
 
-python3 python3-devel
+python39 python39-devel
 
 
 
@@ -71,7 +71,9 @@ dnf install libevdev-devel spice-* xorg-x11-server-Xspice libssh-devel
 
 https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip
 
-```
+```shell
+wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip
+unzip ninja-linux.zip
 mv ninja /usr/bin/
 ```
 
@@ -124,9 +126,15 @@ qemu-kvm --version
 
 ##### 安装所需组件
 
-```
-X11安装
-dnf install  xorg-x11-server-Xorg xorg-x11-xauth xorg-x11-apps
+
+
+```shell
+# X11安装
+dnf install xorg-x11-server-Xorg xorg-x11-xauth xorg-x11-apps
+
+dnf install cyrus-sasl-devel device-mapper-* gnutls-devel libxml2-devel dnsmasq dnsmasq-* libxslt libtirpc-devel libpciaccess libpciaccess-devel yajl-devel libacl-devel libattr-devel audit-libs-devel libblkid-devel fuse-devel fuse3-devel fuse3-libs libnl3-devel libiscsi-devel
+
+pip3 install meson xsltproc rst2html5 jsonschema==3.0.2
 ```
 
 
@@ -138,7 +146,7 @@ dnf install cyrus-sasl-devel device-mapper-* gnutls-devel libxml2-devel dnsmasq 
 
 
 ```
-pip3 install meson xsltproc rst2html5 jsonschema==3.0.2
+pip3 install meson rst2html5 jsonschema==3.0.2
 ```
 
 
@@ -156,11 +164,24 @@ dnf install rpcgen --enablerepo=powertools
 
 
 
+安装驱动程序
+
+```
+rpm -ivh --nodeps libvirt-daemon-*
+```
+
+打包下载：
+
+
+
+
+
 打开 `libvirt` 官网，按说明步骤安装，此处以 `libvirt-7.6.0` 版本为例。
 
 官网链接：https://libvirt.org/compiling.html
 
 ```
+wget https://libvirt.org/sources/libvirt-7.6.0.tar.xz
 tar xvJf libvirt-7.6.0.tar.xz
 cd libvirt-7.6.0
 meson build --localstatedir=/var
@@ -170,9 +191,27 @@ ninja -C build install
 
 
 
-安装期间有可能会不太顺利，别着急，可以先看看下面的这些坑。
+安装期间有可能会不太顺利，别着急，可以通过编译时给出的结果来查看并判断是否有模块被正常识别。
+
+同时可以使用以下命令来启用或禁用某些模块。
+
+```
+# 查看开关参数
+meson configure
+
+# 举例，重新配置，配置目录在 ./build，同时开启 driver_qemu 支持
+meson --reconfigure --localstatedir=/var -Ddriver_qemu=enabled ./build
+```
+
+
+
+
+
+可以先看看下面的这些坑。
 
 这部分的坑非常多，举例如下。
+
+
 
 ##### 坑一：sock 文件生成路径不同之迷。
 
@@ -253,13 +292,32 @@ vim build/docs/manpages/virkeycode-atset1.html.in
 成功安装 `libvirt` 后，因为其自带 `libvirtd.service` ，所以我们可以直接使用 `systemctl` 来管理 `libvirtd` 程序。
 
 ```shell
-# 查看 libvirtd 状态
+# 重启或用以下命令重新加载服务配置
+systemctl daemon-reload
+
+# 启用 libvirtd 等服务
+systemctl enable libvirtd
+systemctl enable libvirt-guests
+systemctl enable virtinterfaced
+systemctl enable virtlockd
+systemctl enable virtlogd
+systemctl enable virtlxcd
+systemctl enable virtnetworkd
+systemctl enable virtnodedevd
+systemctl enable virtnwfilterd
+systemctl enable virtproxyd
+systemctl enable virtqemud
+systemctl enable virtsecretd
+systemctl enable virtstoraged
+systemctl enable virtvboxd
+
+# 查看 libvirtd 状态，其他服务类推
 systemctl status libvirtd
 
-# 启动 libvirtd 状态
+# 启动 libvirtd 状态，其他服务类推
 systemctl start libvirtd
 
-# 停止 libvirtd 状态
+# 停止 libvirtd 状态，其他服务类推
 systemctl stop libvirtd
 ```
 
@@ -324,8 +382,9 @@ https://github.com/virt-manager/virt-manager/blob/master/INSTALL.md
 dnf install gtk-update-icon-cache
 dnf install rpm-build intltool
 dnf install python3-devel python3-docutils
+dnf install libosinfo gtksourceview3
 
-# 安装gtksourceview4时要
+# 安装 gtksourceview4 时需要
 dnf install vala
 
 dnf install pygobject3-devel
@@ -341,8 +400,8 @@ dnf install libvirt-glib
 ```
 sudo yum install rpm-build intltool
 wget https://virt-manager.org/download/sources/virt-manager/virt-manager-3.2.0.tar.gz
-tar -zxvf virt-manager-1.3.2.tar.gz
-cd virt-manager-1.3.2
+tar -zxvf virt-manager-3.2.0.tar.gz
+cd virt-manager-3.2.0
 ./setup.py rpm
 ```
 
@@ -365,13 +424,16 @@ virt-manager-common-3.2.0-1.el8.noarch.rpm
 使用 `yum` 或 `dnf` 安装后面这两个文件，这样可以解决一些文件依赖问题。
 
 ```shell
-dnf install virt-manager-3.2.0-1.el8.noarch.rpm
+# 先安装 virt-manager-common
 dnf install virt-manager-common-3.2.0-1.el8.noarch.rpm
+
+# 再安装 virt-manager
+dnf install virt-manager-3.2.0-1.el8.noarch.rpm
 ```
 
 
 
-##### 坑来了：安装时出错，说什么 `gi` 模块没找到。
+##### 坑一：安装时出错，说什么 `gi` 模块没找到。
 
 ```
 >>> import gi
@@ -388,6 +450,22 @@ pip3 install Pygi gobject PyGObject
 ```
 
 
+
+##### 坑二：`virt-manager` 无法正常启动，出现类似如下的错误。
+
+```
+[root@localhost virt-manager-3.2.0]# Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+Unable to init server: Could not connect: Connection refused
+
+(virt-manager:99226): Gtk-WARNING **: 12:31:50.650: cannot open display:
+```
+
+
+
+这类问题应该是显示服务没有正常启动造成的。
+
+重启服务器，或检测 `X11` 服务端有无正常安装并启动一般都能解决。
 
 
 

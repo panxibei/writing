@@ -98,7 +98,11 @@ Win2016是服务版本的 Windows 操作系统，与Win10的操作方法大不�
 
 
 
-安装包下载：https://o8.cn/iQRo2P 密码：u573
+安装包链接：https://pan.baidu.com/s/10AqjucEAvacW2hnLFg3ZBg
+
+提取码：k3e4
+
+
 
 好用的话，别忘了关注我哦！
 
