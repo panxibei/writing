@@ -148,11 +148,9 @@ dnf install xorg-x11-server-Xorg xorg-x11-xauth xorg-x11-apps
 
 dnf install cyrus-sasl-devel device-mapper-* gnutls-devel libxml2-devel dnsmasq dnsmasq-* libxslt libtirpc-devel libpciaccess libpciaccess-devel yajl-devel libacl-devel libattr-devel audit-libs-devel libblkid-devel fuse-devel fuse3-devel fuse3-libs libnl3-devel libiscsi-devel
 
-pip3 install meson xsltproc rst2html5 jsonschema==3.0.2
+pip3 install meson rst2html5 jsonschema==3.0.2
 
 dnf install cyrus-sasl-devel device-mapper-* gnutls-devel libxml2-devel dnsmasq dnsmasq-* libxslt libtirpc-devel
-
-pip3 install meson rst2html5 jsonschema==3.0.2
 ```
 
 
@@ -173,10 +171,12 @@ dnf install rpcgen --enablerepo=powertools
 ##### 安装驱动程序
 
 ```
+unzip libvirt-daemon-drivers.zip
+cd libvirt-daemon-drivers
 rpm -ivh --nodeps libvirt-daemon-*
 ```
 
-**libvirt-daemon-drviers.zip(2.15M)**
+**libvirt-daemon-drivers.zip(2.15M)**
 
 打包下载：
 
