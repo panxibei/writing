@@ -45,10 +45,27 @@
 
 
 
+### 切换更新源
+
+如果你嫌官方源速度慢，也可以考虑用国内的源。
+
+```
+# 切换为上海交通大学的更新源
+sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.sjtug.sjtu.edu.cn/rocky|g' \
+    -i.bak \
+    /etc/yum.repos.d/Rocky-*.repo
+
+# 生成缓存
+dnf makecache
+```
+
+
+
 ### 所需组件
 
 ```shell
-dnf install tar unzip bzip2 make wget curl curl-devel gcc gcc-c++ automake autoconf libtool pixman pixman-devel zlib-devel lzo-devel glib2-devel pam-devel python3 python3-devel
+dnf install tar unzip bzip2 make wget curl curl-devel gcc gcc-c++ automake autoconf libtool pixman pixman-devel zlib-devel lzo-devel glib2-devel pam-devel python39 python39-devel
 
 dnf config-manager --set-enabled powertools
 dnf install libfdt-devel SDL SDL-devel SDL2 SDL2-devel vte291-devel
@@ -165,6 +182,12 @@ dnf config-manager --set-enabled powertools
 
 dnf install rpcgen --enablerepo=powertools
 ```
+
+
+
+在这儿我要友情提示一下，编译 `libvirt` 时需要用到 `python38` 以上版本，否则会出现各种难以描述的错误。
+
+而 `YUM` 默认官方源安装为 `python36` 版本，所以不能支持使用。
 
 
 
@@ -414,6 +437,7 @@ dnf install vala
 
 dnf install pygobject3-devel
 dnf install libvirt-glib gtk-vnc2
+pip3 install Pygi gobject PyGObject
 ```
 
 
@@ -424,6 +448,7 @@ dnf install libvirt-glib gtk-vnc2
 wget http://ftp.gnome.org/pub/gnome/sources/gtksourceview/4.6/gtksourceview-4.6.1.tar.xz
 tar xvJf gtksourceview-4.6.1.tar.xz
 cd gtksourceview-4.6.1
+mkdir build && cd build
 meson --prefix=/usr
 ninja
 ninja install
@@ -437,16 +462,30 @@ ninja install
 
 
 
-##### 通过生成 `rpm` 包来安装 `virt-manager`
-
-由于直接使用源代码中的 `./setup.py install` 无法成功安装（原因很多，似乎作者都不这么建议）， 所以参考了某位国外网友的文章，通过生成 `rpm` 包来安装为最佳。
+##### 直接安装 `virt-manager`
 
 在这儿建议尽量从 `github` 上下载，而不是从官网上，因为官网上可能并不是最新版，可能含有一些 `Bug` 。
+
+```shell
+sudo yum install rpm-build intltool
+wget https://github.com/virt-manager/virt-manager/archive/refs/tags/v3.2.0.tar.gz
+tar -zxvf v3.2.0.tar.gz
+cd virt-manager-3.2.0
+./setup.py install
+```
+
+如果你遇到了一些问题，可以先看看后面我写的坑，估计会有一些启发。
+
+
+
+##### 通过生成 `rpm` 包来安装 `virt-manager`
+
+由于直接使用源代码中的 `./setup.py install` 可能无法成功安装（原因很多，似乎作者都不这么建议）， 所以参考了某位国外网友的文章，通过生成 `rpm` 包来安装。
 
 ```
 sudo yum install rpm-build intltool
 wget https://github.com/virt-manager/virt-manager/archive/refs/tags/v3.2.0.tar.gz
-tar -zxvf virt-manager-3.2.0.tar.gz
+tar -zxvf v3.2.0.tar.gz
 cd virt-manager-3.2.0
 ./setup.py rpm
 ```
@@ -470,6 +509,8 @@ virt-manager-common-3.2.0-1.el8.noarch.rpm
 使用 `yum` 或 `dnf` 安装后面这两个文件，这样可以解决一些文件依赖问题。
 
 ```shell
+cd ./noarch
+
 # 先安装 virt-manager-common
 dnf install virt-manager-common-3.2.0-1.el8.noarch.rpm
 
@@ -547,7 +588,7 @@ TypeError: Argument 1 does not allow None as a value
 
 首先，打开并编辑以下文件。
 
-```
+```shell
 vim /usr/share/virt-manager/virtManager/device/addstorage.py
 ```
 
@@ -566,6 +607,10 @@ removable = bool(disk.removable)
 
 
 **最后，修改完成后，切记一定要关掉 `virt-manager` ，然后再重新打开测试。**
+
+
+
+其实还要补充一点，`virt-manager` 使用的是 `python36` ，如果你用的是 `python39` 就会报各种错误，真是要吐了。
 
 
 
