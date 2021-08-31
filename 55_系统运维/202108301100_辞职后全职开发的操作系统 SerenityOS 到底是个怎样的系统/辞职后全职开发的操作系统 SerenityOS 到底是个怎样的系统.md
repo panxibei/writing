@@ -10,7 +10,7 @@
 
 最近遇热的一款操作系统 `SerenityOS` 成功地被我注意到了！
 
-近期这款系统位于 `GitHub` 排行榜第二的位置久居不下，认识它的人也越来越多。
+这款系统近期一直位于 `GitHub` 排行榜第二的位置而久居不下，认识它的人也越来越多。
 
 这款系统有什么特别之处吗？
 
@@ -18,23 +18,33 @@
 
 
 
-一位来自瑞典的程序员 `Andreas Kling` ，辞职后用了将近三年的时间全身心地开发了这款 `SerenityOS` 。
+大约三年前，一位来自瑞典的程序员 `Andreas Kling` ，辞职后用了将近三年的时间全身心地开发了这款 `SerenityOS` 。
 
-很显然，他肯定是位编程高手，但最重要的是，他以一己之力、坚持不懈地完成了其他人都几乎无法完成的事情，这样看来他的确很酷对吧！
+时至今日，这款系统功能日趋强大，虽然远远无法与主流系统相媲美，但其设计理念也是值得借鉴和学习的。
+
+很显然，这位程序员肯定是个编程高手、业界大神，但与系统相比最重要的是，他是以一己之力、坚持不懈地完成了其他人都几乎不太敢而无法完成的事情，这样看来他的确很酷对吧！
 
 当然了，和其他系统类似，他走的也是类 `Unix` 路线，难能可贵的是，系统是带有图形界面的。
 
-能摸到也能看到，这一点才是我们对它产生兴趣的重点之一。
+能摸到也能看到，这一点才是我对它产生兴趣的重点之一。
 
-于是我在看完新闻介绍之余，也实际按官方文档走了一遍。
+于是我在看完新闻介绍之后，也实际按官方文档走了一遍，最后成功看到了编译后的系统界面。
 
-> 官网文档链接：https://github.com/SerenityOS/serenity/blob/master/Documentation/BuildInstructions.md
+挺有趣的，快来一起看看吧！
+
+
+
+> 官方主页：https://serenityos.org/
+>
+> GitHub：https://github.com/SerenityOS/serenity
+>
+> 构建文档：https://github.com/SerenityOS/serenity/blob/master/Documentation/BuildInstructions.md
 
 
 
 ### 准备工作
 
-虽然 `Windows` 也可以做同样的事情，但是用它总是会带来一些麻烦，所以我还是用了 `Ubuntu` 和其他一些系统来做这件事。
+虽然 `Windows` 也可以做同样的事情，但是用它总是会带来一些意想不到的麻烦，所以我还是用了 `Ubuntu` 和其他一些系统来完成这件事。
 
 除了 `Ubuntu` ，我已经成功实现了在 `Rocky Linux` 上跑 `SerenityOS` ，当然 `Debian/CentOS` 等等系统都是可以做到的。
 
@@ -73,9 +83,22 @@ sudo apt install libpixman-1-dev libgtk-3-dev
 
 有两种安装方法，一种是用 `SerenityOS` 项目中的 `Toolchain/BuildQemu.sh` 脚本来安装，还有一种是老老实实手动编译安装。
 
-我是手动编译安装的 `QEMU 6.1-RC` ，很简单，具体可以参考我之前的文章。
+前者我并没有尝试过，我是手动编译安装的 `QEMU 6.1-RC` ，很简单，具体可以参考我之前的文章。
 
 > 文章参考链接：
+
+
+
+命令参考（友情提示：编译时可能需要漫长的数个小时......）：
+
+```
+sudo wget https://download.qemu.org/qemu-6.1.0.tar.xz
+sudo tar xvJf qemu-6.1.0.tar.xz
+sudo cd qemu-6.1.0
+sudo ./configure
+sudo make
+sudo make install
+```
 
 
 
@@ -97,6 +120,18 @@ sudo git clone https://github.com/SerenityOS/serenity.git
 cd ~serenity
 [serenity]$ sudo Meta/serenity.sh rebuild-toolchain
 ```
+
+
+
+注意，此时可能会出现一个坑，构建进程中断并提示无法下载 `cldr-39.0.0-json-modern.zip` 。
+
+解决方法说简单是怕你烦，将这个文件手动下载后重命名为 `cldr.zip` ，并上传到 `Build/i686/CLDR` ,然后再次执行构建命令即可。
+
+**cldr-39.0.0-json-modern.zip(39.7M)**
+
+本地下载：https://pan.baidu.com/s/1aJ3Nuy-HUYmw0FH_sl3c-A
+
+提取码：lt2e
 
 
 
@@ -124,11 +159,11 @@ cd ~serenity
 
 
 
-我相信当系统界面出现在你们眼前时，你们一定会非常激动。
+我相信当系统界面出现在眼前时，你们一定会非常激动。
 
-不过嘛很多上伙伴手头上并没有 `QEMU` ，特意去装个 `QEMU` 其实挺麻烦也没有十分的必要。
+不过嘛很多小伙伴手头上并没有 `QEMU` ，特意去装个 `QEMU` 其实挺麻烦也没有十分的必要。
 
-那么我们能不能在诸如我们常用的  `VirtualBox` 或 `VMWare` 上跑一跑 `SerenityOS` 呢？
+那么我们能不能在诸如常用的  `VirtualBox` 或 `VMWare` 上跑一跑 `SerenityOS` 呢？
 
 官网上说了，完全可以，于是我就把文档内容总结如下，分享给需要的小伙伴们。
 
@@ -146,9 +181,11 @@ cd ~serenity
 
 命令完成后，在 `Build/i686` 目录中会生成一个 `grub_disk_image`  文件。
 
+这个文件就是传说中的启动映像，非常重要哦，注意保护！
 
 
-如果你遇到了困难，比如找不到 `grub2` 之类的，那么安装它就是了。
+
+如果在此期间你遇到了困难，比如找不到 `grub2` 之类的，那么安装它就是了。
 
 ```
 sudo apt install grub2
@@ -156,9 +193,7 @@ sudo apt install grub2
 
 
 
-
-
-接着，你可以用一些命令将这个映像文件转成 `VirtualBox` 可识别的格式文件。
+接着，你可以用一些命令将这个映像文件转成 `VirtualBox` 可识别的磁盘格式文件。
 
 ```
 # 如果你有 QEMU，那么直接就可以转换了
@@ -186,25 +221,25 @@ OK，最后你就得到了一个 `serenityos.vdi` 文件。
 
 1. 虚拟机版本选择 `Other/Unknown (64-bit)` ，切记不要选择 `Linux` 。
 
-   图v01
+   图03
 
    
 
 2. 启用 `PAE/NX`。
 
-   图v02
+   图04
 
    
 
 3. 存储控制器选择 `PIIX4` ，其他的可能会失败。
 
-   图v03
+   图05
 
    
 
 4. 网卡仅支持 `Realtek` 之类的常见类型，但并不保证网络一定好用。
 
-   图v04
+   图06
 
    
 
@@ -212,17 +247,25 @@ OK，最后你就得到了一个 `serenityos.vdi` 文件。
 
 
 
+完成后启动之，有了 `grub` 启动菜单。
+
+图07
+
+
+
 一切如之前所说，自带小程序都还是可以用的，贪吃蛇、计算器、画图软件一样也不少。
 
 其中那只酣睡的小猫，它会随时追踪你的鼠标，有点像过去桌面助手的赶脚。
 
-图a03
+图08
 
 
 
-**现成映像文件 `serenityos.vdi` (328M)**
+**现成的映像文件 `serenityos.vdi` (328M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1K8sKlKfahjYts_MDtXpKlQ
+
+提取码：dr9g
 
 
 
@@ -244,15 +287,15 @@ qemu-img convert -O vmdk /path/to/grub_disk_image /path/to/output/serenityos.vmd
 
 不过非常抱歉，我没有测试成功，文档里也写了，只测试通过了 `VMware Player 15` ，而我的是 `16` 。
 
-有空有闲的小伙伴可以一试。
+有空有闲的小伙伴可以抽空一试。
 
 
 
-**现成映像文件 `serenityos.vmdk` (284M)**
+**现成的映像文件 `serenityos.vmdk` (284M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1MtbowWCP4FWYYbzAlo48eA
 
-
+提取码：iw7u
 
 
 
@@ -300,7 +343,7 @@ Nameserver=1.1.1.1,1.0.0.1
 EnableServer=1
 ```
 
-图a02
+图09
 
 
 
@@ -308,21 +351,19 @@ EnableServer=1
 
 有些遗憾的是，除了 `serenityos.org` 之外，大部分网页无法正常打开，尝试了访问几个大网站，都是提示加载失败。
 
-图a06
+图10
 
 
 
 通常 `http` 开头的网页似乎还勉强能看到个页面部分，但 `https`  开头的就几乎访问不了了。
 
-图a05
+图11
 
 
 
 从后台 `Debug` 窗口中可以看到是由于 `https` 加密证书无法被正常识别造成的。
 
 还有就是字体、网络协议等等还不支持或不完善，看来这套系统还是有待进一步开发啊！
-
-
 
 
 
@@ -334,7 +375,7 @@ EnableServer=1
 
 可惜只能敲敲命令，没有办法传输文件啊。
 
-图a04
+图12
 
 
 
