@@ -8,443 +8,63 @@ UrBackup Server 2.4.x 管理手册中文版（四）架构
 
 
 
-前一篇我们介绍了 `UrBackup` 服务端的安装，与之相对我们今天要介绍的客户端安装就要简单得多了。
-
-如果你是在 `Windows` 下安装 `UrBackup` 客户端，那基本不需要了解什么操作知识就可以直接上手了。
-
-不过，由于 `UrBackup` 是开源支持多平台的特性，所以也有必要介绍一下在除 `Windows` 平台下的安装方法。
-
-此外，还有在面对批量用户的情况下，应该考虑批量自动的处理方法。
-
-OK，我们一起来学习一下！
+本篇比较简单，描述 `UrBackup` 的架构。
 
 
 
 ### `UrBackup` 的架构
 
-##### 2.2.1 Windows 客户端安装
 
-如果你打算在与服务端相同子网的网络中使用客户端，或者客户端在设置期间位于本地网络中，那么可以这样来安装客户端。
 
-- 从 `http://www.urbackup.org` 下载客户端程序。
-- 运行安装程序。
-- 保留备份项目的默认值，手动选择备份路径或从服务器配置客户端（参见第 8.3.4 节）。
-- 服务器会自动发现客户端并开始备份。
+`UrBackup` 分为服务端和客户端两大部分（C/S架构）。
 
+服务端负责发现和备份客户端，在存储空间耗尽或存在太多备份时删除备份，同时还可以生成统计信息和管理客户端设置。
 
+客户端则侦听服务端指令，比如告诉它应该构建一个文件列表，或者服务端想要下载哪个文件。
 
-如果客户端只能通过 Internet 或 NAT 方式访问，那么可以这样安装客户端。
+此外服务端还会开启一个通道，客户端可以在该通道上请求服务端开始备份，或者更新客户端的特定设置。
 
-- 在状态页面上添加一个新的 Internet 客户端。
 
-  图01
 
-  图02
+##### 3.1 服务端架构
 
-  
+服务端分为**核心**和**接口界面**两个部分。
 
-- 从网上下载到客户端上并安装。
 
-  或者，为新客户端创建一个用户（在设置中）并将用户名/密码发送给用户。
 
-  然后，用户可以从服务端状态页面上下载客户端安装程序并进行安装。
+目前服务端接口界面只支持 Web 界面的管理方式。
 
-  **注意，经过测试，从服务端状态页面并不能找到可下载的客户端程序。**
+Web 界面可通过 `FastCGI`（端口 `55413`）和 `HTTP`（端口 `55414`）访问。
 
-  
+你可以利用 `FastCGI` 端口使 Web 界面通过 `SSL` 来访问（例如使用 `apache` ）。
 
-- 在客户端上选择所需备份路径或在服务器上配置适当的默认备份路径（参见第 8.3.4 节）。
+有关详细信息，请参阅第 4.2 节。
 
-- 一旦与客户端建立连接，服务器将自动开始备份。
 
-这是最简单的添加 Internet 客户端的方法，添加 Internet 客户端的其他方法详见第 7 节。
 
+服务端核心部分由多个不同任务的线程组成。
 
+一个线程发现新客户端，另一个则检查客户端是否需要备份，而其他线程向客户端发送 ping 包以检查它们是否在线，或者向它们发送当前的备份状态。
 
-##### 2.2.2 自动部署到多台 Windows 计算机
+还有一个线程则用于更新文件统计信息或删除旧备份。
 
-首先，如果你想选择不同于安装后默认设置的备份路径，可以自行配置一般默认备份路径，统一为每个客户端默认备份相应的文件夹（请参阅第 8.3.4 节），然后再使用以下方法之一安装客户端。
+正是因为 `UrBackup` 服务端由多线程任务组成，所以使用现代多核 CPU 会更高效（核数越多越好！）。
 
 
 
-* 本地网络客户端
+##### 3.2 客户端架构
 
-将 `MSI` 客户端安装程序通过组策略添加到域控制器。
+客户端分为**核心进程**和**接口界面进程**。
 
-或者，您可以使用带有开关 `/S` 的 `NSIS (.exe)` 安装程序进行静默安装，并使用 `psexec` 之类的东西。
 
-服务器将自动寻找并备份新客户端。
 
+接口界面进程用于显示托盘图标和对话窗口，同时向核心进程发送设置和命令。
 
+客户端核心进程在 `UDP` 端口 `35622` 上侦听来自服务端的广播消息，并在收到消息后将带有其名称的消息返回给服务端。
 
-* 互联网客户端
+使用 Windows 计算机名称作为名称。它在端口 35623 TCP 上侦听来自客户端接口进程和服务器的命令，并在端口 35621 TCP 上侦听来自服务器的文件请求。服务器在其命令端口上与每个客户端建立永久连接，客户端可以使用该连接请求备份或更改其设置。核心客户端进程负责构建要备份的目录中所有文件的列表。此列表在 UrBackup 客户端目录中创建为“urbackup/data/filelist.ub”。为了加快目录列表的创建，要备份的目录会通过 Windows 更改日志不断监视。Windows 更改日志只能用于整个分区。因此，第一次添加卷上的目录时，UrBackup 核心客户端进程会将新卷上的所有目录条目读取到“urbackup/backup_client.db”中的客户端数据库文件中。成功索引卷后，数据库会不断更新以与文件系统同步。因此，如果卷发生大的变化，数据库会更频繁地更新。这不会有很大的性能损失，因为只有目录保存在数据库中。更新每 10 秒或在请求文件列表时进行。服务器从客户端下载文件列表，并通过从内置客户端文件服务器下载更改的或新的文件来启动备份。映像备份仅使用命令端口完成。
 
-从以下链接中获取 `Python` 脚本，并将脚本放在服务端可被客户端访问的 URL 链接中。
 
- https://urbackup.atlassian.net/wiki/display/US/Download+custom+client+installer+via+Python 
-
-
-
-该脚本在客户端上访问并执行，可自动在服务器上创建客户端，执行环境为 `Python 3`，当前支持 `UrBackup 2.x` 。
-
-你还可以在执行脚本时添加静默安装开关 `/S`，这样它就无需用户干预了。
-
-
-
-**批量部署UrBackup客户端脚本.py.7z**
-
-下载链接：https://pan.baidu.com/s/1IWkkh0zH1CZCRUb7iI3MkA
-
-提取码：rzd4
-
-
-
-**脚本中只需修改前面的 `server_url`之类的变量。**
-
-```python
-import http.client as http
-import json
-from urllib.parse import urlparse
-from urllib.parse import urlencode
-from base64 import b64encode
-import hashlib
-import socket
-import shutil
-import os
-import binascii
-  
-#############################
-# Settings. Please edit.
-#############################
-  
-#Your server URL. Do not forget the 'x' at the end
-server_url = 'http://example.com:55414/x'
-  
-  
-#If you have basic authentication via .htpasswd
-server_basic_username = ''
-server_basic_password = ''
-  
-  
-# Login user needs following rights
-#   "status": "some"
-#   "add_client": "all"
-# Optionally, to be able to
-# install existing clients:
-#   "settings": "all"
-server_username='adduser'
-server_password='foo'
-  
-  
-#############################
-# Global script variables.
-# Please do not modify.
-# Only modify something after this line
-# if you know what you are doing
-#############################
-  
-session=""
-  
-def get_response(action, params, method):
-    global server_url;
-    global server_basic_username;
-    global server_basic_password;
-    global session;
-      
-    headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json; charset=UTF-8'
-    }
-      
-    if('server_basic_username' in globals() and len(server_basic_username)>0):
-        userAndPass = b64encode(str.encode(server_basic_username+":"+server_basic_password)).decode("ascii")
-        headers['Authorization'] = 'Basic %s' %  userAndPass
-      
-    curr_server_url=server_url+"?"+urlencode({"a": action});
-      
-    if(len(session)>0):
-        params["ses"]=session
-      
-    if method=='GET':
-        curr_server_url+="&"+urlencode(params);
-      
-    target = urlparse(curr_server_url)
-     
-    if not method:
-        method = 'GET'
-         
-    if method=='POST':
-        body = urlencode(params)
-    else:
-        body = ''
-      
-    if(target.scheme=='http'):
-        h = http.HTTPConnection(target.hostname, target.port)
-    elif(target.scheme=='https'):
-        h = http.HTTPSConnection(target.hostname, target.port)
-    else:
-        print('Unkown scheme: '+target.scheme)
-        raise Exception("Unkown scheme: "+target.scheme)
-      
-    h.request(
-            method,
-            target.path+"?"+target.query,
-            body,
-            headers)
-      
-    return h.getresponse();
-  
-def get_json(action, params = {}):
-      
-    response = get_response(action, params, "POST")
-      
-    if(response.status != 200):
-        return ""
-      
-    data = response.read();
-      
-    response.close()
-          
-    return json.loads(data.decode("utf-8"))
-  
-def download_file(action, outputfn, params):
-      
-    response = get_response(action, params, "GET");
-      
-    if(response.status!=200):
-        return False
-      
-    with open(outputfn, 'wb') as outputf:
-        shutil.copyfileobj(response, outputf)
-     
-    if os.path.getsize(outputfn)<10*1024:
-        return False
-     
-    return True      
-  
-def md5(s):
-    return hashlib.md5(s.encode()).hexdigest()
-  
-  
-print("Logging in...")
-  
-salt = get_json("salt", {"username": server_username})
-  
-if( not ('ses' in salt) ):
-    print('Username does not exist')
-    exit(1)
-      
-session = salt["ses"];
-      
-if( 'salt' in salt ):
-    password_md5_bin = hashlib.md5((salt["salt"]+server_password).encode()).digest()
-    password_md5 = binascii.hexlify(password_md5_bin).decode()
-     
-    if "pbkdf2_rounds" in salt:
-        pbkdf2_rounds = int(salt["pbkdf2_rounds"])
-        if pbkdf2_rounds>0:
-            password_md5 = binascii.hexlify(hashlib.pbkdf2_hmac('sha256', password_md5_bin,
-                                               salt["salt"].encode(), pbkdf2_rounds)).decode()
-     
-    password_md5 = md5(salt["rnd"]+password_md5)
-      
-    login = get_json("login", { "username": server_username,
-                                "password": password_md5 })
-      
-    if('success' not in login or not login['success']):
-        print('Error during login. Password wrong?')
-        exit(1)
-         
-    clientname = socket.gethostname()
-          
-    print("Creating client "+clientname+"...")
-          
-    new_client = get_json("add_client", { "clientname": clientname})
-     
-    if "already_exists" in new_client:
-        print("Client already exists")
-         
-        status = get_json("status")
-         
-        if "client_downloads" in status:
-            for client in status["client_downloads"]:        
-                if (client["name"] == clientname):
-                    print("Downloading Installer...")
-                     
-                    if not download_file("download_client", "Client Installer.exe",
-                                 {"clientid": client["id"] }):
-                        print("Downloading client failed")
-                        exit(1)
-        else:       
-            print("Client already exists and login user has probably no right to access existing clients")
-            exit(2)
-    else:
-        if not "new_authkey" in new_client:
-            print("Error creating new client")
-            exit(3)
-             
-        print("Downloading Installer...")
-                  
-        if not download_file("download_client", "Client Installer.exe",
-                             {"clientid": new_client["new_clientid"],
-                              "authkey": new_client["new_authkey"]
-                              }):
-              
-            print("Downloading client failed")
-            exit(1)
-          
-    print("Sucessfully downloaded client")
-    os.startfile("Client Installer.exe")
-    exit(0)
-```
-
-
-
-通过 `Python` 脚本实现批量部署，由于需要每个客户端都具备 `Python` 环境，所以个人感觉比较麻烦，大家可以视实际情况而行。
-
-
-
-##### 2.2.3 Linux 上的客户端安装
-
-如果你打算在与服务端相同子网的网络中使用客户端，或者客户端在设置期间位于本地网络中，那么可以这样来安装客户端。
-
-- 从 `http://www.urbackup.org` 下载便携式二进制 `Linux` 客户端安装程序。
-
-- 运行安装程序。
-
-- 选择一种可用的快照机制。
-
-  如果没有可用的快照机制，请考虑在 `LVM` 或 `btrfs` 上安装 `Linux` ，否则你将不得不在备份期间停止所有正在运行的应用程序，因为备份脚本会在备份周期内改动文件，从而对应用程序的执行造成影响。
-
-- 服务器会自动找到客户端并开始备份。
-
-
-
-如果客户端只能通过 Internet 或 NAT 方式访问，那么可以这样安装客户端。
-
-- 在状态页面上添加一个新的 Internet 客户端。
-
-- 下载 Internet 客户端的客户端安装程序并将其发送到新客户端。
-
-- 从网上下载到客户端上并安装。
-
-  或者，为新客户端创建一个用户（在设置中）并将用户名/密码发送给用户。
-
-  然后，用户可以从服务端状态页面上下载客户端安装程序并进行安装。
-
-  **注意，经过测试，从服务端状态页面并不能找到可下载的客户端程序。**
-
-  
-
-- 通过命令行选择要在客户端备份的备份路径。
-
-  ````
-  urbackupclientctl add-backupdir –path /
-  ````
-
-  或在服务器上配置合适的默认备份目录（参见第 8.3.4 节）。
-
-- 一旦客户端连接，服务器将自动开始备份。
-
-
-
-##### 2.2.4 Mac OS X 客户端安装（追加内容，官网手册没有此内容）
-
-由于官网对于 `Mac OS X` 系统的支持好像仅限于论坛讨论，所以官网主页上未见实际安装步骤。
-
-经过我一个星期的测试，终于不负众望找到了可以使用的安装程序包。
-
-在此强调一下，如果你找的是 `2.4` 或 `2.5` 的安装包，多半是不能直接使用的。
-
-
-
-测试系统环境：
-
-* UrBackup Server 2.4.13 (Windows)
-* Mac OS X 10.9.3 Mavericks
-* UrBackup Client 2.0.29（后面会提供下载）
-
-
-
-1、双击 `UrBackup Client 2.0.29` 安装包，点击继续。
-
-图03
-
-
-
-2、选择安装位置。
-
-图04
-
-
-
-3、确定安装位置并开始安装。
-
-图05
-
-
-
-4、输入密码以便开始安装。
-
-图06
-
-
-
-5、程序开始验证并安装。
-
-图07
-
-
-
-6、很快安装即可完成。
-
-图08
-
-
-
-7、在应用程序中可以看到 `UrBackup Client` 。
-
-图09
-
-
-
-8、手动运行 `UrBackup Client` 或重启让它自己启动也可以。
-
-点击图标，选择 `Status` 查看当前状态，正常情况下需要几分钟时候服务端即可自动发现并添加到客户端列表中。
-
-图10
-
-
-
-9、点击图标，选择 `Infos` 查看版本等信息。
-
-图11
-
-
-
-10、点击图标，选择 `Add/Remove backup paths` 添加修改需要备份的路径。
-
-图12
-
-
-
-11、点击图标，选择 `Do full file backup` 或 `do incremental file backup` 可以开始执行完全备份和增量备份，当然在服务端也可以执行同样的操作。
-
-图13
-
-
-
-我测试的 `Mac OS X` 版本是 `10.9` ，同样在其他更高版上测试也是没问题的。
-
-但请小伙伴们注意，`UrBackup Client` 的 `2.4` 或是 `2.5` 我都没有测试成功，要小心如果失败尽早放弃。
-
-
-
-**UrBackup Client 2.0.29.pgk.7z (5.05M)**
-
-下载链接：https://pan.baidu.com/s/1GhT3s7f65W5QOi6KPL4k3g
-
-提取码：bzdv
 
 
 
