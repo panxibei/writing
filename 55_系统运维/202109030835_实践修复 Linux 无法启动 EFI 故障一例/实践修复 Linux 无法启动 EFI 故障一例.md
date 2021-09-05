@@ -139,7 +139,40 @@ ip route add default via 192.168.1.1
 
 
 
+**重新安装 `grub2-efi` 和 `shim` 。**
+
+```
+dnf reinstall grub2-efi shim
+```
+
+图a09
+
+
+
+
+
 **安装 `kernel` 。**
+
+可以安装指定版本的 `kernel` 。
+
+```
+# 查看内核版本号
+# 比如输出：4.18.0-305.3.1.el8_4.x86_64
+uname -r
+
+# 列出可安装的内核版本
+# 有两个版本：一个是 4.18.0-305.3.1.el8_4，另一个是 4.18.0-305.12.1.el8_4
+dnf list kernel
+
+# 安装指定版本的内核
+dnf reinstall "kernel-*-$(uname -r)"
+
+dnf reinstall "kernel-headers-$(uname -r)"
+dnf reinstall "kernel-core-$(uname -r)"
+dnf reinstall "kernel-modules-$(uname -r)"
+```
+
+
 
 ```
 dnf reinstall kernel*
@@ -148,14 +181,6 @@ dnf reinstall kernel*
 
 
 
-
-**重新安装 `grub2-efi` 和 `shim` 。**
-
-```
-dnf reinstall grub2-efi shim
-```
-
-图a09
 
 
 
