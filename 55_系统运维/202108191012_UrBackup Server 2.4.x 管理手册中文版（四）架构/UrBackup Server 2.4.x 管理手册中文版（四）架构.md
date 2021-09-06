@@ -4,7 +4,7 @@ UrBackup Server 2.4.x 管理手册中文版（四）架构
 
 英文：administration-manual-for-urbackup-server-4
 
-关键字：administration,manual,urbackup,backup,server,client
+关键字：administration,manual,urbackup,backup,server,client,architecture
 
 
 
