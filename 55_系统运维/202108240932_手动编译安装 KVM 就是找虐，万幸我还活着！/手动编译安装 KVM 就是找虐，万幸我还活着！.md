@@ -78,7 +78,13 @@ dnf install libevdev-devel spice-* xorg-x11-server-Xspice libssh-devel
 
 项目下载链接：https://github.com/ninja-build/ninja/releases
 
-本地下载：
+
+
+**ninja-linux.zip(100K)**
+
+本地下载：https://pan.baidu.com/s/1zdjoZaTw7bia0r2zG_Q6mQ
+
+提取码：6pzq
 
 
 
@@ -193,6 +199,14 @@ dnf install rpcgen --enablerepo=powertools
 
 ##### 安装驱动程序
 
+这个驱动程序是指 `libvirt` 联动 `QEMU` 的接口程序。
+
+如果没有这些驱动，那么很可能有些功能就不支持了，默认情况下不安装的话，`libvirt` 也只提供一些基本的接口驱动。
+
+我手动打包了这些驱动程序，虽然不全，但是基本上已经包括了大部分的功能，如果有特殊需求你也可以自行追加。
+
+追加后别忘记还要再次编译安装一次 `libvirt` 才能生效。
+
 ```
 unzip libvirt-daemon-drivers.zip
 cd libvirt-daemon-drivers
@@ -201,9 +215,9 @@ rpm -ivh --nodeps libvirt-daemon-*
 
 **libvirt-daemon-drivers.zip(2.15M)**
 
-打包下载：
+打包下载：https://pan.baidu.com/s/1F-q6QniOol-AHQhgPLtRRQ
 
-
+提取码：by0m
 
 
 
@@ -251,7 +265,7 @@ OK，如果你遇到什么迷之报错，那么可以先来看看下面我遇到
 
 在后续使用 `virt-manager` 连接 `libvirt` 之时，可能会遇到如下图提示的错误。
 
-图k01
+图01
 
 
 
@@ -274,7 +288,7 @@ vim /usr/local/etc/libvirt/libvirtd.conf
 unix_sock_dir = "/var/run/libvirt"
 ```
 
-图k02
+图02
 
 
 
@@ -294,7 +308,7 @@ unix_sock_dir = "/var/run/libvirt"
 
 在编译过程中，屡次出现以 `html.in` 结尾的文档中的语法报错。
 
-图k03
+图03
 
 
 
@@ -378,7 +392,7 @@ libvirtd -d
 
 服务启动后，会在 `/var/run/libvirt` 下产生几个 `sock` 文件。
 
-图k04
+图04
 
 
 
@@ -388,7 +402,7 @@ libvirtd -d
 systemclt start virtlogd
 ```
 
-图k05
+图05
 
 
 
@@ -444,6 +458,8 @@ pip3 install Pygi gobject PyGObject
 
 ##### 安装 `gtksourceview4`
 
+最新版本好像是 `4.8` ，但是它的依赖要求太高，我折腾了很久也没搞定，无奈选择了较低版本的 `4.6` 。
+
 ```
 wget http://ftp.gnome.org/pub/gnome/sources/gtksourceview/4.6/gtksourceview-4.6.1.tar.xz
 tar xvJf gtksourceview-4.6.1.tar.xz
@@ -458,7 +474,9 @@ ninja install
 
 **gtksourceview-4.6.1.tar.xz（1.10M）**
 
-本地下载：
+本地下载：链接：https://pan.baidu.com/s/1ib6woV9qFXRNiy-dx4pC4w
+
+提取码：odbu
 
 
 
@@ -502,7 +520,7 @@ virt-manager-common-3.2.0-1.el8.noarch.rpm
 
 一共三个文件，我们要用到的是第二个和第三个文件。
 
-图k06
+图06
 
 
 
@@ -568,7 +586,7 @@ Unable to init server: Could not connect: Connection refused
 TypeError: Argument 1 does not allow None as a value
 ```
 
- 图k07
+ 图07
 
 
 
@@ -602,7 +620,7 @@ removable = disk.removable
 removable = bool(disk.removable)
 ```
 
-图k08
+图08
 
 
 
