@@ -85,7 +85,7 @@ sudo apt install libpixman-1-dev libgtk-3-dev
 
 前者我并没有尝试过，我是手动编译安装的 `QEMU 6.1-RC` ，很简单，具体可以参考我之前的文章。
 
-> 文章参考链接：
+> 文章参考链接：https://www.sysadm.cc/index.php/xitongyunwei/864-compiling-and-installing-of-kvm-is-very-troublesome-thanks-god-i-am-still-alive
 
 
 
