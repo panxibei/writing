@@ -189,3 +189,39 @@ refresh_pattern -i (/cgi-bin/|\?) 0	0%	0
 refresh_pattern .		0	20%	4320
 ```
 
+
+
+测试方法
+
+`squidclient`
+
+
+
+`curl`
+
+
+
+开机自动启动
+
+
+
+以下面的代码加入到 `/etc/rc.d/rc.local` 文件中。
+
+```
+# Squid caching proxy
+if [ -f /usr/local/squid/sbin/squid ]; then
+        echo -n ' Squid'
+        /usr/local/squid/sbin/squid
+fi
+```
+
+图s01
+
+
+
+注意图中上面的红框，也就是说明，它提示我们如果要启用这个 `rc.local` ，那么别忘记给这个文件赋予可执行权限，否则是无效的哦。
+
+```
+chmod +x /etc/rc.d/rc.local
+```
+
