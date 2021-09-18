@@ -1,4 +1,4 @@
-Squid5安装
+安装新版 Squid 经验总结
 
 副标题：
 
@@ -10,25 +10,33 @@ Squid5安装
 
 
 
-编译安装 `Squid`
+### 编译安装 `Squid`
 
 
 
-安装所需组件。
-
-```
-dnf install gcc gcc-c++ perl
-```
-
-
-
-
+安装所需的基本组件，包含 `C` 编译器及 `Perl` 等。
 
 ```
-% tar xzf squid-2.6.RELEASExy.tar.gz
-% cd squid-2.6.RELEASExy
-% ./configure --with-MYOPTION --with-MYOPTION2 etc
-% make
+dnf install gcc gcc-c++ perl wget tar
+```
+
+
+
+下载代码包。
+
+```
+wget http://www.squid-cache.org/Versions/v5/squid-5.1.tar.gz
+```
+
+
+
+编译并安装。
+
+```shell
+tar xzvf squid-5.1.tar.gz
+cd squid-5.1
+./configure
+make
 make install
 ```
 
@@ -42,19 +50,98 @@ make install
 
 
 
+安装完毕后我们该干点啥了？
 
 
-新建缓存
+
+### 目录结构、配置文件和执行程序一览
+
+目录文件结构如下。
 
 ```
-squid -z
+/usr/local/squid/
+├── bin
+│   ├── purge
+│   └── squidclient
+├── etc
+│   ├── cachemgr.conf
+│   ├── cachemgr.conf.default
+│   ├── errorpage.css
+│   ├── errorpage.css.default
+│   ├── mime.conf
+│   ├── mime.conf.default
+│   ├── squid.conf
+│   ├── squid.conf.default
+│   └── squid.conf.documented
+├── libexec
+│   ├── basic_db_auth
+│   ├── basic_fake_auth
+│   ├── basic_getpwnam_auth
+│   ├── basic_ncsa_auth
+│   ├── basic_pop3_auth
+│   ├── basic_radius_auth
+│   ├── basic_smb_auth
+│   ├── basic_smb_auth.sh
+│   ├── cachemgr.cgi
+│   ├── digest_file_auth
+│   ├── diskd
+│   ├── ext_delayer_acl
+│   ├── ext_file_userip_acl
+│   ├── ext_kerberos_sid_group_acl
+│   ├── ext_sql_session_acl
+│   ├── ext_unix_group_acl
+│   ├── ext_wbinfo_group_acl
+│   ├── helper-mux
+│   ├── log_db_daemon
+│   ├── log_file_daemon
+│   ├── negotiate_wrapper_auth
+│   ├── ntlm_fake_auth
+│   ├── security_fake_certverify
+│   ├── storeid_file_rewrite
+│   ├── unlinkd
+│   ├── url_fake_rewrite
+│   ├── url_fake_rewrite.sh
+│   └── url_lfs_rewrite
+├── sbin
+│   └── squid
+├── share
+│   ├── errors
+│   ├── icons
+│   ├── man
+│   └── mib.txt
+└── var
+    ├── cache
+    ├── logs
+    └── run
 ```
 
 
 
+别看这么一大堆目录和文件，我们只要简单地说明一下我们主要关心的那几个就行。
 
 
 
+首先是 `bin` 目录，里面就两个，一个 `purge` ，一个 `squidclient` 。
+
+前者用于清除缓存，后者是客户端用来测试服务端。
+
+
+
+其次是 `etc` 目录，我们只要知道 `squid.conf` 这个最最主要的配置文件即可，目前我们所有的配置都在这个文件中进行。
+
+
+
+再次是 `sbin` 目录，只有一个文件 `squid` ，没错，它就是服务端执行程序，所有的不同执行操作都是以它开头的。
+
+
+
+最后是 `var` 目录，其中有三个子目录，`cache` 、`logs` 和 `run` 。
+
+一看这几个哥们的名字就应该知道，是用作缓存、日志和运行临时文件存放。
+
+请小心，我在摸索过程中就是在这儿踩到了一个坑，这三个哥们必须要开放权限， `Squid` 才能正常开始工作。
+
+所以，应该给他们放权，但不是给 777 ，而是将他们请到 `nobody` 组中，像下面这个样子。
 
 ```
 chown -R nobody:nobody /usr/local/squid/var/cache
@@ -64,7 +151,91 @@ chown -R nobody:nobody /usr/local/squid/var/run
 
 
 
-禁止以后台守护进程形式运行，这样可以看到输出的错误日志。
+### 初步编辑配置文件
+
+什么叫初步编辑？
+
+其实 `Squid` 发展到现在的 `v5` 稳定版已经非常好用了，默认的配置文件已经可以直接拿来用。
+
+
+
+配置文件在哪里？默认在这儿呢。
+
+```
+/usr/local/squid/etc/squid.conf
+```
+
+
+
+为什么说可以直接拿来用呢，其实如果只是做实验的话，配置文件中只要改一个地方，`Squid` 就可以在本机上开始工作啦。
+
+这个地方就是修改配置文件对于磁盘交换目录的定义。
+
+打开 `squid.conf` 文件，然后找到如下段落，将 `cache_dir` 前的注释符去掉即可。
+
+```
+# Uncomment and adjust the following to add a disk cache directory.
+#cache_dir ufs /usr/local/squid/var/cache/squid 100 16 256
+cache_dir ufs /usr/local/squid/var/cache/squid 100 16 256
+```
+
+图s02
+
+
+
+看 `cache_dir` 的名字就知道啥意思了，就是缓存目录嘛，其中的目录路径可以改成你想要的，后面的 `100` 是缓存大小，单位是 `MB` ，而后面的 `16` 和 `256` 分别是儿子目录的数量和孙子目录的数量，基本上是不用改动的。
+
+
+
+
+
+
+
+### 创建磁盘交换目录
+
+`v5` 版本之前好像没听说过要先这么干的，但现在我们在正式执行 `squid` 前必须先要建立这个磁盘目录。
+
+这一点往往是在添加或修改 `cache_dir` 配置后必须干的事，切记切记！
+
+```
+squid -z
+```
+
+
+
+命令很简单，后加个 `-z` 参数即可。
+
+运行之后就可以在以下目录中看到很多新冒出来的交换目录，当然了，这些都是根据 `cache_dir` 配置来的。
+
+```
+/usr/local/squid/var/cache/squid/
+```
+
+图s04
+
+
+
+注意，这里可能有的小伙伴会踩到一个坑，如果你要是看到拒绝访问而导致错误的提示，那么就是你忘记给那些子目录 `nobody` 权限了，可以参考前面说的内容。
+
+图s03
+
+
+
+
+
+### 执行主程序
+
+`Squid` 主程序位于 `/usr/local/squid/sbin` 内，若不带任何参数直接运行 `squid` ，它就会以守护进程形式直接在后台运行。
+
+```
+/usr/local/squid/sbin/squid
+```
+
+
+
+那我们因为是做实验，要是跑到后台去它到底有没有偷懒我们也看不到怎么办？
+
+自然是有办法的，给它一个参数 `-N` 即可以禁止以后台守护进程形式运行，这样可以方便看到输出的错误日志。
 
 ```
 squid -N
@@ -72,11 +243,115 @@ squid -N
 
 
 
+虽然参数众多，我们没必要记住所有的，所以我们挑几个对我们有点用的来说一说。
+
+比如，检查配置文件语法是否正确。
+
+这个很有用，在正式执行主程序前，这是个避免尴尬的好办法。
+
+```
+squid -k parse
+```
 
 
 
+还有，检查主程序是否在运行，它主要是判断 `squid.pid` 文件是不是正常状态。
 
-配置文件示例。
+```
+squid -k check
+```
+
+
+
+还有还有，当主程序正在运行的时候，我们更新了配置想及时地反馈生效，那么我们可以实时地加载配置。
+
+就像下面这样，我们都不用重新启动主程序了！
+
+```
+squid -k reconfigure
+```
+
+
+
+最后，我想知道如何关掉 `squid` ，因为它跑在后台我也看不到它啊。
+
+就像下面，一般用第一个，暴力一点就用后面那个。
+
+```
+squid -k shutdown
+squid -k kill
+```
+
+
+
+### 完整配置
+
+按前面的步骤基本上 `Squid` 已经可以欢快地跑起来了。
+
+可是就这样也只能是在服务端本机上玩，这有什么意思呢，要整就整四岁的。
+
+所以我们来添加一些规则来测试真实客户机是否可以正常使用 `Squid` 代理。
+
+
+
+##### 规则列表
+
+这里简单介绍两种规则方法。
+
+一种是针对网址，开通后所有客户端都能访问这些网址。
+
+```
+# acl 规则名称 dstdom_regex 网址列表1 网址列表2 ...
+acl sysadm.cc dstdom_regex www.sysadm.cc sysadm.cc
+```
+
+
+
+还有一种是针对IP地址，只是匹配列表中的IP地址，客户端就可以访问任意网址。
+
+```
+# acl 规则名称 src IP地址列表（分别列出或用减号表示范围或用掩码均可）
+acl 192_168_1_0 src 192.168.1.1-192.168.1.253
+```
+
+
+
+##### 规则定义
+
+前面设定好的规则列表，在这里就使其按允许或禁止来定义访问规则。
+
+```
+# http_access allow/deny 规则名称
+http_access allow sysadm.cc
+http_access allow 192_168_1_0
+```
+
+
+
+**需要注意的是，规则列表一定要放在规则定义的前面。**
+
+
+
+不管是规则列表也好，还是规则定义也好，它们都应该放在配置文件中的什么位置呢？
+
+其实配置文件默认就已经帮我们写好了，我们可以参考着往里面写。
+
+如下，就前面简单介绍的我们自己所写规则内容，我将其追加在了 `=` 号横线范围内，大家可以用来参考。
+
+
+
+配置开通访问 `mirrors.163.com` 和 `sysadm.cc` 两个网址，同时 `192.168.1.0/24` 网段以及部分 `192.168.2.0/24` 网段主机开通了访问权限。
+
+其中，服务端所在网段内主机默认是有访问权限的，所以要想禁止就应该注释以下行。
+
+```
+# 注释掉下面这行，禁止当前网段的访问
+#http_access allow localnet
+```
+
+
+
+完整配置文件示例。
 
 ```ini
 #
@@ -174,8 +449,7 @@ http_access deny all
 http_port 3128
 
 # Uncomment and adjust the following to add a disk cache directory.
-#cache_dir ufs /usr/local/squid/var/cache/squid 100 16 256
-cache_dir ufs /usr/local/squid/var/cache/squid 1024 16 256
+cache_dir ufs /usr/local/squid/var/cache/squid 100 16 256
 
 # Leave coredumps in the first cache dir
 coredump_dir /usr/local/squid/var/cache/squid
@@ -191,21 +465,102 @@ refresh_pattern .		0	20%	4320
 
 
 
-测试方法
+### 测试方法
 
-`squidclient`
+##### `squidclient`
+
+服务端主程序本身就有测试的功能，即 `squid -k check` 。
+
+不过这只是检测服务端程序有没在跑的功能，它无法检测我们设定的规则有没有生效。
+
+所以我们还要用到客户端程序，`Squid` 其实已经带了。
+
+```
+/usr/local/squid/bin/squidclient
+```
 
 
 
-`curl`
+那么我们只要这样做就可以测试客户端了。
+
+```
+squidclient http://sysadm.cc > result.log
+```
+
+可以在 `result.log` 文件中查看结果。
 
 
 
-开机自动启动
+##### `curl`
+
+怎么说 `squidclient` 还是没有跳出服务端的圈子，那我们就实实在在地在客户端测试吧。
+
+其实测试程序很多，我这儿选了 `curl` ，比较直观一些。
 
 
 
-以下面的代码加入到 `/etc/rc.d/rc.local` 文件中。
+**curl 7.79.0 for Windows**
+
+下载地址：https://curl.se/windows
+
+
+
+用法也很简单，将下载好的压缩包解压后找到 `bin` 目录，直接按以下方式执行测试即可。
+
+```
+# curl -x Squid主机IP:端口 测试网址
+curl -x 192.168.1.123:3128 sysadm.cc
+```
+
+
+
+正常情况下，程序执行后会返回网站相关的一些页面代码或者是被拒绝的消息提示，否则就是连接失败。
+
+
+
+### 清除缓存
+
+通常清除缓存是比较危险的，所以不能简单认为可以随便清空所有缓存。
+
+那么有时就是需要怎么办呢？
+
+`Squid` 提供了一个方法，只能针对某个网址清除缓存。
+
+
+
+首先要在配置文件中开启这个功能，这个设定在前面完整配置文件中已经包含了。
+
+```
+# 开启除本地以外的清除缓存功能
+http_access allow PURGE localhost
+http_access deny PURGE
+```
+
+
+
+然后使用命令即可。
+
+```
+squidclient -m PURGE http://sysadm.cc
+```
+
+
+
+还有一个比较简单粗暴的清除全部缓存的办法，那就是将 `cache` 目录清空，然后再执行 `squid -z` 重新生成缓存。
+
+
+
+### 开机自动启动
+
+平时只要手动执行 `squid` 即可让  `Squid` 跑起来，但是还是希望它能够在系统启动时自动跑起来。
+
+怎么办？
+
+
+
+方法有很多，我找到一个比较简单的办法。
+
+将以下面的代码加入到 `/etc/rc.d/rc.local` 文件中。
 
 ```
 # Squid caching proxy
@@ -219,9 +574,20 @@ fi
 
 
 
-注意图中上面的红框，也就是说明，它提示我们如果要启用这个 `rc.local` ，那么别忘记给这个文件赋予可执行权限，否则是无效的哦。
+注意图中上面的红框，也就是注释说明，它提示我们如果要启用这个 `rc.local` ，那么别忘记给这个文件赋予可执行权限，否则是无效的哦。
 
 ```
 chmod +x /etc/rc.d/rc.local
 ```
 
+
+
+### 写在最后
+
+
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
