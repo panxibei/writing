@@ -4,7 +4,7 @@
 
 英文：installation-and-usage-summary-of-the-lastest-version-squid
 
-关键字：squid,proxy,squid5,web,http,https,代理,代理服务器
+关键字：squid,proxy,squid5,web,http,https,代理,代理服务器,windows,update,antivirus
 
 
 
@@ -18,7 +18,7 @@
 
 在平时，我们可能会遇到这样的问题，就是有部分电脑需要通过互联网来访问一些资源，比如说像 `Windows` 的自动更新。
 
-很多人家的局域网里是没有更新服务器的，所以说需要让这些电脑能够连接到互联网上去更新补丁。
+很多人家的局域网里是没有更新服务器的，所以说需要让这些电脑能够自己连接到互联网上去更新补丁。
 
 可是，这些电脑却又有一些限制，比如不允许他们访问除更新以外的其他资源，甚至是局域网资源都被禁止访问。
 
@@ -43,6 +43,23 @@
 
 ```
 dnf install gcc gcc-c++ perl wget tar
+```
+
+
+
+开通防火墙端口，编辑 `/etc/firewalld/zone/public.xml` 添加以下代码。
+
+```xml
+<!-- 开放 http 或 https 服务 -->
+<service name="http"/>
+<service name="https"/>
+
+<!-- 开放相应IP段的3128端口 -->
+<rule family="ipv4">
+  <source address="192.168.1.0/24"/>
+  <port protocol="tcp" port="3128"/>
+  <accept/>
+</rule>
 ```
 
 
