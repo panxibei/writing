@@ -2,7 +2,7 @@
 
 副标题：重置U盘超简单~
 
-英文：
+英文：how-to-simply-and-quickly-clean-usb-stick-with-undeletable-partitions
 
 关键字：usb,usboot,udisk,ustick,U盘,efi
 
