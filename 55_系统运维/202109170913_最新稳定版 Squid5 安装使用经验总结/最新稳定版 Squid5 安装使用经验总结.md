@@ -330,6 +330,106 @@ squid -k kill
 
 
 
+### 启用用户认证
+
+到目前为止，我们已经可以通过 `Squid` 访问网络了。
+
+可是，在 `Squid` 代理为我们提供便利的同时，危险也会悄悄来临。
+
+没错了，如果大家都很遵守规则不滥用代理服务，那么这个世界上就不会有警察了。
+
+当然，我们现在还不想麻烦警察叔叔，我们应该自己先想想办法防止代理被滥用，所以至少我们可以启用用户认证，这样可以有效防止一部分人滥用代理了。
+
+
+
+##### 确认 `ncsa_auth` 认证模块
+
+这个 `ncsa_auth` 认证模块是 `Squid` 自带的，我们前面是自动手动编译安装的，而且是安装到默认路径 中，所以可以用下面的命令来查看模块是否存在。
+
+```
+[root@localhost squid]# find /usr/local/squid | grep ncsa_auth
+/usr/local/squid/share/man/man8/basic_ncsa_auth.8
+/usr/local/squid/libexec/basic_ncsa_auth
+```
+
+在本例中模块的文件名是 `basic_ncsa_auth` ，记住它一会儿我们要用到。
+
+
+
+##### 安装生成认证用户的工具 `htpasswd`
+
+安装命令如下。
+
+```
+dnf install httpd-tools
+```
+
+
+
+安装完成后我们就有了 `htpasswd` ，这个是用来生成用户名和密码的，生成方法如下。
+
+```
+# 将用户和密码生成到文件 squid_user.txt 中
+# htpasswd -c 密码文件 用户名
+htpasswd -c /usr/local/squid/etc/squid_user.txt sysadm
+```
+
+命令执行后会询问密码，输入密码后完成创建用户。
+
+
+
+##### 修改配置文件 `squid.conf`
+
+在配置文件最开头追加以下几行参数描述。
+
+```
+# 定义认证方式为 basic，同时指定认证程序路径与用户密码文件
+auth_param basic program /usr/local/squid/libexec/basic_ncsa_auth /usr/local/squid/etc/squid_user.txt
+
+# 认证程序进程为5，可有效提高认证验证并发效率
+auth_param basic children 5
+
+# 登录提示信息
+auth_param basic realm SYSADM.CC
+
+# 认证超时时间，官方建议2小时
+auth_param basic credentialsttl 2 hours
+```
+
+
+
+然后在适当的位置写入以下规则。
+
+```
+# 规则名称为 auth_users 必须使用认证
+acl auth_users proxy_auth REQUIRED
+
+# 开启用户认证
+http_access allow auth_users
+```
+
+第一条可任意写在 `acl` 列表中，但第二条的 `http_access` 必须要注意书写顺序。
+
+如果你不太清楚应该怎么写，没关系，后面有完整版的配置文件可以参考一下。
+
+
+
+##### 重启 `squid` 并验证是否生效
+
+重启或重新加载配置都是可以的，比如：
+
+```
+squid -k reconfigure
+```
+
+ 然后再用浏览器随便打开一个网站，就会看到一个提示窗口。
+
+输入前面我们生成的用户名和密码即可正常访问网站了，如果不知道或输错了用户名和密码，那么对不起，我要叫警察叔叔来了。
+
+图5
+
+
+
 ### 完整配置
 
 按前面的步骤基本上 `Squid` 已经可以欢快地跑起来了。
@@ -404,6 +504,21 @@ http_access allow 192_168_1_0
 # Recommended minimum configuration:
 #
 
+# =================================================================
+# 定义认证方式为 basic，同时指定认证程序路径与用户密码文件
+auth_param basic program /usr/local/squid/libexec/basic_ncsa_auth /usr/local/squid/etc/squid_user.txt
+
+# 认证程序进程为5，可有效提高认证验证并发效率
+auth_param basic children 5
+
+# 登录提示信息
+auth_param basic realm SYSADM.CC
+
+# 认证超时时间，官方建议2小时
+auth_param basic credentialsttl 2 hours
+
+# =================================================================
+
 # Example rule allowing access from your local networks.
 # Adapt to list your (internal) IP networks from where browsing
 # should be allowed
@@ -440,6 +555,9 @@ acl sysadm.cc dstdom_regex www.sysadm.cc sysadm.cc
 acl 192_168_1_0 src 192.168.1.1-192.168.1.253
 acl 192_168_2_0 src 192.168.2.1 192.168.2.12 192.168.2.30
 
+# 规则名称为 auth_users 必须使用认证
+acl auth_users proxy_auth REQUIRED
+
 # 开通清除缓存功能
 acl PURGE method PURGE
 
@@ -468,6 +586,9 @@ http_access deny manager
 #
 
 # =================================================================
+
+# 开启用户认证
+http_access allow auth_users
 
 # 此处写入自己的访问规则，对应前面的控制列表填写相应的名称
 http_access allow mirrors.163.com
@@ -616,7 +737,7 @@ if [ -f /usr/local/squid/sbin/squid ]; then
 fi
 ```
 
-图05
+图06
 
 
 
@@ -638,7 +759,7 @@ chmod +x /etc/rc.d/rc.local
 
 甚至我直接将它无法下载的更新文件直接放到了浏览器上，你猜如何，它能正常访问并下载，就是自动更新无法正常下载，奇葩不？
 
-图06
+图07
 
 
 
