@@ -1,0 +1,59 @@
+<Map user="admin_aota" pc="A00603">
+  <Devices>
+    <Device id="1" name="Polygraph Server" address="10.44.128.61" type-id="Internet server" x="128" y="64" />
+    <Device id="2" name="Squid Caching Proxy" type-id="Server" x="388" y="28" />
+    <Device id="3" name="Polygraph Client (Robot)" type-id="Workstation" x="380" y="112" />
+  </Devices>
+  <Lines>
+    <Line nodes="336 20 336 384 596 384 592 20 336 20" dash="3" />
+    <Line nodes="324 68 200 68" width="3" arrow="right" />
+    <Line nodes="204 124 324 124" width="3" arrow="right" />
+  </Lines>
+  <Textes>
+    <Text id="1" x="100" y="148" width="120" height="44" color="White">
+      <Description><![CDATA[[font face=等线][font size=9]# 配置文件
+Server S = {
+    kind = "S101";
+    contents = [[ SimpleContent ];
+    direct_access = contents;
+
+    // 服务器IP地址
+    addresses = [['[b]10.44.128.61:9090[/b]' ];
+};
+
+# 执行命令
+%> polygraph-server \
+    --config simple.pg \
+    --verb_lvl 10]]></Description>
+    </Text>
+    <Text id="2" x="352" y="176" width="120" height="44" color="White">
+      <Description><![CDATA[[font face=等线][font size=9]# 配置文件
+Server S = {
+    kind = "S101";
+    contents = [[ SimpleContent ];
+    direct_access = contents;
+
+    // 服务器IP地址
+    addresses = [['[b]10.44.128.61:9090[/b]' ];
+};
+
+# 运行客户端命令
+%> polygraph-client \
+    --config simple.pg \
+    --verb_lvl 10 \
+    --proxy [b]10.44.0.100:3128]]></Description>
+    </Text>
+    <Text id="3" x="104" y="44" width="32" height="8" color="White">
+      <Description><![CDATA[[font face=等线][font size=9]IP:10.44.128.61]]></Description>
+    </Text>
+    <Text id="4" x="460" y="120" width="32" height="8" color="White">
+      <Description><![CDATA[[font face=等线][font size=9]IP:10.44.128.62]]></Description>
+    </Text>
+    <Text id="5" x="456" y="56" width="32" height="8" color="White">
+      <Description><![CDATA[[font face=等线][font size=9]IP:10.44.0.100]]></Description>
+    </Text>
+  </Textes>
+  <Layers>
+    <Layer id="0" name="Layer 1" />
+  </Layers>
+</Map>

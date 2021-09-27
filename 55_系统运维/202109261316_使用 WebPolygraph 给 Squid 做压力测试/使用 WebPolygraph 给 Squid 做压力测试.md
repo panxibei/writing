@@ -52,7 +52,7 @@ make install
 wget http://www.web-polygraph.org/downloads/srcs/polygraph-4.13.0-src.tgz
 tar zxvf polygraph-4.13.0-src.tar.gz
 cd polygraph-4.13.0
-./configure
+./configure --without-ssl
 make
 make install
 ```
@@ -60,6 +60,18 @@ make install
 
 
 ### 概念介绍
+
+具体的我就不画图了，也是我是自己摸索的，不一定完全正确，仅供参考。
+
+`polygraph` 分为服务端和客户端两部分，这两部分在生产环境下应该分别处于两个不同的主机上。
+
+服务端这个概念很好理解，它是 `polygraph` 自己模拟的一个 `http` 服务，类似于 `Apache` 之类的 `web` 服务，用来让客户端访问请求，进而计算得出测试结果。
+
+另外 `polygraph` 中有个 `robot` 一度让我很迷惑，我将它理解为客户端，可以是一个，也可以是多个。
+
+所以通常客户端应该位于被测试的对象机器中，比如应该将 `polygraph-client` 运行在 `Squid` 服务器上。
+
+随后通过指定这台 `Squid` 服务器为代理，再模拟请求 `polygraph` 服务端。
 
 
 
