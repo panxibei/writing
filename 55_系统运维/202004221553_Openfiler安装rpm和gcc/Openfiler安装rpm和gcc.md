@@ -143,4 +143,44 @@ shell> export IGNORE_CC_MISMATCH=1
 
 
 
-**微信公众号：网管小贾**
+<br>
+
+下载链接（含文中所述的rpm包、yum包及网卡驱动）：
+
+**RPM文件**
+
+链接：https://pan.baidu.com/s/1aZ4zKdD9rtuIo7jALdBTHw
+
+提取码：67k4
+
+
+
+**可直接使用的RPM解压后文件**
+
+链接：https://pan.baidu.com/s/1cEIitOFFY2bwviEMlascCQ
+
+提取码：nf43
+
+
+
+**YUM文件（含GCC）**
+
+链接：https://pan.baidu.com/s/1nGy0Kzlvs7Oa-rHK-SpWvw
+
+提取码：5es9
+
+
+
+**sk98lin网卡驱动** 
+
+链接：https://pan.baidu.com/s/19v4HpFh9hhE5dge-KHbEVQ
+
+提取码：r1dl
+
+
+
+
+
+> **扫码关注@网管小贾，阅读更多**
+>
+> 网管小贾的博客 / www.sysadm.cc
