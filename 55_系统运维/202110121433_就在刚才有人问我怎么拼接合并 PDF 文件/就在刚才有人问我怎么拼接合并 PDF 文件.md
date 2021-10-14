@@ -168,7 +168,9 @@
 
 **MergePDF.7z(67.8K)**
 
-本地下载：
+下载链接：https://pan.baidu.com/s/1HLvl9F98Ypa8L20KD9EvBQ
+
+提取码：myyq
 
 
 
