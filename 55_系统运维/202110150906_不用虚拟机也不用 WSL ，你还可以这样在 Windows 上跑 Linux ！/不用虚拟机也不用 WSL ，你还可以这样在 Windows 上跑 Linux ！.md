@@ -2,9 +2,9 @@
 
 副标题：初识 CoLinux ~
 
-英文：
+英文：without-vmware-or-virtualbox-or-wsl-you-can-also-run-linux-on-windows-like-this
 
-关键字：
+关键字：colinux,linux,windows,wsl,vmware,virtualbox,虚拟机
 
 
 
@@ -28,15 +28,17 @@
 
 ### 准备工作
 
-Windows 7 32位
+Windows 7 32位 （安装到物理机）
+
+Ubuntu 12.04 （`CoLinux` 镜像文件，另外下载备用）
 
 
 
 ### 下载安装 `CoLinux`
 
-我们本着能动手绝不BB的原则，直接来到了官网。
+我们本着能动手绝不BB的原则，直接来到官网，来个先下载为敬。
 
-左上角的 `LOGO` 震撼到了我，这用的是中国的太极啊，你中有我我中有你的阴阳理论，与大侠的风格的确很贴合。
+官方网站左上角的 `LOGO` 震撼到了我，这用的是中国的太极啊，你中有我我中有你的阴阳理论，与大侠的风格的确很贴合。
 
 官网链接：http://www.colinux.org/
 
@@ -102,21 +104,58 @@ Windows 7 32位
 
 
 
+除 `CoLinux` 本身程序的安装以外，我们还要下载一个 `Linux` 系统的镜像文件。
+
+以本文示例，我们选个 `Ubuntu 12.04` 下载吧。
+
+如下图，也是在 `SourceForge` 上，找到目录路径 `Home / Images 2.6.x Ubuntu / Ubuntu 12.04` 。
+
+可以直接下载迷你版：http://sourceforge.net/projects/speedlinux/files/base-200-10-11-11.7z/download
+
+图08
 
 
 
+### 使用
+
+##### 将 `CoLinux` 命令路径添加到 `Path` 环境变量中
+
+`CoLinux` 被安装在了 `C:\Program Files\colinux` ，然而接下来的操作会涉及到命令行的方式。
+
+因此为了在任意目录下都能直接访问到 `CoLinux` 命令，那么我们最好将这些命令的路径添加到系统路径 `Path` 环境变量中。
+
+图09
 
 
 
-我们可以在 `C:\Program Files\colinux` 中找到一份关于如何配置 `CoLinux` 的文本说明文件 `colinux-daemon.txt` 。
+##### 基本配置
 
-图b01
+我们先要给我们的系统搭个窝，在这里我新建一个文件夹，用于存放配置文件和镜像文件啥的，比如 `C:\colinux` 。
+
+然后再在 `CoLinux` 的安装目录 `C:\Program Files\colinux` 中，找到名称为 `example.conf` 的这么一个文件。
+
+瞧名字就知道啥意思了哈，将它复制一份出来并重命名，放到我们新建的文件夹中，比如 `C:\colinux\base.conf` 。
+
+接着我们就要来编辑这个 `base.conf` ，用记事本打开就行。
 
 
 
+那么怎么编辑呢，需要改些什么参数呢？
 
+其实有个现成的参数文件来着，我们可以在 `C:\Program Files\colinux` 中很容易地找到一份关于如何配置 `CoLinux` 的文本说明文件 `colinux-daemon.txt` 。
+
+图10
+
+
+
+我们只要照着这个文件描述的设定方法做就是了。
+
+实际做测试的话也很简单，没几个参数要改的。
+
+我可以偷偷告诉你，只要改三个就可以了，哪三个，看下面。
 
 ```
+# 内核
 kernel=<path to vmlinux file>
 
   This specifies the path to the vmlinux file.
@@ -124,6 +163,7 @@ kernel=<path to vmlinux file>
   Example:
   kernel=vmlinux
 
+# 初始镜像
 initrd=<path to initrd file>
 
   This specifies the path to the initrd file.
@@ -134,39 +174,112 @@ initrd=<path to initrd file>
 
 
 
+一个是 `kernel` ，另一个是 `initrd` ，前者是内核，后者是初始化镜像。
+
+这两个东东其实 `CoLinux` 已经帮我们提供好了，就在安装目录中。
+
+不过需要我们特别注意的是，在参数书写之时务必要加上绝对路径，比如。
+
+```
+kernel="C:\Program Files\coLinux\vmlinux"
+initrd="C:\Program Files\coLinux\initrd.gz"
+```
+
+图11
+
+
+
+否则可能会导致找不到文件而系统无法正常启动。
+
+图12
+
+
+
+前面两个介绍了，还有一个就是镜像系统本身了。
+
+前面我们已经下载好了，将镜像文件引用到 `cobd0` 参数。
+
+```
+cobd0="c:\colinux\base.vdi"
+```
+
+这个和虚拟的第一块磁盘那赶脚差不多意思。
+
+图13
+
+
+
+好了，说到这儿就已经可以启动我们下载的 `Linux` 系统了，不过可能有的小伙伴比较疑惑，还有内存、网络啥的呢，不用配置了？
+
 关于内存设定，作为实验，一般不需要特别指定，默认是被注释掉的。
 
-内存默认以 `MB` 为单位，在未被指定并且你的实际物理内存大于 `128MB` 的情况下，它会以实际物理内存的四分之一为设定标准。
+内存默认以 `MB` 为单位，在未被指定并且你的实际物理内存大于 `128MB` 的情况下，它会以实际物理内存的四分之一为设定标准，当然你指定一下也是可以的，完全没问题。
 
  ```
  mem=<mem size>
  ```
 
+此外关于网络，我们现在还不着急用到，等之后会专门来说的，稍安勿躁哈。
 
 
 
+##### 启动系统
 
-妈耶，这是什么字体啊，造型挺别致啊！
+配置完成后就是启动系统了，我们来尝试启动看看。
 
-遂修改之
+打开命令控制台，输入以下命令。
 
+```
+colinux-daemon @base.conf
+```
 
-
-
-
-
-
-这里有坑，日文键盘布局。
-
-布局错乱，除了标点符号啥的完全不一样外，好像 `z` 键和 `y` 键也完全颠倒了。
-
-图a20
+还是要啰嗦一句，注意 `colinux-daemon` 和 `base.conf` 的路径正确的问题。
 
 
+
+好了，系统开始启动了，妈耶，这是什么字体啊，造型挺别致啊！
+
+图14
+
+
+
+遂修改之，点击上面菜单 `Config` > `Font...` 修改字体。
+
+图15
+
+
+
+改成什么字体就看各位的喜好了，我干了，你们随意。
+
+图16
+
+
+
+字体改完后看着舒服多了，这个系统挺有意思，登录用户名和密码都告诉你了。
+
+通常密码是 `root` ，也有的系统的密码是 `colinux` 。
+
+图17
+
+
+
+输入用户名和密码后登录成功，可是这时候来了一个坑，我按下键盘突然发现输出字符错乱，搞了半天是它喵的日文键盘布局。
+
+哎？怎么会是日文键盘呢？
+
+我猜测这个 `CoLinux` 项目是太君们发起的，看官网上的示例截图，都用上了日文版的 `Knoppix` 。
+
+布局错乱，除了标点符号啥的完全不一样外，好像 `z` 键和 `y` 键也完全给颠倒了！
+
+图18
+
+
+
+对照着日文键盘按，凑合凑合倒是可以，不过不管怎么样这到底还是有些反人类啊！
 
 对于这样变态的用法你能忍吗，反正我是忍不了了，怎么办？
 
-很简单，`Ubuntu` 里有修改键盘布局的高级工具 `dpkg-reconfigure` 啊！
+很简单，`Ubuntu` 里有修改键盘布局的高级工具 `dpkg-reconfigure` 啊，盘它！
 
 输入以下命令开启变更键盘布局之旅。
 
@@ -180,63 +293,90 @@ $ sudo dpkg-reconfigure keyboard-configuration
 
 第一个画面中，选择 `Generic 104-key PC` ，当然你看到的是乱码，忍耐一下，一会儿就好。
 
-图a21
+图19
 
 
 
 紧接着选择 `Chinese` ，这是国家和区域选择。
 
-图a22
+图20
 
 
 
 接下来是选择语言，我猜应该是最上面一行简体中文。
 
-图a23
+图21
 
 
 
 然后应该是键盘布局，选择最上面的默认布局，可以参考第二幅图片。
 
-图a24
+图22
 
-图a25
+图23
 
 
 
 快了哈，接着是配置组合键，选择第一行没有组合键，同样参考第二幅图，我的眼睛啊！
 
-图a26
+图24
 
-图a27
+图25
 
 
 
 最后不用我多说，肯定是确认设置，选择 `Yes` 搞定！
 
-图a28
+图26
 
 
 
 OK，再来试试键盘输入，瞬间舒服多了吧！
 
+珍爱生命，从保护视力开始！
 
+
+
+既然系统成功启动了，那么我们可以做些什么呢？
+
+我想到的是，得保证它可以上网啊，没有网心不亮啊！
 
 
 
 ### 网络设置
 
+前面留了扣，没有说网络的配置，原因是这玩意有那么一些麻烦，需要专门来说一说。
+
+首先我们将 Windows 的防火墙关闭，当然了，如果你可以设定成单独为 `CoLinux` 关闭也是可以的。
+
+其次我们先来了解一下 `CoLinux` 网络参数有哪些选项。
 
 
-关闭防火墙。
+
+##### 网络连接类型
+
+网卡参数支持类型为：`slirp` ，`tuntap` ，`pcap-bridge` ，`ndis-bridge` ，共四种类型。
+
+* `slirp`：最简单模式，仅直接与 Windows 连接。
+* `tuntap`：连接 `CoLinux` 虚拟出来的一块网卡 `TAP-Win32 Adapter V8 (coLinux)` 。
+* `pcap-bridge`：桥接 Windows 的物理网卡，需要 `WinPcap` 驱动。
+* `ndis-bridge`：与 `pcap-bridge` 相同，区别是不使用 `WinPcap` 驱动，仅通过 Windows 的 `NDIS` 接口层模拟网卡。
+
+图27
 
 
 
-网卡支持类型为：tuntap，pcap-bridge，ndis-bridge，slirp
+##### 配置参数
 
-图a31
+配置文件中网卡参数的书写形式为以下这个样子。
+
+```
+ethX=slirp | tuntap | pcap-bridge | ndis-bridge , <options>
+```
 
 
+
+在这里我用 `pcap-bridge` 类型方式来做演示，除了桥接其他类型想上网比较困难。
 
 注意，配置文件中最好按以下格式写入网卡配置信息。
 
@@ -250,15 +390,17 @@ eth0=pcap-bridge,"本地连接名称",00:11:22:33:44:55
 
 
 
+##### `Linux` 系统中的网络配置
 
+除敲定配置文件外，启动并进入 `Linux` 系统后，还需要通过以下命令查看系统内部网卡信息，这个有可能不是 `eth0` 。
 
-通过以下命令查看网卡信息，从返回的结果看，当前的网卡名称叫作 `eth3` 而不是 `eth0` ，这个要注意了，以实际反馈的信息为准哦。
+以本文为例，从返回的结果看，当前的网卡名称叫作 `eth3` 而不是 `eth0` ，这个要注意了，以实际反馈的信息为准哦。
 
 ```
 $ ip address
 ```
 
-图a29
+图28
 
 
 
@@ -272,7 +414,7 @@ $ sudo vi /etc/network/interfaces
 
 系统配置中默认 `eth3` 是被注释掉的，所以我们将它的注释拿掉，再赋予正确的 IP 地址及网关信息即可。
 
-注意，在最上面 `auto` 一行，别忘记确保有相应编号的 `eth` 。
+注意，在最上面 `auto` 一行，别忘记确保有相应编号的 `eth` （图中没有写 `eth3`，实际应该加上` eth3` ）。
 
 举例如下：
 
@@ -287,7 +429,7 @@ iface eth3 inet static
 	gateway 192.168.2.1
 ```
 
-图a30
+图29
 
 
 
@@ -305,15 +447,15 @@ iface eth3 inet static
 
 最后确认网络可 Ping 通。
 
-图a32
+图30
 
 
 
-除了桥接方式，本身它是可以支持本机网络访问的。
+除了桥接方式，本身它是可以支持本机网络访问的，这种情况下只是 Windows 本机与 `Linux` 系统连接网络了。
 
 从下图中我们可以看到，在 `CoLinux` 安装完成后，就会自动生成一个虚拟网卡。
 
-图a33
+图31
 
 
 
@@ -327,11 +469,15 @@ eth0=tuntap
 
 
 
+### 修改镜像更新源
 
+我们已经成功连上了互联网，但是我发现无法正常下载安装软件，所以我们应该更新一下镜像源。
 
-镜像源文本
+由于我们用的 `Ubuntu` 是 `12.04` 版本，和现在最新的 `21` 版本比较的话已经很旧了，所以应该找个相对旧一点的但是仍有效的镜像源，于是我找到了中科大镜像源。
 
-使用中科大镜像源，链接：https://mirrors.ustc.edu.cn/repogen/
+可以定制选择镜像源文本，只需要选择不同系统的不同版本即可。
+
+链接：https://mirrors.ustc.edu.cn/repogen/
 
 
 
@@ -343,7 +489,9 @@ cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
 
 
-然后再编辑 `/etc/apt/sources.list` ，将以下内容复制到文件中。
+然后再编辑 `/etc/apt/sources.list` ，删除原来的内容后将以下内容复制到文件中。
+
+注意不要用 `https` ，而应该用 `http` ，因为当前的 `Ubuntu12.04` 不支持前者。
 
 ```
 deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise main restricted universe multiverse
@@ -365,7 +513,11 @@ deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-backports
 
 
 
+修改保存 `sources.list` 文件后，输入以下命令更新一下即可开始安装软件了。
 
+```
+$ sudo apt-get update
+```
 
 
 
@@ -389,7 +541,7 @@ colinux-daemon @*.conf --install-service "Linux Name"
 colinux-daemon @C:\colinux\base.conf --install-service "Ubuntu12.04"
 ```
 
-图b01
+图32
 
 
 
@@ -405,7 +557,7 @@ colinux-daemon --remove-service "Linux Name"
 colinux-daemon --remove-service "Ubuntu12.04"
 ```
 
-图b02
+图33
 
 
 
@@ -427,3 +579,24 @@ net start "Ubuntu12.04"
 net stop "Ubuntu12.04"
 ```
 
+
+
+### 写在最后
+
+有的小伙伴可能会问，还有 `SSH` 和磁盘共享啥的，你咋就不写了呢？
+
+其实吧，网络都给搞通了，服务也起来了，剩下的那些还用多说吗？
+
+所以说就此结尾，之后怎么玩就看小伙伴们你们自己如何发挥了。
+
+不得不说，`CoLinux` 这个项目还是很有特色的，走的路线、实现的思路也与虚拟机完全不同，值得我们学习。
+
+不过根据官网上的文档，我们也能看出来，有好长时间没有更新和支持了，如果就这样放弃着实有些可惜了。
+
+最后还是希望有大神们出来组织一下，重新让 `CoLinux` 活跃起来，希望我们也能看到一个更好的明天！
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
