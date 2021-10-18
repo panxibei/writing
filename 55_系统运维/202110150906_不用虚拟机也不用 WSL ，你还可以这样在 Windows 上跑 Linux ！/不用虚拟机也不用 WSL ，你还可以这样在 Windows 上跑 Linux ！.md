@@ -1,4 +1,4 @@
-不用虚拟机也不用 WSL ，如何在 Windows 上跑 Linux 呢？
+不用虚拟机也不用 WSL ，你还可以这样在 Windows 上跑 Linux ！
 
 副标题：
 
@@ -24,6 +24,12 @@
 
 
 
+我们可以在 `C:\Program Files\colinux` 中找到一份关于如何配置 `CoLinux` 的文本说明文件 `colinux-daemon.txt` 。
+
+图b01
+
+
+
 
 
 ```
@@ -41,6 +47,16 @@ initrd=<path to initrd file>
   Example:
   initrd=initrd.gz
 ```
+
+
+
+关于内存设定，作为实验，一般不需要特别指定，默认是被注释掉的。
+
+内存默认以 `MB` 为单位，在未被指定并且你的实际物理内存大于 `128MB` 的情况下，它会以实际物理内存的四分之一为设定标准。
+
+ ```
+ mem=<mem size>
+ ```
 
 
 
@@ -229,5 +245,97 @@ eth0=tuntap
 
 
 
+镜像源文本
 
+使用中科大镜像源，链接：https://mirrors.ustc.edu.cn/repogen/
+
+
+
+先备份原来的镜像源文件 `/etc/apt/sources.list` 。
+
+```
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+```
+
+
+
+然后再编辑 `/etc/apt/sources.list` ，将以下内容复制到文件中。
+
+```
+deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise main restricted universe multiverse
+
+deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-security main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-security main restricted universe multiverse
+
+deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-updates main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-updates main restricted universe multiverse
+
+deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-backports main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-backports main restricted universe multiverse
+
+## Not recommended
+# deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-proposed main restricted universe multiverse
+# deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ precise-proposed main restricted universe multiverse
+```
+
+
+
+
+
+
+
+### 将 `CoLinux`  注册成服务
+
+确切地说，是将我们设定好的 `Linux` 虚拟系统注册成服务，以便它可以在系统启动的同时加载启动。
+
+这样的好处不言自明，通常 `Linux` 系统也是作为服务器的角色存在于大家的思维中的，那么将这些 `Linux` 系统变成服务自动启动它也是顺理成章的事了。
+
+
+
+非常简单，只需加个参数一条命令就可以搞定。
+
+```
+colinux-daemon @*.conf --install-service "Linux Name"
+```
+
+比如本文中将 `Ubuntu12.04` 注册为服务可以这样子。
+
+```
+colinux-daemon @C:\colinux\base.conf --install-service "Ubuntu12.04"
+```
+
+图b01
+
+
+
+同样非常简单，将 `install-service` 换成 `remove-service` 就可以注销服务。
+
+```
+colinux-daemon --remove-service "Linux Name"
+```
+
+比如本文中将 `Ubuntu12.04` 再注销掉可以这样子。
+
+```
+colinux-daemon --remove-service "Ubuntu12.04"
+```
+
+图b02
+
+
+
+简单是简单，不过我们还需要注意两点。
+
+一是必须以管理员权限执行命令，注册服务肯定是要有管理员权限的对吧。
+
+二是注销服务不需要加上配置文件参数，并且服务名称务必要与之前注册时的一致。
+
+
+
+注册好服务后就可以对服务进行操作了，用命令方式或图形操作方式都可以，完全看你心情啦。
+
+```
+net start "Ubuntu12.04"
+```
 
