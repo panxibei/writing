@@ -164,15 +164,85 @@
 
 添加视频和音乐后，在首页就可以看到媒体列表了。
 
+不过在这儿不知道是不是我自己测试的问题，Windows 7 上似乎不会自动刷新，而 Windows 10 则没问题。
+
 图b12
 
 
 
 
 
+`Ubuntu/Debian` 安装 `Jellyfin`
+
+可以参考官网下载网页的内容，非常简单，逐步输入以下命令即可。
+
+```
+sudo apt install apt-transport-https
+
+wget -O - https://repo.jellyfin.org/jellyfin_team.gpg.key | sudo apt-key add -
+
+echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/$( awk -F'=' '/^ID=/{ print $NF }' /etc/os-release ) $( awk -F'=' '/^VERSION_CODENAME=/{ print $NF }' /etc/os-release ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
+
+sudo apt update
+
+sudo apt install jellyfin
+```
+
+ 
+
+安装完成后 `Jellyfin` 即作为服务已经自动运行在后台了。
+
+之后的登录及设定操作与前面所述并无两样，唯一需要注意的就是媒体的目录权限应该确保 `Jellyfin`可正常访问。
+
+图c01
 
 
 
+
+
+
+
+### 使用 `Docker` 来跑 `Jellyfin`
+
+`Docker` 是优秀的跨平台容器解决方案之一，用它快速部署 `Jellyfin` 绝对是很香的。
+
+一般的操作系统安装 `Docker` 都是没问题的，然而通常情况下，我们大量媒体文件都是放在 `NAS` 之类的大容量存储设备中的。
+
+因此，将 `NAS` 与 `Docker` 两者相结合，然后加入 `Jellyfin` 才是最佳方案。
+
+
+
+关于常用的 `NAS` 上如何安装 `Docker` 的方法，可以参考我之前写的文章。
+
+> 文章名称：《OpenMediaVault+UrBackup打造个人整机备份方案》
+>
+> 文章链接：https://www.sysadm.cc/index.php/xitongyunwei/742-openmediavault-urbackup
+
+
+
+有了 `Docker` ，接下来只要执行以下几条命令即可拥有 `Jellyfin` 。
+
+```
+# 拉取最新版的 Jellyfin 镜像
+docker pull jellyfin/jellyfin:latest
+
+# 新建配置和缓存目录
+mkdir -p /srv/jellyfin/{config,cache}
+
+# 运行容器
+docker run -d -v /srv/jellyfin/config:/config -v /srv/jellyfin/cache:/cache -v /media:/media --net=host jellyfin/jellyfin:latest
+```
+
+
+
+最后的运行容器命令行中，你可以自由设定参数，比如媒体文件都放在了 `/movies` 目录中，那么就应该将容器的 `/media` 与之相映射。
+
+```
+# 将其中的参数修改为 -v /movies:/media
+docker run -d -v /srv/jellyfin/config:/config -v /srv/jellyfin/cache:/cache -v /movies:/media --net=host jellyfin/jellyfin:latest
+```
+
+与此同时，在 `Jellyfin` 中添加媒体库时，媒体所在文件夹应当是 `/media` 而非 `/movies` ，这一点可千万别搞错了哦！
 
 
 
