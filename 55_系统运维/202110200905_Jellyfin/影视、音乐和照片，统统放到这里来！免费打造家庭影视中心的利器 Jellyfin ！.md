@@ -248,7 +248,21 @@ docker run -d -v /srv/jellyfin/config:/config -v /srv/jellyfin/cache:/cache -v /
 
 
 
+### 客户端
 
+
+
+
+
+### 写在最后
+
+
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
 
 
 
