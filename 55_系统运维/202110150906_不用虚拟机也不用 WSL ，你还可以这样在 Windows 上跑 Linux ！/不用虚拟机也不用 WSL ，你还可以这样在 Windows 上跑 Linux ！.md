@@ -1,6 +1,6 @@
 不用虚拟机也不用 WSL ，你还可以这样在 Windows 上跑 Linux ！
 
-副标题：初识 CoLinux ~
+副标题：不是虚拟机但干了虚拟机活儿的CoLinux ~
 
 英文：without-vmware-or-virtualbox-or-wsl-you-can-also-run-linux-on-windows-like-this
 

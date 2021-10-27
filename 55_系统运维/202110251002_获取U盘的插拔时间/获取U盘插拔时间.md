@@ -122,5 +122,11 @@ OK，这时由于所有者变更为管理员了，所以我们就允许任意添
 
 
 
+大尾端或小尾端的十六进制时间格式，可以参考以前我写的文章。
 
+其中包括转换成直观可读格式的算法。
+
+>参考前文：《十六进制的时间格式到底是个什么鬼？》
+>
+>链接：https://www.sysadm.cc/index.php/vbbiancheng/798-what-the-hell-is-hexadecimal-datetime-format
 
