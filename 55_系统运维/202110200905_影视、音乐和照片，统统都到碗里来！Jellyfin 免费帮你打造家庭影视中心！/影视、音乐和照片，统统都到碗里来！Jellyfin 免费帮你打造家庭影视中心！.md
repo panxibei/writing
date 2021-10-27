@@ -1,14 +1,14 @@
-影视、音乐和照片，统统放到这里来！免费打造家庭影视中心的利器 Jellyfin ！
+影视、音乐和照片，统统都到碗里来！Jellyfin 免费帮你打造家庭影视中心！
 
-副标题：
+副标题：打造免费家庭影院的利器~
 
-英文：
+英文：movies-music-and-photos-all-in-the-bowl-jellyfin-helps-you-building-a-home-theater-for-free
 
-关键字：
+关键字：jellyfin,aqiyi,emby,家庭影院,home,movie,music,photo,theater
 
 
 
-哎，听说了没，前段时间爱某艺取消了 VIP 超前点播！
+哎，听说了没，前一阵时间爱某艺取消了 VIP 超前点播！
 
 这下可好了，有钱也没办法任性了，不过总感觉哪里有点不对劲。
 
