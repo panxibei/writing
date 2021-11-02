@@ -100,6 +100,18 @@
 
 
 
+“你再看看，即便是不同版本甚至不同软件，所显示的时间也是各不相同，充其量只有第一次使用时间和最后一次使用时间，概念非常模糊，不够精确！”
+
+（以下软件如有需要，请关注@网管小贾查询获取。）
+
+图02
+
+图03
+
+图04
+
+
+
 蔡学飞：“哦，还真是！那要怎么才能查出具体的插拔时间呢？”
 
 简睿：“嗯，单纯依靠手头现有的工具软件已经不能满足我们的调查需求了，所以我们要另辟蹊径，自己去调查获取。
@@ -126,13 +138,13 @@
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
 ```
 
-图02
+图05
 
 
 
 “而在 `USBSTOR` 展开的子项中，我们就可以清楚地看到之前我们使用U盘的记录了。”
 
-图03
+图06
 
 
 
@@ -142,7 +154,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
 
 比如本例中U盘的名称为 `SanDisk Cruzer Blade USB Device` 。”
 
-图04
+图07
 
 
 
@@ -156,7 +168,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
 
 简睿当场演示：“你太天真了，为啥我要说是被隐藏的，就是因为这个 `Properties` 是无法直接打开的，你瞧！”
 
- 图05
+ 图08
 
 
 
