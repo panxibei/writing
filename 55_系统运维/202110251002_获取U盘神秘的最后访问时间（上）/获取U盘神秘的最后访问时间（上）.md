@@ -1,8 +1,8 @@
-获取U盘神秘的最后访问时间
+获取U盘神秘的最后访问时间（上）
 
 副标题：
 
-英文：getting-the-last-mysterious-attach-timestamps-of-usb-flash-disk
+英文：getting-the-last-mysterious-attach-timestamps-of-usb-flash-disk-1
 
 关键字：usb,attach,timestamps,udisk,utc,time,插拨,时间,U盘
 
@@ -371,7 +371,21 @@ psexec -i -s C:\Windows\regedit.exe
 
 至于清除记录的功能，等到以后有空再研究研究吧！”
 
+“这个太好用了啊！我得从头好好学学，谢谢师父啊！”
+
+“好了，时候不早了，你赶快回去吧！”
+
+“好吧，师父您也早点休息哈！明天我再来向您请教！”
+
+简睿冲蔡学飞点了点头，目送着他走出了办公室。
+
+他揉了揉太阳穴又伸了个懒腰，抖擞了精神坐回了自己的座位，将刚才的那份桌子上的案件资料又拿在手上继续看了起来......
 
 
 
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
 
