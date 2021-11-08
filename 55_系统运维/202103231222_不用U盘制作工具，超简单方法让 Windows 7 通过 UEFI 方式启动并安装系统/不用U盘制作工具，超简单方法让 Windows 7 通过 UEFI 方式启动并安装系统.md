@@ -86,9 +86,11 @@ simple-way-usb-stick-install-windows-7-through-uefi-without-usb-making- tools
 
 
 
-下载链接：https://www.90pan.com/b2427320
+**Win7_UEFI_启动所需文件.7z(507K)**
 
-密码：phft
+链接：https://pan.baidu.com/s/1b9_TP20CmXeOQjccWH7cOA
+
+提取码：tcll
 
 
 
