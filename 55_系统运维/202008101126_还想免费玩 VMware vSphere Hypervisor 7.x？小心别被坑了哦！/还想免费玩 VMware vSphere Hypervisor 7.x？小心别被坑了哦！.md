@@ -269,11 +269,29 @@ Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCeip $false -InvalidCert
 
 **3、文章中用到的神奇网站 `v-front` 的各种脚本工具和驱动。**
 
-[ESXi-Customizer-PS-v2.6.0.ps1.7z](https://o8.cn/MYqc6E) 密码：vx52
+链接：[ESXi-Customizer-PS-v2.6.0.ps1.7z](https://pan.baidu.com/s/17mQlfrl4nn6d_Srkg4rjoQ) 提取码：aeno
 
-[VMware-PowerCLI-12.0.0-15947286.zip](https://o8.cn/Ziicsj) 密码：y6av
+链接：[VMware-PowerCLI-12.0.0-15947286.zip](https://pan.baidu.com/s/1L42WqA7tmZitm0JKq2y9Dg) 提取码：v1aq
 
-[net55-r8168-8.045a-napi.x86_64.vib.7z](https://o8.cn/gRBlx7) 密码：2fq9
+链接：[net55-r8168-8.045a-napi.x86_64.vib.7z](https://pan.baidu.com/s/1jNRamMMj_pEeXPilj62gJw) 提取码：yv2i
+
+
+
+补充分享：
+
+**ESXi-6.5-within-R8111G.iso (带R8111G驱动)**
+
+链接：https://pan.baidu.com/s/1doemMcr86aNg1TonBmseRA
+
+提取码：mdg1
+
+
+
+**ESXi-6.0-within-xahci-R8111G.iso(带SATA及R8111G驱动)**
+
+链接：https://pan.baidu.com/s/1_D0_J_xKHWNpbufd20u73A
+
+提取码：eat9
 
 
 
