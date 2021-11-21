@@ -1,10 +1,10 @@
-有一些与众不同的操作系统 Guix
+有一些与众不同的操作系统：Guix
 
-副标题：
+副标题：通过安装了解 Guix 系统~
 
-英文：
+英文：there-are-some-differences-from-other-os-guix
 
-关键字：
+关键字：guix,nix,os,gnu,linux
 
 
 
