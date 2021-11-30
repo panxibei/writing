@@ -1,10 +1,10 @@
-另一种非常强大的VB连接SQLite的方法
+这个可能是最好的VB连接SQLite的方法
 
-副标题：
+副标题：VB连接SQLite，这个方法更牛~
 
-英文：
+英文：this-is-probably-the-best-way-to-connect-sqlite-with-vb
 
-关键字：
+关键字：sqlite,vb,vb6,数据库,vbrichclient
 
 
 
