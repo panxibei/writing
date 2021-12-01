@@ -33,3 +33,25 @@ sudo apt-get install libsdl2-dev
 sudo apt install libgtk-3-dev
 ```
 
+
+
+
+
+```
+sudp apt install libusb*
+sudo apt install ccid
+sudo apt install libcacard-dev
+libpmem-dev
+libdaxctl-dev
+libzstd-dev
+libsnappy-dev
+libssh-dev
+libxml2-dev
+libnfs-dev
+libiscsi-dev
+libbrlapi-dev
+libcurl4-openssl-dev
+libaio-dev
+xorg-dev
+```
+
