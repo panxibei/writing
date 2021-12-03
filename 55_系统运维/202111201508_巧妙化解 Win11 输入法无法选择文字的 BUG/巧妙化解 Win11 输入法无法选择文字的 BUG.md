@@ -1,10 +1,10 @@
 巧妙化解 Win11 输入法无法选择文字的 BUG
 
-副标题：
+副标题：真糟糕，Win11打字居然无法选字~
 
-英文：
+英文：skillfully-resolve-the-bug-that-win11-input-method-cannot-select-text
 
-关键字：
+关键字：win11,input,method,text,输入法,bug
 
 
 
