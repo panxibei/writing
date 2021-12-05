@@ -1,6 +1,6 @@
-眼瞅着 `QEMU` 屁股后面那一坨坨参数就心塞？放松，QuickGUI 来了！
+眼瞅着 QEMU 屁股后面那一坨坨参数就心塞？放松，QuickGUI 来了！
 
-副标题：基于 `QEMU` 的 `QuickGUI` 就是来拯救我们小白的~
+副标题：基于 QEMU 的 QuickGUI 就是来拯救我们小白的~
 
 英文：so-many-parameters-behind-qemu-dont-panic-quickgui-is-coming
 
