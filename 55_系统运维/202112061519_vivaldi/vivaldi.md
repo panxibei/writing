@@ -1,12 +1,20 @@
-vivaldi
+还在用 Chrome 浏览器？怎么也应该看看 Vivaldi 吧！
 
-副标题：
+副标题：Vivaldi 可不仅仅是 Linux 上最好的网页浏览器
 
-英文：
+英文：still-using-chrome-you-should-give-the-vivaldi-a-try-anyway
 
-关键字：
+关键字：vivaldi,chrome,firefox,ie,浏览器,windows,linux,android
 
 
+
+现在不管是 `PC` 端，还是移动端，浏览器早已成了互联网各大厂的兵家必争之地，其中早已经充斥着刀光剑影、喊杀震天。
+
+你只要看看微软新发布的 `Windows 11` 就可以知道，它不但抛弃了自己的 `IE` ，居然还禁用了 `Chrome/Firefox` 等多款第三方的浏览器，只独推自家的 `Edge` 。
+
+其野心之大、动作之猛、吃相之南看可见一斑，要不是引起了大部分群众的不适，可能微软也不会做出些许的让步。
+
+然而世界之大，真正好的浏览器可不止这几家，今天就给小伙伴们介绍一款各方面都非常出色的浏览器。
 
 
 
