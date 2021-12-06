@@ -1,8 +1,8 @@
-用得好好的 Typora 怎么就突然不能升级了，原因令人意想不到！
+Markdown 利器 Typora 突然不能升级了，原因令人意想不到！
 
-副标题：Typora 真开始收费，你还用不用了？
+副标题：Typora 开始收费，你还用不用了？
 
-英文：why-typora-which-frequently-used-cannot-be-upgraded-suddenly-the-reason-is-unexpected
+英文：why-markdown-tool-typora-cannot-be-upgraded-suddenly-the-reason-is-unexpected
 
 关键字：typora,markdown,windows,linux,macos
 
@@ -98,7 +98,9 @@
 
   **typora_0.11.18.zip (132.15M)**
 
-  下载链接：
+  下载链接：https://pan.baidu.com/s/1j2wjtwxNa2SrXUXf5yAF7A
+  
+  提取码：pvc6
 
 
 
@@ -106,11 +108,17 @@
 
   **Deb包: typora_0.11.18_amd64.deb (67.03M)**
 
-  下载链接：
+  下载链接：https://pan.baidu.com/s/1YcvVqj2uLGfbZLiavaViHQ
 
-  **Tar包: Typora-linux-x64.tar.gz (89.41M)**
+  提取码：gkrj
 
-  下载链接：
+  
+  
+  **Tar包: Typora-linux-x64.tar.gz (Ver: 0.9.92) (89.41M)**
+  
+  下载链接：https://pan.baidu.com/s/15IQ7CwkIIICkjeWPZC_hdw
+  
+  提取码：bq8r
 
 
 
@@ -118,9 +126,9 @@
 
   **typora-0.11.18.dmg (15.43M)**
 
-  下载链接：
-
-
+  下载链接：https://pan.baidu.com/s/1L-GqZailmveCo5lBO9hP7Q
+  
+  提取码：igyi
 
 
 
@@ -196,7 +204,21 @@ Sorry，我只找到了 `0.9.92` 版的 `Tar` 包。
 
 
 
-一切搞定后我们就可以欢快地开始码字了！
+`MacOS` 系统安装也非常简单，双击 `dmg` 文件，然后拖动 `Typora` 图标到应用程序即可。
+
+图14
+
+图15
+
+
+
+查看快速信息可看到版本号。
+
+图16
+
+
+
+好了，一切搞定后我们就可以欢快地开始码字了！
 
 不过嘛，当我找到了修改界面语言的设置，修改为简体中文时，发现下面还有一个发送匿名信息的设置。
 
@@ -206,7 +228,7 @@ Sorry，我只找到了 `0.9.92` 版的 `Tar` 包。
 
 好像说是收集用户的编写习惯，不过毕竟没有开源，如今收费的她我该不该相信呢？
 
-图14
+图17
 
 
 
