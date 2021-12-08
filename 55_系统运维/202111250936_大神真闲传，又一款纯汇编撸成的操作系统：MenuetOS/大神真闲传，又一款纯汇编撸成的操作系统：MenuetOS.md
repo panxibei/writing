@@ -164,7 +164,7 @@ cat isohdr M6413970.img > MenuetOS.iso
 
 **MenuetOS64.iso(1.45M) & MenuetOS32.iso(1.45M)**
 
-下载链接：链接：https://pan.baidu.com/s/1tEd1eFxNDCobJKsP_YU_LA
+下载链接：https://pan.baidu.com/s/1tEd1eFxNDCobJKsP_YU_LA
 
 提取码：xb07
 
