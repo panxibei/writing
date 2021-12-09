@@ -80,6 +80,8 @@ $ curl --upload-file ./app.zip https://transfer.sh/app.zip
 https://transfer.sh/ST8gyt/app.zip
 ```
 
+图01
+
 
 
 顶哥说：“看见没有，赶快用手机，把输出链接拍下来！”
@@ -99,6 +101,8 @@ https://transfer.sh/ST8gyt/app.zip
 顶哥说当然，`Win10` 已经自带有 `cUrl` 命令了。
 
 如法炮制，我们又很顺利地将文件传了出去。
+
+图02
 
 
 
