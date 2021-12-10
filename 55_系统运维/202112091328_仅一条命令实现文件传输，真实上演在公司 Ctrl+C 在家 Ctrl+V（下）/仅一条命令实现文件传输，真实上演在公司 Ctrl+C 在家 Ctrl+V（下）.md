@@ -22,7 +22,7 @@ https://transfer.sh/
 
 很快打开了一个很页面简单的网页。
 
-图b01
+图01
 
 
 
@@ -50,9 +50,15 @@ $ curl --upload-file ./hello.txt https://transfer.sh/hello.txt
 https://transfer.sh/RT9fzc/hello.txt
 ```
 
+图02
+
 
 
 然后我们再跑到自己的电脑上，输入上面的下载链接即可获取到这个文件。
+
+图03
+
+
 
 很显然，在没有图形界面或是图形操作不方便的情况下，使用命令方式传文件也是可行的。
 
@@ -69,44 +75,19 @@ https://transfer.sh/RT9fzc/hello.txt
 * 免费
 * 可加密文件
 * 最大量化下载
+* 支持 `Amazon S3` , `Google Drive` , `Storj`及本地文件系统
 
 
 
-而网页上就是罗列介绍了一些基本的命令行方式来传输文件的方法。
+好吧，我们先看看网页上罗列的一些基于命令行的其他用法。
 
 
 
+### 一些好玩的用法
 
+##### 使用 `Shell` 函数上传文件
 
-
-
-
-
-
-
-
-
-
-
-
-
-`transfer.sh`
-
-
-
-使用 `cURL` 上传文件
-
-```
-# 使用 cURL 上传文件
-$ curl --upload-file ./hello.txt https://transfer.sh/hello.txt
-
-# ↓ 返回用于下载的链接信息
-https://transfer.sh/RT9fzc/hello.txt
-```
-
-
-
-使用 `Shell` 函数上传文件
+注意，命令行里的 `transfer` 是个自定义函数，具体代码后面就有。
 
 ```
 # 使用 Shell 函数上传文件
@@ -119,47 +100,7 @@ https://transfer.sh/i4Ejz8/hello.txt
 
 
 
-使用 `Web` 浏览器上传文件
-
-```
-# 使用Web浏览器上传文件
-Drag your files here, or click to browse.
-```
-
-
-
-
-
-
-
-* Made for use with shell
-* Share files with a URL
-* Unlimited upload
-* Files stored for 336h0m0s
-* For free
-* Encrypt your files
-* Maximize amount of downloads
-
-
-
-
-
-给定一些上传条件。
-
-```
-# 最大下载数：1个 ,最大保留日期：5天，
-$ curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./hello.txt https://transfer.sh/hello.txt
-
-# ↓ 返回用于下载的链接信息
-https://transfer.sh/RT9fzc/hello.txt
-
-# Download the file
-$ curl https://transfer.sh/RT9fzc/hello.txt -o hello.txt
-```
-
-
-
-
+**1、在 `Linux` 上我们可以这样写 `transfer` 函数。**
 
 在 `.bashrc` 或 `.zshrc` 中创建一个 `Shell` 函数。
 
@@ -191,149 +132,13 @@ $ transfer hello.txt
 
 
 
+**2、`Windows` 上我们可以这样写 `transfer` 函数。**
 
+`Win10` 已经自带有 `cUrl` 命令了，所以可以直接用 `cUrl` 来传输文件。
 
-同时上传多个文件。
+不过也可以通过官方示例的代码自定义 `transfer` 函数。
 
-```
-$ curl -i -F filedata=@/tmp/hello.txt -F filedata=@/tmp/hello2.txt https://transfer.sh/
-
-# Combining downloads as zip or tar archive
-$ curl https://transfer.sh/(RT9fzc/hello.txt,i4Ejz8/world.txt).tar.gz
-$ curl https://transfer.sh/(RT9fzc/hello.txt,i4Ejz8/world.txt).zip
-```
-
-
-
-
-
-在传输之前使用 `gpg` 加密文件。
-
-```
-# Encrypt files with password using gpg
-$ cat /tmp/hello.txt|gpg -ac -o-|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
-
-# Download and decrypt
-$ curl https://transfer.sh/RT9fzc/test.txt|gpg -o- > /tmp/hello.txt
-```
-
-
-
-
-
-扫描病毒
-
-```
-# Scan for malware or viruses using Clamav
-$ wget http://www.eicar.org/download/eicar.com
-$ curl -X PUT --upload-file ./eicar.com https://transfer.sh/eicar.com/scan
-
-# Upload malware to VirusTotal, get a permalink in return
-$ curl -X PUT --upload-file nhgbhhj https://transfer.sh/test.txt/virustotal
-```
-
-
-
-
-
-备份并加密 `mysql` 数据库后传输。
-
-```
-# Backup, encrypt and transfer
-$ mysqldump --all-databases|gzip|gpg -ac -o-|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
-```
-
-
-
-
-
-带上传输链接发送邮件（使用 `Shell` 函数）
-
-```
-# Transfer and send email with link (uses shell function)
-$ transfer /tmp/hello.txt | mail -s "Hello World" user@yourmaildomain.com
-```
-
-
-
-使用 `Keybase.io`
-
-```
-# Import keys from keybase
-$ keybase track [them]
-# Encrypt for recipient(s)
-$ cat somebackupfile.tar.gz | keybase encrypt [them] | curl --upload-file '-' https://transfer.sh/test.txt
-# Decrypt
-$ curl https://transfer.sh/RT9fzc/test.md |keybase decrypt
-```
-
-
-
-还可以用 `wget` 上传文件
-
-```
-# wget
-$ wget --method PUT --body-file=/tmp/file.tar https://transfer.sh/file.tar -O - -nv
-```
-
-
-
-Transfer pound logs
-
-```
-# grep syslog for pound and transfer
-$ cat /var/log/syslog|grep pound|curl --upload-file - https://transfer.sh/pound.log
-```
-
-
-
-
-
-用 `Powershell` 玩上传
-
-```
-# Upload using Powershell
-PS H:\> invoke-webrequest -method put -infile .\file.txt https://transfer.sh/file.txt
-```
-
-
-
-用 `HTTPie` 玩上传
-
-```
-# HTTPie
-$ http https://transfer.sh/ -vv < /tmp/test.log
-```
-
-
-
-
-
-Upload a file using Unofficially client in Python
-
-```
-# transfersh-cli (https://github.com/tanrax/transfersh-cli)
-$ transfersh photos.zip
-# Uploading file
-# Download from here: https://transfer.sh/RT9fzc/photos.zip
-# It has also been copied to the clipboard!
-```
-
-
-
-Encrypt your files with openssl before the transfer
-
-```
-# Encrypt files with password using openssl
-$ cat /tmp/hello.txt|openssl aes-256-cbc -pbkdf2 -e|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
-
-# Download and decrypt
-$ curl https://transfer.sh/RT9fzc/test.txt|openssl aes-256-cbc -pbkdf2 -d > /tmp/hello.txt
-```
-
-
-
-Upload a file or directory in Windows
+将下例代码（第一行去掉）保存为一个批处理文件，比如 `transfer.cmd` 。
 
 ```
 #Save this as transfer.cmd in Windows 10 (which has curl.exe)
@@ -371,4 +176,190 @@ goto main
   curl.exe --progress-bar --upload-file - "https://transfer.sh/%file_name%"
   goto :eof
 ```
+
+
+
+##### 给定一些上传条件
+
+```
+# 最大下载数：1个 ,最大保留日期：5天，
+$ curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./hello.txt https://transfer.sh/hello.txt
+
+# ↓ 返回用于下载的链接信息
+https://transfer.sh/RT9fzc/hello.txt
+
+# 下载这个文件
+$ curl https://transfer.sh/RT9fzc/hello.txt -o hello.txt
+```
+
+
+
+##### 同时上传多个文件
+
+```
+# 用 -F 指定多个文件
+$ curl -i -F filedata=@/tmp/hello.txt -F filedata=@/tmp/hello2.txt https://transfer.sh/
+
+# 下载的同时可打包成 zip 或 tar 文件
+$ curl https://transfer.sh/(RT9fzc/hello.txt,i4Ejz8/world.txt).tar.gz
+$ curl https://transfer.sh/(RT9fzc/hello.txt,i4Ejz8/world.txt).zip
+```
+
+
+
+##### 在传输之前使用 `gpg` 加密文件
+
+```
+# 使用 gpg 加密文件，密码在 /tmp/hello.txt 中
+$ cat /tmp/hello.txt|gpg -ac -o-|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
+
+# 下载并解密
+$ curl https://transfer.sh/RT9fzc/test.txt|gpg -o- > /tmp/hello.txt
+```
+
+
+
+##### 还可以上传文件扫描病毒
+
+```
+# 使用 Clamav 扫描病毒或恶意软件
+$ wget http://www.eicar.org/download/eicar.com
+$ curl -X PUT --upload-file ./eicar.com https://transfer.sh/eicar.com/scan
+
+# 将恶意软件上载到 VirusTotal`，返回永久链接
+$ curl -X PUT --upload-file nhgbhhj https://transfer.sh/test.txt/virustotal
+```
+
+
+
+##### 备份并加密 `mysql` 数据库后再传输
+
+```
+# 备份，加密并传输
+$ mysqldump --all-databases|gzip|gpg -ac -o-|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
+```
+
+
+
+##### 带上传输链接发送邮件（使用 `Shell` 函数）
+
+```
+# Transfer and send email with link (uses shell function)
+$ transfer /tmp/hello.txt | mail -s "Hello World" user@yourmaildomain.com
+```
+
+
+
+##### 使用 `Keybase.io`
+
+```
+# 从 keybase 导入密钥
+$ keybase track [them]
+
+# 给接受方加密
+$ cat somebackupfile.tar.gz | keybase encrypt [them] | curl --upload-file '-' https://transfer.sh/test.txt
+
+# 解密
+$ curl https://transfer.sh/RT9fzc/test.md |keybase decrypt
+```
+
+
+
+##### 当然用 `wget` 上传文件也是可以的，不一定要 `curl`
+
+```
+# wget
+$ wget --method PUT --body-file=/tmp/file.tar https://transfer.sh/file.tar -O - -nv
+```
+
+
+
+##### 传输持续输出的日志文件
+
+```
+# grep syslog for pound and transfer
+$ cat /var/log/syslog|grep pound|curl --upload-file - https://transfer.sh/pound.log
+```
+
+
+
+##### 用 `Powershell` 照样可以玩上传
+
+```
+# Upload using Powershell
+PS H:\> invoke-webrequest -method put -infile .\file.txt https://transfer.sh/file.txt
+```
+
+
+
+##### 用 `HTTPie` 玩上传
+
+```
+# HTTPie
+$ http https://transfer.sh/ -vv < /tmp/test.log
+```
+
+
+
+##### 用第三方的 `Python` 客户端上传
+
+```
+# transfersh-cli (https://github.com/tanrax/transfersh-cli)
+$ transfersh photos.zip
+
+# Uploading file
+# Download from here: https://transfer.sh/RT9fzc/photos.zip
+# It has also been copied to the clipboard!
+```
+
+
+
+##### 传输前使用 `openssl` 加密文件
+
+```
+# Encrypt files with password using openssl
+$ cat /tmp/hello.txt|openssl aes-256-cbc -pbkdf2 -e|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
+
+# Download and decrypt
+$ curl https://transfer.sh/RT9fzc/test.txt|openssl aes-256-cbc -pbkdf2 -d > /tmp/hello.txt
+```
+
+
+
+**使用 `Web` 浏览器上传文件**
+
+最后，如果你感觉前面的好麻烦啊，那就打开浏览器，点击 `click to browse` 后浏览文件即可，不过这就不是命令行方式了。
+
+```
+# 使用Web浏览器上传文件
+Drag your files here, or click to browse.
+```
+
+图04
+
+
+
+### 写在最后
+
+在现今的网络时代，通常还有不少人用邮件甚至是U盘传输着文件。
+
+当然在中国可能大家也用微信或其他的社交软件充当文件传输工具。
+
+可是如果你仔细观察，就会发现这些东西的本质并不是用来传文件的，而且体验也不是很好。
+
+比如，你要分享文件给多个人，但又想保密不让更多的人知道，那么 `transfer.sh` 就可以实现多人下载，并且只有知道密码的人才能下载。
+
+而邮件也好、微信也罢，好像没有这么灵活吧！
+
+因此，如果你经常有文件传输的需求，可以来关注一下这个神秘的 `transfer.sh` 。
+
+最后要告诉小伙伴们，这个 `transfer.sh` 还是个开源项目，下期有空的话，我也会尝试自己做一个 `transfer.sh` ，到时会将这个过程分享给大家。
+
+想想就很棒啊，小伙伴们赶快尝试一下吧！
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
 
