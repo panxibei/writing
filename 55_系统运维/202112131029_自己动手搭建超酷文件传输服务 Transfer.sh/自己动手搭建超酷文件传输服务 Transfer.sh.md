@@ -1,20 +1,94 @@
-自己动手搭建超酷文件传输服务 Transfer.sh
+你居然还在用微信传文件？试试自己动手用 transfer.sh 搭建超酷文件传输服务
 
-副标题：
+副标题：一个超简单文件传输方案 transfer.sh ~
 
-英文：
+英文：still-sending-files-through-wechat-try-using-transfersh-to-build-cool-file-sharing-service
 
-关键字：
-
-
-
-自己动手搭建超酷文件传输服务 Transfer.sh
-
-它是一款由 `golang` 开发的。
+关键字：transfer.sh,go,golang,文件共享,curl,wget,sharing
 
 
 
-在 `C` 盘根目录下新建一个文件夹 `tmp` 。
+怎么将文件传给别人？
+
+这还不简单，用微信啊！再不行用 `QQ` 啊！
+
+好了好了，要是再这么说就暴露水平了，哈哈！
+
+其实文件传输完全可以变得更优雅更酷炫的哦！
+
+
+
+这次我就要给小伙伴介绍一款文件传输分享服务 `transfer.sh` 。
+
+它由 `golang` 开发，支持多个操作系统平台，可以带给我们全新的文件传输体验的解决方案。
+
+它的特点是，简单、快速，通过命令行的方式传输文件。
+
+并且可以提供加密保护、无限上传下载、链接式分享等功能。
+
+还没有接触过 `transfer.sh` 的小伙伴建议先参考一下以前的文章。
+
+
+
+> 前文参考：
+>
+> 文章链接：
+
+
+
+好了，`transfer.sh` 很好玩，但最最最重要的是，它还可以作为单独的实例为我们提供我们自己的文件服务系统。
+
+意思就是说，我们可以用它来建立自己的文件分享系统，这样我们就可以更加安全更加自由地与他人传递信息。
+
+本文将重点给大家分享如何搭建一个属于自己的 `transfer.sh` ，在此期间我再穿插一些使用的方法和手段，以加深对 `transfer.sh` 服务的理解。
+
+
+
+### 安装 `transfer.sh` 服务
+
+由于 `transfer.sh` 支持跨平台，因此我们就用 `Windows` 来做演示，这样让小伙伴们也更加容易理解，至于 `Linux` 或 `BSD` 甚至是安卓等系统基本上是大同小异的。
+
+打开 `Github` 上的项目页面，找到 `Release` 并下载相应的安装包。
+
+> https://www.github.com/dutchcoders/transfer.sh/
+
+图a01
+
+
+
+如果你的网速不错，也可以直接下载 `exe` 文件，我们下载的压缩包解压后其实也是得到一样的 `exe` 文件。
+
+下载完成后，将其中的 `transfersh-v1.3.0-windows-amd64.exe` 这个文件释放出来，放到一个指定的文件夹中，比如我这边是 `C:\sysadm` 。
+
+图a02
+
+图a03
+
+
+
+我们打开命令提示符，输入以下命令可以得到帮助信息。
+
+```
+C:\sysadm\transfersh-v1.3.0-windows-amd64.exe -h
+```
+
+图a04
+
+
+
+这些帮助信息作为参考，等一会儿就会用到。
+
+另外如果你觉得这个文件名也太长了点，那你可以将它重命名为 `transfersh` 这样的较短的名字。
+
+当然，作为演示我后面都还会沿用原来的较长的文件名。
+
+
+
+### 启动 `transfer.sh` 服务
+
+在启动服务之前，我们需要先建立一个文件夹，用于映射暂存目录。
+
+比如，在 `C` 盘根目录下新建一个文件夹 `tmp` 。
 
 ```
 mkdir C:\tmp
@@ -22,7 +96,7 @@ mkdir C:\tmp
 
 
 
-然后按照以下参数启动服务。
+然后按照以下参数启动服务， `^` 用于不中断命令的换行。
 
 ```
 transfersh-v1.3.0-windows-amd64.exe ^
@@ -33,6 +107,8 @@ transfersh-v1.3.0-windows-amd64.exe ^
 ```
 
 
+
+参数解释如下：
 
 * `--provider=local`
 
@@ -52,7 +128,7 @@ transfersh-v1.3.0-windows-amd64.exe ^
 
 
 
-注意，在命令执行前请确保服务器端口已在防火墙中开放。
+注意，在命令执行前请务必确保服务器端口已在防火墙中开放。
 
 好了，命令执行后服务就开始运行了。
 
@@ -60,7 +136,7 @@ transfersh-v1.3.0-windows-amd64.exe ^
 
 
 
-这个时候，我们打开浏览器，在地址栏内输入 `http://服务端的IP` 后回车。
+这个时候，我们打开浏览器，在地址栏内输入 `http://server_ip` 后回车。
 
 我们会惊喜地发现，我们自己的 `transfer.sh` 服务器已经在正常运行中了。
 
@@ -76,10 +152,12 @@ transfersh-v1.3.0-windows-amd64.exe ^
 
 
 
-假定有一个文件 `hello.txt` ，输入以下命令，我们将这个文件上传到服务器。
+### 测试上传文件
+
+假定当前目录中有一个文件 `hello.txt` ，输入以下命令，我们将这个文件上传到服务器。
 
 ```
-curl --upload-file ./hello.txt http://服务器IP/hello.txt
+curl --upload-file ./hello.txt http://server_ip/hello.txt
 ```
 
 图a07
@@ -89,7 +167,7 @@ curl --upload-file ./hello.txt http://服务器IP/hello.txt
 从返回的结果中我们得到了一个下载链接，比如：
 
 ```
-http://服务器IP/5liLmu/hello.txt
+http://server_ip/5liLmu/hello.txt
 ```
 
 
@@ -104,7 +182,7 @@ http://服务器IP/5liLmu/hello.txt
 
 好，我们再来看看文件上传之后到底是怎么存放的。
 
-原来只有两个文件，一个就是我们上传的文件，另一个是以 `metadata` 为后缀的元数据文件。
+一共有两个文件，一个就是我们上传的文件，另一个是以 `metadata` 为后缀的元数据文件。
 
 图a08
 
@@ -124,11 +202,13 @@ http://服务器IP/5liLmu/hello.txt
 }
 ```
 
-这个格式有点眼熟啊，感觉就是个 `Json` 格式嘛！
+
+
+这个格式有点眼熟啊，感觉就是个 `Json` 数据嘛！
 
 当然了，实际上以上内容是写在一行的，为了大家查看方便直观稍稍换了行。
 
-这个 `Json` 就是以 `key-value` 的形式保存的数据信息，那么具体各个 `key` 的意思我想小伙伴大概能了解了吧。
+这个 `Json` 就是以 `key-value` 的形式保存的数据信息，那么具体各个 `key` 的意思我想小伙伴们大概也能猜出个一二来吧。
 
 比如 `MaxDonloads` 它的值是 `-1` ，表示无限下载。
 
@@ -138,24 +218,26 @@ http://服务器IP/5liLmu/hello.txt
 
 
 
-从字面意思我们也能猜出个八九不离十，就是删除令牌啊！
+从字面意思我们也能猜出个八九不离十哈，就是删除令牌啊！
 
-那么它就是用于删除我们上传文件的。
+那么它正是用于删除我们上传文件的。
 
 
 
-### 如何删除我们上传的文件呢
+### 如何删除上传的文件
 
-其实我们通过上传命令中追加 `-H "X-Url-Delete"` 参数即可从客户端获取删除令牌。
+其实我们通过在命令中追加 `-H "X-Url-Delete"` 参数即可从客户端获取删除令牌。
 
 ```
 # -I 用于查看返回信息
 curl -I -H "X-Url-Delete" --upload-file ./hello.txt http://server_ip/hello.txt
 ```
 
+图a09
 
 
-从图中我们就可以从返回信息中看到一行带有删除令牌的信息。
+
+从图中的返回信息中我们就可以看到有那么一行带有删除令牌的信息。
 
 没错，那最后一串奇怪的字符就是删除令牌了。
 
@@ -163,13 +245,11 @@ curl -I -H "X-Url-Delete" --upload-file ./hello.txt http://server_ip/hello.txt
 X-Url-Delete: http://server_ip/0czFd5/hello.txt/NcPETCcGExW2
 ```
 
-图a09
-
 
 
 然后，怎么删？
 
-很简单，拿刚才的令牌信息，照抄下面的命令就行了。
+很简单，拿刚才的令牌信息，照搬下面的命令就行了。
 
 ```
 curl -X DELETE http://server_ip/0czFd5/hello.txt/NcPETCcGExW2
@@ -179,7 +259,7 @@ curl -X DELETE http://server_ip/0czFd5/hello.txt/NcPETCcGExW2
 
 如果加上参数 `-I` 则可以查看返回信息。
 
-当然了，即便你不主动删除文件，它也会在336小时后自动删除。
+当然了，即便你不主动删除文件，它也会在 `336` 小时后自动删除。
 
 图a10
 
@@ -205,9 +285,9 @@ OK，成功删除文件！
 
 ### 使用 Docker
 
-这么好的项目喜欢的人肯定不少，但就算少到只有一个文件就可以作为服务启动可能也满足不了部分懒人的偷懒需求。
+这么好的项目上头的人肯定不在少数，但就算精简到只需一个文件就可以作为服务启动可能也出拯救不了部分懒人那慵懒的心。
 
-这不，`transfer.sh` 还提供了 `Docker` ，这下有人开心了。
+这不，`transfer.sh` 还提供了 `Docker` ，我猜这下肯定有人要欢呼了。
 
 拉取镜像后执行如下命令。
 
@@ -219,13 +299,13 @@ docker run --publish 8080:8080 dutchcoders/transfer.sh:latest --provider local -
 
 感觉 `Docker` 是万能的，因为不少系统或设备就很好地支持 `Docker` ，那么就可以直接拿来用了。
 
-例如我想到的，你如果有专门存放文件的网盘，比如群辉之类的 `NAS` ，那么就可以接合 `transfer.sh` 的 `Docker` 镜像来部署文件分享服务，真的是很方便啊！
+例如我想到的，你如果有专门存放文件的网盘，比如群辉之类的 `NAS` ，那么就可以结合 `transfer.sh` 的 `Docker` 镜像来部署文件分享服务，真的是很方便啊！
 
 
 
-### 接合第三方云存储
+### 结合第三方云存储
 
-如果你是第三方云存储服务的用户，比如 `Amazon S3` 、 `Google Drive` 或 `Storj` ，那么恭喜你，最新版的 `transfer.sh` 已经提供了很好的支持用于连接这些存储服务供应商。
+如果你是第三方云存储服务的用户，比如 `Amazon S3` 、 `Google Drive` 或 `Storj` ，那么恭喜你，最新版的 `transfer.sh` 已经提供了非常棒的用于连接这些存储服务供应商的支持。
 
 我们只要将 `--provider` 参数指向对应的供应商名称，然后设定其他相应的参数即可。
 
@@ -450,6 +530,14 @@ https://server_ip
 OK，文件不仅成功上传，而且还返回了删除令牌信息，同时还提供了打包下载文件的功能，完美！
 
 图c11
+
+
+
+不过如果你要是用命令行的话，那么还需要注意一点，就是我们用的是自签名证书，所以我们必须要加上参数 `-k` 跳过 `SSL` 的加密检测，否则会失败。
+
+```
+curl -k --upload-file hello.txt https://server_ip/hello.txt
+```
 
 
 
