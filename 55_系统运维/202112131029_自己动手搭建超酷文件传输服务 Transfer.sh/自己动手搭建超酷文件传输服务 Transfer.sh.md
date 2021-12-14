@@ -10,6 +10,8 @@
 
 自己动手搭建超酷文件传输服务 Transfer.sh
 
+它是一款由 `golang` 开发的。
+
 
 
 在 `C` 盘根目录下新建一个文件夹 `tmp` 。
@@ -170,6 +172,87 @@ X-Url-Delete: http://server_ip/0czFd5/hello.txt/NcPETCcGExW2
 很简单，拿刚才的令牌信息，照抄下面的命令就行了。
 
 ```
-curl -X http://server_ip/0czFd5/hello.txt/NcPETCcGExW2
+curl -X DELETE http://server_ip/0czFd5/hello.txt/NcPETCcGExW2
+```
+
+
+
+如果加上参数 `-I` 则可以查看返回信息。
+
+当然了，即便你不主动删除文件，它也会在336小时后自动删除。
+
+图a10
+
+
+
+OK，成功删除文件！
+
+我们回到服务端也能看到文件已经被成功删除了！
+
+图a11
+
+
+
+即使打条命令就可以删除文件，官方在新版中也新开发了提供网页界面删除文件的功能。
+
+如图我们只要先点击 `delete` 那个按钮，然后再输入删除令牌 `DeletionToken` 并按下确认 `confirm` 按钮就可以删除文件了。
+
+图a12
+
+
+
+
+
+### 使用 Docker
+
+这么好的项目喜欢的人肯定不少，但就算少到只有一个文件就可以作为服务启动可能也满足不了部分懒人的偷懒需求。
+
+这不，`transfer.sh` 还提供了 `Docker` ，这下有人开心了。
+
+拉取镜像后执行如下命令。
+
+```
+docker run --publish 8080:8080 dutchcoders/transfer.sh:latest --provider local --basedir /tmp/
+```
+
+
+
+感觉 `Docker` 是万能的，因为不少系统或设备就很好地支持 `Docker` ，那么就可以直接拿来用了。
+
+例如我想到的，你如果有专门存放文件的网盘，比如群辉之类的 `NAS` ，那么就可以接合 `transfer.sh` 的 `Docker` 镜像来部署文件分享服务，真的是很方便啊！
+
+
+
+### 接合第三方云存储
+
+如果你是第三方云存储服务的用户，比如 `Amazon S3` 、 `Google Drive` 或 `Storj` ，那么恭喜你，最新版的 `transfer.sh` 已经提供了很好的支持用于连接这些存储服务供应商。
+
+我们只要将 `--provider` 参数指向对应的供应商名称，然后设定其他相应的参数即可。
+
+
+
+为了举例，我专门注册了 `Storj` 。
+
+`Storj` 是一家很有发展潜力的云存储解决方案，具体小伙伴可以自行了解，我也是刚用上，如果以后有更多了解再和大家分享。
+
+这款存储免费版提供了 `150GB` 的空间，虽说空间不大，但如果只是用来临时转发文件倒还算不错。
+
+我们如果想要将 `transfer.sh` 连上 `Storj` ，那么至少需要给出三个参数值。
+
+- provider `--provider storj`
+- storj-access *(either via flag or environment variable STORJ_ACCESS)*
+- storj-bucket *(either via flag or environment variable STORJ_BUCKET)*
+
+
+
+第一个参数肯定就是指向 `Storj` ，而第二个和第三个参数则是指访问 `Storj` 的加密密钥和 `Bucket` 。
+
+这个 `Bucket` 我觉得可以简单地理解为分类或文件夹。
+
+```
+transfersh-v1.3.0-windows-amd64.exe ^
+	--provider storj ^
+	--storj-access <ACCESS GRANT> ^
+	--storj-bucket <BUCKET NAME> ^
 ```
 
