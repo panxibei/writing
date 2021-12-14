@@ -377,11 +377,103 @@ curl -I -X DELETE http://127.0.0.1:8080/sBUYda/hello.txt/K0X3X1fPXGPX
 
 
 
+### 让 `transfer.sh` 支持 `https`
+
+有的人有强迫症，比如像我，感觉默认的 `http` 链接不安全也不十分正规。
+
+给别人用嘛肯定要用 `https` 这样的链接才显得正规严谨，所以下面我们一起给 `transfer.sh` 加上 `https` 功能。
 
 
 
+实际上 `transfer.sh` 已经支持了 `https` ，我们只要给定几个 `https` 需要的参数就可以了。
+
+比如 `tls-listener` 、`tls-cert-file` 和 `tls-private-key` 。
+
+前一个是加密侦听端口，我们知道 `https` 端口一般默认为 `443` 。
+
+而后两个则是 `https` 所需的证书和密钥。
 
 
 
+我们以自签名证书为例，使用 `openssl` 来生成证书，只要三步。
 
+```
+# openssl genrsa -out sysadm.local.key 2048
+# openssl req -new -key sysadm.local.key -out sysadm.local.csr
+# openssl x509 -req -days 3650 -in sysadm.local.csr -signkey sysadm.local.key -out sysadm.local.crt
+```
+
+`openssl` 需要到网上下载安装后才能使用，这个小伙伴们自行解决吧，我就不啰嗦了。
+
+最后生成三个文件，而我们要用到的只有以 `.key` 和 `.crt` 结尾的两个文件。
+
+* `sysadm.local.key` - 私钥（备用）
+* `sysadm.local.csr` - 请求（不用）
+* `sysadm.local.crt` - 证书（备用）
+
+
+
+将证书和密钥与 `transfer.sh` 服务文件放在一起，我们执行以下命令。
+
+```
+transfersh-v1.3.0-windows-amd64.exe ^
+	--provider local ^
+	--tls-listener :443 ^
+	--tls-cert-file=sysadm.local.crt ^
+	--tls-private-key=sysadm.local.key ^
+	--temp-path /tmp/ ^
+	--basedir C:\tmp\
+```
+
+图c09
+
+
+
+从启动的结果来看，服务端口已经正常在 `443` 上侦听了。
+
+为了进一步确认它到底有没有达到效果，我们打开网站链接，特意加上 `https` 。
+
+```
+https://server_ip
+```
+
+没错了，`transfer.sh` 已经正常开启 `https` 了。
+
+图c10
+
+
+
+正好，我们就此尝试用一下浏览器的上传功能。
+
+点击页面中的 `click to browse` ，选择要上传的文件后点击打开按钮。
+
+OK，文件不仅成功上传，而且还返回了删除令牌信息，同时还提供了打包下载文件的功能，完美！
+
+图c11
+
+
+
+### 写在最后
+
+到目前为止一切都是这么完美，`transfer.sh` 的确太好用了！
+
+由于它是开源的，又是用 `go` 语言写的，因此对 `go` 熟悉的小伙伴们可以视实际需求改造一些东西，比如它的首页展示内容等等，可以让它更符合我们的需要。
+
+此外 `transfer.sh` 还有不少可以设定的参数，对应着不同的使用场景，让我们可以灵活地因地制宜地使用它。
+
+如果你正在寻找临时转存文件的方案，特别是自己私有环境下需要这么一个可用于多人分享文件的东西，那么 `transfer.sh` 真的是值得我们考虑的。
+
+
+
+最后由于 `transfer.sh` 的口号是打造命令行式的文件传输服务，因此对一些喜欢用图形界面的小伙伴可能不那么友好了。
+
+基于此，在以后的时间里，如果我有多余空闲哈，那我可能会做一个图形客户端专门定制用于 `transfer.sh`的文件传输。
+
+到时候我们就可以轻轻松松地用这个图形程序来操作上传下载文件了。
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
 
