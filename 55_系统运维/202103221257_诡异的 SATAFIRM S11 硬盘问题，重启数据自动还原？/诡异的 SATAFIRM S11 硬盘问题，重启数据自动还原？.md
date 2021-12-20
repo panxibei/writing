@@ -70,9 +70,9 @@ strange-satafirm-s11-hard-disk-problem-restart-data-auto-restore
 
 **1、下载 `repairs11.rar` ，解压缩文件。**
 
-下载链接：https://www.90pan.com/b2420987
+下载链接：https://pan.baidu.com/s/1xZhl5w2MsDQXYT4v6vONmQ
 
-提取码：z249
+提取码：epsy
 
 
 
@@ -100,25 +100,25 @@ C:\> repairS11.exe 2
 
 a. 查看硬盘固件编号 `phison_flash_id.rar`
 
-下载链接：https://www.90pan.com/b2420988
+下载链接：https://pan.baidu.com/s/1515N_Nea4skOrmCoWUOj8w
 
-提取码：hsn8
+提取码：ruqk
 
 
 
 b. `PS3111` 固件文件 `firmware_ps3111.rar`
 
-下载链接：https://www.90pan.com/b2420990
+下载链接：https://pan.baidu.com/s/1VIBTSe_OjNfyrEYawVzP8A
 
-提取码：3g5f
+提取码：ag1p
 
 
 
-b. 刷新固件工具 `s11-flasher.rar`
+c. 刷新固件工具 `s11-flasher.rar`
 
-下载链接：https://www.90pan.com/b2420989
+下载链接：https://pan.baidu.com/s/12pR3vq2-sUgH_Ae04N0A3g
 
-提取码：d2l4
+提取码：lph6
 
 
 
