@@ -2,7 +2,7 @@
 
 副标题：通过简易命令行分享文件~
 
-英文：file-transfer-with-only-one-command-ctrl-c-in-company-and-ctrl-v-at-home
+英文：file-transfer-with-only-one-command-ctrl-c-in-company-and-ctrl-v-at-home-2
 
 关键字：sharing,file,command,transfer,transfer.sh,shell,function,共享,传输
 
