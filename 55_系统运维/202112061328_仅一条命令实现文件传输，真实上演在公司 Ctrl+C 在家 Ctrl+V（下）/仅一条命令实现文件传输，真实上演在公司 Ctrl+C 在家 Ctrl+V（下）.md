@@ -14,9 +14,9 @@
 
 
 
-> 前方参数：《仅一条命令实现文件传输，真实上演在公司 Ctrl+C 在家 Ctrl+V（上）》
+> 前文参考：《仅一条命令实现文件传输，真实上演在公司 Ctrl+C 在家 Ctrl+V（上）》
 >
-> 文章链接：
+> 文章链接：https://www.sysadm.cc/index.php/xitongyunwei/896-file-transfer-with-only-one-command-ctrl-c-in-company-and-ctrl-v-at-home-1
 
 
 
