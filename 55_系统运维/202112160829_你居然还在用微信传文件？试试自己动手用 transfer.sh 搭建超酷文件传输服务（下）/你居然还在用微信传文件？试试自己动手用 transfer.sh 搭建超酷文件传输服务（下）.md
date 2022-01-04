@@ -4,7 +4,7 @@
 
 英文：still-sending-files-through-wechat-try-using-transfersh-to-build-cool-file-sharing-service-2
 
-关键字：transfer.sh,go,golang,文件共享,curl,wget,sharing
+关键字：transfer.sh,go,golang,文件共享,curl,wget,sharing, wechat, 微信, 传输助手
 
 
 
@@ -20,7 +20,7 @@
 
 > 前文参考：《你居然还在用微信传文件？试试自己动手用 transfer.sh 搭建超酷文件传输服务（上）》
 >
-> 文章链接：
+> 文章链接：https://www.sysadm.cc/index.php/xitongyunwei/900-still-sending-files-through-wechat-try-using-transfersh-to-build-cool-file-sharing-service-1
 
 
 
