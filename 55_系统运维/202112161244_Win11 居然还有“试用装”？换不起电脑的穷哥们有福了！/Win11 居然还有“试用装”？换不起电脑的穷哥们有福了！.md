@@ -4,7 +4,7 @@ Win11 居然还有“试用装”？换不起电脑的穷哥们有福了！
 
 英文：win11-trial-version-blessed-are-the-poor-people-who-cannot-afford-to-upgrade-computer
 
-关键字：win11,blueedge,upgrade
+关键字：win11,blueedge,upgrade,react
 
 
 
