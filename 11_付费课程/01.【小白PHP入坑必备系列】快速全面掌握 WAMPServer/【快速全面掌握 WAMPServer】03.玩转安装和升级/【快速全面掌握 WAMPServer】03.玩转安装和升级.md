@@ -404,6 +404,12 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 
 
+**效果演示：**
+
+图39.GIF
+
+
+
 **一键安装WampServer64位最新版 (668M)**
 
 包含所有组件，即使手动安装也是可以的哦。
@@ -416,7 +422,7 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 使用方法，只需以管理员权限运行 `一键安装WampServer64位.bat` 这个批处理文件。
 
-图39
+图40
 
 
 
@@ -424,7 +430,7 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 安装完成后，我们就可以在桌面上看到 `WampServer` 的图标，双击图标即可启动它。
 
-图40
+图41
 
 
 
@@ -434,7 +440,7 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 而那个 `www`  就是 `WampServer` 站点的主目录，也就是我们的网页程序放置的地方。
 
-图41
+图42
 
 
 
@@ -444,7 +450,7 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 如果有至少一项服务未正常启动，那么右下角通知栏内的图标就会显示异常的颜色，而正常状态下应该是绿色的。
 
-图42
+图43
 
 
 
@@ -452,7 +458,7 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 右键点击图标，选择最上面的 `About` 。
 
-图43
+图44
 
 
 
@@ -460,9 +466,9 @@ wamp3_x86_x64_language.exe /silent /suppressmsgboxes
 
 在其中我们可以很清楚地看到各应用的版本了。
 
-图44
-
 图45
+
+图46
 
 
 
