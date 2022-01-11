@@ -181,6 +181,7 @@
 * *【快速全面掌握 WAMPServer】11.安装 PHP 扩展踩过的坑*
 * *【快速全面掌握 WAMPServer】12.WAMPServer 故障排除经验大总结*
 * *【快速全面掌握 WAMPServer】13.PHP调试麻烦？请 xDebug 来帮忙！*
+* *【快速全面掌握 WAMPServer】14.各种组件的升级方法*
 
 
 
