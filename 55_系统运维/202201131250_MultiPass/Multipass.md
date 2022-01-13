@@ -88,3 +88,20 @@ multipass exec vm_name -- <command> <arguments>
 例：multipass exec vm01 -- uname -a
 ```
 
+
+
+
+
+
+
+```
+# 启动实例
+multipass start vm01
+# 停止实例
+multipass stop vm01
+# 删除实例（删除后，还会存在）
+multipass delete vm01
+# 释放实例（彻底删除）
+multipass purge vm01
+```
+
