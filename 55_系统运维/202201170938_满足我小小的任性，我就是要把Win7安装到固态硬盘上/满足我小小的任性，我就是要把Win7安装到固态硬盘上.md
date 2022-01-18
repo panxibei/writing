@@ -1,10 +1,10 @@
-固态硬盘能安装上Win7吗？
+满足我小小的任性，我就是要把Win7安装到固态硬盘上
 
-副标题：
+副标题：M.2接口固态硬盘上安装Win7
 
-英文：
+英文：to-satisfy-my-little-willfulness-i-just-want-to-install-win7-on-solid-state-drive
 
-关键字：ssd
+关键字：ssd,固态硬盘,win7,windows,adk,dism,m2,pci-e,nvme,KB2990941
 
 
 
@@ -24,11 +24,9 @@
 
 但是你要是想用 `M.2` 甚至是 `PCI-e` 接口的固态硬盘，那我只好说 `I'm sorry` ，直接这么干还真不行！
 
-原因很简单，就是 `Win7` 它默认不能识别支持固态硬盘。
+原因很简单，就是 `Win7` 它默认不能识别支持 `NVMe` 的固态硬盘。
 
 接下来我就和小伙伴们分享一下将 `Win7` 安装到 `M.2` 接口的固态硬盘的经验。
-
-
 
 
 
@@ -47,19 +45,19 @@
 
 
 
-`Win10` 自带 `ADK` ，如果没有 `DISM` 命令，可到以下官网链接下载 `ADK` 。
+`Win10` 自带 `DISM` 命令，如果没有 `DISM` 命令，可到以下官网链接下载 `ADK` 。
+
+制作 `ISO` 的 `oscdimg` 命令需要 `ADK` 。
 
 > https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install
 
 
 
-
-
 ### 让 `Win7` 支持 `NVMe` 协议的原理
 
-实际上我们说了半天的 `M.2` 接口也好，或是 `PCI-e` 接口也好，其实本质上跑的是 `NVMe` 协议。
+实际上我们说了半天的 `M.2` 接口也好，或是 `PCI-e` 接口也好，其实本质上跑的都是 `NVMe` 协议。
 
-关于这个 `NVMe` ，大家可以自行某度，就不在这儿展开了，其实它就是有别于传统的 `SATA` 。
+关于这个 `NVMe` ，大家可以自行某度，我就不在这儿展开了，其实它就是有别于传统的 `SATA` ，跑得速度更多快的新规范标准。
 
 至于 `NVMe` 是规范还是协议，其实和以前的 `SATA` 和 `AHCI` 一样，我们没必要咬文嚼字，只要知道接口和协议规范的区别就行。
 
@@ -69,11 +67,13 @@
 
 好了，前面也说过，若是 `SATA` 接口的固态硬盘，我们直接拿来用就是了，但是我们现在要面对的则是跑 `NVMe` 协议的固态硬盘，即接口是 `M.2` 或是 `PCI-e` 。
 
-而 `Win7` 默认情况下不支持 `NVMe` 固态硬盘的原因，则是它缺少相应的对应的更新补丁支持。
+而 `Win7` 默认情况下不支持 `NVMe` 固态硬盘的原因，则是它缺少相应的更新补丁支持。
 
-众所周知，`Win7` 退休得太早了，还没来得及赶上固态硬盘大规模跟进的时代，不过不用担心，官方之后还是帮我们补上了相应的更新程序。
+众所周知，`Win7` 退休得太早了，还没来得及赶上固态硬盘大规模跟进的时代就让官方给送进敬老院了。
 
-只要我们安装上这些更新补丁程序，那么我们就有了让 `Win7` 支持 `NVMe` 的可能。
+不过现在我们也不用担心，官方之后还是帮我们补上了相应的更新程序，敬老爱老是应该的。
+
+也就是说，只要我们安装上这些更新补丁程序，那么我们就有了让 `Win7` 支持 `NVMe` 的可能。
 
 然后我们给它再导入对应的固态硬盘驱动程序，一切就完美了。
 
@@ -97,7 +97,7 @@
 
 
 
-图e01
+图01
 
 
 
@@ -109,7 +109,7 @@
 
 
 
-图e02
+图02
 
 
 
@@ -162,7 +162,7 @@ mkdir e:\win7\src e:\win7\mount e:\win7\winremount e:\win7\hotfix e:\win7\driver
 dism /Mount-Image /ImageFile:e:\win7\src\sources\boot.wim /Index:1 /MountDir:e:\win7\mount
 ```
 
-图x01
+图03
 
 
 
@@ -171,7 +171,7 @@ dism /Mount-Image /ImageFile:e:\win7\src\sources\boot.wim /Index:1 /MountDir:e:\
 dism /Image:e:\win7\mount /Add-Package /PackagePath:e:\win7\hotfix
 ```
 
-图x02
+图04
 
 
 
@@ -180,7 +180,7 @@ dism /Image:e:\win7\mount /Add-Package /PackagePath:e:\win7\hotfix
 dism /Image:e:\win7\mount /Add-Driver /Driver:e:\win7\drivers /Recurse /Forceunsigned
 ```
 
-图x03
+图05
 
 
 
@@ -189,7 +189,7 @@ dism /Image:e:\win7\mount /Add-Driver /Driver:e:\win7\drivers /Recurse /Forceuns
 dism /Unmount-Image /MountDir:e:\win7\mount /Commit
 ```
 
-图x04
+图06
 
 
 
@@ -212,7 +212,7 @@ dism /Image:e:\win7\mount /Add-Driver /Driver:e:\win7\drivers /Recurse /Forceuns
 
 此时我们将 `e:\win7\mount\sources` 文件夹中的所有文件按日期排序，找到最新的那些文件，同时将它们覆盖拷贝到 `e:\win7\src\sources` 中。
 
-图c01
+图07
 
 
 
@@ -237,7 +237,7 @@ dism /Get-WimInfo /WimFile:e:\win7\src\sources\install.wim
 
 可以看到，当前镜像只有一个索引。
 
-图a06
+图08
 
 
 
@@ -271,8 +271,6 @@ dism /Unmount-Wim /MountDir:e:\win7\mount /Commit
 
 
 
-
-
 ### 生成全新支持 `NVMe` 的 `ISO` 文件
 
 我们可以将前面制作好的已注入补丁和驱动的安装文件打包成新的 `ISO` 镜像文件。
@@ -296,7 +294,7 @@ dism /Unmount-Wim /MountDir:e:\win7\mount /Commit
 oscdimg -lNVME4Win7 -m -u2 -be:\win7\src\boot\etfsboot.com e:\win7\src e:\win7\Win7.NVME.ISO
 ```
 
-图t01
+图09
 
 
 
@@ -307,7 +305,7 @@ oscdimg -lNVME4Win7 -m -u2 -be:\win7\src\boot\etfsboot.com e:\win7\src e:\win7\W
 oscdimg -lNVME4Win7 -m -u2 -bootdata:2#p0,e,bE:\win7\src\boot\etfsboot.com#pEF,e,bE:\win7\src\efi\microsoft\boot\efisys.bin E:\win7\src E:\win7\Win7.NVME.ISO
 ```
 
-图t02
+图10
 
 
 
@@ -337,13 +335,13 @@ oscdimg -lNVME4Win7 -m -u2 -bootdata:2#p0,e,bE:\win7\src\boot\etfsboot.com#pEF,e
 
 注意，光驱可不要挂在 `NMVe` 上面，要不是启动不了的。
 
-图b01
+图11
 
 
 
 此外，将 `USB设备` 一项修改为 `USB 3.0 (xHCI) 控制器` 。
 
-图b02
+图12
 
 
 
@@ -353,13 +351,13 @@ oscdimg -lNVME4Win7 -m -u2 -bootdata:2#p0,e,bE:\win7\src\boot\etfsboot.com#pEF,e
 
 OK，磁盘被正常识别，可以被分区并安装。
 
-图b03
+图13
 
 
 
 同时，插入U盘后通过 `USB 3.0` 也能正常识别，毫无压力。
 
-图b04
+图14
 
 
 
@@ -394,4 +392,3 @@ OK，磁盘被正常识别，可以被分区并安装。
 **扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
-
