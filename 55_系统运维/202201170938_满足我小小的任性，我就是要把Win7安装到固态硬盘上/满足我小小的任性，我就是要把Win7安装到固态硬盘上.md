@@ -93,7 +93,9 @@
 
 **HotFix.7z(6.60M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1ujOdT9p6vVcVqoWvIf_YDg
+
+提取码：8i9x
 
 
 
@@ -105,7 +107,9 @@
 
 **NVMex64.7z (1.98M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1KlSGi3bjBciOl9exsbj73Q
+
+提取码：f5y4
 
 
 
