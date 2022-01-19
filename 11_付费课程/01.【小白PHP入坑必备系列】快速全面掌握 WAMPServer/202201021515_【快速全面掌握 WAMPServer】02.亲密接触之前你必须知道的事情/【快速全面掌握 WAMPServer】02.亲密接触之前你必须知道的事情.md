@@ -82,7 +82,7 @@
 
 
 
-一键快速安装大法
+“一键快速安装大法”，请详细参考后一期关于 `WampServer` 的安装教程。
 
 
 
@@ -166,44 +166,24 @@
 
 
 
-*PS：《【小白PHP入坑必备系列】快速全面掌握 WAMPServer》教程列表：*
-
-* *【快速全面掌握 WAMPServer】01.初次见面，请多关照*
-* *【快速全面掌握 WAMPServer】02.亲密接触之前你必须知道的事情*
-* *【快速全面掌握 WAMPServer】03.玩转安装和升级*
-* *【快速全面掌握 WAMPServer】04.人生初体验*
-* *【快速全面掌握 WAMPServer】05.整明白 Apache*
-* *【快速全面掌握 WAMPServer】06.整明白 MySQL 和 MariaDB*
-* *【快速全面掌握 WAMPServer】07.整明白 PHP*
-* *【快速全面掌握 WAMPServer】08.想玩多个站点，你必须了解虚拟主机的创建和使用*
-* *【快速全面掌握 WAMPServer】09.如何在 WAMPServer 中安装 Composer*
-* *【快速全面掌握 WAMPServer】10.HTTP2.0时代，让 WampServer 开启 SSL 吧！*
-* *【快速全面掌握 WAMPServer】11.安装 PHP 扩展踩过的坑*
-* *【快速全面掌握 WAMPServer】12.WAMPServer 故障排除经验大总结*
-* *【快速全面掌握 WAMPServer】13.PHP调试麻烦？请 xDebug 来帮忙！*
-* *【快速全面掌握 WAMPServer】14.各种组件的升级方法*
+* *PS：《【小白PHP入坑必备系列】快速全面掌握 WAMPServer》教程列表：*
+  * *【快速全面掌握 WAMPServer】01.初次见面，请多关照*
+  * *【快速全面掌握 WAMPServer】02.亲密接触之前你必须知道的事情*
+  * *【快速全面掌握 WAMPServer】03.玩转安装和升级*
+  * *【快速全面掌握 WAMPServer】04.人生初体验*
+  * *【快速全面掌握 WAMPServer】05.整明白 Apache*
+  * *【快速全面掌握 WAMPServer】06.整明白 PHP*
+  * *【快速全面掌握 WAMPServer】07.整明白 MySQL 和 MariaDB*
+  * *【快速全面掌握 WAMPServer】08.想玩多个站点，你必须了解虚拟主机的创建和使用*
+  * *【快速全面掌握 WAMPServer】09.如何在 WAMPServer 中安装 Composer*
+  * *【快速全面掌握 WAMPServer】10.HTTP2.0时代，让 WampServer 开启 SSL 吧！*
+  * *【快速全面掌握 WAMPServer】11.安装 PHP 扩展踩过的坑*
+  * *【快速全面掌握 WAMPServer】12.WAMPServer 故障排除经验大总结*
+  * *【快速全面掌握 WAMPServer】13.PHP调试麻烦？请 xDebug 来帮忙！*
+  * *【快速全面掌握 WAMPServer】14.各种组件的升级方法*
 
 
 
 **扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
