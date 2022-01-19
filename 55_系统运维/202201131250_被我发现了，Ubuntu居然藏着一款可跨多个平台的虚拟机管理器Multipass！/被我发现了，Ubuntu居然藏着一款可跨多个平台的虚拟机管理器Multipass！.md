@@ -1,34 +1,32 @@
-Multipass
+被我发现了，Ubuntu居然藏着一款可跨多个平台的虚拟机管理器Multipass！
 
-副标题：
+副标题：用Multipass部署Ubuntu虚拟机，又快又好用~
 
-英文：
+英文：i-found-out-that-ubuntu-has-a-virtual-machine-manager-named-multipass-that-across-multiple-platforms
 
-关键字：
-
-
+关键字：multipass,ubuntu,docker,virtualbox,hyper-v
 
 
 
-随着电脑性能的飞速提升，虚拟机软件也早已成为了我们平日测试系统经常用到的高频软件。
+随着电脑性能的飞速提升，虚拟机软件也早已成为了我们平日生产测试系统经常用到的高频软件。
 
-但是除了虚拟机环境的搭建之外，虚拟客户机的创建和配置的复杂和繁琐性也是一直以来被萌新们谈之色变的话题之一。
+但是除了虚拟机环境的搭建之外，虚拟客户机的创建和配置的复杂性和繁琐性也是一直以来打击着萌新们的幼小心灵。
 
-毕竟熟练掌握客户机的创建和配置是需要投入时间和精力的，而我们又可能没有太多的时间去搞定它，有没有可以快速创建客户机、快速展开我们所希望的测试工作呢？
+毕竟熟练掌握客户机的创建和配置是需要投入时间和精力学习的，而我们又可能没有太多的时间去搞定各种各样的不同场景，有没有可以快速创建客户机、快速展开我们所希望的测试工作呢？
 
-还真有这样的方案！
+世上无难事，只怕有心人，你别说，还真有！
 
 
 
 不知道小伙伴们还记不记得以前我给大家分享的一篇关于 `Quickemu` 的文章，就是介绍快速获取虚拟机镜像，并且快速创建虚拟机系统的这么一个解决方案。
 
-不过嘛，`Quickemu` 是建立在 `KVM` 之上的，那必须是 `Linux` 系统啊！
+不过嘛，`Quickemu` 是建立在 `KVM` 之上的，那必须是围着 `Linux` 系统转啊！
 
-而且好像 `Qemu` 还要 `6.0` 版本以上，这 `KVM` 环境搭建就够费时费力了，荫新们直呼做不到啊！
+而且好像 `Qemu` 还要 `6.0` 版本以上，需要手动编译安装，这 `KVM` 环境搭建就够费时费力了，荫新们肯定直呼做不到啊！
 
 嘿嘿，别着急！
 
-我们到 `Windows` 上想办法，有可能吗？
+`Linux` 不行，那我们到 `Windows` 上想想办法，有可能吗？
 
 当然有可能了，要不我在这儿废什么话呢，哈哈！
 
@@ -38,27 +36,27 @@ Multipass
 
 > 官网：https://multipass.run/
 
-图x01
+图01
 
 
 
-它有什么特点？
+这个 `Multipass` 有什么特点？
 
-你看它的称呼，我们把修饰的定语给它拿掉，就剩下“虚拟机管理器”这几个字。
+你瞧它的头衔，我们把修饰的定语给它拿掉，就剩下“虚拟机管理器”这几个字。
 
-瞬间明白了，它其实只是个管理器，并不是虚拟软件，其本质上和 `Quickemu` 差不多。
+哈，瞬间明白了，它其实只是个管理器，并不是虚拟软件，其本质上和 `Quickemu` 差不多。
 
-但是它比 `Quickemu` 好处多，它可以在 `Linux` 、 `Windows` 和 `macOS` 多平台上跑。
+但是它比 `Quickemu` 有更多好处，它可以在 `Linux` 、 `Windows` 和 `macOS` 多个平台上跑。
 
 
 
-哎，小伙伴们一看有 `Windows` ，嘿嘿，这下有门了。
+哎，小伙伴们一看有 `Windows` ，嘿嘿，这下有门了！
 
 没错哈，需要进一步说明的是，它在不同平台上跑的时候啊，它管理的虚拟软件还不一样。
 
 刚才说了嘛，它是个管理器，并不是虚拟软件本身。
 
-那它在不同平台上都怎么管的？
+那它在不同平台上都是怎么管的呢？
 
 
 
@@ -66,9 +64,11 @@ Multipass
 
 管得还真不少，但仔细一看你也能明白，在哪个不同平台就管理哪个不同的虚拟软件，都是与平台相对应的。
 
-那么我们就很清楚了，只要我们在 `Windows` 上安装有 `Hyper-V` 或 `VirtualBox` ，再通过 `Multipass` 来管理它们就可以达到我们的快速创建和管理虚拟机的目的了。
+那么我们就很清楚了，只要我们在 `Windows` 上安装有 `Hyper-V` 或 `VirtualBox` ，再通过 `Multipass` 来管理它们就可以达到我们快速创建和管理虚拟机的目的了。
 
-然而 `Hyper-V` 对于荫新们并不常用，复杂度很高，体积也很庞大，似乎可能还要购买 License 。
+
+
+然而 `Hyper-V` 对于荫新们并不常用，复杂度较高，体积也很庞大，似乎可能还要购买 License 。
 
 而相对之下，`VirtualBox` 就比较亲民一些，免费开源，安装使用起来也很方便，因此接下来我们就以 `VirtualBox` 为例，为大家介绍 `Multipass` 的简单用法，以此我们可以类推到其他系统平台上。
 
@@ -78,31 +78,31 @@ Multipass
 
 假定我们已经拥有了一台 `Windows 10` 系统，上面已经安装好了 `VirtualBox` 。
 
-准备工作就绪，我们先到官网将 `Windows` 版的 `Multipass` 下载下来。
+我们到官网将 `Windows` 版的 `Multipass` 下载下来。
 
 > 下载链接：https://multipass.run/download/windows
 
-图x02
+图02
 
 
 
 ### 安装 `Multipass`
 
-然后我们就可以开始安装 `Multipass` 了。
+下载完成之后我们就可以开始安装 `Multipass` 了。
 
-图a01
+图03
 
 
 
 接受许可，继续。
 
-图a02
+图04
 
 
 
 选择虚拟引擎，这里有两个选择，前面我们说过了，在这儿选择 `Oracle VM VirtualBox` 。
 
-图a03
+图05
 
 
 
@@ -110,13 +110,13 @@ Multipass
 
 在这儿我们选择针对所有用户都有效。
 
-图a04
+图06
 
 
 
 指定安装目录，默认就可以了。
 
-图a05
+图07
 
 
 
@@ -124,25 +124,25 @@ Multipass
 
 第一项是 `Multipass` 的命令行及图形程序，第二项是通知栏图标菜单，第三项是后台服务。
 
-图a06
+图08
 
 
 
 安装程序开始解压缩并拷贝文件。
 
-图a07
+图09
 
 
 
 如果你还没有安装 `VirtualBox` ，那么它会检查并提示我们。
 
-图a08
+图10
 
 
 
 最后完成安装，`Windows` 下安装非常的简单啊！
 
-图a09
+图11
 
 
 
@@ -150,7 +150,7 @@ Multipass
 
 打开 `Multipass` ，我们可以在系统通知栏内看到它的图标。
 
-图b01
+图12
 
 
 
@@ -158,7 +158,7 @@ Multipass
 
 我们先看看关于 `About` 一项，能看到 `Multipass` 的版本，以及可以设定是否跟随系统启动而自动登录。
 
-图b02
+图13
 
 
 
@@ -172,7 +172,7 @@ Multipass
 
 右键点击图标，选择 `Open Shell` 。
 
-图b03
+图14
 
 
 
@@ -180,7 +180,7 @@ Multipass
 
 不过有时也可能会出现如下图那样的提示，询问用户是否可以发送匿名数据来帮助 `Multipass` 开发者。
 
-图c01
+图15
 
 
 
@@ -198,7 +198,7 @@ Multipass
 multipass version
 ```
 
-图c02
+图16
 
 
 
@@ -208,7 +208,7 @@ multipass version
 multipass -?, -h, --help
 ```
 
-图c03
+图17
 
 
 
@@ -239,21 +239,19 @@ anbox-cloud-appliance                         latest           Anbox Cloud Appli
 minikube                                      latest           minikube is local Kubernetes
 ```
 
-
-
-图c04
+图18
 
 
 
-可以看到，`Multipass` 提供的都是 `Ubuntu` 的现成的各种版本镜像，因此它能够在数分钟之内快速完成下载并将其实例化。
+可以看到，`Multipass` 提供的都是 `Ubuntu` 现成的各种版本镜像，因此它能够在数分钟之内快速完成下载并将其实例化。
 
-如果不刻意指定具体哪个版本的镜像的话，默认情况下 `Multipass` 将获取当前 `LTS` 版本镜像。
+如果不刻意指定具体哪个版本镜像的话，默认情况下 `Multipass` 将获取当前最新的 `LTS` 版本镜像。
 
 
 
 关于镜像 `image` 和实例 `instance` 的区分，我简单地科普下哈！
 
-我们可以简单地理解为，镜像是一种模板，作为参照物，内容固定我们不能修改变动它。
+我们可以简单地理解为，镜像是一种模板，作为参照物用来生成实例，模板的内容固定我们不能修改变动它。
 
 而实例则是我们实际操作的对象，它以镜像为模板生成实例，一个或多个实例由一个镜像生成，然后我们对实例进行修改操作。
 
@@ -269,11 +267,11 @@ multipass list
 
 我们还没有下载镜像，自然还没有任何实例存在，别着急，一会儿我们就下载一个试试。
 
-图c05
+图19
 
 
 
-最简单的，我们就用默认的镜像来做实验吧。
+最简单的，我们就用默认的镜像来做实验吧，只要给个实例名称就可以了。
 
 ```
 multipass launch --name <实例名称>
@@ -291,13 +289,15 @@ multipass launch --name sysadm
 
 如果镜像还未下载，那么 `launch` 命令会先下载镜像，尔后启动运行实例。
 
-图c08
+如果镜像已经下载过了，那么 `launch` 命令就直接启动实例。
+
+图20
 
 
 
-镜像一旦下载完成，`Multipass` 就会启动实例。
+镜像一旦下载完成，`Multipass` 就会按镜像生成实例，接着便会启动这个实例。
 
-图c10
+图21
 
 
 
@@ -305,21 +305,23 @@ multipass launch --name sysadm
 
 比如，它会提示没有开启 `Hyper-V` 功能。
 
-图c06
+图22
 
 
 
-说好的 `VirtualBox` ，为啥会提示 `Hyper-V` 呢？
+这是什么鬼，说好的 `VirtualBox` ，为啥会提示 `Hyper-V` 呢？
 
 理由是我们还需要手动指定一下，让 `Multipass` 去找 `VirtualBox` 而不是 `Hyper-V` 。
 
-真是有够笨的啊！
+喵了个咪，明明安装的时候说好的呀，真是有够笨的啊！
 
 好吧，那我们就指定一下吧。
 
 ```
 multipass set local.driver-virtualbox
 ```
+
+图23
 
 
 
@@ -329,7 +331,7 @@ multipass set local.driver-virtualbox
 
 就像下面这样，似乎是虚拟化功能未开启，记得要在 `BIOS` 里开启虚拟化功能哦！
 
-图c09
+图24
 
 
 
@@ -341,11 +343,11 @@ multipass list
 
 这次终于看到了，镜像是 `Ubuntu 20.04 LTS` ，实例名是 `sysadm` ，当前正在运行中。
 
-图c11
+图25
 
 
 
-想要查看实例的相关信息，可以用 `info` 参数加是实例名称。
+想要查看实例的相关信息，可以用 `info` 参数加上实例名称。
 
 ```
 multipass info <实例名称>
@@ -357,7 +359,7 @@ multipass info <实例名称>
 multipass info sysadm
 ```
 
-图c12
+图26
 
 
 
@@ -368,12 +370,12 @@ multipass info sysadm
 multipass exec <实例名称> <command>
 例：multipass exec vm01 pwd
 
-# 执行带整数的命令
+# 执行带参数的命令
 multipass exec <实例名称> -- <command> <arguments>
 例：multipass exec vm01 -- uname -a
 ```
 
-图c13
+图27
 
 
 
@@ -396,7 +398,7 @@ multipass launch [options]
 multipass launch --name <实例名称> --cpus 1 --mem 1G --disk 10G
 ```
 
-参数简写就可以是这样。
+参数简写也可以是这样。
 
 ```
 multipass launch -n <实例名称> -c 1 -m 1G -d 10G
@@ -410,7 +412,7 @@ multipass launch -n <实例名称> -c 1 -m 1G -d 10G
 multipass launch [options] <image>
 ```
 
-举例，下载并启动镜像为 `Ubuntu 21.10` 的实例，并命名为 `sysadm` 。
+比如，下载并启动镜像为 `Ubuntu 21.10` 的实例，并命名为 `sysadm` 。
 
 ```
 multipass launch -n sysadm "21.10"
@@ -418,25 +420,39 @@ multipass launch -n sysadm "21.10"
 
 
 
-对于实例的启动停止和删除释放命令也很简单。
+实例的启动停止和删除释放命令也很简单。
 
 ```
 # 启动实例
-multipass start vm01
+multipass start <实例名称>
 
 # 停止实例
-multipass stop vm01
+multipass stop <实例名称>
 
 # 删除实例（删除后，还会存在）
-multipass delete vm01
+multipass delete <实例名称>
 
 # 释放实例（彻底删除）
-multipass purge vm01
+multipass purge <实例名称>
 ```
 
 
 
-还有很多相关的操作命令，在这儿我们就不一一讲解了。
+`Multipass` 还能通过 `--cloud-init` 参数来进行实例启动初始化配置。
+
+```
+multipass launch -n <实例名称> --cloud-init cloud-config.yaml
+```
+
+其中 `yaml` 配置文件必须以 `#clound-config` 开头，后面再写入相应的命令。
+
+由于内容繁多比较复杂，所以请小伙伴们自行参考官网文档实例吧。
+
+> https://cloudinit.readthedocs.io/en/latest/topics/examples.html
+
+
+
+还有很多其他相关的操作命令，在这儿我们就不一一展开讲解了。
 
 有兴趣的小伙伴可以到官方文档中查看。
 
@@ -448,13 +464,13 @@ multipass purge vm01
 
 从前面的操作体验中我相信小伙伴们也能感觉到，这个 `Multipass` 的用法就和 `Docker` 容器非常接近，因此熟悉 `Docker` 那一套的小伙伴肯定能快速上手。
 
-`Multipass` 的特点就是通过镜像快速部署虚拟机，即使你对于虚拟机的搭建配置了如指掌，也能很大程序上减轻你的负担，将更多的时间和精力用于做其他更有意义的事不香吗？
+`Multipass` 的特点就是通过镜像快速部署虚拟机，即使你对于虚拟机的搭建配置了如指掌，也能很大程序上减轻你的负担，将更多的时间和精力用于做其他更有意义的事情。
 
 
 
 此外 `Multipass` 由 `Canonical` 公司开发，虽说是款非常不错的管理器软件，但同时它提供的镜像也仅限于 `Ubuntu` ，这是它的一个不大不小的局限。
 
-如果你是大量部署 `Ubuntu` 并用于测试的重度用户的话，那 `Multipass` 可就派上大用场了。
+如果你是大量部署 `Ubuntu` 并将其用于测试的重度用户的话，那 `Multipass` 可就派上大用场了。
 
 但要是还想兼容其他不同平台版本的 `Linux` ，那么只能说有些遗憾了，也不知道 `Multipass` 将来会不会考虑将其他一些同样优秀的 `Linux` 发行版也纳入其中。
 
