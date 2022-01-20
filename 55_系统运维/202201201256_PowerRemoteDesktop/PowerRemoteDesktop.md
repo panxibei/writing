@@ -20,7 +20,7 @@ PowerRemoteDesktop
 
 
 
-##### 直接从 `PowerShell` 库安装（推荐）
+##### 方法一：直接从 `PowerShell` 库安装（推荐）
 
 `PowerShell` 库，也就是 `PowerShell Gallery` ，实际上有点像 `Linux` 的软件源库，我们可能通过这个库，直接从里边将我们所需的软件给找来并安装上。
 
@@ -46,7 +46,7 @@ set-executionpolicy remotesigned
 
 
 
-
+？？？
 
 ```powershell
 Install-PackageProvider -Name NuGet -Force
@@ -54,7 +54,7 @@ Install-Module -Name PowerShellGet -Force
 Update-Module -Name PowerShellGet
 ```
 
-
+？？？
 
 
 
@@ -144,5 +144,129 @@ Get-Module -listavailable |where {$_ -match "PowerRemoteDesktop"}
 ```powershell
 Import-Module PowerRemoteDesktop_Server
 Import-Module PowerRemoteDesktop_Viewer
+```
+
+
+
+##### 方法二：手动将 `PowerRemoteDesktop` 模块导入
+
+刚才我们是利用了 `PowerShell` 库从网络上给它拉下来自动安装的，现在我们试试手动安装，也不算太难搞。
+
+首先我们来确认一下 `PowerShell` 模块所在路径。
+
+```
+Write-Output $env:PSModulePath
+```
+
+一般情况它会输出几个路径，比如像我这儿是这样的（我将它分行以便看得更清楚）。
+
+```
+C:\Users\<USER>\Documents\WindowsPowerShell\Modules;
+C:\Program Files\WindowsPowerShell\Modules;
+C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;
+```
+
+图a06
+
+
+
+我们先记下这些路径，等会儿再用。
+
+接下来将 `PowerRemoteDesktop` 项目下载下来。
+
+用 `git` 克隆也可以。
+
+```
+git clone https://github.com/DarkCoderSc/PowerRemoteDesktop.git
+```
+
+直接下载 `Release` 压缩包也可以。
+
+```
+https://github.com/DarkCoderSc/PowerRemoteDesktop/archive/refs/tags/1.0.5-beta-6.zip
+```
+
+
+
+然后找到 `PowerRemoteDesktop_Server` 和 `PowerRemoteDesktop_Viewer` 两个文件夹，如果是压缩包，那么解压出来就可以看到。
+
+图a07
+
+
+
+好了，还记得前面我们记录下来的 `PowerShell` 模块所在路径吗？
+
+我们随便选一个路径，比如 `C:\Program Files\WindowsPowerShell\Modules` ，我们将那两个文件夹复制到这个路径中。
+
+图a08
+
+
+
+OK！就这样搞定了！哈哈，简单吧！
+
+如果不放心，那么我们就像前一小节那样再验证一下模块是否可查。
+
+```
+Get-Module -ListAvailable
+或者
+Import-Module PowerRemoteDesktop_Server
+Import-Module PowerRemoteDesktop_Viewer
+```
+
+
+
+具体验证效果可以参考前面所述，另外关于那两个模块文件夹中的 `.psd1` 文件实际上并不是必需的，官方说可以将其删除而只保留 `.psm1` 文件，但我发现删除后模块版本信息就丢失了，因此还是不要删除的好。
+
+
+
+##### 方法三：当作 `PowerShell` 脚本直接拿来用
+
+实际上将 `PowerRemoteDesktop` 作为模块安装到模块路径中并不是必须要这样做。
+
+事实是你完全可以把它拿来当普通的 `PowerShell` 脚本加载执行。
+
+方法有很多，比如：
+
+```
+IEX (Get-Content .\PowerRemoteDesktop_Viewer.psm1 -Raw)IEX (Get-Content .\PowerRemoteDesktop_[Server/Viewer].psm1 -Raw
+```
+
+甚至可以从网络上直接调用。
+
+```
+IEX (New-Object Net.WebClient).DownloadString('http://127.0.0.1/PowerRemoteDesktop_[Server/Viewer].psm1)
+```
+
+不过由于我水平有限，这些方法还没有被一一验证，猜测应该是可以的，有点简单粗暴了哈！
+
+好了，反正前面的安装方法都够用了，我们接下来看看怎么使用它吧！
+
+
+
+### 用法
+
+先是客户端，调用 `Invoke-RemoteDesktopViewer` 再加上参数选项即可。
+
+
+
+相应支持的选项：
+
+- `ServerAddress`（默认值：`127.0.0.1`）：远程服务器主机/地址。
+- `ServerPort`（默认值：`2801`）：远程服务器端口。
+- `Password`（必需）：用于服务器身份验证的密码。
+- `DisableVerbosity`（默认值：无）：如果存在此开关，则将从控制台中隐藏详细程度。
+- `TLSv1_3`（默认值：无）：如果存在此开关，则查看器将使用 TLS v1.3 而不是 TLS v1.2。仅当查看器和服务器都支持 TLS v1.3 时，才使用此选项。
+- 剪贴板（默认值：`Both`）：定义剪贴板同步规则：
+  - `Disabled`：完全禁用剪贴板同步。
+  - `Receive`：仅使用远程剪贴板更新本地剪贴板。
+  - `Send`：将本地剪贴板发送到远程对等方。
+  - `Both`：剪贴板在查看器和服务器之间完全同步。
+
+
+
+举个例子：
+
+```
+Invoke-RemoteDesktopViewer -ServerAddress "127.0.0.1" -ServerPort 2801 -Password "12345678"
 ```
 
