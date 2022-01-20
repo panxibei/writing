@@ -245,11 +245,11 @@ IEX (New-Object Net.WebClient).DownloadString('http://127.0.0.1/PowerRemoteDeskt
 
 ### 用法
 
-先是客户端，调用 `Invoke-RemoteDesktopViewer` 再加上参数选项即可。
+##### 先是客户端，调用 `Invoke-RemoteDesktopViewer` 再加上参数选项即可。
 
 
 
-相应支持的选项：
+支持选项：
 
 - `ServerAddress`（默认值：`127.0.0.1`）：远程服务器主机/地址。
 - `ServerPort`（默认值：`2801`）：远程服务器端口。
@@ -268,5 +268,46 @@ IEX (New-Object Net.WebClient).DownloadString('http://127.0.0.1/PowerRemoteDeskt
 
 ```
 Invoke-RemoteDesktopViewer -ServerAddress "127.0.0.1" -ServerPort 2801 -Password "12345678"
+```
+
+
+
+##### 再是服务端，调用 `Invoke-RemoteDesktopServer` 再加上参数选项即可。
+
+
+
+支持选项：
+
+- `ListenAddress`（默认值：`0.0.0.0`）：定义在哪个界面中侦听新查看器。
+  - `0.0.0.0`： 所有接口
+  - `127.0.0.1`：本地主机接口
+  - `x.x.x.x`：特定接口（`x` 替换为有效的网络地址）
+- `ListenPort`（默认值：`2801`）：定义在哪个端口中侦听新查看器。
+- `Password` (**强制**）：定义身份验证过程中使用的密码。
+- `CertificateFile`（默认值：**无**）：有效的 X509 证书（带私钥）文件。如果设置，则此参数为优先级。
+- `EncodedCertificate`（默认值：**无**）：编码为 Base64 字符串的有效 X509 证书（带私钥）。
+- `TransportMode`（默认值：`Raw`）：定义用于传输流的方法。
+  - `Raw`：以原始字节的形式传输流（推荐）
+  - `Base64`：将流作为 base64 编码的字符串传输
+- `TLSv1_3`（默认值：无）：如果此开关存在，服务器将使用 TLS v1.3 而不是 TLS v1.2。仅当查看器和服务器都支持 TLS v1.3 时，才使用此选项。
+- `DisableVerbosity`（默认值：无）：如果存在此开关，则将从控制台中隐藏详细程度。
+- `ImageQuality`（默认值：）：JPEG 压缩级别从 0 到 100。0 = 最低质量，100 = 最高质量。`100`
+- `Clipboard`（默认值：`Both`）：定义剪贴板同步规则：
+  - `Disabled`：完全禁用剪贴板同步。
+  - `Receive`：仅使用远程剪贴板更新本地剪贴板。
+  - `Send`：将本地剪贴板发送到远程对等方。
+  - `Both`：剪贴板在查看器和服务器之间完全同步。
+- `ViewOnly`（默认值：无）：如果存在此开关，则查看器将无法控制鼠标（移动、单击、滚轮）和键盘。仅对视图会话有用。
+
+
+
+如果未设置证书选项，则会生成默认的 X509 证书并将其安装在本地计算机上（需要管理权限）。
+
+比如：
+
+```
+Invoke-RemoteDesktopServer -ListenAddress "0.0.0.0" -ListenPort 2801 -Password "12345678"
+
+Invoke-RemoteDesktopServer -ListenAddress "0.0.0.0" -ListenPort 2801 -Password "12345678" -CertificateFile "c:\certs\phrozen.p12"
 ```
 
