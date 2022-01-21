@@ -12,49 +12,51 @@
 
 虽然我们已经习惯了 `远程桌面连接` 或是 `VNC` 之类的远程软件，但是你有没有想过自己做一个也可以实现远程服务器的软件呢？
 
-没错，你猜对了！
-
 不是我想多了，而是网络上的大神们又开始骚动了！
+
+没错，你猜对了！
 
 他们不会囿于眼前所看到的、听到的和其他感知到的一切，而是一门心思就是要自己来创造属于自己的宇宙。
 
-对于我们这些小白来说，大神们是高高在上的存在，怎么可能阻止得了他们呢！
+对于我们这些小白来说，大神们是高高在上、令人仰望的存在，怎么可能阻止得了他们呢！
 
-所以说，我们的最佳做法就是，安静整齐地坐好，做小手放在背后，认真地听我给你们吹大神！
+所以说，我们的最佳做法就是，安安静静、整整齐齐地坐好，把小手放在背后，认真地听我给你们吹大神！
 
 
 
-不知道小伙伴们平时有没有关注过所谓的编程语言排行榜？
+不知道小伙伴们平时有没有关注过所谓的编程语言排行榜呢？
 
-嗯，就像我们看富豪榜一样，我们的眼睛只盯着那些排名第一、第二的，充其量也只看前十名，要不说我们都是些资质一般的凡人呢！
+嗯，就像看富豪榜一样，我们的眼睛只盯着那些排名第一、第二的，充其量也只看前十名，要不说我们都是些资质一般的凡人呢！
 
-在我们眼里众多的编程语言中似乎只有什么 `JAVA` 、 `C/C++` ，还有什么新生代 `Python` 和 `Go` 之类的，我可以打包票没有几个人会注意到一个非常小众的编程语言。
+在我们眼里众多的编程语言中似乎只有什么 `JAVA` 、 `C/C++` ，还有什么新生代 `Python` 和 `Go` 之类的，因此我可以打包票没有几个人会注意到一个非常小众的编程语言。
 
-它就是我们常见而又不自知的 `PowerShell` ，它不在前十名之内，但它在前三十名之内，甚至可能你会认为它根本不算是一门编程语言。
+它就是我们早已常见而又不自知的 `PowerShell` ！
+
+是的，它不在前十名之内，但它却在前三十名之内，你可能从来都没有真正地关注过它，甚至可能你会认为它根本不算是一门编程语言。
 
 好了，现在我可以告诉你，它不仅是，而且还一点也不差劲，并且大神们拿它开发出了一套远程访问服务器的软件，并将其命名为 `Power Remote Desktop` 。
 
-> 官网链接：https://github.com/DarkCoderSc/PowerRemoteDesktop
+> 项目链接：https://github.com/DarkCoderSc/PowerRemoteDesktop
 
 
 
-说到这儿可能有些小伙伴会嘲笑甚至是质疑，我来讲得更明白一些。
+说到这儿可能有些小伙伴会质疑甚至是嘲笑，好吧，我来讲得更明白一些。
 
-`Power Remote Desktop` 基于 `PowerShell` 编码，不依赖于任何现有的远程桌面应用程序或协议，并且它只是单纯的 `PowerShell` 代码。
+`Power Remote Desktop` 基于 `PowerShell` 编码，并不依赖于任何现有的远程桌面应用程序或协议，并且它只是单纯的 `PowerShell` 代码实现。
 
-它功能齐全，和远程桌面程序一样强大，但它更易用，并且安装方便灵活。
+它功能齐全，和通常的远程桌面程序一样强大，但它更易用，并且安装十分方便灵活。
 
 
 
 目前 `Power Remote Desktop` 处于测试阶段，可以在 `Win10/Win11` 上正常运行。
 
-接下来让我们一起和见识一下这款简捷而功能又不失强大的远程软件吧！
+接下来让我们一起见识一下这款简捷而功能又不失强大的远程软件吧！
 
 
 
 ### 特性
 
-当前测试版本 `1.0.5 Beta 6` ，可以支持以下特性。
+`PowerRemoteDesktop` 当前测试版本 `1.0.5 Beta 6` ，可以支持以下特性。
 
 - 支持 `HDPI` 和缩放的远程桌面流。
 - 远程控制：鼠标（移动、单击、滚轮）和击键（键盘）
@@ -78,31 +80,29 @@
 
 ##### 方法一：直接从 `PowerShell` 库安装（推荐）
 
-`PowerShell` 库，也就是 `PowerShell Gallery` ，实际上有点像 `Linux` 的软件源库，我们可能通过这个库，直接从里边将我们所需的软件给找来并安装上。
+`PowerShell` 库，也就是 `PowerShell Gallery` ，实际上有点像 `Linux` 的软件源库，我们可以通过这个库，直接从里边获取我们所需的软件并安装上。
 
 
 
-不过我们需要先注意一个问题，可能有的小伙伴是第一次执行 `PowerShell` 命令，因此其系统执行策略很有可能是默认的 `Restricted` ，也就是受限策略，那么就会导致后面的命令无法正常执行。
+不过我们需要先注意几个问题，首先可能有的小伙伴是第一次执行 `PowerShell` 命令，因此其系统执行策略很有可能是默认的 `Restricted` ，也就是受限策略，那么就会导致后面的命令无法正常执行。
 
-解决方案很简单，按以下命令操作即可。
+解决方法很简单，按以下命令操作即可。
 
 ```
 # 查看当前执行策略
-get-executionpolicy
+Get-ExecutionPolicy
 
-# 更改执行策略为 remotesigned
-set-executionpolicy remotesigned
+# 更改执行策略为 RemoteSigned
+Set-ExecutionPolicy RemoteSigned
 ```
 
-图a01
+图01
 
 
 
+另一个问题，我们还需要使用 `NuGet` 提供程序来与基于 `NuGet` 存储库交互。
 
-
-
-
-？？？
+所以要将 `NuGet` 和 `PowerShellGet` 都安装上，**记得安装好后重启 `PowerShell`** 。
 
 ```powershell
 Install-PackageProvider -Name NuGet -Force
@@ -110,9 +110,74 @@ Install-Module -Name PowerShellGet -Force
 Update-Module -Name PowerShellGet
 ```
 
-？？？
 
 
+如果你的系统中没有 `PSGallery` ，以上命令可能会失败，那么需要先安装它。
+
+我找了很久，最后还是通过手动添加一个 `xml` 文件才成功，方法也简单易懂得。
+
+在以下文件夹内找到或创建（如果没有）一个名为 `PowerShellGet` 的文件夹。
+
+`C:\Users\<username>\AppData\Local\Microsoft\Windows\PowerShell`
+
+
+
+然后将以下内容保存为文件，命名为 `PSRepositories.xml` ，并放到 `PowerShellGet` 文件夹中。
+
+```xml
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Collections.Specialized.OrderedDictionary</T>
+      <T>System.Object</T>
+    </TN>
+    <DCT>
+      <En>
+        <S N="Key">PSGallery</S>
+        <Obj N="Value" RefId="1">
+          <TN RefId="1">
+            <T>Microsoft.PowerShell.Commands.PSRepository</T>
+            <T>System.Management.Automation.PSCustomObject</T>
+            <T>System.Object</T>
+          </TN>
+          <MS>
+            <S N="Name">PSGallery</S>
+            <S N="SourceLocation">https://www.powershellgallery.com/api/v2</S>
+            <S N="PublishLocation">https://www.powershellgallery.com/api/v2/package/</S>
+            <S N="ScriptSourceLocation">https://www.powershellgallery.com/api/v2/items/psscript</S>
+            <S N="ScriptPublishLocation">https://www.powershellgallery.com/api/v2/package/</S>
+            <Obj N="Trusted" RefId="2">
+              <TN RefId="2">
+                <T>System.Management.Automation.SwitchParameter</T>
+                <T>System.ValueType</T>
+                <T>System.Object</T>
+              </TN>
+              <ToString>False</ToString>
+              <Props>
+                <B N="IsPresent">false</B>
+              </Props>
+            </Obj>
+            <B N="Registered">true</B>
+            <S N="InstallationPolicy">Untrusted</S>
+            <S N="PackageManagementProvider">NuGet</S>
+            <Obj N="ProviderOptions" RefId="3">
+              <TN RefId="3">
+                <T>System.Collections.Hashtable</T>
+                <T>System.Object</T>
+              </TN>
+              <DCT />
+            </Obj>
+          </MS>
+        </Obj>
+      </En>
+    </DCT>
+  </Obj>
+</Objs>
+```
+
+
+
+好了，准备工作OK！
 
 用 `PowerShell` 库来查看和安装 `Power Remote Desktop` ，可以用以下命令。
 
@@ -120,11 +185,9 @@ Update-Module -Name PowerShellGet
 # 查看服务端模块和客户端模块
 Find-Module -Name PowerRemoteDesktop_Server -AllowPrerelease
 Find-Module -Name PowerRemoteDesktop_Viewer -AllowPrerelease
-
-
 ```
 
-图a02
+图02
 
 
 
@@ -136,8 +199,6 @@ Install-Module -Name PowerRemoteDesktop_Viewer -AllowPrerelease
 
 
 
-
-
 其中，命令后面跟着的 `-AllowPrerelease` 参数是指当前版本为预备发行版，加上去的原因也很简单，因为现在正式版还没有嘛！
 
 当我们执行以上命令时，可能会显示如下警告：
@@ -146,7 +207,7 @@ Install-Module -Name PowerRemoteDesktop_Viewer -AllowPrerelease
 > You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
 > 'PSGallery'?
 
-图a03
+图03
 
 
 
@@ -156,7 +217,7 @@ Install-Module -Name PowerRemoteDesktop_Viewer -AllowPrerelease
 
 OK，这样就安装好了！
 
-图a04
+图04
 
 
 
@@ -191,7 +252,7 @@ Manifest   1.0.0      PowerRemoteDesktop_Viewer           Invoke-RemoteDesktopVi
 Get-Module -listavailable |where {$_ -match "PowerRemoteDesktop"}
 ```
 
-图a05
+图05
 
 
 
@@ -222,7 +283,7 @@ C:\Program Files\WindowsPowerShell\Modules;
 C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;
 ```
 
-图a06
+图06
 
 
 
@@ -246,7 +307,7 @@ https://github.com/DarkCoderSc/PowerRemoteDesktop/archive/refs/tags/1.0.5-beta-6
 
 然后找到 `PowerRemoteDesktop_Server` 和 `PowerRemoteDesktop_Viewer` 两个文件夹，如果是压缩包，那么解压出来就可以看到。
 
-图a07
+图07
 
 
 
@@ -254,7 +315,7 @@ https://github.com/DarkCoderSc/PowerRemoteDesktop/archive/refs/tags/1.0.5-beta-6
 
 我们随便选一个路径，比如 `C:\Program Files\WindowsPowerShell\Modules` ，我们将那两个文件夹复制到这个路径中。
 
-图a08
+图08
 
 
 
@@ -326,7 +387,7 @@ IEX (New-Object Net.WebClient).DownloadString('http://127.0.0.1/PowerRemoteDeskt
 Invoke-RemoteDesktopViewer -ServerAddress "127.0.0.1" -ServerPort 2801 -Password "12345678"
 ```
 
-图a11
+图09
 
 
 
@@ -355,7 +416,7 @@ Invoke-RemoteDesktopViewer -ServerAddress "127.0.0.1" -ServerPort 2801 -Password
   - `Base64`：将流作为 base64 编码的字符串传输
 - `TLSv1_3`（默认值：无）：如果此开关存在，服务器将使用 TLS v1.3 而不是 TLS v1.2。仅当查看器和服务器都支持 TLS v1.3 时，才使用此选项。
 - `DisableVerbosity`（默认值：无）：如果存在此开关，则将从控制台中隐藏详细程度。
-- `ImageQuality`（默认值：）：JPEG 压缩级别从 0 到 100。0 = 最低质量，100 = 最高质量。`100`
+- `ImageQuality`（默认值：`100` ）：JPEG 压缩级别从 0 到 100。0 = 最低质量，100 = 最高质量。
 - `Clipboard`（默认值：`Both`）：定义剪贴板同步规则：
   - `Disabled`：完全禁用剪贴板同步。
   - `Receive`：仅使用远程剪贴板更新本地剪贴板。
@@ -379,19 +440,19 @@ Invoke-RemoteDesktopServer -ListenAddress "0.0.0.0" -ListenPort 2801 -Password "
 
 密码规则：至少12位，至少有一个 `!@#%^&*_` 中的特殊字符，至少要有小写和大写字母。
 
-图a09
+图10
 
 
 
 一切OK后，服务就能正常启动了。
 
-图a10
+图11
 
 
 
 当客户端成功连接到服务器时，我们就可以看到服务端那边的画面了。
 
-图a12
+图12
 
 
 
@@ -465,7 +526,7 @@ Detail                           Fingerprint
 @{FirstSeen=2022/1/21 09:16:25} D8615E954B68BB602896167C9112B003C859BA03
 ```
 
-图a13
+图13
 
 
 
@@ -476,7 +537,7 @@ Detail                           Fingerprint
 Remove-TrustedServer
 ```
 
-图a14
+图14
 
 
 
@@ -485,7 +546,7 @@ Remove-TrustedServer
 Clear-TrustedServers
 ```
 
-图a15
+图15
 
 
 
@@ -495,7 +556,7 @@ Clear-TrustedServers
 
 后来我在服务端加上了参数 `ViewOnly` 再次启动，这次在连接时程序明确提示是仅查看访问。
 
-图a16
+图16
 
 
 
