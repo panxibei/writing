@@ -168,6 +168,139 @@ OK，我们看到当前 `VB6` 的版本不带有任何 `SP` ，左下角版本�
 
 
 
+### 山寨版怎么办？
+
+打开累积更新包，我们可以看到数十个大大小小的文件。
+
+通常文件数量较小的情况下我们将这些比如 `OCX` 文件放到系统目录下，然后手动将其注册到系统中即可开始使用。
+
+但是真的要一个一个地手动注册吗？
+
+累死人的事儿最好少干，想要省事少动手就得多动脑。
+
+那要解决这个问题我们应该怎么着手呢？
+
+
+
+这个累积更新包是以 `MSI` 格式发布的，这不就是微软自家的安装格式嘛！
+
+于是我找来了一个分析 `MSI` 文件的工具，网上有很多随便下载，然后用工具打开了累积更新文件。
+
+里面一大堆东西，我们怎么才能找到我们需要的东西呢？
+
+
+
+首先，我们来寻找累积更新包在安装初始化时所需要判断的条件，也就是什么条件才能让它正常开始安装。
+
+找了一会儿，有了！
+
+除了安装包失败提示中告诉我们的需要有 `SP6` 之外，其实它还会检查 `VB6` 的实际安装路径。
+
+图i01
+
+
+
+就像下图所示，要是这些路径不存在或是有其他一些不正常问题时，那么我们只能得到更新失败无法继续安装的提示。
+
+图i02
+
+
+
+不过我们通过仔细观察就会发现，这些路径被描述为一些注册表键值。
+
+那么事情就变成这样了，我们就按图索骥来寻找一下这些路径它们实际的样子。
+
+最后我在以下注册表路径中找到了相关的注册表项以及它们的键值。
+
+注意，`VB6` 作为老前辈他可是 `32` 位运算出身，因此对于他的描述记录通常放在了 `WOW6432Node` 之下。
+
+```
+计算机\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio
+```
+
+
+
+相应的键值描述也就很清楚了。
+
+* `VB6SP6Setup` - 最新版本 `latest` 为 `6` 
+* `VB6CommonDir` - `C:\Program Files (x86)\Microsoft Visual Studio\Common`
+* `VB6ProductDir` - `C:\Program Files (x86)\Microsoft Visual Studio\VB98`
+
+图i03
+
+图i04
+
+图i05
+
+
+
+此外，安装包在更新的同时还会先将原先一些组件文件给备份起来，它还有几个备份路径我们也可以了解一下。
+
+比如：
+
+* `VB6ControlsBackupDir` -  `C:\Program Files (x86)\Microsoft Visual Studio\Common\Tools\VB\Controls\Controls_Backup`
+* `VB6CabSourceDir` - `C:\Program Files (x86)\Microsoft Visual Studio\Common\Tools\VB\Cabinets`
+
+图i06
+
+
+
+于是问题来了，既然累积更新安装是通过检查这些路径和参数来判断是否可以正常安装，那么我们能否让它假装看到从而顺利跳过检查继续安装进程呢？
+
+多说无益，动手哈！
+
+
+
+我先正常安装了迷你版的 `VB6` ，然后按照前面说的一些前提条件设定好路径，在开始安装累积更新时它报了一个错。
+
+图i07
+
+
+
+这应该是备份路径的问题，经过测试最后顺利开启累积更新的安装进程。
+
+在这里我将实际上所需的注册表内容写在下面，大家把代码保存为 `.reg` 后缀的文件导入系统即可。
+
+```
+Windows Registry Editor Version 5.00
+
+; 针对迷你版VB6，导入此注册表文件以便修复无法安装VB6累积更新的问题
+; VsCommonDir 和 ProductDir 两项键值请按实际路径自行调整
+; 网管小贾 / sysadm.cc
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\6.0\ServicePacks]
+"sp6"=""
+"latest"=dword:00000006
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\6.0\Setup]
+"VsCommonDir"="C:\\Program Files (x86)\\VB6Mini"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\6.0\Setup\Microsoft Visual Basic]
+"ProductDir"="C:\\Program Files (x86)\\VB6Mini\\bin"
+```
+
+
+
+将上面的内容导入到注册表中后，我们再来安装累积更新便一点问题也没有了！
+
+在完成更新后我又特意拿 `MSHFlexGrid` 控件来对比了一下。
+
+更新前是这个版本：`6.0(SP4)` 。
+
+图i08
+
+更新后是这个版本：`6.0(SP6)` 。
+
+图i09
+
+
+
+当然了，对于其他的文件是否更新成功，如果有更多的时间我们也可以一一验证，通常我们可以优先验证我们工程项目中所用到的一些组件。
+
+
+
+### 写在最后
+
 虽然似乎官方声明早已不再支持 `VB6` ，嘴上这么说，但毕竟身体很诚实，时不时地还给一些模块组件更新一下。
 
 至于为什么直到现在官方还在做着这样一件事，聪明的你应该也能秒懂，没有好处的事谁会费力不讨好地反复去做呢，对吧？
