@@ -343,25 +343,15 @@ OK，我们看到当前 `VB6` 的版本不带有任何 `SP` ，左下角版本�
 
 这应该是备份路径的问题，经过测试修复路径后，最终可以顺利开启累积更新的安装进程。
 
-在这里我将实际上所需的注册表内容写在下面，大家把代码保存为 `.reg` 后缀的文件导入系统即可。
+在这里我将实际所需的注册表内容写成代码保存为 `.reg` 文件。
 
-```
-Windows Registry Editor Version 5.00
 
-; 针对迷你版VB6，导入此注册表文件以便修复无法安装VB6累积更新的问题
-; VsCommonDir 和 ProductDir 两项键值请按实际路径自行调整
-; 网管小贾 / sysadm.cc
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\6.0\ServicePacks]
-"sp6"=""
-"latest"=dword:00000006
+**修复迷你版VB6无法安装累积更新的问题.7z (28.6K)**
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\6.0\Setup]
-"VsCommonDir"="C:\\Program Files (x86)\\VB6Mini"
+下载链接：https://pan.baidu.com/s/1kYwvW3n7Vgy3xxBnngmb0g
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\6.0\Setup\Microsoft Visual Basic]
-"ProductDir"="C:\\Program Files (x86)\\VB6Mini\\bin"
-```
+提取码：l9ca
 
 
 
