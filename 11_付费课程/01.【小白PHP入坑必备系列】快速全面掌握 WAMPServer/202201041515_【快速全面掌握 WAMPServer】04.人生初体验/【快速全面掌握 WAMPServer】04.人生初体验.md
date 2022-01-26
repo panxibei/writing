@@ -315,8 +315,8 @@ OK，正确显示动态内容，表明我们的 `PHP` 解释器也工作得非�
 * *【快速全面掌握 WAMPServer】03.玩转安装和升级*
 * *【快速全面掌握 WAMPServer】04.人生初体验*
 * *【快速全面掌握 WAMPServer】05.整明白 Apache*
-* *【快速全面掌握 WAMPServer】06.整明白 MySQL 和 MariaDB*
-* *【快速全面掌握 WAMPServer】07.整明白 PHP*
+* *【快速全面掌握 WAMPServer】06.整明白 PHP*
+* *【快速全面掌握 WAMPServer】07.整明白 MySQL 和 MariaDB*
 * *【快速全面掌握 WAMPServer】08.想玩多个站点，你必须了解虚拟主机的创建和使用*
 * *【快速全面掌握 WAMPServer】09.如何在 WAMPServer 中安装 Composer*
 * *【快速全面掌握 WAMPServer】10.HTTP2.0时代，让 WampServer 开启 SSL 吧！*
