@@ -474,7 +474,11 @@ pause
 
 Logo、顶部标题和底部信息均可自由定制。
 
-下载链接：[MRTG自定义页面模板.7z](https://o8.cn/dofLz9) 密码：9vnj
+MRTG自定义页面模板.7z
+
+下载链接：https://pan.baidu.com/s/1S-T0H-BiRuRA5oxrhFORNw
+
+提取码：yv74
 
 图10
 

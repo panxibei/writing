@@ -148,7 +148,11 @@ XX5G手机，五百二像素，照亮你的美！
 
 **想下载快些的，可以下载我这个简易转换程序 `convert.7z` ，程序本身还是官网的。**
 
-下载链接：https://o8.cn/KlsvYD （5MB） 密码：6nn3
+**convert.7z (5M)**
+
+下载链接：https://pan.baidu.com/s/1VdiVTPMHMANpnOTKrDC_2A
+
+提取码：dbcl
 
 图7
 
