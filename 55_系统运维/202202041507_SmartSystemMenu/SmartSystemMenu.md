@@ -16,6 +16,10 @@ SmartSystemMenu
 
 官网下载
 
+> 项目官网：https://github.com/AlexanderPro/SmartSystemMenu
+>
+> 中文说明：https://github.com/AlexanderPro/SmartSystemMenu/blob/master/README_CN.md
+
 
 
 解压缩后我们得到如下几个文件。
