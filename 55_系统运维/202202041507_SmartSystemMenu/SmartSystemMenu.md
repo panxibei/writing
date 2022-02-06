@@ -185,6 +185,75 @@ SmartSystemMenu
 
 
 
+### 命令行接口
+
+这个 `SmartSystemMenu` 居然还提供命令行接口，通过在后面加上参数 `--help` 即可查看。
+
+```
+SmartSystemMenu.exe --help
+```
+
+
+
+```
+   --help             The help
+   --title            Title
+   --titleBegins      Title begins 
+   --titleEnds        Title ends
+   --titleContains    Title contains
+   --handle           Handle (1234567890) (0xFFFFFF)
+   --processId        PID (1234567890)
+-d --delay            Delay in milliseconds
+-l --left             Left
+-t --top              Top
+-w --width            Width
+-h --height           Height
+-i --information      Information dialog
+-s --savescreenshot   Save Screenshot
+-m --monitor          [0, 1, 2, 3, ...]
+-a --alignment        [topleft,
+                       topcenter,
+                       topright,
+                       middleleft,
+                       middlecenter,
+                       middleright,
+                       bottomleft,
+                       bottomcenter,
+                       bottomright,
+                       centerhorizontally,
+                       centervertically]
+-p --priority         [realtime,
+                       high,
+                       abovenormal,
+                       normal,
+                       belownormal,
+                       idle]
+   --transparency     [0 ... 100]
+   --alwaysontop      [on, off]
+-g --aeroglass        [on, off]
+   --sendtobottom     No params
+-o --openinexplorer   No params
+-c --copytoclipboard  No params
+   --clearclipboard   No params
+-n --nogui            No GUI
+```
+
+
+
+命令行的使用方式通常会用在一些特殊场合，比如在我们自己的程序上调用 `SmartSystemMenu` 。
+
+举个例子，比如我们在执行一个程序任务过程中需要将某个窗口置顶或改变移动位置。
+
+```
+# 将标题为 “无标题 - 记事本”的记事本程序窗口置顶
+SmartSystemMenu.exe --title "无标题 - 记事本" --alwaysontop on --nogui
+
+# 将标题为 “无标题 - 记事本”的记事本程序窗口对齐到左上角
+SmartSystemMenu.exe --title "无标题 - 记事本" -a topleft --nogui
+```
+
+
+
 
 
 **扫码关注@网管小贾，阅读更多**
