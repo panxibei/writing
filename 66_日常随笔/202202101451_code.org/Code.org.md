@@ -30,3 +30,15 @@ Code.org
 
 值得称赞的是， `Code.org` 承诺其创建的所有课程资源和教程可以被永远免费使用。
 
+
+
+
+
+演示视频：
+
+<video id="video" controls="" preload="none" poster="封面">
+      <source id="mp4" src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4" type="video/mp4">
+</videos>
+
+
+
