@@ -34,11 +34,39 @@ Code.org
 
 
 
+课程使用演示
+
+
+
+
+
+拖拽方向卡片
+
+图x01.GIF
+
+
+
+
+
+最后点击“运行”
+
+图x02.GIF
+
+
+
+
+
+
+
+不插电
+
+
+
 演示视频：
 
-<video id="video" controls="" preload="none" poster="封面">
-      <source id="mp4" src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4" type="video/mp4">
-</videos>
+<video id="fallbackPlayer1644543007019_html5_api" class="vjs-tech" preload="auto" poster="https://studio.code.org/c/video_thumbnails/C1_happy_maps_unplugged.jpg" tabindex="-1" src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4">
+    <source src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4" type="video/mp4">
+</video>
 
 
 
