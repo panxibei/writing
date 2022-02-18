@@ -4,7 +4,7 @@
 
 英文：not-wallpaper-or-screensaver-a-3d-virtual-desktop-you-have-never-seen-before-come-in-and-try-bumptop-quickly
 
-关键字：bumptop,google,android
+关键字：bumptop,google,android,3d,desktop,wallpaper,screensaver,桌面,虚拟
 
 
 
