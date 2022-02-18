@@ -347,13 +347,17 @@ winscppasswd.exe ini [<filepath>]
 
 **winscppasswd旧版.7z (439K)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1gkxXShfOMMYmYoAtGwCoRQ
+
+提取码：iexx
 
 
 
 **winscppasswd新版.7z (1.22M) 含源码**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1z-blZ0FWs_JVNLQ9tL-vXQ
+
+提取码：14jg
 
 
 
