@@ -110,11 +110,18 @@
 
 `Code.org` 能量巨大，还有众多的大人物加持。
 
-比如，奥巴马总统向青少年朋友如是说。
+比如，奥巴马总统向青少年朋友如是说（点击鼠标右键调出控制面板）。
 
-<video id="fallbackPlayer1644543007019_html5_api" class="" preload="none" poster="" tabindex="-1" src="https://videos.code.org/2015/social/president_obama_asks_america.mp4">
+<video style="width:100%; height:100%" id="fallbackPlayer1644543007019_html5_api" class="" preload="none" poster="./obama.JPG" tabindex="-1" src="https://videos.code.org/2015/social/president_obama_asks_america.mp4">
     <source src="https://videos.code.org/2015/social/president_obama_asks_america.mp4" type="video/mp4">
 </video>
+
+
+
+看不了视频的小伙伴可以下载视频来看：
+
+https://videos.code.org/2015/social/president_obama_asks_america.mp4
+
 
 
 总之，`Code.org` 可不仅仅是个学习网站这么简单。
@@ -128,7 +135,7 @@
 
 我在这里给小伙伴们做个简单初步的使用演示，更多具体的内容还是要大家去逐步了解。
 
-> 官网：https://code.org/
+> 官网：[https://code.org/](https://code.org/)
 
 
 
@@ -368,11 +375,18 @@ OK，我们点一下 `3.迷宫编程` 的第2小节。
 
 
 
-在线演示视频：
+在线演示视频（点击鼠标右键调出控制面板）：
 
-<video id="fallbackPlayer1644543007019_html5_api" class="" preload="auto" poster="https://studio.code.org/c/video_thumbnails/C1_happy_maps_unplugged.jpg" tabindex="-1" src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4">
+<video style="width: 100%; height: 100%" id="fallbackPlayer1644543007019_html5_api" class="" preload="auto" poster="https://studio.code.org/c/video_thumbnails/C1_happy_maps_unplugged.jpg" tabindex="-1" src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4">
     <source src="https://videos.code.org/2014/C1-happy-maps-unplugged.mp4" type="video/mp4">
 </video>
+
+
+
+看不了视频的小伙伴可以下载视频来看：
+
+[https://videos.code.org/2014/C1-happy-maps-unplugged.mp4](https://videos.code.org/2014/C1-happy-maps-unplugged.mp4)
+
 
 
 当然，对于我们来说，视频里是英文对白，又没有字幕，这点比较头大。
