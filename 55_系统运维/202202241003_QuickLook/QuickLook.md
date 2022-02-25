@@ -12,6 +12,18 @@ QuickLook
 
 
 
+> 官网链接：https://pooi.moe/QuickLook/
+>
+> GitHub项目：https://github.com/QL-Win/QuickLook
+
+
+
+
+
+
+
+
+
 操作说明：
 
 * 空格键：开启/关闭 预览
