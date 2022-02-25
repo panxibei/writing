@@ -34,3 +34,13 @@ QuickLook
 
 
 
+
+
+
+
+### 插件
+
+
+
+>  下载链接：https://github.com/QL-Win/QuickLook/wiki/Available-Plugins
+
