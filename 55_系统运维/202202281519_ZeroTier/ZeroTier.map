@@ -1,0 +1,37 @@
+<Map user="admin_aota" pc="A00603">
+  <Devices>
+    <Device id="36" name="路由器" type-id="Router" x="332" y="212" />
+    <Device id="52" name="服务器" type-id="Server" x="60" y="100" />
+    <Device id="114" name="NAS存储" type-id="NAS" x="408" y="100" />
+    <Device id="121" name="台式机电脑" type-id="Workstation" x="284" y="248" />
+    <Device id="165" owner-id="36" name="LAN 1" address="localhost" method="ICMP" type-id="Port" x="477" y="253" />
+    <Device id="166" index="1" owner-id="36" name="LAN 2" address="localhost" method="ICMP" type-id="Port" x="504" y="233" />
+    <Device id="167" index="2" owner-id="36" name="LAN 3" address="localhost" method="ICMP" type-id="Port" x="519" y="233" />
+    <Device id="168" index="3" owner-id="36" name="LAN 4" address="localhost" method="ICMP" type-id="Port" x="546" y="253" />
+    <Device id="169" index="4" owner-id="36" name="LAN 5" address="localhost" method="ICMP" type-id="Port" x="523" y="273" />
+    <Device id="170" index="5" owner-id="36" name="LAN 6" address="localhost" method="ICMP" type-id="Port" x="511" y="273" />
+    <Device id="171" index="6" owner-id="36" name="LAN 7" address="localhost" method="ICMP" type-id="Port" x="500" y="273" />
+    <Device id="172" name="虚拟服务器" type-id="Virtual machine" x="72" y="188" />
+    <Device id="173" name="笔记本电脑" type-id="Laptop" x="168" y="252" />
+    <Device id="174" name="Mac电脑" type-id="iMac" x="408" y="184" />
+    <Device id="175" name="智能手机" type-id="Smartphone" x="248" y="204" />
+    <Device id="176" name="ZeroTier Networks" type-id="Hub" x="216" y="32" scale="2" />
+    <Device id="177" name="" type-id="Cloud" x="204" y="96" />
+    <Device id="179" name="树莓派" type-id="Thin client" x="140" y="200" />
+  </Devices>
+  <Lines>
+    <Line nodes="208 124 96 128" />
+    <Line nodes="300 120 408 120" />
+    <Line nodes="296 132 408 188" />
+    <Line nodes="252 100 252 60" />
+    <Line nodes="216 136 108 196" />
+    <Line nodes="236 144 160 216" />
+    <Line nodes="248 144 196 252" />
+    <Line nodes="272 140 312 248" />
+    <Line nodes="288 140 352 212" />
+    <Line nodes="256 144 256 204" />
+  </Lines>
+  <Layers>
+    <Layer id="0" name="Layer 1" />
+  </Layers>
+</Map>
