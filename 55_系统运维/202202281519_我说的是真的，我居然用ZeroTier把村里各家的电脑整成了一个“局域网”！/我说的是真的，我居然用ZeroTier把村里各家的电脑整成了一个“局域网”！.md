@@ -1,10 +1,10 @@
-ZeroTier
+我说的是真的，我居然用ZeroTier把村里各家的电脑整成了一个“局域网”！
 
-副标题：
+副标题：无论什么地方的电脑都能组成“局域网”的神器：ZeroTier
 
-英文：
+英文：what-i-said-is-true-i-used-zerotier-to-make-villagers-computers-into-a-local-area-network
 
-关键字：
+关键字：zerotier,one,local network,network,vpn,qq,局域网
 
 
 
@@ -234,25 +234,33 @@ What Fx 哔......
 
 **ZeroTier One.msi (13.0M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1D8kFxEa75C5kzISBIWIz_Q
+
+提取码：ks17
 
 
 
 **ZeroTier One(Win7).msi (15.8M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1QMXvocvqqMQHHD6_BOK50Q
+
+提取码：dd9b
 
 
 
 **ZeroTier One.pkg (4.25M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/18aDumV401rHQbVIVI4jT8g
+
+提取码：j55q
 
 
 
 **ZeroTierOne.apk (11.3M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1FE8vHxMN2V-qaKUQ9zywOA
+
+提取码：ng92
 
 
 
