@@ -1,10 +1,10 @@
-Quick Assist
+不靠某葵某team某desk，更不靠微信QQ啥的聊天软件，就一光板Win10照样实现任意两台电脑远程控制桌面，我去咋做到的？
 
-副标题：
+副标题：不依靠任何第三方软件实现任意两台电脑远程控制桌面，快速助手了解一下！
 
-英文：
+英文：without-relying-any-third-software-just-win10-can-realize-the-remote-control-of-desktop-by-any-two-pcs-how-to-do
 
-关键字：
+关键字：remote,quick assist,desktop,快速助手,远程桌面
 
 
 
