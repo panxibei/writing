@@ -60,9 +60,9 @@
 
 ### 下载 `AskAdmin`
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1dTFJLmagZHuPt4efqvBALw
 
-
+提取码：u61t
 
 
 
