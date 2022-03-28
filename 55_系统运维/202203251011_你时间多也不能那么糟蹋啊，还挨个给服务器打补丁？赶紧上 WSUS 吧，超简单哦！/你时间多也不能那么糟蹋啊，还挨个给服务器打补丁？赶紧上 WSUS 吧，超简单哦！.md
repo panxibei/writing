@@ -517,19 +517,25 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v UseWUServer
 
 **ReportViewer.msi.7z(5.88M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/16kmZT2buQfhCV8RE3h2P7g
+
+提取码：oy06
 
 
 
 **SQLSysClrTypes64.msi.7z(1.18M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1PH01zoekHlImhVv2ZrcDnQ
+
+提取码：86qm
 
 
 
 **SQLSysClrTypes32.msi.7z(1.04M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1Ohp7JOfmunui1N7Y6d4cQg
+
+提取码：f2zl
 
 
 
