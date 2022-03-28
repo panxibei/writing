@@ -278,6 +278,8 @@ WSUS
 
 更新有审批通过的，就有我们不需要的，然而不需要的却是大多数，因此我个人建议可以先将大部分我们不需要的更新给予拒绝，方便我们理清之后的更新。
 
+比如较旧版本的更新，再比如 `ARM64` 甚至部分 `x86` 平台之类用不上的更新等等都可以排除。
+
 右键点击需要拒绝的更新，然后点击 `拒绝(D)` 。
 
 图x06
@@ -290,7 +292,199 @@ WSUS
 
 
 
+### 客户端
 
+指向更新服务器的客户端配置有几种方法可以做到，但基本原理都是一样的。
+
+我们可以通过组策略、注册表，甚至写个批处理文件导入设置可实现。
+
+
+
+##### 组策略
+
+不管是域组策略还是单机组策略都大同小异。
+
+执行 `gpedit.msc` 打开组策略编辑器，依次找到 `计算机配置` > `管理模板` > `Windows 组件` > `Windows 更新` 。
+
+在右侧设置窗口中找到两项，一项是 `配置自动更新` ，还有一项是 `指定 Intranet Microsoft 更新服务位置` 。
+
+图y01
+
+
+
+我们先来看看 `配置自动更新` ，打开后选择 `已启用` ，然后在下方选项中设置自动更新方法、计划安装日期和时间即可。
+
+自动更新方法默认为 `3` ，在此建议选择 `4` ，也就是自动下载并同时安装。
+
+因为只有我们审批过更新才会被安装，所以不用担心自动安装会带来麻烦。
+
+图y02
+
+
+
+接着我们再来看看 `指定 Intranet Microsoft 更新服务位置` 。
+
+在选择 `已启用` 后，在下方选项中只要填写服务器信息即可，比如 `http://WSUSServer:8530` ，当然也可以用IP地址， `8530` 是默认更新端口也可省略。
+
+另外，需要注意是 `http` 而不是 `https` 。
+
+图y03
+
+
+
+##### 注册表
+
+组策略设置挺简单的吧？
+
+除了组策略，注册表其实也可以设置客户端指向服务器更新。
+
+实际上通过组策略设置，同时注册表也会生成类似如下的注册表信息。
+
+大体你可以参考如下，将 `x.x.x.x` 修改成你的 `WSUS` 服务器的域名或IP地址即可。
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"ElevateNonAdmins"=dword:00000001
+"DoNotConnectToWindowsUpdateInternetLocations"=dword:00000001
+"WUServer"="http://x.x.x.x:8530"
+"WUStatusServer"="http://x.x.x.x:8530"
+"UpdateServiceUrlAlternate"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAutoRebootWithLoggedOnUsers"=dword:00000001
+"DetectionFrequencyEnabled"=dword:00000001
+"DetectionFrequency"=dword:00000001
+"NoAutoUpdate"=dword:00000000
+"AUOptions"=dword:00000004
+"ScheduledInstallDay"=dword:00000000
+"ScheduledInstallTime"=dword:0000000a
+"UseWUServer"=dword:00000001
+```
+
+
+
+其中有几项挑出来说明一下，方便各位小伙伴们理解。
+
+* `WUServer` 和 `WUStatusServer` ，这个不用多说，就是更新服务器。
+* `NoAutoRebootWithLoggedOnUsers` ，为 `1` 时当有用户登录时更新不自动重启计算机。
+* `NoAutoUpdate` ，`0` 启用自动更新，`1` 禁用自动更新。
+* `AUOptions` 指的是自动更新的方法（可参考组策略），默认是 `3` ，建议 `4` 。
+* `ScheduledInstallDay` 就是计划安装日期，默认是 `0` 每天都更新，`1` 到 `7` 对应周日到周六。
+* `ScheduledInstallTime` 是计划安装时间，数字直接对应从一天的 `0` 点到 `23` 点。
+* `UseWUServer` 设置为 `1` 表示使用更新服务器而不是官方的更新服务。
+
+
+
+##### 批处理
+
+有了注册表项，我们还可以编写批处理程序来给客户端批量设置更新服务器。
+
+此处仅举个例子，其他项目可自行补充。
+
+```
+: 添加 WUServer
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /v WUServer /t REG_SZ /d http://x.x.x.x:8530 /f
+
+: 添加 WUStatusServer
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /v WUStatusServer /t REG_SZ /d http://x.x.x.x:8530 /f
+
+: 设置使用自建的更新服务器
+reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v UseWUServer /t REG_DWORD /d 1 /f
+```
+
+
+
+##### 确认客户端是否连接到更新服务器
+
+在确认客户端是否成功连接之前，我们必须先确保服务器的更新服务是否可以通过防火墙正常访问。
+
+那么我们至少需要开放更新服务所用到的 `TCP` 协议的 `8530` 和 `8531` 两个端口。
+
+图y06
+
+图y04
+
+图y05
+
+
+
+我们如何让客户端连接更新服务器呢？
+
+很简单，打开客户端的 `Windows` 更新设置界面，点击 `检查更新` 。
+
+图y07
+
+
+
+之后过了一会儿，检查更新完成，似乎没有什么大的变化，也没有新的更新出现。
+
+图y08
+
+
+
+其实不用着急，我们回到更新服务器那边再看看，OK的话我们就可以在所有计算机中找到刚才的客户端计算机。
+
+当然，查询状态你可能需要改成 `任何` ，然后再点刷新。
+
+图y09
+
+
+
+我们注意到，刚刚添加进来的客户端计算机前面有个感叹号，这表示客户端还没有完成更新，状态暂时异常。
+
+这个状态异常并不是十分要紧，它只是在检查客户端计算机有没有正确安装了应该安装的更新。
+
+经过一段时间的检查，最后它会在下方的信息栏内显示已安装和未安装更新的详细信息。
+
+图y10
+
+
+
+既然客户端已经连接过来了，那接下来又怎么搞呢？
+
+我们分三步走！
+
+
+
+**第一步，将客户端移动到指定的计算机组中。**
+
+这样有利于我们分门别类地管理不同更新需求的客户端计算机。
+
+图y11
+
+图y12
+
+
+
+**第二步，审批更新。**
+
+右键点击需要安装到客户端的更新（可多选），然后点击 `审批(A)...` 。
+
+图y13
+
+
+
+在审批更新界面中，点选相应的计算机组，然后点击 `已审批进行安装(I)` ，最后确定退出。
+
+图y14
+
+图y15
+
+
+
+我们回到客户端所在的计算机组再次查看，就可以看到有我们刚刚审批通过的更新。
+
+图y16
+
+
+
+**第三步，客户端更新。**
+
+我们可以直接去客户端手动点击那个检查更新，也可以暂时不管等它自动启动检查更新。
+
+作为测试，我们在这里就手动更新以方便演示。
 
 
 
