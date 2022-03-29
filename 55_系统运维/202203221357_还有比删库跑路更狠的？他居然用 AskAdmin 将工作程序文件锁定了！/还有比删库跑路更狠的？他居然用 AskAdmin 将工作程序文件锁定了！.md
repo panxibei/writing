@@ -4,7 +4,7 @@
 
 英文：whats-worse-than-deleting-data-and-running-away-he-blocked-the-program-files-with-askadmin
 
-关键字：删库跑路,askadmin,administrator,ntfs,无法启动,exe,hashes,paths,safer,codeidentifiers,srp,block,禁用程序
+关键字：删库跑路,askadmin,administrator,ntfs,无法启动,exe,hashes,paths,safer,codeidentifiers,srp,block,禁用程序,离职,辞职,裁员
 
 
 
