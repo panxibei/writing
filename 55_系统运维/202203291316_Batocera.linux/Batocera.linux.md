@@ -22,6 +22,22 @@ Batocera.linux
 
 
 
+拷贝工具
+
+**HDDRawCopy1.10Portable.exe.7z(507K)**
+
+下载链接：
+
+
+
+给小伙伴们打包好了，直接下载拿去用吧！
+
+
+
+**Batocera.linux.vmdk.7z(2.04G)**
+
+下载链接：
+
 
 
 
