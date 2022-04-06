@@ -4,7 +4,7 @@
 
 英文：you-cant-waste-so-much-time-and-still-patching-servers-one-by-one-hurry-up-to-try-wsus-its-very-simple-2
 
-关键字：windows,wsus,update,upgrade,更新,补丁,patch,服务器
+关键字：windows,wsus,update,upgrade,更新,补丁,patch,服务器,service pack,reportviewer,sqlsysclrtypes
 
 
 
