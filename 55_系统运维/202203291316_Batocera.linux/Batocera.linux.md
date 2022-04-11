@@ -1,10 +1,10 @@
-Batocera.linux
+玩复古游戏还要刷机就 OUT 了！赶快进来看看，用U盘就可以秒变游戏系统的 Batocera.linux ！
 
-副标题：
+副标题：玩游戏，不刷机，用U盘，不麻烦！
 
-英文：
+英文：playing-retro-games-by-flashing-system-its-too-low-come-in-and-have-a-look-you-can-use-any-usb-stick-to-make-game-system-with-batocera-linux
 
-关键字：
+关键字：games,fc,nes,sfc,md,n64,play station,batocera,linux,模拟器,emu,emulators,街机,游戏,roms,odroid,raspberry
 
 
 
