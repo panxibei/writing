@@ -126,7 +126,9 @@
 
 **HDDRawCopy1.10Portable.exe.7z(507K)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1WEhn85PXs_LhWcaTt9aMZg
+
+提取码：cwe9
 
 
 
@@ -174,7 +176,9 @@
 
 **Batocera.linux.vmdk.7z(2.04G)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1r8YoC9cbvhRLAAFO92Q-VQ
+
+提取码：wtu2
 
 
 
