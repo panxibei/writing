@@ -126,6 +126,14 @@
 
 
 
+**fxsound_setup.7z(5.13M) 含更多官方奖励预设文件**
+
+下载链接：https://pan.baidu.com/s/1__nwMf4qta-UkmUUBGjhZw
+
+提取码：19js
+
+
+
 要是我就不装 `VC++` 组件会怎样呢？
 
 那 `FxSound` 在安装时，如果无法下载 `VC_redist.x64.exe` 和 `VC_redist.x86.exe` ，她就会给出以下错误提示。
