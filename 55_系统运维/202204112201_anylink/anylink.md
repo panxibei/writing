@@ -10,9 +10,68 @@ anylink
 
 
 
+### 测试环境
+
+* Rocky Linux 8.5 (Kernel 4.18.0)
 
 
 
+官网提示，没有编程基础的同学建议直接下载 `release` 包 `anylink-deploy.tar.gz` 。
+
+这就对了，我就是那个没有编程基础的同学啊，所以我还是老老实实地去下载了。
+
+图a01
+
+
+
+下载后解压缩。
+
+```
+tar zxvf anylink-deploy.tar.gz
+```
+
+```
+anylink-deploy
+|- conf\
+  |--- files\
+    |--- index.html
+    |--- info.txt
+  |--- anylink.db
+  |--- profile.xml
+  |--- server.toml		# 服务端配置文件
+  |--- server-sample.toml
+  |--- vpn_cert.crt		# 证书
+  |--- vpn_cert.key		# 密钥
+|- systemd\
+  | anylink.service
+|- anylink		# 主程序
+|- bridge-init.sh
+|- LICENSE
+```
+
+
+
+文件没几个，重要的也就是 `anylink` 主程序，以及 `server.toml` 服务端配置文件。
+
+至于证书和密钥，在实际使用中必须申请安全的 `https` 证书，`anylink` 并不支持私有证书（自签名证书）。
+
+有的小伙伴会说，那我还得先搞个证书罗，那测试成本是不是有点大发了？
+
+其实大家也不用担心，开发者还是给我们留了一个测试的机会的，而且操作起来很简单。
+
+我们只要将 `vpn.test.vqilu.cn` 这个域名正确解析到服务器的IP地址就行了。
+
+简而言之，就是让客户端能够以域名 `vpn.test.vqilu.cn` 访问到服务器即可，因为 `anylink` 自带的证书是绑定到这个域名上的。
+
+如果还是不太明白也没关系，待会我们演示过程中会再次说明的。
+
+好了，我们来看看如何测试吧！
+
+
+
+### 服务端运行
+
+运行 `./anylink -h` 查看帮助信息。
 
 ```
 [root@sysadm anylink-deploy]# ./anylink -h
@@ -67,6 +126,52 @@ Flags:
 
 Use "anylink [command] --help" for more information about a command.
 ```
+
+
+
+这么多参数，是不是被吓到了？
+
+别着急哈，其实根本用不着多少参数的，甚至都不用参数也能玩。
+
+不信咱走着！
+
+
+
+我们直接运行 `./anylink` ，屁股后边不加任何参数。
+
+图a02
+
+
+
+程序已经开始运行了，在不加任何参数所情况下，`anylink` 会自行使用默认参数值，其中就包括自带的证书，还有默认的后台管理员和密码等等。
+
+好了，既然如此那我们就来用用看吧！
+
+
+
+我们先用以下网址打开后台管理页面。
+
+```
+https://x.x.x.x:8800
+```
+
+图a03
+
+
+
+默认后台管理员是 `admin` ，密码是 `123456` ，我们登录进去看看。
+
+页面很简洁，每日统计信息，以及系统信息等等。
+
+图a04
+
+图a05
+
+
+
+
+
+
 
 
 
