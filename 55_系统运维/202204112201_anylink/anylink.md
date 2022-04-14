@@ -286,7 +286,7 @@ x.x.x.x vpn.test.vqilu.cn
 
 
 
-##### 以证书域名访问连接服务器
+##### 以证书域名方式连接服务器
 
 有了正确的域名解析，那么我们就可以通过域名来连接 `anylink` 服务器了。
 
@@ -330,13 +330,33 @@ x.x.x.x vpn.test.vqilu.cn
 
 
 
+### 服务器其他一些设置
+
+前面我们测试OK，在 `./anylink` 之后没有加任何参数，但是往往实际情况并不像测试一样，因此可能还需要我们做一些参数上的调整。
 
 
 
+##### `tool` 工具
+
+在 `./anylink` 的后面有一个 `tool` 的命令，用于生成后台密码或 `JWT` 密钥。
+
+比如像下面这样子。
+
+```
+# 重新生成后台密码，就是admin的密码
+# 默认密码 123456
+./anylink tool -p 666666
+
+# 重新生成jwt密钥，就是web访问令牌密钥
+# 默认密钥 abcdef.0123456789.abcdef
+./anylink tool -s
+```
 
 
 
+注意，这两者都是服务于后面管理页面的，与 `VPN` 用户密码没有关系哦！
 
+具体的参数可以看看下面的帮助信息。
 
 ```
 [root@sysadm anylink-deploy]# ./anylink tool -h
@@ -355,10 +375,156 @@ Flags:
 
 
 
-
+还可以查看版本。
 
 ```
 [root@sysadm anylink-deploy]# ./anylink tool -v
 AnyLink v0.7.4 build on go1.17.8 [linux, amd64] commit_id(ccce143f853f0ec4caab8d2da14b542fb07d823a)
 ```
 
+
+
+##### 数据库支持
+
+`AnyLink` 支持三种数据库，分别是 `sqlite3` 、`mysql` 和 `postgresql` 。
+
+```
+数据库类型	数据源连接
+sqlite3 	./conf/anylink.db
+mysql		user:password@tcp(127.0.0.1:3306)/anylink?charset=utf8
+postgres	user:password@localhost/anylink?sslmode=verify-full
+```
+
+
+
+默认使用 `sqlite3` ，我们什么都不用设置，一旦 `anylink` 服务启动，就会在 `./conf` 下自动生成一个名为 `anylink.db` 的数据库文件。
+
+```
+./conf/anylink.db
+```
+
+
+
+如果有定制读取数据库需求的话，也可以研究一下这个 `sqlite3` 数据库文件。
+
+图b03
+
+
+
+另外如果当用户数量非常大时，也可以考虑使用 `mysql` 或 `pgsql` 。
+
+
+
+##### 作为服务随系统自启动
+
+`AnyLink` 已经为我们做好了 `service` 文件，我们只需将 `anylink` 程序文件放到指定的目录中即可。
+
+
+
+1、将 `anylink` 主程序复制到 `/usr/local/anylink-deploy` 中。
+
+```
+mkdir /usr/local/anylink-deploy
+cp ./anylink /usr/local/anylink-deploy/anylink
+```
+
+
+
+2、将配置文件 `conf/server.toml` 复制到 `/usr/local/anylink-deploy/conf` 中。
+
+```
+mkdir /usr/local/anylink-deploy/conf
+cp ./conf/server.toml /usr/local/anylink-deploy/conf/server.toml
+```
+
+
+
+3、将 `anylink` 目录中的 `systemd/anylink.service` 文件复制到 `/usr/lib/systemd/system/` 中。
+
+```
+cp systemd/anylink.service /usr/lib/systemd/system/anylink.service
+```
+
+
+
+4、现在可以作为服务启动、停止 `anylink` 了。
+
+```
+# 开机自启 anylink
+systemctl enable anylink
+
+# 启动 anylink
+systemctl start anylink
+
+# 停止 anylink
+systemctl stop anylink
+```
+
+图b04
+
+
+
+在实际应用中，我们可以编辑 `server.toml` 以及  `anylink.service` 文件来调整具体的服务启动。
+
+
+
+### 使用 Docker 镜像部署
+
+`Docker` 似乎是万能的，只要是支持 `Docker` 的系统现在也能上 `anylink` ，并不必拘泥于 `Linux` 系统。
+
+按官方说明，罗列如下：
+
+```
+# 获取镜像
+docker pull bjdgyc/anylink:latest
+
+# 查看命令信息
+docker run -it --rm bjdgyc/anylink -h
+
+# 生成密码
+docker run -it --rm bjdgyc/anylink tool -p 123456
+#Passwd:$2a$10$lCWTCcGmQdE/4Kb1wabbLelu4vY/cUwBwN64xIzvXcihFgRzUvH2a
+
+# 生成 jwt secret
+docker run -it --rm bjdgyc/anylink tool -s
+#Secret:9qXoIhY01jqhWIeIluGliOS4O_rhcXGGGu422uRZ1JjZxIZmh17WwzW36woEbA
+
+# 启动容器
+# -e IPV4_CIDR=192.168.10.0/24 这个参数要与配置文件内的网段一致
+docker run -itd --name anylink --privileged \
+  -e IPV4_CIDR=192.168.10.0/24
+  -p 443:443 -p 8800:8800 \
+  --restart=always \
+  bjdgyc/anylink
+
+# 使用自定义参数启动容器
+# 参数可以参考 -h 命令
+docker run -itd --name anylink --privileged \
+  -e IPV4_CIDR=192.168.10.0/24 \
+  -p 443:443 -p 8800:8800 \
+  --restart=always \
+  bjdgyc/anylink \
+  -c=/etc/server.toml --ip_lease=1209600 # IP地址租约时长
+
+# 构建镜像
+#获取仓库源码
+git clone https://github.com/bjdgyc/anylink.git
+# 构建镜像
+docker build -t anylink .
+```
+
+
+
+
+
+### 写在最后
+
+
+
+
+
+
+
+**扫码关注@网管小贾，阅读更多**
+
+网管小贾的博客 / www.sysadm.cc
