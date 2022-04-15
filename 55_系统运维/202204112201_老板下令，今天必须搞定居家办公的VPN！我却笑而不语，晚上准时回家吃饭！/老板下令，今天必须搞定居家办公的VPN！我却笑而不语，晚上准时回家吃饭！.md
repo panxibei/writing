@@ -1,10 +1,10 @@
-anylink
+老板下令，今天必须搞定居家办公的VPN！我却笑而不语，晚上准时回家吃饭！
 
-副标题：
+副标题：AnyLink一款开源免费企业级远程办公VPN软件~
 
-英文：
+英文：boss-ordered-that-the-vpn-of-home-office-must-be-completed-today-i-smiled-without-a-word-and-went-home-on-time-for-dinner-at-night
 
-关键字：
+关键字：anylink,vpn,ssl,linux,docker
 
 
 
@@ -424,6 +424,55 @@ postgres	user:password@localhost/anylink?sslmode=verify-full
 
 
 另外如果当用户数量非常大时，也可以考虑使用 `mysql` 或 `pgsql` 。
+
+
+
+##### 配置 `NAT` 转发
+
+当成功连接到服务器后，你可能会发现，哎，怎么只能 `ping` 通服务器，服务器所在的局域网其他电脑却 `ping` 不通呢？
+
+况且直接在服务器上 `ping` 其他电脑都是通的呀，这是怎么回事？
+
+其实是因为我们还需要再配置一下 `NAT` 转发。
+
+方法很简单，按以下照做就是了。
+
+
+
+1、开启 `IPv4` 转发
+
+```
+# 开启ipv4转发
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+# 立即生效
+sysctl -p
+```
+
+
+
+2、开启 `NAT`
+
+```
+# 设置NAT
+# 此处IP地址应与server.toml文件中一致，比如 192.168.20.0/24
+# 此处的网卡名称应与系统实际网卡名称一致，比如 ens160
+iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -o eth0 -j MASQUERADE
+# 查看设置是否生效
+iptables -nL -t nat
+```
+
+图c14
+
+
+
+3、永久保存 `NAT` 设置
+
+```
+# 保存设置NAT，永久生效
+dnf install -y iptables-services
+systemctl enable iptables
+service iptables save
+```
 
 
 
