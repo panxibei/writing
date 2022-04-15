@@ -336,6 +336,10 @@ x.x.x.x vpn.test.vqilu.cn
 
 
 
+**FreeOTP**
+
+> https://freeotp.github.io
+
 
 
 ### 服务器其他一些设置
