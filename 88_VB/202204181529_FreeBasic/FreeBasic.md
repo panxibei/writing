@@ -1,10 +1,10 @@
-FreeBasic
+时至今日我才发现，居然还有支持64位可跨平台开发的BASIC程序（不是点NET）！
 
-副标题：
+副标题：FreeBASIC，一款免费的支持64位跨平台的BASIC编译器~
 
 英文：
 
-关键字：
+关键字：freebasic,basic,compiler,编译器
 
 
 
