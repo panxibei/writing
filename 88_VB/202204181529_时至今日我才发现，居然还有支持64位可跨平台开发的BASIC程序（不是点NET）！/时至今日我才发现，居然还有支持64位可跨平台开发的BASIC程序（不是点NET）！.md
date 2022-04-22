@@ -124,9 +124,11 @@
 
 
 
-本地下载
+**winfbe_suite_setup.exe(44.52M)**
 
-**winfbe_suite_setup.exe**
+下载链接：https://pan.baidu.com/s/1RcBsjlwPusbC29d-2w0F3w
+
+提取码：wehu
 
 
 
@@ -362,9 +364,11 @@ MessageBox 0, a, "", MB_OK
 
 
 
-**FreeBASIC-1.09.0-ubuntu-20.04-x86_64.tar.gz**
+**FreeBASIC-1.09.0-ubuntu-20.04-x86_64.tar.gz(6.53M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1PvRnHrSavGpRCX0kegUx3w
+
+提取码：plxk
 
 
 
