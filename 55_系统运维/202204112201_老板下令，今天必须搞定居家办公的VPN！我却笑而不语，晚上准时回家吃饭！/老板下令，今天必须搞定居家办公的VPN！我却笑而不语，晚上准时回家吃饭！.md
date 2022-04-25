@@ -4,7 +4,7 @@
 
 英文：boss-ordered-that-the-vpn-of-home-office-must-be-completed-today-i-smiled-without-a-word-and-went-home-on-time-for-dinner-at-night
 
-关键字：anylink,vpn,ssl,linux,docker
+关键字：anylink,vpn,ssl,linux,docker,anyconnect,居家办公
 
 
 
@@ -265,11 +265,15 @@ https://x.x.x.x:8800
 
 为方便小伙伴们使用，我将它放在这里分享给大家。
 
+如果你需要更多版本的 `AnyConnect` 或其他辅助软件，可以到官方群中查找，也可以关注网管小贾后留言给我。
 
 
-**AnyConnect-win-4.10.05085**
 
-下载链接：
+**AnyConnect-win-4.10.05085(16.79M)**
+
+下载链接：https://pan.baidu.com/s/1ql_ugIvqp-T8k30M6VoT7w
+
+提取码：tkaa
 
 
 
