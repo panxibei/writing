@@ -1,6 +1,6 @@
 还有比删库跑路更狠的？他居然用 AskAdmin 将工作程序文件锁定了！
 
-副标题：删库跑路不稀奇，用用 AskAdmin 将工作程序文件锁定才是真狠啊！
+副标题：删库跑路不稀奇，用 AskAdmin 将工作程序文件锁定才是真狠啊！
 
 英文：whats-worse-than-deleting-data-and-running-away-he-blocked-the-program-files-with-askadmin
 
