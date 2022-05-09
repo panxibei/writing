@@ -1,10 +1,10 @@
-snapdrop
+只用一个网址就能多人随意传文件，微信QQ啥的可以退休啦！
 
-副标题：
+副标题：只用一个网址实现任意传输文件的神器：Sanpdrop！
 
-英文：
+英文：multi-equipments-transfer-files-at-will-with-only-one-website-wechat-and-qq-can-retire
 
-关键字：
+关键字：snapdrop,文件传输,共享
 
 
 
