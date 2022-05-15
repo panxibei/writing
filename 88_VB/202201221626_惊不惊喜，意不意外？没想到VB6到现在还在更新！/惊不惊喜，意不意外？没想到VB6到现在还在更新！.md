@@ -347,6 +347,22 @@ OK，我们看到当前 `VB6` 的版本不带有任何 `SP` ，左下角版本�
 
 
 
+**vb60sp6-kb2708437-x86-chs.msi.7z(9.26M)(2012/8/16)**
+
+下载链接：https://pan.baidu.com/s/1TpZkoQgZKLOZ2pUQnOcd0w
+
+提取码：ge1d
+
+
+
+**vb60sp6-kb3096896-x86-chs.msi.7z(9.32M)(2021/3/23)**
+
+下载链接：https://pan.baidu.com/s/1mgfPuwAS9-q5PCmBHmDKmg
+
+提取码：c3gc
+
+
+
 **修复迷你版VB6无法安装累积更新的问题.7z (28.6K)**
 
 下载链接：https://pan.baidu.com/s/1kYwvW3n7Vgy3xxBnngmb0g
