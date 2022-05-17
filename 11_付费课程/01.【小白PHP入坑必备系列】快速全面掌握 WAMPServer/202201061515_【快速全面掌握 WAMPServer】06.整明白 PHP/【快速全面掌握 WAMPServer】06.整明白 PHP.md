@@ -40,6 +40,8 @@
 
 
 
+### 几个重要概念
+
 为了方便入门 `PHP` ，我们先来简单介绍几个常用的概念。
 
 
@@ -94,7 +96,7 @@ http://localhost/?phpinfo=-1
 
 ##### `PECL`
 
-`PHP` 扩展托管库的简称，有很多扩展库就放在这里。
+`PHP` 扩展社区托管库的简称，有很多扩展库就放在这里。
 
 当我们需要某个扩展支持时，就可以到这里来淘一淘。
 
@@ -104,7 +106,81 @@ http://localhost/?phpinfo=-1
 
 
 
+##### VC15 & VS16
 
+较新版本的 `PHP` 是使用 `VC15` 或 `VS16` （分别指 `Visual Studio 2017` 或 `2019` 编译器）构建的。
+
+`VC15` 和 `VS16` 版本需要安装 `C++ Redistributable for Visual Studio 2015-2019 x64/x86` 。
+
+需要记住的是，以后只要我们看到 `VC` 或 `VS` 字样，自然而然就应该想到，这里所指的 `PHP` 是在 `Windows` 上跑的。
+
+而不同版本的 `PHP` 应该对应不同版本的 `VC` 或 `VS` 。
+
+我们使用的 `WampServer` 中的 `PHP` 正是需要相应的 `VC` 组件，并且通常 `x64` 和 `x86` 版本的都要安装，这在前面的安装篇教程中已经说明过了，道理就在这儿。
+
+
+
+### `Apache` 是如何调用 `PHP` 的
+
+如果我们只安装了一个 `httpd` （也就是 `Apache` ），那么我们也只能得到一个静态网站，什么交互功能都不能做。
+
+因此我们要想办法，在我们访问网站时让 `Apache` 调用 `PHP` 来解析相应的程序文件，以此来响应交互信息。
+
+通常最原始的访问方法是，我们建立一个以 `php` 为后缀的文件，将其放到网站上，那么它应该识别这个文件是含有交互信息的，而不是单纯地将它的所有内容以 `html` 形式显示在浏览器上。
+
+OK，我们前面说过，在 `Windows` 下它应该是通过连接 `SAPI` （服务端应用程序编程接口）来实现的。
+
+那具体是怎么做的呢？
+
+
+
+分两步走。
+
+**第一步，让 `Apache` 加载 `PHP` 模块。**
+
+我们以 `WampServer` 为例，打开 `Apache` 的配置文件 `httpd.conf` ，找到加载 `PHP` 模块的位置。
+
+如下图，我们可以很清楚地看到，`Apache` 当前加载了 `php7.4` 的模块，这个模块文件名就是 `php7apache2_4.dll` 。
+
+```
+PHPIniDir "${APACHE_DIR}/bin"
+LoadModule php7_module "${INSTALL_DIR}/bin/php/php7.4.26/php7apache2_4.dll"
+```
+
+图b01
+
+
+
+**第二步，让 `Apache` 识别 `.php` 扩展名**
+
+光加载模块还不够，还要让 `Apache` 知道如果碰到 `.php` 的文件就去找模块解析才行。
+
+同样我们以 `WampServer` 为例，还是在配置文件 `httpd.conf` 中，查找识别文件类型的设定。
+
+```
+    AddType application/x-httpd-php .php
+    AddType application/x-httpd-php .php3
+```
+
+图b02
+
+
+
+经过以上两步，我们可以自己做一个简单的 `PHP` 文件来测试。
+
+将以下代码保存为一个文件，比如 `phpinfo.php` ，然后将它放到网站根目录中。
+
+```
+<?php phpinfo(); ?>
+```
+
+
+
+如果打开浏览器访问这个文件能够正常看到 `PHP` 信息，那么恭喜你 `PHP` 环境安装成功了！
+
+
+
+### `WampServer` 中的 `PHP`
 
 
 
