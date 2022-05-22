@@ -4,7 +4,7 @@
 
 英文：multi-equipments-transfer-files-at-will-with-only-one-website-wechat-and-qq-can-retire
 
-关键字：snapdrop,文件传输,共享
+关键字：snapdrop,文件传输,共享,浏览器
 
 
 
