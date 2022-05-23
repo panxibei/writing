@@ -189,88 +189,144 @@ filebrowser.exe -a 0.0.0.0 -p 8888
 
 
 
+在 `filebrowser` 根目录中新生成的 `filebrowser.db` 文件一看就是一个数据库文件。
 
+这个文件好像不是我们常见的比如 `SQLite` 之类的文件格式，而且直接用文本编辑器打开也会乱码无法查看。
 
-
-
-
+不过我们可以使用如下命令来查看这个数据库文件。
 
 ```
-File Browser CLI lets you create the database to use with File Browser,
-manage your users and all the configurations without acessing the
-web interface.
-
-If you've never run File Browser, you'll need to have a database for
-it. Don't worry: you don't need to setup a separate database server.
-We're using Bolt DB which is a single file database and all managed
-by ourselves.
-
-For this specific command, all the flags you have available (except
-"config" for the configuration file), can be given either through
-environment variables or configuration files.
-
-If you don't set "config", it will look for a configuration file called
-.filebrowser.{json, toml, yaml, yml} in the following directories:
-
-- ./
-- $HOME/
-- /etc/filebrowser/
-
-The precedence of the configuration values are as follows:
-
-- flags
-- environment variables
-- configuration file
-- database values
-- defaults
-
-The environment variables are prefixed by "FB_" followed by the option
-name in caps. So to set "database" via an env variable, you should
-set FB_DATABASE.
-
-Also, if the database path doesn't exist, File Browser will enter into
-the quick setup mode and a new database will be bootstraped and a new
-user created with the credentials from options "username" and "password".
-
-Usage:
-  filebrowser [flags]
-  filebrowser [command]
-
-Available Commands:
-  cmds        Command runner management utility
-  config      Configuration management utility
-  hash        Hashes a password
-  help        Help about any command
-  rules       Rules management utility
-  upgrade     Upgrades an old configuration
-  users       Users management utility
-  version     Print the version number
-
-Flags:
-  -a, --address string                     address to listen on (default "127.0.0.1")
-  -b, --baseurl string                     base url
-      --cache-dir string                   file cache directory (disabled if empty)
-  -t, --cert string                        tls certificate
-  -c, --config string                      config file path
-  -d, --database string                    database path (default "./filebrowser.db")
-      --disable-exec                       disables Command Runner feature
-      --disable-preview-resize             disable resize of image previews
-      --disable-thumbnails                 disable image thumbnails
-      --disable-type-detection-by-header   disables type detection by reading file headers
-  -h, --help                               help for filebrowser
-      --img-processors int                 image processors count (default 4)
-  -k, --key string                         tls key
-  -l, --log string                         log output (default "stdout")
-      --noauth                             use the noauth auther when using quick setup
-      --password string                    hashed password for the first user when using quick config (default "admin")
-  -p, --port string                        port to listen on (default "8080")
-  -r, --root string                        root to prepend to relative paths (default ".")
-      --socket string                      socket to listen to (cannot be used with address, port, cert nor key flags)
-      --socket-perm uint32                 unix socket file permissions (default 438)
-      --username string                    username for the first user when using quick config (default "admin")
-
-Use "filebrowser [command] --help" for more information about a command.
+filebrowser.exe config cat
 ```
+
+输出结果可能是这样的。
+
+```
+Sign up:          false
+Create User Dir:  false
+Auth method:      json
+Shell:              
+
+Branding:
+  Name:                    
+  Files override:          
+  Disable external links:  false
+  Color:                   
+
+Server:
+  Log:           stdout
+  Port:          8080
+  Base URL:      
+  Root:          .
+  Socket:        
+  Address:       127.0.0.1
+  TLS Cert:      
+  TLS Key:       
+  Exec Enabled:  false
+
+Defaults:
+  Scope:         .
+  Locale:        en
+  View mode:     mosaic
+  Single Click:  false
+  Commands:      
+  Sorting:
+    By:   
+    Asc:  false
+  Permissions:
+    Admin:     false
+    Execute:   true
+    Create:    true
+    Rename:    true
+    Modify:    true
+    Delete:    true
+    Share:     true
+    Download:  true
+
+Auther configuration (raw):
+
+{
+  "recaptcha": null
+}
+```
+
+
+
+细心的小伙伴可能会发现，哎，怎么输出结果中的地址和端口仍然是默认值呢？
+
+实际上它就是包含默认值的一个数据库文件，如果想要改变这些默认值，那么就要用到下面的命令了。
+
+```
+filebrowser.exe config set [flags]
+```
+
+比如，我们想将侦听地址修改为 `0.0.0.0` ，那么我们应该这样做。
+
+```
+filebrowser.exe config set -a 0.0.0.0
+```
+
+命令执行成功后直接输出 `filebrowser.db` 的内容结果。
+
+图c01
+
+
+
+那么，修改端口怎么做呢？
+
+```
+filebrowser.exe config set -p 8888
+```
+
+很简单，对吧？
+
+当然你完全可以将想要修改的参数都放在一条命令行上。
+
+```
+filebrowser.exe config set -a 0.0.0.0 -p 8888
+```
+
+
+
+所以你看，其他参数也是以此类推，具体可以查看帮助信息。
+
+```
+filebrowser.exe config set --help
+```
+
+
+
+有一点需要小伙伴们注意，在执行修改默认配置命令时，必须先退出正在运行的 `filebrowser` 服务，否则会报错失败的哦！
+
+OK，我们将 `filebrowser.json` 这个前面我们手动设定的配置文件移动到其他地方，或者删除它，或者重命名它，总之就是要让它失效。
+
+接下来我们就直接运行 `filebrowser` 并且不带任何参数看看。
+
+```
+filebrowser.exe
+```
+
+果然，看到 `No config file used` 字样没？
+
+我们修改过的数据库文件 `filebrowser.db` 生效了，我们不再需要手动指定参数，也不再需要手动撸一个 `json` 配置文件，就可以做到在 `0.0.0.0:8888` 这个地址上跑服务了。
+
+图c02
+
+
+
+文件管理
+
+
+
+
+
+
+
+用户管理
+
+依次找到左侧导航栏 `设置` > `用户管理` > `新建` 。
+
+
 
 
 
