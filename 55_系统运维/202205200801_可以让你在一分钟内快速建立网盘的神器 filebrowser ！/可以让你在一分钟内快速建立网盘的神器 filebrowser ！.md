@@ -74,7 +74,9 @@
 
 **`Windows` 、`Linux` 、`MacOS` 以及 `FreeBSD` **
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1dLKxCeZP3sZnrsZoRxIHFA
+
+提取码：ikxc
 
 
 
