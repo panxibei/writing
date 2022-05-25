@@ -63,5 +63,89 @@ nssm.exe install LightsOut
 
 再顺手打开任务管理器，我们的应用程序 `LightsOut.exe` 确实正在运行，同时 `nssm.exe` 也在运行，它们两个都是以 `SYSTEM` 身份运行，
 
+图a08
 
+
+
+有的小伙伴会说，我怎么看不到程序界面，实际上以服务形式（通常是 `SYSTEM` 用户身份）运行程序通常是看不到界面的，也就是无法通过界面来操作程序。
+
+
+
+
+
+其他一些设定。
+
+详细信息。
+
+图b01
+
+图b10
+
+
+
+##### 登录身份
+
+默认是本地系统帐户，也就是 `SYSTEM` 。
+
+此外还可以设定是否与桌面交互，或使用其他登录身份。
+
+图b02
+
+
+
+##### 依赖服务
+
+当前服务依赖哪些服务，可以将这些服务填写在这里。
+
+图b03
+
+
+
+##### 进程
+
+进程优先级，以及处理器分配等等，通常保持默认即可。
+
+图b04
+
+
+
+##### 关闭服务
+
+服务如何关闭、退出，这里有几种方式。
+
+```
+nssm set <服务名称> AppStopMethodSkip 0
+nssm set <服务名称> AppStopMethodConsole 1500
+nssm set <服务名称> AppStopMethodWindow 1500
+nssm set <服务名称> AppStopMethodThreads 1500
+```
+
+图b05
+
+
+
+##### 退出操作
+
+退出操作可用于调整服务退出时的重启限制和默认操作、重启间隔延迟等等。
+
+```
+nssm set <服务名称> AppThrottle 1500
+nssm set <服务名称> AppExit Default Restart
+nssm set <服务名称> AppRestartDelay 0
+```
+
+图b06
+
+
+
+##### I/O
+
+输入/输出可以帮我们设定一些比如应用程序日志消息等等。
+
+```
+nssm set <服务名称> AppStdout C:\sysadm\logs\service.log
+nssm set <服务名称> AppStderr C:\sysadm\logs\error.log
+```
+
+图b07
 
