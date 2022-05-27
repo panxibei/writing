@@ -74,13 +74,15 @@
 
 
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1_MIo8YPGKJPMjoIeYGtsWQ
+
+提取码：hs16
 
 
 
 将压缩包解压，发现其中有两个名字分别是 `Win32` 和 `Win64` 的文件夹，它们分别包含了32位和64位的 `nssm.exe` 可执行文件。
 
-图a09
+图01
 
 
 
@@ -98,13 +100,17 @@
 
 
 
-
-
 ### 尝试使用
 
-找了一个以前自制的小游戏程序试试吧。
+直接双击 `nssm.exe` 文件，弹出详细的使用方法，看样子应该使用命令行的方式啊！
 
-图a02
+图02
+
+
+
+明白了，我们先找了一个以前自制的小游戏程序试试吧。
+
+图03
 
 
 
@@ -119,7 +125,7 @@ nssm.exe install LightsOut
 
 输完命令后回车，`GUI` 界面果然出现了！
 
-图a03
+图04
 
 
 
@@ -129,7 +135,7 @@ nssm.exe install LightsOut
 
 至于参数 `Arguments` 一项，当前的程序并没有什么参数，因此可以省略。
 
-图a04
+图05
 
 
 
@@ -137,7 +143,7 @@ nssm.exe install LightsOut
 
 嘿！它居然说安装成功了！
 
-图a05
+图06
 
 
 
@@ -147,7 +153,7 @@ nssm.exe install LightsOut
 
 看到这儿小伙伴们可不要感觉奇怪，前面也说过，`nssm` 会将自己注册到服务。
 
-图a06
+图07
 
 
 
@@ -155,13 +161,13 @@ nssm.exe install LightsOut
 
 总之我们先尝试启动这个服务看看，嗯，服务好像正常启动了。
 
-图a07
+图08
 
 
 
 再顺手打开任务管理器，我们的应用程序 `LightsOut.exe` 确实也正在运行中，同时 `nssm.exe` 也在运行，它们两个都是以 `SYSTEM` 身份运行，看样子服务启动没问题。
 
-图a08
+图09
 
 
 
@@ -189,9 +195,9 @@ nssm set <服务名称> Description <服务详细描述>
 nssm set <服务名称> Start SERVICE_AUTO_START
 ```
 
-图b01
+图10
 
-图b10
+图11
 
 
 
@@ -206,7 +212,7 @@ nssm set <服务名称> ObjectName LocalSystem
 nssm set <服务名称> Type SERVICE_WIN32_OWN_PROCESS
 ```
 
-图b02
+图12
 
 
 
@@ -218,7 +224,7 @@ nssm set <服务名称> Type SERVICE_WIN32_OWN_PROCESS
 nssm set <服务名称> DependOnService <所依赖服务名称>
 ```
 
-图b03
+图13
 
 
 
@@ -232,7 +238,7 @@ nssm set <服务名称> AppNoConsole 0
 nssm set <服务名称> AppAffinity All
 ```
 
-图b04
+图14
 
 
 
@@ -247,7 +253,7 @@ nssm set <服务名称> AppStopMethodWindow 1500
 nssm set <服务名称> AppStopMethodThreads 1500
 ```
 
-图b05
+图15
 
 
 
@@ -261,7 +267,7 @@ nssm set <服务名称> AppExit Default Restart
 nssm set <服务名称> AppRestartDelay 0
 ```
 
-图b06
+图16
 
 
 
@@ -274,7 +280,7 @@ nssm set <服务名称> AppStdout C:\sysadm\logs\service.log
 nssm set <服务名称> AppStderr C:\sysadm\logs\error.log
 ```
 
-图b07
+图17
 
 
 
@@ -305,7 +311,7 @@ nssm set <服务名称> AppRotateSeconds 86400
 nssm set <服务名称> AppRotateBytes 1048576
 ```
 
-图b08
+图18
 
 
 
@@ -318,9 +324,7 @@ nssm set <服务名称> AppEnvironmentExtra TEMP=C:\Temp
 nssm set <服务名称> AppEnvironmentExtra JAVA_HOME=C:\Java\bin GO_HOME=C:\Go\bin
 ```
 
-图b09
-
-
+图19
 
 
 
@@ -344,8 +348,6 @@ nssm.exe set <服务名称> <参数> <子参数> <值>
 nssm.exe reset <服务名称> <参数>
 nssm.exe reset <服务名称> <参数> <子参数>
 ```
-
-
 
 
 
@@ -373,8 +375,6 @@ nssm.exe rotate <服务名称>
 
 
 
-
-
 ### 卸载服务
 
 很简单，带上 `remove` 卸载参数即可。
@@ -383,7 +383,7 @@ nssm.exe rotate <服务名称>
 nssm.exe remove <服务名称>
 ```
 
-图c01
+图20
 
 
 
