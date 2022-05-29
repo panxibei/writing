@@ -143,6 +143,18 @@ FINDSTR /R /S [az]*xyz d:\documents\*.txt
 
 
 
+##### 下载
+
+官网下载或从这儿下载官方版。
+
+**AnyTXT.Searcher.1.2.726.zip(34.3M)**
+
+下载链接：https://pan.baidu.com/s/1onLw0OlbgiuB99ZOtCA11w
+
+提取码：zh6m
+
+
+
 ##### 安装
 
 这个 `AnyTXT` 的安装灰常简单，“耐可斯特”安装大法！
