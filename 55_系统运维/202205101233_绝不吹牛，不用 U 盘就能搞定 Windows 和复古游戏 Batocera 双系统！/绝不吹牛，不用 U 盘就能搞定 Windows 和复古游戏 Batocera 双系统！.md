@@ -48,7 +48,15 @@
 
 答案自然是可以的，只要把 `Batocera` 当成一个 `Linux` 系统就行了，很好理解吧？
 
-简单的原理就是这样，接下来我们具体看看在 `Windows` 电脑上如何再加入 `Batocera` 游戏系统。
+简单的原理就是这样，跟着我后面手把手的教程做实现起来一点儿也不算难，重要的是你并不需要特意准备一个U盘或其他的设备。
+
+看看实现后的最终效果，想要工作学习就用 `Win10` ，想玩游戏用 `Batocera` 。
+
+图42.GIF
+
+
+
+OK，接下来就让我们具体看看在 `Windows` 电脑上如何再加入 `Batocera` 游戏系统！
 
 
 
@@ -201,11 +209,31 @@
 
 
 
-下载地址：
+**DiskGenius.7z(18.47M)**
+
+下载链接：https://pan.baidu.com/s/1uPx3HB9jIj4Swkw2BSb3sQ
+
+提取码：75di
 
 
 
-小伙伴们，准备好了吗？
+**SysLinux-6.03.zip(12.96M)**
+
+下载链接：https://pan.baidu.com/s/1lcTE4uOoFmRzsJmTdSZfWw
+
+提取码：8fjc
+
+
+
+**Bootice.zip(881K)**
+
+下载链接：https://pan.baidu.com/s/1fpeT8k3Mk0flCPLU9pyp0Q
+
+提取码：qj3t
+
+
+
+小伙伴们，你们准备好了吗？
 
 开始！
 
