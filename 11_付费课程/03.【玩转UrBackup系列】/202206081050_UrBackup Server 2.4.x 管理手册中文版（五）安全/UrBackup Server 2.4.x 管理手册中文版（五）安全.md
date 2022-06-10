@@ -24,7 +24,7 @@ UrBackup Server 2.4.x 管理手册中文版（五）安全
 
 
 
-##### 4.1 服务端 `Web` 界面的权限管理
+##### 5.1 服务端 `Web` 界面的权限管理
 
 `UrBackup` 服务端的 `Web` 管理页面系统拥有一套非常标准的用户系统，你可以按实际需求创建、管理或删除帐户。 
 
@@ -82,13 +82,115 @@ UrBackup Server 2.4.x 管理手册中文版（五）安全
 
 请注意区分，这个 `all` 是和前面表格中的所列一样的角色域，并不是用来指代所有用户ID的 `all` ，虽说它俩名字是一模一样。
 
-好了，到目前为止，我们应该了解了，用户至少需要一个 `status` 角色域才能使用户成功登录 `Web` 页面系统。
+好了，到目前为止，我们应该了解了，用户至少需要一个 `status` 角色域才能够使用户成功登录 `Web` 页面系统。
 
 
 
+##### 5.2 让 `Web` 管理页面支持 `SSL` 访问
+
+服务器 `Web` 管理页面可以通过 `FastCGI` （ `TCP` 端口 `55413` ）访问。
+
+通过这种方式，你可以使用几乎所有现代 `Web` 服务来连接 `UrBackup` 使用，因此可以通过以下方式访问支持 `SSL` 的 `Web` 管理页面。
+
+本节将描述如何使用 `Apache` 和 `Lighttp` 执行此操作。
 
 
 
+###### 5.2.1 `Apache` 配置
+
+在 `Apache` 设置中为 `UrBackup` 的 `www` 目录创建软链接，或是为其定义一个别名 `alias` 。
+
+针对创建软链接的方法，你需要切换到你的 `SSL` 的 `Web` 根目录 `webroot` ，然后执行类似于如下操作。
+
+```
+ln -s /usr/share/urbackup/www urbackup
+```
+
+
+
+请确保你在 `Apache` 上创建软链接的配置项中设置了 `Option +FollowSymLinks` 。
+
+然后启用 `Apache 2.x` 的模块插件 `mod_proxy_fcgi` 。
+
+例如在 `Debian/Ubuntu` 上可以这样。
+
+```
+a2enmod proxy_fcgi
+```
+
+ 
+
+然后将其中的 `x` （某些）文件代理到本地（或远程）运行的 `UrBackup` `FastCGI` 服务器（默认端口 `55413` ）。
+
+例如，将以下内容添加到您的 `SSL` 虚拟主机配置中。
+
+```
+ProxyPass "/urbackup/x" "fcgi://127.0.0.1:55413"
+```
+
+
+
+路径 `/urbackup/x` 取决于 `UrBackup` 的 `Web` 根目录（ `index.htm` 文件应该位于相同目录）以及你希望 `Web` 管理页面所在的位置。
+
+好了，现在 `UrBackup` 应该可以通过 `Apache` 来访问了。
+
+
+
+###### 5.2.2 `Lighttp` 配置
+
+如 `Apache` 配置中所述，将 `urbackup/www` 目录链接到 `webroot` 。
+
+添加以下代码到你的 `lighttp.conf` 文件中。
+
+```
+include “conf.d/fastcgi.conf” 
+```
+
+
+
+然后再添加以下代码到 `fastcgi.conf` 文件中。
+
+```
+fastcgi.server = ( 
+	"/urbackup/x" => 
+	((	“host”=>“127.0.0.1”， 
+		“port”=> 55413 
+	))  
+) 
+```
+
+
+
+##### 5.3 客户端安全
+
+`UrBackup` 客户端仅在服务器或接口进程为其提供凭据时才应答指令。
+
+服务器凭据保存在 `/var/lib/urbackup/server_ident.key` 中。
+
+如果不存在服务器第一次运行时会随机生成。 服务器身份也由私人/公共确认 密钥认证。 如果不存在，服务器将生成一个私有和公共 ECDSA 密钥 “server_ident_ecdsa409k1.priv”和“server_ident_ecdsa409k1.pub”。
+
+客户端接口凭据以相同的方式生成并驻留在“pw.txt”和 客户端 UrBackup 目录中的“pw_change.txt”。 给客户端核心进程接口 命令您需要“pw.txt”或“pw_change.txt”的内容，具体取决于命令的内容 是：
+
+pw.txt：
+
+    获取当前状态
+    获取文件备份时备份的路径
+    获取增量文件备份间隔
+    开始备份
+    暂停备份 
+
+pw_change.txt
+
+    更改文件备份期间备份的路径
+    获取所有设置
+    更改所有设置
+    获取日志条目/日志
+    接受新服务器 
+
+默认情况下，只有特权用户可以访问“pw_change.txt”。 在 Windows 上，这会导致提升 提示选择需要“pw_change.txt”内容的菜单项。 如果你 要允许没有提升提示的命令，请禁用 UAC 或更改 'pw_change.txt' 的权限以允许非特权用户读取访问权限。 客户核心流程 保存接受命令并允许下载的服务器凭据 'server_idents.txt' 中的文件 - 每行一个凭据。 服务器的公钥也保存在 'server_idents.txt'。
+
+如果要手动将服务器添加到“server_idents.txt”，则需要删除前面的“#I” 和“server_ident.key”内容末尾的“#”。 安装后 'server_idents.txt' 确实 不存在并且客户端核心进程接受（并添加）它看到的第一台服务器（使用 服务器）。 之后，不接受具有不同凭据的其他服务器，您需要添加它们的 一旦客户端检测到凭据，手动或通过单击弹出框 新服务器。 这可以防止其他人访问您要公开备份的文件 地方。
+如果您想让多台服务器能够对客户端进行备份，您有两种选择。 无论是你 手动向客户端提供服务器凭据（通过将它们复制到“server_idents.txt”中）或者您 通过复制相同的“server_ident.key”、“server_ident_ecdsa409k1.p”为所有服务器提供相同的凭据 riv' 和 'server_ident_ecdsa409k1.pub' 到所有服务器。 
 
 
 

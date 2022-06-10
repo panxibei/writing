@@ -959,12 +959,12 @@ OK，客户端添加成功，同时系统也给出了认证密匙。
 
 这是用来释放被无端占用空间之用，相比手动删除文件要保险得多！
 
-方法如下，利用 `cleanup` 命令即可。
+方法如下，以管理员权限运行 `cleanup` 命令即可。
 
 
 
 ```
-# x 是想要释放的容量，比如 20G 或 10% ，要全部清空就用 0%
+# x是想要释放空间的容量或百分比，比如500M、20G或10%，要全部清空就用0%
 
 # on GNU/Linux:
 urbackupsrv cleanup --amount x
@@ -972,6 +972,10 @@ urbackupsrv cleanup --amount x
 # on Windows:
 cleanup.bat x
 ```
+
+图x13
+
+
 
 
 
