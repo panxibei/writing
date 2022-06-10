@@ -167,29 +167,61 @@ fastcgi.server = (
 
 服务器凭据保存在 `/var/lib/urbackup/server_ident.key` 中。
 
-如果不存在服务器第一次运行时会随机生成。 服务器身份也由私人/公共确认 密钥认证。 如果不存在，服务器将生成一个私有和公共 ECDSA 密钥 “server_ident_ecdsa409k1.priv”和“server_ident_ecdsa409k1.pub”。
+如果这个文件不存在，那么服务器会在第一次启动时随机生成。
 
-客户端接口凭据以相同的方式生成并驻留在“pw.txt”和 客户端 UrBackup 目录中的“pw_change.txt”。 给客户端核心进程接口 命令您需要“pw.txt”或“pw_change.txt”的内容，具体取决于命令的内容 是：
 
-pw.txt：
 
-    获取当前状态
-    获取文件备份时备份的路径
-    获取增量文件备份间隔
-    开始备份
-    暂停备份 
+服务器身份标识也由 `私钥/公钥` 形式的密钥认证系统来确认。
 
-pw_change.txt
+如果这种密钥认证不存在，服务器将生成一套私有和公有的 `ECDSA` 密钥，分别是 `server_ident_ecdsa409k1.priv` 和 `server_ident_ecdsa409k1.pub` 。
 
-    更改文件备份期间备份的路径
-    获取所有设置
-    更改所有设置
-    获取日志条目/日志
-    接受新服务器 
 
-默认情况下，只有特权用户可以访问“pw_change.txt”。 在 Windows 上，这会导致提升 提示选择需要“pw_change.txt”内容的菜单项。 如果你 要允许没有提升提示的命令，请禁用 UAC 或更改 'pw_change.txt' 的权限以允许非特权用户读取访问权限。 客户核心流程 保存接受命令并允许下载的服务器凭据 'server_idents.txt' 中的文件 - 每行一个凭据。 服务器的公钥也保存在 'server_idents.txt'。
 
-如果要手动将服务器添加到“server_idents.txt”，则需要删除前面的“#I” 和“server_ident.key”内容末尾的“#”。 安装后 'server_idents.txt' 确实 不存在并且客户端核心进程接受（并添加）它看到的第一台服务器（使用 服务器）。 之后，不接受具有不同凭据的其他服务器，您需要添加它们的 一旦客户端检测到凭据，手动或通过单击弹出框 新服务器。 这可以防止其他人访问您要公开备份的文件 地方。
+客户端接口凭据也以相同的方式生成，并且驻留在客户端一侧 `UrBackup` 目录的 `pw.txt` 以及  `pw_change.txt` 两个文件中。
+
+要提供客户端核心进程接口命令，你需要的 `pw.txt` 或 `pw_change.txt` 这两个文件的内容，其内容具体取决于如下某些命令。
+
+
+
+`pw.txt`
+
+- `Getting the current status` - 获取当前状态
+- `Get the paths which are backed up during file backups` - 获取文件备份时备份的路径
+- `Get the incremental file backup interval ` - 获取增量文件备份间隔
+- `Start backups` - 开始备份
+- `Pause backups` - 暂停备份
+
+
+
+`pw_change.txt`
+
+- `Change the paths which are backed up during file backups` - 更改文件备份期间备份的路径
+- `Get all settings` - 获取所有设置
+- `Change all settings`  - 更改所有设置
+- `Get log entries/logs` - 获取日志条目/日志
+- `Accept a new server` - 接受新服务器
+
+ 
+
+默认情况下，只有特权用户可以访问 `pw_change.txt` 。
+
+在 Windows 上，这会导致访问 `pw_change.txt` 内容会提示需要提升到管理员权限。
+
+如果你不想让让提升权限的窗口老跳出来，请禁用 `UAC` 或更改 `pw_change.txt` 的访问权限以允许非特权用户读取访问。
+
+客户端核心进程从它接受了指令并允许通过 `server_idents.txt` 中所描述的下载文件后就保存了服务器凭据。
+
+ `server_idents.txt` 文件中每行一个凭据，同时服务器的公钥也保存在其中。
+
+
+
+如果想要手动将服务器添加到 `server_idents.txt` 中，则需要删除 `server_ident.key` 文件末尾前置的  `#I`  和 `#` 。
+
+`UrBackup` 在安装完成时 `server_idents.txt` 并不存在，之后客户端核心进程才接受（并添加）它看到的第一台服务器（使用服务器的公钥）。
+
+在此之后，客户端不会接受具有不同凭据的其他服务器，并且一旦客户端检测到新服务器，则需要手动添加它们的凭据，或者通过单击弹出窗口来操作。
+
+这可以防止其他人访问您要公开备份的文件 地方。
 如果您想让多台服务器能够对客户端进行备份，您有两种选择。 无论是你 手动向客户端提供服务器凭据（通过将它们复制到“server_idents.txt”中）或者您 通过复制相同的“server_ident.key”、“server_ident_ecdsa409k1.p”为所有服务器提供相同的凭据 riv' 和 'server_ident_ecdsa409k1.pub' 到所有服务器。 
 
 
