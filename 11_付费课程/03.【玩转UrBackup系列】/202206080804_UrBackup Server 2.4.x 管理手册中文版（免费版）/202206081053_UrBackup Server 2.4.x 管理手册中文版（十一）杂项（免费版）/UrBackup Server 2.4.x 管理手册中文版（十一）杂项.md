@@ -8,11 +8,7 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 
 
 
- 本节将向小伙伴们阐述 `UrBackup` 杂项的相关内容。 
-
-
-
-#### 11. `UrBackup` 的杂项
+### 11. `UrBackup` 的杂项
 
 ##### 11.1 手动更新 `UrBackup` 客户端
 
@@ -63,10 +59,6 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 在 `Windows` 中，有一个 `args.txt` 文件与日志文件位于同一目录中。
 
 将此文件的 `--loglevel` 的 `warn` 更改为 `debug` 、`info` 或 `error` 以获取一组不同级别的日志消息。
-
-图a01
-
-
 
 你需要重新启动服务器才能使此更改生效。
 
@@ -211,16 +203,6 @@ urbackupsrv -a /full/path/Image_C_XXXXX.vhdz -a /full/path/Image_SYSVOL_XXXXX.vh
 迁移完成后，将设置中的备份存储路径更改为新位置或将新的备份存储挂载到旧位置。
 
 然后运行第 12.4 节中描述的 `删除未知` 。 
-
-
-
-
-
-### 小结
-
-本节内容比较杂，包括手动更新客户端、日志记录、通讯端口以及 `VHD` 文件的挂载等等。
-
-关于 `VHD` 挂载涉及的存储相关内容，将在下一小节阐述，敬请期待！
 
 
 
