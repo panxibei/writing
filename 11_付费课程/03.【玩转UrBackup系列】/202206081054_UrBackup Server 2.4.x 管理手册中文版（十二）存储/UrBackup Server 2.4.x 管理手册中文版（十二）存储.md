@@ -8,7 +8,7 @@ UrBackup Server 2.4.x 管理手册中文版（十二）存储
 
 
 
- 本节将向小伙伴们阐述 `UrBackup` 杂项的相关内容。 
+ 本节将向小伙伴们阐述 `UrBackup` 存储的相关内容。 
 
 
 
@@ -183,219 +183,278 @@ remove_unknown.bat
 
 ##### 12.6 适合的文件系统
 
+因为 `UrBackup` 可以选择先将所有传入的数据保存到临时文件（参见第 `9.5.1`  节），然后将它们复制到并行备份的最终位置，即使备份存储空间很慢，性能仍然会很好。
+
+这意味着你可以使用具有压缩和重复数据删除功能的全功能文件系统，而不会造成太大的性能损失。
+
+在最坏的情况下，服务器会在晚上写完一个映像备份（白天已经将映像的内容保存到临时文件中）。
+
+本节将显示哪些文件系统适合 `UrBackup` 。 
 
 
 
+###### 12.6.1 `Ext4/XFS`
 
- 
+`Ext4` 和 `XFS` 都在 `Linux` 中可用，并且可以处理存储映像备份所需的大文件。
 
+但是，它们没有压缩或重复数据删除功能。
 
+可以通过在它们之上使用 `fuse` 文件系统（例如 `fusecompress` ）来实现压缩。
 
+还有一些块级重复数据删除 `fuse` 层，但我建议不要使用它们，因为它们看起来不太稳定。
 
-
-
-
-
-
-
-
-##### 11.1 手动更新 `UrBackup` 客户端
-
-在客户端上使用 `UrBackup` 客户端之前，你应该先对其进行一些测试。
-
-意思是有可能 `UrBackup` 不会自动从 `Internet` 下载最新的客户端版本并进行安装。
-
-这就意味着在第 `9.1.8` 节中描述的自动更新被禁用了。
-
-如果禁用了自动更新，你仍然可以从服务器集中更新客户端。
-
-转至 `https://hndl.urbackup.org/Client/` 并将当前客户端更新文件夹中的所有文件下载到 `Linux` 上的  `/var/urbackup` 或 `Windows` 上（默认）的 `C:\Program Files\UrBackupServer\urbackup` 。
-
-`UrBackup` 将在重新建立连接后推送新版本到客户端。
-
-如果你启用了静默自动更新，则新版本将静默安装在客户端上，否则将弹出窗口要求用户安装新版本。 
+你必须使用内核 `用户/组` 级别配额支持来限制 `UrBackup` 的存储使用。
 
 
 
-##### 11.2 日志记录
+###### 12.6.2 `NTFS`
 
-`UrBackup` 通常将所有与备份相关的内容记录到几个日志工具中。
+如果你在 `Windows` 下运行 `UrBackup` 服务器，`NTFS` 几乎是你唯一的选择。
 
-每条日志消息都具有相应的严重程度，即错误、警告、信息或调试。
-
-每条日志输出都可以根据此严重程度过滤，例如只显示错误。
-
-服务器和客户端都有单独的日志。
-
-在备份过程中，`UrBackup` 服务器尝试将属于某个备份的所有内容记录在客户端特定的日志中，最后将该日志发送给客户端。
-
-这些是你在客户端界面上看到的日志。
-
-也可以通过 `Web` 界面的 `日志` 选项卡区域查看相同的日志。
-
-如第 `9.2.2` 小节所述，你也可以通过邮件发送它们。
+它支持大文件和压缩以及硬链接，因此比标准 `Linux` 文件系统的 `XFS` 和 `Ext4` 更适合 `UrBackup` 。
 
 
 
-无法授权给特定客户端或会导致过多日志流量的所有内容都记录在通用日志文件中。 
+###### 12.6.3 `btrfs`
 
-服务器的日志文件默认在 `Linux` 上是 `/var/log/urbackup.log` ，在 `Windows` 上则是 `C:\Progam  files\UrBackupServer\urbackup.log` 。
+`Btrfs` 是与 `ZFS` 相媲美的下一代 `Linux` 文件系统。
 
-而相应地客户端日志文件默认是 `/var/log/urbackup_client.log` 和 `C:\Progam files\UrBackup\debug.log`。
+它支持压缩和离线块级重复数据删除。
 
-默认情况下，这些文件仅包含严重警告或更高级别的日志消息。
+`UrBackup`  有一个特殊的快照备份模式，使用 `btrfs` 可以更快地进行增量备份和删除文件备份。
 
-在 `Windows` 中，有一个 `args.txt` 文件与日志文件位于同一目录中。
+使用 `btrfs` `UrBackup` 还可以对增量文件备份进行廉价的（就 `CPU` 和内存要求而言）块级重复数据删除。详见 `12.7.2` 。
 
-将此文件的 `--loglevel` 的 `warn` 更改为 `debug` 、`info` 或 `error` 以获取一组不同级别的日志消息。
-
-图a01
+`UrBackup` 还有一种特殊的写时复制原始映像备份格式，它允许 `永久增量` 风格的映像备份。
 
 
 
-你需要重新启动服务器才能使此更改生效。
+###### 12.6.4 ZFS
 
-在 `Linux` 上，这取决于具体不同的发行版命令。
+`ZFS` 是源自 `Solaris` 的文件系统。
 
-在 `Debian` 上，则要更改 `/etc/default/urbackupsrv` 中的设置。
+它可用作 `Linux` 的熔断器模块 ( `zfs-fuse` ) 和内核模块  ( `ZFSOnLinux` )。
 
+存在阻止 `ZFS` 直接与 `Linux` 集成的许可问题。
 
+如果你想要最高的性能和稳定性，一个选择是使用  `FreeBSD`（例如 `FreeNAS` ）。
 
-##### 11.3 使用的网络端口
+`ZFS` 具有一些简洁的功能，例如压缩、块级重复数据删除、快照和内置的 `RAID`  支持，使其非常适合备份存储。
 
-服务器绑定到以下默认端口：
+`12.7.1` 节详细介绍了如何使用 `ZFS` 构建 `UrBackup` 服务器。
 
-| Port/端口 | Usage/用途                    | Incoming/Outgoing<br />进/出（方向） | Protocol/协议 |
-| --------- | ----------------------------- | ------------------------------------ | ------------- |
-| `55413`   | 为 `web` 接口服务的 `FastCGI` | Incoming/进                          | `TCP`         |
-| `55414`   | `HTTP web` 管理接口           | Incoming/进                          | `TCP`         |
-| `55415`   | `Internet` 客户端访问         | Incoming/进                          | `TCP`         |
-| `35623`   | 用于发现的 `UDP` 广播端口     | Outgoing/出                          | `UDP`         |
-
- 
-
-客户端绑定到以下默认端口：
-
-| Port/端口 | Usage/用途                   | Protocol/协议 |
-| --------- | ---------------------------- | ------------- |
-| `35621`   | 备份期间发送文件（文件服务） | `TCP`         |
-| `35622`   | 用于发现的 `UDP` 广播端口    | `UDP`         |
-| `35623`   | 发送指令或用于映像备份       | `TCP`         |
+`UrBackup`  还有一种特殊的写时复制原始映像备份格式，它允许在 `ZFS` 上工作的 `永久增量` 样式的映像备份。第 `12.7.1` 节描述了如何设置它。
 
 
 
-##### 11.4 在 `GNU/Linux` 上挂载（压缩的）`VHD` 文件
+##### 12.7 存储设置建议
 
-如果你使用 `fuse`（用户空间中的文件系统）支持编译 `UrBackup` 或安装了 `Debian/Ubuntu` 软件包，则 `UrBackup` 服务器可以直接挂载 `VHD(Z)` 文件。
+在本节中，展示了使用 `ZFS` 的示例存储设置，它允许通过 `Internet` 或通过磁带进行异地备份，例如手动异地存储和使用 `Linux` 文件系统 `btrfs` 的存储设置，使用 `btrfs` 快照机制来加速文件备份的创建和销毁并更有效地保存文件备份。
 
-你可以通过配置来编译带有 `fuse` 支持的 `UrBackup` ：
+
+
+###### 12.7.1 `ZFS`
+
+注意：假设 `UrBackup`在支持 `ZFS` 的 `Linux` 或 `BSD` 等类似 `UNIX` 的系统上运行。
+
+我们将使用所有 `ZFS` 功能，例如压缩、重复数据删除和快照。
+
+假设服务器有两个专用于备份的硬盘驱动器 ( `sdb` , `sdc` ) 和一个热插拔硬盘驱动器插槽 ( `sdd` )。
+
+假设在 `/dev/sde` 中也有一个缓存设备来加速重复数据删除。
+
+即使是快速的 `U` 盘也可以加快重复数据删除速度，因为它比普通硬盘具有更好的随机访问性能。
+
+使用 `SSD` 以获得最佳性能。
+
+
+
+首先设置服务器，使临时目录 ( `/tmp` ) 位于足够大的高性能文件系统上。
+
+如果你有一个 `raid` 设置，你可以将 `/tmp` 设置在条带设备上。
+
+我们现在将在 `/media/BACKUP` 中创建一个备份存储文件系统。
+
+从两个硬盘驱动器创建 `ZFS` 池备份，两者是镜像的。
+
+将相同大小的硬盘放入热插拔硬盘插槽。
+
+我们也将镜像它： 
 
 ```
-./configure --with-mountvhd
+zpool create backup mirror /dev/sdb /dev/sdc /dev/sdd cache /dev/sde -m /media/BACKUP
 ```
 
-你可以通过如下方法挂载 `VHD(Z)` 文件。
+启用重复数据删除和压缩。
+
+你不需要设置配额，因为重复数据删除会分割所有内容（这就是我们需要缓存设备的原因）。
 
 ```
-urbackupsrv mount-vhd --file /media/backup/urbackup/testclient/\  
-Image_C_140420-1956.vhdz --mountpoint /media/testclient_C
+zfs set dedup=on backup  
+zfs set compression=on backup
 ```
 
-备份的 `C` 卷中的所有文件将在 `/media/testclient_C` 中有效可读。
+现在我们想实现一个祖父、父亲、儿子或类似的备份方案，我们可以将硬盘放在防火保险箱中。
 
-卸载由 `UrBackup` 创建的挂载（参见 `mount` 的输出），以停止后台进程。 
+因此，每次我们想要进行异地备份时，我们都会移除热插拔设备并插入一个新设备。
 
-
-
-##### 11.5 在 `Windows` 上将 `VHD` 挂载为卷
-
-从 `Vista` 开始，`Windows` 可以直接挂载 `VHD` 文件。
-
-如果 `VHD` 文件被压缩，则需要先对其进行解压缩（参见下一节 `11.6`）。
-
-然后进入 `系统设置` > `管理` > `计算机管理` > `磁盘管理` > `其他操作` > `添加虚拟硬盘` ，以只读方式装载 `VHD` 文件。
-
-该映像将在资源管理器中显示为另一个驱动器。
-
-如果 `VHD` 文件位于网络驱动器上，它可能不起作用。
-
-
-
-##### 11.6 解压 `VHD` 文件
-
-考虑使用下一节 `11.7` 中描述的方法来解压 `VHD` 文件。
-
-如果要在 `Windows` 上挂载 `VHD` 文件并且它们是压缩的（文件扩展名为 `VHDZ`），则需要先解压缩它们。
-
-使用  `C:\Program Files\UrBackupServer\uncompress_image.bat`  正是为了这个原因。
-
-调用不带参数的批处理文件将打开一个文件选择窗口，你可以在其中选择要解压缩的 `VHDZ` 文件。
-
-解压缩完成后，会创建一个膨胀的临时副本并自动重命名。
-
-如果映像是增量的，则父级 `VHD` 也会自动解压缩。
-
-如果你想防止这种情况发生，请使用第 `11.7` 节中描述的方法来构建单独的未压缩映像。
-
-所有映像文件仍将具有 `VHDZ` 扩展名，否则将不得不更改数据库条目，但文件将不再被压缩。
-
-在 `Linux` 上，可以使用 `urbackupsrv decompress-file -f [filename]` 完成相同的操作。
-
-
-
-##### 11.7 将多个 `VHD` 卷映像整合成一个 `VHD` 磁盘映像
-
-`UrBackup` 分别存储每个卷的映像备份。
-
-如果你想在不使用还原 `CD` 的情况下启动加载映像备份，那么作为一台虚拟机你必须将多个卷重新整合到一个磁盘 `VHD` 映像中。
-
-在 `Windows` 上，可以通过运行 `C:\Program Files\UrBackupServer\assemble_disk_image.bat` 来完成。
-
-在第一步中，它将要求整合 `VHD` 映像，例如选择 `Image_C_XXXXX.vhd` 和 `Image_SYSVOL_XXXXX.vhd` 。
-
-源映像也可以是增量或压缩的。
-
-然后它会询问输出的 `VHD` 磁盘映像应该保存在哪里。
-
-之后，它会将 `Image_C_XXXXX.vhd.mbr` 的主引导记录和卷内容写入输出磁盘映像中的适当偏移量。
-
- 在 `Linux` 上，同样的事情可以用
+然后我们要么运行 
 
 ```
-urbackupsrv -a /full/path/Image_C_XXXXX.vhdz -a /full/path/Image_SYSVOL_XXXXX.vhdz\  
--o full_disk.vhd
+zpool replace backup /dev/sdd /dev/sdd
 ```
 
- 通过选择单个 `VHD` 文件作为输入，此工具还可用于在不解压其父级的情况下解压缩映像。
+或者
+
+```
+zpool scrub
+```
+
+你可以使用 `zpool status` 查看重新银化/擦洗的进度。
+
+完成后，你就可以将另一个硬盘放在某个地方。
+
+现在我们想将备份保存在另一个位置的服务器上。
+
+首先，我们在这个其他位置创建 ZFS 备份池。
+
+然后我们传输完整的文件系统（ `otherserver` 是对方服务器的主机名）：
+
+```
+zfs snapshot backup@last  
+zfs send backup@last | ssh -l root otherserver zfs recv backup@last
+```
+
+ 完成此操作后，我们可以增量同步两个文件系统： 
+
+```
+zfs snapshot backup@now  
+ssh -l root otherserver zfs rollback -r backup@last  
+zfs send -i backup@last backup@now | ssh -l root otherserver zfs recv backup@now  
+zfs destroy backup@last  
+zfs rename backup@last backup@now  
+ssh -l root otherserver zfs destory backup@last  
+ssh -l root otherserver zfs rename backup@last backup@now
+```
+
+你还可以将这些完整和增量 `zfs` 流保存到其他服务器上的文件中，而不是直接保存到 `ZFS` 文件系统中。
+
+使用 `ZFS` 进行写时复制原始映像备份自 `UrBackup 2.1.x` `ZFS` 存储还允许使用写时复制原始映像备份格式。
+
+这种格式没有大小限制，并允许 `永远增量` 风格的映像备份。
+
+`UrBackup` 将每个映像备份放入单独的数据集中，并将映像存储为单个大文件。
+
+压缩和未使用区域管理由 `ZFS` 完成。
+
+为了创建和删除 `ZFS` 快照，`UrBackup` 安装了一个 `setuid` 可执行文件 `urbackup_snapshot_helper` 。
+
+但是，当前 `ZFSOnLinux` 会依次调用 `mount` ，当 `urbackup_snapshot_helper` 以非特权用户身份运行时会失败。
+
+因此，你必须以 `root` 用户身份运行 `UrBackup` 服务器（ `urbackupsrv run -u root` ）。
+
+你应该创建一个单独的 `ZFS` 数据集，其中将存储映像备份，例如 `tank/images` 。
+
+`UrBackup` 服务器将从 `/etc/urbackup/dataset` 读取此数据集，并从 `/etc/urbackup/backupfolder` 读取备份存储路径。
+
+通过例如设置 
+
+```
+mkdir -p /etc/urbackup  
+echo "tank/images" > /etc/urbackup/dataset  
+echo "/mnt/BACKUP/urbackup" > /etc/urbackup/backupfolder
+```
+
+ 然后以 root 身份运行测试一切是否正常：
+
+```
+urbackup_snapshot_helper test
+```
+
+然后，你应该能够享受更快的增量文件备份，这些备份使用更少的存储空间和 `永久增量` 风格的映像备份。
+
+其他注意事项：`UrBackup` 使用 `文件打孔` 在增量备份后从映像文件中删除未使用的区域。
+
+`FreeBSD` 当前不支持此功能，因此在  `FreeBSD` 上进行增量映像备份后，它将无法删除那些未使用的区域。
+
+但是，它将它们设置为零，因此如果启用 `ZFS`  压缩，未使用的区域将不会占用太多空间。
+
+使用 `ZFS` 进行写时复制文件备份同样，`UrBackup` 支持使用 `ZFS` 进行写时复制文件备份。
+
+方法与下一节中 `btrfs` 的方法相同，但前提是不能像在 `btrfs` 中那样在 `ZFS` 数据集之间重新链接相同的文件，因为 `ZFS` 缺少 `reflink` 功能。
+
+相反，文件将被复制，也就是说，如果文件已经有副本，`UrBackup` 将不会加载两次，但如果未启用 `ZFS` 重复数据删除，则可能会存储两次。
+
+使用 `ZFS` 进行写时复制文件备份需要使用 `ZFS` 进行写时复制映像备份的先前设置，另外设置要存储文件备份的数据集，例如 
+
+```
+echo "tank/files" > /etc/urbackup/dataset_file
+```
 
 
 
-##### 11.8 迁移非 `btrfs` 备份存储
+###### 12.7.2 `Btrfs`
 
-`UrBackup` 具有内置迁移功能，可让你以最少的停机时间将备份存储迁移到不同的设备。
+`Btrfs` 是用于 `Linux` 的高级文件系统，能够创建子卷的写时副本快照。
 
-这仅适用于普通备份存储，也就是说，它不适用于第 `12.7.2` 节中描述的特殊 `btrfs` 模式或第 `12.7.1` 节中描述的写时复制映像。
-
-迁移功能仅适用于迁移，不适用于镜像备份等。
-
-与使用例如 `rsync` 相比，内置迁移有一些优点：
-
-* 它可以以备份级别恢复迁移
-* 它会自动禁用所有清理，以最大限度地减少迁移期间必要的更改量
-* `UrBackup` 继续备份当前未迁移的客户端并自动迁移新备份
-* `UrBackup` 可正确处理硬链接
+要使 `UrBackup` 能够使用快照机制，`Linux` 内核必须至少为 `3.6` 。
 
 
 
-在 `/var/urbackup` 或 `C:\Program Files\UrBackupServer\urbackup`  中创建一个名为 `migrate_storage_to` 的文件，其唯一内容是要将备份迁移至目的地的路径。
+如果 `UrBackup` 检测到 `btrfs` 文件系统，它会使用特殊的快照文件备份模式。
 
-然后重新启动 `UrBackup` 服务器并开始迁移。
+它将每个客户端的每个文件备份保存在单独的 `btrfs` 子卷中。
 
-你可以在活动页面查看迁移进度。
+创建增量文件备份时，`UrBackup` 会创建最后一个文件备份的快照，并仅删除、添加和更改更新快照所需的文件。
 
-迁移完成后，将设置中的备份存储路径更改为新位置或将新的备份存储挂载到旧位置。
+这比普通方法快得多，其中 `UrBackup` 将新增量文件备份中的每个文件链接（硬链接）到最后一个文件中的文件。
 
-然后运行第 12.4 节中描述的 `删除未知` 。 
+它还使用较少的元数据（有关文件的信息，即目录条目）。
+
+如果检测到新的/更改的文件与另一个客户端的文件相同或与另一个备份中的文件相同，则 `UrBackup` 使用跨设备引用链接在文件系统上仅将该文件中的数据保存一次。
+
+使用 `btrfs` 还允许 `UrBackup` 以仅存储文件中更改的数据的方式备份在增量备份之间更改的文件。
+
+这大大减少了备份所需的存储量，尤其是对于大型数据库文件（例如 `Outlook`  存档文件）。上一节 ( `12.7.1` ) 中的 `ZFS` 重复数据删除节省了更多存储空间，但代价是读写性能大幅下降以及 `CPU` 和内存要求高。
+
+
+
+使用 `btrfs` `UrBackup` 还可以使用特殊的原始映像文件格式。
+
+这种格式没有大小限制，并允许 `永久增量` 风格的映像备份。
+
+`UrBackup` 将每个映像备份放入单独的子卷中，并将映像存储为单个大文件。
+
+压缩和未使用区域管理由 `btrfs` 完成。
+
+
+
+为了创建和删除 `btrfs` 快照，`UrBackup` 安装了一个 `setuid` 可执行文件 `urbackup_snapshot_helper` 。
+
+`UrBackup` 还使用此工具来测试是否可以进行跨设备重新链接。
+
+只有当 `UrBackup` 可以创建跨设备 `reflink` 并且能够创建和销毁 `btrfs` 快照时，才启用 `btrfs` 模式。
+
+`urbackup_snapshot_helper` 需要单独告知  `UrBackup` 备份文件夹在哪里。
+
+此路径从 `/etc/urbackup/backupfolder` 中读取。
+
+因此，如果  `/media/backup/urbackup` 是 `UrBackup` 保存路径的文件夹，则以下命令将正确创建此文件： 
+
+```
+mkdir /etc/urbackup  
+echo "/media/backup/urbackup" > /etc/urbackup/backupfolder
+```
+
+ 然后，你可以通过运行测试 `UrBackup` 是否会使用 `btrfs` 功能。
+
+```
+urbackup_snapshot_helper test
+```
+
+如果测试失败，你需要检查内核是否足够新，以及备份文件夹是否位于 `btrfs` 卷上。
+
+然后，你应该能够享受更快的增量文件备份，这些备份使用更少的存储空间和 `永久增量` 风格的映像备份。 
 
 
 
@@ -403,9 +462,11 @@ urbackupsrv -a /full/path/Image_C_XXXXX.vhdz -a /full/path/Image_SYSVOL_XXXXX.vh
 
 ### 小结
 
-本节内容比较杂，包括手动更新客户端、日志记录、通讯端口以及 `VHD` 文件的挂载等等。
+本节集中阐述存储相关内容，包括存储的使用、归档以及文件系统等等。
 
-关于 `VHD` 挂载涉及的存储相关内容，将在下一小节阐述，敬请期待！
+`Windows` 的 `NTFS` 非常适合作为 `UrBackup` 的存储文件系统，这也是新手们通常使用的途径，具有支持压缩以及大文件等属性，易于我们初级者使用。
+
+除了 `Windows` 下的 `NTFS` 之外，其他文件系统也常被用于各种存储系统中，比如 `NAS` 等，则应该按照手册中所述做出相应调整，以便达到 `UrBackup` 的最佳使用效果。
 
 
 
