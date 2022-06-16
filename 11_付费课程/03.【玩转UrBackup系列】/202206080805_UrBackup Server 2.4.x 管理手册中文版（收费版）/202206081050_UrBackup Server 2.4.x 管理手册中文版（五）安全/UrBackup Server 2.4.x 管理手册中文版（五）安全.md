@@ -100,7 +100,7 @@ UrBackup Server 2.4.x 管理手册中文版（五）安全
 
 服务器 `Web` 管理页面可以通过 `FastCGI` （ `TCP` 端口 `55413` ）访问。
 
-通过这种方式，你可以使用几乎所有现代 `Web` 服务来连接 `UrBackup` 使用，因此可以通过以下方式访问支持 `SSL` 的 `Web` 管理页面。
+通过这种方式，你可以使用几乎所有现代 `Web` 服务来连接使用 `UrBackup` ，因此可以通过以下方式访问支持 `SSL` 的 `Web` 管理页面。
 
 本节将描述如何使用 `Apache` 和 `Lighttp` 执行此操作。
 
@@ -108,9 +108,9 @@ UrBackup Server 2.4.x 管理手册中文版（五）安全
 
 ###### 5.2.1 `Apache` 配置
 
-在 `Apache` 设置中为 `UrBackup` 的 `www` 目录创建软链接，或是为其定义一个别名 `alias` 。
+在 `Apache` 设置中为 `UrBackup` 的 `www` 目录创建软链接，或是为其定义一个别名（ `alias` ）。
 
-针对创建软链接的方法，你需要切换到你的 `SSL` 的 `Web` 根目录 `webroot` ，然后执行类似于如下操作。
+针对创建软链接的方法，你需要切换到想要支持 `SSL` 的 `UrBackup` 的 `Web` 根目录，然后执行类似于如下操作。
 
 ```
 ln -s /usr/share/urbackup/www urbackup
@@ -118,11 +118,19 @@ ln -s /usr/share/urbackup/www urbackup
 
 
 
-请确保你在 `Apache` 上创建软链接的配置项中设置了 `Option +FollowSymLinks` 。
+请确保你在 `Apache` 上创建软链接的配置项中设置了 `Options +FollowSymLinks` 。
+
+图03
+
+
 
 然后启用 `Apache 2.x` 的模块插件 `mod_proxy_fcgi` 。
 
-例如在 `Debian/Ubuntu` 上可以这样。
+图04
+
+
+
+例如，在 `Debian/Ubuntu` 上可以这样。
 
 ```
 a2enmod proxy_fcgi
@@ -130,9 +138,9 @@ a2enmod proxy_fcgi
 
  
 
-然后将其中的 `x` （某些）文件代理到本地（或远程）运行的 `UrBackup` `FastCGI` 服务器（默认端口 `55413` ）。
+然后将其中的 `x` （某些）文件代理转发到本地（或远程）运行的 `UrBackup` `FastCGI` 服务器（默认端口 `55413` ）。
 
-例如，将以下内容添加到您的 `SSL` 虚拟主机配置中。
+例如，将以下内容添加到你的 `SSL` 虚拟主机配置中。
 
 ```
 ProxyPass "/urbackup/x" "fcgi://127.0.0.1:55413"
@@ -148,7 +156,7 @@ ProxyPass "/urbackup/x" "fcgi://127.0.0.1:55413"
 
 ###### 5.2.2 `Lighttp` 配置
 
-如 `Apache` 配置中所述，将 `urbackup/www` 目录链接到 `webroot` 。
+如 `Apache` 配置中所述，将 `urbackup/www` 目录链接到 `Lighttp` 的 `webroot` 。
 
 添加以下代码到你的 `lighttp.conf` 文件中。
 
@@ -163,8 +171,8 @@ include “conf.d/fastcgi.conf”
 ```
 fastcgi.server = ( 
 	"/urbackup/x" => 
-	((	“host”=>“127.0.0.1”， 
-		“port”=> 55413 
+	((	"host"=>"127.0.0.1"， 
+		"port"=> 55413 
 	))  
 ) 
 ```
@@ -179,25 +187,44 @@ fastcgi.server = (
 
 如果这个文件不存在，那么服务器会在第一次启动时随机生成。
 
+在 `Windows` 中这个文件通常在如下目录中。
+
+```
+C:\Program Files\UrBackupServer\urbackup
+```
+
+图05
+
 
 
 服务器身份标识也由 `私钥/公钥` 形式的密钥认证系统来确认。
 
 如果这种密钥认证不存在，服务器将生成一套私有和公有的 `ECDSA` 密钥，分别是 `server_ident_ecdsa409k1.priv` 和 `server_ident_ecdsa409k1.pub` 。
 
+图06
+
 
 
 客户端接口凭据也以相同的方式生成，并且驻留在客户端一侧 `UrBackup` 目录的 `pw.txt` 以及  `pw_change.txt` 两个文件中。
 
-要提供客户端核心进程接口命令，你需要的 `pw.txt` 或 `pw_change.txt` 这两个文件的内容，其内容具体取决于如下某些命令。
+```
+C:\Program Files\UrBackup\pw.txt
+C:\Program Files\UrBackup\pw_change.txt
+```
+
+图07
+
+
+
+要提供客户端核心进程接口命令，你需要知道 `pw.txt` 或 `pw_change.txt` 这两个文件的内容，其内容具体取决于如下某些命令。
 
 
 
 `pw.txt`
 
 - `Getting the current status` - 获取当前状态
-- `Get the paths which are backed up during file backups` - 获取文件备份时备份的路径
-- `Get the incremental file backup interval ` - 获取增量文件备份间隔
+- `Get the paths which are backed up during file backups` - 获取文件备份时的备份路径
+- `Get the incremental file backup interval ` - 获取增量文件备份的时间间隔
 - `Start backups` - 开始备份
 - `Pause backups` - 暂停备份
 
@@ -205,7 +232,7 @@ fastcgi.server = (
 
 `pw_change.txt`
 
-- `Change the paths which are backed up during file backups` - 更改文件备份期间备份的路径
+- `Change the paths which are backed up during file backups` - 更改文件备份期间的备份路径
 - `Get all settings` - 获取所有设置
 - `Change all settings`  - 更改所有设置
 - `Get log entries/logs` - 获取日志条目/日志
@@ -215,37 +242,39 @@ fastcgi.server = (
 
 默认情况下，只有特权用户可以访问 `pw_change.txt` 。
 
-在 Windows 上，这会导致访问 `pw_change.txt` 内容会提示需要提升到管理员权限。
+在 `Windows` 上，这将导致访问 `pw_change.txt` 内容时系统会提示需要提升到管理员权限。
 
-如果你不想让让提升权限的窗口老跳出来，请禁用 `UAC` 或更改 `pw_change.txt` 的访问权限以允许非特权用户读取访问。
+如果你不想让提升权限的窗口老跳出来，请禁用 `UAC` 或更改 `pw_change.txt` 的访问权限以允许非特权用户读取访问。
 
 客户端核心进程从它接受了指令并允许通过 `server_idents.txt` 中所描述的下载文件后就保存了服务器凭据。
 
- `server_idents.txt` 文件中每行一个凭据，同时服务器的公钥也保存在其中。
+`server_idents.txt` 文件中一行一个凭据，同时服务器的公钥也保存在其中。
+
+图08
 
 
 
-如果想要手动将服务器添加到 `server_idents.txt` 中，则需要删除 `server_ident.key` 文件末尾前置的  `#I`  和 `#` 。
+如果想要手动将服务器添加到 `server_idents.txt` 中，则需要删除 `server_ident.key` 文件中字符串前置的  `#I` 和末尾的 `#` 。
 
-`UrBackup` 在安装完成时 `server_idents.txt` 并不存在，之后客户端核心进程才接受（并添加）它看到的第一台服务器（使用服务器的公钥）。
+`UrBackup` 在刚安装完成时 `server_idents.txt` 并不存在，之后客户端核心进程才接受（并添加）它看到的第一台服务器（通过服务器的公钥连接）。
 
 在此之后，客户端不会接受具有不同凭据的其他服务器，并且一旦客户端检测到新服务器，则需要手动添加它们的凭据，或者通过单击弹出窗口来操作。
 
-这可以防止其他人访问你想在公共场所备份的文件。
+这样可以防止其他人访问你想在公共场所存放的备份文件。
 
 如果你想让多台服务器能够对一台客户端进行备份，那么你可以有两种选择。
 
-要么，你手动向客户端提供服务器凭据（通过将凭据复制到 `server_idents.txt` 中），要么，通过复制相同的 `server_ident.key` 、 `server_ident_ecdsa409k1.priv` 和 `server_ident_ecdsa409k1.pub` 这三个文件为所有服务器提供相同的凭据。 
+要么，你手动向客户端提供服务器凭据（通过将凭据复制到 `server_idents.txt` 中），要么，通过复制所有服务器上的位于相同服务器上的 `server_ident.key` 、 `server_ident_ecdsa409k1.priv` 和 `server_ident_ecdsa409k1.pub` 这三个文件，来作为客户端访问它们的凭据。 
 
 
 
 ##### 5.4 传输安全
 
-从客户端到服务器的数据传输在本地网络上是未加密的，允许窃听攻击恢复备份数据的内容。
+从客户端到服务器的数据传输在本地网络上是未加密的，允许窃听攻击来恢复备份数据内容。
 
 考虑到这一点，你应该只在受信任的本地网络中使用 `UrBackup` 。
 
-请注意，如果没有采取任何措施来防止这种情况，那么在本地网络中流量被重定向则非常容易。 
+请注意，如果没有采取任何措施来防止这种情况，那么在本地网络中数据流量被重定向则是非常容易的。 
 
 
 
@@ -263,7 +292,7 @@ fastcgi.server = (
 
 ### 小结
 
-本节内容主要向小伙伴们展示了关于使用 `UrBackup` 安全方面的内容。
+本节内容主要向小伙伴们展示了关于 `UrBackup` 使用安全方面的内容。
 
 其中涉及到了服务端与客户端是如何建立连接并安全传输数据，以达到完成设置及正常备份的目的。
 
