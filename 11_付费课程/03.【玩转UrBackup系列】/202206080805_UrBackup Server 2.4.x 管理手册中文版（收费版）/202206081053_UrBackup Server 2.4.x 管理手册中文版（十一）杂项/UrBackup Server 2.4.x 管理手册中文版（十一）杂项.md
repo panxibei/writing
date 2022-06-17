@@ -8,27 +8,45 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 
 
 
- 本节将向小伙伴们阐述 `UrBackup` 杂项的相关内容。 
-
-
-
-#### 11. `UrBackup` 的杂项
+### 11 `UrBackup` 的杂项
 
 ##### 11.1 手动更新 `UrBackup` 客户端
 
-在客户端上使用 `UrBackup` 客户端之前，你应该先对其进行一些测试。
+我们在使用 `UrBackup` 客户端程序之前，应该先对其进行一些测试。
 
-意思是有可能 `UrBackup` 不会自动从 `Internet` 下载最新的客户端版本并进行安装。
+意思是有可能 `UrBackup` 并不会自动地从 `Internet` 下载最新的客户端版本并进行安装。
 
 这就意味着在第 `9.1.8` 节中描述的自动更新被禁用了。
 
 如果禁用了自动更新，你仍然可以从服务器集中更新客户端。
 
-转至 `https://hndl.urbackup.org/Client/` 并将当前客户端更新文件夹中的所有文件下载到 `Linux` 上的  `/var/urbackup` 或 `Windows` 上（默认）的 `C:\Program Files\UrBackupServer\urbackup` 。
+转至网址：
 
-`UrBackup` 将在重新建立连接后推送新版本到客户端。
+> https://hndl.urbackup.org/Client/
 
-如果你启用了静默自动更新，则新版本将静默安装在客户端上，否则将弹出窗口要求用户安装新版本。 
+并将当前系统平台对应的客户端程序在 `update` 文件夹中的所有文件下载到：
+
+`Linux` 上的
+
+```
+/var/urbackup
+```
+
+或 `Windows` 上（默认）的
+
+```
+C:\Program Files\UrBackupServer\urbackup
+```
+
+这些目录中。
+
+图01
+
+
+
+接着 `UrBackup` 将在它们重新建立连接后推送新版本到客户端。
+
+如果你启用了静默自动更新，则新版本将静默安装在客户端上，否则将弹出窗口询问用户是否要安装新版本。 
 
 
 
@@ -36,15 +54,15 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 
 `UrBackup` 通常将所有与备份相关的内容记录到几个日志工具中。
 
-每条日志消息都具有相应的严重程度，即错误、警告、信息或调试。
+每条日志消息都具有相应的严重级别，即 `error` 错误、`warning` 警告、`info` 信息或 `debug` 调试。
 
-每条日志输出都可以根据此严重程度过滤，例如只显示错误。
+每条日志输出都可以根据此严重级别过滤，例如只显示错误。
 
 服务器和客户端都有单独的日志。
 
 在备份过程中，`UrBackup` 服务器尝试将属于某个备份的所有内容记录在客户端特定的日志中，最后将该日志发送给客户端。
 
-这些是你在客户端界面上看到的日志。
+这些就是你在客户端界面上看到的日志。
 
 也可以通过 `Web` 界面的 `日志` 选项卡区域查看相同的日志。
 
@@ -52,11 +70,15 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 
 
 
-无法授权给特定客户端或会导致过多日志流量的所有内容都记录在通用日志文件中。 
+如果没有特别指定某个客户端对应某些日志的话可能会导致产生过多日志流量，因为所有内容将都记录在通用日志文件中。 
 
 服务器的日志文件默认在 `Linux` 上是 `/var/log/urbackup.log` ，在 `Windows` 上则是 `C:\Progam  files\UrBackupServer\urbackup.log` 。
 
 而相应地客户端日志文件默认是 `/var/log/urbackup_client.log` 和 `C:\Progam files\UrBackup\debug.log`。
+
+图02
+
+
 
 默认情况下，这些文件仅包含严重警告或更高级别的日志消息。
 
@@ -64,7 +86,7 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 
 将此文件的 `--loglevel` 的 `warn` 更改为 `debug` 、`info` 或 `error` 以获取一组不同级别的日志消息。
 
-图a01
+图03
 
 
 
@@ -101,7 +123,7 @@ UrBackup Server 2.4.x 管理手册中文版（十一）杂项
 
 ##### 11.4 在 `GNU/Linux` 上挂载（压缩的）`VHD` 文件
 
-如果你使用 `fuse`（用户空间中的文件系统）支持编译 `UrBackup` 或安装了 `Debian/Ubuntu` 软件包，则 `UrBackup` 服务器可以直接挂载 `VHD(Z)` 文件。
+如果你使用 `fuse`（用户态文件系统）支持编译 `UrBackup` 或安装了 `Debian/Ubuntu` 软件包，则 `UrBackup` 服务器可以直接挂载 `VHD(Z)` 文件。
 
 你可以通过配置来编译带有 `fuse` 支持的 `UrBackup` ：
 
@@ -116,9 +138,9 @@ urbackupsrv mount-vhd --file /media/backup/urbackup/testclient/\
 Image_C_140420-1956.vhdz --mountpoint /media/testclient_C
 ```
 
-备份的 `C` 卷中的所有文件将在 `/media/testclient_C` 中有效可读。
+之后 `C` 卷备份中的所有文件将在 `/media/testclient_C` 中有效可读。
 
-卸载由 `UrBackup` 创建的挂载（参见 `mount` 的输出），以停止后台进程。 
+`unmount` 卸载由 `UrBackup` 创建的挂载（参见 `mount` 输出），来停止后台进程。 
 
 
 
@@ -138,13 +160,21 @@ Image_C_140420-1956.vhdz --mountpoint /media/testclient_C
 
 ##### 11.6 解压 `VHD` 文件
 
-考虑使用下一节 `11.7` 中描述的方法来解压 `VHD` 文件。
+可以考虑使用下一节 `11.7` 中描述的方法来解压缩 `VHD` 文件。
 
-如果要在 `Windows` 上挂载 `VHD` 文件并且它们是压缩的（文件扩展名为 `VHDZ`），则需要先解压缩它们。
+如果要在 `Windows` 上挂载 `VHD` 文件而它们是压缩格式的（文件扩展名为 `VHDZ`），则需要先解压缩它们。
 
 使用  `C:\Program Files\UrBackupServer\uncompress_image.bat`  正是为了这个原因。
 
+图04
+
+
+
 调用不带参数的批处理文件将打开一个文件选择窗口，你可以在其中选择要解压缩的 `VHDZ` 文件。
+
+图05
+
+
 
 解压缩完成后，会创建一个膨胀的临时副本并自动重命名。
 
