@@ -260,15 +260,31 @@ urbackupsrv -a /full/path/Image_C_XXXXX.vhdz -a /full/path/Image_SYSVOL_XXXXX.vh
 
 在 `/var/urbackup` 或 `C:\Program Files\UrBackupServer\urbackup`  中创建一个名为 `migrate_storage_to` 的文件，其唯一内容是要将备份迁移至哪里的目标路径。
 
-然后重新启动 `UrBackup` 服务器，迁移进程将会开始。
+图10
+
+
+
+然后重新启动 `UrBackup` 服务器，迁移进程将会自动开始（需要耐心等一会儿）。
 
 你可以在 `Web` 管理界面的 `活动` 页面查看迁移进度。
 
-迁移完成后，将设置中的 `备份存储路径` 更改为新位置或将新的备份存储挂载到老位置。
+一旦迁移完成，在 `migrate_storage_to` 文件相同所在目录中生成一个 `migrate_storage_to.done` 文件以示迁移任务完成。
 
-然后运行第 12.4 节中描述的 `删除未知` 。 
+在下一次迁移开始之前，建议将此文件事先删除。
+
+图11
+
+图12
 
 
+
+迁移完成后，将设置中的 `备份存储路径` 更改为新位置，或将新的备份存储挂载到老位置。
+
+（后半句可以理解为原备份路径不改变的情况下，备份路径依然保持老位置。）
+
+然后运行第 `12.4` 节中描述的 `删除未知` 。 
+
+图13
 
 
 
