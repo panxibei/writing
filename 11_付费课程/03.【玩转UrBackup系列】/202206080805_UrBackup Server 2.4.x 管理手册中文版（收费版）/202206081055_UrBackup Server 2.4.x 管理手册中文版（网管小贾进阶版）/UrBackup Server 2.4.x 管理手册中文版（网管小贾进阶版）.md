@@ -1,16 +1,18 @@
-UrBackup Server 2.4.x 管理手册中文版（网管小贾进阶版）
-
-副标题：UrBackup Server 2.4.x 管理手册中文版（网管小贾进阶版）
-
-英文：
-
-关键字：
 
 
+## `UrBackup Server 2.4.x` 管理手册中文版（网管小贾进阶版）
+
+### Administration Manual for UrBackup Server 2.4.x (Advanced Chinese Version)
+
+**作者：Martin Raiber (February 19, 2018)**
+
+**译者：网管小贾 / sysadm.cc (2022年6月20日)**
 
 
 
-### 0 参考目录
+
+
+## 0 参考目录
 
 * 1 开篇介绍
 * 2 服务器安装
@@ -158,7 +160,7 @@ UrBackup Server 2.4.x 管理手册中文版（网管小贾进阶版）
 
 
 
-### 1 开篇介绍
+## 1 开篇介绍
 
 我从去年（2020年）开始就写过与开源备份软件 `UrBackup` 的相关文章。
 
@@ -252,7 +254,7 @@ UrBackup Server 2.4.x 管理手册中文版（网管小贾进阶版）
 
 
 
-### 2 服务端的安装
+## 2 服务端的安装
 
 通常我们学习一套软件，总会先尝试安装它，然后再通过熟悉它的界面以及配置操作来掌握使用它。
 
@@ -624,7 +626,7 @@ chown urbackup:urbackup /mnt/backups/backups
 
 
 
-### 3 客户端的安装
+## 3 客户端的安装
 
 前一篇我们介绍了 `UrBackup` 服务端的安装，与之相对我们今天要介绍的客户端安装就要简单得多了。
 
@@ -1076,7 +1078,7 @@ if( 'salt' in salt ):
 
 
 
-### 4 `UrBackup` 的架构
+## 4 架构
 
 `UrBackup` 分为服务端和客户端两大部分（ `C/S` 架构）。
 
@@ -1176,7 +1178,7 @@ OK，今天就先到这儿吧，今晚不加班庆祝一下，打工人不再 99
 
 
 
-### 5 安全
+## 5 安全
 
 任何系统都必须充分注重安全方面的问题，`UrBackup` 作为一款基于网络服务的备份解决方案，其安全问题自然也不容忽视。
 
@@ -1466,7 +1468,7 @@ C:\Program Files\UrBackup\pw_change.txt
 
 
 
-### 6 局域网中的客户端发现
+## 6 局域网中的客户端发现
 
 与服务器位于同一局域网中的客户端会自动被服务端发现。
 
@@ -1520,7 +1522,7 @@ C:\Program Files\UrBackup\pw_change.txt
 
 
 
-### 7 备份进程
+## 7 备份进程
 
  本节将详细说明如何执行备份。 
 
@@ -1799,7 +1801,7 @@ D:\Backup\DESKTOP-2OQEQDF\YYMMDD-HHMM
 
 
 
-### 8 广域网客户端
+## 8 广域网客户端
 
 `UrBackup` 官方称之为 `Internet` 客户端，叫作互联网客户端也行，不过个人感觉广域网客户端更加契合。
 
@@ -1907,7 +1909,7 @@ D:\Backup\DESKTOP-2OQEQDF\YYMMDD-HHMM
 
 
 
-### 9 服务器配置
+## 9 服务器配置
 
 `UrBackup` 服务器允许管理员更改多项设置。
 
@@ -2679,7 +2681,7 @@ system-files|user-files
 
 
 
-### 10 恢复备份
+## 10 恢复备份
 
 `UrBackup` 通过创建灾难恢复映像备份来保护整机，以及创建文件备份来保护用户或服务器文件。
 
@@ -2799,7 +2801,7 @@ system-files|user-files
 
 
 
-### 11 `UrBackup` 的杂项
+## 11 `UrBackup` 的杂项
 
 ##### 11.1 手动更新 `UrBackup` 客户端
 
@@ -3089,7 +3091,7 @@ urbackupsrv -a /full/path/Image_C_XXXXX.vhdz -a /full/path/Image_SYSVOL_XXXXX.vh
 
 
 
-### 12 存储
+## 12 存储
 
 `UrBackup` 服务器存储系统被设计为能够尽可能多地保存备份，从而尽可能高效地利用存储分区上的空间。
 
