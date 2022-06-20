@@ -239,7 +239,7 @@ remove_unknown.bat
 
 使用 `btrfs` `UrBackup` 还可以对增量文件备份进行廉价的（就 `CPU` 和内存要求而言）块级重复数据删除。详见 `12.7.2` 。
 
-`UrBackup` 还有一种特殊的写时复制原始映像备份格式，它允许 `永久增量` 风格的映像备份。
+`UrBackup` 还有一种特殊的写时复制原始映像备份格式，它允许 `持续增量备份` 风格的映像备份。
 
 
 
@@ -257,7 +257,7 @@ remove_unknown.bat
 
 `12.7.1` 节详细介绍了如何使用 `ZFS` 构建 `UrBackup` 服务器。
 
-`UrBackup`  还有一种特殊的写时复制原始映像备份格式，它允许在 `ZFS` 上工作的 `永久增量` 风格的映像备份。第 `12.7.1` 节描述了如何设置它。
+`UrBackup`  还有一种特殊的写时复制原始映像备份格式，它允许在 `ZFS` 上工作的 `持续增量备份` 风格的映像备份。第 `12.7.1` 节描述了如何设置它。
 
 
 
@@ -269,7 +269,7 @@ remove_unknown.bat
 
 ###### 12.7.1 `ZFS`
 
-注意：假设 `UrBackup` 在支持 `ZFS` 的 `Linux` 或 `BSD` 等类似 `UNIX` 的系统上运行。
+注意：假设 `UrBackup` 在支持 `ZFS` 的 `Linux` 或 `BSD` 等类 `UNIX` 的系统上运行。
 
 我们将使用所有 `ZFS` 功能，例如压缩、重复数据删除和快照。
 
@@ -289,7 +289,7 @@ remove_unknown.bat
 
 我们现在将在 `/media/BACKUP` 中创建一个备份存储文件系统。
 
-从两个硬盘驱动器创建 `ZFS` 池备份，两者是镜像的。
+利用两个硬盘驱动器创建一个 `ZFS-pool` 备份，两个硬盘驱动器是镜像的。
 
 将相同大小的硬盘放入热插拔硬盘插槽。
 
@@ -301,14 +301,14 @@ zpool create backup mirror /dev/sdb /dev/sdc /dev/sdd cache /dev/sde -m /media/B
 
 启用重复数据删除和压缩。
 
-你不需要设置配额，因为重复数据删除会分割所有内容（这就是我们需要缓存设备的原因）。
+你不需要设置配额，因为重复数据删除会分割整理所有内容（这就是我们需要缓存设备的原因）。
 
 ```
 zfs set dedup=on backup  
 zfs set compression=on backup
 ```
 
-现在我们想实现一个祖父、父亲、儿子或类似的备份方案，我们可以将硬盘放在防火保险箱中。
+现在我们想实现一个祖父、父亲、儿子或类似的备份方案，这样我们就可以将硬盘放在防火保险箱中。
 
 因此，每次我们想要进行异地备份时，我们都会移除热插拔设备并插入一个新设备。
 
@@ -318,19 +318,21 @@ zfs set compression=on backup
 zpool replace backup /dev/sdd /dev/sdd
 ```
 
-或者
+要么运行
 
 ```
 zpool scrub
 ```
 
-你可以使用 `zpool status` 查看重新银化/擦洗的进度。
+你可以使用 `zpool status` 查看 ` re-silvering/scrub ` （重新自检同步/修复） 的进度。
 
-完成后，你就可以将另一个硬盘放在某个地方。
+一旦完成后，你就可以将另一个硬盘放在某个地方。
+
+
 
 现在我们想将备份保存在另一个位置的服务器上。
 
-首先，我们在这个其他位置创建 ZFS 备份池。
+首先，我们在这个其他位置创建 `ZFS` 备份池。
 
 然后我们传输完整的文件系统（ `otherserver` 是对方服务器的主机名）：
 
@@ -353,9 +355,13 @@ ssh -l root otherserver zfs rename backup@last backup@now
 
 你还可以将这些完整和增量 `zfs` 流保存到其他服务器上的文件中，而不是直接保存到 `ZFS` 文件系统中。
 
-使用 `ZFS` 进行写时复制原始映像备份自 `UrBackup 2.1.x` `ZFS` 存储还允许使用写时复制原始映像备份格式。
 
-这种格式没有大小限制，并允许 `永远增量` 风格的映像备份。
+
+**`ZFS` 的写时复制原始映像备份**
+
+自 `UrBackup 2.1.x` 起使用  `ZFS` 存储还允许使用写时复制原始映像备份格式。
+
+这种格式没有大小限制，并允许 `持续增量备份` 风格的映像备份。
 
 `UrBackup` 将每个映像备份放入单独的数据集中，并将映像存储为单个大文件。
 
@@ -371,7 +377,7 @@ ssh -l root otherserver zfs rename backup@last backup@now
 
 `UrBackup` 服务器将从 `/etc/urbackup/dataset` 读取此数据集，并从 `/etc/urbackup/backupfolder` 读取备份存储路径。
 
-通过例如设置 
+比如按如下示例设置： 
 
 ```
 mkdir -p /etc/urbackup  
@@ -385,15 +391,19 @@ echo "/mnt/BACKUP/urbackup" > /etc/urbackup/backupfolder
 urbackup_snapshot_helper test
 ```
 
-然后，你应该能够享受更快的增量文件备份，这些备份使用更少的存储空间和 `永久增量` 风格的映像备份。
+然后，你应该能够享受更快的增量文件备份，这些备份使用更少的存储空间和 `持续增量备份` 风格的映像备份。
 
-其他注意事项：`UrBackup` 使用 `文件打孔` 在增量备份后从映像文件中删除未使用的区域。
+其他注意事项：`UrBackup` 使用 `file hole punching` （文件打孔）在增量备份后从映像文件中删除未使用的区域。
 
 `FreeBSD` 当前不支持此功能，因此在  `FreeBSD` 上进行增量映像备份后，它将无法删除那些未使用的区域。
 
-但是，它将它们设置为零，因此如果启用 `ZFS`  压缩，未使用的区域将不会占用太多空间。
+但是取而代之的是，它将这些未使用区域设置为零，因此如果启用 `ZFS`  压缩，未使用的区域将不会占用太多空间。
 
-使用 `ZFS` 进行写时复制文件备份同样，`UrBackup` 支持使用 `ZFS` 进行写时复制文件备份。
+
+
+**`ZFS` 的写时复制文件备份**
+
+同样，`UrBackup` 支持使用 `ZFS` 进行写时复制文件备份。
 
 方法与下一节中 `btrfs` 的方法相同，但前提是不能像在 `btrfs` 中那样在 `ZFS` 数据集之间重新链接相同的文件，因为 `ZFS` 缺少 `reflink` 功能。
 
@@ -411,7 +421,7 @@ echo "tank/files" > /etc/urbackup/dataset_file
 
 `Btrfs` 是用于 `Linux` 的高级文件系统，能够创建子卷的写时副本快照。
 
-要使 `UrBackup` 能够使用快照机制，`Linux` 内核必须至少为 `3.6` 。
+要使 `UrBackup` 能够使用快照机制，`Linux` 内核版本必须至少为 `3.6` 。
 
 
 
@@ -429,13 +439,15 @@ echo "tank/files" > /etc/urbackup/dataset_file
 
 使用 `btrfs` 还允许 `UrBackup` 以仅存储文件中更改的数据的方式备份在增量备份之间更改的文件。
 
-这大大减少了备份所需的存储量，尤其是对于大型数据库文件（例如 `Outlook`  存档文件）。上一节 ( `12.7.1` ) 中的 `ZFS` 重复数据删除节省了更多存储空间，但代价是读写性能大幅下降以及 `CPU` 和内存要求高。
+这大大减少了备份所需的存储量，尤其是对于大型数据库文件（例如 `Outlook`  存档文件）。
+
+上一节 ( `12.7.1` ) 中的 `ZFS` 重复数据删除节省了更多存储空间，但代价是读写性能大幅下降以及 `CPU` 和内存要求高。
 
 
 
 使用 `btrfs` `UrBackup` 还可以使用特殊的原始映像文件格式。
 
-这种格式没有大小限制，并允许 `永久增量` 风格的映像备份。
+这种格式没有大小限制，并允许 `持续增量备份` 风格的映像备份。
 
 `UrBackup` 将每个映像备份放入单独的子卷中，并将映像存储为单个大文件。
 
@@ -453,14 +465,14 @@ echo "tank/files" > /etc/urbackup/dataset_file
 
 此路径从 `/etc/urbackup/backupfolder` 中读取。
 
-因此，如果  `/media/backup/urbackup` 是 `UrBackup` 保存路径的文件夹，则以下命令将正确创建此文件： 
+因此，如果 `/media/backup/urbackup` 是 `UrBackup` 保存路径的文件夹，则以下命令将正确创建此文件： 
 
 ```
 mkdir /etc/urbackup  
 echo "/media/backup/urbackup" > /etc/urbackup/backupfolder
 ```
 
- 然后，你可以通过运行测试 `UrBackup` 是否会使用 `btrfs` 功能。
+ 然后，你可以通过运行测试 `UrBackup` 是否会启用 `btrfs` 功能。
 
 ```
 urbackup_snapshot_helper test
@@ -468,7 +480,7 @@ urbackup_snapshot_helper test
 
 如果测试失败，你需要检查内核是否足够新，以及备份文件夹是否位于 `btrfs` 卷上。
 
-然后，你应该能够享受更快的增量文件备份，这些备份使用更少的存储空间和 `永久增量` 风格的映像备份。 
+然后，你应该能够享受更快的增量文件备份，这些备份使用更少的存储空间和 `持续增量备份` 风格的映像备份。 
 
 
 
