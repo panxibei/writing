@@ -91,9 +91,11 @@ OK，来看看中文版管理手册的部分截图。
 
 
 
-下载链接：
+**UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）.7z (10.3M)**
 
-提取码：
+下载链接：https://pan.baidu.com/s/1xT6Hb_3PSDrXDZG1GW9q1Q
+
+提取码：ivx8
 
 手册密码：sysadm.cc
 
