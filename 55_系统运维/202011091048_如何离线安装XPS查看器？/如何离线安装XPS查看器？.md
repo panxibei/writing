@@ -190,29 +190,47 @@ Xps-Viewer-Win10_1909.7z
 
 Xps-Viewer-Win10_LTSC.7z
 
+Xps-Viewer-Win10_21H2.7z（New!)
+
+
+
+**Xps-Viewer-Win10_21H2.7z**
+
+下载链接：https://pan.baidu.com/s/11BtsOK6mnRXtQWZ_XRM9Lg
+
+提取码：faz3
+
 
 
 **Xps-Viewer-Win10_2004.7z**
 
-下载链接：https://www.90pan.com/b2153339
+下载链接：https://pan.baidu.com/s/12mFWsCwM19AvC8bgNarcMw 
 
-提取码：71b9
+提取码：z9ms
+
+解压密码：www.sysadm.cc 
 
 
 
 **Xps-Viewer-Win10_1909.7z**
 
-下载链接：https://www.90pan.com/b2279678
+下载链接：https://pan.baidu.com/s/17CfxgPo2EujxFgzrR4QNIw 
 
-提取码：aby9
+提取码：d6q9
 
 
 
 **Xps-Viewer-Win10_LTSC.7z**
 
-下载链接：https://www.90pan.com/b2279679
+下载链接：https://pan.baidu.com/s/1qSv4x-uEJ3jc23PHuIEZfg 
 
-提取码：7r3b
+提取码：aaf1
+
+
+
+
+
+
 
 
 
