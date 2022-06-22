@@ -2,7 +2,7 @@ UrBackup Server 2.4.x 管理手册中文版（十二）存储
 
 副标题：存储~
 
-英文：administration-manual-for-urbackup-server-11
+英文：administration-manual-for-urbackup-server-12
 
 关键字：administration,manual,urbackup,backup,server,client,architecture
 
