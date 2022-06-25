@@ -224,7 +224,7 @@ UrBackup Server 2.4.x 管理手册中文版（三）安装客户端
 
 从以下链接中获取 `Python` 脚本，并将脚本放在服务端可被客户端访问的 URL 链接中。
 
- https://urbackup.atlassian.net/wiki/display/US/Download+custom+client+installer+via+Python 
+> https://urbackup.atlassian.net/wiki/display/US/Download+custom+client+installer+via+Python 
 
 
 
