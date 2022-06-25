@@ -1,6 +1,10 @@
-如何用 UrBackup 备份 MySQL
+使用 UrBackup 备份和恢复 MySQL 和 MariaDB
 
-副标题：官网说明太简单，我来踩踩坑~
+副标题：使用 UrBackup 备份和恢复 MySQL 和 MariaDB
+
+英文：backup-and-restore-mysql-and-mariadb-with-urbackup
+
+关键字：urbackup,mysql,mariadb,database,backup,restore,备份,恢复,数据库,linux,windows
 
 
 
