@@ -60,3 +60,47 @@ sudo systemctl enable postgresql-12
 sudo systemctl start postgresql-12
 ```
 
+
+
+
+
+查看 `UrBackup` 客户端是否正常运行。
+
+图c01
+
+
+
+再查看一下 `sqldump` 所涉及的脚本文件。
+
+```
+/usr/local/etc/urbackup/postgresqldump.conf
+```
+
+图c02
+
+
+
+我们将它复制一份新文件出来，然后在新文件上修改，新文件名称随意，只要能看懂是给哪个 `PgSQL` 系统用的就行。
+
+```
+cp postgresqldump.conf postgresqldump-sysadmcc.conf
+```
+
+然后打开文件将其中的内容参数修改一下。
+
+```
+vim postgresqldump-sysadmcc.conf
+```
+
+
+
+开启 `sqldump` 备份。
+
+```
+POSTGRESQL_DUMP_ENABLED=1
+```
+
+图c03
+
+
+
