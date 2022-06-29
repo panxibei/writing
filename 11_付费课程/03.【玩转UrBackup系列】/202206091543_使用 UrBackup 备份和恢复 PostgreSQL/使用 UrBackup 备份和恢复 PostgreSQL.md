@@ -443,6 +443,16 @@ wal_level = replica
 
 
 
+修改脚本文件 `postgresbase` ，将其中的 `pg_basebackup` 命令补全路径。
+
+```
+/usr/bin/pg_basebackup
+```
+
+图e15
+
+
+
 以上设定完毕后重启 `PostgreSQL` ，然后使用以下命令测试完全备份是否工作正常。
 
 ```
@@ -572,7 +582,7 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 
 
 
-**恢复方法：**
+**恢复方法（暂未验证）：**
 
 首先通过以下命令行恢复基本备份。
 
@@ -582,7 +592,7 @@ urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
 
 
 
- 然后将最新的一组 WAL 文件复制到数据库服务器并按照恢复小节 `25.3.4` 的说明
+然后将最新的一组 `WAL` 文件复制到数据库服务器并按照恢复小节 `25.3.4` 的说明
 
 此处以 `PostgreSQL 12` 版本为例，其他版本的章节数有些许出入。
 
