@@ -554,7 +554,25 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 
 
 
-恢复方法：
+备份成功应该是这个样子的。
+
+图e14
+
+图e13
+
+
+
+最后请注意，这里也有一个坑。
+
+和前面类似的，`psql` 命令也需要补全路径，否则也会出现找不到命令的奇葩错误。
+
+图e11
+
+图e12
+
+
+
+**恢复方法：**
 
 首先通过以下命令行恢复基本备份。
 
@@ -576,6 +594,8 @@ urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
 // 使用连续存档备份进行恢复
 25.3.4. Recovering Using a Continuous Archive Backup
 ```
+
+
 
 
 
