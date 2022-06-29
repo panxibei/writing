@@ -387,6 +387,228 @@ PS：如果你在测试过程中遇到错误或失败，那么仔细对照前面
 
 
 
+### 专业却有些复杂的方法，不用快照和日志传输的二进制备份
+
+
+
+找到以下路径，编辑 `postgresbase.conf` 文件，将开关打开。
+
+```
+/usr/local/etc/urbackup/postgresbase.conf
+```
+
+图e01
+
+
+
+添加一个虚拟客户端，用于本地复制。
+
+```
+urbackupclientctl set-settings -v virtual_clients -k wal
+```
+
+图e03
+
+
+
+确保 `postgres` 用户可以建立本地复制连接，我们需要在 `pg_hba.conf` 文件中开放本地复制连接。
+
+```
+local	replication	postgres	peer
+```
+
+图e02
+
+
+
+接下来在 `postgresql.conf` 文件中设定以下两个参数。
+
+```
+# 预定式日志，最大发送进程数量，大于0即可
+max_wal_senders = 10
+```
+
+图e04
+
+
+
+```
+# 预写式日志级别，minimal、replica 或 logical
+wal_level = replica
+```
+
+此参数值与官网描述有出入，应该以配置文件描述为准。
+
+图e05
+
+
+
+以上设定完毕后重启 `PostgreSQL` ，然后使用以下命令测试完全备份是否工作正常。
+
+```
+/usr/local/share/urbackup/scripts/postgresbase > /dev/null
+```
+
+图e06
+
+
+
+如果你不想进行连续的 `WAL` 备份，那么可以到此为止了。
+
+要是想经常将 `WAL` 数据备份到备份服务器，则必须配置 `PostgreSQL` ，以便将 `WAL` 数据复制到某处，然后在 `WAL` 备份完成后将其删除。
+
+若要配置 `PostgreSQL` ，将 `WAL` 文件归档到某个目录中，则应该将 `archive_mode` 参数打开。
+
+```
+archive_mode = on
+```
+
+并且将以下代码写入 `archive_command` 中。
+
+```
+archive_command = 'cp %p /var/lib/walarchive/incoming/%f; mv /var/lib/walarchive/incoming/%f /var/lib/walarchive/staging/%f'
+```
+
+图e07
+
+
+
+命令有了，相应的归档目录也要建立。
+
+```
+mkdir -p /var/lib/walarchive/{incoming,staging,backup}
+chown postgres:postgres /var/lib/walarchive/{incoming,staging,backup}
+```
+
+图e08
+
+
+
+ 配置要备份的 `WAL` 归档。
+
+```
+urbackupclientctl add-backupdir --keep -d /var/lib/walarchive/backup -v wal
+```
+
+图e09
+
+
+
+添加备份前置脚本。
+
+```
+vim /usr/local/etc/urbackup/prefilebackup
+```
+
+代码如下：
+
+```
+#!/bin/bash
+set -e
+exists() { [[ -e $1 ]]; }
+# Argument three not null means virtual client
+if [ $3 != 0 ] && exists /var/lib/walarchive/staging/*
+then
+	mv /var/lib/walarchive/staging/* /var/lib/walarchive/backup/
+fi
+```
+
+
+
+添加备份后置脚本。
+
+```
+/usr/local/etc/urbackup/postfilebackup
+```
+
+代码如下：
+
+```
+#!/bin/bash
+set -e
+exists() { [[ -e $1 ]]; }
+# Argument one null means main client
+if [ $1 = 0 ]
+then
+	urbackupclientctl reset-keep -v wal
+elif exists /var/lib/walarchive/backup/*
+then
+	rm /var/lib/walarchive/backup/*
+fi
+```
+
+
+
+千万不要忘记给脚本赋予可执行权限。
+
+```
+chmod +x /usr/local/etc/urbackup/prefilebackup
+chmod +x /usr/local/etc/urbackup/postfilebackup
+```
+
+图e10
+
+
+
+然后将 `WAL` 备份间隔配置为相对较小，将含有基础备份脚本的主客户端的备份间隔配置为相对较大，并通过备份窗口将其计划安排在不干扰数据库正常使用的时间范围内。
+
+
+
+恢复方法：
+
+首先通过以下命令行恢复基本备份。
+
+```
+urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
+```
+
+
+
+ 然后将最新的一组 WAL 文件复制到数据库服务器并按照恢复小节 `25.3.4` 的说明
+
+此处以 `PostgreSQL 12` 版本为例，其他版本的章节数有些许出入。
+
+具体请参考官方链接。
+
+> https://www.postgresql.org/docs/12/continuous-archiving.html
+
+```
+// 使用连续存档备份进行恢复
+25.3.4. Recovering Using a Continuous Archive Backup
+```
+
+
+
+
+
+
+
+
+
+优点： 
+
+- UrBackup 仅传输更改的数据 
+- 在更频繁的备份期间不会读取完整的数据库 
+- 如果网络很快，则可以快速恢复，因为备份中包含索引 
+- 数据库没有变慢。  备份被适当地限制，这样它就不会过多地干扰数据库的使用 
+
+缺点： 
+
+- 难以设置 
+- 可能比使用快照的备份稍慢 
+- 更难恢复 
+- 目前仅针对 Linux 实现和记录 
+
+*结论：* 高流量和大型 PostgreSQL 实例的最佳方法。 
+
+
+
+
+
+
+
+
+
 
 
 
