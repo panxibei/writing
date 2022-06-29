@@ -248,6 +248,8 @@ su postgres -c "pg_dumpall"
 su postgres -c "/usr/bin/pg_dumpall"
 ```
 
+敲黑板：如果你有多个不同的 `sqldump` 脚本，那么不管这些脚本有没有被启用，都请务必将这些脚本中的 `pg_dumpall` 路径补齐。
+
 图d05
 
 
@@ -277,6 +279,27 @@ psql -f postgresqldump.sql postgres
 ```
 
 
+
+不过在恢复过程中有可能遭遇如下错误：
+
+```
+psql: FATAL: role "root" does not exist
+```
+
+这是由于 `PostgreSQL` 默认不让使用 `root` 用户来直接操作。
+
+折中的解决办法就是给一个 `root` 用户，并赋予相应权限。
+
+```
+// 切换到 postgres 用户
+root# su - postgres
+
+// 登录到 PostgreSQL
+postgres$ psql -U postgres
+
+// 创建 root 用户，这个 root 用户是指 pgsql 中的
+postgres=# create user root superuser;
+```
 
 
 
