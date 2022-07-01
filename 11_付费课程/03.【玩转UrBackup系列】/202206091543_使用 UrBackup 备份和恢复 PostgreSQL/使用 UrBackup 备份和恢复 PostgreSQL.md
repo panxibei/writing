@@ -352,6 +352,10 @@ PS：如果你在测试过程中遇到错误或失败，那么仔细对照前面
 
 原因很简单，`Windows` 就文件系统来说已经支持快照备份功能了，这个我们可以通过阅读 `UrBackup` 管理手册了解。
 
+图v01
+
+
+
 那么这个方法有哪些优缺点呢？
 
 
@@ -569,6 +573,55 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 图e14
 
 图e13
+
+
+
+日志记录备份成功。
+
+图v02
+
+图v03
+
+
+
+修改由服务端确认恢复。
+
+```
+/etc/sysconfig/urbackupclient
+```
+
+由
+
+```
+RESTORE=disabled
+```
+
+修改为
+
+```
+RESTORE=server-confirms
+```
+
+
+
+注意注意！不能直接恢复！
+
+直接恢复可能导致原数据库启动失败。
+
+经过我的测试，究其原因应该是恢复程序是以 `root` 用户恢复数据，导致 `PostgreSQL` 的相关目录所有者变成了 `root` ，因此导致服务启动失败。
+
+最好是先停止服务，再恢复数据，最后恢复所有者为 `postgres` ，并恢复原有权限。
+
+```
+chown -R postgres:postgres /var/lib/pgsql/12/data/
+chomd -R 700 /var/lib/pgsql/12
+```
+
+
+
+
+
+
 
 
 
