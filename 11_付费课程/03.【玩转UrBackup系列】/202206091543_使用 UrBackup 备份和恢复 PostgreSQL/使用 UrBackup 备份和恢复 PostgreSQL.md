@@ -12,9 +12,19 @@
 
 
 
+### 测试环境
+
+操作系统：`Rocky Linux 8.6`
+
+数据库：`PostgreSQL 12`
+
+备份服务端：`UrBackup Server 2.4.14`
+
+备份客户端：`UrBackup Client 2.4.11`
 
 
-安装 `PostgreSQL` 
+
+### 安装 `PostgreSQL` 
 
 我们选择版本 `12` 来做为测试对象。
 
@@ -412,7 +422,11 @@ PS：如果你在测试过程中遇到错误或失败，那么仔细对照前面
 找到以下路径，编辑 `postgresbase.conf` 文件，将开关打开。
 
 ```
-/usr/local/etc/urbackup/postgresbase.conf
+vim /usr/local/etc/urbackup/postgresbase.conf
+```
+
+```
+POSTGRESQL_BASE_ENABLED=1
 ```
 
 图e01
@@ -570,29 +584,45 @@ systemctl status postgresql-12
 
 在 `postgresbase` 基本备份的基础上，利用虚拟子客户端来同时备份 `WAL` 日志。
 
-关于 `UrBackup` 的虚拟子客户端，通常是形如 `主机名[虚拟子名称]` 这种，在主机后面加个中括号，中括号里再放上虚拟子系统名称，比如 `[DE]
+关于 `UrBackup` 的虚拟子客户端，通常是形如 `主机名[虚拟子名称]` 这种，在主机后面加个中括号，中括号里再放上虚拟子系统名称，比如 `DESKTOP-XXXX[wal]` 。
+
+关于虚拟子客户端的详细介绍，可以参考查阅官方手册（我有中文版的手册）。
 
 
+
+官网方法步骤如下：
 
 找到以下路径，编辑 `postgresbase.conf` 文件，将开关打开。
 
-这和前面的操作是一样的，这就是基础备份。
+这和前面的操作是一样的，就是开启基础备份。
 
 ```
-/usr/local/etc/urbackup/postgresbase.conf
+vim /usr/local/etc/urbackup/postgresbase.conf
+```
+
+```
+POSTGRESQL_BASE_ENABLED=1
 ```
 
 图e01
 
 
 
-添加一个虚拟客户端，用于本地复制。
+添加一个虚拟子客户端，名称为 `wal` ，用于本地复制。
 
 ```
-urbackupclientctl set-settings -v virtual_clients -k wal
+urbackupclientctl set-settings -k virtual_clients -v wal
 ```
+
+注意，此处命令拼写官方有误！
 
 图e03
+
+
+
+经过我多次测试，这条命令并不好用，我是从服务端手动设定客户端添加一个虚拟子客户端的。
+
+图v08
 
 
 
@@ -602,6 +632,8 @@ urbackupclientctl set-settings -v virtual_clients -k wal
 local	replication	postgres	peer
 ```
 
+似乎默认就是允许本地复制的。
+
 图e02
 
 
@@ -609,7 +641,7 @@ local	replication	postgres	peer
 接下来在 `postgresql.conf` 文件中设定以下两个参数。
 
 ```
-# 预定式日志，最大发送进程数量，大于0即可
+# 预写式日志，最大发送进程数量，大于0即可
 max_wal_senders = 10
 ```
 
@@ -622,7 +654,7 @@ max_wal_senders = 10
 wal_level = replica
 ```
 
-此参数值与官网描述有出入，应该以配置文件描述为准。
+此参数值与官网描述有出入，可能是 `PostgreSQL` 版本不同的原因，应该以当前配置文件描述为准。
 
 图e05
 
@@ -631,7 +663,19 @@ wal_level = replica
 修改脚本文件 `postgresbase` ，将其中的 `pg_basebackup` 命令补全路径。
 
 ```
-/usr/bin/pg_basebackup
+vim /usr/local/share/urbackup/scripts/postgresbase
+```
+
+将
+
+```
+su postgres -c "cd ~; pg_basebackup --format=tar -X fetch -D -"
+```
+
+修改为
+
+```
+su postgres -c "cd ~; /usr/bin/pg_basebackup --format=tar -X fetch -D -"
 ```
 
 图e15
@@ -655,10 +699,14 @@ wal_level = replica
 若要配置 `PostgreSQL` ，将 `WAL` 文件归档到某个目录中，则应该将 `archive_mode` 参数打开。
 
 ```
+vim /var/lib/pgsql/12/data/postgresql.conf
+```
+
+```
 archive_mode = on
 ```
 
-并且将以下代码写入 `archive_command` 中。
+并且将以下归档命令代码写入 `archive_command` 中。
 
 ```
 archive_command = 'cp %p /var/lib/walarchive/incoming/%f; mv /var/lib/walarchive/incoming/%f /var/lib/walarchive/staging/%f'
@@ -689,6 +737,14 @@ urbackupclientctl add-backupdir --keep -d /var/lib/walarchive/backup -v wal
 
 
 
+可以通过以下命令查看备份目录。
+
+```
+urbackupclientctl list-backupdirs
+```
+
+
+
 添加备份前置脚本。
 
 ```
@@ -702,7 +758,7 @@ vim /usr/local/etc/urbackup/prefilebackup
 set -e
 exists() { [[ -e $1 ]]; }
 # Argument three not null means virtual client
-if [ $3 != 0 ] && exists /var/lib/walarchive/staging/*
+if [ "$3" != 0 ] && exists /var/lib/walarchive/staging/*
 then
 	mv /var/lib/walarchive/staging/* /var/lib/walarchive/backup/
 fi
@@ -745,25 +801,31 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 
 
 
-然后将 `WAL` 备份间隔配置为相对较小，将含有基础备份脚本的主客户端的备份间隔配置为相对较大，并通过备份窗口将其计划安排在不干扰数据库正常使用的时间范围内。
+然后将 `WAL` 备份间隔配置为相对较小，将含有基本备份脚本的主客户端的备份间隔配置为相对较大，并通过备份窗口将其计划安排在不干扰数据库正常使用的时间范围内。
+
+这是官网的原话翻译，一开始理解起来有些困难，实际上它是在说，将 `wal` 虚拟子客户端的备份周期设定得相对密集一些，同时将 `postgresqlbase` 基本备份周期设定得相对稀松一些，这样可以最大限度地保证备份的有效性。
+
+
+
+前面看上去一大堆的设定是超级复杂，实际上官方已经给我们准备好了一个设置脚本程序。
+
+```
+/usr/local/share/urbackup/scripts/setup-postgresbackup
+```
+
+图v10
+
+
+
+直接执行这个设置脚本程序，就可以很方便地跑完前面的所有设定。
+
+图v11
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-**恢复方法（暂未验证）：**
+##### 官网超级复杂的恢复方法（暂未验证成功）
 
 首先通过以下命令行恢复基本备份。
 
@@ -771,9 +833,17 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
 ```
 
+这个似乎存在错误，因为通过 `restore-start` 来恢复备份是需要事先存在本机上的备份目录和备份文件的。
+
+然而我们之前所做的一切都没有在本机上产生备份目录和文件，至少 `postgresqlbase` 的基本备份并不在本机上。
+
+即使你将备份拷贝到了客户端本机上，那么由于无法确认备份目录及备份令牌而导致无法识别备份。
+
+图v09
 
 
-然后将最新的一组 `WAL` 文件复制到数据库服务器并按照恢复小节 `25.3.4` 的说明
+
+然后将最新的一组 `WAL` 文件复制到数据库服务器并按照 `PostgreSQL` 官方手册中恢复小节 `25.3.4` 的说明操作。
 
 此处以 `PostgreSQL 12` 版本为例，其他版本的章节数有些许出入。
 
