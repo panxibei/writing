@@ -4,7 +4,7 @@
 
 英文：backup-and-restore-mysql-and-mariadb-with-urbackup
 
-关键字：urbackup,mysql,mariadb,database,backup,restore,备份,恢复,数据库,linux,windows,sqldump,xtrabackup,percona
+关键字：urbackup,mysql,mariadb,database,backup,restore,备份,恢复,数据库,linux,windows,sqldump,xtrabackup,percona,sql
 
 
 
