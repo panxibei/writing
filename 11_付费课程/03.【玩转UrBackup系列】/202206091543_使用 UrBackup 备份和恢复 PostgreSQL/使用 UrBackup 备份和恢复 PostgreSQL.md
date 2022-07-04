@@ -612,12 +612,56 @@ RESTORE=server-confirms
 
 最好是先停止服务，再恢复数据，最后恢复所有者为 `postgres` ，并恢复原有权限。
 
+具体步骤：
+
+**1、停止 `PostgreSQL` 服务。**
+
+```
+systemctl stop postgresql-12
+```
+
+
+
+**2、将备份恢复覆盖到原位置，有两种办法。**
+
+一种是从服务端直接恢复备份。
+
+图v05
+
+
+
+不过这种方法有缺陷，涉及到权限或拥有者设定就会出错。
+
+图v06
+
+
+
+另一种方法就是直接将备份以 `ZIP` 格式下载下来，然后手动恢复到 `PostgreSQL` 服务主机上。
+
+```
+unzip yymmdd-HHMM.zip
+cp -rf urbackup_backup_scripts/postgresbase/* /var/lib/pgsql/12/data/
+```
+
+图v07
+
+
+
+**3、恢复目录拥有者和权限。**
+
 ```
 chown -R postgres:postgres /var/lib/pgsql/12/data/
-chomd -R 700 /var/lib/pgsql/12
+chmod -R 700 /var/lib/pgsql/12
 ```
 
 
+
+**4、启动 `PostgreSQL` 服务，测试系统是否正常可用。**
+
+```
+systemctl start postgresql-12
+systemctl status postgresql-12
+```
 
 
 
