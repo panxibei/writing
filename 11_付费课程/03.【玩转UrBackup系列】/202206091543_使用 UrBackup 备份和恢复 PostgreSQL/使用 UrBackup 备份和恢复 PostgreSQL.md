@@ -843,7 +843,15 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 
 直接执行这个设置脚本程序，就可以很方便地跑完前面的所有设定。
 
+（当然，要注意修正备份前后脚本中的部分代码哦！）
+
 图41
+
+
+
+最后我们应该能看到有至少两个备份客户端，一个是主客户端，用来完成基本备份，另一个则是 `wal` 备份。
+
+图42
 
 
 
@@ -853,7 +861,7 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 
 如图，只要前面所设定的步骤无误，那么 `UrBackup` 在经过多次备份后就会在 `Backup` 目录中生成 `wal` 日志备份。
 
-图42
+图43
 
 
 
@@ -863,7 +871,7 @@ chmod +x /usr/local/etc/urbackup/postfilebackup
 urbackupclientctl browse
 ```
 
-图43
+图44
 
 
 
@@ -879,7 +887,7 @@ urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
 
 `-b last` 参数是指最后备份编号，当然你知道编号 `id` 也可以指定具体编号来恢复。
 
-图44
+图45
 
 
 
@@ -887,7 +895,7 @@ urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
 
 当然你可以将 `wal` 备份时间间隔调得足够小，那样会更容易生成备份。
 
-图45
+图46
 
 
 
@@ -918,7 +926,7 @@ systemctl stop postgresql-12
 
 
 
-**2、按官网描述恢复基本备，当然可以自行指定备份编号（前面说过的）。**
+**2、按官网描述恢复基本备份，当然可以自行指定备份编号（前面说过的）。**
 
 ```
 // 查看备份内容
@@ -927,6 +935,16 @@ urbackupclientctl browse
 // 恢复基本备份
 urbackupclientctl restore-start -b last -d urbackup_backup_scripts/postgresbase
 ```
+
+服务端出现恢复错误，其实是正常现象，究其原因是 `UrBackup` 使用 `root` 用户进行恢复，而导致无法正确修正 `PostgreSQL` 的文件权限。
+
+图47
+
+
+
+那么有错误难道不管了吗？
+
+别着急，接下来后面会修正错误的。
 
 
 
