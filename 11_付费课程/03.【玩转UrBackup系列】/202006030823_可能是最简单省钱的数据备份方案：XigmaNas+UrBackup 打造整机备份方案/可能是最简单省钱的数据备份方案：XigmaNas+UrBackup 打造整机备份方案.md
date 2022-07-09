@@ -2,9 +2,9 @@
 
 副标题：小白们的数据终于有保障啦~
 
-英文：
+英文：xigmanas-plus-urbackup-create-a-solution-of-pc-image-backups
 
-关键字：
+关键字：xigmanas,nas,urbackup,image,backup
 
 
 
