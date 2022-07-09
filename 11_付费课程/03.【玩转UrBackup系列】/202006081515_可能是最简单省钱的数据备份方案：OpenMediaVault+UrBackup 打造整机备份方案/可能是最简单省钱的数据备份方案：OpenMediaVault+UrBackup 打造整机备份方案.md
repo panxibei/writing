@@ -1,22 +1,26 @@
-OpenMediaVault+UrBackup打造个人整机备份方案
+可能是最简单省钱的数据备份方案：OpenMediaVault+UrBackup 打造整机备份方案
 
 副标题：专为小白打造的家庭数据备份方案~
 
+英文：openmediavault-plus-urbackup-create-a-solution-of-pc-image-backups
+
+关键字：openmediavault,omv,nas,urbackup,image,backup,备份
 
 
-在此之前，我们有分享过关于 `XigmaNas` + `UrBackup` 来实现个人整机备份的方案。
 
->  原文链接：《XigmaNas+UrBackup打造个人整机备份方案》
+在此之前，我们有分享过关于 `XigmaNAS` + `UrBackup` 来实现整机备份的方案。
 
-不过有小伙伴说了，`XigmaNas` 比较专业，企业场景下使用得较多，我更多地喜欢用 `OpenMediaVault` ，能不能实现与 `UrBackup` 一起搭档组合呢？
+>  原文链接：《可能是最简单省钱的数据备份方案：XigmaNAS+UrBackup 打造整机备份方案》
+
+不过有小伙伴说了，`XigmaNAS` 比较专业，企业场景下使用得较多，我更多地喜欢用 `OpenMediaVault` ，能不能实现与 `UrBackup` 一起搭档组合呢？
 
 从官网的文档上看，`UrBackup` 优点就是多平台上都可以运行，其中当然也包括 `OpenMediaVault` 了。
 
-那么具体如何实现呢，让我们把舞台交给 `OpenMediaVault` 吧~
+那么具体如何实现呢，让我们把舞台交给 `OpenMediaVault` 吧！
 
 
 
-`OpenMediaVault` （简称OMV）是基于 `Debian GNU/Linux` 的 `NAS` 解决方案。
+`OpenMediaVault` （简称 `OMV` ）是基于 `Debian GNU/Linux` 的 `NAS` 解决方案。
 
 用的人那是相当得多，特别适合家庭或小型办公场景，简单易用，无所不能。
 
@@ -34,7 +38,7 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 如果你看到本文后面的内容而无法理解（王宝强式的疑问，这些都是个啥啥啥......）的话，强烈建议你赶快去学习了解一下哈！
 
-原因很扎心，因为要在OMV上实现运行 `UrBackup` 备份程序，是要用到 `Docker` 的。
+原因很扎心，因为要在 `OMV` 上实现运行 `UrBackup` 备份程序，是要用到 `Docker` 的。
 
 
 
@@ -42,15 +46,11 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 放心吧，我已经整理好了，保证你能搞定啦，咱们先来个概览：
 
-> 1、安装 `OMV`
->
-> 2、安装 `OMV-Extras`
->
-> 3、安装 `Docker` 和 `Portiner`
->
-> 4、拉取 `UrBackup` 镜像
->
-> 5、创建并运行 `UrBackup` 容器
+1. 安装 `OMV`
+2. 安装 `OMV-Extras`
+3. 安装 `Docker` 和 `Portainer`
+4. 拉取 `UrBackup` 镜像
+5. 创建并运行 `UrBackup` 容器
 
 
 
@@ -60,15 +60,27 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 #### 一、安装 `OMV`
 
-安装OMV有很多教程，而安装起来是超级简单，连分区的步骤都不用操心，但记得要保证网络通畅。
+安装 `OMV` 有很多教程，而安装起来是超级简单，连分区的步骤都不用操心，但记得要保证网络通畅。
 
 我这里安装的是最新版本 `openmediavault_5.3.9-amd64.iso` 。
 
-`Sourceforge` 下载巨慢，我下载好了放在网盘里，点击 这里 下载为你节省时间。（提取码：）
+`Sourceforge` 下载巨慢，我下载好了放在网盘里，不过现在链接失效了，有需要的小伙伴可以联系我。
 
 `SHA256: c22a5abde6547d54f71d56ecca494175b8a23f8931a319523bc6e1a524fb1d17`
 
-后续安装，此处省略一万字.......
+后续安装，如果使用的是新版比如 `6.x` 版本，那么用以下两个（任意一个）命令行也可在线安装。
+
+此命令包含 `OMV` 、 `OMV-Extras` 和 `Flashmemory` 。
+
+```
+sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+```
+
+```
+sudo curl -sSL https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+```
+
+具体内容请参考官网说明，此处省略一万字.......
 
 
 
@@ -78,7 +90,7 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 在浏览器的地址栏中输入 `https://www.omv-extras.org` ，打开如下页面。
 
-图1
+图01
 
 
 
@@ -86,9 +98,9 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 按照顺序 `usul` > `openmediavault-omvextrasorg` > `pool` > `main` > `o` > `openmediavault-omvextrasorg` 一路点击打开，最后找到 `openmediavalut-omvextrasorg_5.5.5_all.deb` 一项点击下载。
 
-节省时间，备用下载地址：openmediavalut-omvextrasorg_5.5.5_all.deb
+有需要的小伙伴可以联系我，文件名为 `openmediavalut-omvextrasorg_5.5.5_all.deb`
 
-图2
+图02
 
 
 
@@ -96,15 +108,15 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 上传好后，还要点击 `安装` 才能真正地开始安装。
 
-图3
+图03
 
 
 
-#### 三、安装 `Docker` 和 `Portiner`
+#### 三、安装 `Docker` 和 `Portainer`
 
 `OMV-Extras` 安装好后，页面自动刷新，在左侧导航栏你会看到新增了一项 `OMV-Extras` ，赶快点它。
 
-图4
+图04
 
 
 
@@ -114,15 +126,15 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 安装需要联网，可能由于下载安装包比较大，有时会安装失败，要多试几次。
 
-图5
+图05
 
-图6
+图06
 
 
 
 可能有小伙伴又举手提问了，不是用 `Docker` 吗，怎么又冒出来一个 `Portainer` ，它是什么东东？
 
-其实你可以把它理解为用来管理 `Docker` 的一个WEB界面的管理程序。
+其实你可以把它理解为用来管理 `Docker` 的一个 `WEB` 界面的管理程序。
 
 如果你很熟悉 `Docker` 的话，也可以不用安装它，直接操作 `Docker` 指令。
 
@@ -134,15 +146,15 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 木有错，你很聪明啊，点它就对了！
 
-嗯，成功出现了 `Portainer` 的界面，只是头一次它要你新建管理员帐号和密码，你照做就是了哦。
+嗯，成功出现了 `Portainer` 的界面，只是头一次它要你新建管理员帐号和密码，你照做就是了哦！
 
-图7
+图07
 
 
 
 建好帐号和密码后顺利进入，这时我们选择本地环境，点击 `connect` 开始连接管理 `Docker` 了。
 
-图8
+图08
 
 
 
@@ -152,7 +164,7 @@ OpenMediaVault+UrBackup打造个人整机备份方案
 
 点击进入本地 `Docker` 环境，点击 `image` 镜像。
 
-图9
+图09
 
 图10
 
@@ -271,6 +283,8 @@ OK！新的容器创建成功啦！
 
 
 
+### 写在最后
+
 收获成功，心情愉悦，`OMV` 手感爽快，感觉就是给小白们天生打造的神器，而 `Docker` 的加持又使得它如虎添翼、功能更加强大。
 
 除了能实现 `UrBackup` 外，还有很多值得挖掘的新功能，期待以后有机会和小伙伴们讨论分享！
@@ -279,9 +293,7 @@ OK！新的容器创建成功啦！
 
 
 
-> WeChat@网管小贾
->
-> Blog@www.sysadm.cc
+**扫码关注@网管小贾，个人微信：sysadmcc**
 
-
+网管小贾 / sysadm.cc
 
