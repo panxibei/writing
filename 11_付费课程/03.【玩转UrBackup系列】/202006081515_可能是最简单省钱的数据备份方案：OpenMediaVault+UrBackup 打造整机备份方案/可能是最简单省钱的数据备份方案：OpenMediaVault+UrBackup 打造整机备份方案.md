@@ -66,6 +66,16 @@
 
 `Sourceforge` 下载巨慢，我下载好了放在网盘里，不过现在链接失效了，有需要的小伙伴可以联系我。
 
+
+
+**openmediavault_5.3.9-amd64.iso（559M)**
+
+下载链接：https://pan.baidu.com/s/1hKQCQ6nselG-IDmsaqct0w
+
+提取码：vf0x
+
+
+
 `SHA256: c22a5abde6547d54f71d56ecca494175b8a23f8931a319523bc6e1a524fb1d17`
 
 后续安装，如果使用的是新版比如 `6.x` 版本，那么用以下两个（任意一个）命令行也可在线安装。
