@@ -62,26 +62,49 @@ Include conf/extra/httpd-ssl.conf
 
 **Step 3 - 生成自签名证书**
 
+以下假设： `[Apache 安装目录]` = `C:\wamp64\apache\apache2.4.51`
+
+
+
 1. 请求认证文件生成
-   在命令行下进入Apache安装目录下\bin文件夹，输入命令：
-   C:\wamp\apache\bin> openssl req -new -out server.csr -config ../conf/openssl.cnf
+   在命令行下进入 `[Apache 安装目录]\bin` 文件夹，输入命令：
+   
+   ```
+   openssl req -new -out server.csr -config ../conf/openssl.cnf
+   ```
+   
+    
+   
 2. 生成私钥
+
+   ```
    openssl rsa -in privkey.pem -out server.key
-   然后要求输入之前 privkey.pem 的密码（keynes)。
+   ```
+
+   然后要求输入之前 `privkey.pem` 的密码（`keynes`)。
+
+   
+
 3. 创建证书
+
+   ```
    openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 3650
+   ```
+
+   
+
 4. 移动文件
-   将 \bin 下面的 server.csr、server.crt、server.key 移动到[Apache安装目录]\conf\ssl 文件夹中
+   将  `[Apache 安装目录]\bin` 下面的 `server.csr` 、`server.crt` 、`server.key` 移动到 `[Apache 安装目录]\conf\ssl` 文件夹中。
 
-
+   
 
 **Step 4 - 修改httpd-ssl.conf**
 
 打开 `[Apache安装目录]\conf\extra\httpd-ssl.conf ` 文件，设置 `SSLCertificateFile` 和 `SSLCertificateKeyFile` 语句对应的路径。
 
 ```ini
-SSLCertificateFile "C:/wamp/bin/apache/apache2.4.9/conf/ssl/server.crt"
-SSLCertificateKeyFile "C:/wamp/bin/apache/apache2.4.9/conf/ssl/server.key"
+SSLCertificateFile "[Apache安装目录]/conf/ssl/server.crt"
+SSLCertificateKeyFile "[Apache安装目录]/conf/ssl/server.key"
 ```
 
 
