@@ -63,6 +63,8 @@ HTTP 2.0 时代，让 WampServer 开启 SSL 吧！
 
 有两个非常重要的变量，为了让大家不至于头脑混乱，先罗列于此。
 
+**名称意义 = 变更名称 = 实际路径举例**
+
 * `[Apache安装目录]` = `${SRVROOT}` =  `C:\wamp64\bin\apache\apache2.4.51`
 * `[Wamp安装目录]` = `${INSTALL_DIR}` = `C:/wamp64`
 
@@ -86,7 +88,7 @@ HTTP 2.0 时代，让 WampServer 开启 SSL 吧！
 ${SRVROOT}\conf\httpd.conf
 ```
 
-图a01
+图01
 
 
 
@@ -98,9 +100,9 @@ LoadModule ssl_module modules/mod_ssl.so
 Include conf/extra/httpd-ssl.conf
 ```
 
-图a02
+图02
 
-图a03
+图03
 
 
 
@@ -132,7 +134,7 @@ openssl req -new -out server.csr -config ../conf/openssl.cnf
 
 这个密码你随便输入，但需要记住它，因为之后生成证书时需要用于再次确认。
 
-图d01
+图04
 
 
 
@@ -142,7 +144,7 @@ openssl req -new -out server.csr -config ../conf/openssl.cnf
 
 但是如果你是申请的互联网证书，那么至少 `Common Name` 这一项必须要与当前的服务器域名相匹配，否则证书无法工作正常哦！
 
-图d02
+图05
 
 
 
@@ -158,7 +160,7 @@ openssl rsa -in privkey.pem -out server.key
 
 这样我们就得到了 `server.key` 。
 
-图d03
+图06
 
 
 
@@ -172,7 +174,7 @@ openssl rsa -in privkey.pem -out server.key
 openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 3650
 ```
 
-图d04
+图07
 
 
 
@@ -180,7 +182,7 @@ openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 3650
 
 将  `${SRVROOT}\bin` 下面的 `server.csr` 、`server.crt` 、`server.key` 共三个文件统一移动到 `${SRVROOT}\conf\ssl` 文件夹中。
 
-图d05
+图08
 
 
 
@@ -190,7 +192,7 @@ openssl x509 -in server.csr -out server.crt -req -signkey server.key -days 3650
 
 打开并编辑 `${SRVROOT}\conf\extra\httpd-ssl.conf ` 文件。
 
-图c01
+图09
 
 
 
@@ -201,7 +203,7 @@ SSLCertificateFile "${SRVROOT}/conf/ssl/server.crt"
 SSLCertificateKeyFile "${SRVROOT}/conf/ssl/server.key"
 ```
 
-图b01
+图10
 
 
 
@@ -228,9 +230,9 @@ LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
 SSLSessionCache        "shmcb:C:/wamp/bin/apache/apache2.4.39/logs/ssl_scache(512000)"
 ```
 
-图b02
+图11
 
-图b03
+图12
 
 
 
@@ -253,7 +255,7 @@ ErrorLog "${SRVROOT}/logs/error.log"
 TransferLog "${SRVROOT}/logs/access.log"
 ```
 
-图b04
+图13
 
 
 
@@ -264,7 +266,7 @@ CustomLog "${SRVROOT}/logs/ssl_request.log" \
           "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
 ```
 
-图b05
+图14
 
 
 
@@ -336,7 +338,7 @@ Require local
 </Directory>
 ```
 
-图c05
+图15
 
 
 
@@ -354,7 +356,7 @@ Require local
 </VirtualHost>
 ```
 
-图c06
+图16
 
 
 
@@ -368,7 +370,7 @@ Require local
 
 这个证书不能被浏览器的权威证书机构承认，只能自己用用，其实问题不大，只是有些警告而已。
 
-图c02
+图17
 
 
 
@@ -376,7 +378,7 @@ Require local
 
 通常在浏览器的警告界面点击 `高级` ，就可以看到更多信息，其中有临时将当前站点纳入信任之列的链接。
 
-图c03
+图18
 
 
 
@@ -384,7 +386,7 @@ Require local
 
 当然，证书非信任的警告还是存在的，但不会影响我们正常访问站点。
 
-图c04
+图19
 
 
 
