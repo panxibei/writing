@@ -42,11 +42,21 @@ HTTPS这么牛，以后早晚都是它了，那赶紧一起来看看WampServer�
 
 
 
+相关路径变量假定：
+
+`[Apache安装目录]` = `${SRVROOT}` =  `C:\wamp64\apache\apache2.4.51`
+
+`[Wamp安装目录]` = `${INSTALL_DIR}` = `C:/wamp64`
+
+
+
 **Step 1 - 确认以下文件是否存在并确保正确**
 
-* a. [Apache安装目录]/modules/mod_ssl.so
-* b. [Apache安装目录]/bin/openssl.exe, libeay32.dll, ssleay32.dll
-* c. [Apache安装目录]/conf/openssl.cnf
+* `${SRVROOT}/modules/mod_ssl.so`
+* `${SRVROOT}/bin/openssl.exe`
+* `${SRVROOT}/bin/libeay32.dll` （仅用于 `32` 位 `wamp` ）
+* `${SRVROOT}/bin/ssleay32.dll`（仅用于 `32` 位 `wamp` ）
+* `${SRVROOT}/conf/openssl.cnf`
 
 
 
@@ -62,7 +72,7 @@ Include conf/extra/httpd-ssl.conf
 
 **Step 3 - 生成自签名证书**
 
-以下假设： `[Apache 安装目录]` = `C:\wamp64\apache\apache2.4.51`
+
 
 
 
@@ -133,8 +143,8 @@ SSLSessionCache        "shmcb:C:/wamp/bin/apache/apache2.4.39/logs/ssl_scache(51
 2、目录要指向正确
 
 ```ini
-# 在 httpd-ssl.conf 文件中
-DocumentRoot "C:/wamp/www"
+# 在 httpd-ssl.conf 文件中，至少将 DocumentRoot 指向正确的 www 目录。
+DocumentRoot "${INSTALL_DIR}/www"
 ServerName www.example.com:443
 ServerAdmin admin@example.com
 ErrorLog "C:/wamp/bin/apache/apache2.4.39/logs/error.log"
@@ -147,6 +157,18 @@ CustomLog "C:/wamp/bin/apache/apache2.4.39/logs/ssl_request.log" \
 
 
 3、外网访问WampServer的权限问题
+
+按照前面的设置，默认情况我们只能在 `localhost` 也就是本机下使用 `https` 。
+
+```
+Require local
+```
+
+
+
+如果想开放其他人也能同时使用，那么需要将访问权限放开。
+
+比如开放某个子网可访问 `https` 。
 
 ```ini
 # 在 httpd.conf 文件中
