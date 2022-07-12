@@ -168,11 +168,55 @@ Require local
 
 如果想开放其他人也能同时使用，那么需要将访问权限放开。
 
-比如开放某个子网可访问 `https` 。
+一些基本语法：
+
+拒绝所有
+
+```
+<RequireAll>
+    Require all granted
+</RequireAll>
+```
+
+
+
+开放所有：
+
+```
+<RequireAll>
+    Require all denied
+</RequireAll>
+```
+
+
+
+开放特定域名主机
+
+```
+<RequireAll>
+    Require host sysadm.cc
+</RequireAll>
+```
+
+
+
+开放特定IP地址（段）。
+
+```
+<RequireAll>
+    Require ip 192.120 192.168.100 192.168.88.0/24 192.168.200.200
+</RequireAll>
+```
+
+
+
+这些语法是基于 `Apache` 的 `Require` 指令访问控制，具体可参考相关的文档。
+
+就以当前为例，我们现在想开放某个子网可访问 `https` ，可以简单地按如下设定。
 
 ```ini
-# 在 httpd.conf 文件中
-# 或 <Directory "${INSTALL_DIR}/www/"> 等目录中确认权限，添加以下允许权限
+# 编辑 httpd.conf 文件
+# <Directory "${INSTALL_DIR}/www/"> 目录中确认权限，添加以下允许权限
 <Directory />
   <RequireAll>
       Require ip x.x.x.x/24
@@ -180,7 +224,29 @@ Require local
 </Directory>
 ```
 
+图c05
 
+
+
+另外如果还想开放 `http` 即 `80` 端口访问的权限，那么可以在 `httpd-vhosts.conf` 中添加相应指令。
+
+```
+<VirtualHost *:80>
+    ...
+
+    <RequireAll>
+        Require ip 192.168.1.0/24 192.168.100.0/24
+    </RequireAll>
+    
+    ...
+</VirtualHost>
+```
+
+图c06
+
+
+
+### 写在最后
 
 好了，调试一番后如果你能顺利地在浏览器中打开 `https://` 开头的页面，那么恭喜你，成功啦！
 
