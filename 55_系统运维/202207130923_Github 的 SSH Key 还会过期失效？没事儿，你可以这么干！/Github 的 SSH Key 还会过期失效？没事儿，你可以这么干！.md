@@ -1,10 +1,10 @@
-Github 的 SSH Key 过期失效了？
+Github 的 SSH Key 还会过期失效？没事儿，你可以这么干！
 
-副标题：
+副标题：Github 的 SSH Key 还会过期失效？没事儿，你可以这么干！
 
-英文：
+英文：github-ssh-key-expired-dont-worry-you-can-do-like-this
 
-关键字：
+关键字：github,ssh,expired,过期,密钥,putty,证书
 
 
 
@@ -193,3 +193,4 @@ OK！测试成功了！
 **扫码关注@网管小贾，个人微信：sysadmcc**
 
 网管小贾 / sysadm.cc
+
