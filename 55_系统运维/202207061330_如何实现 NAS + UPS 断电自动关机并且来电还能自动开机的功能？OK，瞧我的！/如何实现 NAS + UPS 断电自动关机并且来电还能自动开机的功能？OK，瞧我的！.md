@@ -1,10 +1,10 @@
-如何实现 NAS + UPS 断电自动关机以及来电自动开机功能
+如何实现 NAS + UPS 断电自动关机并且来电还能自动开机的功能？OK，瞧我的！
 
-副标题：
+副标题：如何实现 NAS + UPS 断电自动关机并且来电还能自动开机的功能？OK，瞧我的！
 
-英文：
+英文：how-to-realize-the-function-of-nas-plus-ups-that-automatic-shutdown-and-start-when-power-off-and-power-on-ok-watch-how-i-do-it
 
-关键字：
+关键字：ups,nas,网盘,不间断电源,xigmanas,自动开关机,apc,smart-ups
 
 
 
