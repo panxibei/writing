@@ -206,11 +206,31 @@ http://localhost/testmysql.php
 
 
 
+##### 3、`MySQL` 与 `MariaDB` 之间切换为默认数据系统（ `DBMS` ）
+
+重要提示：如果您想将数据库从MySQL移动到MariaDB或反之，则必须在切换DBMS之前以SQL格式备份数据库（phpMyAdmin->EXPORT）。
+
+这是在MySQL和MariaDB之间传输数据库的唯一可靠方法。
+
+-如果两者都启用（MySQL和MariaDB），则有一个工具可以通过单击来反转默认DBMS：
+
+-如果MySQL是默认DBMS
+
+右键单击Wampmanager图标->工具->反转默认DBMS MySQL
+
+或
+
+-如果MariaDB是默认DBMS
+
+右键单击Wampmanager图标->工具->反转默认DBMS MariaDB<->MySQL
+
+当然，您仍然需要导入以前保存的数据库。
 
 
 
 
-通过放置'http://localhost/testmysql.php'在浏览器地址栏中，首先根据您的参数修改了脚本。
+
+
 
 
 
