@@ -208,23 +208,65 @@ http://localhost/testmysql.php
 
 ##### 3、`MySQL` 与 `MariaDB` 之间切换为默认数据系统（ `DBMS` ）
 
-重要提示：如果您想将数据库从MySQL移动到MariaDB或反之，则必须在切换DBMS之前以SQL格式备份数据库（phpMyAdmin->EXPORT）。
+敲黑板：如果你想将数据库从 `MySQL` 迁移到 `MariaDB` 或反向迁移，那么必须在切换 `DBMS` 之前以 `SQL` 格式备份数据库（比如用 `phpMyAdmin`的导出 `EXPORT` 功能）。
 
-这是在MySQL和MariaDB之间传输数据库的唯一可靠方法。
+这是在 `MySQL` 和 `MariaDB` 之间传输数据库的唯一可靠方法。
 
--如果两者都启用（MySQL和MariaDB），则有一个工具可以通过单击来反转默认DBMS：
 
--如果MySQL是默认DBMS
 
-右键单击Wampmanager图标->工具->反转默认DBMS MySQL
+如果 `MySQL` 和 `MariaDB` 两者都已启用，也就是这两个你都在用，那么有一个工具可以通过单击来切换当前默认的 `DBMS` ：
 
-或
+* 如果默认 `DBMS` 是 `MySQL` ，那么
 
--如果MariaDB是默认DBMS
+  右键点击 `Wampmanager 图标` > `工具` > `调换默认 DBMS MySQL <-> MariaDB`
 
-右键单击Wampmanager图标->工具->反转默认DBMS MariaDB<->MySQL
+或者
 
-当然，您仍然需要导入以前保存的数据库。
+* 如果默认 `DBMS` 是 `MariaDB` ，那么
+
+  右键单击 `Wampmanager图标` > `工具` > `调换默认 DBMS MariaDB <-> MySQL`
+
+当然，调换后你还是需要导入之前保存的数据库备份。
+
+图a07
+
+
+
+##### 4、仅启用一个数据库管理器，也可以不启用任何数据库管理器
+
+你不必保持 `MySQL` 和 `MariaDB` 两个数据库管理器同时处于活动状态，你完全可以停用不需要的其中一个管理器。
+
+只要你愿意，你甚至可以完全禁用这两个数据库管理器：
+
+右键点击 `Wampmanager 图标` > `Wamp 设置` > 取消勾选 `启用 MariaDB`
+
+右键点击 `Wampmanager 图标` > `Wamp 设置` -> 取消勾选 `启用 MySQL`
+
+在此之后，当你想要使用它们的时候，可以重新激活启用两者中的任何一个。
+
+这些操作并不会卸载 `DBMS` ，它仅仅是暂时注销了该 `DBMS` 相应的 `Windows` 服务。
+
+图a08
+
+
+
+##### 5、没有默认的 `DBMS`
+
+这个标题挺奇怪的哈！
+
+其实这意味着当前 `WAMPServer` 可能没有数据库管理器正在使用默认端口 `3306` ，不管是 `MariaDB` 和/或 `MySQL` 这两者中一个或多个，即使它们已被启用，但其服务并没有工作在 `3306` 端口（可能工作在其他端口）。
+
+因此这种情况下我们必须在连接请求中显式地指定实际使用的端口号，因为不是默认端口 `3306` ，连接程序可能无法正确识别。
+
+接着可以的话最好还是选择默认情况下要使用的 `DBMS` 。
+
+为此，我们可以使用内置工具（右键单击 `Wampmanager 图标` > `工具` ）将端口 `3306`（使用 `xxxx` 以外的端口）分配给要设置为默认值的 `DBMS`（ `MariaDB` 或 `MySQL` ）。
+
+从以面图中我们可以看出，切换端口非常方便。
+
+图a09
+
+图a10
 
 
 
