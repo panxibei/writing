@@ -8,6 +8,13 @@
 
 
 
+
+
+> **WAMPSERVER免费仓库镜像（中文）**
+> https://www.sysadm.cc/index.php/xitongyunwei/720-repository-of-wampserver-files
+
+
+
 众所周知，搞开发需要先搭建相应的编程和调试环境。
 
 对于 `PHPer` 来说，很多像我一样的新手小白们入门的时候，通常会选择一些集成开发环境包，其中就有 `WampServer` 。
@@ -704,6 +711,6 @@ https://wampserver.aviatechno.net/files/tools/check_vcredist.exe
 
 
 
-**扫码关注@网管小贾，阅读更多**
+**扫码关注@网管小贾，个人微信：sysadmcc**
 
-网管小贾的博客 / www.sysadm.cc
+网管小贾 / sysadm.cc
