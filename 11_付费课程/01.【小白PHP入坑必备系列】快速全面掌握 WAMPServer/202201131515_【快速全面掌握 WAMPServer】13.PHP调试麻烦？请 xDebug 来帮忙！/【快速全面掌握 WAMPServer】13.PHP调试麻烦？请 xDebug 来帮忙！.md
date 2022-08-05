@@ -75,6 +75,126 @@ Ok，直接下一步，安装完成！
 
 
 
+刚刚介绍的安装方法非常适合作为新手的小伙伴，不过其他除此之外呢还有其他的安装方法。
+
+在此也简单地介绍一下，让大家有更多的了解。
+
+
+
+**方法二，利用 `xDebug` 官方的向导来安装。**
+
+> http://xdebug.org/wizard
+
+
+
+打开向导页面，将 `phpinfo` 显示的所有内容一字不落地复制并粘贴到向导页面的框框中。
+
+然后呢，点击最下方的按钮来分析当前给出的 `phpinfo` 信息。
+
+请放心，上面也有说明，系统只拿来做分析，并不会保存用户的什么信息，不放心的可以查看它的代码。
+
+图c05
+
+
+
+不得不说这个向导是真心方便，我们可以很轻松地从结果中获得很多有用的信息。
+
+比如，所需要下载的文件，又比如，接下来怎么安装，等等。
+
+图c06
+
+
+
+简单地总结一下安装步骤（以我为例）：
+
+1. 下载 `php_xdebug-3.1.5-7.4-vc15-x86_64.dll` 。
+
+2. 将下载的文件移动到 `c:\wamp64\bin\php\php7.4.26\ext` ，重命名为 `php_xdebug.dll`
+
+3. 更新 `C:\wamp64\bin\apache\apache2.4.51\bin\php.ini`
+
+   （注意：`php.ini` 的实际路径为 `C:\wamp64\bin\php\php7.4.26\phpForApache.ini`）
+
+   并添加以下行：
+
+   ```
+   zend_extension = xdebug
+   ```
+
+   确保 `zend_extension = xdebug` 位于 **`OPcache`** 所在行的下方。
+
+4. 也请更新 `php.ini`相邻文件目录，因为您的系统似乎配置了单独的 `php.ini` `Web` 服务器和命令行的文件。
+
+   这句话的意思是，`php.ini` 不止一个，除 `WEB` 所属 `php.ini` ，其他都要更新，比如终端命令行所属 `php.ini` ，或其他 `PHP` 版本等等。
+
+5. 重新启动 `Apache` 网络服务器。
+
+
+
+重启服务后再查看 `phpinfo` 来确认 `xDebug` 加载是否成功。
+
+
+
+**方法三，直接下载 `xDebug` 扩展后手动安装。**
+
+> https://pecl.php.net/package/xdebug
+
+
+
+下载 `PECL` 上最新稳定版 `3.1.3` 的 `DLL` 文件，这个文件就是在 `Windows` 下可使用的扩展文件。
+
+图c01
+
+
+
+接下来区分选择你正在使用的 `PHP` 版本、`64` 还是 `32` 位系统以及线程安全 `TS` 还是非安全 `NTS` 。
+
+前面我们介绍过，在 `Windows` 下你可以简单地记忆为线程安全 `TS` ，然后再结合你的 `PHP` 版本及 `x64/x32` 就可以知道选哪个了。
+
+比如我的 `PHP` 版本是 `7.4.26` ，`64` 位 `Windows` 系统，因此我下载到的文件名为 `php_xdebug-3.1.3-7.4-ts-vc15-x64.zip` 。
+
+图c02
+
+
+
+将下载的压缩文件解压缩后，找到 `php_xdebug.dll` 文件。
+
+图c03
+
+
+
+将 `php_xdebug.dll` 拷贝或移动到相应 `PHP` 版本的 `ext` 文件夹内。
+
+```
+C:\wamp(64)\bin\php\phpX.X.XX\ext
+```
+
+
+
+ 然后打开 `php.ini` 配置文件，在文件的最后底部添加以下代码。
+
+```
+[xdebug]
+zend_extension=C:/wamp(64)/bin/php/phpX.X.XX/ext/php_xdebug.dll
+xdebug.profiler_output_dir="C:/wamp(64)/tmp"
+xdebug.trace_output_dir="C:/wamp(64)/tmp"
+xdebug.remote_port=9000
+xdebug.idekey=SYSADM.CC
+xdebug.remote_autostart=1
+xdebug.remote_host=localhost
+xdebug.remote_enable=1
+```
+
+注意，不是简单地添加 `extension=xdebug.dll` 哦！
+
+重新加载服务并刷新 `phpinfo` ，可以看到 `xDebug` 出现了！
+
+图c04
+
+
+
+
+
 ### xDebug
 
 我们打开 `localhost` 主页，在页面左侧工具区域就能看到 `xdebug_info()` 。
@@ -83,9 +203,71 @@ Ok，直接下一步，安装完成！
 
 
 
-点开它你就能看到 `xDebug` 的样貌了。
+点开它你就能看到 `xDebug` 的样貌了，这在 `phpinfo` 中看到的应该是一样的。
 
 图b02
+
+
+
+启用 `xDebug` 的三大功能
+
+开发助手 - `Development Helpers`
+
+`xDebug` 的开发助手可以优化你的调试错误信息，比如 `var_dump()` 功能的更新等等。
+
+还是举例来说明比如直观一些。
+
+
+
+在 `wamp(64)/www` 下新建一个 `testxdebug.php` 文件，并用以下测试代码填充。
+
+```
+<?php
+$arr = array (
+  "one" => 
+    array (
+	  "a" => "欢迎关注微信公众号：网管小贾！",
+	  "b" => "网管小贾 / sysadm.cc"
+	),
+  "two" =>
+    array (
+      "two.one" =>
+        array (
+          "two.one.zero" => 210,
+          "two.one.one" =>
+            array (
+              "two.one.one.zero" => 3.141592564,
+              "two.one.one.one" => 2.7
+            )
+        )
+    )
+);
+
+var_dump($arr);
+?>
+```
+
+
+
+没有使用 `xDebug` 扩展的情况下，会被添加 `<pre>` 标签。
+
+图d01
+
+
+
+即使加了 `<pre>` 标签，一旦数据结构比较复杂，这没层次没重点的标识也很容易眼花。
+
+图d02
+
+
+
+ 但是加载 `Xdebug` 后它的感觉就完全不一样了！
+
+眼睛、鼻子、嘴巴和耳朵，分分钟看清啊！
+
+图d03
+
+
 
 
 
