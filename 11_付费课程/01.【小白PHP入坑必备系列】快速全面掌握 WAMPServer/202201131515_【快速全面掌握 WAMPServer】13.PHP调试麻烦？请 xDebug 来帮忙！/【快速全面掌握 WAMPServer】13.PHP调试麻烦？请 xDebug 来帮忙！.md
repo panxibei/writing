@@ -371,6 +371,141 @@ xdebug.cli_color=2
 
 
 
+以 `VSCodium` 为例：
+
+打开 `VSCodium` ，点击左侧的 `扩展` ，在搜索栏内输入 `xdebug` ，查找到 `PHP Debug` 并安装。
+
+图d09
+
+
+
+然后编辑 `launch.json` 启动文件。
+
+点击 `VSCodium` 左侧的 `运行和调试` ，然后再点击 `打开文件夹` 。
+
+此处需要注意的是，我们必须先要打开某个文件或某个文件夹（项目）中的文件，在文件编辑状态下才能开启并修改启动文件 `launch.json` 。
+
+图f01
+
+
+
+比如我们随便打开一个 `.php` 文件，这时我们再点击左侧的 `运行和调试` ，就可以看到可以点击 `创建 launch.json 文件` 了。
+
+图f02
+
+
+
+点击 `创建 launch.json 文件` ，然后在下拉列表中选择 `PHP` 。
+
+我们用的是 `xDebug` ，调试的是 `PHP` 程序，因此选择 `launch.json` 创建类型选择 `PHP` 。
+
+图f04
+
+
+
+这个 `launch.json` 文件实际位于你打开项目中名为 `.vscode` 的隐藏文件夹内，直接编辑它也是可以的。
+
+图f03
+
+
+
+我这儿的代码内容是这样的。
+
+```
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003
+        },
+        {
+            "name": "Launch currently open script",
+            "type": "php",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${fileDirname}",
+            "port": 0,
+            "runtimeArgs": [
+                "-dxdebug.start_with_request=yes"
+            ],
+            "env": {
+                "XDEBUG_MODE": "debug,develop",
+                "XDEBUG_CONFIG": "client_port=${port}"
+            }
+        },
+        {
+            "name": "Launch Built-in web server",
+            "type": "php",
+            "request": "launch",
+            "runtimeArgs": [
+                "-dxdebug.mode=debug",
+                "-dxdebug.start_with_request=yes",
+                "-S",
+                "localhost:0"
+            ],
+            "program": "",
+            "cwd": "${workspaceRoot}",
+            "port": 9003,
+            "serverReadyAction": {
+                "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started",
+                "uriFormat": "http://localhost:%s",
+                "action": "openExternally"
+            }
+        }
+    ]
+}
+```
+
+
+
+从上述代码中我们可以看到，端口是 `9003` ，这个端口应该和再前面的 `php.ini` 中的 `xDebug` 区域中的端口设定一致。
+
+
+
+最后确保 `VSCodium` 左上角的运行一栏是设定为 `Listen for Xdebug` 。
+
+图f05
+
+
+
+如何使用呢？
+
+设定代码调试的断点，用鼠标点击来标记，也可以按下 `F9` 来设置。
+
+图f06
+
+
+
+打开浏览器，访问正在编辑调试代码的文件。
+
+此时程序就会自动运行直至跑到断点处停下来，并且显示为一个箭头。
+
+图f07
+
+
+
+接下来应该就懂了吧，结合输出效果，一边按下 `F11` 等单步调试按钮，一边调试代码查找问题。
+
+图f08
+
+
+
+浏览器访问 `PHP` 代码程序调试已经OK，那终端命令行模式下呢？
+
+其实很简单，配置和前面差不多，只是在 `CLI` 的 `php.ini` 中编辑而已。
+
+
+
+
+
+
+
 
 
 
