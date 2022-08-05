@@ -8,6 +8,11 @@
 
 
 
+> **WAMPSERVER免费仓库镜像（中文）**
+> https://www.sysadm.cc/index.php/xitongyunwei/720-repository-of-wampserver-files
+
+
+
 上一篇我们学习了 `PHP` ，今天我们接着来学习了解一下另一位 `LAMP` 中的 `M` ，同样是作为四剑客之一的 `MySQL/MariaDB` 。
 
 `MySQL/MariaDB` 实际上是指数据库，是一种关系型数据库管理系统，可与 `PHP` 解释器一起配合，作为后台的数据存储和记录工作。

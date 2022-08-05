@@ -4,7 +4,7 @@
 
 英文：master-wampserver-quickly-and-php-debugging-too-troublesome-ask-xdebug-to-help
 
-关键字：wamp,wampserver,php,web,apache,mysql,mariadb,check,problem,troubleshooting,tips,xdebug,debug
+关键字：wamp,wampserver,php,web,apache,mysql,mariadb,check,problem,troubleshooting,tips,xdebug,debug,调试
 
 
 
