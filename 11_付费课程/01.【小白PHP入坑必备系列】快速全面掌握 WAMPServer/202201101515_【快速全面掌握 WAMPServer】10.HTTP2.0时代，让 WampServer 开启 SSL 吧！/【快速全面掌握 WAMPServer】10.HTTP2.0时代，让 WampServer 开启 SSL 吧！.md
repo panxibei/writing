@@ -253,7 +253,7 @@ SSLSessionCache        "shmcb:C:/wamp/bin/apache/apache2.4.39/logs/ssl_scache(51
 
 敲黑板：注意区别 `${SRVROOT}` 和 `${INSTALL_DIR}` 。
 
-```ini
+```
 # 在 httpd-ssl.conf 文件中，至少将 DocumentRoot 指向正确的 www 目录。
 DocumentRoot "${INSTALL_DIR}/www"
 ServerName www.example.com:443
