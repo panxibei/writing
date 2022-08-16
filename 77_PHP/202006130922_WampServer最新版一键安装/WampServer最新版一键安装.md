@@ -65,9 +65,9 @@ WampServer最新版一键安装
 
 这个省事儿，就是慢，你懂的~
 
-百度网盘链接：https://pan.baidu.com/s/1kr2RuOyXtlJ_mswct1PMAA
+百度网盘链接：https://pan.baidu.com/s/1ES21rBVwCc8NHjKjTjkScQ 
 
-提取码：s22f    解压密码：www.sysadm.cc
+提取码：vtty
 
 
 
