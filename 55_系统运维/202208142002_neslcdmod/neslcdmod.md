@@ -19,3 +19,28 @@ neslcdmod
 对于射击类游戏，红白机上有沙罗曼蛇之类的经典游戏。
 
 但是你知道吗，
+
+
+
+
+
+Way to play Duck Hunt on a modern LCD HDTV!
+
+```
+http://neslcdmod.com/
+```
+
+图a01
+
+
+
+
+
+
+
+```
+https://www.romhacking.net/utilities/240/
+```
+
+图a02
+
