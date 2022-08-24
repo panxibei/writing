@@ -91,7 +91,7 @@
 
 
 
-**UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）.7z (10.3M)**
+**`Windows` 运用 `UrBackup` 备份服务的最佳实践.7z (9.04M)**
 
 下载链接：https://pan.baidu.com/s/1Qj2E8nzgB436kUzMHs9BWQ
 
@@ -115,21 +115,19 @@
 
 
 
-↓↓↓ 付费查看下载提取码
+### ↓↓↓ 付费查看下载提取码
 
 
 
-**UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）.7z (10.3M)**
+
+
+**`Windows` 运用 `UrBackup` 备份服务的最佳实践.7z (9.04M)**
 
 下载链接：https://pan.baidu.com/s/1Qj2E8nzgB436kUzMHs9BWQ
 
 提取码：8m27
 
 手册密码：sysadm.cc
-
-
-
-
 
 
 
