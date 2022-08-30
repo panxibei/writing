@@ -130,10 +130,19 @@ XORBOOT
 
 
 
-将生成的 `BootX64.efi` 文件保存到如下路径中，这个路径是固定死的，放在其他地方将导致启动失效。
+将生成的 `BootX64.efi` 文件保存到如下路径中。
 
 ```
 (esp/fat32)\EFI\XorBoot\BootX64.efi
+```
+
+注意，这个路径与前面的 `XorBoot.xor` 菜单文件不同，它并不是固定死的，可以放在任何可访问的其他地方，并且 `BootX64.efi` 这个文件名都可以随意修改。
+
+不过有一种特殊情况，如果要放到 `U` 盘之类的移动设备上，那么必须遵守如下的固定路径，并且文件名也必须保持不变。
+
+```
+(esp/fat32)\EFI\XorBoot\BootX64.efi
+(esp/fat32)\EFI\XorBoot\BootIa32.efi
 ```
 
 图z02
