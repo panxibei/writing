@@ -1,10 +1,10 @@
-现在都 UEFI 启动了，那开机不想按 F12 能不能做到自由选择想启动的系统呢？
+我就不想开机按 F12 ，还能不能愉快地玩 UEFI 多系统启动呢？
 
-副标题：现在都 UEFI 启动了，那开机不想按 F12 能不能做到自由选择想启动的系统呢？
+副标题：我就不想开机按 F12 ，还能不能愉快地玩 UEFI 多系统启动呢？
 
-英文：uefi-age-can-you-freely-boot-the-system-you-want-to-start-without-pressing-f12
+英文：can-i-freely-boot-the-system-i-want-to-start-without-pressing-f12
 
-关键字：uefi,efi,xor,xorboot,xorbootu,多系统启动,启动,引导,f12,batocera
+关键字：uefi,efi,xor,xorboot,xorbootu,多系统启动,启动,引导,f12,batocera,mbr
 
 
 
@@ -58,7 +58,9 @@
 
 **XorBootU_0.24-20171217.7z(4.27M)(含菜单示例)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1cDi7cMHOBRbAbVyaaUeLQg
+
+提取码：beg2
 
 
 
@@ -364,7 +366,7 @@ OK，大功告成！最后启动画面大概是这样的。
 
 最后来张动图效果图吧！
 
-图25
+图25.GIF
 
 
 
