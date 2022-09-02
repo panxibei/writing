@@ -192,9 +192,13 @@ pkH8a0AqNbHcdw8GrmSp
 
 
 
-**XJZipMultiPassword**
+**网管小贾的 `ZIP` 多重密码生成器**
 
-下载链接：
+**XJZipMultiPassword.7z(7.59K)**
+
+下载链接：https://pan.baidu.com/s/1LQNC75dgj5QsAKMHjNjY8Q
+
+提取码：1h0v
 
 
 
