@@ -1,10 +1,10 @@
-绝密账号
+咄咄怪事，不同密码居然可以成功解压同一个 ZIP 文件
 
-副标题：
+副标题：咄咄怪事，不同密码居然可以成功解压同一个 ZIP 文件
 
-英文：
+英文：how-strange-is-that-the-very-different-passwords-can-successfully-extract-the-same-zip-file
 
-关键字：
+关键字：zip,压缩文件,7z,rar,密码,sha1,hash,哈希,ascii
 
 
 
@@ -214,9 +214,13 @@ pkH8a0AqNbHcdw8GrmSp
 
 
 
-将技术融入生活，努力打造有趣的故事。
 
-网管小贾 / sysadm.cc
+
+二维码
+
+**将技术融入生活，打造有趣之故事。扫码关注@网管小贾 / sysadm.cc**
+
+
 
 
 
