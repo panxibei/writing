@@ -1,10 +1,10 @@
-YUM/DNF 离线安装 MySQL8
+服务器没网不再怕，带你轻松搞定 Linux 程序离线安装
 
-副标题：
+副标题：服务器没网不再怕，带你轻松搞定 Linux 程序离线安装
 
 英文：
 
-关键字：
+关键字：离线,offline,安装,install,linux,mysql,yum,dnf,依赖,downloadonly,yumdownloader,rpm
 
 
 
