@@ -1,8 +1,8 @@
-服务器没网不再怕，带你轻松搞定 Linux 程序离线安装
+服务器没网不再怕，带你轻松搞定 Linux 下 `RPM` 程序离线安装
 
 副标题：服务器没网不再怕，带你轻松搞定 Linux 程序离线安装
 
-英文：
+英文：dont-worry-about-that-server-is-offline-i-will-take-you-to-easily-install-rpm-packages-offline
 
 关键字：离线,offline,安装,install,linux,mysql,yum,dnf,依赖,downloadonly,yumdownloader,rpm
 
