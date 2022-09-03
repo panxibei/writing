@@ -8,11 +8,55 @@
 
 
 
+"喂！坤儿！喂...醒醒...没事儿吧？"
+
+同事小范不知怎么又昏过去了，当然大家不必紧张，这是加班常有的事。
+
+可是这回似乎有点不一样了，小范同学醒来之后就莫名其妙地哭上了。
+
+经过我们一番劝慰后他倒出了事情的原委......
 
 
 
+原来今天一上班小范同学接到了某个客户的电话，说是需要安排给一台 `MySQL` 服务器升级。
 
-`RPM` 安装包下载链接：
+服务器跑的是 `Linux` 系统，当前的 `MySQL` 版本是 `5.7` ，由于业务系统调整需要升级到 `8.0` 版本。
+
+只不过有一个恼人的情况，这台服务器并没有联上互联网。
+
+然而小范同学之前也没怎么安装过 `MySQL 8.0` ，当他尝试在测试环境下安装时才发现事情并没有想像地那么简单！
+
+看看这一坨坨的依赖包，只要是个正常人肯定不是被吓死就是被气死。
+
+图b01
+
+
+
+小范同学使用笨办法将依赖安装包一个一个地找出来再手动下载，结果金乌西落、玉兔东升，时间一久人就麻了！
+
+实际上文章开头那一幕并不是人睡着了，而是麻翻了！
+
+我滴个乖乖，这么操作得玩到猴年马月啊！
+
+这可不行，听完小范同学的哭诉，我立刻在胸前划了个十字，将手轻轻搭在他的肩膀上——我决定帮帮他！
+
+
+
+那我们如何才能实现在服务器离线状态下成功地安装 `MySQL 8.0` 呢？
+
+在这儿我以 `Rocky Linux 8.6` 系统为例来给小伙伴们演示。
+
+
+
+### 查询官网的安装方法
+
+首先，打开 `MySQL` 的官网，我们很容易就能找到在不同平台各种各样的安装方法，其中通过仓库联网的安装方法较为常用。
+
+> https://dev.mysql.com/doc/refman/8.0/en/linux-installation-yum-repo.html
+
+
+
+然后，找到 `MySQL` 的仓库源文件，通常是个 `RPM` 文件，将它下载下来并安装。
 
 ```
 https://dev.mysql.com/downloads/repo/yum/
@@ -20,7 +64,7 @@ https://dev.mysql.com/downloads/repo/yum/
 
 
 
-`MySQL` 的仓库安装包，有了它我们就可以使用 `YUM/DNF` 来联网安装 `MySQL` 了。
+注意选择正确的仓库安装包，如下就是与我的系统 `Rocky Linux 8.6` 平台相匹配的 `MySQL` 的仓库安装包。
 
 ```
 mysql80-community-release-el8-4.noarch.rpm
@@ -28,7 +72,15 @@ mysql80-community-release-el8-4.noarch.rpm
 
 
 
-检查一下 `MySQL Yum` 存储库是否成功添加到我们的系统中。
+有了它我们就可以使用 `YUM/DNF` 来联网安装 `MySQL` 了，安排上。
+
+```
+dnf install mysql80-community-release-el8-4.noarch.rpm
+```
+
+
+
+好，检查一下 `MySQL Yum` 存储库是否成功添加到我们的系统中。
 
 ```
 dnf repolist enabled | grep "mysql.*-community.*"
@@ -62,7 +114,7 @@ dnf repolist all | grep mysql
 
 目前最新的是 `MySQL 8.0` ，因此默认被安装的就是 `8.0` 版本，将来如果最新变成 `8.1` 或 `9.0` ，那么默认就安装 `8.1` 或 `9.0` 。
 
-因此，当你需要安装非最新版本时，需要禁用启用相应的版本才行。
+因此，当你需要安装非最新版本时，需要禁用不需要的而启用需要的版本才行。
 
 比如我们禁用子仓库中的 `5.7` ，同时启用 `8.0` 。
 
@@ -81,19 +133,13 @@ dnf repolist enabled | grep mysql
 
 
 
-好，一切准备就绪，重要就要来了！
-
-
-
-### 安装
-
-通常安装
+然后就是通常安装的方法，但是请注意先别这么干，有坑。
 
 ```
 dnf install mysql-community-server
 ```
 
-包括了 MySQL 服务器安装包 `mysql-community-server` ，客户端工具 `mysql-community-client` 、服务器错误消息和字符集 `mysql-community-common` 和共享客户端库 `mysql-community-libs` 。
+
 
  
 
@@ -111,7 +157,7 @@ dnf install mysql-community-server
 
 基于 `EL8` 的系统包含有默认启用的 `MySQL` 模块，而如果它是启用状态的话，那么我们前面安装的  `MySQL` 仓库就会被屏蔽，从而无法安装 `MySQL 8.0` 。
 
-不过请注意，禁用默认模块仅限 `EL8` 系统，比如 `CentOS8` 、`RockyLinux8` 等等。
+不过请注意，禁用默认模块仅限于 `EL8` 系统，比如 `CentOS 8` 、`Rocky Linux 8` 等等。
 
 ```
 dnf module disable mysql
@@ -121,9 +167,15 @@ dnf module disable mysql
 
 
 
-### 下载安装依赖包
+好，一切准备就绪，重点来了！
 
-然后我们再利用 `dnf` 的 `deplist` 选项查看一下安装 `mysql-community-server` 所需的依赖情况。
+
+
+
+
+### 如何快速有效地下载安装依赖包
+
+我们利用 `dnf` 的 `deplist` 选项先查看一下安装 `mysql-community-server` 所需的依赖情况。
 
 ```
 dnf deplist mysql-community-server
@@ -133,9 +185,9 @@ dnf deplist mysql-community-server
 
 
 
-不过 `deplist` 只是看看并没有真动手，所以我们要动动小手真地将这些依赖包给下载下来。
+不过 `deplist` 只是蹭蹭并没有真动手，所以我们要动动小手真地将这些依赖包给下载下来。
 
-首先，新建一个用于存放依赖安装包的目录。
+首先，新建一个用于存放依赖安装包的目录，一会儿好安排统一安装。
 
 ```
 mkdir /sysadm/mypackages
@@ -143,15 +195,19 @@ mkdir /sysadm/mypackages
 
 
 
-然后，安装 `Yumdownloader` 工具。
+然后，安装 `Yumdownloader` 工具......
 
 ```
 dnf install yum-utils
 ```
 
-停，停，停！注意、注意，其实你根本不用安装它！
+停，停，停！打住、打住，其实你根本不用安装它！
+
+网络上都是这么介绍，其实你真的不用这样。
 
 因为你完全可以直接使用 `dnf download` ，你都用 `EL8` 系统了，效果完全一样啊！
+
+执行以下命令让依赖文件统统都到碗里来吧！
 
 ```
 dnf download --resolve --destdir=/sysadm/mypackages/ mysql-community-server
@@ -164,9 +220,7 @@ dnf download --resolve --destdir=/sysadm/mypackages/ mysql-community-server
 
 
 
-
-
-好了，确认一下载目录中的依赖包吧！
+好了，确认一下碗里的依赖包吧！乖乖，还真不少呢！
 
 ```
 ls /sysadm/mypackages/
@@ -176,9 +230,9 @@ ls /sysadm/mypackages/
 
 
 
-### 离线安装
+### 离线安装搞起来
 
-依赖安装包全都拿到手了，接下来我们就让它们移驾到目标离线服务器上吧！
+依赖安装包全都拿到手了，接下来我们就可以让它们移驾到目标离线服务器上了。
 
 图c01
 
@@ -192,11 +246,11 @@ ls /sysadm/mypackages/
 
 
 
-好，我们尝试使用离线安装方法。
+OK，我们来尝试使用离线安装。
 
-具体怎么安装呢？
+具体怎么做呢？
 
-如果我们直接拉过来安装，那么因为部分依赖没有事先安装好从而导致失败。
+如果我们直接拉过来安装，那么因为部分依赖没有事先安装好就会导致又一次无意义的失败。
 
 图c03
 
@@ -204,7 +258,7 @@ ls /sysadm/mypackages/
 
 但即使这些依赖包一个都不少，我们要是一个一个地安装肯定也得芭比Q！
 
-还好，我们可以批量安装它们的时候选择强制跳过依赖检查，反正我都安装上，也不怕它使用时会因为缺少依赖而报错。
+还好，关键时刻我们可以睁一只眼闭一只眼，批量安装它们的时候选择强制跳过依赖检查，反正我都安装上，也不怕它使用时会因为缺少依赖而报错。
 
 ```
 rpm -Uvh --force --nodeps *.rpm
@@ -214,7 +268,7 @@ rpm -Uvh --force --nodeps *.rpm
 
 
 
-为了保险起见，你可以再跑一次安装命令看看结果。
+为了保险起见，你可以再跑一次原来的安装命令看看结果。
 
 ```
 rpm -ivh mysql-community-server-8.0.xx-x.el8.x86_64.rpm
@@ -226,7 +280,7 @@ rpm -ivh mysql-community-server-8.0.xx-x.el8.x86_64.rpm
 
 
 
-不放心的话再来跑一跑服务，看一看版本号。
+不放心的话再来跑一跑服务，看一看版本号，甚至可以远程连接再测试一把。
 
 图c06
 
@@ -234,5 +288,18 @@ rpm -ivh mysql-community-server-8.0.xx-x.el8.x86_64.rpm
 
 ### 写在最后
 
+最后我想说的是，大家都不容易，像和小范同学一样辛苦又迷茫的打工人有千千万，能帮一个是一个吧。
+
+希望本文能够帮助到比较迷茫，甚至是人有点麻的小伙伴。
+
+同时也希望大家注意身体健康状况，千万不要等人麻了再回头就晚了。
+
+我写这些文章的初衷也是考虑到如果有需要，可以随时回来看、反复看，既环保又健康，印象深刻、心情愉快！
 
 
+
+
+
+二维码
+
+**将技术融入生活，打造有趣之故事。扫码关注@网管小贾 / sysadm.cc**
