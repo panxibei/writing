@@ -302,4 +302,6 @@ rpm -ivh mysql-community-server-8.0.xx-x.el8.x86_64.rpm
 
 二维码
 
-**将技术融入生活，打造有趣之故事。扫码关注@网管小贾 / sysadm.cc**
+**将技术融入生活，打造有趣之故事。**
+
+网管小贾 / sysadm.cc
