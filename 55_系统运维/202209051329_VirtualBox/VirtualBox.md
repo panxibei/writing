@@ -1,10 +1,10 @@
-VirtualBox
+好消息，VirtualBox 发布 7.0 预览版！
 
-副标题：
+副标题：好消息，VirtualBox 发布 7.0 预览版！
 
-英文：
+英文：good-news-oracle-vm-virtualbox-7.0-beta-1-is-now-available
 
-关键字：
+关键字：oracle,vm,virtualbox,7.0,beta,甲骨文,虚拟机
 
 
 
@@ -19,8 +19,6 @@ VirtualBox
 这意味着即便 `VirtualBox 7.0` 的正式版还未发布，但至少我们可以用这个测试版来把玩尝鲜了。
 
 图01
-
-
 
 
 
@@ -77,6 +75,8 @@ VirtualBox
 
 
 ### 尝试安装 `VirtualBox 7.0.0 Beta 1`
+
+我们在 `BIOS` 中开启虚拟化支持后就可以开始安装了。
 
 最初安装时你可能会遭遇到如下图那样的问题。
 
