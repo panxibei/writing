@@ -72,8 +72,6 @@
 
 
 
-
-
 ### 尝试安装 `VirtualBox 7.0.0 Beta 1`
 
 我们在 `BIOS` 中开启虚拟化支持后就可以开始安装了。
@@ -234,6 +232,8 @@ OK，在正式安装虚拟客户机之前，我们应该安装扩展程序。
 
 ### 打包下载
 
+包含 `Windows` 和 `MacOS` 平台安装包，扩展程序、手册以及 `VC++` 组件等。
+
 * `VirtualBox-7.0.0_BETA1-153351-Win.exe`
 * `VirtualBox-7.0.0_BETA1-153351-OSX.dmg`
 * `Oracle_VM_VirtualBox_Extension_Pack-7.0.0_BETA1-153351.vbox-extpack`
@@ -247,7 +247,9 @@ OK，在正式安装虚拟客户机之前，我们应该安装扩展程序。
 
 **Virtualbox7.0.0_BETA1(327M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/17Oln9DOExCbR30hxh99ADA
+
+提取码：qgug
 
 
 
