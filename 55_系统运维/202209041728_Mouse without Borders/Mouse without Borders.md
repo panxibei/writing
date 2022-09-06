@@ -1,4 +1,4 @@
-Mouse without Borders
+鼠标玩过界 Mouse without Borders
 
 副标题：
 
@@ -69,3 +69,28 @@ Mouse without Borders
    一个。  运行 gpedit.msc（编辑组策略）  湾。  转到计算机配置 > 管理模板 > Windows 组件 > Windows 登录选项 > 禁用或启用软件安全注意序列，在下拉框中选择服务。
 
    从现在开始你可以使用 Ctrl+Alt+End 来模拟从机中的 CAD。
+
+
+
+
+
+
+
+
+
+实际使用
+
+
+
+
+
+
+
+
+
+##### 拖放
+
+好像只能从主电脑向副电脑拖动并释放文件。
+
+实际会生成一个名为 `MouseWithoutBorders` 的文件夹，并将被拖动的文件放到这个文件夹内。
+
