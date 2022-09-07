@@ -393,10 +393,6 @@ SetResponseFileNameAbs
 
 
 
-#### 原创平台：sysadm.cc，微信公众号，头条号，知乎（其他均为转载，请注意甄别）
-
-
-
-**扫码关注@网管小贾，个人微信：sysadmcc**
+**将技术融入生活，打造有趣之故事。**
 
 网管小贾 / sysadm.cc
