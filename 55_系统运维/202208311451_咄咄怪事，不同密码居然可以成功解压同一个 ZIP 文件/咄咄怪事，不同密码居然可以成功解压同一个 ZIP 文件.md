@@ -4,7 +4,7 @@
 
 英文：how-strange-is-that-the-very-different-passwords-can-successfully-extract-the-same-zip-file
 
-关键字：zip,压缩文件,7z,rar,密码,sha1,hash,哈希,ascii
+关键字：zip,压缩文件,7z,rar,密码,sha1,hash,哈希,ascii,aes256
 
 
 
@@ -77,8 +77,6 @@ Nev1r-G0nna-G2ve-Y8u-Up-N5v1r-G1nna-Let-Y4u-D1wn-N8v4r-G5nna-D0sert-You
 怎么回事？
 
 两个完全不同的密码，怎么看都不一样的密码，居然都可以成功解开老人的加密文件！
-
-
 
 
 
