@@ -12,6 +12,10 @@ jsnes
 
 
 
+```
+<iframe src="https://127.0.0.1/Joomla/wgxj/jsnes/src/index.html" width="720px" height="820px" frameborder="0" scrolling="no"> </iframe>
+```
+
 
 
 
