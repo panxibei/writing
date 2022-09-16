@@ -18,6 +18,26 @@ https://github.com/bfirsh/jsnes
 
 
 
+大神官网：
+
+```
+https://jsnes.org/
+```
+
+图b01
+
+图b02
+
+图b03
+
+图b04
+
+
+
+
+
+
+
 
 
 `nes-embed.html` 中有以下代码。
