@@ -28,7 +28,7 @@
 
 看看这一坨坨的依赖包，只要是个正常人肯定不是被吓死就是被气死。
 
-图b01
+图01
 
 
 
@@ -86,7 +86,7 @@ dnf install mysql80-community-release-el8-4.noarch.rpm
 dnf repolist enabled | grep "mysql.*-community.*"
 ```
 
-图a04
+图02
 
 
 
@@ -96,7 +96,7 @@ dnf repolist enabled | grep "mysql.*-community.*"
 vim /etc/yum.repos.d/mysql-community.repo
 ```
 
-图a06
+图03
 
 
 
@@ -106,7 +106,7 @@ vim /etc/yum.repos.d/mysql-community.repo
 dnf repolist all | grep mysql
 ```
 
-图a05
+图04
 
 
 
@@ -147,7 +147,7 @@ dnf install mysql-community-server
 
 当前面的工作准备就绪，你满心欢喜地开始安装 `MySQL` 时却发现报错了！
 
-图b04
+图05
 
 
 
@@ -163,7 +163,7 @@ dnf install mysql-community-server
 dnf module disable mysql
 ```
 
-图b03
+图06
 
 
 
@@ -181,7 +181,7 @@ dnf module disable mysql
 dnf deplist mysql-community-server
 ```
 
-图b05
+图07
 
 
 
@@ -216,7 +216,7 @@ dnf download --resolve --destdir=/sysadm/mypackages/ mysql-community-server
 * `--resolve` - 解析并下载相应的依赖安装包
 * `--destdir` - 下载的依赖安装包将存放到此参数指定的目录中
 
-图b08
+图08
 
 
 
@@ -226,7 +226,7 @@ dnf download --resolve --destdir=/sysadm/mypackages/ mysql-community-server
 ls /sysadm/mypackages/
 ```
 
-图b07
+图09
 
 
 
@@ -234,7 +234,7 @@ ls /sysadm/mypackages/
 
 依赖安装包全都拿到手了，接下来我们就可以让它们移驾到目标离线服务器上了。
 
-图c01
+图10
 
 
 
@@ -242,7 +242,7 @@ ls /sysadm/mypackages/
 
 如图，我们正常安装时由于断网无法解析下载服务器而导致安装失败。
 
-图c02
+图11
 
 
 
@@ -252,7 +252,7 @@ OK，我们来尝试使用离线安装。
 
 如果我们直接拉过来安装，那么因为部分依赖没有事先安装好就会导致又一次无意义的失败。
 
-图c03
+图12
 
 
 
@@ -264,7 +264,7 @@ OK，我们来尝试使用离线安装。
 rpm -Uvh --force --nodeps *.rpm
 ```
 
-图c04
+图13
 
 
 
@@ -276,13 +276,13 @@ rpm -ivh mysql-community-server-8.0.xx-x.el8.x86_64.rpm
 
 从结果看也没管我们再要过依赖啥的，完美搞定安装！
 
-图c05
+图14
 
 
 
 不放心的话再来跑一跑服务，看一看版本号，甚至可以远程连接再测试一把。
 
-图c06
+图15
 
 
 
