@@ -10,9 +10,9 @@
 
 
 
-**UrBackup 备份和恢复 MySQL 和 MariaDB .pdf(1.84M)**
+**使用 UrBackup 备份和恢复 Microsoft SQL Server (MSSQL).pdf(1.66M)**
 
-下载链接：https://pan.baidu.com/s/1GqhvzUnynxXg5iMjBIxReA
+下载链接：https://pan.baidu.com/s/1yv92EqnR03eLiIZWlJEHOg
 
 提取码：<文末付费查看>
 
@@ -22,11 +22,15 @@
 
 
 
-本文《`Windows` 运用 `UrBackup` 备份服务的最佳实践》与 `UrBackup` 管理手册配合阅读效果更佳！
+本文与《`Windows` 运用 `UrBackup` 备份服务的最佳实践》及《 `UrBackup` 管理手册》配合阅读效果更佳！
 
-## 墙裂推荐 `PDF` 付费版本：《UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）》
+## 墙裂推荐 `PDF` 付费版本：
 
-## <关注网管小贾微信公众号，发送 000946 获取>
+<关注网管小贾微信公众号>
+
+## 发送 000977 获取《`Windows` 运用 `UrBackup` 备份服务的最佳实践》
+
+## 发送 000946 获取《UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）》
 
 > https://www.sysadm.cc/index.php/xitongyunwei/946-download-advanced-chinese-version-of-urbackup-server-2-4-x-administration-manual 
 
@@ -38,11 +42,11 @@
 
 
 
-**UrBackup 备份和恢复 MySQL 和 MariaDB .pdf(1.84M)**
+**使用 UrBackup 备份和恢复 Microsoft SQL Server (MSSQL).pdf(1.66M)**
 
-下载链接：https://pan.baidu.com/s/1GqhvzUnynxXg5iMjBIxReA
+下载链接：https://pan.baidu.com/s/1yv92EqnR03eLiIZWlJEHOg
 
-提取码：cnd6
+提取码：mayu
 
 手册密码：sysadm.cc
 
