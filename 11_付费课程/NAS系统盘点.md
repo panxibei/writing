@@ -2,6 +2,8 @@ NAS系统盘点
 
 
 
+注（在线代理）：https://proxyium.com/
+
 
 
 制作这些NAS系统的PDF手册
@@ -33,4 +35,8 @@ EasyNAS
 https://easynas.org/
 
 
+
+XigmaNAS
+
+https://itigic.com/xigmanas-guide-to-installing-and-configuring-nas/
 
