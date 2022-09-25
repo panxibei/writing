@@ -22,3 +22,15 @@ https://wiki.omv-extras.org/
 
 
 
+RouteOS手册
+
+https://wiki.mikrotik.com/wiki/Manual:TOC
+
+
+
+EasyNAS
+
+https://easynas.org/
+
+
+
