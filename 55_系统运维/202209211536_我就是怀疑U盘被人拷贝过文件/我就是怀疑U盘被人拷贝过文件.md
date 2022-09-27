@@ -242,6 +242,18 @@ copy X:\path\foo.xxx C:\
 
 
 
+### 自制工具下载
+
+**网管小贾的文件属性查看器**
+
+**XJFileProperty.7z(43K)**
+
+下载链接：https://pan.baidu.com/s/1c4N4M8u_UXd7E3GviIBjCQ
+
+提取码：zwcw
+
+
+
 ### 写在最后
 
 虽说现在是网盘盛行的时代，但是由于有些文档资料，特别是非常重要的资料并不一定适合存放在网盘上。
