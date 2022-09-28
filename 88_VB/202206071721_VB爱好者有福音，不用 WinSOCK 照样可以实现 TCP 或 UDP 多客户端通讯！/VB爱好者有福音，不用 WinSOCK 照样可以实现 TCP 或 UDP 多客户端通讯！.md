@@ -300,11 +300,11 @@ OK，让我们请出今天的主角：`VbRichClient` ！
 
 
 
-**VBRichClient代替WinSock演示源代码.7z(2.54M)**
+**VBRichClient代替WinSock演示源代码.7z(4.92M)**
 
-下载链接：https://pan.baidu.com/s/1bvJTCnggoDzw6_XlrPqM6w
+下载链接：https://pan.baidu.com/s/19bF6VkLAzy-Uu2s297JVoQ
 
-提取码：p5xx
+提取码：hmf9
 
 
 
