@@ -1391,3 +1391,1343 @@ Done!
 
 
 > 根据磁盘的大小，安装可能需要一些时间才能完成。在“应用更改”期间，所有共享都暂时脱机。
+
+
+
+# 高级硬盘参数
+
+添加磁盘时，包含一些选项，它们有可能延长 XigmaNAS 中硬盘驱动器的使用寿命。
+
+并非所有 HDD 都支持任何或所有这些高级硬盘驱动器选项，因此您应该通过诊断：信息页面和 ataidle 选项卡确认您的 HDD 功能。（见下文）。
+
+>  CF 卡不应启用任何这些设置 
+
+
+
+图c24
+
+
+
+## UDMA模式
+
+仅当 XigmaNAS 无法正确自动检测此模式时才使用此选项。目前支持的模式有：
+
+图c25
+
+
+
+## 硬盘待机时间
+
+上次访问后经过选定的时间后，将硬盘置于待机模式。
+
+允许的值为：
+
+图c26
+
+
+
+## 高级电源管理 (APM)
+
+这允许您以牺牲性能为代价来降低驱动器的功耗。
+
+允许的值为：
+
+图c27
+
+
+
+## 声级 (AAC)
+
+这允许您设置驱动器在运行时的响度。
+
+允许的值为：
+
+图c28
+
+
+
+
+
+# 3.1.b 磁盘|管理|硬盘格式
+
+此页面磁盘 > 管理 > 硬盘格式化 > 步骤 1 用于格式化或重新格式化硬盘。它还用于更新元数据。在下面的示例中，我们会将单个磁盘 (da1) 格式化为 UFS（Unix 文件系统），这是 XigmaNAS 的本机文件系统。
+
+图c29
+
+
+
+ 格式化过程中的第 2 步，我们可以在其中设置驱动器的高级格式和卷标。 
+
+图c30
+
+
+
+ 第 3 步是我们开始格式化过程之前的最后一页，这是我们最后一次中止该过程，以防您选择了错误的硬盘。 
+
+图c31
+
+
+
+ 第4步我们看到格式化过程完成，如果要格式化另一个磁盘，请按确定按钮返回第一页。 
+
+图c32
+
+
+
+>  **格式化磁盘将清除所有数据 - 仔细检查您是否选择了正确的驱动器！！！** 
+
+
+
+要格式化磁盘，需要以下信息：
+
+**磁盘**- 选择要格式化的磁盘
+
+**文件系统**- 选择您要使用的文件系统
+
+- UFS - XigmaNAS 的本机文件系统
+- FAT32 - Microsoft 的文件系统
+- EXT2 - 旧的 Linux 文件系统
+- 软件 RAID - 如果要创建 RAID 阵列，请选择此选项
+- ZFS - 用于创建 Zpool 的存储池设备
+
+**卷标**- 输入驱动器或卷的名称
+
+**最小可用空间**- 为 root 用户保留的磁盘空间。此保留空间可防止用户过度填充文件系统。完整的文件系统可能会导致系统不稳定/不可用。如果不确定，请保持设置不变。默认为 8%
+
+**不要擦除 MBR** - 默认情况下，XigmaNAS 会擦除整个磁盘，包括主引导记录。某些硬件 RAID 控制器不喜欢这样，因此您可以在此处禁用擦除 MBR。格式化软件 RAID 不需要此设置。
+
+*显示的设置可能会因您在上面选择的文件系统而异。
+
+
+
+# 3.1.c S.M.A.R.T.
+
+## 验证磁盘的 SMART、APM、AAC 功能
+
+通过诊断：信息页面，ataidle 选项卡验证您的 SMART、APM 和 AAC 硬盘功能。
+
+高级硬盘驱动器功能示例：
+
+```
+List of Advanced ATA capabilities on all ATA disk:
+Results for ada0:
+Device Info:
+
+Model:			FUJITSU MPF3102AT
+Serial:			31277991
+Firmware Rev:		1402
+ATA revision:		ATA-5
+Geometry:		16383 cyls, 16 heads, 63 spt
+Capacity:		9GB
+SMART Supported: 	yes
+SMART Enabled: 		yes
+APM Supported: 		yes
+APM Enabled: 		no
+AAC Supported: 		yes
+AAC Enabled: 		no
+Note:	AAC = AutoAcoustic
+	APM = Advanced Power Management
+	SMART = Self-Monitoring, Analysis and Reporting Technology
+
+Results for ada2:
+Device Info:
+
+Model:			SAMSUNG SP2014N
+Serial:			S088J1RY906273
+Firmware Rev:		VC100-33
+ATA revision:		ATA-7
+Geometry:		16383 cyls, 16 heads, 63 spt
+Capacity:		127GB
+SMART Supported: 	yes
+SMART Enabled: 		yes
+APM Supported: 		no
+AAC Supported: 		yes
+AAC Enabled: 		no
+Note:	AAC = AutoAcoustic
+	APM = Advanced Power Management
+	SMART = Self-Monitoring, Analysis and Reporting Technology
+```
+
+从中可以看出，在 ada0 上，为该驱动器设置 APM 或 AAC 没有任何价值，因为它不受支持。同样在 ada2 上，不支持 APM，但支持 AAC，但未启用。
+
+## 启用 SMART
+
+SMART 通过*System:Advanced*页面在系统范围内启用，方法是选中*Enable the SMART daemon*选项并单击 Save 按钮。
+
+>  此选项可能会阻止磁盘高级电源管理正常工作。 
+
+
+
+## 关于 SMART
+
+SMART 尝试通过监控选定的驱动器性能和校准特性来预测即将发生的驱动器故障。每个被监控的特性（属性）用于计算一个属性值。属性值的范围从 1 到 253，其中 1 是最坏情况，253 是最好情况，100 是名义上的。
+
+对于 WD 驱动器，归一化属性值的范围为 1 到 100 或 1 到 200，具体取决于属性。错误率、总加速、加速重试和校准重试属性在正常操作期间实施（“在线”）；而多区域错误率测试是“离线”执行的。此测试执行 read-verify-all 操作并计算错误率。这些属性被更新并存储在磁盘保留区域的驱动器上。驱动器上还存储了一组与计算的属性值相对应的属性阈值。当计算的属性值变得小于或等于其相应的属性阈值时，指示即将发生降级或故障情况。
+
+驱动器会定期保存与 SMART 功能相关的所有数据。在主机不活动一段时间后，数据将写入磁盘的保留区域。数据的保存在后台进行，不会导致性能下降。
+
+## WD RED 驱动器的一些 SMART 信息
+
+以下诊断示例 > 信息 > SMART
+
+图c33
+
+
+
+```
+=== START OF INFORMATION SECTION ===
+Model Family:     Western Digital Red
+Device Model:     WDC WD30EFRX-68AX9N0
+Serial Number:    WD-WMC1T0941506
+LU WWN Device Id: 5 0014ee 602e027c8
+Firmware Version: 80.00A80
+User Capacity:    3,000,592,982,016 bytes [3.00 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ACS-2 (minor revision not indicated)
+SATA Version is:  SATA 3.0, 6.0 Gb/s (current: 6.0 Gb/s)
+Local Time is:    Sun Sep 30 23:56:23 2018 CEST
+SMART support is: Available - device has SMART capability.
+SMART support is: Enabled
+
+=== START OF READ SMART DATA SECTION ===
+SMART overall-health self-assessment test result: PASSED
+
+General SMART Values:
+Offline data collection status:  (0x00)	Offline data collection activity
+					was never started.
+					Auto Offline Data Collection: Disabled.
+Self-test execution status:      (   0)	The previous self-test routine completed
+					without error or no self-test has ever
+					been run.
+Total time to complete Offline
+data collection: 		(38160) seconds.
+Offline data collection
+capabilities: 			 (0x7b) SMART execute Offline immediate.
+					Auto Offline data collection on/off support.
+					Suspend Offline collection upon new
+					command.
+					Offline surface scan supported.
+					Self-test supported.
+					Conveyance Self-test supported.
+					Selective Self-test supported.
+SMART capabilities:            (0x0003)	Saves SMART data before entering
+					power-saving mode.
+					Supports SMART auto save timer.
+Error logging capability:        (0x01)	Error logging supported.
+					General Purpose Logging supported.
+Short self-test routine
+recommended polling time: 	 (   2) minutes.
+Extended self-test routine
+recommended polling time: 	 ( 383) minutes.
+Conveyance self-test routine
+recommended polling time: 	 (   5) minutes.
+SCT capabilities: 	       (0x70bd)	SCT Status supported.
+					SCT Error Recovery Control supported.
+					SCT Feature Control supported.
+					SCT Data Table supported.
+
+SMART Attributes Data Structure revision number: 16
+Vendor Specific SMART Attributes with Thresholds:
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
+  1 Raw_Read_Error_Rate     0x002f   200   200   051    Pre-fail  Always       -       0
+  3 Spin_Up_Time            0x0027   182   178   021    Pre-fail  Always       -       5875
+  4 Start_Stop_Count        0x0032   100   100   000    Old_age   Always       -       159
+  5 Reallocated_Sector_Ct   0x0033   200   200   140    Pre-fail  Always       -       0
+  7 Seek_Error_Rate         0x002e   200   200   000    Old_age   Always       -       0
+  9 Power_On_Hours          0x0032   031   031   000    Old_age   Always       -       51088
+ 10 Spin_Retry_Count        0x0032   100   100   000    Old_age   Always       -       0
+ 11 Calibration_Retry_Count 0x0032   100   100   000    Old_age   Always       -       0
+ 12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       157
+192 Power-Off_Retract_Count 0x0032   200   200   000    Old_age   Always       -       114
+193 Load_Cycle_Count        0x0032   200   200   000    Old_age   Always       -       44
+194 Temperature_Celsius     0x0022   121   098   000    Old_age   Always       -       29
+196 Reallocated_Event_Count 0x0032   200   200   000    Old_age   Always       -       0
+197 Current_Pending_Sector  0x0032   200   200   000    Old_age   Always       -       0
+198 Offline_Uncorrectable   0x0030   100   253   000    Old_age   Offline      -       0
+199 UDMA_CRC_Error_Count    0x0032   200   200   000    Old_age   Always       -       0
+200 Multi_Zone_Error_Rate   0x0008   200   200   000    Old_age   Offline      -       0
+
+SMART Error Log Version: 1
+No Errors Logged
+
+SMART Self-test log structure revision number 1
+Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
+# 1  Conveyance offline  Completed without error       00%         0         -
+
+SMART Selective self-test log data structure revision number 1
+ SPAN  MIN_LBA  MAX_LBA  CURRENT_TEST_STATUS
+    1        0        0  Not_testing
+    2        0        0  Not_testing
+    3        0        0  Not_testing
+    4        0        0  Not_testing
+    5        0        0  Not_testing
+Selective self-test flags (0x0):
+  After scanning selected spans, do NOT read-scan remainder of disk.
+If Selective self-test is pending on power-up, resume after 0 minute delay.
+```
+
+
+
+### SMART属性信息
+
+每个 SMART 属性都表示驱动器的某个特性，并具有从特殊的归一化算法和公式得出的自己的值。下面列出的属性特定于 WD 驱动器。其他驱动器制造商可能有自己的属性定义。
+
+RAW Read Error Rate：该属性表示读取错误重试的平均率。
+
+旋转时间：此属性表示平均旋转时间，它描述了将盘片旋转到其额定转速所需的时间。
+
+**启动/停止计数：** 此属性指示驱动器的启动/停止周期数。
+
+**Reallocated Sector Count：** 该属性表示重新定位到备用区域的坏扇区的数量。
+
+**寻道错误率：** 该属性表示寻道错误的平均率。
+
+**开机小时计数：** 此属性指示驱动器工作（开机）的时间。
+
+**Spin Retry Count：** 此属性表示在加电时驱动器旋转的重试次数。
+
+**Calibration Retry Count：** 此属性表示驱动器在启动后重试的次数。
+
+**Power Cycle Count：** 此属性指示磁盘电源循环的次数。
+
+**Re__cpLocation 事件计数：** 此属性指示请求重新校准的次数。“
+
+**Current Pending Sector Count：** 此属性指示 re__cpLocation 的未决扇区数量。记录读取或写入错误的扇区，并在发出下一个写入命令时等待 re__cpLocations 到备用扇区。
+
+**Off-line Scan Uncorrectable Sector Count：** 该属性表示在最后一次离线扫描期间检测到的固件不可纠正错误扇区的数量。
+
+**UltraDMA CRC 错误率：** UDMA 控制器在主机和 HDD 之间传输时对数据执行 CRC 错误检查。每次发生错误时，都会请求重传。该属性表示 CRC 错误的平均率。
+
+**多区错误率：** 此属性指示请求写入重试的速率。
+
+**GMR Head Amp：** 此属性表示 GMR（Giant Magnetoresistive）磁头的幅度。
+
+**温度：** 此属性指示配备热传感器的驱动器的温度。
+
+
+
+# 3.1.d 磁盘|管理|iSCSI 启动器
+
+图c34
+
+
+
+ 此页面显示您连接到哪些（如果有）iSCSI 卷。按下“+”（加号）图标可以建立额外的 iSCSI 连接。 
+
+>  此功能用于连接到另一台机器通过 iSCSI 导出的卷，而不是用于导出您自己的卷。要导出您自己的 iSCSI 卷，请使用 iSCSI Target 服务。 
+
+
+
+## 磁盘|管理|iSCSI 发起程序|添加
+
+
+
+图c35
+
+
+
+在这里，您可以添加要连接的目标。你会需要：
+
+- 名称（供您参考，在连接/使用期间不解释）
+- 发起者名称
+- 目标名称
+- 目标地址（托管目标的机器的 IP 或主机名/FQDN）
+
+
+
+# 2.磁盘|软件 RAID
+
+RAID 的首字母缩写词
+
+- 独立磁盘的冗余阵列。
+- 最初冗余的廉价磁盘阵列。
+
+RAID 是一种将相同数据存储在多个硬盘上的不同位置（因此是冗余的）的方法。
+XigmaNAS 提供了一个前端来创建基于软件的 RAID。这意味着您不需要特殊的硬件（通常很昂贵）来设置 RAID。目前 XigmaNAS 支持以下 RAID 级别
+
+- JBOD - 只是一堆磁盘
+- RAID 0 - 没有奇偶校验或镜像的块级条带化
+- RAID 1 - 无奇偶校验或条带化镜像
+- RAID 5 - 具有分布式奇偶校验的块级条带化
+
+和像这样的组合
+
+- RAID 10
+- RAID 01
+
+单击菜单 Disks > Software RAID，您会看到 Software RAID > GEOM > Management 页面，如下图所示：
+
+图c36
+
+
+
+
+
+从这里我们可以设置各种软件突袭设置。
+
+>  有关不同 RAID 级别的详细说明，请参阅[RAID](https://hosteagle.club/wiki/RAID?__cpo=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3Jn) 
+
+
+
+> 重要 - RAID 不等于备份。即使您创建了一个 RAID 阵列，您仍然必须在不同的 __cpLocation 中保留另一个数据副本。
+
+
+
+> 在设置 RAID 之前，您必须准备好要使用的磁盘。
+> 有关“为 RAID 准备驱动器”的更多信息，请参阅
+> [磁盘管理](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+
+
+
+> [注 -软件 RAID 配置和管理](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:software_raid_configuration_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+>
+> - [如何移除/更换 SoftRAID1 阵列中的磁盘？](https://hosteagle.club/wiki/doku.php?id=faq:0059&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+> - [如何移除/更换 SoftRAID5 阵列中的磁盘？](https://hosteagle.club/wiki/doku.php?id=faq:0058&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+
+
+
+> 软件 RAID 和加密**
+>
+> 如果您想加密软件 RAID，建议执行以下步骤：
+>
+> 1. [加密磁盘](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disk_encryption&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+> 2. [格式化](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_format&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)为“软件 RAID”
+> 3. 设置您的软件 RAID 阵列
+
+
+
+> 不建议在软件 RAID 之上进行加密，如果 RAID 失败，这可能会导致数据丢失。
+
+
+
+
+
+### 2.a 磁盘|软件 RAID|JBOD 
+
+# 磁盘|软件 RAID|JBOD|管理
+
+**“只是一堆磁盘”**
+
+JBOD 用于将不同大小的不同磁盘连接成一个大卷，而 RAID0 使用相同大小的驱动器。JBOD 不提供任何冗余。**如果一个驱动器发生故障，所有数据都将丢失**。JBOD 的创建非常简单。您所要做的就是选择要使用的驱动器。请参见下面的插图。
+
+## 磁盘|软件 RAID|JBOD|添加
+
+- 为 JBOD 设置名称
+- 为 JBOD 选择驱动器。（160GB + 400GB + 250GB）
+
+图c37
+
+
+
+创建和初始化……
+
+在按下“应用”后，我们有一个大约 810GB 的 JBOD，它假定为一个大驱动器。
+
+图c38
+
+
+
+像任何其他 RAID 一样，您现在可以格式化和挂载。
+
+有关更多信息，请参阅：
+
+[gconcat - 磁盘连接控制实用程序](https://hosteagle.club/cgi/man.cgi?query=gconcat&apropos=0&sektion=0&manpath=FreeBSD+11.2-RELEASE&arch=default&format=html&__cpo=aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmc)
+
+
+
+# 磁盘|软件 RAID|JBOD|工具
+
+此菜单使您可以访问与 JBOD 或 gconcat 相关的常用命令。
+
+图c39
+
+
+
+1. 仅将这些特殊操作用于调试！
+2. 无需使用此菜单来启动 JBOD 卷（自动启动）。
+
+有关命令的说明，请参见：
+
+[gconcat - 磁盘连接控制实用程序](https://hosteagle.club/cgi/man.cgi?query=gconcat&apropos=0&sektion=0&manpath=FreeBSD+11.2-RELEASE&arch=default&format=html&__cpo=aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmc)
+
+
+
+
+
+# 磁盘|软件 RAID|JBOD|信息
+
+| Healthy                                                      | Degraded                                                     |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `Geom name: myJBOD State: UP Status: Total=3, Online=3 Type: AUTOMATIC ID: 71488985 Providers: 1. Name: concat/myJBOD   Mediasize: 869730875904 (810G)   Sectorsize: 512   Mode: r0w0e0 Consumers: 1. Name: da4   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r0w0e0   Start: 0   End: 171798691328 2. Name: da5   Mediasize: 268435456000 (250G)   Sectorsize: 512   Mode: r0w0e0   Start: 171798691328   End: 440234146816 3. Name: da6   Mediasize: 429496729600 (400G)   Sectorsize: 512   Mode: r0w0e0   Start: 440234146816   End: 869730875904` | `Geom name: myJBOD State: DOWN Status: Total=3, Online=2 Type: AUTOMATIC ID: 71488985 Consumers: 1. Name: da4   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r0w0e0   Start: 0   End: 171798691328 2. Name: da6   Mediasize: 429496729600 (400G)   Sectorsize: 512   Mode: r0w0e0   Start: 440234146816   End: 869730875904 ` |
+
+
+
+这显示了 JBOD 的当前状态。上面的示例显示了“健康”和“降级”的 JBOD。
+
+> 注意 - 此选项卡中显示的信息每 5 秒自动更新一次。
+
+
+
+ # 2.b 磁盘|软件 RAID|RAID0
+
+# 磁盘|软件 RAID|RAID0
+
+此菜单用于创建软件 RAID0 条带。RAID0 用于将 2 个或更多磁盘连接到一个大卷。RAID0 不提供任何奇偶校验或数据安全性。**如果一个磁盘发生故障，所有数据都将丢失**。RAID0 用于提高读取速度，因为所有数据都跨磁盘条带化，并且将同时写入和读取两个磁盘。
+
+最低要求是两个相同大小的驱动器。
+
+> 为获得最佳性能，建议使用相同的硬盘驱动器。
+>
+> 这个意思：
+>
+> - 同一供应商
+> - 同类型
+> - 相同大小
+
+
+
+该软件 RAID 模块基于 GEOM Stripe。
+
+有关更多信息，请参阅：
+
+**FreeBSD 手册页：**
+
+- [geom](https://hosteagle.club/cgi/man.cgi?query=geom&sektion=8&apropos=0&manpath=FreeBSD+9.0-RELEASE&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) - GEOM 类的通用控制实用程序
+- [gstripe](https://hosteagle.club/cgi/man.cgi?query=gstripe&apropos=0&sektion=0&manpath=FreeBSD+9.0-RELEASE&format=html&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) - 条带设备的控制实用程序
+
+**FreeBSD 手册**
+
+- [GEOM：模块化磁盘转换框架](https://hosteagle.club/doc/en/books/handbook/geom.html?__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)
+- [RAID0 - 条带化](https://hosteagle.club/doc/en/books/handbook/geom-striping.html?__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)
+
+
+
+## 磁盘 | 软件RAID | RAID0 | 管理
+
+此菜单为您提供有关现有 RAID0 条带的概述。下面的示例显示了一个已经配置并运行 RAID0 的 2x 160GB 磁盘。
+
+图c40
+
+
+
+## 磁盘|软件 RAID|RAID0|添加
+
+此菜单用于选择要用于创建 RAID0 的驱动器。
+在此示例中，将创建上面显示的 RAID0。
+
+***突袭名称***
+
+为您的 RAID 阵列选择一个名称。此名称将显示在 WebUI 的不同位置。（例如：[磁盘|格式](https://hosteagle.club/wiki/doku.php?id=wiki:documentation_setup_and_user_guide_disks_format&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)）
+
+***类型***
+
+显示您当前创建的 RAID 类型。
+
+***提供者***
+
+您可以在此处选择要使用的磁盘。
+
+***初始化***
+
+选中此框以创建和初始化您的 RAID0。
+
+------
+
+在**磁盘上“应用”后 | 软件RAID | RAID0 | 管理**您的 RAID0 应显示为“UP”。[格式化](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)和[挂载](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:documentation_setup_and_user_guide&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t#disks_mount_point_management)后，您的 RAID 就可以使用了。
+
+图c41
+
+
+
+# 磁盘|软件 RAID|RAID0|工具
+
+此菜单使您可以访问与 RAID0 或 gstripe 相关的常用命令。
+
+图c42
+
+
+
+1. 仅将这些特殊操作用于调试！
+2. 无需使用此菜单来启动 RAID 卷（自动启动）。
+
+有关命令的说明，请参见：
+
+[gstripe](https://hosteagle.club/cgi/man.cgi?query=gstripe&apropos=0&sektion=0&manpath=FreeBSD+9.0-RELEASE&format=html&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) - 条带设备的控制实用程序
+
+
+
+# 磁盘|软件 RAID|RAID0|信息
+
+| Healthy                                                      | Degraded                                                     |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `Geom name: myRAID0 State: UP Status: Total=2, Online=2 Type: AUTOMATIC Stripesize: 65536 ID: 164881522 Providers: 1. Name: stripe/myRAID0   Mediasize: 343597252608 (320G)   Sectorsize: 512   Mode: r0w0e0 Consumers: 1. Name: da2   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r0w0e0   Number: 0 2. Name: da3   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r0w0e0   Number: 1` | `Geom name: myRAID0 State: DOWN Status: Total=2, Online=1 Type: AUTOMATIC Stripesize: 65536 ID: 164881522 Consumers: 1. Name: da3   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r0w0e0   Number: 1 ` |
+
+这显示了 RAID0 的当前状态。上面的示例显示了“健康”和“降级”的 RAID1。
+
+> 注意 - 此选项卡中显示的信息每 5 秒自动更新一次。
+
+
+
+ 2.c 磁盘|软件 RAID|RAID1 
+
+# 磁盘|软件 RAID|RAID1
+
+此菜单用于创建软件 RAID1 镜像。这意味着所有数据都写入两个相同的磁盘。如果其中一个磁盘发生故障，另一个磁盘仍包含所有数据。最低要求是两个相同大小的驱动器。
+
+> 为获得最佳性能，建议使用相同的硬盘驱动器。
+>
+> 这个意思：
+>
+> * 同一供应商
+>
+> * 同类型
+>
+> * 相同大小
+
+
+
+该软件 RAID 模块基于一个 GEOM 镜像。
+
+有关更多信息，请参阅：
+
+**FreeBSD 手册页：**
+
+- [geom](https://hosteagle.club/cgi/man.cgi?query=geom&sektion=8&apropos=0&manpath=FreeBSD+7.3-RELEASE&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) - GEOM 类的通用控制实用程序
+- [gmirror](https://hosteagle.club/cgi/man.cgi?query=gmirror&apropos=0&sektion=8&manpath=FreeBSD+7.3-RELEASE&format=html&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) - 镜像设备的控制工具
+
+**FreeBSD 手册**
+
+- [GEOM：模块化磁盘转换框架](https://hosteagle.club/doc/en/books/handbook/geom.html?__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)
+- [RAID1 - 镜像](https://hosteagle.club/doc/en/books/handbook/geom-mirror.html?__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)
+
+
+
+>  重要 - RAID 不等于备份。即使您创建了一个 RAID 阵列，您仍然必须在不同的 __cpLocation 中保留另一个数据副本。 
+
+
+
+## 磁盘 | 软件RAID | RAID1 | 管理
+
+此菜单为您提供有关现有 RAID1 镜像的概述。下面的示例显示了一个已经配置并运行 RAID1 的 2x 2GB 磁盘。
+
+图c43
+
+
+
+## 磁盘|软件 RAID|RAID1|添加
+
+此菜单用于选择您要使用哪些驱动器来创建 RAID1。
+在此示例中，将创建上面显示的 RAID1。
+
+***突袭名称***
+
+为您的 RAID 阵列选择一个名称。此名称将显示在 WebUI 的不同位置。（例如：[磁盘|格式](https://hosteagle.club/wiki/doku.php?id=wiki:documentation_setup_and_user_guide_disks_format&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)）
+
+***类型***
+
+显示您当前创建的 RAID 类型。
+
+***平衡算法***
+
+RAID1 提供了从驱动器读取数据的不同方法。选择最适合您需求的算法。
+
+**循环读取**
+
+每个文件都是从另一个磁盘读取的。（简化）
+
+**拆分请求**
+
+同时从两个磁盘读取文件。
+
+**从最低负载读取**
+
+请求的文件将从负载最低的磁盘中读取。
+
+**从最高优先级读取**
+
+这意味着您可以将磁盘设置为首选。所有文件都只能从此磁盘读取，但同时写入两者。这用于具有更多读取请求的设置，而一个磁盘比另一个磁盘更快或更健康。
+
+
+
+> 对于大多数设置**，“循环读取”**
+>
+> [gmirror](https://hosteagle.club/cgi/man.cgi?query=gmirror&apropos=0&sektion=8&manpath=FreeBSD+9.0-RELEASE&format=html&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)手册页
+
+
+
+***初始化***
+
+选中此框以创建和初始化您的 RAID1。
+
+------
+
+
+
+在**磁盘上“应用”后 | 软件RAID | RAID1 | 管理**您的 RAID1 应显示为“已完成”。[格式化](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)和[挂载](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:documentation_setup_and_user_guide&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t#disks_mount_point_management)后，您的 RAID 就可以使用了。
+
+图c44
+
+
+
+# 磁盘|软件 RAID|RAID1|工具
+
+此菜单使您可以访问与 RAID1 或 gmirror 相关的常用命令。
+
+图c45
+
+
+
+1. 仅将这些特殊操作用于调试！
+2. 无需使用此菜单来启动 RAID 卷（自动启动）。
+
+有关命令的说明，请参见：
+
+[gmirror - 镜像设备的控制工具](https://hosteagle.club/cgi/man.cgi?query=gmirror&apropos=0&sektion=0&manpath=FreeBSD+11.2-RELEASE&arch=default&format=html&__cpo=aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmc)
+
+
+
+# 磁盘|软件 RAID|RAID1|信息
+
+| Healthy                                                      | Degraded                                                     |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| `Geom name: RAID1 State: COMPLETE Components: 2 Balance: round-robin Slice: 4096 Flags: NONE GenID: 0 SyncID: 1 ID: 2358363486 Providers: 1. Name: mirror/RAID1   Mediasize: 171798691328 (160G)   Sectorsize: 512   Mode: r0w0e0 Consumers: 1. Name: da0   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r1w1e1   State: ACTIVE   Priority: 0   Flags: NONE   GenID: 0   SyncID: 1   ID: 4091393736 2. Name: da1   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r1w1e1   State: ACTIVE   Priority: 1   Flags: NONE   GenID: 0   SyncID: 1   ID: 2352489080  ` | `Geom name: RAID1 State: DEGRADED Components: 2 Balance: round-robin Slice: 4096 Flags: NONE GenID: 0 SyncID: 1 ID: 2358363486 Providers: 1. Name: mirror/RAID1   Mediasize: 171798691328 (160G)   Sectorsize: 512   Mode: r0w0e0 Consumers: 1. Name: da0   Mediasize: 171798691840 (160G)   Sectorsize: 512   Mode: r1w1e1   State: ACTIVE   Priority: 0   Flags: NONE   GenID: 0   SyncID: 1   ID: 4091393736  ` |
+
+
+
+这显示了 RAID1 的当前状态。上面的示例显示了“健康”和“降级”的 RAID1。
+
+> 注意 - 此选项卡中显示的信息每 5 秒自动更新一次。
+
+
+
+# 2.d 磁盘|软件 RAID|RAID5 
+
+# 磁盘|软件 RAID|RAID5
+
+>  创建 GEOM RAID5 的选项已从 WebGUI 中删除。我们鼓励用户改用 ZFS RAIDZ1（或更好）。 
+
+
+
+此菜单用于创建软件 RAID5。RAID5 在保持低成本的同时提供了良好的冗余。
+
+如果一个驱动器发生故障，所有数据仍然可以访问。更换故障驱动器后，RAID5 必须重建以提供冗余。
+
+
+
+>  重要 - RAID 不会使您的数据备份变得多余。即使您创建了一个 RAID 阵列，您也应该定期备份您的数据并将其保存到不同的 __cpLocation。 
+
+
+
+ 最低要求是 3 个相同大小的驱动器。 
+
+> 为获得最佳性能，建议使用相同的硬盘驱动器。
+>
+> 这表示：
+>
+> - 同一制造商
+> - 相同的速度
+> - 相同尺寸
+>
+> 但是，为了提高数据安全性，有时最好使用不同生产日期的驱动器，以帮助避免来自坏批次的多个驱动器同时或间隔很短的故障。
+
+
+
+此软件 RAID 模块基于[Geom_raid5](https://hosteagle.club/wiki/Geom_raid5?__cpo=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3Jn)。
+
+有关更多信息，请参阅：
+
+**FreeBSD 手册页：**
+
+- [geom](https://hosteagle.club/cgi/man.cgi?query=geom&sektion=8&apropos=0&manpath=FreeBSD+9.0-RELEASE&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) - GEOM 类的通用控制实用程序
+
+
+
+## 磁盘 | 软件RAID | RAID5 | 管理
+
+此菜单为您提供现有 RAID5 阵列的概览。下面的示例显示了一个已经配置并运行 RAID5 的 3x 50GB 磁盘。
+
+图c46
+
+
+
+## 磁盘|软件 RAID|RAID5|添加
+
+此菜单用于选择您要使用哪些驱动器来创建 RAID5。
+在此示例中，将创建上面显示的 RAID5。
+
+***突袭名称***
+
+为您的 RAID 阵列选择一个名称。此名称将显示在 WebUI 的不同位置。（例如：[磁盘|格式](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_format&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)）
+
+***类型***
+
+显示您当前创建的 RAID 类型。
+
+- RAID 5（旋转块交错奇偶校验）
+
+***提供者***
+
+您可以在此处选择要使用的磁盘。
+
+***初始化***
+
+选中此框以创建和初始化您的 RAID。
+
+------
+
+在**磁盘上“应用”后 | 软件RAID | RAID5 | 管理**您的 RAID5 应显示为“REBUILDING”。根据驱动器的大小，这可能需要几个小时。
+
+当状态更改为“完成”时，您的驱动器应该可以使用了。
+
+接下来的步骤通常是：
+
+1. [格式化 RAID](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+2. [并安装它](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t#disks_mount_point_management)
+
+
+
+# 磁盘 软件 RAID RAID5 工具
+
+图c47
+
+
+
+此选项卡用于对使用 Geom_raid5 创建的[SoftRAID5](https://hosteagle.club/wiki/Geom_raid5?__cpo=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3Jn)阵列进行故障排除和管理。
+
+**卷名**：允许您选择现有的 RAID5 卷（阵列、提供者）进行管理或排除故障。
+
+**磁盘**：允许您选择要管理或排除故障的磁盘（消费者、设备、阵列成员）。
+
+**命令**：选择 graid5 命令以在上面选择的卷和/或磁盘上执行。按“**发送命令！**”来执行命令。
+
+
+
+>  注意 - /sbin/graid5 是执行您选择的命令的实用程序。
+>
+> 截至今天（2010/09/20），graid5 似乎不是官方 FreeBSD 发行版的一部分，因此该手册页不容易找到和访问。这是最新版本和 man 文件所在的当前[graid5 主页。](https://hosteagle.club/geom_raid5-html?__cpo=aHR0cDovL3d3dy53Z2Jvb21lLm9yZw)
+>
+> 为了让生活更轻松，我们提供下面的复制品以及最后的附加说明。任何由此产生的错误或与 Arne Worner 原作的偏差都是由于我随后的糟糕编辑造成的。- Al
+>
+> 最新的NAS4Free中使用的graid5的版本略有不同，但差别不大，一些命令有不同的选项，本文将尽快追踪最新版本。 
+
+
+
+```
+GRAID5(8) BSD System Manager’s Manual GRAID5(8)
+
+**NAME**
+== ==
+**graid5** — control utility for raid5 devices
+====== ======
+**SYNOPSIS**
+== ==
+**graid5 destroy** [**−fvy**] //name ...// **\\  graid5 label** [**−hnSv**] [**−s **//stripesize//] //name prov prov ...// **\\  graid5 configure** [**−hnRS**] //name// **\\  graid5 stop** [**−fv**] //name ...// **\\  graid5 insert** //name prov// **\\  graid5 remove** //name prov// **\\  graid5 clear** [**−v**] //prov ...// **\\  graid5 dump** //prov ...// **\\  graid5 list \\  graid5 status \\  graid5 load \\  graid5 unload**
+====== ======
+**DESCRIPTION**
+== ==
+The **graid5** utility is used for setting up a RAID-5 on two or more disks. The RAID5’ed device can be configured using two different methods: ’’manual’’ or ’’automatic’’. When using the ’’manual’’ method, no metadata are stored on the devices, so the RAID5 device has to be configured by hand every time it is needed. The ’’automatic’’ method uses on-disk metadata to detect devices. Once devices are labeled, they will be automatically detected and configured.
+
+The first argument to **graid5** indicates an action to be performed:
+====== ======
+**label**
+== ==
+Set up a RAID5 device from the given devices with the specified //name//. This is the ’’automatic’’ method, where metadata are stored in every device’s last sector. The kernel module //geom_raid5.ko// will be loaded if it is not loaded already.
+
+Additional options include:
+
+**−h**
+
+Hardcode providers’ names in metadata.
+
+**−c**
+
+CowOp mode: Complete-Only-Write-Operation -- dont write if not in status COMPLETE.
+
+**−S**
+
+SafeOp mode: read the whole stripe for every read and verify parity.
+
+**−n**
+
+never-hot-mode: A 2 disk graid5 device doesnt need the hot marker, if it is used as swap space. Furthermore this flags is useful, if a rebuild would be harmful even if a write request was pending.
+
+**−s** //stripesize//
+
+Specify stripesize. Recommendation: MAXPHYS (currently 128KiB) == stripesize. The //stripesize// must be a power of 2 and a multiple of the largest sector size of all the providers.
+====== ======
+**configure**
+== ==
+Configure an existing graid5 device:
+
+Options are:
+
+**−h**
+
+Trigger: hardcoded option.
+
+**−a**
+
+Reset error flag of all disks.
+
+**−c**
+
+CowOp mode: Complete-Only-Write-Operation -- dont write if not in status COMPLETE.
+
+**−n**
+
+Trigger: never-hot-mode option.
+
+**−S**
+
+Trigger: SafeOp-mode option.
+
+**−R**
+
+Trigger: start/stop re-sync.
+====== ======
+**stop**
+== ==
+Turn off an existing RAID5 device by its //name//. This command does not touch on-disk metadata!
+
+Options are:
+
+**−f**
+
+Force destroy even if still busy.
+
+**−y**
+
+Do not do the Yo-Yo effect.
+====== ======
+**destroy**
+== ==
+Same as **stop**.
+====== ======
+**clear**
+== ==
+Clear metadata on the given devices.
+====== ======
+**dump**
+== ==
+Dump metadata stored on the given devices.
+====== ======
+**list**
+== ==
+See geom(8).
+====== ======
+**status**
+== ==
+See geom(8).
+====== ======
+**load**
+== ==
+See geom(8).
+====== ======
+**unload**
+== ==
+See geom(8).
+====== ======
+**Additional options:**
+== ==
+**−f**
+
+Force the removal of the specified striped device.
+
+**−v**
+
+Be more verbose.
+====== ======
+**SYSCTL VARIABLES**
+== ==
+The following sysctl(8) variables can be used to control the behavior of the **RAID5** GEOM class. The default value is shown next to each variable.
+
+//kern.geom.raid5.debug//: 0
+
+Debug level of the **RAID5** GEOM class. This can be set to a number between 0 and 3 inclusive. If set to 0
+minimal debug information is printed, and if set to 3 the maximum amount of debug information is printed.
+
+//kern.geom.raid5.mhm//: 0 (read-only)
+
+Number of malloc hamster cache misses.
+
+//kern.geom.raid5.mhh//: 0 (read-only)
+
+Number of malloc hamster cache hits.
+
+//kern.geom.raid5.maxmem//: 8000000 (tunable)
+
+This variable can be set any time to any 32bit signed integer value. It is cropped apropriately (0..128MB) and interpreted as bytes.
+
+//kern.geom.raid5.wqf//: 0 (read-only)
+
+This value shows the number of write requests that were issued early due to a conflicting read request.
+
+//kern.geom.raid5.wqp//: 0 (read-only)
+
+This value shows the maximum number of pending write requests so far.
+
+//kern.geom.raid5.blked1//: 0 (read-only)
+
+This value shows the number of new write requests that could not be combined because the corresponding area already has an issued but incomplete write request.
+
+//kern.geom.raid5.blked2//: 0 (read-only)
+
+This value shows number of due write (2-phase) requests, that were blocked by another such request due to parity area conflict.
+
+//kern.geom.raid5.dsk_ok//: 50 (read-only)
+
+This value shows the healthiness of the underlying devices. 50 is perfect. 40 or lower triggers a soft-device-remove. 0 causes an error announced to the upper layer.
+
+//kern.geom.raid5.veri_nice//: 100 (tunable)
+
+This value (milli seconds) enforces a delay after a user-land read request for internal verify requests, which are certainly quite hindering for user-land requests, because they read all disks and in some cases even write a disk.
+
+//kern.geom.raid5.veri_w//: 0 (read-only)
+
+This value shows the number of parity-failures (during rebuild)
+
+//kern.geom.raid5.veri//: 0 (read-only)
+
+This value shows the number of parity checks (during rebuild).
+
+//kern.geom.raid5.wreq2_cnt//: 0 (read-only)
+
+Number of 2-phase writes (1. phase: read data&parity (or "other" data in case of three disks); 2. phase: write data&parity).
+
+//kern.geom.raid5.wreq1_cnt//: 0 (read-only)
+
+Number of 1-phase writes (sufficiently long chunks can be written in one phase).
+
+//kern.geom.raid5.wreq_cnt//: 0 (read-only)
+
+Write requests started by upper layer.
+
+//kern.geom.raid5.rreq_cnt//: 0 (read-only)
+
+Read requests started by upper layer.
+
+//kern.geom.raid5.maxwql//: 0 (tunable)
+
+This variable gives a hint for the maximum length of the write queue. Write requests are queued until they are long enough or old enough or until there are too many of them.
+
+//kern.geom.raid5.wdt//: 10 (tunable)
+
+This variable determines the maximum age of a write request before it is issued.
+
+//kern.geom.raid5.tooc//: 3 (tunable)
+
+This variable determines the time-out-on-create. The provider is not created before all consumers are present or the timeout is over.
+====== ======
+**EXIT STATUS**
+== ==
+Exit status is 0 on success, and 1 if the command fails.
+====== ======
+**EXAMPLES**
+== ==
+The following example shows how to set up a RAID5 device from four disks with a 128KB stripe size for automatic configuration, create a file system on it, and mount it:
+
+graid5 label -v -s 131072 data /dev/da0 /dev/da1 /dev/da2 /dev/da3 \\  newfs /dev/raid5/data \\  mount /dev/raid5/data /mnt \\  [...] \\  umount /mnt \\  graid5 stop data \\  graid5 unload
+====== ======
+**COMPATIBILITY**
+== ==
+The **graid5** interleave is in number of bytes, unlike ccdconfig(8) and atacontrol(8) which use the number of sectors. A ccdconfig(8) //ileave// of ’128’ is 64 KB (128 512B sectors). The same stripe interleave would be specified as ’65536’ for **graid5**.
+====== ======
+**SEE ALSO**
+== ==
+geom(4), loader.conf(5), atacontrol(8), ccdconfig(8), geom(8), mount(8), newfs(8), sysctl(8), umount(8), vinum(8)
+====== ======
+**HISTORY**
+== ==
+The **graid5** utility appeared in FreeBSD 5.3.
+====== ======
+
+BSD Dec 11, 2006 BSD
+```
+
+
+
+附加信息：
+
+在元数据更新的情况下，有几个“原因短语”：
+
+1. **强制验证**：表示用户强制进行奇偶校验块检查。
+2. **verify aborted**：表示用户手动从 REBUILDING 状态切换到 COMPLETE 状态（这可能是个坏主意；例如，如果所有磁盘都用零预初始化，则不需要重建）
+3. **新配置**：配置由用户更改，应尽快写入磁盘。
+4. **验证完成**：验证运行完成，这样我们就可以从 REBUILDING 状态切换到 COMPLETE 状态。在状态 COMPLETE 中，默认调试级别 (0) 没有关于 CALM↔HOT 转换的消息。
+5. **存储验证进度**：我们每 3 分钟存储一次验证进度，这样我们就不会丢失太多的工作，如果盒子崩溃（再次）或关闭。
+6. **存储验证标志**：将设备标记为“待验证”
+7. **有效磁盘计数**：删除或添加磁盘，应尽快在元数据中注明。
+8. 状态**热**：设备被标记为“热”（这意味着：写请求挂起）；此消息通常处于调试级别 1，如果正在运行验证进程，则处于调试级别 0。为了减少元数据更新量，graid5 设备保持 HOT 一段时间（.wdt 秒，默认情况下目前 10 秒）在 gaid5 的写缓存被清空后…
+9. **平静**状态：设备被标记为“平静”（所有奇偶校验同步）；否则**见 8**。
+
+
+
+# 磁盘|软件 RAID|RAID5|信息
+
+ 图c48
+
+
+
+在此选项卡上显示有关现有 RAID5 卷（阵列）的重要状态信息。上图显示了一个正常、健康的阵列。 
+
+>  注意 - 此选项卡中显示的信息每 5 秒自动更新一次。 
+
+
+
+图c49
+
+
+
+ 上图显示了一个有 1 个磁盘故障且已降级但仍可用/可访问的阵列。可以通过更换故障驱动器来修复此阵列，而不会丢失数据。一般来说，RAID5 阵列只能承受 1 个驱动器的故障，如果 2 个驱动器出现故障，则阵列中包含的数据很可能会丢失。有时可以使用数据恢复软件从丢失 2 个驱动器的阵列中检索数据。请记住，RAID 不等于备份。 
+
+
+
+图c50
+
+
+
+上图显示了一个刚刚更换驱动器并正在重建过程中的阵列 (da5 @ 61%)。可以安装阵列并在重建时使用它，在重建完成之前，响应将比正常速度慢约 20%。 
+
+
+
+#  磁盘|软件 RAID|RAID 0/1/5 
+
+# 磁盘|软件 RAID|RAID 0/1/5|管理
+
+> 创建 GEOM Vinum RAID 的选项已从 WebGUI 中删除。我们鼓励用户改用 ZFS。 
+
+
+
+ 此菜单用于基于 GEOM [vinum](https://hosteagle.club/cgi/man.cgi?query=vinum&manpath=FreeBSD+7.2-RELEASE&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)创建软件 RAID 0,1 和 5 。 
+
+
+
+>  注意：根据 RAID 级别，使用以下模块之一：
+> [磁盘|软件 RAID|RAID0](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_software_raid_raid0_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+> [磁盘|软件 RAID|RAID1](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:software_raid_raid1_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)
+> [磁盘|软件 RAID|RAID5](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:disks_software_raid_raid5_management&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t) 
+
+
+
+>  重要 - RAID 不会使您的数据备份变得多余。即使您创建了一个 RAID 阵列，您也应该定期备份您的数据并将其保存到不同的 __cpLocation。 
+
+
+
+# 磁盘|软件 RAID|RAID 0/1/5|工具
+
+此菜单用于管理基于 GEOM [vinum](https://hosteagle.club/cgi/man.cgi?query=vinum&manpath=FreeBSD+9.0-RELEASE&__cpo=aHR0cHM6Ly93d3cuZnJlZWJzZC5vcmc)的软件 RAID 0,1 和 5 。
+
+此功能将被删除。
+
+
+
+# 磁盘|软件 RAID|RAID 0/1/5|信息
+
+此菜单用于获取有关基于 GEOM [vinum](https://hosteagle.club/cgi/man.cgi?query=vinum&manpath=FreeBSD+9.0-RELEASE&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw)的现有软件 RAID 0,1 和 5 的信息。
+
+此功能将被删除。
+
+
+
+
+
+#  3 磁盘|加密 
+
+# 磁盘加密
+
+>  此功能可用，但绝对不受支持。如果您选择使用它，您将无法获得支持，也不会在尝试恢复您的数据时获得支持。 
+
+
+
+请先阅读：[https ://www.xigmanas.com/forums/viewtopic.php?f=67&t=15495#p96553](https://hosteagle.club/forums/viewtopic.php?f=67&t=15495&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t#p96553)
+
+NAS4Free 可以使用 FreeBSD geom eli 模块加密您的硬盘驱动器（或 RAID 阵列）。如果支持，此功能将使用硬件加密加速卡。
+
+警告：创建加密磁盘将清除该磁盘上的所有数据。
+
+在使用此功能之前，您应该将 WebGUI 配置为使用 HTTPS 协议： 用于加密磁盘的密码在您将其发送到 WebGUI 时必须受到保护。
+
+加密层必须位于硬盘驱动器（或 RAID 阵列）和文件系统之间。 **加密简单磁盘的高级流程是：**
+
+1. 添加磁盘
+2. 使用先前添加的磁盘创建加密卷：此步骤将自动“附加”此卷
+3. 格式化此加密卷
+4. 使用此加密卷添加挂载点
+
+**加密软件 RAID 阵列的高级流程为：**
+
+1. 创建简单或复杂的 RAID 阵列（第 4.6 章），在此过程结束时不对其进行格式化。
+2. 使用之前创建的软件 RAID 阵列创建加密卷：此步骤将自动“附加”该卷
+3. 格式化此加密卷
+4. 使用此加密卷添加挂载点
+
+
+
+>  每次重新启动 NAS4Free 时，使用加密磁盘的挂载点无法自动挂载：您必须输入密码才能“附加”它。 
+
+
+
+## 配置您的 WebGUI 以使用 HTTPS
+
+在创建加密卷之前，这不是强制性步骤，而是强烈推荐的步骤：这将防止在网络上以明文形式传输您的密码。
+
+>  有关如何更改此参数，请参阅第 5.1.4 章。 
+
+
+
+## 添加磁盘或创建软件 RAID 阵列
+
+在本例中，我将使用磁盘“ad1”。在磁盘管理页面添加此磁盘后：
+
+## 创建加密卷
+
+打开磁盘/加密页面并单击[![img](https://www.xigmanas.com/wiki/lib/exe/fetch.php?media=wiki:documentation_setup_and_user_guide_basic.add.gif)](https://hosteagle.club/wiki/lib/exe/detail.php?id=documentation%3Asetup_and_user_guide%3Adisk_encryption&media=wiki:documentation_setup_and_user_guide_basic.add.gif&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)右侧的图标。
+
+
+
+图c51
+
+
+
+1. 在磁盘菜单中选择新添加的磁盘/创建的 RAID 阵列。
+2. 选择加密算法
+3. 选择一个强密码短语
+4. 点击“初始化并加密磁盘”，并确认
+
+
+
+>  加密卷的生成时间取决于您的磁盘大小：它将用随机值填充您的磁盘。 
+
+
+
+ 您应该获得以下输出： 
+
+图c52
+
+
+
+ 然后点击“加密”菜单并“保存”： 
+
+图c53
+
+
+
+## 格式化加密磁盘
+
+当状态为“附加”时，必须格式化加密磁盘。
+
+打开*磁盘：格式*菜单并选择新创建的加密磁盘：
+
+
+
+图c54
+
+
+
+将类型保留为 UFS（GPT 和软更新），单击格式化磁盘按钮并确认。
+
+应输出与此类似的显示：
+
+图c55
+
+
+
+## 为加密磁盘创建挂载点
+
+创建并格式化加密卷后，剩下的就是创建挂载点。
+
+打开磁盘/安装点页面并单击[![img](https://www.xigmanas.com/wiki/lib/exe/fetch.php?media=wiki:documentation_setup_and_user_guide_basic.add.gif)](https://hosteagle.club/wiki/lib/exe/detail.php?id=documentation%3Asetup_and_user_guide%3Adisk_encryption&media=wiki:documentation_setup_and_user_guide_basic.add.gif&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t)右侧的图标。
+
+图c56
+
+
+
+从磁盘下拉列表中，选择加密磁盘。您之前配置的加密磁盘名称可见。
+
+*将分区* 更改为*EFI-GPT*
+
+输入有用的共享名称，然后单击添加按钮。
+
+状态应显示为正在配置，然后单击应用更改按钮，状态应更新为 UP：
+
+图c57
+
+
+
+现在您可以使用加密磁盘了。尝试在上面放一些文件，我们将在重新启动后检查comportment：
+
+
+
+## 重新启动以检查您的密码
+
+重新启动您的 NAS4Free 服务器，然后打开 Disk/Mount Point 页面。
+
+您应该会看到一个错误，因为 NAS4Free 无法在没有密码的情况下安装此加密磁盘：
+
+图c58
+
+
+
+现在打开磁盘/加密页面
+
+您应该会看到状态为“未附加”的加密磁盘：
+
+图c59
+
+
+
+ 您必须通过打开磁盘/加密/工具页面输入您的密码： 
+
+图c60
+
+
+
+输入您的密码短语，选择命令“附加”，然后单击“发送命令！”
+
+它应该显示：
+
+图c61
+
+
+
+ 现在这个磁盘的状态应该是'attached'： 
+
+图c62
+
+
+
+ 现在挂载点状态应该是“OK”： 
+
+图c63
+
+
+
+# 磁盘|加密|工具
+
+此页面让您可以访问与基于 geli 的磁盘加密相关的其他操作和信息。
+
+图c64
+
+
+
+ 您所要做的就是从下拉列表中选择一个磁盘和一个项目。 
+
+| 物品    | 描述                                                         |
+| :------ | :----------------------------------------------------------- |
+| attach  | 将已加密的磁盘附加到系统                                     |
+| detach  | 分离（删除）加密磁盘                                         |
+| setkey  | 更改加密磁盘的密钥（密码）                                   |
+| list    | 列出所有加密磁盘                                             |
+| status  | 显示加密磁盘的状态[geom(8)](https://hosteagle.club/cgi/man.cgi?query=geom&sektion=8&manpath=FreeBSD+9.0-RELEASE&__cpo=aHR0cDovL3d3dy5mcmVlYnNkLm9yZw) |
+| backup  | 将磁盘的元数据下载到您的计算机（推荐）                       |
+| restore | 恢复元数据以防它们损坏                                       |
+
+
+
+ 正如您在屏幕截图中看到的 - 强烈建议通过 https 与您的 WebUI 通信，以避免通过您的网络以明文形式发送密码。请参阅：[WebGUI 协议和端口](https://hosteagle.club/wiki/doku.php?id=documentation:setup_and_user_guide:general_system_options&__cpo=aHR0cHM6Ly93d3cueGlnbWFuYXMuY29t#webgui_protocol_and_port) 
+
+
+
+
+
