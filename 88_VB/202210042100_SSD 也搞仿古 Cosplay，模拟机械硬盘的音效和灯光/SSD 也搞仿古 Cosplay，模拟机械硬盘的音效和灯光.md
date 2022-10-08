@@ -188,7 +188,9 @@ SSD 也搞仿古 Cosplay，模拟机械硬盘的音效和灯光
 
 **网管小贾的SSD模拟机械硬盘音效程序.7z(1.61M)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/17caAH9ASs0sdq2GuWPdsig
+
+提取码：aagc
 
 
 
