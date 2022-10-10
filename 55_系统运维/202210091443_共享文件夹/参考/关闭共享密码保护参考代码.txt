@@ -1,0 +1,13 @@
+
+net user guest /active:yes
+
+echo [Version]>SeDenyNetworkLogonRight.inf
+echo signature="$CHICAGO$">>SeDenyNetworkLogonRight.inf
+echo Revision=1>>SeDenyNetworkLogonRight.inf
+echo [Privilege Rights]>>SeDenyNetworkLogonRight.inf
+echo SeDenyNetworkLogonRight =>>SeDenyNetworkLogonRight.inf
+secedit /configure /db SeDenyNetworkLogonRight.sdb /cfg SeDenyNetworkLogonRight.inf
+del /f /s /q SeDenyNetworkLogonRight.*
+
+pause
+exit
