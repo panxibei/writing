@@ -1,0 +1,1 @@
+subinacl /printer <\printer name> /grant=Everyone=F
