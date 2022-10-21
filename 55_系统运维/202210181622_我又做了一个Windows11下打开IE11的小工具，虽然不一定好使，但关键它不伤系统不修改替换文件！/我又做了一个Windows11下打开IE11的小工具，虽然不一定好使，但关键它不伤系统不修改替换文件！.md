@@ -1,8 +1,8 @@
-我又做了一个Windows11下打开IE11的小工具，关键它不伤系统不修改替换文件！
+我又做了一个Windows11下打开IE11的小工具，虽然不一定好使，但关键它不伤系统不修改替换文件！
 
-副标题：
+副标题：我又做了一个Windows11下打开IE11的小工具，虽然不一定好使，但关键它不伤系统不修改替换文件！
 
-英文：
+英文：i-also-made-a-small-program-to-open-ie11-on-windows-11-it-need-not-modify-or-replace-system-files
 
 关键字：win11,windows11,11,windows,ie,ie11
 
@@ -72,13 +72,13 @@
 
 还有就是每次想打开 `IE` ，都要打开工具点一次按钮，有点小麻烦。
 
-图a01
+图01
 
 
 
 动图效果体验一下。
 
-图1.GIF
+图02.GIF
 
 
 
@@ -88,9 +88,15 @@
 
 
 
-测试通过平台：`Windows 11 专业版 22H2 (22621.525)`
+测试通过平台：`Windows 11 企业版/专业版 22H2 (22621.525)`
 
 
+
+**网管小贾的 `Windows11` 打开 `IE11` 小工具**
+
+下载链接：https://pan.baidu.com/s/19tVAr308BIJJdfgGHjphVg
+
+提取码：o1io
 
 
 
