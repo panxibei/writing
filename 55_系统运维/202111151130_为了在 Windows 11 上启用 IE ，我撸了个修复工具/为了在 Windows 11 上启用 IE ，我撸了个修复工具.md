@@ -298,9 +298,9 @@ Windows Registry Editor Version 5.00
 
 **网管小贾的Windows11一键修复IE11工具.7z(4.93M)**
 
-下载链接：https://pan.baidu.com/s/1SmtuLev7tecxfcF08qvnJA
+下载链接：https://pan.baidu.com/s/1JVZ0l81igDgh86_aeCpw-g
 
-提取码：mmaa
+提取码：qfp3
 
 
 
