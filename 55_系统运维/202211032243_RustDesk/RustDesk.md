@@ -294,6 +294,20 @@ sudo docker run --name hbbs -p 21115:21115 -p 21116:21116 -p 21116:21116/udp -p 
 
 
 
+WEB版连接
+
+> http://web.rustdesk.com
+
+
+
+图f01
+
+
+
+
+
+
+
 
 
 
