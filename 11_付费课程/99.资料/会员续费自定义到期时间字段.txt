@@ -1,0 +1,41 @@
+自定义到期时间字段
+
+
+1、自定义字段组（非必要，可跳过）
+
+
+2、自定义字段
+名称为 “续费日期”，类型为Text，以 “最近续费时间|续费到期时间” 格式为准。
+比如：2022-10-30 11:16:35|2022-11-14 12:31:27
+
+非必填字段
+显示时间
+
+选项>可编辑：后台
+
+
+3、用户管理中可查看【续费日期】字段编辑项
+
+自定义字段数据表：
+xxx_fields
+xxx_field_values
+后者保存了值。
+field_id为自定义字段ID，item_id为用户ID，value为实际字段值。
+
+
+4、结合用户表可以查询用户到期时间。
+
+SELECT B.id, B.name, B.username, B.email, B.registerDate, B.lastvisitDate, B.block, B.activation, A.field_id, 
+  left(A.value, 19) AS 最后续费时间,
+  right(A.value, 19) AS 续费到期时间,
+  NOW() AS 当前时间,
+  to_days(right(A.value, 19)) - to_days(NOW()) AS 剩余天数
+FROM xxxx_fields_values A
+LEFT JOIN xxxx_users B
+ON A.item_id = B.id
+-- 包含30内过期的，以及已经过期的（负天数）
+WHERE to_days(right(A.value, 19)) - to_days(NOW()) < 30
+
+
+
+e.o.m
