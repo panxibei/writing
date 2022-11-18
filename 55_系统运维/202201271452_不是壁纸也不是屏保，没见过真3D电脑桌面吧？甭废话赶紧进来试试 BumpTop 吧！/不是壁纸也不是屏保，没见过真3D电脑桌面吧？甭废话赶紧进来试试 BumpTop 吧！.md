@@ -114,6 +114,16 @@
 
 
 
+如果无法下载，可以使用我的备用下载哦！
+
+**BumpTop.7z(38M)含Windows和MacOS**
+
+链接：https://pan.baidu.com/s/1RlHxe9nEybM01Bxxpd2a8Q
+
+提取码：adp4
+
+
+
 ### 演示教程
 
 安装完成后 `BumpTop` 自动启动，虚拟桌面会自动呈现在我们面前。
