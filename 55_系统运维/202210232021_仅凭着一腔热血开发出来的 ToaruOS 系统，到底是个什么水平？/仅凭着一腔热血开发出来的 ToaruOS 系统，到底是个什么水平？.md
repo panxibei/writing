@@ -268,7 +268,7 @@ qemu-system-x86_64 -m 1G -cdrom D:\ToaruOS\image.iso -smp 2
 
 
 
-作者表示，只是“玩玩”，并不一定具有实际的使用效果。
+在整个开发过程中作者始终表示，只是“玩玩”，各个组件细节之类的并不一定具有实际的使用效果。
 
 但大神就是大神，就算是“玩玩”也玩出了我们普通人玩不出的新高度。
 
@@ -280,13 +280,11 @@ qemu-system-x86_64 -m 1G -cdrom D:\ToaruOS\image.iso -smp 2
 
 
 
-下载：
+**ToaruOS.7z(12.8M)**
 
+下载链接：https://pan.baidu.com/s/1fmVDghHE0kYwA494IZ9NIg
 
-
-
-
-
+提取码：lw8p
 
 
 
