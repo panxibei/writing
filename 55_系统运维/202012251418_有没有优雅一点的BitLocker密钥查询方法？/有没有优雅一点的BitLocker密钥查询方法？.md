@@ -236,9 +236,9 @@ Windows10远程服务器管理工具，日常管理AD之重器。
 
 **网管小贾的BitLocker查询器（46.55K）**
 
-下载链接：https://www.90pan.com/b2218506
+下载链接：https://pan.baidu.com/s/1tmGwWIZbU_2uoNCeCaNe5w
 
-提取码：n9kt
+提取码：4alw
 
 
 
