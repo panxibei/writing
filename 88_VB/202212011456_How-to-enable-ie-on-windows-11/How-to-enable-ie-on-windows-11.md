@@ -120,7 +120,11 @@ In addition, before applying the Windows update every time, be sure to restore t
 
 
 
-This is paid software, after using Paypal to pay, I will send the software or download link to you by email.
+This is paid software,NO refund NO invoice, after using Paypal to pay, it will automatically send the software or download link to you.
+
+{instantpaypal}action=pay,price=19.9,productname=XJEnableIE11ForWindows11,returnurl=https://pan.baidu.com/s/1bxD40-9Pe65hGwkFCu2qQg?pwd=p7vy{/instantpaypal}
+
+
 
 I'm a newbie of Paypal. 
 
