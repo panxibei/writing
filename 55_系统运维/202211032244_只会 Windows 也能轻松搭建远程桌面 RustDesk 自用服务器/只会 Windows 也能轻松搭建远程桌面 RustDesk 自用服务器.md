@@ -1,10 +1,10 @@
-只会 Windows 也能快速搭建 RustDesk 自用服务器
+只会 Windows 也能轻松搭建远程桌面 RustDesk 自用服务器
 
-副标题：只会 Windows 也能快速搭建 RustDesk 自用服务器
+副标题：只会 Windows 也能轻松搭建远程桌面 RustDesk 自用服务器
 
-英文：only-using-windows-can-also-build-rustdesk-self-host
+英文：only-using-windows-can-easy-to-build-remote-desktop-rustdesk-self-host
 
-关键字：rust,rustdesk,selfhost,远程,remote,windows,远程连接,手机
+关键字：rust,rustdesk,selfhost,远程,remote,windows,远程连接,手机,远程桌面
 
 
 
