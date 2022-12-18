@@ -508,6 +508,24 @@ OK，成功连接了，可以开始使用啦！
 
 
 
+### 下载
+
+`MacroDesk` 全家桶打包下载
+
+* `Macro-Deck-2.12.0.exe` - `Windows` 安装包
+* `Macro-Deck-2.12.0.zip` - 源代码
+* `Macro-Deck-Web-Client-2.5.1.zip` - `Web` 客户端
+* `iconpacks.7z` - 离线图标集
+* `plugins.7z` - 离线插件包
+
+
+
+下载链接：https://pan.baidu.com/s/1VtpXgozbMfcJnKnKSkrruQ
+
+提取码：p372
+
+
+
 ### 写在最后
 
 老刘头此言非虚，`Macro Desk` 虽然部署可能有一些麻烦，但是使用起来真的是老年朋友的福音啊！
