@@ -229,9 +229,13 @@ D:\WinFR\WinFR.exe
 
 我已经打包好了，免费下载哦~
 
-下载链接：https://www.90pan.com/b2250581
 
-提取码：f4ea
+
+**WinFR.7z(243K)**
+
+下载链接：https://pan.baidu.com/s/1SzNIau870A2ScH0LSh1bwg
+
+提取码：g510
 
 
 
