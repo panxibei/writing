@@ -176,9 +176,13 @@ telnet localhost 110
 
 
 
-最后附上 **一键安装 `XMail` 程序包** 下载链接：https://o8.cn/xyAFDX
+最后附上 **一键安装 `XMail` 程序包(1.4M)**
 
-提取码：4z21    解压密码：www.sysadm.cc
+下载链接：https://pan.baidu.com/s/1-tL3tbm1x4asv-i8Dc27tw
+
+提取码：7rzr
+
+解压密码：www.sysadm.cc
 
 时间管理大师的奖杯在向你招手，如果好用，记得转发分享，让更多的小伙伴们关注哦！
 
