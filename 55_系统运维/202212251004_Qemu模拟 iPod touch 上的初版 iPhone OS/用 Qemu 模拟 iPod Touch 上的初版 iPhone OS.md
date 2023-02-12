@@ -133,6 +133,14 @@ OK，准备好了吗？
 
 
 
+如果你的系统中没有安装 `Command Line Tools for Xcode` ，那么需要先到官网上下载安装，然后才能安装 `brew` 。
+
+不同版本的 `MacOS` 对应的 `Command Line Tools for Xcode` 版本也不同，需要注意。
+
+图04
+
+
+
 此外在安装过程中如果出现连接 `raw.githubusercontent.com` 失败的情况，那么多半是域名污染的问题。
 
 解决的方法也很简单，在 `etc/hosts` 文件中手动添加正确的 `IP` 地址解析。
@@ -151,7 +159,7 @@ OK，准备好了吗？
 brew install git
 ```
 
-图04
+图05
 
 
 
@@ -194,13 +202,13 @@ sudo ../configure --enable-sdl --disable-cocoa --target-list=arm-softmmu --disab
 sudo make
 ```
 
-图05
-
 图06
 
 图07
 
 图08
+
+图09
 
 
 
@@ -212,7 +220,7 @@ OK！只要不缺啥，编译就会顺利完成。
 ./arm-softmmu/qemu-system-arm -M iPod-Touch,bootrom=<path to bootrom image>,iboot=<path to iboot image>,nand=<path to nand directory> -serial mon:stdio -cpu max -m 1G -d unimp -pflash <path to NOR image>
 ```
 
-图09
+图10
 
 
 
@@ -247,7 +255,7 @@ OK！只要不缺啥，编译就会顺利完成。
 
 来张动态效果图，省得有人说我忽悠，哈哈！
 
-图10.GIF
+图11.GIF
 
 
 
