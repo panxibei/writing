@@ -72,6 +72,12 @@ https://gitee.com/cxasm/notepad--
 
 
 
+需要说明的是，`Ndd` 是用 `QT` 写的，并不是简单复刻 `Npp` ，这个可以去看开源代码，一目了然、明明白白。
+
+同时 `Ndd` 支持多平台，反观 `Npp` 只支持 `Windows` 平台，这也印证了两者是完全不同的。
+
+
+
 接下来我们下载安装 `Ndd` 试用一番吧！
 
 * `Notepad--v1.21.0-Installer.exe` - `Windows` 平台安装包，动态编译后续可支持插件
