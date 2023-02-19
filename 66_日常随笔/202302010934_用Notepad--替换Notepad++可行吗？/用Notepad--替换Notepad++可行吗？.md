@@ -2,7 +2,7 @@
 
 副标题：用Notepad--替换Notepad++可行吗？
 
-英文：is-it-feasible-to-replace-notepad-plus-plus-with-notepad--
+英文：is-it-feasible-to-replace-notepad-plus-plus-with-ndd
 
 关键字：notepad++,notepad--,notepad-plus-plus,npp,ndd
 
@@ -87,6 +87,8 @@ https://gitee.com/cxasm/notepad--
 * `com.hmja.notepad_1.21.1_uos_amd64.deb` - 统信 `uos /deepin` 系统安装包
 
 
+
+**Notepad--打包下载(64.15M)** 
 
 下载链接：https://pan.baidu.com/s/1MZTa7e1PzQYEcBKzhLxuKw
 
