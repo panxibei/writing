@@ -12,16 +12,30 @@ Putty用户手册
 
 # `PuTTY` 用户手册
 
-PuTTY是一个免费的（MIT许可的）Windows Telnet和SSH客户端。本手册记录了PuTTY及其配套实用程序PSCP，PSFTP，Plink，Pageant和PuTTYgen。
+`PuTTY` 是一款免费的（ `MIT` 许可） `Telnet` 及 `SSH` 客户端软件。
 
-*Unix用户注意：*本手册目前主要记录了Windows版本的PuTTY实用程序。因此，提到了Unix版本中没有的一些选项;Unix 版本具有此处未描述的功能;并且根本没有描述 and 命令行和实用程序。目前唯一存在的特定于 Unix 的文档是手册页。`pterm``puttygen``pageant`
+本手册记录了 `PuTTY` 及其配套实用程序 `PSCP` ， `PSFTP` ， `Plink` ， `Pageant` 和 `PuTTYgen` 的相关内容。
 
-本手册的版权为 1997-2022 西蒙·塔瑟姆。保留所有权利。您可以在 MIT 许可下分发本文档。许可证全文见[附录D](AppendixD.html#licence)。
 
-- 第1章 普提简介
-  - [1.1 什么是SSH，Telnet，Rlogin和SUPDUP？](Chapter1.html#you-what)
-  - [1.2 SSH、Telnet、Rlogin和SUPDUP有何不同？](Chapter1.html#which-one)
-- 第 2 章：PuTTY 入门
+
+*`Unix`用户注意：*本手册目前主要记录了 `Windows` 版本的 `PuTTY` 实用程序，因此提到了 `Unix` 版本中没有的一些选项。
+
+`Unix` 版本具有此处未描述的功能，并且也未描述其相关的命令行和实用程序。
+
+目前唯一存在的特定于 `Unix` 的文档是 `man` 手册页。
+
+
+
+本手册版权为 `1997-2022 Simon Tatham`，保留所有权利。
+
+您可以在 `MIT` 许可下分发本文档，许可证全文见[附录D](AppendixD.html#licence)。
+
+
+
+- 第1章 `PuTTY` 简介
+  - 1.1 什么是 `SSH` ， `Telnet` ， `Rlogin` 和 `SUPDUP` ？
+  - 1.2 SSH、Telnet、Rlogin和SUPDUP有何不同？
+- 第 2 章：`PuTTY` 入门
   - [2.1 启动会话](Chapter2.html#gs-insecure)
   - [2.2 验证主机密钥（仅限 SSH）](Chapter2.html#gs-hostkey)
   - [2.3 登录](Chapter2.html#gs-login)
@@ -179,13 +193,51 @@ PuTTY是一个免费的（MIT许可的）Windows Telnet和SSH客户端。本手�
   - [H.5 事件概述和顺序](AppendixH.html#authplugin-overview)
   - [H.6 消息格式](AppendixH.html#authplugin-messages)
   - [H.7 参考文献](AppendixH.html#authplugin-refs)
-- [指数](IndexPage.html#Index)
+- Index
 
-------
 
-如果您想提供有关本手册或 PuTTY 工具本身的反馈，请参阅[反馈页面](https://www.chiark.greenend.org.uk/~sgtatham/putty/feedback.html)。
 
-[PuTTY release 0.78]
+
+
+# 第1章 `PuTTY` 简介
+
+`PuTTY` 是一个免费的 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 客户端，用于 `Windows` 系统。
+
+## 1.1 什么是 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` ？
+
+如果您已经知道什么是 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` ，则可以安全地跳到下一部分。
+
+`SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 是执行相同操作的四种方法：通过网络从另一台计算机登录到多用户计算机。
+
+多用户操作系统，通常是 `Unix` 系列（如 `Linux` ，`MacOS` 和 `BSD` 系列），通常向用户提供命令行界面，非常类似于Windows中的“命令提示符”或“MS-DOS提示符”。系统将打印一个提示，您键入系统将服从的命令。
+
+使用这种类型的界面，您无需坐在键入命令的同一台计算机上。命令和响应可以通过网络发送，因此您可以坐在一台计算机上，向另一台计算机甚至多台计算机发出命令。
+
+SSH，Telnet，Rlogin和SUPDUP是允许您执行此操作*的网络协议*。在您所在的计算机上，您运行一个客户端，该*客户端*与其他计算机（*服务器*）建立网络连接。网络连接将您的击键和命令从客户端传送到服务器，并将服务器的响应传输回给您。
+
+这些协议还可用于其他类型的基于键盘的交互式会话。特别是，有很多公告板，谈话系统和MUD（多用户地下城）支持使用Telnet进行访问。甚至有一些支持SSH。
+
+在以下情况下，您可能希望使用 SSH、Telnet、Rlogin 或 SUPDUP：
+
+- 您在Unix系统（或其他一些多用户操作系统，如VMS或ITS）上有一个帐户，您希望能够从其他地方访问该帐户
+- 您的互联网服务提供商为您提供网络服务器上的登录帐户。（这也可能称为 *shell 帐户*。*shell* 是在服务器上运行并为您解释命令的程序。
+- 您想使用可以使用Telnet访问的公告板系统，通话者或MUD。
+
+在以下情况下，您可能*不想*使用 SSH、Telnet、Rlogin 或 SUPDUP：
+
+- 你只使用Windows。Windows计算机之间有自己的网络方式，除非您正在做一些相当不寻常的事情，否则您将不需要使用这些远程登录协议中的任何一种。
+
+## 1.2 SSH、Telnet、Rlogin和SUPDUP有何不同？
+
+此列表总结了SSH，Telnet，Rlogin和SUPDUP之间的一些差异。
+
+- SSH（代表“安全外壳”）是最近设计的高安全性协议。它使用强大的加密技术来保护您的连接免受窃听、劫持和其他攻击。Telnet，Rlogin和SUPDUP都是提供最低安全性的旧协议。
+- SSH 和 Rlogin 都允许您无需键入密码即可登录到服务器。（Rlogin执行此操作的方法不安全，并可能允许攻击者访问您在服务器上的帐户。SSH 的方法要安全得多，通常破坏安全性需要攻击者获得对实际客户端计算机的访问权限。
+- SSH 允许您连接到服务器并自动发送命令，以便服务器运行该命令然后断开连接。因此，您可以在自动化处理中使用它。
+
+互联网是一个充满敌意的环境，安全是每个人的责任。如果您通过开放的互联网进行连接，那么我们建议您使用 SSH。如果要连接的服务器不支持 SSH，则可能值得尝试说服管理员安装它。
+
+如果您的客户端和服务器都在同一个（良好）防火墙后面，则使用 Telnet、Rlogin 或 SUPDUP 更有可能是安全的，但我们仍然建议您使用 SSH。
 
 
 
