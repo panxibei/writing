@@ -1,6 +1,6 @@
-C盘出现感叹号，有人请我帮忙将其去除，我是这么做的
+C盘出现诡异感叹号，有人请我帮忙将其去除，我是这么做的
 
-副标题：C盘出现感叹号，有人请我帮忙将其去除，我是这么做的
+副标题：C盘出现诡异感叹号，有人请我帮忙将其去除，我是这么做的
 
 英文：an-exclamation-mark-appears-on-c-disk-and-somebody-asked-me-to-remove-it-this-is-what-i-did
 
