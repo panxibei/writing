@@ -224,6 +224,12 @@ Mozilla/5.0 (Linux; Android 12; 22081212C) AppleWebKit/537.36 (KHTML, like Gecko
 
 
 
+与此同时我们的邮箱也会收到相应的确认邮件。
+
+图z04
+
+
+
 接下来就坐等申请通过了。
 
 
