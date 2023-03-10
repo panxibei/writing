@@ -105,94 +105,94 @@ Putty用户手册
   - 8.2 使用 `PuTTYgen` - `PuTTY` 密钥生成器
   - 8.3 准备公钥认证
 - 第 9 章：使用 `Pageant` 进行身份验证
-  - [9.1 选美入门](Chapter9.html#pageant-start)
-  - [9.2 选美主窗口](Chapter9.html#pageant-mainwin)
-  - [9.3 选美命令行](Chapter9.html#pageant-cmdline)
-  - [9.4 使用代理转发](Chapter9.html#pageant-forward)
-  - [9.5 加载密钥而不解密](Chapter9.html#pageant-deferred-decryption)
-  - [9.6 安全注意事项](Chapter9.html#pageant-security)
+  - 9.1 `Pageant` 入门
+  - 9.2 `Pageant`  主窗口
+  - 9.3 `Pageant`  命令行
+  - 9.4 使用代理转发
+  - 9.5 不解密加载密钥
+  - 9.6 安全注意事项
 - 第 10 章：常见错误消息
-  - [10.1 “未为此服务器缓存主机密钥”](Chapter10.html#errors-hostkey-absent)
-  - [10.2 “警告 - 潜在的安全漏洞！”](Chapter10.html#errors-hostkey-wrong)
-  - [10.3 “此服务器提供了由其他证书颁发机构签名的认证主机密钥......”](Chapter10.html#errors-cert-mismatch)
-  - [10.4 “我们的配置需要 SSH 协议版本 2，但远程仅提供（旧的、不安全的）SSH-1”](Chapter10.html#errors-ssh-protocol)
-  - [10.5'服务器支持的第一个密码是...低于配置的警告阈值'](Chapter10.html#errors-cipher-warning)
-  - [10.6 “远程端发送断开连接消息类型 2（协议错误）：”root 身份验证失败次数过多“”](Chapter10.html#errors-toomanyauth)
-  - [10.7 “内存不足”](Chapter10.html#errors-memory)
-  - [10.8 “内部错误”、“内部故障”、“断言失败”](Chapter10.html#errors-internal)
-  - [10.9 “无法使用密钥文件”、“无法加载私钥”、“无法加载此密钥”](Chapter10.html#errors-cant-load-key)
-  - [10.10 “服务器拒绝了我们的密钥”、“服务器拒绝了我们的公钥”、“密钥被拒绝”](Chapter10.html#errors-refused)
-  - [10.11 “访问被拒绝”、“身份验证被拒绝”](Chapter10.html#errors-access-denied)
-  - [10.12 “没有可用的身份验证方法”](Chapter10.html#errors-no-auth)
-  - [10.13 “数据包上收到的MAC不正确”或“数据包上收到的CRC不正确”](Chapter10.html#errors-crc)
-  - [10.14 “传入数据包在解密时出现乱码”](Chapter10.html#errors-garbled)
-  - [10.15 “PuTTY X11 代理：*各种错误*”](Chapter10.html#errors-x11-proxy)
-  - [10.16 “网络错误：软件导致连接中止”](Chapter10.html#errors-connaborted)
-  - [10.17 “网络错误：对等方重置连接”](Chapter10.html#errors-connreset)
-  - [10.18 “网络错误：连接被拒绝”](Chapter10.html#errors-connrefused)
-  - [10.19 “网络错误：连接超时”](Chapter10.html#errors-conntimedout)
-  - [10.20 “网络错误：无法分配请求的地址”](Chapter10.html#errors-cannotassignaddress)
-- 附录 A：PuTTY 常见问题解答
-  - [A.1 引言](AppendixA.html#faq-intro)
-  - [A.2 PuTTY 支持的功能](AppendixA.html#faq-support)
-  - [A.3 移植到其他操作系统](AppendixA.html#faq-ports)
-  - [A.4 在其他程序中嵌入 PuTTY](AppendixA.html#faq-embedding)
-  - [A.5 PuTTY的运营细节](AppendixA.html#faq-details)
-  - [A.6 操作方法问题](AppendixA.html#faq-howto)
-  - [A.7 故障排除](AppendixA.html#faq-trouble)
-  - [A.8 安全问题](AppendixA.html#faq-secure)
-  - [A.9 行政问题](AppendixA.html#faq-admin)
-  - [A.10 杂项问题](AppendixA.html#faq-misc)
+  - 10.1 未为此服务器缓存主机密钥
+  - 10.2 警告 - 潜在的安全漏洞！
+  - 10.3 此服务器提供了由其他证书颁发机构签名的认证主机密钥......
+  - 10.4 我们的配置需要 `SSH` 协议版本 `2` ，但远程仅提供了（旧的、不安全的）`SSH-1`
+  - 10.5 服务器支持的第一个密码是...低于配置的警告阈值
+  - 10.6 远程端发送断开连接消息类型 `2`（协议错误）：”`root` 身份验证失败次数过多“
+  - 10.7 内存不足
+  - 10.8 内部错误、内部故障、断言失败
+  - 10.9 无法使用密钥文件、无法加载私钥、无法加载此密钥
+  - 10.10 服务器拒绝了我们的密钥、服务器拒绝了我们的公钥、密钥被拒绝
+  - 10.11 “访问被拒绝、身份验证被拒绝”
+  - 10.12 “没有可用的身份验证方法”
+  - 10.13 “数据包上收到的MAC不正确”或“数据包上收到的 `CRC` 不正确”
+  - 10.14 “传入数据包在解密时出现乱码”
+  - 10.15 “`PuTTY X11` 代理：*各种错误*”
+  - 10.16 “网络错误：软件导致连接中止”
+  - 10.17 “网络错误：对等方重置连接”
+  - 10.18 “网络错误：连接被拒绝”
+  - 10.19 “网络错误：连接超时”
+  - 10.20 “网络错误：无法分配请求的地址”
+- 附录 A：`PuTTY` 常见问题解答
+  - A.1 引言
+  - A.2 `PuTTY` 支持的功能
+  - A.3 移植到其他操作系统
+  - A.4 在其他程序中嵌入 `PuTTY`
+  - A.5 `PuTTY` 的运营细节
+  - A.6 操作方法问题
+  - A.7 故障排除
+  - A.8 安全问题
+  - A.9 行政问题
+  - A.10 杂项问题
 - 附录 B：反馈和错误报告
-  - [B.1 一般准则](AppendixB.html#feedback-general)
-  - [B.2 报告错误](AppendixB.html#feedback-bugs)
-  - [B.3 报告安全漏洞](AppendixB.html#feedback-vulns)
-  - [B.4 请求额外功能](AppendixB.html#feedback-features)
-  - [B.5 请求已请求的功能](AppendixB.html#feedback-feature-priority)
-  - [B.6 支持请求](AppendixB.html#feedback-support)
-  - [B.7 网络服务器管理](AppendixB.html#feedback-webadmin)
-  - [B.8 请求许可](AppendixB.html#feedback-permission)
-  - [B.9 镜像 PuTTY 网站](AppendixB.html#feedback-mirrors)
-  - [B.10 赞美和赞美](AppendixB.html#feedback-compliments)
-  - [B.11 电子邮件地址](AppendixB.html#feedback-address)
-- 附录C：PPK文件格式
-  - [C.1 概述](AppendixC.html#ppk-overview)
-  - [C.2 外层](AppendixC.html#ppk-outer)
-  - [C.3 私钥编码](AppendixC.html#ppk-privkeys)
-  - [C.4 密钥派生](AppendixC.html#ppk-keys)
-  - [C.5 旧版本的PPK格式](AppendixC.html#ppk-old)
-- [附录 D：PUTTY 许可证](AppendixD.html#licence)
-- 附录E：PuTTY黑客指南
-  - [E.1 跨操作系统可移植性](AppendixE.html#udp-portability)
-  - [E.2 多个后端同等对待](AppendixE.html#udp-multi-backend)
-  - [E.3 某些平台上每个进程多个会话](AppendixE.html#udp-globals)
-  - [E.4 C，不是C++](AppendixE.html#udp-pure-c)
-  - [E.5 安全意识编码](AppendixE.html#udp-security)
-  - [E.6 特定编译器的独立性](AppendixE.html#udp-multi-compiler)
-  - [E.7 代码小](AppendixE.html#udp-small)
-  - [E.8 单线程代码](AppendixE.html#udp-single-threaded)
-  - [E.9 尽可能发送到服务器的击键](AppendixE.html#udp-keystrokes)
-  - [E.10 640×480 配置面板的友好性](AppendixE.html#udp-640x480)
-  - [E.11 协议代码中的协程](AppendixE.html#udp-ssh-coroutines)
-  - [E.12 实现特征的显式 vtable 结构](AppendixE.html#udp-traits)
-  - [E.13 照我们说的做，而不是照我们做的做](AppendixE.html#udp-perfection)
-- 附录 F：PuTTY 下载密钥和签名
-  - [F.1 公钥](AppendixF.html#pgpkeys-pubkey)
-  - [F.2 安全细节](AppendixF.html#pgpkeys-security)
-  - [F.3 密钥翻转](AppendixF.html#pgpkeys-rollover)
-- 附录 G：为 PuTTY 指定的 SSH-2 名称
-  - [G.1 连接协议通道请求名称](AppendixG.html#sshnames-channel)
-  - [G.2 密钥交换方法名称](AppendixG.html#sshnames-kex)
-  - [G.3 加密算法名称](AppendixG.html#sshnames-encrypt)
-  - [G.4 代理扩展请求名称](AppendixG.html#sshnames-agent)
-- 附录H：PuTTY认证插件协议
-  - [H.1 要求](AppendixH.html#authplugin-req)
-  - [H.2 运输和配置](AppendixH.html#authplugin-transport)
-  - [H.3 数据格式和编组](AppendixH.html#authplugin-formats)
-  - [H.4 协议版本控制](AppendixH.html#authplugin-version)
-  - [H.5 事件概述和顺序](AppendixH.html#authplugin-overview)
-  - [H.6 消息格式](AppendixH.html#authplugin-messages)
-  - [H.7 参考文献](AppendixH.html#authplugin-refs)
+  - B.1 一般准则
+  - B.2 报告错误
+  - B.3 报告安全漏洞
+  - B.4 请求额外功能
+  - B.5 请求已请求的功能
+  - B.6 支持请求
+  - B.7 网络服务器管理
+  - B.8 请求许可
+  - B.9 镜像 `PuTTY` 网站
+  - B.10 赞美和赞美
+  - B.11 电子邮件地址
+- 附录C：`PPK` 文件格式
+  - C.1 概述
+  - C.2 外层
+  - C.3 私钥编码
+  - C.4 密钥派生
+  - C.5 旧版本的 `PPK` 格式
+- 附录 D：`PUTTY` 许可证
+- 附录E：`PuTTY` 黑客指南
+  - E.1 跨操作系统可移植性
+  - E.2 多个后端同等对待
+  - E.3 某些平台上每个进程多个会话
+  - E.4 `C` ，不是 `C++`
+  - E.5 安全意识编码
+  - E.6 特定编译器的独立性
+  - E.7 小代码尺寸
+  - E.8 单线程代码
+  - E.9 尽可能发送到服务器的击键
+  - E.10 `640×480` 配置面板的友好性
+  - E.11 协议代码中的协程
+  - E.12 实现特征的显式 `vtable` 结构
+  - E.13 照我们说的做，而不是照我们做的做
+- 附录 F：`PuTTY` 下载密钥和签名
+  - F.1 公钥
+  - F.2 安全细节
+  - F.3 密钥翻转
+- 附录 G：为 `PuTTY` 指定的 `SSH-2` 名称
+  - G.1 连接协议通道请求名称
+  - G.2 密钥交换方法名称
+  - G.3 加密算法名称
+  - G.4 代理扩展请求名称
+- 附录H：`PuTTY` 认证插件协议
+  - H.1 要求
+  - H.2 运输和配置
+  - H.3 数据格式和编组
+  - H.4 协议版本控制
+  - H.5 事件概述和顺序
+  - H.6 消息格式
+  - H.7 参考文献
 - Index
 
 
@@ -209,35 +209,226 @@ Putty用户手册
 
 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 是执行相同操作的四种方法：通过网络从另一台计算机登录到多用户计算机。
 
-多用户操作系统，通常是 `Unix` 系列（如 `Linux` ，`MacOS` 和 `BSD` 系列），通常向用户提供命令行界面，非常类似于Windows中的“命令提示符”或“MS-DOS提示符”。系统将打印一个提示，您键入系统将服从的命令。
+多用户操作系统，通常是 `Unix` 系列（如 `Linux` ，`MacOS` 和 `BSD` 系列），通常向用户提供命令行界面，非常类似于 `Windows` 中的“命令提示符”或“MS-DOS提示符”。
 
-使用这种类型的界面，您无需坐在键入命令的同一台计算机上。命令和响应可以通过网络发送，因此您可以坐在一台计算机上，向另一台计算机甚至多台计算机发出命令。
+系统将显示一个提示，您就可以键入系统将遵循的命令。
 
-SSH，Telnet，Rlogin和SUPDUP是允许您执行此操作*的网络协议*。在您所在的计算机上，您运行一个客户端，该*客户端*与其他计算机（*服务器*）建立网络连接。网络连接将您的击键和命令从客户端传送到服务器，并将服务器的响应传输回给您。
 
-这些协议还可用于其他类型的基于键盘的交互式会话。特别是，有很多公告板，谈话系统和MUD（多用户地下城）支持使用Telnet进行访问。甚至有一些支持SSH。
 
-在以下情况下，您可能希望使用 SSH、Telnet、Rlogin 或 SUPDUP：
+使用这种类型的界面，您无需坐在键入命令的同一台计算机面前。
 
-- 您在Unix系统（或其他一些多用户操作系统，如VMS或ITS）上有一个帐户，您希望能够从其他地方访问该帐户
-- 您的互联网服务提供商为您提供网络服务器上的登录帐户。（这也可能称为 *shell 帐户*。*shell* 是在服务器上运行并为您解释命令的程序。
-- 您想使用可以使用Telnet访问的公告板系统，通话者或MUD。
+命令和响应可以通过网络传送，因此您可以坐在一台计算机上，向另一台甚至多台计算机发出命令。
 
-在以下情况下，您可能*不想*使用 SSH、Telnet、Rlogin 或 SUPDUP：
 
-- 你只使用Windows。Windows计算机之间有自己的网络方式，除非您正在做一些相当不寻常的事情，否则您将不需要使用这些远程登录协议中的任何一种。
 
-## 1.2 SSH、Telnet、Rlogin和SUPDUP有何不同？
+`SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 是允许您执行此操作的网络协议。
 
-此列表总结了SSH，Telnet，Rlogin和SUPDUP之间的一些差异。
+在您所在的计算机上，运行一个客户端，该客户端将与其他计算机（服务器）建立网络连接。
 
-- SSH（代表“安全外壳”）是最近设计的高安全性协议。它使用强大的加密技术来保护您的连接免受窃听、劫持和其他攻击。Telnet，Rlogin和SUPDUP都是提供最低安全性的旧协议。
-- SSH 和 Rlogin 都允许您无需键入密码即可登录到服务器。（Rlogin执行此操作的方法不安全，并可能允许攻击者访问您在服务器上的帐户。SSH 的方法要安全得多，通常破坏安全性需要攻击者获得对实际客户端计算机的访问权限。
-- SSH 允许您连接到服务器并自动发送命令，以便服务器运行该命令然后断开连接。因此，您可以在自动化处理中使用它。
+此网络连接会将您的铵键和命令从客户端传送到服务器，并将服务器的响应传输回给您。
 
-互联网是一个充满敌意的环境，安全是每个人的责任。如果您通过开放的互联网进行连接，那么我们建议您使用 SSH。如果要连接的服务器不支持 SSH，则可能值得尝试说服管理员安装它。
 
-如果您的客户端和服务器都在同一个（良好）防火墙后面，则使用 Telnet、Rlogin 或 SUPDUP 更有可能是安全的，但我们仍然建议您使用 SSH。
+
+这些协议还可用于其他类型的基于键盘的交互式会话。
+
+特别是有很多公告板、交谈系统和 `MUDs`（多用户泥巴游戏）等等支持使用 `Telnet` 进行访问。
+
+甚至有一些还支持 `SSH` 。
+
+
+
+如下情况，您可能希望用到 `SSH` 、`Telnet` 、`Rlogin` 或 `SUPDUP` ：
+
+- 您在 `Unix` 系统（或其他一些多用户操作系统，如 `VMS` 或 `ITS` ）上有一个帐户，您希望能够从其他地方访问该帐户。
+
+- 您的互联网服务提供商为您提供网络服务器上的登录帐户。
+
+  （这也可能称为 `shell` 帐户，`shell`  是指在服务器上运行并为您解释命令的程序。
+
+- 您想通过使用 `Telnet` 来访问的公告板系统，交谈系统或 `MUD` 。
+
+
+
+如下情况，您可能**不想**使用 `SSH` 、`Telnet` 、`Rlogin` 或 `SUPDUP` ：
+
+- 你只使用 `Windows` ，`Windows` 计算机之间有自己的网络方式，除非您正在做一些相当不寻常的事情，否则您将不需要使用这些远程登录协议中的任何一种。
+
+
+
+## 1.2 `SSH` 、`Telnet` 、`Rlogin` 和 `SUPDUP` 有何不同？
+
+此列表总结了 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 之间的一些差异。
+
+- `SSH`（代表“安全外壳” `secure shell` ）是最近设计的一个高安全性协议。
+
+  它使用强大的加密技术来保护您的连接免受窃听、劫持和其他攻击。
+
+  `Telnet` ，`Rlogin` 和 `SUPDUP` 均仅提供最低安全性的旧协议。
+
+- `SSH` 和 `Rlogin` 都允许您无需键入密码即可登录到服务器。
+
+  （ `Rlogin` 执行此操作的方法不安全，并可能允许攻击者访问您在服务器上的帐户。
+
+  `SSH` 的方法要安全得多，通常破坏安全性需要攻击者获得对实际客户端计算机的访问权限。）
+
+- `SSH` 允许您连接到服务器并自动发送命令，以便服务器运行该命令然后断开连接。
+
+  因此，您可以在自动化处理中使用它。
+
+
+
+互联网是一个充满敌意的环境，安全是每个人的责任。
+
+如果您通过开放的互联网进行连接，那么我们建议您使用 `SSH` 。
+
+如果要连接的服务器不支持 `SSH` ， 那么尝试说服管理员安装它可能是值得的 。
+
+如果您的客户端和服务器都在同一个（状态良好）防火墙后面，则使用 `Telnet` 、`Rlogin` 或 `SUPDUP` 有可能是安全的，但我们仍然建议您使用 `SSH` 。
+
+
+
+
+
+# 第 2 章：`PuTTY` 入门
+
+本章提供了使用 `PuTTY` 最简单类型的交互式登录会话的快速指南。
+
+## 2.1 启动会话
+
+启动 `PuTTY` 时，您将看到一个对话框，此对话框允许您控制 `PuTTY` 可以执行的所有操作。
+
+请参阅[第 4 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config)，了解您可以控制的所有事物的详细信息。
+
+
+
+通常不需要更改大多数配置选项。
+
+要启动最简单的会话，您需要做的就是输入一些基本参数。
+
+在“***主机名称（或 `IP` 地址）***”框中，输入要连接到的服务器的因特网主机名，您的登录帐户提供商应该已经告诉您这一点。
+
+图a01
+
+
+
+现在，从“***连接类型***”控件中选择要使用的登录协议。
+
+对于登录会话，您应该选择 `SSH` 、`Telnet` 、`Rlogin` 或 `SUPDUP` 。
+
+图a02
+
+
+
+有关这些协议之间差异的描述，以及有关使用哪一种协议的建议，请参阅[第 1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter1.html#which-one)。
+
+原始协议不用于交互式登录会话，您通常会使用它来调试其他 `Internet` 服务（请参阅[第 3.7 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-rawprot)）。
+
+串口选项用于连接到本地串口线路，其工作原理略有不同：有关此内容的更多信息，请参见第 [3.6 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-serial)。
+
+
+
+更改所选协议时，“***端口***”框中的数字将更改。
+
+这是正常的：发生这种情况是因为服务器通常在不同的网络端口上提供各种登录服务。
+
+大多数服务器将使用标准端口号，因此您无需更改端口设置。
+
+如果您的服务器在非标准端口上提供登录服务，则系统管理员应该告诉您是哪一个。
+
+例如，许多 `MUD` 在 `23` 端口以外的端口上运行 `Telnet` 服务。
+
+填写“主机名称”、“连接类型”以及可能的“端口”设置后，即可进行连接。
+
+按对话框底部的“***打开***”按钮，`PuTTY` 将开始尝试连接到服务器。
+
+
+
+## 2.2 验证主机密钥（仅限 `SSH` ）
+
+如果不使用 `SSH` 协议，则可以跳过此部分。
+
+如果您是第一次使用 `SSH` 连接到服务器，您可能会看到如下所示的消息：
+
+```
+The host key is not cached for this server:
+ ssh.example.com (port 22)
+You have no guarantee that the server is the computer you think it is.
+The server's ssh-ed25519 key fingerprint is:
+ ssh-ed25519 255 SHA256:TddlQk20DVs4LRcAsIfDN9pInKpY06D+h4kSHwWAj4w
+If you trust this host, press "Accept" to add the key to PuTTY's
+cache and carry on connecting.
+If you want to carry on connecting just once, without adding the key
+to the cache, press "Connect Once".
+If you do not trust this host, press "Cancel" to abandon the connection.
+```
+
+
+
+图a03
+
+
+
+这是 `SSH` 协议的一项功能，它旨在保护您免受称为***欺骗***（ `spoofing` ）的网络攻击。
+
+欺骗网络攻击会秘密地将您的连接重定向到另一台计算机，以便误导您将密码发送到错误的计算机。
+
+使用此技术，攻击者将能够获取到您登录帐户的密码，之后就可以像您一样登录系统并将该帐户用于自己的非法目的。
+
+
+
+为了防止这种攻击，每个服务器都有一个唯一的标识代码，称为***主机密钥***。
+
+这些密钥的创建方式可防止一台服务器伪造另一台服务器的密钥。
+
+因此，如果您连接到服务器并且它向您发送了与您期望的主机密钥不同的主机密钥，`PuTTY` 可以警告您服务器可能已被切换，并且可能正在进行欺骗攻击。
+
+
+
+
+
+`PuTTY` 在 `Windows` 注册表中记录您连接到的每个服务器的主机密钥。
+
+每次连接到服务器时，它都会检查服务器提供的主机密钥是否与上次连接时的主机密钥相同。
+
+如果不是，您将看到更强烈的警告，并且您将有机会在输入任何私人信息（例如密码）之前放弃连接。（请参阅[第 10.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter10.html#errors-hostkey-wrong)以了解其外观。
+
+
+
+
+
+但是，当您连接到以前未连接的服务器时，`PuTTY` 无法判断主机密钥是否正确。因此，它会给出上面显示的警告，并询问您是否要信任此主机密钥。
+
+是否信任主机密钥是您的选择。如果在公司网络中进行连接，您可能会觉得所有网络用户都在同一端，并且不太可能发生欺骗攻击，因此您可以选择信任密钥而不检查它。如果您通过恶意网络（如 Internet）进行连接，则应通过电话或亲自与系统管理员联系。（验证指纹时，请注意可能相互混淆的字母和数字：/、// 等。`0``O``1``I``l`
+
+许多服务器具有多个主机密钥。如果系统管理员向您发送多个指纹，则应确保 PuTTY 显示的指纹在列表中，但哪一个并不重要。
+
+如果您没有任何看起来像示例的指纹（后跟一长串字符），而是有成对的字符，用冒号分隔，例如 ，请尝试按“更多信息...”按钮，看看您是否有与“MD5指纹”匹配的指纹。这是汇总相同基础主机密钥的较旧且安全性较低的方法;攻击者可以使用相同的指纹创建自己的主机密钥;因此，除非您别无选择，否则您应该避免依赖这种指纹格式。“更多信息...”对话框还显示完整的主机公钥，以防比指纹更容易比较。`SHA256:``a4:db:96:a7:...`
+
+有关管理主机密钥的高级选项，请参见[第 4.19 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-hostkey)。
+
+## 2.3 登录
+
+连接并验证服务器的主机密钥后，系统将要求您登录，可能使用用户名和密码。您的系统管理员应该为您提供这些。（相反，如果您的系统管理员要求您提供或向您提供“公钥”或“密钥文件”，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。
+
+PuTTY 将显示一个文本窗口（“终端窗口” – 除非您更改了默认值，否则它将具有黑色背景），并提示您在该窗口中输入用户名和密码。（这些提示将包括 PuTTY 图标，以将它们与服务器在同一窗口中发送的任何文本区分开来。
+
+输入用户名和密码，服务器应授予您访问权限并开始会话。如果您输入了错误的密码，大多数服务器会给您几次正确输入密码的机会。
+
+当您键入密码时，您通常不会看到光标在窗口中移动，但 PuTTY *正在*注册您键入的内容，并在您按 Return 时发送它。（它的工作原理是避免向观看屏幕的任何人透露密码的长度。
+
+如果您使用的是SSH，请注意不要输入错误的用户名，因为按回车键后您将没有机会更正它;许多 SSH 服务器不允许您使用不同的用户名进行两次登录尝试。如果您输入了错误的用户名，则必须关闭 PuTTY 并重新开始。
+
+如果您的密码被拒绝，但您确定键入正确，请检查是否未启用 Caps Lock。许多登录服务器，尤其是Unix计算机，在检查密码时将大写和小写视为不同;因此，如果Caps Lock处于打开状态，您的密码可能会被拒绝。
+
+## 2.4 登录后
+
+登录服务器后，接下来会发生什么取决于服务器！大多数服务器将打印某种登录消息，然后显示提示，您可以在其中键入服务器将执行的命令。一些服务器将为您提供在线帮助;其他人可能不会。如果您对下一步操作有疑问，请咨询您的系统管理员。
+
+## 2.5 注销
+
+完成会话后，应通过键入服务器自己的注销命令来注销。这可能因服务器而异;如有疑问，请尝试 或 ，或咨询手册或系统管理员。当服务器处理注销命令时，PuTTY 窗口应自动关闭。`logout``exit`
+
+*您可以使用*窗口边框中的“关闭”按钮关闭 PuTTY 会话，但这可能会使服务器感到困惑 - 有点像在对话过程中意外挂断电话。我们建议您不要这样做，除非服务器已停止响应您，并且您无法以任何其他方式关闭窗口。
 
 
 
