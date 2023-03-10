@@ -32,79 +32,79 @@ Putty用户手册
 
 
 
-- 第1章 `PuTTY` 简介
+- 第 1 章 `PuTTY` 简介
   - 1.1 什么是 `SSH` ， `Telnet` ， `Rlogin` 和 `SUPDUP` ？
-  - 1.2 SSH、Telnet、Rlogin和SUPDUP有何不同？
+  - 1.2 `SSH` 、`Telnet` 、`Rlogin` 和 `SUPDUP` 有何不同？
 - 第 2 章：`PuTTY` 入门
-  - [2.1 启动会话](Chapter2.html#gs-insecure)
-  - [2.2 验证主机密钥（仅限 SSH）](Chapter2.html#gs-hostkey)
-  - [2.3 登录](Chapter2.html#gs-login)
-  - [2.4 登录后](Chapter2.html#gs-session)
-  - [2.5 注销](Chapter2.html#gs-logout)
-- 第 3 章：使用 PuTTY
-  - [3.1 会话期间](Chapter3.html#using-session)
-  - [3.2 创建会话的日志文件](Chapter3.html#using-logging)
-  - [3.3 更改字符集配置](Chapter3.html#using-translation)
-  - [3.4 在 SSH 中使用 X11 转发](Chapter3.html#using-x-forwarding)
-  - [3.5 在 SSH 中使用端口转发](Chapter3.html#using-port-forwarding)
-  - [3.6 连接到本地串行线路](Chapter3.html#using-serial)
-  - [3.7 建立原始 TCP 连接](Chapter3.html#using-rawprot)
-  - [3.8 使用 Telnet 协议进行连接](Chapter3.html#using-telnet)
-  - [3.9 使用 Rlogin 协议进行连接](Chapter3.html#using-rlogin)
-  - [3.10 使用 SUPDUP 协议进行连接](Chapter3.html#using-supdup)
-  - [3.11 PuTTY 命令行](Chapter3.html#using-cmdline)
-- 第 4 章：配置 PuTTY
-  - [4.1 会话面板](Chapter4.html#config-session)
-  - [4.2 日志记录面板](Chapter4.html#config-logging)
-  - [4.3 端子面板](Chapter4.html#config-terminal)
-  - [4.4 键盘面板](Chapter4.html#config-keyboard)
-  - [4.5 铃铛面板](Chapter4.html#config-bell)
-  - [4.6 功能面板](Chapter4.html#config-features)
-  - [4.7 窗口面板](Chapter4.html#config-window)
-  - [4.8 外观面板](Chapter4.html#config-appearance)
-  - [4.9 行为面板](Chapter4.html#config-behaviour)
-  - [4.10 翻译面板](Chapter4.html#config-translation)
-  - [4.11 选择面板](Chapter4.html#config-selection)
-  - [4.12 复制面板](Chapter4.html#config-selection-copy)
-  - [4.13 颜色面板](Chapter4.html#config-colours)
-  - [4.14 连接面板](Chapter4.html#config-connection)
-  - [4.15 “数据”面板](Chapter4.html#config-data)
-  - [4.16 代理面板](Chapter4.html#config-proxy)
-  - [4.17 SSH面板](Chapter4.html#config-ssh)
-  - [4.18 凯克斯面板](Chapter4.html#config-ssh-kex)
-  - [4.19 主机密钥面板](Chapter4.html#config-ssh-hostkey)
-  - [4.20 密码面板](Chapter4.html#config-ssh-encryption)
-  - [4.21 身份验证面板](Chapter4.html#config-ssh-auth)
-  - [4.22 凭据面板](Chapter4.html#config-ssh-auth-creds)
-  - [4.23 GSSAPI面板](Chapter4.html#config-ssh-auth-gssapi)
-  - [4.24 TTY面板](Chapter4.html#config-ssh-tty)
-  - [4.25 X11面板](Chapter4.html#config-ssh-x11)
-  - [4.26 隧道面板](Chapter4.html#config-ssh-portfwd)
-  - [4.27 错误和更多错误面板](Chapter4.html#config-ssh-bugs)
-  - [4.28 “裸`ssh连接`”协议](Chapter4.html#config-psusan)
-  - [4.29 串行面板](Chapter4.html#config-serial)
-  - [4.30 远程登录面板](Chapter4.html#config-telnet)
-  - [4.31 登录面板](Chapter4.html#config-rlogin)
-  - [4.32 SUPDUP 面板](Chapter4.html#config-supdup)
-  - [4.33 将配置存储在文件中](Chapter4.html#config-file)
+  - 2.1 启动一个会话
+  - 2.2 验证主机密钥（仅限 `SSH` ）
+  - 2.3 登录
+  - 2.4 登录之后
+  - 2.5 注销
+- 第 3 章：使用 `PuTTY`
+  - 3.1 会话期间
+  - 3.2 创建会话的日志文件
+  - 3.3 更改字符集配置
+  - 3.4 在 `SSH` 中使用 `X11` 转发
+  - 3.5 在 `SSH` 中使用端口转发
+  - 3.6 连接到本地串行线路
+  - 3.7 建立原生 `TCP` 连接
+  - 3.8 使用 `Telnet` 协议进行连接
+  - 3.9 使用 `Rlogin` 协议进行连接
+  - 3.10 使用 `SUPDUP` 协议进行连接
+  - 3.11 `PuTTY` 命令行
+- 第 4 章：配置 `PuTTY`
+  - 4.1 会话面板
+  - 4.2 日志记录面板
+  - 4.3 终端面板
+  - 4.4 键盘面板
+  - 4.5 响铃面板
+  - 4.6 特性面板
+  - 4.7 窗口面板
+  - 4.8 外观面板
+  - 4.9 行为面板
+  - 4.10 转换面板
+  - 4.11 选择面板
+  - 4.12 复制面板
+  - 4.13 颜色面板
+  - 4.14 连接面板
+  - 4.15 数据面板
+  - 4.16 代理面板
+  - 4.17 `SSH` 面板
+  - 4.18 密钥面板
+  - 4.19 主机密钥面板
+  - 4.20 加密面板
+  - 4.21 认证面板
+  - 4.22 凭据面板
+  - 4.23 `GSSAPI` 面板
+  - 4.24 `TTY` 面板
+  - 4.25 `X11` 面板
+  - 4.26 通道面板
+  - 4.27 查错和更多查错面板
+  - 4.28 `裸ssh连接` 协议
+  - 4.29 串口面板
+  - 4.30 `Telnet` 面板
+  - 4.31 `Rlogin` 面板
+  - 4.32 `SUPDUP` 面板
+  - 4.33 将配置存储在文件中
 - 第 5 章：使用 PSCP 安全地传输文件
   - [5.1 启动 PSCP](Chapter5.html#pscp-starting)
   - [5.2 PSCP 的使用](Chapter5.html#pscp-usage)
-- 第 6 章：使用 PSFTP 安全地传输文件
-  - [6.1 启动PSFTP](Chapter6.html#psftp-starting)
-  - [6.2 运行 PSFTP](Chapter6.html#psftp-commands)
-  - [6.3 通过 PSFTP 使用公钥身份验证](Chapter6.html#psftp-pubkey)
-- 第 7 章：使用命令行连接工具 Plink
-  - [7.1 启动链接](Chapter7.html#plink-starting)
-  - [7.2 使用链接](Chapter7.html#plink-usage)
-  - [7.3 在批处理文件和脚本中使用 Plink](Chapter7.html#plink-batch)
-  - [7.4 在 CVS 中使用 Plink](Chapter7.html#plink-cvs)
-  - [7.5 将 Plink 与 WinCVS 结合使用](Chapter7.html#plink-wincvs)
-- 第 8 章：使用公钥进行 SSH 身份验证
-  - [8.1 公钥认证 - 简介](Chapter8.html#pubkey-intro)
-  - [8.2 使用 PuTTYgen，PuTTY 密钥生成器](Chapter8.html#pubkey-puttygen)
-  - [8.3 准备公钥认证](Chapter8.html#pubkey-gettingready)
-- 第 9 章：使用选美进行身份验证
+- 第 6 章：使用 `PSFTP` 安全地传输文件
+  - 6.1 启动 `PSFTP`
+  - 6.2 运行 `PSFTP`
+  - 6.3 通过 `PSFTP` 使用公钥身份验证
+- 第 7 章：使用命令行连接工具 `Plink`
+  - 7.1 启动 `Plink`
+  - 7.2 使用 `Plink`
+  - 7.3 在批处理文件和脚本中使用 `Plink`
+  - 7.4 将 `CVS` 与 `Plink` 结合使用
+  - 7.5 将 `Plink` 与 `WinCVS` 结合使用
+- 第 8 章：使用公钥进行 `SSH` 身份验证
+  - 8.1 公钥认证 - 简介
+  - 8.2 使用 `PuTTYgen` - `PuTTY` 密钥生成器
+  - 8.3 准备公钥认证
+- 第 9 章：使用 `Pageant` 进行身份验证
   - [9.1 选美入门](Chapter9.html#pageant-start)
   - [9.2 选美主窗口](Chapter9.html#pageant-mainwin)
   - [9.3 选美命令行](Chapter9.html#pageant-cmdline)
