@@ -1,6 +1,6 @@
-没想到UrBackup的Web密码重置这种简单问题还让我踩到坑里了！
+没想到 UrBackup 的 Web 密码重置这种简单问题还让我踩到坑里了！
 
-副标题：没想到UrBackup的Web密码重置这种简单问题还让我踩到坑里了！
+副标题：没想到 UrBackup 的 Web 密码重置这种简单问题还让我踩到坑里了！
 
 英文：unexpectedly-i-meet-troubles-to-reset-urbackup-web-password-issue
 
@@ -179,13 +179,13 @@ ERROR: LMDB: Failed to open LMDB database file
 
 
 
-定定神后果断回车，OK，成功了！
+定定神后果断回车，OK，密码重置成功了！
 
 图11
 
 
 
-最后总结一下。
+最后总结一下哈，免得又忘了。
 
 首先，要将所需插件（ `dll` 文件）都加载上。
 
@@ -195,7 +195,9 @@ ERROR: LMDB: Failed to open LMDB database file
 
 
 
-批处理命令行中，如下补充修正代码。
+另外需要补充的是，原来 `UrBackup` 自带的批处理文件 `reset_pw.bat` 中参数设定不完整。
+
+应该修正代码，如下补充参数就对了。
 
 ```
 "%~dp0\urbackup_srv.exe" --cmdline --no-server --plugin cryptoplugin.dll --plugin fsimageplugin.dll --plugin fileservplugin.dll --plugin luaplugin.dll --plugin urbackupserver.dll --set_admin_pw "%newpw%"
@@ -203,11 +205,29 @@ ERROR: LMDB: Failed to open LMDB database file
 
 
 
-懒的复制粘贴的小伙伴可以直接下载我打包好的重置批处理文件。
+懒的复制粘贴或手动修改的小伙伴们可以直接下载我打包好的重置批处理文件。
 
-下载链接：
+**reset_pw_XJ.7z(29K)**
+
+下载链接：https://pan.baidu.com/s/1zumAV4yTCEZCsH93UTo5Ew
+
+提取码：9o78
 
 
+
+将文件下载后解压缩到 `UrBackup` 服务所在的文件夹中即可。
+
+```
+C:\Program Files\UrBackupServer
+```
+
+
+
+我长舒一口气，密码是重置好了，系统是可以登录了，但是这也仅仅是个开头，后面还有一大堆事情等着我做呢！
+
+我掏出手机一看，才23点60，又到了享受香浓咖啡的时间了，我真幸福。
+
+我要努力努力再努力，感谢同事们的鼓励，感谢老板的再造之恩！
 
 
 
