@@ -4,7 +4,7 @@
 
 英文：unexpectedly-i-meet-troubles-to-reset-urbackup-web-password-issue
 
-关键字：urbackup,password,web,密码,重置
+关键字：urbackup,password,web,密码,重置,reset,reset_pw
 
 
 
@@ -20,7 +20,7 @@
 
 这不最近对我的信任度又大幅提升，给我安排了不少极具挑战性的工作，并且也郑重承诺事后优先考虑保留我不被优化的资格。
 
-说实话，当时可把我给感动坏了，我那小心脏激动得“噗通噗通”直跳！
+说实话，这话绕得当时就把我给感动坏了，我那小心脏激动得“噗通噗通”直跳！
 
 
 
