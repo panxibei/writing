@@ -156,9 +156,9 @@
 
 注意事项：请下载后解压至非中文字符文件夹路径中使用
 
-下载链接：https://www.90pan.com/b2255896
+下载链接：https://pan.baidu.com/s/1uaE0S88w7JbZv9eQR8XaAA
 
-提取码：3s0g
+提取码：pe06
 
 
 
