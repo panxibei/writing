@@ -8,6 +8,10 @@ Putty用户手册
 
 
 
+> https://the.earth.li/~sgtatham/putty/0.78/htmldoc/
+
+
+
 
 
 # `PuTTY` 用户手册
@@ -509,6 +513,720 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 您可以使用窗口边框中的“关闭”按钮关闭 `PuTTY` 会话，但这可能会使服务器感到困惑 - 有点像在对话过程中意外挂断电话。
 
 我们建议您不要这样做，除非服务器已停止响应您，并且您无法以任何其他方式关闭窗口。
+
+
+
+
+
+
+
+# 第 3 章：使用 `PuTTY`
+
+本章对 `PuTTY` 一些更高级的功能进行了一般性介绍。
+
+如出于极端细节的参考目的，[第4章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config)可能包含更多信息。
+
+
+
+## 3.1 会话期间
+
+`PuTTY` 的许多复杂特性和功能都在配置面板中体现。
+
+一旦你按照自己的方式开启了一个会话，之后的事情应该相当简单。
+
+不过，还有一些更有用的功能可以利用。
+
+
+
+### 3.1.1 复制和粘贴文本
+
+通常在 `PuTTY` 会话中，您会在终端屏幕上找到要再次输入的文本。
+
+与大多数其他终端模拟器一样，`PuTTY` 允许您复制和粘贴文本，而不必反复键入。
+
+此外，复制和粘贴使用 `Windows` 剪贴板，以便您可以将 `URL` 粘贴（例如）到 `Web` 浏览器中，或者从文字处理器或电子表格粘贴到终端会话中。
+
+默认情况下，`PuTTY` 的复制和粘贴完全可以通过鼠标来操作。
+
+（对于有过使用 `Unix` 经验的人来说，这并不陌生。
+
+为了将文本复制到剪贴板，您只需在终端窗口中单击鼠标左键，然后拖动并选择文本。
+
+松开按键时，文本会***自动复制***到剪贴板，您并不需要按 `Ctrl-C` 或 `Ctrl-Ins` 。
+
+事实上，如果您确实按下了 `Ctrl-C` ，`PuTTY` 会在您的会话中将一个 `Ctrl-C` 字符发送到服务器，这可能会导致进程中断。（译者按：`Ctrl-C` 通常被视作中断指令。）
+
+
+
+粘贴操作 `PuTTY` 是使用右键完成的（或鼠标中键，如果您有三键鼠标并已设置它;请参阅[第 4.11.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-mouse)）。
+
+（按下 `Shift-Ins` ，或按下 `Ctrl` 加右键，再单击上下文菜单中选择“粘贴”，都具有相同的效果。）
+
+当您单击鼠标右键时，`PuTTY` 将读取 `Windows` 剪贴板中的任意内容并将其粘贴到您的会话中。
+
+默认情况下，其行为与在键盘上键入剪贴板内容的行为*完全相同*。
+
+因此，请注意将格式化文本粘贴到执行自动缩进的编辑器中，因为您可能会发现从剪贴板粘贴的空格，加上编辑器添加的空格，加起来太多的空格会破坏格式设置。
+
+（某些远程应用程序可以要求 `PuTTY` 识别正在粘贴的文本，以避免此类问题，但如果应用程序不这样做，则 `PuTTY` 无法避免这种情况。）
+
+
+
+如果双击鼠标左键，`PuTTY` 将选择整个单词。
+
+如果双击，并按住第二次单击同时拖动鼠标，`PuTTY` 将选择整个单词序列。
+
+（您可以精确调整 PuTTY 认为是单词一部分的内容;请参阅[第 4.12.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-charclasses)。）
+
+（译者按：如何理解双击并拖动鼠标的操作呢？
+
+其实与单击对比我们就可以明白，单击拖动是一个字母一个字母地选择，而双击拖动则是一个单词一个单词地选择。）
+
+如果单击*三次*或单击三次并拖动，则 `PuTTY` 将选择整行或行序列。
+
+
+
+如果要选择矩形区域而不是包含每行末尾的多行选择，则可以通过在进行选择时先按住 `Alt` 来执行此操作。
+
+您还可以将矩形选择配置为默认值，然后按住 `Alt` 将改为原来正常的操作行为：有关详细信息，请参见[第 4.11.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-rectselect)。
+
+
+
+（在某些 `Unix` 环境中，`Alt` 加拖动的操作会被窗口管理器截获。
+
+`Shift+Alt+拖动` 也应该适用于矩形选择，所以你可以尝试一下到底哪个可用。）
+
+
+
+如果您有鼠标中键，则可以在选择微小错误的内容后使用它来调整现有选择。
+
+（如果已将鼠标中键配置为粘贴，则鼠标右键将执行此操作。）
+
+在屏幕按下中键，您可以调整被选择内容的最近（左右）一侧，并将其拖动到合适正确的地方。
+
+（译者按：这里需要再次解释一下，意思是，先用鼠标左键选取一段或一个区域的内容，如果你感觉选取的范围有误，那么可以接着按下中键再次调整。
+
+中键按下后，距离选取内容范围的两边，较近的一侧就会先被调整。）
+
+
+
+如果您在 `Unix` 上运行 `PuTTY` 本身（而不仅仅是使用它从 `Windows` 连接到 `Unix` 系统），默认情况下，您可能必须在其他应用程序中使用类似的鼠标操作来粘贴您从 `PuTTY` 复制的文本，并复制文本以粘贴到 `PuTTY` 中。
+
+像 `Ctrl-C` 和 `Ctrl-V` 这样的操作可能不会按预期运行。
+
+[第 4.11.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-clipboards)解释了为什么会这样，以及如何更改行为。
+
+（在 `Windows` 上，只有一个与其他应用程序共享的选择，因此不会出现这种混淆。）
+
+
+
+服务器可以请求在 `PuTTY` 窗口本身中处理鼠标单击。
+
+如果发生这种情况，鼠标指针将变成箭头，并且仅当您按住 `Shift` 时才可以使用鼠标进行复制和粘贴。
+
+有关此功能的详细信息以及如何配置，请参阅第 4.6.2 节和第 [4.11.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-mouseshift)。
+
+您可以自定义大部分此类行为，例如，从键盘启用复制和粘贴;请参阅[第 4.11 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-selection)。
+
+
+
+### 3.1.2 向后滚动屏幕
+
+`PuTTY` 跟踪从终端顶部向上滚动的文本。
+
+因此，如果屏幕上出现了您想要阅读的内容，但它滚动得太快，并且在您尝试查找它时它已经消失了，您可以使用窗口右侧的滚动条查看会话历史记录并再次找到它。
+
+除了使用滚动条外，您还可以通过按 `Shift+PgUp` 和 `Shift+PgDn` 来上下翻页滚动。
+
+您可以使用 `Ctrl+PgUp` 和 `Ctrl+PgDn` 一次滚动一行，也可以使用 `Ctrl+Shift+PgUp` 和 `Ctrl+Shift+PgDn` 滚动到回滚的顶部/底部。
+
+如果将滚动条配置为不可见，则这些功能仍然可用。
+
+默认情况下，保留从顶部滚动的最后 `2000` 行供您查看。
+
+您可以使用配置框增加（或减少）此值;请参见[第 4.7.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-scrollback)。
+
+
+
+### 3.1.3 系统菜单
+
+如果您单击 PuTTY 终端窗口左上角图标上的鼠标左键，或单击标题栏上的鼠标右键，您将看到标准 Windows 系统菜单，其中包含最小化、移动、大小和关闭等项目。
+
+PuTTY的系统菜单除了Windows标准选项外，还包含额外的程序功能。下面介绍了这些额外的菜单命令。
+
+（这些选项也可以在通过按住 Ctrl 并在 PuTTY 窗口中的任意位置单击鼠标右键来显示的上下文菜单中使用。
+
+#### 3.1.3.1 PuTTY事件日志
+
+如果从系统菜单中选择“事件日志”，则会弹出一个小窗口，PuTTY 在其中记录连接期间的重要事件。日志中的大多数事件可能会在会话启动期间发生，但少数事件可能发生在会话中的任何时间点，一两个事件发生在会话末尾。
+
+您可以使用鼠标选择事件日志的一个或多个行，然后点击 复制 按钮将它们复制到剪贴板。如果要报告 bug，将事件日志的内容粘贴到 bug 报告中通常很有用。
+
+（事件日志与创建会话日志文件的工具不同;第 [3.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-logging)对此进行了介绍。
+
+#### 3.1.3.2 特殊命令
+
+根据用于当前会话的协议，可能会有一个“特殊命令”的子菜单。这些是特定于协议的令牌，例如“中断”信号，除了正常数据之外，还可以通过连接发送。它们的确切效果通常取决于服务器。目前只有 Telnet、SSH 和串行连接具有特殊命令。
+
+“中断”信号也可以通过 Ctrl-Break 从键盘调用。
+
+在 SSH 连接中，可以使用以下特殊命令：
+
+- 
+
+  
+
+  
+
+  忽略消息
+
+  应该没有效果。
+
+- 
+
+  重复密钥交换
+
+  仅在 SSH-2 中可用。立即强制重复密钥交换（并重置关联的计时器和计数器）。有关重复密钥交换的更多信息，请参见[第 4.18.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-rekey)。
+
+- 
+
+  缓存新的主机密钥类型
+
+  仅在 SSH-2 中可用。仅当服务器具有 PuTTY 尚未缓存的主机密钥类型（因此不会考虑）时，才会显示此子菜单。在此处选择一个密钥将允许 PuTTY 现在和将来使用该密钥：PuTTY 将与所选密钥进行新的密钥交换，并立即将该密钥添加到其永久缓存中（依靠连接开始时使用的主机密钥来交叉认证新密钥）。该密钥将用于本届会议的其余部分;它实际上可能不会用于将来的会话，具体取决于您的偏好（请参阅[第 4.19.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-hostkey-order)）。
+
+  通常，PuTTY 将继续使用它已经知道的主机密钥，即使服务器提供了 PuTTY 本来更喜欢的密钥格式，以避免主机密钥提示。因此，如果您已经使用服务器几年了，由于同时服务器升级，您可能仍在使用比新用户使用的旧密钥。不幸的是，SSH 协议没有用于主机密钥迁移和滚动更新的有组织的工具，但这允许您手动升级。
+
+- 
+
+  破
+
+  仅在 SSH-2 中可用，并且仅在会话期间可用。可选分机;服务器可能不支持。PuTTY 请求服务器的默认中断长度。
+
+- 
+
+  信号（信号情报、信号信号等）
+
+  仅在 SSH-2 中可用，并且仅在会话期间可用。发送各种 POSIX 信号。并非所有服务器都支持。
+
+Telnet 中提供了以下特殊命令：
+
+- 你在那里吗
+
+- 破
+
+- 同步
+
+- 
+
+  擦除字符
+
+  PuTTY 也可以配置为在按下退格键时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+
+- 擦除线
+
+- 继续
+
+- 
+
+  无操作
+
+  应该没有效果。
+
+- 中止进程
+
+- 中止输出
+
+- 
+
+  中断过程
+
+  PuTTY 也可以配置为在键入 Ctrl-C 时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+
+- 
+
+  挂起进程
+
+  PuTTY 也可以配置为在键入 Ctrl-Z 时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+
+- 记录结束
+
+- 文件结尾
+
+使用串行连接时，唯一可用的特殊命令是“中断”。
+
+#### 3.1.3.3 启动新会话
+
+PuTTY的系统菜单提供了一些启动新会话的快捷方式：
+
+- 选择“新会话”将启动一个全新的 PuTTY 实例，并正常打开配置框。
+- 选择“重复会话”将在新窗口中启动会话，其选项与当前窗口完全相同 - 使用相同的协议连接到同一主机，具有所有相同的终端设置和所有内容。
+- 在非活动窗口中，选择“重新启动会话”将与“重复会话”执行相同的操作，但在当前窗口中。
+- “保存的会话”子菜单可让您快速访问之前保存的任何存储会话详细信息集。有关如何创建已保存会话的详细信息，请参阅[第 4.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-saving)。
+
+#### 3.1.3.4 更改会话设置
+
+如果从系统菜单中选择“更改设置”，PuTTY 将显示其初始配置框的精简版本。这允许您调整当前会话的大多数属性。您可以更改端子大小、字体、各种按键的操作、颜色等。
+
+主配置框中提供的某些选项未显示在缩减的“更改设置”框中。这些选项通常是在会话中途更改没有意义的选项（例如，您无法在会话中途从 SSH 切换到 Telnet）。
+
+您可以从此对话框中将当前设置保存到已保存的会话中以供将来使用。有关已保存会话的更多信息，请参阅[第 4.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-saving)。
+
+#### 3.1.3.5 全部复制到剪贴板
+
+此系统菜单选项提供了一种方便的方式来复制终端屏幕的全部内容（直到最后一个非空行）并一次性回滚到剪贴板。
+
+#### 3.1.3.6 清除和重置终端
+
+系统菜单上的“清除回滚”选项告诉 PuTTY 丢弃从屏幕顶部滚动后保留的所有文本行。例如，如果您显示敏感信息并希望确保没有人可以越过您的肩膀看到它，这可能很有用。（请注意，这只能防止临时用户使用滚动条查看信息;不能保证文本不会仍在 PuTTY 的内存中。
+
+“重置终端”选项会导致终端仿真完全重置。VT 系列终端是一个复杂的软件，很容易进入所有打印的文本都变得不可读的状态。（例如，如果您不小心将二进制文件输出到终端，则可能会发生这种情况。如果发生这种情况，选择重置终端应该会解决它。
+
+#### 3.1.3.7 全屏模式
+
+如果您发现最大化窗口上的标题栏很丑陋或分散注意力，您可以选择全屏模式以最大化 PuTTY“更多”。当您选择此选项时，PuTTY 将展开以填充整个屏幕，其边框、标题栏和滚动条将消失。（如果要保留滚动条，可以将滚动条配置为在全屏模式下不消失;请参阅[第 4.7.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-scrollback)。
+
+当您处于全屏模式时，如果您单击屏幕*最*左上角的鼠标左键，您仍然可以访问系统菜单。
+
+## 3.2 创建会话的日志文件
+
+出于某些目的，您可能会发现您想要记录屏幕上显示的所有内容。您可以使用配置框中的“日志记录”面板执行此操作。
+
+要开始会话日志，请从系统菜单中选择“更改设置”，然后转到“日志记录”面板。输入日志文件名，然后选择日志记录模式。（您可以记录所有会话输出，包括终端控制序列，也可以只记录可打印的文本。这取决于您想要日志的用途。单击“应用”，您的日志将启动。稍后，您可以返回“日志记录”面板并选择“日志记录完全关闭”以停止日志记录;然后 PuTTY 将关闭日志文件，您可以安全地读取它。
+
+有关更多详细信息和选项，请参阅[第 4.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-logging)。
+
+## 3.3 更改字符集配置
+
+如果您发现特殊字符（例如重音字符或画线字符）在 PuTTY 会话中未正确显示，则可能是 PuTTY 根据错误的字符集解释服务器发送的*字符*。有很多不同的字符集可用，PuTTY 没有好方法知道使用哪个，所以这种情况完全有可能发生。
+
+如果单击“更改设置”并查看“翻译”面板，您应该会看到大量可以选择的字符集以及其他相关选项。现在您所需要的只是找出您想要的哪一个！（有关详细信息，请参阅[第 4.10 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-translation)。
+
+## 3.4 在 SSH 中使用 X11 转发
+
+SSH协议能够通过加密的SSH连接安全地转发X Window系统图形应用程序，以便您可以在SSH服务器计算机上运行应用程序，并使其窗口在本地计算机上启动，而无需明文发送任何X网络流量。
+
+为了使用此功能，您需要一个适用于Windows机器的X显示服务器，例如Cygwin/X，X-Win32或Exceed。这可能会将自身安装为本地计算机上的显示编号 0;如果没有，X 服务器的手册应该告诉您它的作用。
+
+然后，您应该在开始 SSH 会话之前勾选 X11 面板中的“启用 X11 转发”框（请参阅[第 4.25 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-x11)）。默认情况下，“X 显示位置”框为空，这意味着 PuTTY 将尝试使用合理的默认值，例如 ，这是安装 X 服务器的常用显示位置。如果需要更改，请更改它。`:0`
+
+现在，您应该可以正常登录SSH服务器。要检查在连接启动期间是否已成功协商 X 转发，可以检查 PuTTY 事件日志（请参阅[第 3.1.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-eventlog)）。它应该这样说：
+
+```
+2001-12-05 17:22:01 Requesting X11 forwarding
+2001-12-05 17:22:02 X11 forwarding enabled
+```
+
+如果远程系统是 Unix 或类 Unix，您还应该能够看到环境变量已设置为指向 SSH 服务器计算机本身上的显示 10 或更高版本：`DISPLAY`
+
+```
+fred@unixbox:~$ echo $DISPLAY
+unixbox:10.0
+```
+
+如果这有效，那么您应该能够在远程会话中运行 X 应用程序，并让它们在您的 PC 上显示其窗口。
+
+有关 X11 转发的更多选项，请参见[第 4.25 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-x11)。
+
+## 3.5 在 SSH 中使用端口转发
+
+SSH 协议能够通过加密的 SSH 连接转发任意网络 （TCP） 连接，以避免以明文形式发送网络流量。例如，您可以使用它从家庭计算机连接到远程计算机上的 POP-3 服务器，而网络嗅探器看不到您的 POP-3 密码。
+
+要使用端口转发从本地计算机连接到远程服务器上的端口，您需要：
+
+- 在本地计算机上选择一个端口号，PuTTY 应在其中侦听传入连接。3000 以上可能有很多未使用的端口号。（您也可以在此处使用本地环回地址;有关更多详细信息，请参阅下文。
+- 现在，在开始 SSH 连接之前，请转到隧道面板（请参阅[第 4.26 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-portfwd)）。确保设置了“本地”单选按钮。在“源端口”框中输入本地端口号。在“目标”框中输入目标主机名和端口号，用冒号分隔（例如，连接到 POP-3 服务器）。`popserver.example.com:110`
+- 现在单击“添加”按钮。端口转发的详细信息应显示在列表框中。
+
+现在开始您的会话并登录。（在您登录之前不会启用端口转发;否则很容易执行完全匿名的网络攻击，并访问任何人的虚拟专用网络。要检查 PuTTY 是否正确设置了端口转发，您可以查看 PuTTY 事件日志（请参阅[第 3.1.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-eventlog)）。它应该这样说：
+
+```
+2001-12-05 17:22:10 Local port 3110 forwarding to
+         popserver.example.com:110
+```
+
+现在，如果您连接到本地PC上的源端口号，您应该会发现它完全可以回答您，就好像它是目标计算机上运行的服务一样。因此，在此示例中，您可以将电子邮件客户端配置为用作 POP-3 服务器，而不是 。（当然，当您的 PuTTY 会话关闭时，转发将停止发生。`localhost:3110``popserver.example.com:110`
+
+您还可以向另一个方向转发端口：安排将*服务器*计算机上的特定端口号转发回您的 PC，作为与 PC 上或附近服务的连接。为此，只需选择“远程”单选按钮而不是“本地”单选按钮。“源端口”框现在将指定*服务器上*的端口号（请注意，大多数服务器不允许为此目的使用 1024 以下的端口号）。
+
+将本地连接转发到远程主机的另一种方法是使用动态 SOCKS 代理。在这种模式下，PuTTY 充当 SOCKS 服务器，SOCKS 感知程序可以连接到该服务器并打开到其所选目标的转发连接，因此这可以替代长静态转发列表。要使用此模式，您需要选择“动态”单选按钮而不是“本地”，然后您不应该在“目标”框中输入任何内容（将被忽略）。然后，PuTTY 将侦听您指定端口上的 SOCKS 连接。大多数 Web 浏览器都可以配置为连接到此 SOCKS 代理服务;此外，您可以通过设置代理控制面板通过它转发其他 PuTTY 连接（有关详细信息，请参阅[第 4.16 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy)）。
+
+转发连接的源端口通常不接受来自除 SSH 客户端或服务器计算机本身以外的任何计算机的连接（分别用于本地和远程转发）。“隧道”面板中有一些控件可以更改此设置：
+
+- “本地端口接受来自其他主机的连接”选项允许您设置本地到远程端口转发（包括动态端口转发），以便客户端 PC 以外的计算机可以连接到转发的端口。
+- “远程端口执行相同的操作”选项对远程到本地端口转发执行相同的操作（以便 SSH 服务器计算机以外的计算机可以连接到转发的端口）。请注意，此功能仅在 SSH-2 协议中可用，并非所有 SSH-2 服务器都支持此功能（例如，在 OpenSSH 中，它通常默认处于禁用状态）。
+
+您还可以指定要侦听的 IP 地址。通常，可以要求 Windows 计算机侦听范围内的任何单个 IP 地址，所有这些地址都是仅供本地计算机使用的环回地址。因此，如果您转发（例如）到远程计算机的端口，那么您应该能够运行诸如 .如果连接到转发端口的程序不允许您更改它使用的端口号，这可能很有用。此功能适用于本地到远程转发端口;SSH-1无法支持远程到本地端口，而SSH-2理论上可以支持它，但服务器不一定会合作。`127.*.*.*``127.0.0.5:79``finger``finger fred@127.0.0.5`
+
+（请注意，如果您使用的是 Windows XP Service Pack 2，则可能需要从 Microsoft 获取修补程序才能使用类似地址 - 请参阅[问题 A.7.17](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixA.html#faq-alternate-localhost)。`127.0.0.5`
+
+有关端口转发的更多选项，请参阅[第 4.26 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-portfwd)。
+
+如果您通过 SSH 转发的连接本身是由另一个 PuTTY 副本建立的第二个 SSH 连接，您可能会发现“逻辑主机名”配置选项可用于警告 PuTTY 它应该需要哪个主机密钥。有关详细信息，请参见[第 4.14.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-loghost)。
+
+## 3.6 连接到本地串行线路
+
+PuTTY可以直接连接到本地串行线路，作为建立网络连接的替代方法。在此模式下，在 PuTTY 窗口中键入的文本将直接从计算机的串行端口发送，通过该端口接收的数据将显示在 PuTTY 窗口中。您可以使用此模式，例如，如果您的串行端口连接到另一台具有串行连接的计算机。
+
+要建立此类型的连接，只需从“会话”配置面板上的“连接类型”单选按钮中选择“串行”（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。“主机名”和“端口”框将转换为“串行线路”和“速度”，允许您指定要使用的串行线路（如果您的计算机有多个串行线路）以及传输数据时使用的速度（波特率）。有关其他配置选项（数据位、停止位、奇偶校验、流量控制），您可以使用“串行”配置面板（请参阅[第 4.29 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-serial)）。
+
+在串行模式下启动 PuTTY 后，您可能会发现您必须迈出第一步，方法是从串行线路发送一些数据，以便通知另一端的设备有人在那里与之通信。这可能取决于设备。如果您启动 PuTTY 串行会话并且窗口中没有显示任何内容，请尝试按几次 Return 键，看看是否有帮助。
+
+串行线没有为连接的一端提供明确定义的方法，以通知另一端连接已完成。因此，串行模式下的 PuTTY 将保持连接状态，直到您使用关闭按钮关闭窗口。
+
+## 3.7 建立原始 TCP 连接
+
+许多互联网协议由纯文本形式的命令和响应组成。例如，SMTP（用于传输电子邮件的协议）、NNTP（用于传输 Usenet 新闻的协议）和 HTTP（用于提供网页的协议）都由可读纯文本格式的命令组成。
+
+有时，通过键入协议命令并观察响应，直接连接到这些服务之一并“手动”说出协议会很有用。在 Unix 机器上，您可以使用系统的命令连接到正确的端口号来执行此操作。例如，可能使您能够直接与邮件服务器上运行的 SMTP 服务通信。`telnet``telnet mailserver.example.com 25`
+
+尽管Unix程序提供了此功能，但所使用的协议并不是真正的Telnet。真的根本没有实际的协议;通过连接发送的字节与您键入的字节完全相同，屏幕上显示的字节正是服务器发送的字节。Unix将尝试检测或猜测它正在与之通信的服务是否是真正的Telnet服务;PuTTY更喜欢被肯定地告诉。`telnet``telnet`
+
+要与此类服务建立调试连接，只需从“会话”配置面板的“协议”按钮中选择第四个协议名称“Raw”。（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)。然后，您可以输入主机名和端口号，并建立连接。
+
+## 3.8 使用 Telnet 协议进行连接
+
+PuTTY 可以使用 Telnet 协议连接到服务器。
+
+在引入SSH之前，Telnet可能是最流行的远程登录协议。它足够通用，可供多个服务器操作系统（特别是Unix和VMS）使用，并支持许多可选的协议扩展，为特定的服务器功能提供额外的支持。
+
+与SSH不同，Telnet通过不安全的网络连接运行，因此在敌对的Internet上使用它是一个非常糟糕的主意（尽管截至2020年它仍然在某种程度上使用）。
+
+## 3.9 使用 Rlogin 协议进行连接
+
+PuTTY可以使用Rlogin协议连接到服务器。
+
+Rlogin在概念上类似于Telnet，但更侧重于Unix机器之间的连接。它支持无密码登录功能，基于使用“特权端口”（数字低于1024的端口，Unix传统上不允许用户分配）。最终，基于服务器信任客户端的IP地址归它声称的Unix机器所有，并且该机器将适当地保护其特权端口。`root`
+
+与Telnet一样，Rlogin通过不安全的网络连接运行。
+
+## 3.10 使用 SUPDUP 协议进行连接
+
+PuTTY可以使用SUPDUP协议连接到服务器。
+
+SUPDUP 是 10-1975 年期间主要由 PDP-1990 和 Lisp 机器使用的登录协议。像Telnet和Rlogin一样，它是不安全的，所以现代系统几乎从不支持它。
+
+要建立此类型的连接，请从“会话”面板上的“连接类型”单选按钮中选择“SUPDUP”（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。有关进一步的配置选项（字符集、更多处理、滚动），您可以使用“SUPDUP”配置面板（请参阅[第 4.32 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-supdup)）。
+
+在SUPDUP中，终端仿真与网络协议的集成程度高于SSH等其他协议。因此，SUPDUP 协议只能与 PuTTY 一起使用，而不能与命令行工具 Plink 一起使用。
+
+SUPDUP 协议不支持更改终端尺寸，因此在 SUPDUP 会话期间禁用此功能。
+
+SUPDUP 没有为连接的一端提供明确定义的方法，以通知另一端连接已完成。因此，SUPDUP 模式下的 PuTTY 将保持连接状态，直到您使用关闭按钮关闭窗口。
+
+## 3.11 PuTTY 命令行
+
+PuTTY 可以通过提供命令行参数（例如，从命令提示符窗口或 Windows 快捷方式）在没有用户干预的情况下执行各种操作。
+
+### 3.11.1 从命令行启动会话
+
+这些选项允许您绕过配置窗口并直接启动到会话中。
+
+要启动与名为 的服务器的连接，请执行以下操作：`host`
+
+```
+putty.exe [-ssh | -ssh-connection | -telnet | -rlogin | -supdup | -raw] [user@]host
+```
+
+如果使用此语法，则设置取自默认设置（请参阅[第 4.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-saving)）; 覆盖这些设置（如果已提供）。此外，您可以指定一个协议，该协议将覆盖默认协议（请参阅[第 3.11.3.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-protocol)）。`user`
+
+对于 telnet 会话，支持以下替代语法（这使得 PuTTY 适合用作 Web 浏览器中 telnet URL 的 URL 处理程序）：
+
+```
+putty.exe telnet://host[:port]/
+```
+
+要启动与串行端口的连接，例如 COM1：
+
+```
+putty.exe -serial com1
+```
+
+要启动名为 的现有已保存会话，请使用该选项（在第 [3.11.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-load)中描述）。`sessionname``-load`
+
+```
+putty.exe -load "session name"
+```
+
+### 3.11.2`-cleanup`
+
+如果使用该选项调用，而不是正常运行，PuTTY 将从本地计算机中删除其注册表项和随机种子文件（在与用户确认后）。它还将尝试删除存储在Windows 7及更高版本的“跳转列表”中的最近启动的会话的信息。`-cleanup`
+
+请注意，在多用户系统上， 仅删除与当前登录用户关联的注册表项和文件。`-cleanup`
+
+### 3.11.3 标准命令行选项
+
+PuTTY 及其相关工具支持一系列命令行选项，其中大多数选项在所有工具中都是一致的。本节列出了所有工具中的可用选项。特定于特定工具的选项在有关该工具的章节中介绍。
+
+#### 3.11.3.1：加载保存的会话`-load`
+
+该选项会导致 PuTTY 从保存的会话中加载配置详细信息。如果这些详细信息包括主机名，则只需此选项即可使 PuTTY 启动会话。`-load`
+
+如果会话名称包含空格，则需要在会话名称两边加上双引号。
+
+如果要创建Windows快捷方式来启动PuTTY保存的会话，则应使用此选项：快捷方式应调用类似
+
+```
+d:\path\to\putty.exe -load "my session"
+```
+
+（请注意，PuTTY 本身支持此选项的替代形式，以实现向后兼容性。如果执行，它将具有与 相同的效果。对于表单，不需要双引号，并且符号必须是命令行上的第一件事。此形式的选项已弃用。`putty @sessionname``putty -load "sessionname"``@``@`
+
+#### 3.11.3.2 选择协议： ， ， ， ， ， ，`-ssh``-ssh-connection``-telnet``-rlogin``-supdup``-raw``-serial`
+
+若要选择要连接的协议，可以使用以下选项之一：
+
+- `-ssh`选择 SSH 协议。
+- `-ssh-connection`选择裸 SSH 连接协议。（这仅在特殊情况下有用;有关更多信息，请参见第 [4.28 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-psusan)。
+- `-telnet`选择 Telnet 协议。
+- `-rlogin`选择 Rlogin 协议。
+- `-supdup`选择 SUPDUP 协议。
+- `-raw`选择原始协议。
+- `-serial`选择串行连接。
+
+这些选项中的大多数在文件传输工具PSCP和PSFTP（仅适用于SSH协议和裸ssh连接协议）中不可用。
+
+这些选项等效于 PuTTY 配置框的“会话”面板中的协议选择按钮（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
+
+#### 3.11.3.3 ： 增加详细程度`-v`
+
+大多数 PuTTY 工具都可以通过提供选项来告诉您有关它们正在做什么的更多信息。如果您在建立连接时遇到问题，或者您只是好奇，您可以打开此开关并希望了解有关正在发生的事情的更多信息。`-v`
+
+#### 3.11.3.4 ： 指定登录名`-l`
+
+您可以使用该选项指定要在远程服务器上登录的用户名。例如。`-l``plink login.example.com -l fred`
+
+这些选项等效于 PuTTY 配置框的“连接”面板中的用户名选择框（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+
+#### 3.11.3.5 和 ：设置端口转发`-L``-R``-D`
+
+除了在 PuTTY 配置中设置端口转发（请参阅[第 4.26 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-portfwd)）外，您还可以在命令行上设置转发。命令行选项的工作方式与 Unix 程序中的选项相同。`ssh`
+
+要将本地端口（例如 5110）转发到远程目标（例如端口 110），您可以编写如下内容之一：`popserver.example.com`
+
+```
+putty -L 5110:popserver.example.com:110 -load mysession
+plink mysession -L 5110:popserver.example.com:110
+```
+
+要将远程端口转发到本地目标，只需使用该选项而不是 ：`-R``-L`
+
+```
+putty -R 5023:mytelnetserver.myhouse.org:23 -load mysession
+plink mysession -R 5023:mytelnetserver.myhouse.org:23
+```
+
+要为隧道的侦听端指定 IP 地址，请将其附加到参数前面：
+
+```
+plink -L 127.0.0.5:23:localhost:23 myhost
+```
+
+要在本地端口上设置基于 SOCKS 的动态端口转发，请使用该选项。对于这个，你只需要传递端口号：`-D`
+
+```
+putty -D 4096 -load mysession
+```
+
+有关端口转发的一般信息，请参见[第 3.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-port-forwarding)。
+
+这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+#### 3.11.3.6 ： 从文件中读取远程命令或脚本`-m`
+
+该选项执行的功能与 PuTTY 配置框的 SSH 面板中的“远程命令”框类似（请参阅[第 4.17.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-command)）。但是，该选项需要给定一个本地文件名，它将从该文件读取命令。`-m``-m`
+
+对于某些服务器（特别是Unix系统），您甚至可以在此文件中放置多行并按顺序执行多个命令或整个shell脚本;但这可以说是一种滥用，不能指望在所有服务器上都有效。特别是，已知*不适用于*某些“嵌入式”服务器，例如思科路由器。
+
+此选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+#### 3.11.3.7 ： 指定端口号`-P`
+
+该选项用于指定要连接到的端口号。如果您的计算机的端口 9696 而不是端口 23 上运行 Telnet 服务器，例如：`-P`
+
+```
+putty -telnet -P 9696 host.name
+plink -telnet -P 9696 host.name
+```
+
+（请注意，此选项在 Plink 中比在 PuTTY 中更有用，因为在 PuTTY 中，您在任何情况下都可以编写。`putty -telnet host.name 9696`
+
+此选项等效于 PuTTY 配置框的“会话”面板中的端口号控件（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
+
+#### 3.11.3.8 和 ：指定密码`-pwfile``-pw`
+
+自动远程登录的一种简单方法是在命令行上提供密码。
+
+该选项将文件名作为参数。该文件中的第一行文本将用作您的密码。`-pwfile`
+
+该选项将密码本身作为参数。如果其他人使用同一台计算机，这是**不安全**的，因为如果另一个用户列出正在运行的进程，则可能会显示整个命令行（包括密码）。 保留只是为了向后兼容;你应该改用。`-pw``-pw``-pwfile`
+
+请注意，这些选项仅在使用 SSH 协议时有效。由于 Telnet、Rlogin 和 SUPDUP 的基本限制，这些协议不支持自动密码身份验证。
+
+#### 3.11.3.9 和：控制使用选美比赛进行身份验证`-agent``-noagent`
+
+该选项使用Pageant打开SSH身份验证，并将其关闭。仅当您使用 SSH 时，这些选项才有意义。`-agent``-noagent`
+
+有关选美比赛的一般信息，请参阅[第 9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)。
+
+这些选项等效于 PuTTY 配置框的“身份验证”面板中的代理身份验证复选框（请参阅[第 4.21.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-tryagent)）。
+
+#### 3.11.3.10 和：控制代理转发`-A``-a`
+
+该选项将打开 SSH 代理转发，并将其关闭。仅当您使用 SSH 时，这些选项才有意义。`-A``-a`
+
+有关选美的一般信息，请参阅第 [9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)，有关代理转发的信息，请参阅[第 9.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-forward)。请注意，启用此选项存在安全风险;有关详细信息，请参阅[第 9.6 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-security)。
+
+这些选项等效于 PuTTY 配置框的“身份验证”面板中的代理转发复选框（请参阅[第 4.21.7 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-agentfwd)）。
+
+这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+#### 3.11.3.11 和：控制 X11 转发`-X``-x`
+
+该选项在 SSH 中打开 X11 转发，并将其关闭。仅当您使用 SSH 时，这些选项才有意义。`-X``-x`
+
+有关 X11 转发的信息，请参见[第 3.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-x-forwarding)。
+
+这些选项等效于 PuTTY 配置框的 X11 面板中的 X11 转发复选框（请参阅[第 4.25 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-x11)）。
+
+这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+#### 3.11.3.12和：控制伪终端分配`-t``-T`
+
+该选项可确保 PuTTY 尝试在服务器上分配伪终端，并阻止其分配伪终端。仅当您使用 SSH 时，这些选项才有意义。`-t``-T`
+
+这些选项等效于 PuTTY 配置框的 SSH 面板中的“不分配伪终端”复选框（请参阅[第 4.24.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-pty)）。
+
+这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+#### 3.11.3.13：禁止启动外壳或命令`-N`
+
+该选项可防止 PuTTY 尝试在远程服务器上启动 shell 或命令。如果仅使用 SSH 连接进行端口转发，并且服务器上的用户帐户无法运行 shell，则可能需要使用此选项。`-N`
+
+此功能仅在 SSH 协议版本 2 中可用（因为版本 1 协议假定您始终希望运行 shell）。
+
+此选项等效于 PuTTY 配置框的 SSH 面板中的“根本不启动 shell 或命令”复选框（请参阅[第 4.17.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-noshell)）。
+
+此选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+#### 3.11.3.14 ： 建立远程网络连接以代替远程 shell 或命令`-nc`
+
+该选项可防止 Plink（或 PuTTY）尝试在远程服务器上启动 shell 或命令。相反，它将指示远程服务器打开与您指定的主机名和端口号的网络连接，并将该网络连接视为主会话。`-nc`
+
+指定主机和端口作为选项的参数，用冒号分隔主机名和端口号，如下所示：`-nc`
+
+```
+plink host1.example.com -nc host2.example.com:1234
+```
+
+如果您尝试与目标主机建立连接，而目标主机只能通过代理主机的 SSH 转发来访问，这会很有用。执行此操作的一种方法是通过端口转发与代理主机建立现有 SSH 连接，但如果您希望根据需要按需启动连接，则此方法也可以工作。
+
+但是，这确实取决于*使用代理的程序*能够运行子进程而不是建立网络连接。PuTTY 本身可以使用“本地”代理类型来做到这一点，但有一种内置的更灵活的方式使用“SSH”代理类型。（有关两者的说明，请参见[第 4.16.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy-type)。因此，此功能对于作为最终用户的另一个客户端程序可能最有用。
+
+此功能仅在 SSH 协议版本 2 中可用（因为版本 1 协议假定您始终希望运行 shell）。它在文件传输工具PSCP和PSFTP中不可用。它在 PuTTY 本身中可用，尽管它在 Plink 以外的任何工具中都不太可能很有用。此外，使用与端口转发相同的服务器功能，因此如果服务器管理员禁用了端口转发，它将不起作用。`-nc`
+
+（该选项以Unix程序[`nc`](http://www.vulnwatch.org/netcat/)命名，是“netcat”的缩写。命令 '' 在功能上与 '' 非常相似，后者在服务器上调用并告诉它连接到指定的目标。但是，Plink 的内置选项不依赖于服务器上安装的程序。`-nc``plink host1 -nc host2:port``plink host1 nc host2 port``nc``-nc``nc`
+
+#### 3.11.3.15：启用压缩`-C`
+
+该选项允许压缩通过网络发送的数据。此选项仅在使用 SSH 时才有意义。`-C`
+
+此选项等效于 PuTTY 配置框的 SSH 面板中的“启用压缩”复选框（请参阅[第 4.17.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-comp)）。
+
+#### 3.11.3.16 和 ：指定 SSH 协议版本`-1``-2`
+
+和选项强制 PuTTY 使用 SSH 协议的版本 1 或版本 2。仅当您使用 SSH 时，这些选项才有意义。`-1``-2`
+
+这些选项等效于在 PuTTY 配置框的 SSH 面板中选择 SSH 协议版本（请参阅[第 4.17.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-prot)）。
+
+#### 3.11.3.17 和 ： 指定互联网协议版本`-4``-6`
+
+和选项强制 PuTTY 对大多数传出连接使用较旧的互联网协议 IPv4 或较新的 IPv6。`-4``-6`
+
+这些选项等效于在 PuTTY 配置框的“连接”面板中选择首选的互联网协议版本为“IPv4”或“IPv6”（请参阅[第 4.14.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-address-family)）。
+
+#### 3.11.3.18：指定 SSH 私钥`-i`
+
+该选项允许您以 PuTTY 将用于向服务器进行身份验证的格式指定私钥文件的名称。此选项仅在使用 SSH 时才有意义。`-i``*.PPK`
+
+如果您使用的是 Pageant，您还可以指定一个*公钥*文件（RFC 4716 或 OpenSSH 格式）来标识要使用的特定密钥文件。（当然，如果您不运行选美比赛，这将不起作用。
+
+有关公钥认证的一般信息，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。
+
+此选项等效于 PuTTY 配置框的“身份验证”面板中的“用于身份验证的私钥文件”框（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。
+
+#### 3.11.3.19：指定 SSH 证书`-cert`
+
+该选项允许您指定包含公钥的签名版本的证书文件的名称。如果指定此选项，PuTTY 将在尝试使用匹配的密钥进行身份验证时提供该证书来代替纯公钥。（无论密钥存储在 Pageant 中还是由 PuTTY 直接从文件中加载，这都适用。`-cert`
+
+此选项等效于 PuTTY 配置框的“身份验证”面板中的“与私钥一起使用的证书”框（请参阅[第 4.22.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-cert)）。
+
+#### 3.11.3.20：如果SSH身份验证成功，则断开连接`-no-trivial-auth`
+
+如果服务器接受身份验证而从未要求任何类型的密码、签名或令牌，则此选项会导致 PuTTY 放弃 SSH 会话。
+
+请参阅[第 4.21.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-notrivialauth)，了解您可能想要这样做的原因。
+
+#### 3.11.3.21：指定逻辑主机名`-loghost`
+
+此选项通过告诉 PuTTY 您希望连接最终到达的主机的名称来覆盖 PuTTY 的正常 SSH 主机密钥缓存策略（如果该名称与 PuTTY 认为它连接到的位置不同）。它可以是纯主机名，也可以是后跟冒号和端口号的主机名。有关此内容的更多详细信息，请参阅[第 4.14.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-loghost)。
+
+#### 3.11.3.22：手动指定预期的主机密钥`-hostkey`
+
+此选项通过准确告诉 PuTTY 所需的主机密钥来覆盖 PuTTY 的正常 SSH 主机密钥缓存策略，这在注册表中的正常自动主机密钥存储不可用时非常有用。此选项的参数应为主机密钥指纹或 SSH-2 公钥 blob。有关更多信息，请参见[第 4.19.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-manual-hostkeys)。
+
+如果要配置要接受的多个密钥，可以多次指定此选项。
+
+#### 3.11.3.23：显示PGP密钥指纹`-pgpfp`
+
+此选项会导致 PuTTY 工具不正常运行，而是显示 PuTTY PGP 主密钥的指纹，以帮助验证新版本。有关详细信息，请参阅[附录 F](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixF.html#pgpkeys)。
+
+#### 3.11.3.24：指定串行端口配置`-sercfg`
+
+此选项指定串行端口的配置参数（波特率、停止位等）。其参数被解释为以逗号分隔的配置选项列表，可以如下所示：
+
+- 从 5 到 9 的任何一位数都设置数据位数。
+- “”、“”或“”设置停止位的数量。`1``1.5``2`
+- 任何其他数字字符串都解释为波特率。
+- 单个小写字母指定奇偶校验：“”表示无，“”表示奇数，“”表示偶数，“”表示标记，“”表示空格。`n``o``e``m``s`
+- 单个大写字母指定流控制：“”表示无，“”表示 XON/XOFF，“”表示 RTS/CTS，“”表示 DSR/DTR。`N``X``R``D`
+
+例如，'' 表示波特率为 19200、8 个数据位、无奇偶校验、1 个停止位和无流量控制。`-sercfg 19200,8,n,1,N`
+
+#### 3.11.3.25 ， ， ： 启用会话日志记录`-sessionlog``-sshlog``-sshrawlog`
+
+这些选项会导致 PuTTY 网络工具写出日志文件。它们中的每一个都需要一个文件名作为参数，例如，“”会导致将SSH数据包日志写入名为“”的文件。三个不同的选项选择不同的日志记录模式，所有模式也可从 GUI 获得：`-sshlog putty.log``putty.log`
+
+- `-sessionlog`选择“所有会话输出”日志记录模式。
+- `-sshlog`选择“SSH 数据包”日志记录模式。
+- `-sshrawlog`选择“SSH 数据包和原始数据”日志记录模式。
+
+有关日志记录配置的更多信息，请参见[第 4.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-logging)。
+
+#### 3.11.3.26 ， ： 使用现有日志文件控制行为`-logoverwrite``-logappend`
+
+如果已启用日志记录（在保存的配置中，或通过其他命令行选项），并且指定的日志文件已存在，则这些选项会告知 PuTTY 网络工具要执行的操作，以便它们不必询问用户。有关详细信息，请参见[第 4.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-logfileexists)。
+
+#### 3.11.3.27：指定本地代理命令`-proxycmd`
+
+此选项启用 PuTTY 的模式，用于在本地计算机上运行命令并将其用作网络连接的代理。它需要一个 shell 命令字符串作为参数。
+
+有关此内容和其他代理设置的更多信息，请参阅[第 4.16.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy-type)。特别要注意的是，由于在参数字符串中理解了那里描述的特殊序列，因此文字反斜杠必须加倍（如果要在命令中，则必须放在命令行上）。`\``\\`
+
+#### 3.11.3.28：限制窗口进程 ACL`-restrict-acl`
+
+此选项（仅在Windows上）会导致PuTTY（或其他PuTTY工具）尝试在其自己的进程中锁定操作系统的访问控制。如果成功，它应该为设法在与 PuTTY 进程相同的用户 ID 下运行的恶意软件带来额外的障碍，阻止它使用调试器使用的相同接口附加到 PuTTY，并从其内存中读取敏感信息或劫持其网络会话。
+
+默认情况下不启用此选项，因为 Windows 程序之间的这种交互形式有许多合法用途，包括屏幕阅读器等辅助功能软件。此外，在任何情况下，它都无法针对此类攻击提供完全的安全性，因为 PuTTY 只能在启动*后*锁定自己的 ACL，如果恶意软件攻击启动和锁定之间的进程，它仍然可以进入。因此，它牺牲了明显的便利性，并且提供的真实安全性低于您的预期。但是，如果您确实想进行这种权衡，则可以使用该选项。
+
+以 开头的 PuTTY 进程会将其传递给以重复会话、新会话等开头的任何进程。（但是，如果您要显式调用 PuTTY 工具，例如作为代理命令，则需要安排自己传递选项（如果需要的话）。`-restrict-acl``-restrict-acl`
+
+如果 Pageant 是使用该选项启动的，并且您使用它从其系统托盘子菜单启动 PuTTY 会话，则 Pageant *不会默认*使用受限 ACL 启动 PuTTY 子进程。这是因为 PuTTY 更有可能因 ACL 受限而遭受功能减少（例如，屏幕阅读器软件将更需要与之交互），而 Pageant 存储更关键的信息（因此从额外的保护中受益更多），因此想要运行 Pageant 而不是具有 ACL 限制的 PuTTY 是合理的。如果您还通过了该选项，则可以强制 Pageant 使用受限 ACL 启动附属 PuTTY 进程。`-restrict-acl``-restrict-putty-acl`
+
+#### 3.11.3.29：启动主机 CA 配置`-host-ca`
+
+如果您使用该选项启动 PuTTY，它根本不会启动会话。相反，它将仅显示主机证书颁发机构的配置对话框，如[第 4.19.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-cert)中所述。关闭该对话框时，PuTTY 将终止。`-host-ca`
+
+
 
 
 
