@@ -650,109 +650,175 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 ### 3.1.3 系统菜单
 
-如果您单击 PuTTY 终端窗口左上角图标上的鼠标左键，或单击标题栏上的鼠标右键，您将看到标准 Windows 系统菜单，其中包含最小化、移动、大小和关闭等项目。
+如果您在 `PuTTY` 终端窗口左上角图标上单击鼠标左键，或在标题栏上点击鼠标右键，您将看到标准 `Windows` 系统菜单，其中包含最小化、移动、大小和关闭等项目。
 
-PuTTY的系统菜单除了Windows标准选项外，还包含额外的程序功能。下面介绍了这些额外的菜单命令。
+图b01
 
-（这些选项也可以在通过按住 Ctrl 并在 PuTTY 窗口中的任意位置单击鼠标右键来显示的上下文菜单中使用。
 
-#### 3.1.3.1 PuTTY事件日志
 
-如果从系统菜单中选择“事件日志”，则会弹出一个小窗口，PuTTY 在其中记录连接期间的重要事件。日志中的大多数事件可能会在会话启动期间发生，但少数事件可能发生在会话中的任何时间点，一两个事件发生在会话末尾。
+`PuTTY` 的系统菜单除了 `Windows` 标准选项外，还包含额外的程序功能，下面将介绍这些额外的菜单命令。
 
-您可以使用鼠标选择事件日志的一个或多个行，然后点击 复制 按钮将它们复制到剪贴板。如果要报告 bug，将事件日志的内容粘贴到 bug 报告中通常很有用。
+（这些选项也可以在 `PuTTY` 窗口中的任意位置，通过按住 `Ctrl` 并单击鼠标右键来显示的上下文菜单中使用。）
 
-（事件日志与创建会话日志文件的工具不同;第 [3.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-logging)对此进行了介绍。
+
+
+#### 3.1.3.1 `PuTTY` 事件日志
+
+如果从系统菜单中选择“事件日志记录” `Event Log` ，则会弹出一个小窗口，`PuTTY` 在其中记录连接期间的重要事件。
+
+日志中的大多数事件可能会在会话启动期间发生，但少数事件可能发生在会话中的任何时间点，一两个事件发生在会话末尾。
+
+图b02
+
+图b03
+
+
+
+您可以使用鼠标选择事件日志的一个或多个行，然后点击 复制 按钮将它们复制到剪贴板。
+
+如果要报告 `bug` ，将事件日志的内容粘贴到 `bug` 报告中通常很有用。
+
+
+
+（事件日志与创建会话日志文件的工具不同;第 [3.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-logging)对此进行了介绍。）
+
+
 
 #### 3.1.3.2 特殊命令
 
-根据用于当前会话的协议，可能会有一个“特殊命令”的子菜单。这些是特定于协议的令牌，例如“中断”信号，除了正常数据之外，还可以通过连接发送。它们的确切效果通常取决于服务器。目前只有 Telnet、SSH 和串行连接具有特殊命令。
+根据用于当前会话的协议，可能会有一个“特殊命令”的子菜单。
 
-“中断”信号也可以通过 Ctrl-Break 从键盘调用。
+这些是特定于协议的令牌，例如“中断” `break` 信号，除了正常数据之外，还可以通过连接发送。
 
-在 SSH 连接中，可以使用以下特殊命令：
+图b04
 
-- 
+
+
+它们的确切效果通常取决于服务器。
+
+目前只有 `Telnet` 、`SSH` 和串行连接具有特殊命令。
+
+“中断” `break` 信号也可以通过按下 `Ctrl-Break` 从键盘调用。
+
+
+
+在 `SSH` 连接中，可以使用以下特殊命令：
+
+- 忽略消息 `IGNORE message`
+
+  将不会有任何效果。
+
+  图b05
 
   
 
+- 重复密钥交换 `Repeat key exchange`
+
+  仅在 `SSH-2` 中可用。
+
+  立即强制重复密钥交换（并重置关联的计时器和计数器）。
+
+  有关重复密钥交换的更多信息，请参见[第 4.18.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-rekey)。
+
+  图b06
+
   
 
-  忽略消息
+- 缓存新的主机密钥类型 ` Cache new host key type `
 
-  应该没有效果。
+  仅在 SSH-2 中可用。
 
-- 
+  仅当服务器具有 `PuTTY` 尚未缓存的主机密钥类型（因此不用考虑）时，才会显示此子菜单。
 
-  重复密钥交换
+  在此处选择一个密钥将允许 `PuTTY` 现在和将来使用该密钥：`PuTTY` 将与所选密钥进行新的密钥交换，并立即将该密钥添加到其永久缓存中（依靠连接开始时使用的主机密钥来交叉认证新密钥）。
 
-  仅在 SSH-2 中可用。立即强制重复密钥交换（并重置关联的计时器和计数器）。有关重复密钥交换的更多信息，请参见[第 4.18.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-rekey)。
+  该密钥将用于当前会话的其余部分，它实际上可能不会用于将来的会话，具体取决于您的偏好（请参阅[第 4.19.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-hostkey-order)）。
 
-- 
+  
 
-  缓存新的主机密钥类型
+  通常，`PuTTY` 将继续使用它已知的主机密钥，即使服务器提供了 `PuTTY` 本来更喜欢的密钥格式，以避免主机密钥提示。
 
-  仅在 SSH-2 中可用。仅当服务器具有 PuTTY 尚未缓存的主机密钥类型（因此不会考虑）时，才会显示此子菜单。在此处选择一个密钥将允许 PuTTY 现在和将来使用该密钥：PuTTY 将与所选密钥进行新的密钥交换，并立即将该密钥添加到其永久缓存中（依靠连接开始时使用的主机密钥来交叉认证新密钥）。该密钥将用于本届会议的其余部分;它实际上可能不会用于将来的会话，具体取决于您的偏好（请参阅[第 4.19.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-hostkey-order)）。
+  因此，如果您已经使用服务器几年了，由于同时服务器升级，您可能仍在使用比新用户使用的更旧的密钥。
 
-  通常，PuTTY 将继续使用它已经知道的主机密钥，即使服务器提供了 PuTTY 本来更喜欢的密钥格式，以避免主机密钥提示。因此，如果您已经使用服务器几年了，由于同时服务器升级，您可能仍在使用比新用户使用的旧密钥。不幸的是，SSH 协议没有用于主机密钥迁移和滚动更新的有组织的工具，但这允许您手动升级。
+  不幸的是，`SSH` 协议没有用于主机密钥迁移和滚动更新的整套有效的工具，但允许您手动更新。
 
-- 
+  图b07
 
-  破
+  
 
-  仅在 SSH-2 中可用，并且仅在会话期间可用。可选分机;服务器可能不支持。PuTTY 请求服务器的默认中断长度。
+- 中断 `break`
 
-- 
+  仅在 `SSH-2` 中可用，并且仅在会话期间可用。
 
-  信号（信号情报、信号信号等）
+  属于可选扩展，服务器可能不支持。
 
-  仅在 SSH-2 中可用，并且仅在会话期间可用。发送各种 POSIX 信号。并非所有服务器都支持。
+  `PuTTY` 会请求获取服务器的默认中断长度。
 
-Telnet 中提供了以下特殊命令：
+  
 
-- 你在那里吗
+- 信号（信号情报、信号信号等）
 
-- 破
+  仅在 `SSH-2` 中可用，并且仅在会话期间可用。发送各种 POSIX 信号。并非所有服务器都支持。
 
-- 同步
+  图b08
 
-- 
 
-  擦除字符
 
-  PuTTY 也可以配置为在按下退格键时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+`Telnet` 中提供了以下特殊命令：
 
-- 擦除线
+- `Are You There` - 你在吗
 
-- 继续
+- `Break` - 中断
 
-- 
+- `Synch` - 同步
 
-  无操作
+- `Erase Character` - 擦除字符
 
-  应该没有效果。
+  `PuTTY` 也可以配置为在按下退格键时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
 
-- 中止进程
+  
 
-- 中止输出
+- `Erase Line` - 擦除行
 
-- 
+- `Go Ahead` - 继续
 
-  中断过程
+- `No Operation` - 无操作
 
-  PuTTY 也可以配置为在键入 Ctrl-C 时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+  将无任何效果。
 
-- 
+  
 
-  挂起进程
+- `Abort Process` - 放弃进程
 
-  PuTTY 也可以配置为在键入 Ctrl-Z 时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+- `Abort Output` - 放弃输出
+
+- `Interrupt Process` - 中断进程
+
+  `PuTTY` 也可以配置为在键入 `Ctrl-C` 时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+
+  
+
+- `Suspend Process` - 挂起进程
+
+  `PuTTY` 也可以配置为在键入 Ctrl-Z 时发送此内容;请参见[第 4.30.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-telnetkey)。
+
+  
 
 - 记录结束
 
+  
+
 - 文件结尾
 
-使用串行连接时，唯一可用的特殊命令是“中断”。
+
+
+图b11
+
+
+
+使用串行连接时，唯一可用的特殊命令是“中断” `Break` 。
+
+
 
 #### 3.1.3.3 启动新会话
 
