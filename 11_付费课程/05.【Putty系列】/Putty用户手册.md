@@ -892,9 +892,17 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 #### 3.1.3.7 全屏模式
 
-如果您发现最大化窗口上的标题栏很丑陋或分散注意力，您可以选择全屏模式以最大化 PuTTY“更多”。当您选择此选项时，PuTTY 将展开以填充整个屏幕，其边框、标题栏和滚动条将消失。（如果要保留滚动条，可以将滚动条配置为在全屏模式下不消失;请参阅[第 4.7.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-scrollback)。
+如果您发现最大化窗口上的标题栏很丑陋或容易分散注意力，您可以选择全屏模式以尽可能地最大化 `PuTTY` 。
 
-当您处于全屏模式时，如果您单击屏幕*最*左上角的鼠标左键，您仍然可以访问系统菜单。
+当您选择此选项时，`PuTTY` 将展开以填充整个屏幕，其边框、标题栏和滚动条将消失。
+
+（如果要保留滚动条，可以将滚动条配置为在全屏模式下不消失;请参阅[第 4.7.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-scrollback)。
+
+当您处于全屏模式时，如果您使用鼠标左键单击屏幕最左上角，您仍然可以访问系统菜单，同时可以再次点击“全屏”后退出全屏模式。
+
+图b17
+
+
 
 ## 3.2 创建会话的日志文件
 
