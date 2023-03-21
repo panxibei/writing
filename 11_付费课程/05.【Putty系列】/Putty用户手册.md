@@ -1357,7 +1357,7 @@ putty.exe -cleanup
 
 
 
-#### 3.11.3.1：加载保存的会话 `-load`
+#### 3.11.3.1 加载保存的会话： `-load`
 
 该选项会导致 `PuTTY` 从保存的会话中加载配置详细信息。
 
@@ -1407,7 +1407,7 @@ d:\path\to\putty.exe -load "my session"
 
 
 
-#### 3.11.3.3 ： 增加详细程度 `-v`
+#### 3.11.3.3 增加详细程度： `-v`
 
 大多数 `PuTTY` 工具都可以通过提供选项 `-v` 来告诉您有关它们正在做什么的更多信息。
 
@@ -1415,7 +1415,7 @@ d:\path\to\putty.exe -load "my session"
 
 
 
-#### 3.11.3.4 ： 指定登录名 `-l`
+#### 3.11.3.4 指定登录名： `-l`
 
 您可以使用该选项 `-l` 指定要在远程服务器上登录的用户名。
 
@@ -1431,7 +1431,7 @@ plink login.example.com -l fred
 
 
 
-#### 3.11.3.5 `-L` ， `-R` 和 `-D` ：设置端口转发
+#### 3.11.3.5 设置端口转发：`-L` ， `-R` 和 `-D` 
 
 除了在 `PuTTY` 配置中设置端口转发（请参阅[第 4.26 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-portfwd)）外，您还可以在命令行上设置转发。
 
@@ -1481,7 +1481,7 @@ putty -D 4096 -load mysession
 
 
 
-#### 3.11.3.6 `-m`：从文件中读取远程命令或脚本
+#### 3.11.3.6 从文件中读取远程命令或脚本：`-m`
 
 选项 `-m` 执行的功能与 `PuTTY` 配置框的 `SSH` 面板中的“远程命令”框类似（请参阅[第 4.17.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-command)）。
 
@@ -1499,7 +1499,7 @@ putty -D 4096 -load mysession
 
 
 
-#### 3.11.3.7 `-P`：指定端口号
+#### 3.11.3.7 指定端口号：`-P`
 
 选项 `-P` 用于指定要连接到的端口号。
 
@@ -1518,7 +1518,7 @@ plink -telnet -P 9696 host.name
 
 
 
-#### 3.11.3.8 `-pwfile` 和 `-pw` ：指定密码
+#### 3.11.3.8 指定密码：`-pwfile` 和 `-pw` 
 
 自动远程登录的一种简单方法是在命令行上提供密码。
 
@@ -1542,7 +1542,7 @@ plink -telnet -P 9696 host.name
 
 
 
-#### 3.11.3.9 `-agent` 和 `-noagent`：控制使用 `Pageant` 进行身份验证
+#### 3.11.3.9 控制使用 `Pageant` 进行身份验证：`-agent` 和 `-noagent`
 
 选项 `-agent` 使用 `Pageant` 打开 `SSH` 身份验证，并用 `-noagent` 将其关闭。
 
@@ -1556,7 +1556,7 @@ plink -telnet -P 9696 host.name
 
 
 
-#### 3.11.3.10 `-A` 和 `-a`：控制代理转发
+#### 3.11.3.10 控制代理转发：`-A` 和 `-a`
 
 选项 `-A` 将打开 `SSH` 代理转发，并用 `-a` 将其关闭。
 
@@ -1576,7 +1576,7 @@ plink -telnet -P 9696 host.name
 
 
 
-#### 3.11.3.11 `-X` 和 `-x`：控制 `X11` 转发
+#### 3.11.3.11 控制 `X11` 转发：`-X` 和 `-x`
 
 选项`-X`在 `SSH` 中打开 `X11` 转发，并用 `-x` 将其关闭。
 
@@ -1594,141 +1594,283 @@ plink -telnet -P 9696 host.name
 
 
 
-#### 3.11.3.12和：控制伪终端分配`-t``-T`
+#### 3.11.3.12 控制伪终端分配： `-t` 和 `-T`
 
-该选项可确保 PuTTY 尝试在服务器上分配伪终端，并阻止其分配伪终端。仅当您使用 SSH 时，这些选项才有意义。`-t``-T`
+选项 `-t` 可确保 `PuTTY` 尝试在服务器上分配伪终端，并用 `-T` 阻止其分配伪终端。
 
-这些选项等效于 PuTTY 配置框的 SSH 面板中的“不分配伪终端”复选框（请参阅[第 4.24.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-pty)）。
+仅当您使用 `SSH` 时，这些选项才有意义。
 
-这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+这些选项等效于 `PuTTY` 配置框的 `SSH` 面板中的“不分配伪终端”复选框（请参阅[第 4.24.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-pty)）。
 
-#### 3.11.3.13：禁止启动外壳或命令`-N`
+这些选项在文件传输工具 `PSCP` 和 `PSFTP` 中不可用。
 
-该选项可防止 PuTTY 尝试在远程服务器上启动 shell 或命令。如果仅使用 SSH 连接进行端口转发，并且服务器上的用户帐户无法运行 shell，则可能需要使用此选项。`-N`
 
-此功能仅在 SSH 协议版本 2 中可用（因为版本 1 协议假定您始终希望运行 shell）。
 
-此选项等效于 PuTTY 配置框的 SSH 面板中的“根本不启动 shell 或命令”复选框（请参阅[第 4.17.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-noshell)）。
+#### 3.11.3.13 禁止启动 `shell` 或命令： `-N`
 
-此选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+选项 `-N` 可防止 `PuTTY` 尝试在远程服务器上启动 `shell` 或命令。
 
-#### 3.11.3.14 ： 建立远程网络连接以代替远程 shell 或命令`-nc`
+如果仅使用 `SSH` 连接进行端口转发，并且服务器上的用户帐户无法运行 `shell` ，则可能需要使用此选项。
 
-该选项可防止 Plink（或 PuTTY）尝试在远程服务器上启动 shell 或命令。相反，它将指示远程服务器打开与您指定的主机名和端口号的网络连接，并将该网络连接视为主会话。`-nc`
 
-指定主机和端口作为选项的参数，用冒号分隔主机名和端口号，如下所示：`-nc`
+
+此功能仅在 `SSH` 协议版本 `2` 中可用（因为版本 `1` 协议假定您始终希望运行 `shell` ）。
+
+此选项等效于 `PuTTY` 配置框的 `SSH` 面板中的“根本不启动 shell 或命令”复选框（请参阅[第 4.17.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-noshell)）。
+
+此选项在文件传输工具 `PSCP` 和 `PSFTP` 中不可用。
+
+
+
+#### 3.11.3.14 建立远程网络连接以代替远程 `shell` 或命令：`-nc`
+
+选项 `-nc` 可防止 `Plink`（或 `PuTTY` ）尝试在远程服务器上启动 `shell` 或命令。
+
+相反，它将指示远程服务器打开与您指定的主机名和端口号的网络连接，并将该网络连接视为主会话。
+
+
+
+指定主机和端口作为选项 `-nc` 的参数，用冒号分隔主机名和端口号，如下所示：
 
 ```
 plink host1.example.com -nc host2.example.com:1234
 ```
 
-如果您尝试与目标主机建立连接，而目标主机只能通过代理主机的 SSH 转发来访问，这会很有用。执行此操作的一种方法是通过端口转发与代理主机建立现有 SSH 连接，但如果您希望根据需要按需启动连接，则此方法也可以工作。
 
-但是，这确实取决于*使用代理的程序*能够运行子进程而不是建立网络连接。PuTTY 本身可以使用“本地”代理类型来做到这一点，但有一种内置的更灵活的方式使用“SSH”代理类型。（有关两者的说明，请参见[第 4.16.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy-type)。因此，此功能对于作为最终用户的另一个客户端程序可能最有用。
 
-此功能仅在 SSH 协议版本 2 中可用（因为版本 1 协议假定您始终希望运行 shell）。它在文件传输工具PSCP和PSFTP中不可用。它在 PuTTY 本身中可用，尽管它在 Plink 以外的任何工具中都不太可能很有用。此外，使用与端口转发相同的服务器功能，因此如果服务器管理员禁用了端口转发，它将不起作用。`-nc`
+如果您尝试与目标主机建立连接，而目标主机只能通过代理主机的 `SSH` 转发来访问，这会很有用。
 
-（该选项以Unix程序[`nc`](http://www.vulnwatch.org/netcat/)命名，是“netcat”的缩写。命令 '' 在功能上与 '' 非常相似，后者在服务器上调用并告诉它连接到指定的目标。但是，Plink 的内置选项不依赖于服务器上安装的程序。`-nc``plink host1 -nc host2:port``plink host1 nc host2 port``nc``-nc``nc`
+执行此操作的一种方法是通过端口转发与代理主机建立现有 `SSH` 连接，但如果您希望根据需要按需启动连接，则此方法也可以工作。
 
-#### 3.11.3.15：启用压缩`-C`
 
-该选项允许压缩通过网络发送的数据。此选项仅在使用 SSH 时才有意义。`-C`
 
-此选项等效于 PuTTY 配置框的 SSH 面板中的“启用压缩”复选框（请参阅[第 4.17.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-comp)）。
+但是，这确实取决于*使用代理的程序*能够运行子进程而不是建立网络连接。
 
-#### 3.11.3.16 和 ：指定 SSH 协议版本`-1``-2`
+`PuTTY` 本身可以使用“本地”代理类型来做到这一点，但有一种内置的更灵活的方式使用“SSH”代理类型。
 
-和选项强制 PuTTY 使用 SSH 协议的版本 1 或版本 2。仅当您使用 SSH 时，这些选项才有意义。`-1``-2`
+（有关两者的说明，请参见[第 4.16.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy-type)。）
 
-这些选项等效于在 PuTTY 配置框的 SSH 面板中选择 SSH 协议版本（请参阅[第 4.17.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-prot)）。
+因此，此功能对于作为最终用户的另一个客户端程序可能最有用。
 
-#### 3.11.3.17 和 ： 指定互联网协议版本`-4``-6`
 
-和选项强制 PuTTY 对大多数传出连接使用较旧的互联网协议 IPv4 或较新的 IPv6。`-4``-6`
 
-这些选项等效于在 PuTTY 配置框的“连接”面板中选择首选的互联网协议版本为“IPv4”或“IPv6”（请参阅[第 4.14.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-address-family)）。
+此功能仅在 `SSH` 协议版本 `2` 中可用（因为版本 `1` 协议假定您始终希望运行 `shell` ）。
 
-#### 3.11.3.18：指定 SSH 私钥`-i`
+它在文件传输工具 `PSCP` 和 `PSFTP` 中不可用。
 
-该选项允许您以 PuTTY 将用于向服务器进行身份验证的格式指定私钥文件的名称。此选项仅在使用 SSH 时才有意义。`-i``*.PPK`
+它在 `PuTTY` 本身中可用，尽管它在 `Plink` 以外的任何工具中都不太可能很有用。
 
-如果您使用的是 Pageant，您还可以指定一个*公钥*文件（RFC 4716 或 OpenSSH 格式）来标识要使用的特定密钥文件。（当然，如果您不运行选美比赛，这将不起作用。
+此外，`-nc` 使用与端口转发相同的服务器功能，因此如果服务器管理员禁用了端口转发，它将不起作用。
+
+
+
+（该选项以 `Unix` 程序[`nc`](http://www.vulnwatch.org/netcat/)命名，是“netcat”的缩写。
+
+命令 `plink host1 -nc host2:port` 在功能上与 `plink host1 nc host2 port` 非常相似，后者在服务器上调用 `nc` 并告诉它连接到指定的目标。
+
+但是，`Plink` 的内置选项 `-nc` 不依赖于服务器上安装的程序。）
+
+
+
+#### 3.11.3.15 启用压缩： `-C`
+
+选项 `-C` 允许压缩通过网络发送的数据。
+
+此选项仅在使用 `SSH` 时才有意义。
+
+此选项等效于 `PuTTY` 配置框的 `SSH` 面板中的“启用压缩”复选框（请参阅[第 4.17.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-comp)）。
+
+
+
+#### 3.11.3.16 指定 `SSH` 协议版本：`-1` 和 `-2`
+
+选项 `-1`和 `-2`  强制 `PuTTY` 使用 `SSH` 协议的版本 `1` 或版本 `2` 。
+
+仅当您使用 `SSH` 时，这些选项才有意义。
+
+这些选项等效于在 `PuTTY` 配置框的 `SSH` 面板中选择 `SSH` 协议版本（请参阅[第 4.17.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-prot)）。
+
+
+
+#### 3.11.3.17 指定互联网协议版本：`-4` 和 `-6`
+
+选项 `-4` 和 `-6` 强制 `PuTTY` 对大多数传出连接使用较旧的互联网协议 `IPv4` 或较新的 `IPv6` 。
+
+这些选项等效于在 `PuTTY` 配置框的“连接”面板中选择首选的互联网协议版本为“IPv4”或“IPv6”（请参阅[第 4.14.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-address-family)）。
+
+
+
+#### 3.11.3.18 指定 `SSH` 私钥：`-i`
+
+选项 `-i` 允许您以 `PuTTY` 将用于向服务器进行身份验证的 `*.PPK` 格式指定私钥文件的名称。
+
+此选项仅在使用 `SSH` 时才有意义。
+
+如果您使用的是 `Pageant` ，您还可以指定一个*公钥*文件（ `RFC 4716` 或 `OpenSSH` 格式）来标识要使用的特定密钥文件。（当然，如果您不运行 `Pageant` ，这将不起作用。）
+
+
 
 有关公钥认证的一般信息，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。
 
-此选项等效于 PuTTY 配置框的“身份验证”面板中的“用于身份验证的私钥文件”框（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。
+此选项等效于 `PuTTY` 配置框的“身份验证”面板中的“用于身份验证的私钥文件”框（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。
 
-#### 3.11.3.19：指定 SSH 证书`-cert`
 
-该选项允许您指定包含公钥的签名版本的证书文件的名称。如果指定此选项，PuTTY 将在尝试使用匹配的密钥进行身份验证时提供该证书来代替纯公钥。（无论密钥存储在 Pageant 中还是由 PuTTY 直接从文件中加载，这都适用。`-cert`
 
-此选项等效于 PuTTY 配置框的“身份验证”面板中的“与私钥一起使用的证书”框（请参阅[第 4.22.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-cert)）。
+#### 3.11.3.19 指定 `SSH` 证书： `-cert`
 
-#### 3.11.3.20：如果SSH身份验证成功，则断开连接`-no-trivial-auth`
+选项 `-cert` 允许您指定包含公钥的签名版本的证书文件的名称。
 
-如果服务器接受身份验证而从未要求任何类型的密码、签名或令牌，则此选项会导致 PuTTY 放弃 SSH 会话。
+如果指定此选项，`PuTTY` 将在尝试使用匹配的密钥进行身份验证时提供该证书来代替纯公钥。
+
+（无论密钥存储在 `Pageant` 中还是由 `PuTTY` 直接从文件中加载，这都适用。）
+
+
+
+此选项等效于 `PuTTY` 配置框的“身份验证”面板中的“与私钥一起使用的证书”框（请参阅[第 4.22.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-cert)）。
+
+
+
+#### 3.11.3.20 如果 `SSH` 身份验证成功，则断开连接： `-no-trivial-auth`
+
+如果服务器接受身份验证而从未要求任何类型的密码、签名或令牌，则此选项会导致 `PuTTY` 放弃 `SSH` 会话。
 
 请参阅[第 4.21.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-notrivialauth)，了解您可能想要这样做的原因。
 
-#### 3.11.3.21：指定逻辑主机名`-loghost`
 
-此选项通过告诉 PuTTY 您希望连接最终到达的主机的名称来覆盖 PuTTY 的正常 SSH 主机密钥缓存策略（如果该名称与 PuTTY 认为它连接到的位置不同）。它可以是纯主机名，也可以是后跟冒号和端口号的主机名。有关此内容的更多详细信息，请参阅[第 4.14.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-loghost)。
 
-#### 3.11.3.22：手动指定预期的主机密钥`-hostkey`
+#### 3.11.3.21 指定逻辑主机名： `-loghost`
 
-此选项通过准确告诉 PuTTY 所需的主机密钥来覆盖 PuTTY 的正常 SSH 主机密钥缓存策略，这在注册表中的正常自动主机密钥存储不可用时非常有用。此选项的参数应为主机密钥指纹或 SSH-2 公钥 blob。有关更多信息，请参见[第 4.19.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-manual-hostkeys)。
+此选项通过告诉 `PuTTY` 您希望连接最终到达的主机名称来覆盖 `PuTTY` 的正常 `SSH` 主机密钥缓存策略（如果该名称与 `PuTTY` 认为它连接到的位置不同）。
+
+它可以是纯主机名，也可以是后跟冒号和端口号的主机名。
+
+有关此内容的更多详细信息，请参阅[第 4.14.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-loghost)。
+
+
+
+#### 3.11.3.22 手动指定预期的主机密钥： `-hostkey`
+
+此选项通过准确告诉 `PuTTY` 所需的主机密钥来覆盖 `PuTTY` 的正常 `SSH` 主机密钥缓存策略，这在注册表中的正常自动主机密钥存储不可用时非常有用。
+
+此选项的参数应为主机密钥指纹或 `SSH-2 key blob` 。
+
+有关更多信息，请参见[第 4.19.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-manual-hostkeys)。
 
 如果要配置要接受的多个密钥，可以多次指定此选项。
 
-#### 3.11.3.23：显示PGP密钥指纹`-pgpfp`
 
-此选项会导致 PuTTY 工具不正常运行，而是显示 PuTTY PGP 主密钥的指纹，以帮助验证新版本。有关详细信息，请参阅[附录 F](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixF.html#pgpkeys)。
 
-#### 3.11.3.24：指定串行端口配置`-sercfg`
+#### 3.11.3.23 显示 `PGP` 密钥指纹： `-pgpfp`
 
-此选项指定串行端口的配置参数（波特率、停止位等）。其参数被解释为以逗号分隔的配置选项列表，可以如下所示：
+此选项会导致 `PuTTY` 工具并不按照常规方式启动，而是显示 `PuTTY PGP` 主密钥的指纹，以帮助验证新版本。
 
-- 从 5 到 9 的任何一位数都设置数据位数。
-- “”、“”或“”设置停止位的数量。`1``1.5``2`
+有关详细信息，请参阅[附录 F](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixF.html#pgpkeys)。
+
+
+
+#### 3.11.3.24 指定串行端口配置： `-sercfg`
+
+此选项指定串行端口的配置参数（波特率、停止位等）。
+
+其参数被解释为以逗号分隔的配置选项列表，可以如下所示：
+
+- 从 `5` 到 `9` 的任何一位数都设置数据位数。
+- `1` ， `1.5` 或 `2` 设置停止位的数量。
 - 任何其他数字字符串都解释为波特率。
-- 单个小写字母指定奇偶校验：“”表示无，“”表示奇数，“”表示偶数，“”表示标记，“”表示空格。`n``o``e``m``s`
-- 单个大写字母指定流控制：“”表示无，“”表示 XON/XOFF，“”表示 RTS/CTS，“”表示 DSR/DTR。`N``X``R``D`
+- 单个小写字母指定奇偶校验：`n` 表示无，`o` 表示奇数，`e` 表示偶数，`m` 示标记，`s` 表示空格。
+- 单个大写字母指定流控制：`N` 表示无，`X` 表示 `XON/XOFF` ，`R` 表示 `RTS/CTS` ，`D` 表示 `DSR/DTR` 。
 
-例如，'' 表示波特率为 19200、8 个数据位、无奇偶校验、1 个停止位和无流量控制。`-sercfg 19200,8,n,1,N`
+例如，`-sercfg 19200,8,n,1,N` 表示波特率为 `19200` 、`8` 个数据位、无奇偶校验、`1` 个停止位和无流量控制。
 
-#### 3.11.3.25 ， ， ： 启用会话日志记录`-sessionlog``-sshlog``-sshrawlog`
 
-这些选项会导致 PuTTY 网络工具写出日志文件。它们中的每一个都需要一个文件名作为参数，例如，“”会导致将SSH数据包日志写入名为“”的文件。三个不同的选项选择不同的日志记录模式，所有模式也可从 GUI 获得：`-sshlog putty.log``putty.log`
 
-- `-sessionlog`选择“所有会话输出”日志记录模式。
-- `-sshlog`选择“SSH 数据包”日志记录模式。
-- `-sshrawlog`选择“SSH 数据包和原始数据”日志记录模式。
+#### 3.11.3.25 启用会话日志记录： `-sessionlog` ， `-sshlog` ， `-sshrawlog`
+
+这些选项会导致 `PuTTY` 网络工具输出日志文件。
+
+它们中的每一个都需要一个文件名作为参数，例如，`-sshlog putty.log` 会导致将 `SSH` 数据包日志写入名为 `putty.log` 的文件。
+
+三个不同的选项选择不同的日志记录模式，所有模式也可从 `GUI` 获得：
+
+- `-sessionlog` 选择“所有会话输出”日志记录模式。
+- `-sshlog ` 选择“`SSH` 数据包”日志记录模式。
+- `-sshrawlog` 选择“`SSH` 数据包和原始数据”日志记录模式。
+
+
 
 有关日志记录配置的更多信息，请参见[第 4.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-logging)。
 
-#### 3.11.3.26 ， ： 使用现有日志文件控制行为`-logoverwrite``-logappend`
 
-如果已启用日志记录（在保存的配置中，或通过其他命令行选项），并且指定的日志文件已存在，则这些选项会告知 PuTTY 网络工具要执行的操作，以便它们不必询问用户。有关详细信息，请参见[第 4.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-logfileexists)。
 
-#### 3.11.3.27：指定本地代理命令`-proxycmd`
+#### 3.11.3.26 使用现有日志文件控制行为： `-logoverwrite` ， `-logappend`
 
-此选项启用 PuTTY 的模式，用于在本地计算机上运行命令并将其用作网络连接的代理。它需要一个 shell 命令字符串作为参数。
+如果已启用日志记录（在保存的配置中，或通过其他命令行选项），并且指定的日志文件已存在，则这些选项会告知 `PuTTY` 网络工具要执行的操作，以便它们不必询问用户。
 
-有关此内容和其他代理设置的更多信息，请参阅[第 4.16.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy-type)。特别要注意的是，由于在参数字符串中理解了那里描述的特殊序列，因此文字反斜杠必须加倍（如果要在命令中，则必须放在命令行上）。`\``\\`
+有关详细信息，请参见[第 4.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-logfileexists)。
 
-#### 3.11.3.28：限制窗口进程 ACL`-restrict-acl`
 
-此选项（仅在Windows上）会导致PuTTY（或其他PuTTY工具）尝试在其自己的进程中锁定操作系统的访问控制。如果成功，它应该为设法在与 PuTTY 进程相同的用户 ID 下运行的恶意软件带来额外的障碍，阻止它使用调试器使用的相同接口附加到 PuTTY，并从其内存中读取敏感信息或劫持其网络会话。
 
-默认情况下不启用此选项，因为 Windows 程序之间的这种交互形式有许多合法用途，包括屏幕阅读器等辅助功能软件。此外，在任何情况下，它都无法针对此类攻击提供完全的安全性，因为 PuTTY 只能在启动*后*锁定自己的 ACL，如果恶意软件攻击启动和锁定之间的进程，它仍然可以进入。因此，它牺牲了明显的便利性，并且提供的真实安全性低于您的预期。但是，如果您确实想进行这种权衡，则可以使用该选项。
+#### 3.11.3.27 指定本地代理命令： `-proxycmd`
 
-以 开头的 PuTTY 进程会将其传递给以重复会话、新会话等开头的任何进程。（但是，如果您要显式调用 PuTTY 工具，例如作为代理命令，则需要安排自己传递选项（如果需要的话）。`-restrict-acl``-restrict-acl`
+此选项启用 `PuTTY` 的模式，用于在本地计算机上运行命令并将其用作网络连接的代理。
 
-如果 Pageant 是使用该选项启动的，并且您使用它从其系统托盘子菜单启动 PuTTY 会话，则 Pageant *不会默认*使用受限 ACL 启动 PuTTY 子进程。这是因为 PuTTY 更有可能因 ACL 受限而遭受功能减少（例如，屏幕阅读器软件将更需要与之交互），而 Pageant 存储更关键的信息（因此从额外的保护中受益更多），因此想要运行 Pageant 而不是具有 ACL 限制的 PuTTY 是合理的。如果您还通过了该选项，则可以强制 Pageant 使用受限 ACL 启动附属 PuTTY 进程。`-restrict-acl``-restrict-putty-acl`
+它需要一个 `shell` 命令字符串作为参数。
 
-#### 3.11.3.29：启动主机 CA 配置`-host-ca`
 
-如果您使用该选项启动 PuTTY，它根本不会启动会话。相反，它将仅显示主机证书颁发机构的配置对话框，如[第 4.19.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-cert)中所述。关闭该对话框时，PuTTY 将终止。`-host-ca`
+
+有关此内容和其他代理设置的更多信息，请参阅[第 4.16.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy-type)。
+
+特别要注意的是，为了能在参数字符串中理解描述的特殊序列，因此字符反斜杠必须加倍（如果命令中有 `\` ，则必须写成 `\\` ）。
+
+
+
+#### 3.11.3.28 限制 `Windows` 进程的 `ACL` ： `-restrict-acl`
+
+此选项（仅在 `Windows` 上）会导致 `PuTTY`（或其他 `PuTTY` 工具）尝试在其自己的进程中锁定操作系统的访问控制。
+
+如果成功，它应该为设法在与 `PuTTY` 进程相同的用户 `ID` 下运行的恶意软件带来额外的障碍，阻止它利用调试器使用相同接口附加到 `PuTTY` ，并从内存中读取敏感信息或劫持其网络会话。
+
+
+
+默认情况下不启用此选项，因为 `Windows` 程序之间的这种交互形式有许多合法用途，包括屏幕阅读器等辅助功能软件。
+
+此外，在任何情况下，它都无法针对此类攻击提供完全的安全性，因为 `PuTTY` 只能在启动后锁定自己的 `ACL` ，如果恶意软件攻击启动和锁定之间的进程，它仍然可以进入。
+
+因此，它牺牲了明显的便利性，并且提供的真实安全性低于您的预期。
+
+但是，如果您确实想进行这种权衡，则可以使用该选项。
+
+
+
+以 `-restrict-acl` 开头的 `PuTTY` 进程会将其传递给以重复会话、新会话等开头的任何进程。
+
+（但是，如果您要显式调用 `PuTTY` 工具，例如作为代理命令，则需要安排自己传递选项 `-restrict-acl` （如果需要的话）。
+
+
+
+如果 `Pageant` 是使用选项 `-restrict-acl` 启动的，并且是从系统托盘子菜单启动的 `PuTTY` 会话，则 `Pageant` 不会默认使用受限 `ACL` 启动的 `PuTTY` 子进程。
+
+这是因为 `PuTTY` 更有可能因 `ACL` 受限而遭受功能减少（例如，屏幕阅读器软件将更需要与之交互），而 `Pageant` 存储更关键的信息（因此从额外的保护中受益更多），因此想要运行 `Pageant` 而不是具有 `ACL` 限制的 `PuTTY` 是合理的。
+
+如果您还设置了选项 `-restrict-putty-acl` ，则可以强制 `Pageant` 使用受限 `ACL` 启动附属 `PuTTY` 进程。
+
+
+
+#### 3.11.3.29 启动主机 `CA` 配置： `-host-ca`
+
+如果您使用选项 `-host-ca` 启动 `PuTTY` ，它根本不会启动会话。
+
+相反，它将仅显示主机证书颁发机构的配置对话框，如[第 4.19.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-cert)中所述。
+
+关闭该对话框时，`PuTTY` 将终止。
+
+
+
+
+
+
+
+
 
 
 
