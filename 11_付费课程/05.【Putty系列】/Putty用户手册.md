@@ -1287,174 +1287,312 @@ telnet mailserver.example.com 25
 
 这些选项允许您绕过配置窗口并直接启动到会话中。
 
-要启动与名为 的服务器的连接，请执行以下操作：`host`
+
+
+要启动与名为 `host` 的服务器的连接，请执行以下操作：
 
 ```
 putty.exe [-ssh | -ssh-connection | -telnet | -rlogin | -supdup | -raw] [user@]host
 ```
 
-如果使用此语法，则设置取自默认设置（请参阅[第 4.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-saving)）; 覆盖这些设置（如果已提供）。此外，您可以指定一个协议，该协议将覆盖默认协议（请参阅[第 3.11.3.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-protocol)）。`user`
 
-对于 telnet 会话，支持以下替代语法（这使得 PuTTY 适合用作 Web 浏览器中 telnet URL 的 URL 处理程序）：
+
+如果使用此语法，则设置取自默认设置（请参阅[第 4.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-saving)），或者（如果已提供）按照设定覆盖这些设置。
+
+
+
+此外，您可以指定一个协议，该协议将覆盖默认协议（请参阅[第 3.11.3.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-protocol)）。
+
+
+
+对于 `telnet` 会话，支持以下替代语法（这使得 `PuTTY` 适合用作 `Web` 浏览器中 `telnet` 的 `URL` 处理程序）：
 
 ```
 putty.exe telnet://host[:port]/
 ```
 
-要启动与串行端口的连接，例如 COM1：
+
+
+要启动与串行端口的连接，例如 `COM1` ：
 
 ```
 putty.exe -serial com1
 ```
 
-要启动名为 的现有已保存会话，请使用该选项（在第 [3.11.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-load)中描述）。`sessionname``-load`
+
+
+要启动名为 `session name` 现有已保存会话，请使用选项 `-load`（在第 [3.11.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-load)中描述）。
 
 ```
 putty.exe -load "session name"
 ```
 
-### 3.11.2`-cleanup`
 
-如果使用该选项调用，而不是正常运行，PuTTY 将从本地计算机中删除其注册表项和随机种子文件（在与用户确认后）。它还将尝试删除存储在Windows 7及更高版本的“跳转列表”中的最近启动的会话的信息。`-cleanup`
 
-请注意，在多用户系统上， 仅删除与当前登录用户关联的注册表项和文件。`-cleanup`
+### 3.11.2 `-cleanup`
+
+如果调用该选项，而不是正常运行，`PuTTY` 将从本地计算机中删除其注册表项和随机种子文件（在与用户确认后）。
+
+它还将尝试删除存储在 `Windows 7` 及更高版本的“跳转列表”中的最近启动的会话的信息。
+
+```
+putty.exe -cleanup
+```
+
+图c13
+
+
+
+请注意，在多用户系统上， 仅删除与当前登录用户关联的注册表项和文件。
+
+
 
 ### 3.11.3 标准命令行选项
 
-PuTTY 及其相关工具支持一系列命令行选项，其中大多数选项在所有工具中都是一致的。本节列出了所有工具中的可用选项。特定于特定工具的选项在有关该工具的章节中介绍。
+`PuTTY` 及其相关工具支持一系列命令行选项，其中大多数选项在所有工具中都是一致的。
 
-#### 3.11.3.1：加载保存的会话`-load`
+本节列出了所有工具中的可用选项。
 
-该选项会导致 PuTTY 从保存的会话中加载配置详细信息。如果这些详细信息包括主机名，则只需此选项即可使 PuTTY 启动会话。`-load`
+特定工具选项将在有关该工具的章节中介绍。
+
+
+
+#### 3.11.3.1：加载保存的会话 `-load`
+
+该选项会导致 `PuTTY` 从保存的会话中加载配置详细信息。
+
+如果这些详细信息包括主机名，则只需此选项即可使 `PuTTY` 启动会话。
+
+```
+putty.exe -load "session name"
+```
+
+
 
 如果会话名称包含空格，则需要在会话名称两边加上双引号。
 
-如果要创建Windows快捷方式来启动PuTTY保存的会话，则应使用此选项：快捷方式应调用类似
+如果要创建 `Windows` 快捷方式来启动 `PuTTY` 保存的会话，则应使用此选项，快捷方式应调用类似：
 
 ```
 d:\path\to\putty.exe -load "my session"
 ```
 
-（请注意，PuTTY 本身支持此选项的替代形式，以实现向后兼容性。如果执行，它将具有与 相同的效果。对于表单，不需要双引号，并且符号必须是命令行上的第一件事。此形式的选项已弃用。`putty @sessionname``putty -load "sessionname"``@``@`
 
-#### 3.11.3.2 选择协议： ， ， ， ， ， ，`-ssh``-ssh-connection``-telnet``-rlogin``-supdup``-raw``-serial`
 
-若要选择要连接的协议，可以使用以下选项之一：
+（请注意，`PuTTY` 本身支持此选项的替代形式，以实现向后兼容性。
 
-- `-ssh`选择 SSH 协议。
-- `-ssh-connection`选择裸 SSH 连接协议。（这仅在特殊情况下有用;有关更多信息，请参见第 [4.28 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-psusan)。
-- `-telnet`选择 Telnet 协议。
-- `-rlogin`选择 Rlogin 协议。
-- `-supdup`选择 SUPDUP 协议。
-- `-raw`选择原始协议。
-- `-serial`选择串行连接。
+如果执行 `putty @sessionname`，它将具有与 `putty -load "sessionname"` 相同的效果。
 
-这些选项中的大多数在文件传输工具PSCP和PSFTP（仅适用于SSH协议和裸ssh连接协议）中不可用。
+对于使用 `@` 的形式，不需要双引号，并且 `@` 符号必须处于命令行上的最开头，此形式的选项已弃用。）
 
-这些选项等效于 PuTTY 配置框的“会话”面板中的协议选择按钮（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
 
-#### 3.11.3.3 ： 增加详细程度`-v`
 
-大多数 PuTTY 工具都可以通过提供选项来告诉您有关它们正在做什么的更多信息。如果您在建立连接时遇到问题，或者您只是好奇，您可以打开此开关并希望了解有关正在发生的事情的更多信息。`-v`
+#### 3.11.3.2 选择协议： `-ssh` ， `-ssh-connection` ， `-telnet`， `-rlogin`  ，`-supdup` ， `-raw` ， `-serial`
 
-#### 3.11.3.4 ： 指定登录名`-l`
+若想选择要连接的协议，可以使用以下选项之一：
 
-您可以使用该选项指定要在远程服务器上登录的用户名。例如。`-l``plink login.example.com -l fred`
+- `-ssh` 选择 `SSH` 协议。
+- `-ssh-connection  `选择裸 `SSH` 连接协议。（这仅在特殊情况下有用，有关更多信息，请参见第 [4.28 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-psusan)。）
+- `-telnet `选择 `Telnet` 协议。
+- `-rlogin `选择 `Rlogin` 协议。
+- `-supdup` 选择 `SUPDUP` 协议。
+- `-raw` 选择原始协议。
+- `-serial` 选择串行连接。
 
-这些选项等效于 PuTTY 配置框的“连接”面板中的用户名选择框（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
 
-#### 3.11.3.5 和 ：设置端口转发`-L``-R``-D`
 
-除了在 PuTTY 配置中设置端口转发（请参阅[第 4.26 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-portfwd)）外，您还可以在命令行上设置转发。命令行选项的工作方式与 Unix 程序中的选项相同。`ssh`
+这些选项中的大多数在文件传输工具 `PSCP` 和 `PSFTP`（仅适用于 `SSH` 协议和裸 `ssh` 连接协议）中不可用。
 
-要将本地端口（例如 5110）转发到远程目标（例如端口 110），您可以编写如下内容之一：`popserver.example.com`
+这些选项等效于 `PuTTY` 配置框的“会话” `Session` 面板中的协议选择按钮（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
+
+
+
+#### 3.11.3.3 ： 增加详细程度 `-v`
+
+大多数 `PuTTY` 工具都可以通过提供选项 `-v` 来告诉您有关它们正在做什么的更多信息。
+
+如果您在建立连接时遇到问题，或者您只是好奇，您可以打开此开关并希望了解有关正在发生的事情的更多信息。
+
+
+
+#### 3.11.3.4 ： 指定登录名 `-l`
+
+您可以使用该选项 `-l` 指定要在远程服务器上登录的用户名。
+
+例如：
+
+```
+plink login.example.com -l fred
+```
+
+
+
+这些选项等效于 `PuTTY` 配置框的“连接”面板中的用户名选择框（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+
+
+
+#### 3.11.3.5 `-L` ， `-R` 和 `-D` ：设置端口转发
+
+除了在 `PuTTY` 配置中设置端口转发（请参阅[第 4.26 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-portfwd)）外，您还可以在命令行上设置转发。
+
+命令行选项的工作方式与 `Unix` `ssh` 程序中的选项相同。
+
+
+
+要将本地端口（例如 `5110`）转发到远程目标（例如 `popserver.example.com` 端口 `110` ），您可以编写如下内容之一：
 
 ```
 putty -L 5110:popserver.example.com:110 -load mysession
 plink mysession -L 5110:popserver.example.com:110
 ```
 
-要将远程端口转发到本地目标，只需使用该选项而不是 ：`-R``-L`
+
+
+要将远程端口转发到本地目标，只需使用选项 `-R` 而不是 `-L` ：
 
 ```
 putty -R 5023:mytelnetserver.myhouse.org:23 -load mysession
 plink mysession -R 5023:mytelnetserver.myhouse.org:23
 ```
 
-要为隧道的侦听端指定 IP 地址，请将其附加到参数前面：
+
+
+要为通道的侦听端指定 `IP` 地址，请将其附加到参数前面：
 
 ```
 plink -L 127.0.0.5:23:localhost:23 myhost
 ```
 
-要在本地端口上设置基于 SOCKS 的动态端口转发，请使用该选项。对于这个，你只需要传递端口号：`-D`
+
+
+要在本地端口上设置基于 `SOCKS` 的动态端口转发，请使用选项 `-D` 。
+
+为此，你只需要传递端口号：
 
 ```
 putty -D 4096 -load mysession
 ```
 
+
+
 有关端口转发的一般信息，请参见[第 3.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-port-forwarding)。
 
-这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+这些选项在文件传输工具 `PSCP` 和 `PSFTP` 中不可用。
 
-#### 3.11.3.6 ： 从文件中读取远程命令或脚本`-m`
 
-该选项执行的功能与 PuTTY 配置框的 SSH 面板中的“远程命令”框类似（请参阅[第 4.17.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-command)）。但是，该选项需要给定一个本地文件名，它将从该文件读取命令。`-m``-m`
 
-对于某些服务器（特别是Unix系统），您甚至可以在此文件中放置多行并按顺序执行多个命令或整个shell脚本;但这可以说是一种滥用，不能指望在所有服务器上都有效。特别是，已知*不适用于*某些“嵌入式”服务器，例如思科路由器。
+#### 3.11.3.6 `-m`：从文件中读取远程命令或脚本
 
-此选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+选项 `-m` 执行的功能与 `PuTTY` 配置框的 `SSH` 面板中的“远程命令”框类似（请参阅[第 4.17.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-command)）。
 
-#### 3.11.3.7 ： 指定端口号`-P`
+但是，选项 `-m` 需要给定一个本地文件名，它将从该文件读取命令。
 
-该选项用于指定要连接到的端口号。如果您的计算机的端口 9696 而不是端口 23 上运行 Telnet 服务器，例如：`-P`
+
+
+对于某些服务器（特别是 `Unix` 系统），您甚至可以在此文件中放置多行并按顺序执行多个命令或整个 `shell` 脚本。
+
+但这可以说是一种滥用，不能指望在所有服务器上都有效。
+
+特别是，已知不适用于某些“嵌入式”服务器，例如思科路由器。
+
+此选项在文件传输工具 `PSCP` 和 `PSFTP` 中不可用。
+
+
+
+#### 3.11.3.7 `-P`：指定端口号
+
+选项 `-P` 用于指定要连接到的端口号。
+
+如果您的计算机的端口 `9696` 而不是端口 `23` 上运行 `Telnet` 服务器，例如：
 
 ```
 putty -telnet -P 9696 host.name
 plink -telnet -P 9696 host.name
 ```
 
-（请注意，此选项在 Plink 中比在 PuTTY 中更有用，因为在 PuTTY 中，您在任何情况下都可以编写。`putty -telnet host.name 9696`
 
-此选项等效于 PuTTY 配置框的“会话”面板中的端口号控件（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
 
-#### 3.11.3.8 和 ：指定密码`-pwfile``-pw`
+（请注意，此选项在 `Plink` 中比在 `PuTTY` 中更有用，因为在 `PuTTY` 中，您在任何情况下都可以编写 `putty -telnet host.name 9696` 。
+
+此选项等效于` PuTTY` 配置框的“会话” `Session` 面板中的端口号控件（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
+
+
+
+#### 3.11.3.8 `-pwfile` 和 `-pw` ：指定密码
 
 自动远程登录的一种简单方法是在命令行上提供密码。
 
-该选项将文件名作为参数。该文件中的第一行文本将用作您的密码。`-pwfile`
 
-该选项将密码本身作为参数。如果其他人使用同一台计算机，这是**不安全**的，因为如果另一个用户列出正在运行的进程，则可能会显示整个命令行（包括密码）。 保留只是为了向后兼容;你应该改用。`-pw``-pw``-pwfile`
 
-请注意，这些选项仅在使用 SSH 协议时有效。由于 Telnet、Rlogin 和 SUPDUP 的基本限制，这些协议不支持自动密码身份验证。
+选项 `-pwfile` 将文件名作为参数，该文件中的第一行文本将用作您的密码。
 
-#### 3.11.3.9 和：控制使用选美比赛进行身份验证`-agent``-noagent`
 
-该选项使用Pageant打开SSH身份验证，并将其关闭。仅当您使用 SSH 时，这些选项才有意义。`-agent``-noagent`
 
-有关选美比赛的一般信息，请参阅[第 9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)。
+选项 `-pw` 将密码本身作为参数。
 
-这些选项等效于 PuTTY 配置框的“身份验证”面板中的代理身份验证复选框（请参阅[第 4.21.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-tryagent)）。
+如果其他人使用同一台计算机，这是**不安全**的，因为如果另一个用户列出正在运行的进程，则可能会显示整个命令行（包括密码）。
 
-#### 3.11.3.10 和：控制代理转发`-A``-a`
+`-pw` 保留只是为了向后兼容，你应该改用 `-pwfile` 。
 
-该选项将打开 SSH 代理转发，并将其关闭。仅当您使用 SSH 时，这些选项才有意义。`-A``-a`
 
-有关选美的一般信息，请参阅第 [9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)，有关代理转发的信息，请参阅[第 9.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-forward)。请注意，启用此选项存在安全风险;有关详细信息，请参阅[第 9.6 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-security)。
 
-这些选项等效于 PuTTY 配置框的“身份验证”面板中的代理转发复选框（请参阅[第 4.21.7 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-agentfwd)）。
+请注意，这些选项仅在使用 `SSH` 协议时有效。
 
-这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+由于 `Telnet`、`Rlogin` 和 `SUPDUP` 的基本限制，这些协议不支持自动密码身份验证。
 
-#### 3.11.3.11 和：控制 X11 转发`-X``-x`
 
-该选项在 SSH 中打开 X11 转发，并将其关闭。仅当您使用 SSH 时，这些选项才有意义。`-X``-x`
 
-有关 X11 转发的信息，请参见[第 3.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-x-forwarding)。
+#### 3.11.3.9 `-agent` 和 `-noagent`：控制使用 `Pageant` 进行身份验证
+
+选项 `-agent` 使用 `Pageant` 打开 `SSH` 身份验证，并用 `-noagent` 将其关闭。
+
+仅当您使用 `SSH` 时，这些选项才有意义。
+
+
+
+有关 `Pageant` 的一般信息，请参阅[第 9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)。
+
+这些选项等效于 `PuTTY` 配置框的“身份验证”面板中的代理身份验证复选框（请参阅[第 4.21.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-tryagent)）。
+
+
+
+#### 3.11.3.10 `-A` 和 `-a`：控制代理转发
+
+选项 `-A` 将打开 `SSH` 代理转发，并用 `-a` 将其关闭。
+
+仅当您使用 SSH 时，这些选项才有意义。
+
+
+
+有关 `Pageant` 的一般信息，请参阅第 [9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)，有关代理转发的信息，请参阅[第 9.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-forward)。
+
+请注意，启用此选项存在安全风险;有关详细信息，请参阅[第 9.6 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-security)。
+
+
+
+这些选项等效于 `PuTTY` 配置框的“身份验证”面板中的代理转发复选框（请参阅[第 4.21.7 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-agentfwd)）。
+
+这些选项在文件传输工具 `PSCP` 和 `PSFTP` 中不可用。
+
+
+
+#### 3.11.3.11 `-X` 和 `-x`：控制 `X11` 转发
+
+选项`-X`在 `SSH` 中打开 `X11` 转发，并用 `-x` 将其关闭。
+
+仅当您使用 `SSH` 时，这些选项才有意义。
+
+
+
+有关 `X11` 转发的信息，请参见[第 3.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-x-forwarding)。
 
 这些选项等效于 PuTTY 配置框的 X11 面板中的 X11 转发复选框（请参阅[第 4.25 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-x11)）。
 
-这些选项在文件传输工具 PSCP 和 PSFTP 中不可用。
+
+
+这些选项在文件传输工具 `PSCP`  和 `PSFTP` 中不可用。
+
+
 
 #### 3.11.3.12和：控制伪终端分配`-t``-T`
 
