@@ -2545,51 +2545,107 @@ Third line
 
 ### 4.4.5 控制应用程序光标键模式
 
-应用程序光标键模式是服务器更改箭头键发送的控制序列的一种方式。在正常模式下，箭头键将发送到 。在应用程序模式下，它们通过 发送到 。`ESC [A``ESC [D``ESC OA``ESC OD`
+应用程序光标键模式是服务器更改箭头键发送的控制序列的一种方式。
 
-应用程序光标键模式可以由服务器打开和关闭，具体取决于应用程序。PuTTY 允许您配置初始状态。
+在常规模式下，箭头键将 `ESC [A` 发送到 `ESC [D` 。
 
-您还可以使用“功能”配置面板完全禁用应用程序光标键模式;请参见[第 4.6.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-features-application)。
+在应用程序模式下，它们发送 `ESC OA` 到 `ESC OD` 。
+
+
+
+应用程序光标键模式可以由服务器打开和关闭，具体取决于应用程序。
+
+`PuTTY` 允许您配置初始状态。
+
+您还可以使用“功能”配置面板完全禁用应用程序光标键模式，请参见[第 4.6.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-features-application)。
+
+
 
 ### 4.4.6 控制应用程序键盘模式
 
 应用程序键盘模式是服务器更改数字键盘行为的一种方法。
 
-在正常模式下，键盘的行为类似于普通的Windows键盘：打开NumLock时，数字键生成数字，关闭NumLock时，它们的行为类似于箭头键和Home，End等。
+在常规模式下，键盘的行为类似于普通的 `Windows` 键盘：打开 `NumLock` 时，数字键生成数字，关闭 `NumLock` 时，它们的行为类似于方向键和 `Home` ，`End` 等。
 
-在应用程序模式下，所有键盘按键都会发送特殊的控制序列，*包括* Num Lock。Num Lock 不再像 Num Lock 那样运行，而是成为另一个功能键。
 
-根据您运行的 Windows 版本，您可能会发现每次按 Num Lock 时 Num Lock 指示灯仍然闪烁，即使应用程序模式处于活动状态并且 Num Lock 就像功能键一样。这是不可避免的。
 
-应用程序键盘模式可由服务器打开和关闭，具体取决于应用程序。PuTTY 允许您配置初始状态。
+在应用程序模式下，所有键盘按键都会发送特殊的控制序列，包括 `Num Lock` 。
 
-您还可以使用“功能”配置面板完全禁用应用程序键盘模式;请参见[第 4.6.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-features-application)。
+`Num Lock` 不再像 `Num Lock` 那样运行，而是成为另一个功能键。
+
+
+
+根据您运行的 `Windows` 版本，您可能会发现每次按 `Num Lock` 时 `Num Lock` 指示灯仍然闪烁，即使应用程序模式处于活动状态并且 `Num Lock` 就像功能键一样，这是不可避免的。
+
+
+
+应用程序键盘模式可由服务器打开和关闭，具体取决于应用程序。`PuTTY` 允许您配置初始状态。
+
+您还可以使用“功能”配置面板完全禁用应用程序键盘模式，请参见[第 4.6.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-features-application)。
+
+
 
 ### 4.4.7 使用网络黑客键盘模式
 
-PuTTY有一个特殊的模式来玩NetHack。您可以通过在“数字键盘的初始状态”控件中选择“NetHack”来启用它。
+`PuTTY` 有一个特殊的模式来玩 `NetHack` 。
 
-在此模式下，数字键盘键 1-9 生成 NetHack 移动命令 （）。5 键生成命令（不执行任何操作）。`hjklyubn``.`
+您可以通过在“数字小键盘初始状态”控件中选择“NetHack”来启用它。
 
-此外，使用键盘键按 Shift 或 Ctrl 会生成您期望的 Shift 或 Ctrl 键（例如，键盘 7 生成“”，因此 Shift 键盘 7 生成 ''，Ctrl-小键盘-7 生成 Ctrl-Y）;这些命令告诉NetHack继续将您推向同一方向，直到您遇到有趣的事情。`y``Y`
 
-出于某种原因，此功能仅在 Num Lock 打开时才能正常工作。我们不知道为什么。
 
-### 4.4.8 启用类似 DEC 的撰写键
+在此模式下，数字键盘键 `1-9` 生成 `NetHack` 移动命令 （ `hjklyubn` ）。
 
-DEC 终端具有撰写键，它提供了一种易于记忆的重音字符键入方式。按“撰写”，然后再键入两个字符。这两个字符被“组合”以产生重音字符。字符的选择设计为易于记忆;例如，组合“e”和“”会产生“è”字符。
+按键 `5` 生成命令 `.`（不执行任何操作）。
 
-如果您的键盘具有 Windows 应用程序键，它将充当 PuTTY 中的撰写键。或者，如果启用“AltGr 充当撰写键”选项，则 AltGr 键将成为撰写键。
 
-### 4.4.9 “Control-Alt 不同于 AltGr”
 
-某些旧键盘没有 AltGr 键，这会使键入某些字符变得困难。PuTTY 可以配置为以与 AltGr 键相同的方式处理组合键 Ctrl + 左 Alt。
+此外，使用键盘按下 `Shift` 或 `Ctrl` 会生成您期望的 `Shift` 或 `Ctrl` 键（例如，小键盘 `7` 生成 `y` ，因此按 `Shift` 加小键盘 `7` 生成 `Y` ，按 `Ctrl` 加小键盘 `7` 生成 `Ctrl-Y` ），这些命令告诉 `NetHack` 继续将您推向同一方向，直到您遇到有趣的事情。
 
-默认情况下，此复选框处于选中状态，组合键 Ctrl + 左 Alt 执行完全不同的操作。PuTTY 通常对左 Alt 键的处理是将 Esc （Control-） 字符前缀为按键其余部分将生成的任何字符序列。例如，Alt-A 生成转义，后跟 .因此，Alt-Ctrl-A 将生成 Escape，然后是 Control-A。`[``a`
 
-如果取消选中此框，Ctrl-Alt 将成为 AltGr 的同义词，因此您可以使用它键入额外的图形字符（如果您的键盘有）。
 
-（但是，无论[第 4.4.8 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-compose)中描述的“AltGr 充当撰写键”的设置如何，Ctrl-Alt 都不会充当撰写键。
+出于某种原因，此功能仅在 `Num Lock` 打开时才能正常工作。我们不知道为什么。
+
+
+
+### 4.4.8 启用类 `DEC` 的 `Compose` 键
+
+`DEC` 终端具有 `Compose` 键，它提供了一种易于记忆的重音字符键入方式。
+
+按下 `Compose` ，然后再键入两个字符。
+
+这两个字符被“组合”以产生重音字符。
+
+字符的选择设计为易于记忆，例如，组合“e”和“”会产生“è”字符。
+
+
+
+如果您的键盘具有 `Windows` 应用程序键，它将充当 `PuTTY` 中的 `Compose` 键。
+
+或者，如果启用“ `AltGr` 用作 `Compose` 键”选项，则 `AltGr` 键将成为 `Compose` 键。
+
+
+
+### 4.4.9 `Control-Alt` 不同于 `AltGr`
+
+某些旧键盘没有 `AltGr` 键，这会使键入某些字符变得困难。
+
+`PuTTY` 可以配置为以与 `AltGr` 键相同的方式处理组合键 `Ctrl+左Alt` 。
+
+
+
+默认情况下，此复选框处于选中状态，组合键 `Ctrl+左Alt` 执行完全不同的操作。
+
+`PuTTY` 通常对左 `Alt` 键的处理是将 `Esc` （ `Control-[`） 字符前缀为按键其余部分将生成的任何字符序列。
+
+例如，`Alt-A` 生成转义 `a`  ，因此，`Alt-Ctrl-A` 将后跟 `Control-A` 生成 `Escape` 。
+
+
+
+如果取消选中此框，`Ctrl-Alt` 将成为 `AltGr` 的同义词，因此您可以使用它键入额外的图形字符（如果您的键盘有）。
+
+（但是，无论[第 4.4.8 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-compose)中描述的“AltGr 充当 `Compose` 键”的设置如何，`Ctrl-Alt` 都不会充当 `Compose` 键。
+
+
 
 ## 4.5 铃铛面板
 
