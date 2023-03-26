@@ -1,6 +1,6 @@
-我，普通小白，想赶时髦体验一把 `chatGPT` ，还有不用科学的方法吗？
+我，普通小白，想赶时髦体验一把 chatGPT ，还有不用科学的方法吗？
 
-副标题：我，普通小白，想赶时髦体验一把 `chatGPT` ，还有不用科学的方法吗？
+副标题：我，普通小白，想赶时髦体验一把 chatGPT ，还有不用科学的方法吗？
 
 英文：i-a-newbie-want-to-experience-chatgpt-is-there-any-way-not-to-use-magic
 
