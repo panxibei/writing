@@ -215,13 +215,17 @@ Windows 10 及旧版本中的默认截图工具不受影响。只有 Windows 10 
 - 对于 Windows 10 上安装的 Snip 和 Sketch，应用版本 **10.2008.3001.0** 及更高版本包含此更新。
 - 对于安装在 Windows 11 上的截图工具，应用版本 **11.2302.20.0** 及更高版本包含此更新。
 
+
+
 **如何获取 Windows 应用的更新？**
 
 微软商店将自动更新受影响的客户。
 
 客户可以禁用 Microsoft Store 的自动更新。Microsoft Store 不会自动为这些客户安装此更新。你可以按照本指南通过应用商店获取更新：[获取 Microsoft Store 中的应用和游戏的更新](https://support.microsoft.com/en-us/account-billing/get-updates-for-apps-and-games-in-microsoft-store-a1fe19c0-532d-ec47-7035-d1c5a1dd464f)。根据您的操作系统，Microsoft Store 将显示可用于您已安装的截图工具的更新。
 
+图d06
 
+图d05
 
 
 
