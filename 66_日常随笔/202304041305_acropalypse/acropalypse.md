@@ -26,11 +26,43 @@ acropalypse
 
 
 
+漏洞相关官方链接：
+
+```
+https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28303
+```
+
+
+
 为重现漏洞，特意重新安装了旧版的截图工具。
 
 我这儿有之前写的一个小工具，可用于卸载应用（文末下载）。
 
 Windows内置应用安装卸载工具.7z
+
+
+
+找来一台电脑，安装的是  `Windows 11` 系统，其中的截图工具版本为 `11.2302.20.0` 。
+
+图d01
+
+
+
+接着利用我自己写的卸载应用程序将这个版本的截图工具进行卸载。
+
+图d02
+
+
+
+然后手动将旧版 `11.2209.20` 截图工具安装上（旧版截图工具文末下载）。
+
+图d03
+
+图d04
+
+
+
+我们使用这个旧版来再现漏洞，当然 `Windows 10` 也是一样操作。
 
 
 
@@ -167,6 +199,27 @@ https://acropalypse.app/
 **acropadetect在线检测工具.7z(64.7K)**
 
 下载链接：
+
+
+
+
+
+
+
+**哪些版本的截图工具会受到影响？**
+
+Windows 10 及旧版本中的默认截图工具不受影响。只有 Windows 10 中的 Snip & Sketch 和 Windows 11 中的 Snipping Tool 受此漏洞影响。已发布针对这些应用程序的安全更新，可通过 Microsoft Store 获得。
+
+**如何检查是否已安装更新？**
+
+- 对于 Windows 10 上安装的 Snip 和 Sketch，应用版本 **10.2008.3001.0** 及更高版本包含此更新。
+- 对于安装在 Windows 11 上的截图工具，应用版本 **11.2302.20.0** 及更高版本包含此更新。
+
+**如何获取 Windows 应用的更新？**
+
+微软商店将自动更新受影响的客户。
+
+客户可以禁用 Microsoft Store 的自动更新。Microsoft Store 不会自动为这些客户安装此更新。你可以按照本指南通过应用商店获取更新：[获取 Microsoft Store 中的应用和游戏的更新](https://support.microsoft.com/en-us/account-billing/get-updates-for-apps-and-games-in-microsoft-store-a1fe19c0-532d-ec47-7035-d1c5a1dd464f)。根据您的操作系统，Microsoft Store 将显示可用于您已安装的截图工具的更新。
 
 
 
