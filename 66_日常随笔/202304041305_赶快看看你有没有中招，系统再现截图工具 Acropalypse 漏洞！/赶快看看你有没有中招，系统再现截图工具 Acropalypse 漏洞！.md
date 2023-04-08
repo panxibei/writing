@@ -272,7 +272,11 @@ https://acropalypse.app/
 
 **acropadetect在线检测工具.7z(64.7K)**
 
-下载链接：
+**两张示例图片(85.6K)**
+
+下载链接：https://pan.baidu.com/s/1KZcVhe5_oOTXYsZjetL-lg
+
+提取码：vwoj
 
 
 
