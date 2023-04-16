@@ -65,9 +65,9 @@ WampServer最新版一键安装
 
 这个省事儿，就是慢，你懂的~
 
-百度网盘链接：https://pan.baidu.com/s/1ES21rBVwCc8NHjKjTjkScQ 
+百度网盘链接：https://pan.baidu.com/s/1ev_b8RZ0m9v9yAg_gcl7Wg 
 
-提取码：vtty
+提取码：ra2s
 
 
 
