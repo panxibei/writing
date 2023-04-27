@@ -10,9 +10,80 @@ mPDF实现倾斜文字
 
 
 
+`Laravel 10.x`
+
+
+
+
+
 ```
 composer require mpdf/mpdf
 ```
+
+
+
+安装的是 `v8.0.16` 版本。
+
+图b04
+
+
+
+```
+"mpdf/mpdf": "^8.0"
+```
+
+图b03
+
+
+
+然而会出现错误。
+
+```
+Declaration of Mpdf\Mpdf::setLogger(Psr\Log\LoggerInterface $logger) 
+must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerInterface $logger): void 
+```
+
+图b01
+
+
+
+原因是 `mPDF` 并不与 `psr/log 3.x` 兼容。
+
+
+
+图b02
+
+
+
+在 `composer.json` 中手动添加一行。
+
+```
+"psr/log": "^2.0"
+```
+
+
+
+就像这样。
+
+图b05
+
+
+
+然后更新一下。
+
+```
+composer update psr/log
+```
+
+图b06
+
+
+
+
+
+
+
+
 
 
 
