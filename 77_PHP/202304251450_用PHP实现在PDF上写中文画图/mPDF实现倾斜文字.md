@@ -49,7 +49,9 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 
 原因是 `mPDF` 并不与 `psr/log 3.x` 兼容。
 
+更多的解释。。。
 
+> https://stackoverflow.com/questions/74433569/mpdf-mpdf-loggerawareinterface-incompatibility-with-psr-log-in-php-8-1-12/74442440#74442440
 
 图b02
 
