@@ -15,7 +15,7 @@ iviewUI+Laravel实现同时多文件上传
 环境配置及对应版本：
 
 * `Vue.js` - `2.5.16`
-* `iviewUI` - `4.x.x`
+* `iviewUI` - `4.5.x`
 * `axios` - `0.18.0`
 * `PHP` - `8.1`
 * `Laravel` - `10.7.1`
