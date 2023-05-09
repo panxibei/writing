@@ -12,6 +12,20 @@ iviewUI+Laravel实现同时多文件上传
 
 
 
+`iViewUI` 的上传组件 `Upload` 默认基本用法是一次选择一个文件。
+
+然而有很多场景是需要一次选择多个文件上传的，当然 `iViewUI` 也是支持多个文件上传，只要加上 `multiple` 属性即可。
+
+不过这个 `multiple` 属性并不是它的发明，因为 `Upload` 组件是基于原生的 `input` 标签，而 `input` 就是用的 `multple` 。
+
+```
+<input type="file" multiple>
+```
+
+
+
+
+
 环境配置及对应版本：
 
 * `Vue.js` - `2.5.16`
@@ -82,9 +96,9 @@ beforeupload (file) {
     this.uploadList.push(file); // 收集文件数量
 
     for(var i=0;i<this.uploadList.length;i++){
-        if (this.uploadList.length>2) {
+        if (this.uploadList.length>3) {
             this.uploadList.splice(this.uploadList.length-1, 1);
-            this.error(false, '失败', '不能超过2个文件！');
+            this.error(false, '失败', '不能超过3个文件！');
             return false;
         }
 
