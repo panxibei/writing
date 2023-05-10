@@ -1,18 +1,10 @@
-iViewUI+axios+Laravel实现一次性同时上传多个文件
+iViewUI+Axios+Laravel实现一次性同时上传多个文件
 
-副标题：iViewUI+axios+Laravel实现一次性同时上传多个文件
+副标题：iViewUI+Axios+Laravel实现一次性同时上传多个文件
 
 英文：
 
 关键字：
-
-
-
-iviewUI+Laravel实现同时多文件上传
-
-
-
-
 
 
 
@@ -22,10 +14,26 @@ iviewUI+Laravel实现同时多文件上传
 
 然而有很多场景是需要一次选择多个文件上传的，当然 `iViewUI` 也是支持多个文件上传，只要加上 `multiple` 属性即可。
 
-不过这个 `multiple` 属性并不是它的发明，因为 `Upload` 组件是基于原生的 `input` 标签，而 `input` 就是用的 `multple` ，因此只要简单地加上 `multiple` 属性就可以支持多文件上传了。
+不过这个 `multiple` 属性并不是它的创造发明，因为 `Upload` 组件是基于原生的 `input` 标签，而 `input` 就是用的 `multple` ，因此只要简单地加上 `multiple` 属性就可以支持多文件上传了。
+
+
+
+如下，原生的 `input` 标签就支持多文件同时浏览上传。
 
 ```
 <input id="upload" type="file" multiple>
+```
+
+
+
+对于 `iViewUI` 也是一样的。
+
+```html
+<Upload
+    multiple
+    action="//sysadm.cc/posts/">
+    <Button icon="ios-cloud-upload-outline">Upload files</Button>
+</Upload>
 ```
 
 
@@ -63,19 +71,23 @@ iviewUI+Laravel实现同时多文件上传
 
 我们可以通过 `upload.files` 来查看或操作文件信息。
 
-图a02
+图01
 
 
 
 不过这只是原生 `input` 上传的用法，既然我们用到的 `iViewUI` ，那么用 `iViewUI` 又如何实现获取文件信息呢？
 
-`iViewUI` 的 `Upload` 组件有一个名为 ` before-upload ` 的方法。
 
-在正式提交上传文件之前，这个方法会被触发，同时这个方法也会获取到文件信息。
 
-但是吧，可能用过 `iViewUI` 的小伙伴会有体验，当我们上传多个文件时，这个 `before-upload` 方法会单纯轮循多次，而不是一次性获取多文件信息。
+针对这个问题， `iViewUI` 的 `Upload` 组件就有一个名为 ` before-upload ` 的方法可以实现我们想要的功能。
 
-换句话说，就是你上传两个文件，它就给你跑两次，获取到的信息居然只有最后那个文件的！
+在正式提交上传文件之前，这个方法会被触发，同时也会获取到文件信息。
+
+但是吧，可能用过 `iViewUI` 的小伙伴会有体会，当我们选择并上传多个文件时，这个 `before-upload` 方法会单纯轮循多次，而不是一次性获取多个文件信息。
+
+换句话说，就是你要同时上传两个文件，结果它却给你跑了两次，获取到的信息居然只有最后那个文件的！
+
+这可怎么办呢？
 
 
 
@@ -85,54 +97,50 @@ iviewUI+Laravel实现同时多文件上传
 
 大体实现的方法是：
 
-* 通过人为设定一个数组变量用于存放多文件
+* 通过人为设定一个数组变量用于存放多文件信息
 * 然后再通过 `before-upload` 方法，每获取到文件就放到数组变量中
-* 最后就简单了，将文件信息添加到 `formData` 对象接口中，使用 `axios` 提交即可。
+* 最后就简单了，将文件信息添加到 `formData` 对象接口中，使用 `Axios` 提交即可。
 
 
 
-
-
-
-
-环境配置及对应版本：
+环境配置及对应程序版本：
 
 * `Vue.js` - `2.5.16`
 * `iviewUI` - `4.5.x`
-* `axios` - `0.18.0`
+* `Axios` - `0.18.0`
 * `PHP` - `8.1`
 * `Laravel` - `10.7.1`
 
 
 
-实现功能：
+最终实现功能：
 
 * 支持多个文件上传
 * 可列出哪些等待上传的文件
 * 可删除列表中待上传的文件
-* 除文件上传外还可同时提交其他参数
+* 除文件上传外还可同步提交其他参数
 
 
 
-效果图
+上传文件效果图。
 
-图a01
-
-
-
-部分演示代码
-
-图a03
-
-图a04
+图02
 
 
 
-完整代码打包下载
+部分演示代码。
 
-下载链接：
+图03
+
+图04
 
 
+
+完整代码我就不打包了，可在文章中直接查看。
+
+**iViewUI+Axios+Laravel实现一次性同时上传多个文件完整源代码**
+
+关注公众号，发送xxxxxx
 
 
 
@@ -140,11 +148,9 @@ iviewUI+Laravel实现同时多文件上传
 
 
 
-前端写法：
+### 前端写法
 
-
-
-上传组件：
+上传组件代码，支持多文件上传、文件格式过滤、实时列出上传文件等等功能。
 
 ```php+HTML
 <Upload
@@ -169,9 +175,7 @@ iviewUI+Laravel实现同时多文件上传
 
 
 
-
-
-变量定义
+上传文件所需的变量定义。
 
 ```vue
 // 上传组件所需要的变量
@@ -182,9 +186,7 @@ uploaddisabled: false, // 是否禁用上传
 
 
 
-
-
-上传组件使用到的方法函数
+上传组件使用到的方法函数。
 
 ```javascript
 // 上传前将文件存放到变量 uploadList 中
@@ -264,11 +266,11 @@ uploadListRemove (index) {
 
 
 
+### 后端写法
 
+在 `Laravel` 控制器中实现获取多文件信息，包括文件的原始名称、路径、扩展名等等。
 
-后端写法：
-
-
+以下代码将把多个文件按顺序依次存放到目录 `storage/public/当前日期/` 中。
 
 ```php
 /**
@@ -313,3 +315,8 @@ public function getUploadFile(Request $request)
 }
 ```
 
+
+
+**将技术融入生活，打造有趣之故事**
+
+网管小贾 / sysadm.cc
