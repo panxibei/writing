@@ -8,23 +8,64 @@ mPDF实现倾斜文字
 
 
 
-有个项目其中一个细节要求比较刁钻。
+有个项目其中一些细节要求比较刁钻。
 
-需要在 `Pdf` 文档上绘图画画，比如画圆、画直线，当然还要写些文字等等。
+大概意思是需要在某些文档或图片上再绘图画画，比如画直线、画圆圈等线条或形状，另外当然还要写些文字啥的。
 
-在此期间，我找过很多轮子，不是这不行，就是那不行。
+在此期间，我找过很多轮子，不是这不行，就是那不行，把人给折腾得半死。
 
-我的天，我也不知道怎么会有那么多的轮子，什么 `FPDF` 、`FPDI` 、`TCPDF` ，还有一大堆其他第三方轮子，让我眼花缭乱。
+我也不知道怎么会有那么多的轮子，什么 `FPDF` 、`FPDI` 、`TCPDF` ，还有其他一大堆第三方轮子，让我眼花缭乱，无从下手。
 
-要么不支持中文，要么画不了图形，要么
+你看哈，要么不支持中文，要么画不了图形，要么实现起来超级复杂，总之没一个省心的。
 
-
-
-`Laravel 10.x`
+经过数周的折腾研究，尝试了各种轮子，最终在其中找到了 `mPDF` 。
 
 
 
+有小伙伴会问了，这个 `mPDF` 不一样也是和前面说的那几个差不多的轮子嘛，有啥特殊的？
 
+其实吧，这个 `mPDF` 也是基于 `FPDF` 和 `HTML2FPDF` 的一个 `PHP` 库，只不过它要比前几样要高级一些。
+
+比如支持 `UTF-8` 编码，这就可以很好地支持中文等非拉丁文字的显示。
+
+除此之外它也可以画画，也就是可以绘制各种图形。
+
+可以说它基本上满足了我的要求，但是，但是它并不支持文字的倾斜显示。
+
+
+
+有人说了，你也没提要什么文字倾斜啊？
+
+不好意思是我忘说了，其实前面介绍的那几个轮子有的就支持这功能，总之我是想要这种效果的，包括图形旋转等。
+
+那么 `mPDF` 可以做到文字倾斜的效果吗？
+
+答案是不能！
+
+
+
+咳咳……请把板砖放下，请听我说完。
+
+其实起初我都整得差不多了，`mPDF` 啥都好，就是这个功能不行，找了很多网站资料也没个所以然，我也挺郁闷的。
+
+不过后来经过我自己的研究，发现了一种可以实现文字倾斜效果的方法。
+
+图c01
+
+
+
+实现原理暂时按下不表，先说下 `mPDF` 在通常情况下安装使用我踩的坑。
+
+
+
+实验环境概览：
+
+* `PHP` - `8.1`
+* `Laravel 10.x`
+
+
+
+安装 `mPDF` ，这个没花样，按官网的来。
 
 ```
 composer require mpdf/mpdf
@@ -32,11 +73,17 @@ composer require mpdf/mpdf
 
 
 
-安装的是 `v8.0.16` 版本。
+这里 `Composer` 安装的是 `v8.0.16` 版本。
+
+注意，安装程序会根据你环境中的 `PHP` 版本来判断需要安装哪一版本的 `mPDF` 。
+
+如果你使用的是 `PHP 8.2` ，那么它会给你安装 `v8.1.x` 。
 
 图b04
 
 
+
+我这边，在 `composer.json` 中程序自动写入的也是 `8.0` 版本。
 
 ```
 "mpdf/mpdf": "^8.0"
@@ -46,7 +93,23 @@ composer require mpdf/mpdf
 
 
 
-然而会出现错误。
+安装顺利完成，写几行测试代码试试吧。
+
+```
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML('<h1>Hello world!</h1>');
+$mpdf->Output();
+```
+
+
+
+上面是拿官网现成的示例代码，一切OK！
+
+然而将这些拢共两三行代码放到 `Laravel` 中就会出现错误。
 
 ```
 Declaration of Mpdf\Mpdf::setLogger(Psr\Log\LoggerInterface $logger) 
@@ -57,9 +120,11 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 
 
 
-原因是 `mPDF` 并不与 `psr/log 3.x` 兼容。
+这什么情况，怎么和 `psr/log` 搞上了。
 
-更多的解释。。。
+虽然我不是太懂这个，但是后来查了网上，原因是 `mPDF` 并不与 `psr/log 3.x` 兼容（注意是 `3.x` 这个版本）。
+
+讨论里有大神更多的解释，参考链接分享在此。
 
 > https://stackoverflow.com/questions/74433569/mpdf-mpdf-loggerawareinterface-incompatibility-with-psr-log-in-php-8-1-12/74442440#74442440
 
@@ -67,7 +132,9 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 
 
 
-在 `composer.json` 中手动添加一行。
+总之一句话，使用 `psr/log 2.x` 就行了。
+
+根据大神指导，在 `composer.json` 文件的 `require` 项中手动添加一行（文件里可能没有这一行）。
 
 ```
 "psr/log": "^2.0"
@@ -75,13 +142,13 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 
 
 
-就像这样。
+就像这个样子。
 
 图b05
 
 
 
-然后更新一下。
+然后手动更新一下。
 
 ```
 composer update psr/log
@@ -91,7 +158,7 @@ composer update psr/log
 
 
 
-
+可以看到 `psr/log` 从 `3.0.0` 降到了 `2.0.0` 。
 
 测试一下，可以支持中文等语言文字的显示。
 
