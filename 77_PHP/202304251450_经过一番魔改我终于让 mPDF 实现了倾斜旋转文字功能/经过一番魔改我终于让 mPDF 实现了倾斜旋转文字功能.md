@@ -1,10 +1,10 @@
-mPDF实现倾斜文字
+经过一番魔改我终于让 mPDF 实现了倾斜旋转文字功能
 
-副标题：
+副标题：经过一番魔改我终于让 mPDF 实现了倾斜旋转文字功能
 
-英文：
+英文：after-magic-modifications-i-finally-achieve-rotate-text-function-with-mpdf
 
-关键字：
+关键字：mpdf,pdf,fpdf,fpdi,tcpdf,rotate,倾斜,旋转,文字,php,laravel
 
 
 
@@ -12,17 +12,19 @@ mPDF实现倾斜文字
 
 大概意思是需要在某些文档或图片上再绘图画画，比如画直线、画圆圈等线条或形状，另外当然还要写些文字啥的。
 
-在此期间，我找过很多轮子，不是这不行，就是那不行，把人给折腾得半死。
+在此期间，我找过很多 `PHP` 库（俗称轮子），不是这不行，就是那不行，把人给折腾得半死。
 
 我也不知道怎么会有那么多的轮子，什么 `FPDF` 、`FPDI` 、`TCPDF` ，还有其他一大堆第三方轮子，让我眼花缭乱，无从下手。
 
-你看哈，要么不支持中文，要么画不了图形，要么实现起来超级复杂，总之没一个省心的。
+你看哈，要么这个不支持中文文字显示，要么那个画不了想要的图形，要么剩下那些被魔改过的实现起来超级复杂，总之没一个省心的。
 
-经过数周的折腾研究，尝试了各种轮子，最终在其中找到了 `mPDF` 。
+经过数周的折腾研究，尝遍了各种轮子的酸甜苦辣，最终在其中找到了 `mPDF` 。
 
 
 
-有小伙伴会问了，这个 `mPDF` 不一样也是和前面说的那几个差不多的轮子嘛，有啥特殊的？
+是的，它还是一个轮子！
+
+有小伙伴会问了，这个 `mPDF` 不一样也是和前面说的那几个差不多嘛，有啥特殊的？
 
 其实吧，这个 `mPDF` 也是基于 `FPDF` 和 `HTML2FPDF` 的一个 `PHP` 库，只不过它要比前几样要高级一些。
 
@@ -30,13 +32,15 @@ mPDF实现倾斜文字
 
 除此之外它也可以画画，也就是可以绘制各种图形。
 
-可以说它基本上满足了我的要求，但是，但是它并不支持文字的倾斜显示。
+可以说它基本上满足了我的要求，但是，但是它并不支持文字的倾斜（非字体斜体）显示。
+
+图01
 
 
 
 有人说了，你也没提要什么文字倾斜啊？
 
-不好意思是我忘说了，其实前面介绍的那几个轮子有的就支持这功能，总之我是想要这种效果的，包括图形旋转等。
+不好意思是我忘说了，其实前面介绍的那几个轮子有的就支持这功能，总之我是想要这种效果的，确切地说是文字的旋转显示，包括图形旋转等。
 
 那么 `mPDF` 可以做到文字倾斜的效果吗？
 
@@ -48,13 +52,13 @@ mPDF实现倾斜文字
 
 其实起初我都整得差不多了，`mPDF` 啥都好，就是这个功能不行，找了很多网站资料也没个所以然，我也挺郁闷的。
 
-不过后来经过我自己的研究，发现了一种可以实现文字倾斜效果的方法。
+不过后来经过我自己的研究，发现了一种可以实现文字倾斜效果的另类方法。
 
-图c01
+图02
 
 
 
-实现原理暂时按下不表，先说下 `mPDF` 在通常情况下安装使用我踩的坑。
+实现原理暂且按下不表，先说下 `mPDF` 在通常情况下安装使用时我踩到的坑。
 
 
 
@@ -73,13 +77,13 @@ composer require mpdf/mpdf
 
 
 
-这里 `Composer` 安装的是 `v8.0.16` 版本。
+这里 `Composer` 安装的 `mPDF` 是 `v8.0.16` 版本。
 
 注意，安装程序会根据你环境中的 `PHP` 版本来判断需要安装哪一版本的 `mPDF` 。
 
 如果你使用的是 `PHP 8.2` ，那么它会给你安装 `v8.1.x` 。
 
-图b04
+图03
 
 
 
@@ -89,7 +93,7 @@ composer require mpdf/mpdf
 "mpdf/mpdf": "^8.0"
 ```
 
-图b03
+图04
 
 
 
@@ -116,7 +120,7 @@ Declaration of Mpdf\Mpdf::setLogger(Psr\Log\LoggerInterface $logger)
 must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerInterface $logger): void 
 ```
 
-图b01
+图05
 
 
 
@@ -124,11 +128,11 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 
 虽然我不是太懂这个，但是后来查了网上，原因是 `mPDF` 并不与 `psr/log 3.x` 兼容（注意是 `3.x` 这个版本）。
 
-讨论里有大神更多的解释，参考链接分享在此。
+论坛里有大神更多的解释，参考链接分享在此。
 
 > https://stackoverflow.com/questions/74433569/mpdf-mpdf-loggerawareinterface-incompatibility-with-psr-log-in-php-8-1-12/74442440#74442440
 
-图b02
+图06
 
 
 
@@ -144,7 +148,7 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 
 就像这个样子。
 
-图b05
+图07
 
 
 
@@ -154,29 +158,39 @@ must be compatible with Psr\Log\LoggerAwareInterface::setLogger(Psr\Log\LoggerIn
 composer update psr/log
 ```
 
-图b06
+图08
 
 
 
 可以看到 `psr/log` 从 `3.0.0` 降到了 `2.0.0` 。
 
-测试一下，可以支持中文等语言文字的显示。
+测试一下，`mPDF` 已经可以在 `Laravel` 下正常工作了。
 
-图a01
-
-
+图09
 
 
 
+最后把我的劳动成果放在这里。
+
+**`mPDF` 实现文字倾斜功能源代码(168K)(适用于v8.0)**
+
+下载链接：
+
+提取码：关注公众号，发送xxxxxx。
 
 
 
+以下为实现方法和源代码。
+
+===================================
+
+注意，以下为付费内容。
 
 
 
+在 `Mpdf.php` 的末尾追加以下代码。
 
-
-在 `Mpdf.php` 末尾追加以下代码。
+如果你使用的是 `Laravel` 框架，那么 `Mpdf.php` 应该在这里。
 
 ```
 vendor\mpdf\mpdf\src\Mpdf.php
@@ -185,6 +199,8 @@ vendor\mpdf\mpdf\src\Mpdf.php
 
 
 通过魔改水印函数实现文字倾斜功能。
+
+我修改的部分代码即实现了前面介绍的效果，如果你还有其他特殊要求可自行修改。
 
 ```
 	/**
@@ -290,11 +306,9 @@ vendor\mpdf\mpdf\src\Mpdf.php
 
 
 
-
+调用倾斜文字功能示例。
 
 ```
-// TextWithRotationPlus($wx, $wy, $texte, $angle = 45, $fontsize = 96, $alpha = 0.2, $red = 0, $green = 0, $blue = 0)
-
 // 坐标(40,50)，角度45，字体大小12,Alpha为1,红色(255,0,0)
 $mpdf->TextWithRotationPlus(40, 50, $str, 45, 12, 1, 255, 0, 0);
 
@@ -302,3 +316,8 @@ $mpdf->TextWithRotationPlus(40, 50, $str, 45, 12, 1, 255, 0, 0);
 $mpdf->TextWithRotationPlus(50, 70, $str, 60, 12, 1, 0, 0, 255);
 ```
 
+
+
+**将技术融入生活，打造有趣之故事**
+
+网管小贾 / sysadm.cc
