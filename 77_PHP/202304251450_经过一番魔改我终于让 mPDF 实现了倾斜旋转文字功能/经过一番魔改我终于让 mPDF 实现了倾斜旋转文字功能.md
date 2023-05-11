@@ -174,9 +174,9 @@ composer update psr/log
 
 **`mPDF` 实现文字倾斜功能源代码(168K)(适用于v8.0)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1_jRxK8UOK4eTsO-uI-dq1A
 
-提取码：关注公众号，发送xxxxxx。
+提取码：9sgj
 
 
 
