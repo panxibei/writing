@@ -312,7 +312,7 @@ vendor\mpdf\mpdf\src\Mpdf.php
 // 坐标(40,50)，角度45，字体大小12,Alpha为1,红色(255,0,0)
 $mpdf->TextWithRotationPlus(40, 50, $str, 45, 12, 1, 255, 0, 0);
 
-// 坐标(50,70)，角度60，字体大小12,Alpha为1,红色(0,0,255)
+// 坐标(50,70)，角度60，字体大小12,Alpha为1,蓝色(0,0,255)
 $mpdf->TextWithRotationPlus(50, 70, $str, 60, 12, 1, 0, 0, 255);
 ```
 
