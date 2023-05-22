@@ -8,13 +8,96 @@ sharepoint
 
 
 
+用 `VB6` 来实现 `http` 请求，听上去好像开玩笑一样哈！
+
+放着大把的工具不用，为吗要用 `VB6` 来做这事儿呢？
+
+其实这也不算奇葩，毕竟 `VB` 也是一门高级编程语言，只要懂得原理，理论上它也是可以做到的。
 
 
-`Get` 请求代码。
+
+要做到给 `VB` 插上在网络飞翔的翅膀，我们需要一样东西，就是 `XMLHTTP` 库。
+
+其实这个库一点儿也不新，它老早就有了，你想想 `VB` 是什么年纪的。
+
+说实话，对于这块的了解我也是一片空白，于是我就折腾了起来。
+
+这才发现，这个 `XMLHTTP` 库的引用就有好几个。
+
+```
+Set Req = New XMLHTTP3
+Set Req = New XMLHTTP60
+Set Req = CreateObject("Microsoft.XMLHTTP")
+Set Req = CreateObject("MSXML2.XMLHTTP")
+Set Req = CreateObject("MSXML2.ServerXMLHTTP")
+```
+
+
+
+这些都是啥乱七八糟的？
+
+其实它们是有区别的，通常是版本新旧的区别，在我的电脑上只能最新的 `XMLHTTP60` 。
+
+还有的区别就是是否支持 `SSL` 等高级功能。
+
+具体它们的定义是啥，具体又有什么区别，碍于篇幅请有兴趣的小伙伴自行移驾网上查询相关资料。
+
+简而言之，如果你只是做简单的 `Get` 和 `Post` 请求测试，那么用 `Microsoft.XMLHTTP` 就够了。
+
+但是我要实现的功能很明显要复杂得多，最后测试得出的结果，我发现 `MSXML2.ServerXMLHTTP` 比较好使。
+
+
+
+`Get` 请求演示。
+
+新建一个 `Get` 请求页面，我这用的是 `PHP` 写的，当然你也可以用其他的。
+
+文件命名为 `http_get.php` ，以下为部分代码，完整代码（含中文支持等）文末统一打包下载。
+
+```php+HTML
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<p>GET示例</p>
+欢迎 <?php echo $_GET["myname"]; ?>!<br>
+你的年龄是 <?php echo $_GET["myage"]; ?>  岁。
+</body>
+</html>
+```
+
+
+
+将文件 `http_get.php` 上传到 `Web` 服务器目录中，获取远程访问路径，比如：
+
+```
+https://127.0.0.1/vbhttp/http_get.php
+```
+
+
+
+如果你直接访问它，页面不会有任何显示（空白），那是因为我们没有传递任何参数给它。
+
+如果想传点参数，那么我们就可以这样。
+
+```
+https://127.0.0.1/vbhttp/http_get.php?myname="网管小贾"&myage="100"
+```
+
+
+
+通常是在网址后加个问号 `?` ，后面就是一个一个的参数，用 `参数=值` 并以 `&` 做分隔的形式连接。
+
+这时我们就可以在网页中看到参数显示出来了。
+
+
+
+要做出相同的事情，用 `VB` 也可以，下面就是 `Get` 请求代码。
 
 ```vb
 Set oHttpReq = CreateObject("MSXML2.ServerXMLHTTP")
-
 
 strUrl = "https://127.0.0.1/vbhttp/http_get.php"
 strData = "user=admin?password=123"
@@ -22,32 +105,219 @@ isAsync = False
 index = 1
 
 ' 打开连接并构建连接到服务器的请求
-If Len(strData) > 0 Then
-	oHttpReq.Open "GET", strUrl & "?" & strData, isAsync
-Else
-	oHttpReq.Open "GET", strUrl, isAsync
-End If
+oHttpReq.Open "GET", strUrl & "?" & strData, isAsync
 
-' 请求头，有特殊情况可再添加
-'oHttpReq.setRequestHeader "Content-Type", "text/html; charset=UTF-8"
-'oHttpReq.setRequestHeader "User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.14) Gecko/20080406 K-MeleonCCFME/0.08"
-
-' 发送讲求到服务器
+' 发送请求到服务器
 oHttpReq.send
 
-' 轮循等待响应'    
+' 轮循等待响应
 Do Until oHttpReq.ReadyState = 4
 	DoEvents
 Loop
 
 ' 按不同方式获取返回响应的内容
 Select Case Index
-Case 1: WebRequestGet = oHttpReq.responseText  '返回字符串
-Case 2: WebRequestGet = oHttpReq.responseBody '返回二进制
-Case 3: WebRequestGet = BytesToStr(oHttpReq.responseBody) '二进制转字符串[直接返回字串出现乱码时尝试]
-Case Else: WebRequestGet = vbNullString '无效的返回
+    Case 1: WebRequestGet = oHttpReq.responseText  '返回字符串
+    Case 2: WebRequestGet = oHttpReq.responseBody '返回二进制
+    Case 3: WebRequestGet = BytesToStr(oHttpReq.responseBody) '二进制转字符串[直接返回字串出现乱码时尝试]
+    Case Else: WebRequestGet = vbNullString '无效的返回
 End Select
 
 Set oHttpReq = Nothing
 ```
+
+
+
+
+
+`Get` 请求很简单，那么 `POST` 请求呢？
+
+和 `GET` 请求不同的是，我们需要新建两个文件来做到 `POST` 请求。
+
+一个是提交文件，另一个是接受文件。
+
+
+
+提交文件 `http_post_sumbit.html` ：
+
+```
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <form action="http_post_result.php" method="post">
+        名字: <input type="text" name="myname">
+        年龄: <input type="text" name="myage">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>
+```
+
+
+
+接收文件 `http_post_result.php` ：
+
+```php+HTML
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+    <p>POST示例</p>
+    欢迎 <?php echo $_POST["myname"]; ?>!<br>
+    你的年龄是 <?php echo $_POST["myage"]; ?>  岁。
+</body>
+</html>
+```
+
+
+
+ 为什么不能直接用链接参数的方式提交呢？
+
+因为那样的方式浏览器默认是 `Get` 请求而非 `POST` 请求，因此我们需要一个提交文件来实现 `POST` 这个动作。
+
+两个演示文件可在文末下载，小伙伴们可以自行测试。
+
+
+
+那么 `VB` 怎么做到 `POST` 请求呢？
+
+部分 `POST` 请求示例代码如下。
+
+```
+Set oHttpReq = CreateObject("MSXML2.ServerXMLHTTP")
+
+strUrl = "https://127.0.0.1/vbhttp/http_post.php"
+strData = "user=admin?password=123"
+isAsync = False
+index = 1
+
+' 打开连接并构建连接到服务器的请求
+oHttpReq.Open "POST", strUrl & "?" & strData, isAsync
+
+' 请求头，有特殊情况可再添加
+oHttpReq.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+
+' 发送请求到服务器
+oHttpReq.send strData
+
+' 轮循等待响应
+Do Until oHttpReq.ReadyState = 4
+	DoEvents
+Loop
+
+' 按不同方式获取返回响应的内容
+Select Case Index
+    Case 1: WebRequestPost = oHttpReq.responseText  '返回字符串
+    Case 2: WebRequestPost = oHttpReq.responseBody '返回二进制
+    Case 3: WebRequestPost = BytesToStr(oHttpReq.responseBody) '二进制转字符串[直接返回字串出现乱码时尝试]
+    Case Else: WebRequestPost = vbNullString '无效的返回
+End Select
+
+Set oHttpReq = Nothing
+```
+
+
+
+
+
+当我满心欢喜，以为已经掌握了访问 `Sharepoint` 的关键钥匙，于是直接兴冲冲的就拿着这些粗鄙简陋的知识去尝试了。
+
+结果可想而知，不仅脸被打肿了，而且脚也被砸疼了。
+
+为什么会这样？
+
+原因有以下这么几个方面，当然这些也是用 `VB` 没那么容易访问 `Sharepoint` 的关键知识点。
+
+
+
+首先，也是一开始被我忽略却又最头痛的问题，就是登录认证的问题。
+
+要想操作 `Sharepoint` 文档，就算你拿着帐号密码也得先登录，要不就没有权限操作。
+
+就是这个登录认证的实现着实让我伤透了脑筋，因为微软的登录会跳转N次页面，并且还是加密的，并且每次网址不定，并且用 `VB` 实现起来非常困难，至少我水平有限做不到。
+
+你会发现，你无法直接对网址做更多的操作，因为它允许你的操作直的被限制到了最小。
+
+图e01
+
+
+
+最后我用了一个变相的办法实现了登录。
+
+具体我就不献丑了，可以参考文末下载中的源代码。
+
+
+
+好不容易出现了选择帐号的画面。
+
+图b01
+
+
+
+终于可以输入帐号和密码了。
+
+图b02
+
+
+
+好了，登录成功了，那是不是万事大吉了呢？
+
+很显然不是！
+
+它是地主家的傻儿子，整个一脸盲，连我这么一帅哥它都认不出来。
+
+每回都是刚想登门，它答应的好好的，却在我刚迈腿进门时把门给关上了！
+
+可气死我了，问题究竟出在哪里呢？
+
+
+
+因为 `http` 请求是一股一股的，就是一段一段的，你发一次就得到返回一次的结果，想得到多次结果就得多发送几次。
+
+很显然登录时已经用掉了一次（或多次），接下来再发送的话，呃，难道它还是要让你登录！
+
+其实关于这个问题我们就必须要让 `Cookie` 酱登场了！
+
+
+
+`Cookie` 又名小甜饼，网络上有不少它的介绍资料，我就不啰嗦了，简单地说它就是用来存放用户登录或其他一些信息用的。
+
+所以问题就很清楚了，我们需要将前面认证通过的信息给拿到手，用手里的这个 `Cookie` 再进门就不会吃闭门羹了。
+
+那 `Cookie` 上哪儿去拿呀？
+
+说是简单，只要认证通过，服务端会返回给我们的。
+
+
+
+如下图右侧，有了它我们就可以继续后续的操作了。
+
+图b03
+
+
+
+当然如果出现浏览器问题，那么这里需要说明一下。
+
+由于时间长久，到目前为止 `IE` 已经是彻彻底底玩不转了。
+
+早先还能点击继续来使用，但是现在好像不行了（好像旧版本的Win10还可以用）。
+
+图b04
+
+
+
+
+
+
+
+
+
+
+
+
 
