@@ -10,6 +10,8 @@ ncsi
 
 
 
+
+
 `NCSI` ，即 `Network Connectivity Status Indicator` 的缩写，如果直译成中文就是 `网络连接状态指示器` 。
 
 但是吧，就算翻译过来也挺让人犯懵，其实用大白话讲，就是 `Windows` 系统用来判断电脑是否连接到 `Internet` 的一种技术。
@@ -49,6 +51,8 @@ ncsi
 
 
 `Ping` 一下这个 `DNS` ，似乎不通，但其实应该是起作用的。
+
+图b02
 
 
 
@@ -102,7 +106,7 @@ Windows Registry Editor Version 5.00
 http://www.msftconnecttest.com/connecttest.txt
 ```
 
-尝试直接用浏览器访问，结果：
+尝试直接用浏览器访问，结果会返回以下内容：
 
 ```
 Microsoft Connect Test
@@ -143,7 +147,7 @@ Windows Registry Editor Version 5.00
 http://www.msftncsi.com/ncsi.txt
 ```
 
-结果：
+返回结果：
 
 ```
 Microsoft NCSI
