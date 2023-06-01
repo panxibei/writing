@@ -1,10 +1,10 @@
-ncsi
+明明连上网了，为啥还是显示小地球图标？Outlook 也无法连接！
 
-副标题：
+副标题：明明连上网了，为啥还是显示小地球图标？Outlook 也无法连接！
 
-英文：
+英文：why-still-display-small-earth-icon-even-if-it-connected-to-the-internet-and-outlook-is-also-not-connected
 
-关键字：
+关键字：ncsi,小地球,无法连网,earth,network,outlook
 
 
 
@@ -357,6 +357,24 @@ Windows Registry Editor Version 5.00
 
 - 计算机配置 > 管理模板 > 网络 > 网络连接状态指示器 > 指定被动轮询
   - 值：已启用
+
+
+
+最后如果你嫌前面介绍的一大堆实在麻烦，那么也可以用个最简单的办法。
+
+打开系统 `设置` ，找到 `网络和 Internet` > `状态` ，然后点击 `网络重置` 。
+
+图c01
+
+
+
+然后点击 `立即重置` 。
+
+图c02
+
+
+
+当然，如果有特殊的网络设置，最好在此操作之前将设置记下来。
 
 
 
