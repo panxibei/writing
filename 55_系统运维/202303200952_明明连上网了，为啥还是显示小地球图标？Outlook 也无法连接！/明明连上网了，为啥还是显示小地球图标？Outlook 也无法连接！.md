@@ -40,7 +40,7 @@
 
 我一瞅，系统通知栏里的网络图标变成了一个小地球的样子。
 
-图z01
+图01
 
 
 
@@ -76,6 +76,10 @@
 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet
 ```
 
+图02
+
+
+
 我们就拿注册表来说明，这样比较直观易于理解。
 
 这些注册表项大概分为三大部分：
@@ -86,7 +90,7 @@
 
 看图就像这样。
 
-图b05
+图03
 
 
 
@@ -96,13 +100,13 @@
 131.107.255.255    dns.msftncsi.com
 ```
 
-图b01
+图04
 
 
 
 `Ping` 一下这个 `DNS` ，似乎不通，但其实应该是起作用的。
 
-图b02
+图05
 
 
 
@@ -110,7 +114,7 @@
 
 因此，光看 `Ping` 还不行，还要接着看后面的，比如 `WEB` 服务的访问，这才是重点。
 
-图b03
+图06
 
 
 
@@ -162,7 +166,7 @@ http://www.msftconnecttest.com/connecttest.txt
 
 先 `Ping` 一下，是通的。
 
-图a01
+图07
 
 
 
@@ -227,7 +231,7 @@ Microsoft NCSI
 
 自然也是 `Ping` 得通的。
 
-图a02
+图08
 
 
 
@@ -273,7 +277,9 @@ http://www.xxxx.com/yyyy.txt
 
 **NlaSvc.7z(28.7K)**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1qQ5gV1Kb0rW08JQ_beizAQ
+
+提取码：08ov
 
 
 
@@ -316,7 +322,7 @@ Windows Registry Editor Version 5.00
 "EnableActiveProbing"=dword:00000001
 ```
 
-图z02
+图09
 
 
 
@@ -380,13 +386,13 @@ Windows Registry Editor Version 5.00
 
 打开系统 `设置` ，找到 `网络和 Internet` > `状态` ，然后点击 `网络重置` 。
 
-图c01
+图10
 
 
 
 然后点击 `立即重置` 。
 
-图c02
+图11
 
 
 
