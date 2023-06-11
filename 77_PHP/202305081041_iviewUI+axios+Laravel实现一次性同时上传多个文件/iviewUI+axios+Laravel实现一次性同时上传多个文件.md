@@ -2,9 +2,9 @@ iViewUI+Axios+Laravel实现一次性同时上传多个文件
 
 副标题：iViewUI+Axios+Laravel实现一次性同时上传多个文件
 
-英文：
+英文：iviewui-plus-axios-plus-laravel-enables-simultaneous-uploading-of-multiple-files-at-one-time
 
-关键字：
+关键字：iview,iviewui,axios,laravel,upload,上传,多个文件,同时上传
 
 
 
