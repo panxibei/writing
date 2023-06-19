@@ -5280,287 +5280,494 @@ Do you want to continue with this connection?
 
 ### 4.26.1 控制转发端口的可见性
 
-转发连接的源端口通常不接受来自除 SSH 客户端或服务器计算机本身以外的任何计算机的连接（分别用于本地和远程转发）。“隧道”面板中有一些控件可以更改此设置：
+转发连接的源端口通常不接受来自除 `SSH` 客户端或服务器计算机本身以外的任何计算机的连接（分别用于本地和远程转发）。
 
-- “本地端口接受来自其他主机的连接”选项允许您设置本地到远程端口转发，以便客户端计算机以外的计算机可以连接到转发的端口。（这也适用于动态袜子转发。
-- “远程端口执行相同的操作”选项对远程到本地端口转发执行相同的操作（以便 SSH 服务器计算机以外的计算机可以连接到转发的端口）。请注意，此功能仅在 SSH-2 协议中可用，并非所有 SSH-2 服务器都支持它（例如，OpenSSH 3.0 不支持）。
+“通道”面板中有一些控件可以更改此设置：
+
+- “本地端口接受其他主机的连接”选项允许您设置本地到远程端口转发，以便客户端计算机以外的计算机可以连接到转发的端口。（这也适用于动态 `SOCKS` 转发。）
+
+- “远程端口接受连接”选项对远程到本地端口转发执行相同的操作（以便 `SSH` 服务器计算机以外的计算机可以连接到转发的端口）。
+
+  请注意，此功能仅在 `SSH-2` 协议中可用，并非所有 `SSH-2` 服务器都支持它（例如，`OpenSSH 3.0` 不支持）。
+
+
 
 ### 4.26.2 为转发端口选择互联网协议版本
 
-此交换机允许您为转发端口的本地端选择特定的互联网协议（IPv4 或 IPv6）。默认情况下，它设置为“自动”，这意味着：
+此交换机允许您为转发端口的本地端选择特定的互联网协议（ `IPv4` 或 `IPv6` ）。
 
-- 对于本地到远程端口转发，PuTTY 将侦听 IPv4 和（如果可用）IPv6 中的传入连接
-- 对于远程到本地端口转发，PuTTY 将为传出连接选择合理的协议。
+默认情况下，它设置为“自动”，这意味着：
+
+- 对于本地到远程端口转发，`PuTTY` 将侦听 `IPv4` 和（如果可用）`IPv6` 中的传入连接
+- 对于远程到本地端口转发，`PuTTY` 将为传出连接选择合理的协议。
+
+
 
 这将覆盖“连接”面板上的常规因特网协议版本首选项（请参阅[第 4.14.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-address-family)）。
 
-请注意，即使您特别要求 IPv4，某些操作系统也可能会侦听 IPv6 中的传入连接，因为它们的 IPv4 和 IPv6 协议堆栈链接在一起。显然Linux这样做，而Windows没有。因此，如果您在 Windows 上运行 PuTTY 并且勾选“IPv6”进行本地或动态端口转发，则*只能*通过使用 IPv6 连接到它来使用它;而如果你在Linux上做同样的事情，你也可以在IPv4上使用它。但是，勾选“自动”应始终为您提供一个可以使用任一协议连接的端口。
 
-## 4.27 错误和更多错误面板
 
-并非所有 SSH 服务器都能正常工作。各种现有服务器中都有错误，这可能使客户端无法与它们通信，除非它知道错误并解决它。
+请注意，即使您特别要求 `IPv4` ，某些操作系统也可能会侦听 `IPv6` 中的传入连接，因为它们的  `IPv4` 和 `IPv6` 协议堆栈链接在一起。
 
-由于大多数服务器在SSH连接开始时宣布其软件版本号，因此PuTTY将尝试检测它可能在服务器中看到的错误并自动启用解决方法。但是，有时它会犯错误;如果服务器被故意配置为隐藏其版本号，或者如果服务器是 PuTTY 的错误数据库不知道的版本，那么 PuTTY 将不知道会发生什么错误。
+显然 `Linux` 这样做，而 `Windows` 没有。
 
-“错误”和“更多错误”面板（有两个，因为我们有很多错误兼容模式）允许您手动配置 PuTTY 希望在服务器中看到的错误。每个 bug 都可以配置为三种状态：
+因此，如果您在 `Windows` 上运行 `PuTTY` 并且勾选“IPv6”进行本地或动态端口转发，则*只能*通过使用 `IPv6` 连接到它来使用它。
 
-- “关闭”：PuTTY 将假定服务器没有该错误。
-- “开”：PuTTY将假定服务器*确实*存在错误。
-- “自动”：PuTTY 将使用服务器的版本号公告来尝试猜测服务器是否存在错误。（此选项不适用于*无法*从服务器版本中检测到的错误，例如，因为在知道服务器版本之前必须对它们执行操作。
+而如果你在 `Linux` 上做同样的事情，你也可以在 `IPv4` 上使用它。
 
-### 4.27.1 “SSH-2 阻塞忽略消息”
+但是，勾选“自动”应始终为您提供一个可以使用任一协议连接的端口。
 
-忽略消息 （SSH_MSG_IGNORE） 是 SSH 协议中的消息，可以随时从客户端发送到服务器，或从服务器发送到客户端。任何一方在收到消息时都必须忽略该消息。PuTTY 使用 SSH-2 中的忽略消息来混淆加密的数据流，使其更难进行加密分析。它还使用忽略消息进行连接保持连接（请参阅[第 4.14.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-keepalive)）。
 
-如果它认为服务器存在此错误，PuTTY 将停止使用忽略消息。如果在与正确的服务器通信时启用了此错误，则会话将成功，但保持连接将不起作用，并且会话的加密安全性可能不如应有的水平。
 
-### 4.27.2 “处理 SSH-2 密钥重新交换不当”
+## 4.27 查错和更多查错面板
 
-某些 SSH 服务器根本无法处理重复密钥交换，并且会忽略客户端启动密钥交换的尝试。由于 PuTTY 在执行重复密钥交换时暂停会话，因此这样做会导致会话在一小时后挂起（除非您以不同的方式设置了重新密钥超时;有关重新密钥的更多信息，请参阅[第 4.18.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-rekey)）。其他非常旧的SSH服务器处理重复密钥交换的方式更加糟糕，并且在收到重复密钥交换请求时断开连接。
+并非所有 `SSH` 服务器都能正常工作。
 
-如果检测到此错误，PuTTY 将永远不会启动重复密钥交换。如果在与正确的服务器通信时启用了此错误，则会话仍应正常运行，但安全性可能低于预期。
+各种现有服务器中都有错误，这可能使客户端无法与它们通信，除非它知道错误并解决它。
 
-这是一个特定于 SSH-2 的错误。
+图d24
 
-### 4.27.3 “PuTTY 的 SSH-2 请求窒息”`winadj`
+图d26
 
-PuTTY 有时会在通道数据中间向 SSH 服务器发送特殊请求，名称为（参见 [G.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixG.html#sshnames-channel)）。此请求的目的是测量到服务器的往返时间，PuTTY 使用该时间来调整其流量控制。服务器实际上不必*理解*消息;它应该发回一条消息，指示它不理解它。（PuTTY在时序计算中所需要的只是*某种*响应。`winadj@putty.projects.tartarus.org``SSH_MSG_CHANNEL_FAILURE`
 
-众所周知，某些SSH服务器会以某种方式对此消息感到困惑 - 因为它的名称很长，或者因为它们无法处理无法识别的请求名称，甚至无法发回正确的失败响应，或者因为它们明智地处理它，但用毫无意义的垃圾邮件填充服务器的日志文件， 什么的。因此，PuTTY 支持这个错误兼容性标志：如果它认为服务器有这个错误，它将永远不会发送其 '' 请求，并且不会使用其计时数据。`winadj@putty.projects.tartarus.org`
 
-### 4.27.4 “对封闭渠道请求的回复”
+由于大多数服务器在 `SSH` 连接开始时宣布其软件版本号，因此 `PuTTY` 将尝试检测它可能在服务器中看到的错误并自动启用解决方法。
 
-RFC 4254 中发布的 SSH 协议存在歧义，如果连接的一端尝试关闭通道，而另一端同时在通道内发送请求并请求回复，则会出现歧义。RFC 4254 不清楚关闭方在宣布打算关闭通道后是否应该回复通道请求。
+但是，有时它会犯错误;如果服务器被故意配置为隐藏其版本号，或者如果服务器是 `PuTTY` 的错误数据库不知道的版本，那么 `PuTTY` 将不知道会发生什么错误。
 
-Discussion on the mailing list in April 2014 formed a clear consensus that the right answer is no. However, because of the ambiguity in the specification, some SSH servers have implemented the other policy; for example, [OpenSSH used to](https://bugzilla.mindrot.org/show_bug.cgi?id=1818) until it was fixed. `ietf-ssh`
+“查错”和“更多查错”面板（有两个，因为我们有很多错误兼容模式）允许您手动配置 `PuTTY` 希望在服务器中看到的错误。每个 `bug` 都可以配置为三种状态：
 
-Because PuTTY sends channel requests with the ‘want reply’ flag throughout channels' lifetime (see [section 4.27.3](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-winadj)), it's possible that when connecting to such a server it might receive a reply to a request after it thinks the channel has entirely closed, and terminate with an error along the lines of ‘Received for nonexistent channel 256’. `SSH2_MSG_CHANNEL_FAILURE`
+- “关”：`PuTTY` 将假定服务器没有该错误。
 
-### 4.27.5 ‘Ignores SSH-2 maximum packet size’
+- “开”：`PuTTY` 将假定服务器*确实*存在错误。
 
-When an SSH-2 channel is set up, each end announces the maximum size of data packet that it is willing to receive for that channel. Some servers ignore PuTTY's announcement and send packets larger than PuTTY is willing to accept, causing it to report ‘Incoming packet was garbled on decryption’.
+- “自动”：`PuTTY` 将使用服务器的版本号公告来尝试猜测服务器是否存在错误。
 
-If this bug is detected, PuTTY never allows the channel's flow-control window to grow large enough to allow the server to send an over-sized packet. If this bug is enabled when talking to a correct server, the session will work correctly, but download performance will be less than it could be.
+  （此选项不适用于*无法*从服务器版本中检测到的错误，例如，因为在知道服务器版本之前必须对它们执行操作。）
 
-### 4.27.6 ‘Discards data sent before its greeting’
 
-Just occasionally, an SSH connection can be established over some channel that will accidentally discard outgoing data very early in the connection.
 
-This is not typically seen as a bug in an actual SSH server, but it can sometimes occur in situations involving a complicated proxy process. An example is [Debian bug #991958](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991958), in which a connection going over the console of a User Mode Linux kernel can lose outgoing data before the kernel has fully booted.
+### 4.27.1 “阻塞 `SSH-2` 忽略消息”
 
-You can work around this problem by manually enabling this bug flag, which will cause PuTTY to wait to send its initial SSH greeting until after it sees the greeting from the server.
+忽略消息（ `SSH_MSG_IGNORE` ） 是 `SSH` 协议中的消息，可以随时从客户端发送到服务器，或从服务器发送到客户端。
 
-Note that this bug flag can never be automatically detected, since auto-detection relies on the version string in the server's greeting, and PuTTY has to decide whether to expect this bug *before* it sees the server's greeting. So this is a manual workaround only.
+任何一方在收到消息时都必须忽略该消息。
 
-### 4.27.7 ‘Chokes on PuTTY's full ’`KEXINIT`
+`PuTTY` 使用 `SSH-2` 中的忽略消息来混淆加密的数据流，使其更难进行加密分析。
 
-At the start of an SSH connection, the client and server exchange long messages of type , containing lists of all the cryptographic algorithms they're prepared to use. This is used to negotiate a set of algorithms that both ends can speak. `SSH_MSG_KEXINIT`
+它还使用忽略消息进行连接保持连接（请参阅[第 4.14.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-keepalive)）。
 
-Occasionally, a badly written server might have a length limit on the list it's prepared to receive, and refuse to make a connection simply because PuTTY is giving it too many choices.
 
-A workaround is to enable this flag, which will make PuTTY wait to send until after it receives the one from the server, and then filter its own to leave out any algorithm the server doesn't also announce support for. This will generally make PuTTY's at most the size of the server's, and will otherwise make no difference to the algorithm negotiation. `KEXINIT``KEXINIT``KEXINIT`
 
-This flag is a minor violation of the SSH protocol, because both sides are supposed to send proactively. It still works provided *one* side sends its without waiting, but if both client and server waited for the other one to speak first, the connection would deadlock. We don't know of any servers that do this, but if there is one, then this flag will make PuTTY unable to speak to them at all. `KEXINIT``KEXINIT`
+如果它认为服务器存在此错误，`PuTTY` 将停止使用忽略消息。
 
-### 4.27.8 ‘Requires padding on SSH-2 RSA signatures’
+如果在与正确的服务器通信时启用了此错误，则会话将成功，但保持连接将不起作用，并且会话的加密安全性可能不如应有的水平。
 
-Versions below 3.3 of OpenSSH require SSH-2 RSA signatures to be padded with zero bytes to the same length as the RSA key modulus. The SSH-2 specification says that an unpadded signature MUST be accepted, so this is a bug. A typical symptom of this problem is that PuTTY mysteriously fails RSA authentication once in every few hundred attempts, and falls back to passwords.
 
-If this bug is detected, PuTTY will pad its signatures in the way OpenSSH expects. If this bug is enabled when talking to a correct server, it is likely that no damage will be done, since correct servers usually still accept padded signatures because they're used to talking to OpenSSH.
 
-This is an SSH-2-specific bug.
+### 4.27.2 “严格 `SSH-2` 密钥再次验证操作”
 
-### 4.27.9 ‘Only supports pre-RFC4419 SSH-2 DH GEX’
+某些 `SSH` 服务器根本无法处理重复密钥交换，并且会忽略客户端启动密钥交换的尝试。
 
-The SSH key exchange method that uses Diffie-Hellman group exchange was redesigned after its original release, to use a slightly more sophisticated setup message. Almost all SSH implementations switched over to the new version. (PuTTY was one of the last.) A few old servers still only support the old one.
+由于 `PuTTY` 在执行重复密钥交换时暂停会话，因此这样做会导致会话在一小时后挂起（除非您以不同的方式设置了重新密钥超时;有关重新密钥的更多信息，请参阅[第 4.18.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-rekey)）。
 
-If this bug is detected, and the client and server negotiate Diffie-Hellman group exchange, then PuTTY will send the old message now known as in place of the new . `SSH2_MSG_KEX_DH_GEX_REQUEST_OLD``SSH2_MSG_KEX_DH_GEX_REQUEST`
+其他非常旧的 `SSH` 服务器处理重复密钥交换的方式更加糟糕，并且在收到重复密钥交换请求时断开连接。
 
-This is an SSH-2-specific bug.
 
-### 4.27.10 ‘Miscomputes SSH-2 HMAC keys’
 
-Versions 2.3.0 and below of the SSH server software from compute the keys for their HMAC message authentication codes incorrectly. A typical symptom of this problem is that PuTTY dies unexpectedly at the beginning of the session, saying ‘Incorrect MAC received on packet’. `ssh.com`
+如果检测到此错误，`PuTTY` 将永远不会启动重复密钥交换。
 
-If this bug is detected, PuTTY will compute its HMAC keys in the same way as the buggy server, so that communication will still be possible. If this bug is enabled when talking to a correct server, communication will fail.
+如果在与正确的服务器通信时启用了此错误，则会话仍应正常运行，但安全性可能低于预期。
 
-This is an SSH-2-specific bug.
+这是一个特定于 `SSH-2` 的错误。
 
-### 4.27.11 ‘Misuses the session ID in SSH-2 PK auth’
 
-Versions below 2.3 of OpenSSH require SSH-2 public-key authentication to be done slightly differently: the data to be signed by the client contains the session ID formatted in a different way. If public-key authentication mysteriously does not work but the Event Log (see [section 3.1.3.1](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-eventlog)) thinks it has successfully sent a signature, it might be worth enabling the workaround for this bug to see if it helps.
 
-If this bug is detected, PuTTY will sign data in the way OpenSSH expects. If this bug is enabled when talking to a correct server, SSH-2 public-key authentication will fail.
+### 4.27.3 “阻塞 `PuTTY` 的 `SSH-2` `winadj` 请求”
 
-This is an SSH-2-specific bug.
+`PuTTY` 有时会在通道数据中间向 `SSH` 服务器发送特殊请求，名称为 `winadj@putty.projects.tartarus.org`（参见 [G.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixG.html#sshnames-channel)）。
 
-### 4.27.12 ‘Miscomputes SSH-2 encryption keys’
+此请求的目的是测量到服务器的往返时间，`PuTTY` 使用该时间来调整其流量控制。
 
-Versions below 2.0.11 of the SSH server software from compute the keys for the session encryption incorrectly. This problem can cause various error messages, such as ‘Incoming packet was garbled on decryption’, or possibly even ‘Out of memory’. `ssh.com`
+服务器实际上不必*理解*消息;它应该发回一条 `SSH_MSG_CHANNEL_FAILURE` 消息，指示它不理解它。
 
-If this bug is detected, PuTTY will compute its encryption keys in the same way as the buggy server, so that communication will still be possible. If this bug is enabled when talking to a correct server, communication will fail.
+（ `PuTTY` 在时序计算中所需要的只是*某种*响应。）
 
-This is an SSH-2-specific bug.
 
-### 4.27.13 ‘Chokes on SSH-1 ignore messages’
 
-An ignore message (SSH_MSG_IGNORE) is a message in the SSH protocol which can be sent from the client to the server, or from the server to the client, at any time. Either side is required to ignore the message whenever it receives it. PuTTY uses ignore messages to hide the password packet in SSH-1, so that a listener cannot tell the length of the user's password; it also uses ignore messages for connection keepalives (see [section 4.14.1](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-keepalive)).
+众所周知，某些 `SSH` 服务器会以某种方式对此消息感到困惑 - 因为它的名称很长，或者因为它们无法处理无法识别的请求名称，甚至无法发回正确的失败响应，或者因为它们明智地处理它，仅用毫无意义的垃圾邮件填充服务器的日志文件，之类的。
 
-If this bug is detected, PuTTY will stop using ignore messages. This means that keepalives will stop working, and PuTTY will have to fall back to a secondary defence against SSH-1 password-length eavesdropping. See [section 4.27.14](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-plainpw1). If this bug is enabled when talking to a correct server, the session will succeed, but keepalives will not work and the session might be more vulnerable to eavesdroppers than it could be.
+因此，`PuTTY` 支持这个错误兼容性标志：如果它认为服务器有这个错误，它将永远不会发送其 `winadj@putty.projects.tartarus.org` 请求，并且不会使用其计时数据。
 
-### 4.27.14 ‘Refuses all SSH-1 password camouflage’
 
-When talking to an SSH-1 server which cannot deal with ignore messages (see [section 4.27.13](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-ignore1)), PuTTY will attempt to disguise the length of the user's password by sending additional padding *within* the password packet. This is technically a violation of the SSH-1 specification, and so PuTTY will only do it when it cannot use standards-compliant ignore messages as camouflage. In this sense, for a server to refuse to accept a padded password packet is not really a bug, but it does make life inconvenient if the server can also not handle ignore messages.
 
-If this ‘bug’ is detected, PuTTY will assume that neither ignore messages nor padding are acceptable, and that it thus has no choice but to send the user's password with no form of camouflage, so that an eavesdropping user will be easily able to find out the exact length of the password. If this bug is enabled when talking to a correct server, the session will succeed, but will be more vulnerable to eavesdroppers than it could be.
+### 4.27.4 “回复已关闭通道的请求”
 
-This is an SSH-1-specific bug. SSH-2 is secure against this type of attack.
+`RFC 4254` 中发布的 `SSH` 协议存在歧义，如果连接的一端尝试关闭通道，而另一端同时在通道内发送请求并请求回复，则会出现歧义。
 
-### 4.27.15 ‘Chokes on SSH-1 RSA authentication’
+`RFC 4254` 不清楚关闭方在宣布打算关闭通道后是否应该回复通道请求。
 
-Some SSH-1 servers cannot deal with RSA authentication messages at all. If Pageant is running and contains any SSH-1 keys, PuTTY will normally automatically try RSA authentication before falling back to passwords, so these servers will crash when they see the RSA attempt.
 
-If this bug is detected, PuTTY will go straight to password authentication. If this bug is enabled when talking to a correct server, the session will succeed, but of course RSA authentication will be impossible.
 
-This is an SSH-1-specific bug.
+2014 年 4 月对 `ietf-ssh` 邮件列表的讨论形成了明确的共识，即正确答案是否定的。
 
-## 4.28 The ‘Bare ’ protocol`ssh-connection`
+但是，由于规范中的歧义，某些 `SSH` 服务器已实现其他策略;例如，[OpenSSH在修复之前一直如此](https://bugzilla.mindrot.org/show_bug.cgi?id=1818)。
 
-In addition to SSH itself, PuTTY also supports a second protocol that is derived from SSH. It's listed in the PuTTY GUI under the name ‘Bare ’. `ssh-connection`
 
-This protocol consists of just the innermost of SSH-2's three layers: it leaves out the cryptography layer providing network security, and it leaves out the authentication layer where you provide a username and prove you're allowed to log in as that user.
 
-It is therefore **completely unsuited to any network connection**. Don't try to use it over a network!
+由于 `PuTTY` 在通道的整个生命周期内使用“want reply”标志发送通道请求（请参阅[第 4.27.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-winadj)），因此在连接到此类服务器时，它可能会在认为通道已完全关闭后收到对请求的回复，并终止并显示类似于“对于不存在的通道 `256` 已接收 `SSH2_MSG_CHANNEL_FAILURE` ”的错误。
 
-The purpose of this protocol is for various specialist circumstances in which the ‘connection’ is not over a real network, but is a pipe or IPC channel between different processes running on the *same* computer. In these contexts, the operating system will already have guaranteed that each of the two communicating processes is owned by the expected user (so that no authentication is necessary), and that the communications channel cannot be tapped by a hostile user on the same machine (so that no cryptography is necessary either). Examples of possible uses involve communicating with a strongly separated context such as the inside of a container, or a VM, or a different network namespace.
 
-Explicit support for this protocol is new in PuTTY 0.75. As of 2021-04, the only known server for the bare protocol is the Unix program ‘’ that is also part of the PuTTY tool suite. `ssh-connection``psusan`
 
-(However, this protocol is also the same one used between instances of PuTTY to implement connection sharing: see [section 4.17.5](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing). In fact, in the Unix version of PuTTY, when a sharing upstream records ‘Sharing this connection at [pathname]’ in the Event Log, it's possible to connect another instance of PuTTY directly to that Unix socket, by entering its pathname in the host name box and selecting ‘Bare ’ as the protocol!) `ssh-connection`
+### 4.27.5“忽略 `SSH-2` 最大包大小”
 
-Many of the options under the SSH panel also affect this protocol, although options to do with cryptography and authentication do not, for obvious reasons.
+设置 `SSH-2` 通道时，每一端都会宣布它愿意为该通道接收的最大数据包大小。
 
-I repeat, **DON'T TRY TO USE THIS PROTOCOL FOR NETWORK CONNECTIONS!** That's not what it's for, and it's not at all safe to do it.
+一些服务器忽略 `PuTTY` 的公告并发送大于 `PuTTY` 愿意接受的数据包，导致它报告“传入数据包在解密时出现乱码”。
 
-## 4.29 The Serial panel
 
-The Serial panel allows you to configure options that only apply when PuTTY is connecting to a local serial line.
 
-### 4.29.1 Selecting a serial line to connect to
+如果检测到此错误，`PuTTY` 永远不会允许通道的流量控制窗口变得足够大以允许服务器发送超大数据包。
 
-The ‘Serial line to connect to’ box allows you to choose which serial line you want PuTTY to talk to, if your computer has more than one serial port.
+如果在与正确的服务器通信时启用了此错误，则会话将正常工作，但下载性能将低于应有的水平。
 
-On Windows, the first serial line is called , and if there is a second it is called , and so on. `COM1``COM2`
 
-This configuration setting is also visible on the Session panel, where it replaces the ‘Host Name’ box (see [section 4.1.1](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)) if the connection type is set to ‘Serial’.
 
-### 4.29.2 Selecting the speed of your serial line
+### 4.27.6 “丢弃在握手前发送的数据”
 
-The ‘Speed’ box allows you to choose the speed (or ‘baud rate’) at which to talk to the serial line. Typical values might be 9600, 19200, 38400 or 57600. Which one you need will depend on the device at the other end of the serial cable; consult the manual for that device if you are in doubt.
+只是偶尔，可以通过某些通道建立 `SSH` 连接，该通道会在连接早期意外丢弃传出数据。
 
-This configuration setting is also visible on the Session panel, where it replaces the ‘Port’ box (see [section 4.1.1](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)) if the connection type is set to ‘Serial’.
+这通常不被视为实际 `SSH` 服务器中的错误，但有时在涉及复杂代理过程的情况下会发生。
 
-### 4.29.3 Selecting the number of data bits
+一个例子是 [Debian 错误 #991958](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991958)，其中通过用户模式 `Linux` 内核控制台的连接可能会在内核完全启动之前丢失传出数据。
 
-The ‘Data bits’ box allows you to choose how many data bits are transmitted in each byte sent or received through the serial line. Typical values are 7 or 8.
 
-### 4.29.4 Selecting the number of stop bits
 
-The ‘Stop bits’ box allows you to choose how many stop bits are used in the serial line protocol. Typical values are 1, 1.5 or 2.
+您可以通过手动启用此 `bug` 标志来解决此问题，这将导致 `PuTTY` 等待发送其初始 `SSH` 问候语，直到它看到来自服务器的问候语。
 
-### 4.29.5 Selecting the serial parity checking scheme
+请注意，永远无法自动检测到此错误标志，因为自动检测依赖于服务器问候语中的版本字符串，并且 `PuTTY` 必须在看到服务器的问候语*之前*决定是否预期此错误。
 
-The ‘Parity’ box allows you to choose what type of parity checking is used on the serial line. The settings are:
+因此，这只是手动解决方法。
 
-- ‘None’: no parity bit is sent at all.
-- ‘Odd’: an extra parity bit is sent alongside each byte, and arranged so that the total number of 1 bits is odd.
-- ‘Even’: an extra parity bit is sent alongside each byte, and arranged so that the total number of 1 bits is even.
-- ‘Mark’: an extra parity bit is sent alongside each byte, and always set to 1.
-- ‘Space’: an extra parity bit is sent alongside each byte, and always set to 0.
 
-### 4.29.6 Selecting the serial flow control scheme
 
-The ‘Flow control’ box allows you to choose what type of flow control checking is used on the serial line. The settings are:
+### 4.27.7 “阻塞 `PuTTY` 的完整 `KEXINIT` ”
 
-- ‘None’: no flow control is done. Data may be lost if either side attempts to send faster than the serial line permits.
-- ‘XON/XOFF’: flow control is done by sending XON and XOFF characters within the data stream.
-- ‘RTS/CTS’: flow control is done using the RTS and CTS wires on the serial line.
-- ‘DSR/DTR’: flow control is done using the DSR and DTR wires on the serial line.
+在 `SSH` 连接开始时，客户端和服务器交换类型为 `SSH_MSG_KEXINIT` 的长消息，其中包含它们准备使用的所有加密算法的列表。
 
-## 4.30 The Telnet panel
+这用于协商一组双方都可以使用的算法。
 
-The Telnet panel allows you to configure options that only apply to Telnet sessions.
 
-### 4.30.1 ‘Handling of OLD_ENVIRON ambiguity’
 
-The original Telnet mechanism for passing environment variables was badly specified. At the time the standard (RFC 1408) was written, BSD telnet implementations were already supporting the feature, and the intention of the standard was to describe the behaviour the BSD implementations were already using.
+有时，编写得不好的服务器可能会在其准备接收的列表上有长度限制，并且仅仅因为 `PuTTY` 给了它太多选择而拒绝建立连接。
 
-Sadly there was a typing error in the standard when it was issued, and two vital function codes were specified the wrong way round. BSD implementations did not change, and the standard was not corrected. Therefore, it's possible you might find either BSD or RFC-compliant implementations out there. This switch allows you to choose which one PuTTY claims to be.
+解决方法是启用此标志，这将使 `PuTTY` 等待发送 `KEXINIT` ，直到它从服务器收到一个标志，然后过滤自己的 `KEXINIT` 算法以省略服务器未宣布支持的任何算法。
 
-The problem was solved by issuing a second standard, defining a new Telnet mechanism called , which behaved exactly like the original but was not encumbered by existing implementations. Most Telnet servers now support this, and it's unambiguous. This feature should only be needed if you have trouble passing environment variables to quite an old server. `NEW_ENVIRON``OLD_ENVIRON`
+这通常会使 `PuTTY` 的 `KEXINIT` 设定为服务器支持的大小，否则对算法协商没有影响。
 
-### 4.30.2 Passive and active Telnet negotiation modes
 
-In a Telnet connection, there are two types of data passed between the client and the server: actual text, and *negotiations* about which Telnet extra features to use.
 
-PuTTY can use two different strategies for negotiation:
+此标志轻微违反了 `SSH` 协议，因为双方都应该主动发送 `KEXINIT` 。
 
-- In *active* mode, PuTTY starts to send negotiations as soon as the connection is opened.
-- In *passive* mode, PuTTY will wait to negotiate until it sees a negotiation from the server.
+如果*一*端不等待就发送它的 `KEXINIT` ，它仍然可以工作，但如果客户端和服务器都等待另一端先说话，则连接将死锁。
 
-The obvious disadvantage of passive mode is that if the server is also operating in a passive mode, then negotiation will never begin at all. For this reason PuTTY defaults to active mode.
+我们不知道有任何服务器这样做，但如果有一个，那么这个标志将使 `PuTTY` 根本无法与它们交谈。
 
-However, sometimes passive mode is required in order to successfully get through certain types of firewall and Telnet proxy server. If you have confusing trouble with a firewall, you could try enabling passive mode to see if it helps.
 
-### 4.30.3 ‘Keyboard sends Telnet special commands’
 
-If this box is checked, several key sequences will have their normal actions modified:
+### 4.27.8 “需要在 `SSH-2 RSA` 签名进行填充”
 
-- the Backspace key on the keyboard will send the Telnet special backspace code;
-- Control-C will send the Telnet special Interrupt Process code;
-- Control-Z will send the Telnet special Suspend Process code.
+低于 `OpenSSH 3.3` 的版本要求用零字节填充 `SSH-2 RSA` 签名，长度与 `RSA` 密钥模数相同。
 
-You probably shouldn't enable this unless you know what you're doing.
+`SSH-2` 规范说必须接受未填充的签名，所以这是一个错误。
 
-### 4.30.4 ‘Return key sends Telnet New Line instead of ^M’
+此问题的典型症状是 `PuTTY` 每几百次尝试一次神秘地使 `RSA` 身份验证失败，并回退到密码。
 
-Unlike most other remote login protocols, the Telnet protocol has a special ‘new line’ code that is not the same as the usual line endings of Control-M or Control-J. By default, PuTTY sends the Telnet New Line code when you press Return, instead of sending Control-M as it does in most other protocols.
 
-Most Unix-style Telnet servers don't mind whether they receive Telnet New Line or Control-M; some servers do expect New Line, and some servers prefer to see ^M. If you are seeing surprising behaviour when you press Return in a Telnet session, you might try turning this option off to see if it helps.
 
-## 4.31 The Rlogin panel
+如果检测到此错误，`PuTTY` 将以 `OpenSSH` 预期的方式填充其签名。
 
-The Rlogin panel allows you to configure options that only apply to Rlogin sessions.
+如果在与正确的服务器通信时启用了此错误，则可能不会造成任何损害，因为正确的服务器通常仍接受填充签名，因为它们习惯于与 `OpenSSH` 通信。
 
-### 4.31.1 ‘Local username’
+这是一个特定于 `SSH-2` 的错误。
 
-Rlogin allows an automated (password-free) form of login by means of a file called on the server. You put a line in your file saying something like , and then when you make an Rlogin connection the client transmits the username of the user running the Rlogin client. The server checks the username and hostname against , and if they match it does not ask for a password. `.rhosts``.rhosts``jbloggs@pc1.example.com``.rhosts`
 
-This only works because Unix systems contain a safeguard to stop a user from pretending to be another user in an Rlogin connection. Rlogin connections have to come from port numbers below 1024, and Unix systems prohibit this to unprivileged processes; so when the server sees a connection from a low-numbered port, it assumes the client end of the connection is held by a privileged (and therefore trusted) process, so it believes the claim of who the user is.
 
-Windows does not have this restriction: *any* user can initiate an outgoing connection from a low-numbered port. Hence, the Rlogin mechanism is completely useless for securely distinguishing several different users on a Windows machine. If you have a entry pointing at a Windows PC, you should assume that *anyone* using that PC can spoof your username in an Rlogin connection and access your account on the server. `.rhosts``.rhosts`
+### 4.27.9 “只支持 `RFC4419` `SSH-2 DH GEX` ”
 
-The ‘Local username’ control allows you to specify what user name PuTTY should claim you have, in case it doesn't match your Windows user name (or in case you didn't bother to set up a Windows user name).
+使用 `Diffie-Hellman` 组交换的 `SSH` 密钥交换方法在其原始版本之后进行了重新设计，以使用稍微复杂的设置消息。
 
-## 4.32 The SUPDUP panel
+几乎所有的 `SSH` 实现都切换到新版本。
 
-The SUPDUP panel allows you to configure options that only apply to SUPDUP sessions. See [section 3.10](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-supdup) for more about the SUPDUP protocol.
+（ `PuTTY` 是最后一个。一些旧服务器仍然只支持旧服务器。）
 
-### 4.32.1 ‘Location string’
 
-In SUPDUP, the client sends a piece of text of its choice to the server giving the user's location. This is typically displayed in lists of logged-in users.
 
-By default, PuTTY just defaults this to "The Internet". If you want your location to show up as something more specific, you can configure it here.
+如果检测到此错误，并且客户端和服务器协商 `Diffie-Hellman` 组交换，则 `PuTTY` 将发送现在称为的旧消息 `SSH2_MSG_KEX_DH_GEX_REQUEST_OLD` 代替新消息 `SSH2_MSG_KEX_DH_GEX_REQUEST` 。
 
-### 4.32.2 ‘Extended ASCII Character set’
+这是一个特定于 `SSH-2` 的错误。
 
-This declares what kind of character set extension your terminal supports. If the server supports it, it will send text using that character set. ‘None’ means the standard 95 printable ASCII characters. ‘ITS’ means ASCII extended with printable characters in the control character range. This character set is documented in the SUPDUP protocol definition. ‘WAITS’ is similar to ‘ITS’ but uses some alternative characters in the extended set: most prominently, it will display arrows instead of and , and instead of . ‘ITS’ extended ASCII is used by ITS and Lisp machines, whilst ‘WAITS’ is only used by the WAITS operating system from the Stanford AI Laboratory. `^``_``}``~`
 
-### 4.32.3 ‘**MORE** processing’
 
-When **MORE** processing is enabled, the server causes output to pause at the bottom of the screen, until a space is typed.
+### 4.27.10 “混算 `SSH-2 HMAC` 密钥”
 
-### 4.32.4 ‘Terminal scrolling’
+来自 `ssh.com` 的 `SSH` 服务器软件的 `2.3.0` 及更低版本错误地计算其 `HMAC` 消息身份验证代码的密钥。
+
+此问题的典型症状是 `PuTTY` 在会话开始时意外死掉，说“数据包上收到的 `MAC` 不正确”。
+
+如果检测到此错误，`PuTTY` 将以与错误服务器相同的方式计算其 `HMAC` 密钥，以便仍然可以进行通信。
+
+如果在与正确的服务器通信时启用了此错误，则通信将失败。
+
+这是一个特定于 `SSH-2` 的错误。
+
+
+
+### 4.27.11 “错误 `SSH-2 PK` 认证会话 `ID` ”
+
+低于 `OpenSSH 2.3` 的版本要求 `SSH-2` 公钥身份验证略有不同：客户端要签名的数据包含以不同方式格式化的会话 `ID` 。
+
+如果公钥身份验证神奇地不起作用，但事件日志（请参阅[第 3.1.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-eventlog)）认为它已成功发送签名，则可能值得启用此错误的解决方法以查看是否有帮助。
+
+如果检测到此错误，`PuTTY` 将以 `OpenSSH` 预期的方式对数据进行签名。
+
+如果在与正确的服务器通信时启用了此错误，则 `SSH-2` 公钥身份验证将失败。
+
+这是一个特定于 `SSH-2` 的错误。
+
+
+
+### 4.27.12 “混算 `SSH-2` 加密密钥”
+
+来自 `ssh.com` 低于 `2.0.11` 的 `SSH` 服务器软件版本计算会话加密的密钥不正确。
+
+此问题可能会导致各种错误消息，例如“传入数据包在解密时出现乱码”，甚至可能“内存不足”。
+
+
+
+如果检测到此错误，`PuTTY` 将以与错误服务器相同的方式计算其加密密钥，以便仍然可以进行通信。
+
+如果在与正确的服务器通信时启用了此错误，则通信将失败。
+
+这是一个特定于 `SSH-2` 的错误。
+
+
+
+### 4.27.13 “阻塞 `SSH-1` 忽略消息”
+
+忽略消息（ `SSH_MSG_IGNORE` ） 是 `SSH` 协议中的消息，可以随时从客户端发送到服务器，或从服务器发送到客户端。
+
+任何一方在收到消息时都必须忽略该消息。
+
+`PuTTY` 使用忽略消息将密码数据包隐藏在 `SSH-1` 中，以便侦听器无法分辨用户密码的长度;它还使用忽略消息进行连接保持连接（请参阅[第 4.14.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-keepalive)）。
+
+
+
+如果检测到此错误，`PuTTY` 将停止使用忽略消息。
+
+这意味着 `keepalives` 将停止工作，`PuTTY` 将不得不回退到针对 `SSH-1` 密码长度窃听的辅助防御。
+
+请参阅[第 4.27.14 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-plainpw1)。如果在与正确的服务器通信时启用了此错误，则会话将成功，但保持连接将不起作用，并且会话可能更容易受到窃听者的攻击。
+
+
+
+### 4.27.14 “拒绝所有 `SSH-1` 密码伪装”
+
+当与无法处理忽略消息的 `SSH-1` 服务器通信时（请参阅[第 4.27.13 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-ignore1)），`PuTTY` 将尝试通过在密码数据包*中*发送额外的填充来伪装用户密码的长度。
+
+这在技术上违反了 `SSH-1` 规范，因此 `PuTTY` 只有在无法使用符合标准的忽略消息作为伪装时才这样做。
+
+从这个意义上说，服务器拒绝接受填充的密码包并不是真正的错误，但如果服务器也无法处理忽略消息，它确实会让生活变得不方便。
+
+
+
+如果检测到此“错误”，`PuTTY` 将假设忽略消息和填充都不可接受的，因此它别无选择，只能发送用户的密码，没有任何形式的伪装，以便窃听用户将能够轻松找到密码的确切长度。
+
+如果在与正确的服务器通信时启用此错误，则会话将成功，但更容易受到窃听者的攻击。
+
+这是一个特定于 `SSH-1` 的错误， `SSH-2` 可以安全地抵御此类攻击。
+
+
+
+### 4.27.15 “阻塞 `SSH-1 RSA` 认证”
+
+某些 `SSH-1` 服务器根本无法处理 `RSA` 身份验证消息。
+
+如果 `Pageant` 正在运行并且包含任何 `SSH-1` 密钥，`PuTTY` 通常会在回退到密码之前自动尝试 `RSA` 身份验证，因此这些服务器在看到 `RSA` 尝试时会崩溃。
+
+
+
+如果检测到此错误，`PuTTY` 将直接进行密码身份验证。
+
+如果在与正确的服务器通信时启用了此错误，会话将成功，但当然 `RSA` 身份验证将是不可能的。
+
+这是一个特定于 `SSH-1` 的错误。
+
+
+
+## 4.28 “Bare `ssh-connection` 协议”
+
+除了 `SSH` 本身，`PuTTY` 还支持从 `SSH` 派生的第二个协议。
+
+它在 `PuTTY` `GUI` 中以“Bare `ssh-connection`”的名称列出。
+
+
+
+该协议仅由 `SSH-2` 的三层中最内层组成：它省略了提供网络安全的加密层，省略了您提供用户名并证明您可以以该用户身份登录的身份验证层。
+
+因此，它**完全不适合任何网络连接**。不要尝试通过网络使用它！
+
+
+
+该协议的目的是用于各种专业情况，其中“连接”不是通过真实网络，而是*在同一台计算机上*运行的不同进程之间的管道或 `IPC` 通道。
+
+在这些上下文中，操作系统已经保证两个通信进程中的每一个都归预期用户所有（因此不需要身份验证），并且通信通道不能被同一台计算机上的恶意用户窃听（因此也不需要加密）。
+
+可能使用的示例涉及与高度分离的上下文（例如容器内部、VM 或其他网络命名空间）进行通信。
+
+
+
+对此协议的显式支持是 `PuTTY 0.75` 中的新增功能。
+
+截至 `2021-04` 年，唯一已知的裸协议服务器是 `Unix` 程序“ `ssh-connection` ”，它也是 `PuTTY` 工具套件 `psusan` 的一部分。
+
+
+
+（但是，此协议也是 `PuTTY` 实例之间用于实现连接共享的相同协议：请参阅[第 4.17.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing)。事实上，在 PuTTY 的 Unix 版本中，当共享上游在事件日志中记录“在 [pathname] 处共享此连接”时，可以通过在主机名框中输入其路径名并选择“Bare `ssh-connection`”作为协议，将另一个 PuTTY 实例直接连接到该 Unix 套接字！
+
+
+
+`SSH` 面板下的许多选项也会影响此协议，尽管出于显而易见的原因，与加密和身份验证相关的选项不会。
+
+
+
+我再说一遍，**不要尝试将此协议用于网络连接！**这不是它的用途，而且这样做一点也不安全。
+
+
+
+## 4.29 串口面板
+
+串口面板允许您配置仅在 `PuTTY` 连接到本地串行线路时适用的选项。
+
+图e01
+
+
+
+### 4.29.1 选择要连接的串行线路
+
+如果您的计算机有多个串行端口，则“连接到串行线路”框允许您选择希望 `PuTTY` 与之通信的串行线路。
+
+在 `Windows` 上，第一个串行线路称为 `COM1` ，如果有第二个，则称为 `COM2` ，依此类推。
+
+此配置设置在“会话”面板上也可见，如果连接类型设置为“串行”，它将替换“主机名”框（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
+
+### 4.29.2 选择串行线路的速度
+
+“速度”框允许您选择与串行线路通信的速度（或“波特率”）。典型值可能是 9600、19200、38400 或 57600。您需要哪一个将取决于串行电缆另一端的设备;如有疑问，请参阅该设备的手册。
+
+此配置设置在“会话”面板上也可见，如果连接类型设置为“串行”，它将替换“端口”框（请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
+
+### 4.29.3 选择数据位数
+
+“数据位”框允许您选择通过串行线发送或接收的每个字节中传输多少数据位。典型值为 7 或 8。
+
+### 4.29.4 选择停止位数
+
+“停止位”框允许您选择在串行线路协议中使用多少停止位。典型值为 1、1.5 或 2。
+
+### 4.29.5 选择串行奇偶校验方案
+
+“奇偶校验”框允许您选择在串行线路上使用的奇偶校验类型。这些设置包括：
+
+- “无”：根本不发送奇偶校验位。
+- “奇数”：每个字节旁边发送一个额外的奇偶校验位，并排列成 1 位的总数是奇数。
+- “偶数”：每个字节旁边发送一个额外的奇偶校验位，并排列成 1 位的总数是偶数。
+- “Mark”：每个字节一起发送一个额外的奇偶校验位，并始终设置为 1。
+- “空格”：每个字节一起发送一个额外的奇偶校验位，并始终设置为 0。
+
+### 4.29.6 选择串行流控制方案
+
+“流量控制”框允许您选择在串行线路上使用哪种类型的流量控制检查。这些设置包括：
+
+- “无”：不进行流量控制。如果任何一方尝试发送速度超过串行线路允许的速度，则数据可能会丢失。
+- “XON/XOFF”：流量控制是通过在数据流中发送XON和XOFF字符来完成的。
+- “RTS/CTS”：流量控制是使用串行线路上的 RTS 和 CTS 线完成的。
+- “DSR/DTR”：流量控制是使用串行线路上的 DSR 和 DTR 线完成的。
+
+## 4.30 远程登录面板
+
+“Telnet 面板”允许您配置仅适用于 Telnet 会话的选项。
+
+### 4.30.1 “OLD_ENVIRON歧义的处理”
+
+用于传递环境变量的原始 Telnet 机制指定得很糟糕。在编写标准（RFC 1408）时，BSD telnet实现已经支持该功能，该标准的意图是描述BSD实现已经在使用的行为。
+
+可悲的是，标准发布时存在打字错误，并且指定了两个重要的功能代码。BSD的实现没有改变，标准也没有被纠正。因此，您可能会找到符合 BSD 或 RFC 的实现。此开关允许您选择PuTTY声称是哪一个。
+
+这个问题通过发布第二个标准来解决，定义了一个名为 的新 Telnet 机制，其行为与原始机制完全相同，但不受现有实现的阻碍。大多数 Telnet 服务器现在都支持此功能，而且是明确的。仅当您在将环境变量传递到相当旧的服务器时遇到问题时，才需要此功能。`NEW_ENVIRON``OLD_ENVIRON`
+
+### 4.30.2 被动和主动远程登录协商模式
+
+在 Telnet 连接中，客户端和服务器之间传递的数据类型有两种类型：实际文本和关于使用哪些 Telnet 额外功能的*协商*。
+
+PuTTY可以使用两种不同的协商策略：
+
+- 在*活动*模式下，PuTTY 在连接打开后立即开始发送协商。
+- 在*被动*模式下，PuTTY 将等待协商，直到它看到来自服务器的协商。
+
+被动模式的明显缺点是，如果服务器也在被动模式下运行，则协商将永远不会开始。因此，PuTTY 默认为活动模式。
+
+但是，有时需要被动模式才能成功通过某些类型的防火墙和 Telnet 代理服务器。如果您对防火墙有混淆问题，您可以尝试启用被动模式以查看是否有帮助。
+
+### 4.30.3 “键盘发送 Telnet 特殊命令”
+
+如果选中此框，则多个键序列的正常操作将被修改：
+
+- 键盘上的退格键将发送 Telnet 特殊的退格码;
+- Control-C 将发送 Telnet 特殊中断进程代码;
+- Control-Z 将发送 Telnet 特殊的挂起进程代码。
+
+除非您知道自己在做什么，否则您可能不应该启用此功能。
+
+### 4.30.4 “返回键发送 Telnet 新行而不是 ^M”
+
+与大多数其他远程登录协议不同，Telnet 协议具有特殊的“换行符”代码，与 Control-M 或 Control-J 的通常行尾不同。默认情况下，PuTTY 会在您按 Return 键时发送 Telnet 新行代码，而不是像在大多数其他协议中那样发送 Control-M。
+
+大多数Unix风格的Telnet服务器不介意它们是否接收Telnet New Line或Control-M;一些服务器确实需要New Line，而一些服务器更喜欢看到^M。如果在 Telnet 会话中按 Return 时看到令人惊讶的行为，您可以尝试关闭此选项以查看是否有帮助。
+
+## 4.31 登录面板
+
+Rlogin 面板允许您配置仅适用于 Rlogin 会话的选项。
+
+### 4.31.1 “本地用户名”
+
+Rlogin 允许通过服务器上调用的文件进行自动（无密码）形式的登录。您在文件中放置一行，上面写着类似 ，然后当您建立 Rlogin 连接时，客户端会传输运行 Rlogin 客户端的用户的用户名。服务器根据 检查用户名和主机名，如果它们匹配，则不要求输入密码。`.rhosts``.rhosts``jbloggs@pc1.example.com``.rhosts`
+
+这之所以有效，是因为 Unix 系统包含阻止用户在 Rlogin 连接中伪装成其他用户的保护措施。Rlogin 连接必须来自低于 1024 的端口号，Unix 系统禁止对非特权进程执行此操作;因此，当服务器看到来自低编号端口的连接时，它假定连接的客户端由特权（因此受信任）进程持有，因此它相信用户是谁的声明。
+
+Windows 没有此限制：*任何*用户都可以从编号较低的端口启动传出连接。因此，Rlogin 机制对于安全地区分 Windows 计算机上的多个不同用户是完全无用的。如果你有一个指向Windows PC的条目，你应该假设使用该PC*的任何人都可以*在Rlogin连接中欺骗你的用户名，并在服务器上访问你的帐户。`.rhosts``.rhosts`
+
+“本地用户名”控件允许您指定 PuTTY 应该声明您拥有的用户名，以防它与您的 Windows 用户名不匹配（或者如果您没有费心设置 Windows 用户名）。
+
+## 4.32 SUPDUP 面板
+
+SUPDUP 面板允许您配置仅适用于 SUPDUP 会话的选项。有关 SUPDUP 协议的更多信息，请参见第 [3.10 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-supdup)。
+
+### 4.32.1 “位置字符串”
+
+在 SUPDUP 中，客户端将其选择的一段文本发送到服务器，以提供用户的位置。这通常显示在登录用户列表中。
+
+默认情况下，PuTTY 仅将其默认为“互联网”。如果您希望您的位置显示为更具体的内容，可以在此处进行配置。
+
+### 4.32.2 “扩展 ASCII 字符集”
+
+这声明了您的终端支持的字符集扩展类型。如果服务器支持，它将使用该字符集发送文本。“无”表示标准的 95 个可打印 ASCII 字符。“ITS”表示在控制字符范围内使用可打印字符扩展的 ASCII。此字符集记录在 SUPDUP 协议定义中。“WAITS”类似于“ITS”，但在扩展集中使用了一些替代字符：最突出的是，它将显示箭头而不是 和 ，而不是 。“ITS”扩展ASCII由ITS和Lisp机器使用，而“WAITS”仅由斯坦福AI实验室的WAITS操作系统使用。`^``_``}``~`
+
+### 4.32.3 “**更多**处理”
+
+启用 **MORE** 处理后，服务器会导致输出在屏幕底部暂停，直到键入空格。
+
+### 4.32.4 “终端滚动”
 
 这控制终端是执行滚动，然后光标进入最后一行下方，还是光标返回到第一行。
 
