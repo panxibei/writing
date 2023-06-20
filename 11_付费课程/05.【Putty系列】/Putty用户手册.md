@@ -6373,3 +6373,583 @@ if errorlevel 1 echo There was an error
 
 
 
+
+
+
+
+
+
+# 第 6 章：使用 `PSFTP` 安全地传输文件
+
+`PSFTP` ，`PuTTY` 的 `SFTP` 客户端，是一个使用 `SSH` 连接在计算机之间安全传输文件的工具。
+
+`PSFTP` 与 `PSCP` 的区别在于：
+
+- `PSCP` 应该在几乎所有 `SSH` 服务器上工作。
+
+  `PSFTP` 使用新的 `SFTP` 协议，这只是 `SSH-2` 的一项功能。
+
+  （如果可以的话，`PSCP` 也会使用此协议，但如果不能，则可以回退到 `SSH-1` 等效项。
+
+- `PSFTP` 允许您运行交互式文件传输会话，就像 `Windows` 的 `ftp` 程序一样。
+
+  您可以列出目录的内容，浏览文件系统，发出多个 `get` 和 `put` 命令，并最终注销。
+
+  相比之下，`PSCP` 旨在执行单个文件传输操作并立即终止。
+
+图f03
+
+
+
+## 6.1 启动 `PSFTP`
+
+启动 `PSFTP` 的常用方法是从命令提示符处启动，与 `PSCP` 非常相似。
+
+为此，它需要位于您的目录 `PATH` 中或当前目录中。
+
+要将包含 `PSFTP` 的目录添加到 `PATH` 环境变量中，请在控制台窗口中键入：
+
+```
+set PATH=C:\path\to\putty\directory;%PATH%
+```
+
+
+
+但是，与 `PSCP` 不同，`PSFTP` 没有复杂的命令行语法;您只需指定主机名，也许还可以指定用户名：
+
+```
+psftp server.example.com
+```
+
+或者可能
+
+```
+psftp fred@server.example.com
+```
+
+
+
+或者，如果您只是自己键入 `psftp` （或双击 `Windows GUI` 中的 `PSFTP` 图标），您将看到 `PSFTP` 提示符，以及一条消息，告诉您 `PSFTP` 尚未连接到任何服务器：
+
+```
+C:\>psftp
+psftp: no hostname specified; use "open host.name" to connect
+psftp>
+```
+
+图f04
+
+
+
+此时，您可以键入 `open server.example.com` 或 `open fred@server.example.com` 来启动会话。
+
+`PSFTP` 接受 `PuTTY` 工具支持的所有常规命令行选项，但在文件传输实用程序中没有意义的选项除外。
+
+有关这些选项的说明，请参见[第 3.11.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-general-opts)。（PSFTP不支持的那些有明确的标记。）
+
+`PSFTP` 还支持一些自己的选项。
+
+以下各节介绍 `PSFTP` 的特定命令行选项。
+
+
+
+### 6.1.1 指定包含批处理命令的文件 `-b`
+
+在正常操作中，`PSFTP` 是一个交互式程序，它显示命令行并接受来自键盘的命令。
+
+如果您需要使用 `PSFTP` 执行自动化任务，您可能更愿意提前指定一组命令并自动执行它们。
+
+该选项 `-b` 允许您执行此操作。
+
+您可以将其与包含批处理命令的文件名一起使用。
+
+例如，您可以创建一个名为 `myscript.scr` 包含如下行的文件：
+
+```
+cd /home/ftp/users/jeff
+del jam-old.tar.gz
+ren jam.tar.gz jam-old.tar.gz
+put jam.tar.gz
+chmod a+r jam.tar.gz
+```
+
+
+
+然后你可以通过键入如下命令来运行脚本。
+
+```
+psftp user@hostname -b myscript.scr
+```
+
+
+
+以这种方式运行批处理脚本时，如果任何命令无法成功完成，`PSFTP` 将中止该脚本。
+
+要更改此行为，您可以添加该选项 `-be` （[第 6.1.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp-option-be)）。
+
+`PSFTP` 将在完成批处理脚本执行后终止。
+
+
+
+### 6.1.2 在运行时显示批处理命令 `-bc`
+
+该选项 `-bc` 更改 `PSFTP` 在处理使用 `-b` 指定的批处理脚本时显示的内容。
+
+使用该选项 `-bc` ，`PSFTP` 将显示提示和命令，就像在键盘上键入命令一样。
+
+
+
+所以看到可能不像这样：
+
+```
+C:\>psftp fred@hostname -b batchfile
+Sent username "fred"
+Remote working directory is /home/fred
+Listing directory /home/fred/lib
+drwxrwsr-x    4 fred     fred         1024 Sep  6 10:42 .
+drwxr-sr-x   25 fred     fred         2048 Dec 14 09:36 ..
+drwxrwsr-x    3 fred     fred         1024 Apr 17  2000 jed
+lrwxrwxrwx    1 fred     fred           24 Apr 17  2000 timber
+drwxrwsr-x    2 fred     fred         1024 Mar 13  2000 trn
+```
+
+
+
+而有可能会看到以下内容：
+
+```
+C:\>psftp fred@hostname -bc -b batchfile
+Sent username "fred"
+Remote working directory is /home/fred
+psftp> dir lib
+Listing directory /home/fred/lib
+drwxrwsr-x    4 fred     fred         1024 Sep  6 10:42 .
+drwxr-sr-x   25 fred     fred         2048 Dec 14 09:36 ..
+drwxrwsr-x    3 fred     fred         1024 Apr 17  2000 jed
+lrwxrwxrwx    1 fred     fred           24 Apr 17  2000 timber
+drwxrwsr-x    2 fred     fred         1024 Mar 13  2000 trn
+psftp> quit
+```
+
+
+
+### 6.1.3 出现错误时继续执行批处理 `-be`
+
+运行批处理文件时，即使命令无法成功完成，此附加选项也会导致 `PSFTP` 继续处理。
+
+例如，如果要删除文件并且不在乎它是否已不存在，则可能希望发生这种情况。
+
+
+
+### 6.1.4 避免交互式提示 `-batch`
+
+如果使用该选项 `-batch` ，`PSFTP` 在建立连接时永远不会给出交互式提示。
+
+例如，如果服务器的主机密钥无效（请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），则连接将被简单地放弃，而不是询问您下一步该怎么做。
+
+这可能有助于 `PSFTP` 在自动脚本中使用时的行为：使用 `-batch` ，如果在连接时出现问题，批处理作业将失败而不是挂起。
+
+
+
+#### 6.1.4.1 控制错误消息清理 `-no-sanitise-stderr`
+
+该选项 `-no-sanitise-stderr` 将导致 `PSFTP` 按字面意思通过服务器的标准错误流，而无需先从中剥离控制字符。
+
+如果服务器正在发送彩色错误消息，这可能很有用，但它也使服务器能够对终端显示产生意外影响。
+
+有关更多讨论，请参见[第 7.2.3.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-option-sanitise)。
+
+
+
+## 6.2 运行 `PSFTP`
+
+启动 `PSFTP` 会话后，您将看到一个 `psftp>` 提示。
+
+现在，您可以键入命令来执行文件传输功能。
+
+本节列出了所有可用的命令。
+
+任何以 `#` 开头的行都将被视为注释并被忽略。
+
+
+
+### 6.2.1 `PSFTP` 命令的一般引用规则
+
+`PSFTP` 命令解释器将大多数 `PSFTP` 命令视为用空格分隔的单词序列。
+
+例如 `ren oldfilename newfilename` ，命令拆分为三个单词：`ren` （命令名称）、`oldfilename`（要重命名的文件的名称）和 `newfilename`（要为文件提供的新名称）。
+
+
+
+有时您需要指定*包含空格的*文件名。
+
+为此，您可以用双引号将文件名括起来。
+
+这同样适用于本地文件名和远程文件名：
+
+```
+psftp> get "spacey file name.txt" "save it under this name.txt"
+```
+
+
+
+双引号本身不会作为文件名的一部分出现;它们被 `PSFTP` 删除，它们的唯一作用是阻止它们内部的空格充当单词分隔符。
+
+如果需要*使用*双引号（在某些类型的远程系统上，例如 `Unix` ，允许您在文件名中使用双引号），可以通过加倍来执行此操作。
+
+这适用于双引号内部和外部。
+
+例如，此命令
+
+```
+psftp> ren ""this"" "a file with ""quotes"" in it"
+```
+
+将获取当前名称为 `"this"`（开头和结尾带有双引号字符）的文件，并将其重命名为名称为 `a file with "quotes" in it` 。
+
+（ `PSFTP` 引用规则的一个例外是命令 `!` ，它将其命令行直接传递给 `Windows` ，根本不将其拆分为单词。请参阅[第 6.2.19 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp-cmd-pling)。）
+
+
+
+### 6.2.2 `PSFTP` 中的通配符
+
+`PSFTP` 中的几个命令支持“通配符”来选择多个文件。
+
+对于本地文件规范（如 `put` 的第一个参数），使用*本地*操作系统的通配符规则。
+
+例如，在 `Windows` 上运行的 `PSFTP` 可能需要使用 `*.*` ， `Unix` 上的 `PSFTP` 则是需要使用 `*`。
+
+对于*远程*文件规范（例如 `get` 的第一个参数 ），`PSFTP` 使用标准的通配符语法（类似于 `POSIX` 通配符）：
+
+- `*` 匹配任何字符序列（包括零长度序列）。
+
+- `?` 只匹配一个字符。
+
+- `[abc]` 只匹配一个字符，该字符可以是 `a` 、 `b` 或 `c` 。
+
+  `[a-z]` 将范围中的任何字符与 `a` 到 `z` 匹配。
+
+  `[^abc]`匹配*不是*  `a` 、`b` 或 `c` 的单个字符。
+
+  特殊情况：`[-a]` 匹配文字连字符（ `-` ） 或 `a` ; `[^-a]` 匹配所有其他字符。 `[a^]` 匹配文字插入符号（ `^` ） 或 `a` 。
+
+- `\` （反斜杠）在上述任何字符（或本身）之前删除该字符的特殊含义。
+
+
+
+与某些 `Unix` 上下文不同，文件名上的前导句点（ `.` ） 不会被特殊处理; `get *` 将获取所有文件，无论它们是否以前导句点开头。
+
+
+
+### 6.2.3 `open` 命令：启动会话
+
+如果通过在 `GUI` 中双击或仅通过在命令行中键入 `psftp` 来启动 `PSFTP` ，则需要先打开与 `SFTP` 服务器的连接，然后才能发出任何其他命令（ `help` 和 `quit` 除外）。
+
+要创建连接，请键入 `open host.name` ，或者如果还需要指定用户名，也可以键入 `open user@host.name` 。
+
+您也可以选择指定端口：`open user@host.name 22` 。
+
+发出此命令后，即使命令失败（例如，如果键入主机名错误或连接超时），*也无法*再次发出此命令。
+
+因此，如果连接未成功打开，`PSFTP` 将立即终止。
+
+
+
+### 6.2.4 `quit` 命令：结束会话
+
+完成会话后，键入命令 `quit` 以关闭连接，终止 `PSFTP` 并返回到命令行（或者，如果从 `GUI` 启动 `PSFTP` 控制台窗口，则直接关闭它）。
+
+您还可以使用 `bye` 和 `exit` 命令，它们具有完全相同的效果。
+
+
+
+### 6.2.5 `close` 命令：关闭连接
+
+如果只想关闭网络连接但保持 `PSFTP` 运行，则可以使用命令 `close` 。
+
+然后，可以使用命令 `open` 打开新连接。
+
+
+
+### 6.2.6 `help` 命令：获取快速在线帮助
+
+如果键入 `help` ，`PSFTP` 将给出可用命令的简短列表。
+
+如果使用命令名称键入 `help`（例如 `help get` ），则 `PSFTP` 将提供有关该特定命令的简短帮助。
+
+
+
+### 6.2.7 `cd` 和 `pwd` 命令：更改远程工作目录
+
+`PSFTP` 在服务器上维护您的“工作目录”的概念。
+
+这是其他命令将对其执行操作的默认目录。
+
+例如，如果您键入 `get filename.dat` ，则 `PSFTP` 将在服务器上的远程工作目录中查找 `filename.dat` 。
+
+
+
+要更改远程工作目录，请使用命令 `cd` 。
+
+如果您不提供参数， `cd` 将返回到服务器上的主目录（更准确地说，是连接开始时所在的远程目录）。
+
+要显示当前的远程工作目录，请键入 `pwd` 。
+
+
+
+### 6.2.8 `lcd` 和 `lpwd` 命令：更改本地工作目录
+
+除了在远程服务器上有一个工作目录外，`PSFTP` 还在本地计算机上有一个工作目录（就像任何其他 `Windows` 进程一样）。
+
+这是其他命令将对其执行操作的默认本地目录。
+
+例如，如果键入 `get filename.dat` ，则 `PSFTP` 会将生成的文件保存为 `filename.dat` 本地工作目录中。
+
+要更改本地工作目录，请使用命令 `lcd` 。
+
+要显示当前的本地工作目录，请键入 `lpwd` 。
+
+
+
+### 6.2.9 `get` 命令：从服务器获取文件
+
+若要从服务器下载文件并将其存储在本地 `PC` 上，请使用命令 `get` 。
+
+在最简单的形式中，您只需将其与文件名一起使用：
+
+```
+get myfile.dat
+```
+
+
+
+如果要以其他名称在本地存储文件，请在远程文件名后指定本地文件名：
+
+```
+get myfile.dat newname.dat
+```
+
+
+
+这将在名为 `myfile.dat` 的服务器上获取文件，但会将其保存到名为 `newname.dat` 的本地计算机中。
+
+要以递归方式获取整个目录，您可以使用选项 `-r` ：
+
+```
+get -r mydir
+get -r mydir newname
+```
+
+
+
+（如果要获取名称以连字符开头的文件，则可能必须使用特殊参数 `--` ，参数 `get` 将停止将任何内容解释为后面的开关。例如，“`get -- -silly-name-`”。
+
+
+
+### 6.2.10 命令：向服务器发送文件`put`
+
+若要将文件从本地 PC 上载到服务器，请使用该命令。`put`
+
+在最简单的形式中，您只需将其与文件名一起使用：
+
+```
+put myfile.dat
+```
+
+如果要以其他名称远程存储文件，请在本地文件名后指定远程文件名：
+
+```
+put myfile.dat newname.dat
+```
+
+这将发送名为 的本地文件，但会将其存储在名为 的服务器上。`myfile.dat``newname.dat`
+
+要以递归方式发送整个目录，可以使用以下选项：`-r`
+
+```
+put -r mydir
+put -r mydir newname
+```
+
+（如果要发送名称以连字符开头的文件，则可能必须使用特殊参数，该参数将停止将任何内容解释为后面的开关。例如，“”。`--``put``put -- -silly-name-`
+
+### 6.2.11 和命令：获取或发送多个文件`mget``mput`
+
+```
+mget`工作原理几乎与 完全相同，除了它允许您指定多个文件一次获取。您可以通过两种方式执行此操作：`get
+```
+
+- 通过提供两个或多个显式文件名 （''）`mget file1.txt file2.txt`
+- 通过使用通配符 （''）。`mget *.txt`
+
+每个参数都被视为要获取的文件的名称（与 不同，它最多会解释一个这样的参数，第二个参数将被视为存储检索到的文件的替代名称），或者与多个文件匹配的通配符表达式。`mget``get`
+
+和 中的选项也可用于 。`-r``--``get``mget`
+
+```
+mput`与 相似，但有相同的区别。`put
+```
+
+### 6.2.12 和命令：恢复文件传输`reget``reput`
+
+如果文件传输中途失败，并且磁盘上存储了一半的文件，则可以使用 and 命令恢复文件传输。这些命令的工作方式与 and 命令完全相同，但它们检查是否存在半写的目标文件，并从上次尝试停止的地方开始传输。`reget``reput``get``put`
+
+和的语法与和的语法完全相同：`reget``reput``get``put`
+
+```
+reget myfile.dat
+reget myfile.dat newname.dat
+reget -r mydir
+```
+
+这些命令主要用于恢复中断的传输。它们假定远程文件或目录结构未以任何方式更改;如果有更改，您最终可能会得到损坏的文件。特别是，该选项不会选取对已完全传输的文件或目录的更改。`-r`
+
+### 6.2.13 命令：列出远程文件`dir`
+
+要列出远程工作目录中的文件，只需键入 。`dir`
+
+您还可以通过键入目录名称后跟目录名称来列出其他目录的内容：`dir`
+
+```
+dir /home/fred
+dir sources
+```
+
+您可以通过提供通配符来列出目录内容的子集：
+
+```
+dir /home/fred/*.txt
+dir sources/*.c
+```
+
+该命令的工作方式与 完全相同。`ls``dir`
+
+### 6.2.14 命令：更改远程文件的权限`chmod`
+
+PSFTP 允许您修改服务器上文件和目录的文件权限。您可以使用命令执行此操作，该命令的工作方式与Unix命令非常相似。`chmod``chmod`
+
+基本语法是 ，其中表示对文件权限的修改，并且是要修改的文件名。您可以指定多个文件或通配符。例如：`chmod modes file``modes``file`
+
+```
+chmod go-rwx,u+w privatefile
+chmod a+r public*
+chmod 640 groupfile1 groupfile2
+```
+
+该参数可以是一组 Unix 样式的八进制数字。（如果您不知道这意味着什么，您可能不想使用它！或者，它可以是权限修改的列表，用逗号分隔。每个修改包括：`modes`
+
+- 受修改影响的人。这可以是（拥有用户）、（拥有组的成员）或（其他人 - “其他人”），或者这些的某种组合。它也可以是（“全部”）同时影响每个人。`u``g``o``a`
+- 或符号，指示是添加还是删除权限。`+``-`
+- 要添加或删除的实际权限。这些可以是（读取文件的权限）、 （写入文件的权限）和（执行文件的权限，或者在目录的情况下，访问目录中文件的权限）。`r``w``x`
+
+所以上面的例子就可以了：
+
+- 第一个示例：删除所属组成员和其他所有人的读取、写入和执行权限（因此只剩下文件所有者的权限）。 为文件所有者添加写入权限。`go-rwx``u+w`
+- 第二个示例：为每个人添加对所有文件和目录的读取权限，以“public”开头。`a+r`
+
+除此之外，Unix系统还有一些额外的特殊情况。在非Unix系统上，这些不太可能有用：
+
+- 您可以指定 和 添加或删除 Unix 设置用户 ID 位。这通常仅适用于特殊目的;如果您不确定，请参阅您的 Unix 文档。`u+s``u-s`
+- 您可以指定 和 添加或删除 Unix 集组 ID 位。在文件上，这类似于 set-user-id 位（再次查看您的 Unix 文档）;在目录中，它确保拥有该目录的组的成员可以访问在该目录中创建的文件。`g+s``g-s`
+- 您可以指定和添加或删除Unix“粘性位”。当应用于目录时，这意味着该目录中文件的所有者可以删除该文件（而通常只允许*目录*的所有者这样做）。`+t``-t`
+
+### 6.2.15 命令：删除远程文件`del`
+
+要删除服务器上的文件，请键入 然后键入一个或多个文件名：`del`
+
+```
+del oldfile.dat
+del file1.txt file2.txt
+del *.o
+```
+
+即使指定了多个文件，文件也将被删除，无需进一步提示。
+
+```
+del`只会删除文件。您不能使用它来删除目录;用于此。`rmdir
+```
+
+该命令的工作方式与 完全相同。`rm``del`
+
+### 6.2.16 命令：创建远程目录`mkdir`
+
+若要在服务器上创建目录，请键入 ，然后键入目录名称：`mkdir`
+
+```
+mkdir newstuff
+```
+
+您可以一次指定要创建的多个目录：
+
+```
+mkdir dir1 dir2 dir3
+```
+
+### 6.2.17 命令：删除远程目录`rmdir`
+
+若要删除服务器上的目录，请键入 ，然后键入一个或多个目录名称：`rmdir`
+
+```
+rmdir oldstuff
+rmdir *.old ancient
+```
+
+目录将被删除，无需进一步提示，即使指定了多个目录也是如此。
+
+如果目录中有任何内容，大多数 SFTP 服务器可能会拒绝删除目录，因此您需要先删除内容。
+
+### 6.2.18 命令：移动和重命名远程文件`mv`
+
+要重命名服务器上的单个文件，请键入 ，然后键入当前文件名，然后键入新文件名：`mv`
+
+```
+mv oldfile newname
+```
+
+您还可以将文件移动到其他目录并更改名称：
+
+```
+mv oldfile dir/newname
+```
+
+要将一个或多个文件移动到现有子目录中，请指定文件（如果需要，请使用通配符），然后指定目标目录：
+
+```
+mv file dir
+mv file1 dir1/file2 dir2
+mv *.c *.h ..
+```
+
+和 命令的工作方式与 完全相同。`rename``ren``mv`
+
+### 6.2.19 命令：运行本地窗口命令`!`
+
+您可以使用该命令运行本地 Windows 命令。这是唯一不受[第 6.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp-quoting)中给出的命令引用规则约束的 PSFTP 命令。如果任何命令行以字符开头，则该行的其余部分将直接传递到 Windows，而无需进一步翻译。`!``!`
+
+例如，如果要在下载更新版本之前移开文件的现有副本，则可以键入：
+
+```
+psftp> !ren myfile.dat myfile.bak
+psftp> get myfile.dat
+```
+
+使用 Windows 命令重命名本地 PC 上的文件。`ren`
+
+## 6.3 通过 PSFTP 使用公钥身份验证
+
+与PuTTY一样，PSFTP可以使用公钥而不是密码进行身份验证。有三种方法可以做到这一点。
+
+首先，PSFTP可以使用PuTTY保存的会话来代替主机名。所以你可以这样做：
+
+- 运行 PuTTY，并创建一个 PuTTY 保存的会话（请参阅第 4.1.2 节），该会话指定您的私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。您可能还需要指定登录用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+- 在 PSFTP 中，您现在可以使用会话的名称而不是主机名：键入 ，其中替换为已保存会话的名称。`psftp sessionname``sessionname`
+
+其次，您可以使用该选项在命令行上提供私钥文件的名称。有关详细信息，请参见[第 3.11.3.18 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-identity)。`-i`
+
+第三，如果选美正在运行，PSFTP将尝试使用选美进行身份验证（见[第9章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)）。所以你会这样做：
+
+- 确保 Pageant 正在运行，并且其中存储了您的私钥。
+- 像往常一样为 PSFTP 指定用户名和主机名。PSFTP将自动检测选美比赛并尝试使用其中的键。
+
+有关公钥身份验证的更多常规信息，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。
+
