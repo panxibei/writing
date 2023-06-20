@@ -5958,3 +5958,286 @@ REGEDIT4
 
 
 
+
+
+# 第 5 章：使用 `PSCP` 安全地传输文件
+
+`PSCP` ，`PuTTY` 安全复制客户端，是一种使用 `SSH` 连接在计算机之间安全传输文件的工具。
+
+如果您有 `SSH-2` 服务器，您可能更喜欢 `PSFTP`（请参阅[第 6 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp)）进行交互使用。
+
+但是，`PSFTP` 通常不适用于 `SSH-1` 服务器。
+
+
+
+## 5.1 启动 `PSCP`
+
+`PSCP` 是一个命令行应用程序。
+
+图f01
+
+
+
+这意味着您不能只双击其图标来运行它，而是必须打开一个控制台窗口。
+
+对于 `Windows 95` ，`98` 和 `ME` ，这称为“MS-DOS提示符”，而在 `Windows NT` ，`2000` 和 `XP` 中，它称为“命令提示符”。
+
+它应该可以从“开始”菜单的“程序”部分获得。
+
+
+
+要启动 `PSCP` ，它需要位于您的 `PATH` 目录或当前目录中。
+
+要将包含 `PSCP` 的目录添加到 `PATH` 环境变量，请在控制台窗口中键入：
+
+```
+set PATH=C:\path\to\putty\directory;%PATH%
+```
+
+
+
+这仅适用于该特定控制台窗口的生存期。
+
+若要在 `Windows NT` 、`2000` 和 `XP` 上永久生效地设置 `PATH` ，请使用“系统控制面板”的“环境”选项卡。
+
+在 `Windows 95` 、`98` 和 `ME` 上，您需要编辑您的 `AUTOEXEC.BAT` 以包含类似上面的 `set` 命令。
+
+
+
+## 5.2 `PSCP` 的使用
+
+一旦你有一个控制台窗口可以键入，你只需单独键入 `pscp` 即可显示使用消息。
+
+这将告诉您正在使用的 `PSCP` 版本，并简要总结如何使用 `PSCP` ：
+
+```
+C:\>pscp
+PuTTY Secure Copy client
+Release 0.78
+Usage: pscp [options] [user@]host:source target
+       pscp [options] source [source...] [user@]host:target
+       pscp [options] -ls [user@]host:filespec
+Options:
+  -V        print version information and exit
+  -pgpfp    print PGP key fingerprints and exit
+  -p        preserve file attributes
+  -q        quiet, don't show statistics
+  -r        copy directories recursively
+  -v        show verbose messages
+  -load sessname  Load settings from saved session
+  -P port   connect to specified port
+  -l user   connect with specified username
+  -pwfile file   login with password read from specified file
+  -1 -2     force use of particular SSH protocol version
+  -ssh -ssh-connection
+            force use of particular SSH protocol variant
+  -4 -6     force use of IPv4 or IPv6
+  -C        enable compression
+  -i key    private key file for user authentication
+  -noagent  disable use of Pageant
+  -agent    enable use of Pageant
+  -no-trivial-auth
+            disconnect if SSH authentication succeeds trivially
+  -hostkey keyid
+            manually specify a host key (may be repeated)
+  -batch    disable all interactive prompts
+  -no-sanitise-stderr  don't strip control chars from standard error
+  -proxycmd command
+            use 'command' as local proxy
+  -unsafe   allow server-side wildcards (DANGEROUS)
+  -sftp     force use of SFTP protocol
+  -scp      force use of SCP protocol
+  -sshlog file
+  -sshrawlog file
+            log protocol details to a file
+  -logoverwrite
+  -logappend
+            control what happens when a log file already exists
+```
+
+图f02
+
+
+
+（ `PSCP` 的界面很像 `Unix` 的 `scp` 命令，如果你熟悉它的话。）
+
+
+
+### 5.2.1 基础知识
+
+要从远程服务器接收文件，可以使用类似如下命令格式：
+
+```
+pscp [options] [user@]host:source target
+```
+
+
+
+因此，要将文件 `/etc/hosts` 从服务器 `example.com` 以用户 `fred` 身份复制到文件 `c:\temp\example-hosts.txt` ，则需要键入：
+
+```
+pscp fred@example.com:/etc/hosts c:\temp\example-hosts.txt
+```
+
+
+
+要将文件发送到远程服务器，可以使用类似如下命令格式：
+
+```
+pscp [options] source [source...] [user@]host:target
+```
+
+
+
+因此，要将本地文件 `c:\documents\foo.txt` 以用户 `fred` 身份复制到服务器`example.com` 的 `/tmp/foo` 目录，您需要键入：
+
+```
+pscp c:\documents\foo.txt fred@example.com:/tmp/foo
+```
+
+
+
+您可以使用通配符在任一方向上传输多个文件，如下所示：
+
+```
+pscp c:\documents\*.doc fred@example.com:docfiles
+pscp fred@example.com:source/*.c c:\source
+```
+
+
+
+但是，在第二种情况下（对多个远程文件使用通配符），您可能会看到一条警告，比如“警告：当我们请求名为”`*.c`“的文件时，远程主机试图写入名为 `terminal.c` 的文件。
+
+如果这是通配符，请考虑升级到 `SSH-2` 或使用“ `-unsafe` ”选项。
+
+已不允许重命名此文件。
+
+
+
+这是由于旧式SCP协议中的基本不安全：客户端将通配符字符串（）发送到服务器，服务器发回与通配符模式匹配的文件名序列。但是，没有什么可以阻止服务器发回*不同的*模式并覆盖您的其他文件之一：如果您请求，服务器可能会发回文件名并为您安装病毒。由于通配符匹配规则由服务器决定，因此客户端无法可靠地验证发回的文件名是否与模式匹配。`*.c``*.c``AUTOEXEC.BAT`
+
+PSCP 将尝试在可能的情况下使用较新的 SFTP 协议（SSH-2 的一部分），该协议不会受到此安全漏洞的影响。如果您正在与支持 SFTP 的 SSH-2 服务器通信，您将永远不会看到此警告。（您可以强制使用 SFTP 协议（如果可用），请参见[第 5.2.2.6 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter5.html#pscp-usage-options-backend)。`-sftp`
+
+如果确实需要对 SSH-1 服务器使用服务器端通配符，则可以将命令行选项与 PSCP 一起使用：`-unsafe`
+
+```
+pscp -unsafe fred@example.com:source/*.c c:\source
+```
+
+这将禁止显示警告消息，并且将发生文件传输。但是，您应该知道，通过使用此选项，您使服务器能够写入目标目录中*的任何*文件，因此仅当您相信服务器管理员不是恶意的（并且不让服务器计算机被恶意人员破解）时，才应使用此选项。或者，在新创建的空目录中执行任何此类下载。（即使在“不安全”模式下，PSCP 仍将保护您免受服务器试图使用包含“”的路径名离开该目录的侵害。`..`
+
+#### 5.2.1.1`user`
+
+远程服务器上的登录名。如果省略此选项，并且是 PuTTY 保存的会话，PSCP 将使用该保存会话指定的任何用户名。否则，PSCP 将尝试使用本地 Windows 用户名。`host`
+
+#### 5.2.1.2`host`
+
+远程服务器的名称，或现有 PuTTY 保存的会话的名称。在后一种情况下，将使用会话的主机名、端口号、密码类型和用户名设置。
+
+#### 5.2.1.3`source`
+
+一个或多个源文件。允许使用通配符。通配符的语法取决于它们所应用的系统，因此如果要*从* Windows 系统复制到 UNIX 系统，则应使用 Windows 通配符语法（例如 ），但如果从 UNIX 系统*复制到* *Windows 系统，*则应使用 UNIX shell 允许的通配符语法（例如 ）。`*.*``*`
+
+如果源是远程服务器，并且您没有指定完整路径名（在 UNIX 中，以（斜杠）字符开头的路径名），则您指定为源的内容将相对于远程服务器上的主目录进行解释。`/`
+
+#### 5.2.1.4`target`
+
+要放置文件的文件名或目录。从远程服务器复制到本地主机时，您可能希望将文件放在当前目录中。为此，应指定目标 。例如：`.`
+
+```
+pscp fred@example.com:/home/tom/.emacs .
+```
+
+...将在远程服务器上复制到当前目录。`/home/tom/.emacs`
+
+与参数一样，如果目标位于远程服务器上并且不是完整路径名，则会相对于远程服务器上的主目录进行解释。`source`
+
+### 5.2.2 选项
+
+PSCP 接受 PuTTY 工具支持的所有常规命令行选项，但在文件传输实用程序中没有意义的选项除外。有关这些选项的说明，请参见[第 3.11.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-general-opts)。（PSCP 不支持的那些有明确的标记。
+
+PSCP还支持一些自己的选项。以下部分介绍 PSCP 的特定命令行选项。
+
+#### 5.2.2.1 列出远程文件`-ls`
+
+如果给出该选项，则不会传输任何文件;而是列出远程文件。只需要提供主机名规范和可选的远程文件规范。例如：`-ls`
+
+```
+pscp -ls fred@example.com:dir1
+```
+
+SCP 协议本身不包含列出文件的方法。因此，如果正在使用 SCP，则此选项假定服务器对命令做出适当的响应;这可能不适用于所有服务器。`ls -la`
+
+如果正在使用 SFTP，则此选项应适用于所有服务器。
+
+#### 5.2.2.2 保留文件属性`-p`
+
+默认情况下，使用 PSCP 复制的文件带有复制日期和时间的时间戳。该选项保留复制文件的原始时间戳。`-p`
+
+#### 5.2.2.3 安静，不显示统计信息`-q`
+
+默认情况下，PSCP 显示一个显示当前传输进度的计量器：
+
+```
+mibs.tar          |   168 kB |  84.0 kB/s | ETA: 00:00:13 |  13%
+```
+
+此显示中的字段包括（从左到右）、文件名、到目前为止传输的文件的大小（以 KB 为单位）、文件的传输速度估计值（以千字节/秒为单位）、传输完成的估计时间以及到目前为止传输的文件百分比。PSCP 选项禁止打印这些统计信息。`-q`
+
+#### 5.2.2.4 递归复制目录`-r`
+
+默认情况下，PSCP 只会复制文件。您指定要复制的任何目录都将被跳过，其内容也将跳过。该选项告知 PSCP 下降到您指定的任何目录，并复制它们及其内容。这允许您使用 PSCP 在计算机之间传输整个目录结构。`-r`
+
+#### 5.2.2.5 避免交互式提示`-batch`
+
+如果使用该选项，PSCP 在建立连接时永远不会提供交互式提示。例如，如果服务器的主机密钥无效（请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），则连接将被简单地放弃，而不是询问您下一步该怎么做。`-batch`
+
+这可能有助于 PSCP 在自动脚本中使用时的行为：使用 ，如果在连接时出现问题，批处理作业将失败而不是挂起。`-batch`
+
+#### 5.2.2.6 、强制使用特定的文件传输协议`-sftp``-scp`
+
+如[第 5.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter5.html#pscp-usage-basics)所述，SSH 使用两种不同的文件传输协议。尽管名称如此，PSCP（与许多其他表面上的客户端一样）可以使用这些协议中的任何一种。`scp`
+
+较旧的SCP协议没有书面规范，并且将很多细节留给了服务器平台。通配符在服务器上展开。简单的设计意味着可以使用服务器平台支持的任何通配符规范（例如大括号扩展），但也会导致互操作性问题，例如文件名引用（例如，文件名包含空格），以及[第 5.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter5.html#pscp-usage-basics)中描述的安全问题。
+
+较新的 SFTP 协议（通常与 SSH-2 服务器相关联）以更独立于平台的方式指定，并将通配符语法等问题留给客户端。（PuTTY 的 SFTP 通配符语法在第 [6.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp-wildcards)中描述。这使得它跨平台更加一致，更适合脚本和自动化，并避免通配符匹配的安全问题。
+
+通常，PSCP 将尝试使用 SFTP 协议，并且仅在服务器上 SFTP 不可用时才回退到 SCP 协议。
+
+该选项强制 PSCP 使用 SCP 协议或退出。`-scp`
+
+该选项强制 PSCP 使用 SFTP 协议或退出。指定此选项后，PSCP 会更难查找 SFTP 服务器，这可能允许将 SFTP 与 SSH-1 一起使用，具体取决于服务器设置。`-sftp`
+
+#### 5.2.2.7 ： 控制错误消息清理`-no-sanitise-stderr`
+
+该选项将导致 PSCP 按字面意思通过服务器的标准错误流，而无需先从中剥离控制字符。如果服务器正在发送彩色错误消息，这可能很有用，但它也使服务器能够对终端显示产生意外影响。有关更多讨论，请参见[第 7.2.3.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-option-sanitise)。`-no-sanitise-stderr`
+
+### 5.2.3 返回值
+
+仅当文件已正确传输时，PSCP 才会返回零（成功）。您可以使用如下代码在批处理文件中对此进行测试：`ERRORLEVEL`
+
+```
+pscp file*.* user@hostname:
+if errorlevel 1 echo There was an error
+```
+
+### 5.2.4 对 PSCP 使用公钥身份验证
+
+与 PuTTY 一样，PSCP 可以使用公钥而不是密码进行身份验证。有三种方法可以做到这一点。
+
+首先，PSCP 可以使用 PuTTY 保存的会话来代替主机名（请参阅[第 5.2.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter5.html#pscp-usage-basics-host)）。所以你会这样做：
+
+- 运行 PuTTY，并创建一个 PuTTY 保存的会话（请参阅第 4.1.2 节），该会话指定您的私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。您可能还需要指定登录用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+- 在 PSCP 中，您现在可以使用会话的名称而不是主机名：键入 ，其中替换为已保存会话的名称。`pscp sessionname:file localfile``sessionname`
+
+其次，您可以使用该选项在命令行上提供私钥文件的名称。有关详细信息，请参见[第 3.11.3.18 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-identity)。`-i`
+
+第三，如果选美正在运行，PSCP 将尝试使用选美进行身份验证（见[第 9 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)）。所以你会这样做：
+
+- 确保 Pageant 正在运行，并且其中存储了您的私钥。
+- 像往常一样为 PSCP 指定用户名和主机名。PSCP 将自动检测选美比赛并尝试使用其中的键。
+
+有关公钥身份验证的更多常规信息，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。
+
+
+
