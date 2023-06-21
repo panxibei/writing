@@ -7197,7 +7197,7 @@ The following options only apply to SSH connections:
 
 ### 7.2.1 使用 Plink 进行交互式登录
 
-要与远程服务器建立简单的交互式连接，只需键入，然后键入主机名：`plink`
+要与远程服务器建立简单的交互式连接，只需键入 `plink` ，然后键入主机名：
 
 ```
 C:\>plink login.example.com
@@ -7206,16 +7206,32 @@ Debian GNU/Linux 2.2 flunky.example.com
 flunky login:
 ```
 
-然后，您应该能够正常登录并运行会话。服务器发送的输出将直接写入命令提示符窗口，该窗口很可能不会以服务器预期的方式解释终端控制代码。因此，例如，如果您运行任何全屏应用程序，您可能会看到窗口中出现奇怪的字符。像这样的交互式连接不是Plink的重点。
 
-为了使用不同的协议进行连接，您可以为命令行提供选项 、、、 或 。要建立 SSH 连接，例如：`-ssh``-ssh-connection``-telnet``-rlogin``-raw`
+
+然后，您应该能够正常登录并运行会话。
+
+服务器发送的输出将直接写入命令提示符窗口，该窗口很可能不会以服务器预期的方式解释终端控制代码。
+
+因此，例如，如果您运行任何全屏应用程序，您可能会看到窗口中出现奇怪的字符。
+
+像这样的交互式连接不是 `Plink` 的重点。
+
+
+
+为了使用不同的协议进行连接，您可以为命令行提供选项 `-ssh` 、`-ssh-connection` 、`-telnet` 、`-rlogin` 或 `-raw` 。
+
+要建立 `SSH` 连接，例如：
 
 ```
 C:\>plink -ssh login.example.com
 login as:
 ```
 
-如果您已经设置了 PuTTY 保存的会话，则可以提供保存的会话名称，而不是提供主机名。这允许您使用公钥身份验证、指定用户名以及使用 PuTTY 的大多数其他功能：
+
+
+如果您已经设置了 `PuTTY` 保存的会话，则可以提供保存的会话名称，而不是提供主机名。
+
+这允许您使用公钥身份验证、指定用户名以及使用 `PuTTY` 的大多数其他功能：
 
 ```
 C:\>plink my-ssh-session
@@ -7225,33 +7241,71 @@ Last login: Thu Dec  6 19:25:33 2001 from :0.0
 fred@flunky:~$
 ```
 
-（您也可以使用命令行选项加载已保存的会话;请参见[第 3.11.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-load)。如果使用 ，则保存的会话存在，并且它指定了主机名，则不能同时指定 or 参数 - 它将被视为远程命令的一部分。`-load``-load``host``user@host`
+（您也可以使用命令行选项 `-load` 加载已保存的会话;请参见[第 3.11.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-load)。
 
-### 7.2.2 使用 Plink 进行自动连接
+如果使用 `-load` ，则保存的会话存在，并且它指定了主机名，则不能同时指定 `host` 或 `user@host` 参数，它将被视为远程命令的一部分。
 
-更典型的是，Plink与SSH协议一起使用，使您能够直接与服务器上运行的程序通信。为此，您必须确保Plink*使用的是*SSH协议。您可以通过多种方式执行此操作：
 
-- 使用[第 7.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-interactive)中所述的选项。`-ssh`
-- 设置一个 PuTTY 保存的会话，该会话描述要连接到的服务器，并将协议指定为 SSH。
-- 将 Windows 环境变量设置为单词 。`PLINK_PROTOCOL``ssh`
 
-通常 Plink 不是由用户直接调用的，而是由另一个进程自动运行。因此，您通常不希望 Plink 提示您输入用户名或密码。
+### 7.2.2 使用 `Plink` 进行自动连接
 
-接下来，您可能需要避免 Plink 可能产生的各种交互式提示。系统可能会提示您验证要连接到的服务器的主机密钥、输入用户名或输入密码。
+更典型的是，`Plink` 与 `SSH` 协议一起使用，使您能够直接与服务器上运行的程序通信。
 
-为避免在使用 Plink 进行自动连接时提示输入服务器主机密钥，您可以先*手动连接（*使用 PuTTY 或 Plink 之一）到同一服务器，验证主机密钥（有关更多信息，请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），然后选择“接受”将主机密钥添加到注册表。之后，连接到该服务器的 Plink 命令不应提供主机密钥提示，除非主机密钥更改。或者，您可以在每次使用 Plink 的命令行时在 Plink 的命令行上指定适当的主机密钥;请参见[第 3.11.3.22 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-hostkey)。
+为此，您必须确保 `Plink` *使用的是* `SSH` 协议。
+
+您可以通过多种方式执行此操作：
+
+- 使用[第 7.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-interactive)中所述的选项 `-ssh` 。
+- 设置一个 `PuTTY` 保存的会话，该会话描述要连接到的服务器，并将协议指定为 `SSH` 。
+- 将 Windows 环境变量 `PLINK_PROTOCOL` 设置为单词 `ssh` 。
+
+
+
+通常 `Plink` 不是由用户直接调用的，而是由另一个进程自动运行。
+
+因此，您通常不希望 `Plink` 提示您输入用户名或密码。
+
+
+
+接下来，您可能需要避免 `Plink` 可能产生的各种交互式提示。
+
+系统可能会提示您验证要连接到的服务器的主机密钥、输入用户名或输入密码。
+
+
+
+为避免在使用 `Plink` 进行自动连接时提示输入服务器主机密钥，您可以先*手动连接（*使用 `PuTTY` 或 `Plink` 之一）到同一服务器，验证主机密钥（有关更多信息，请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），然后选择“接受”将主机密钥添加到注册表。
+
+之后，连接到该服务器的 `Plink` 命令不应提供主机密钥提示，除非主机密钥更改。
+
+或者，您可以在每次使用 `Plink` 的命令行时在 `Plink` 的命令行上指定适当的主机密钥;请参见[第 3.11.3.22 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-hostkey)。
+
+
 
 要避免系统提示输入用户名，您可以：
 
-- 使用该选项在命令行上指定用户名。例如。`-l``plink login.example.com -l fred`
-- 设置一个 PuTTY 保存的会话，该会话描述您要连接到的服务器，并指定登录时使用的用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+- 使用选项 `-l` 在命令行上指定用户名。
 
-为避免系统提示输入密码，您几乎肯定应该设置公钥身份验证。（有关公钥身份验证的一般介绍，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。同样，您可以通过两种方式执行此操作：
+  例如 `plink login.example.com -l fred` 。
 
-- 设置一个 PuTTY 保存的会话，该会话描述您要连接到的服务器，并指定私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。要使其在没有提示的情况下工作，您的私钥需要没有密码。
-- 将私钥存储在选美中。更多信息见[第9章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)。
+- 设置一个 `PuTTY` 保存的会话，该会话描述您要连接到的服务器，并指定登录时使用的用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
 
-完成所有这些操作后，您应该能够在SSH服务器计算机上运行远程命令，并在没有提示的情况下自动执行它：
+
+
+为避免系统提示输入密码，您几乎肯定应该设置公钥身份验证。
+
+（有关公钥身份验证的一般介绍，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。）
+
+同样，您可以通过两种方式执行此操作：
+
+- 设置一个 `PuTTY` 保存的会话，该会话描述您要连接到的服务器，并指定私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。
+
+  要使其在没有提示的情况下工作，您的私钥需要没有密码。
+
+- 将私钥存储在 `Pageant` 中。更多信息见[第9章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)。
+
+
+
+一旦完成所有这些操作后，您应该能够在 `SSH` 服务器计算机上运行远程命令，并在没有提示的情况下自动执行它：
 
 ```
 C:\>plink login.example.com -l fred echo hello, world
@@ -7259,6 +7313,8 @@ hello, world
 
 C:\>
 ```
+
+
 
 或者，如果您已设置包含所有连接详细信息的已保存会话：
 
@@ -7269,79 +7325,123 @@ hello, world
 C:\>
 ```
 
-然后，您可以设置其他程序来运行此Plink命令并与之通信，就好像它是服务器计算机上的进程一样。
 
-### 7.2.3 Plink命令行选项
 
-Plink 接受 PuTTY 工具支持的所有常规命令行选项。有关这些选项的说明，请参见[第 3.11.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-general-opts)。
+然后，您可以设置其他程序来运行此 `Plink` 命令并与之通信，就好像它是服务器计算机上的进程一样。
 
-Plink还支持一些自己的选项。以下部分介绍了 Plink 的特定命令行选项。
 
-#### 7.2.3.1 ： 禁用所有交互式提示`-batch`
 
-如果您使用该选项，Plink 在建立连接时永远不会给出交互式提示。例如，如果服务器的主机密钥无效（请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），则连接将被简单地放弃，而不是询问您下一步该怎么做。`-batch`
+### 7.2.3 `Plink` 命令行选项
 
-这可能有助于 Plink 在自动脚本中使用时的行为：使用 ，如果在连接时出现问题，批处理作业将失败而不是挂起。`-batch`
+`Plink` 接受 `PuTTY` 工具支持的所有常规命令行选项。
 
-#### 7.2.3.2 ： 远程命令是 SSH 子系统`-s`
+有关这些选项的说明，请参见[第 3.11.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-general-opts)。
 
-如果指定该选项，Plink 会将指定的命令作为 SSH“子系统”的名称传递，而不是普通命令行。`-s`
+`Plink` 还支持一些自己的选项。
 
-（此选项仅对 SSH-2 协议有意义。
+以下部分介绍了 `Plink` 的特定命令行选项。
 
-#### 7.2.3.3 ： 测试并尝试共享现有连接。`-share`
+
+
+#### 7.2.3.1 `-batch`：禁用所有交互式提示
+
+如果您使用选项 `-batch` ，`Plink` 在建立连接时永远不会给出交互式提示。
+
+例如，如果服务器的主机密钥无效（请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），则连接将被简单地放弃，而不是询问您下一步该怎么做。
+
+这可能有助于 `Plink` 在自动脚本中使用时的行为：使用 `-batch` ，如果在连接时出现问题，批处理作业将失败而不是挂起。
+
+
+
+#### 7.2.3.2 `-s`：远程命令是 `SSH` 子系统
+
+如果指定选项 `-s` ，`Plink` 会将指定的命令作为 `SSH` “子系统”的名称传递，而不是普通命令行。
+
+（此选项仅对 `SSH-2` 协议有意义。）
+
+
+
+#### 7.2.3.3 `-share`：测试并尝试共享现有连接
 
 此选项用于检测是否可以共享现有连接（有关 SSH 连接共享的详细信息，请参阅[第 4.17.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing)）并重用该连接。
 
-表单的 Plink 调用：
+`Plink` 调用方式：
 
 ```
 plink -share <session>
 ```
 
-将测试当前是否有相关会话的可行“上游”，可以使用您通常与 Plink 一起使用的任何语法来建立实际连接（主机/端口号、裸保存的会话名称等）指定该上游。如果未找到并指定了“上游”可行会话，则此连接将成为后续连接共享尝试的“上游”连接。`-load``-share`
 
-（此选项仅对 SSH-2 协议有意义。
 
-#### 7.2.3.4 ： 上游连接共享测试`-shareexists`
+将测试当前是否有相关会话的可行“上游”，可以使用您通常与 `Plink` 一起使用的任何语法来建立实际连接（主机/端口号、原始保存的会话名称、 `-load` 等）指定该上游。
 
-此选项不会建立新连接;相反，它允许测试是否存在可以共享的现有连接。（有关 SSH 连接共享的详细信息，请参见[第 4.17.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing)。
+如果未找到并指定了“上游”可行会话，则  `-share`  指定的连接将成为后续连接共享尝试的“上游”连接。
 
-表单的 Plink 调用：
+（此选项仅对 `SSH-2` 协议有意义。）
+
+
+
+#### 7.2.3.4 `-shareexists`：上游连接共享测试
+
+此选项不会建立新连接;相反，它允许测试是否存在可以共享的现有连接。
+
+（有关 `SSH` 连接共享的详细信息，请参见[第 4.17.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing)。）
+
+
+
+`Plink` 调用方式：
 
 ```
 plink -shareexists <session>
 ```
 
-将测试当前是否有相关会话的可行“上游”，可以使用您通常与 Plink 一起使用的任何语法来建立实际连接（主机/端口号、裸保存的会话名称等）指定该上游。如果存在可用的“上游”，则返回零退出状态，否则为非零。`-load`
 
-（此选项仅对 SSH-2 协议有意义。
 
-#### 7.2.3.5 *流*：控制输出清理`-sanitise-`
+将测试当前是否有相关会话的可行“上游”，可以使用您通常与 `Plink` 一起使用的任何语法来建立实际连接（主机/端口号、原始保存的会话名称、 `-load` 等）指定该上游。
 
-在某些情况下，Plink 会将清理传递应用于从服务器接收的输出，以去除退格键和转义字符等控制字符。
+如果存在可用的“上游”，则返回零退出状态，否则为非零。
 
-这样做的目的是防止远程进程在将 Plink 用作类似或 CVS 的传输时通过标准错误通道发送令人困惑的转义序列。如果服务器实际上想要发送错误消息，则可能是纯文本;如果服务器滥用该通道试图覆盖终端显示的意外部分，Plink 将尝试阻止它。`git`
+（此选项仅对 SSH-2 协议有意义。）
 
-默认情况下，这仅适用于发送到 Windows 控制台设备或 Unix 终端设备的输出通道。（任何流向其他地方的输出流都可能需要 8 位协议，并且根本不必须被篡改。如果您告诉 Plink 分配远程伪终端（请参阅[第 3.11.3.12](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-pty) 节和第 [4.24.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-pty)），它也会停止发生，因为在这种情况下，您通常*希望*来自服务器的转义序列转到您的终端。
 
-但是，如果 Plink 猜错了您是否要进行此清理，您可以使用以下选项之一在任一方向上覆盖它：
+
+#### 7.2.3.5 `-sanitise-stream`：控制输出清理
+
+在某些情况下，`Plink` 会将清理传递应用于从服务器接收的输出，以去除退格键和转义字符等控制字符。
+
+这样做的目的是防止远程进程在将 `Plink` 用作类似 `git` 或 `CVS` 的传输时通过标准错误通道发送令人困惑的转义序列。
+
+如果服务器实际上想要发送错误消息，则可能是纯文本;如果服务器滥用该通道试图覆盖终端显示的意外部分，`Plink` 将尝试阻止它。
+
+
+
+默认情况下，这仅适用于发送到 `Windows` 控制台设备或 `Unix` 终端设备的输出通道。
+
+（任何流向其他地方的输出流都可能需要 `8` 位协议，并且根本不必须被篡改。）
+
+如果您告诉 `Plink` 分配远程伪终端（请参阅[第 3.11.3.12](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-pty) 节和第 [4.24.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-pty)），它也会停止发生，因为在这种情况下，您通常*希望*来自服务器的转义序列转到您的终端。
+
+
+
+但是，如果 `Plink` 猜错了您是否要进行此清理，您可以使用以下选项之一在任一方向上覆盖它：
 
 - `-sanitise-stderr`
 
-  清理写入 Plink 标准错误通道的服务器数据，无论终端、控制台和远程 ptys 如何。
+  清理写入 `Plink` 标准错误通道的服务器数据，无论终端、控制台和远程 `ptys` 。
 
 - `-no-sanitise-stderr`
 
-  不要清理写入 Plink 标准错误通道的服务器数据。
+  不要清理写入 `Plink` 标准错误通道的服务器数据。
 
 - `-sanitise-stdout`
 
-  清理写入 Plink 标准输出通道的服务器数据。
+  清理写入 `Plink` 标准输出通道的服务器数据。
 
 - `-no-sanitise-stdout`
 
-  不要清理写入 Plink 标准输出通道的服务器数据。
+  不要清理写入 `Plink` 标准输出通道的服务器数据。
+
+
 
 #### 7.2.3.6 -无反欺骗：关闭身份验证欺骗保护提示
 
