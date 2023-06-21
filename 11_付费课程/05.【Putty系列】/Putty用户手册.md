@@ -6804,11 +6804,15 @@ put -r mydir newname
 
 
 
-### 6.2.12 和命令：恢复文件传输`reget``reput`
+### 6.2.12 `reget` 和 `reput` 命令：恢复文件传输
 
-如果文件传输中途失败，并且磁盘上存储了一半的文件，则可以使用 and 命令恢复文件传输。这些命令的工作方式与 and 命令完全相同，但它们检查是否存在半写的目标文件，并从上次尝试停止的地方开始传输。`reget``reput``get``put`
+如果文件传输中途失败，并且磁盘上存储了一半的文件，则可以使用 `reget` 和 `reput` 命令恢复文件传输。
 
-和的语法与和的语法完全相同：`reget``reput``get``put`
+这些命令的工作方式与 `get` 和 `put` 命令完全相同，但它们检查是否存在写了一半的目标文件，并从上次尝试停止的地方开始传输。
+
+
+
+`reget` 和 `reput` 的语法与 `get` 和 `put` 的语法完全相同：
 
 ```
 reget myfile.dat
@@ -6816,18 +6820,30 @@ reget myfile.dat newname.dat
 reget -r mydir
 ```
 
-这些命令主要用于恢复中断的传输。它们假定远程文件或目录结构未以任何方式更改;如果有更改，您最终可能会得到损坏的文件。特别是，该选项不会选取对已完全传输的文件或目录的更改。`-r`
 
-### 6.2.13 命令：列出远程文件`dir`
 
-要列出远程工作目录中的文件，只需键入 。`dir`
+这些命令主要用于恢复中断的传输。
 
-您还可以通过键入目录名称后跟目录名称来列出其他目录的内容：`dir`
+它们假定远程文件或目录结构未以任何方式更改;如果有更改，您最终可能会得到损坏的文件。
+
+特别是，选项 `-r` 不会选取对已完全传输的文件或目录的更改。
+
+
+
+### 6.2.13 `dir` 命令：列出远程文件
+
+要列出远程工作目录中的文件，只需键入 `dir` 。
+
+
+
+您还可以通过键入 `dir` 后跟目录名称来列出其他目录的内容：
 
 ```
 dir /home/fred
 dir sources
 ```
+
+
 
 您可以通过提供通配符来列出目录内容的子集：
 
@@ -6836,13 +6852,23 @@ dir /home/fred/*.txt
 dir sources/*.c
 ```
 
-该命令的工作方式与 完全相同。`ls``dir`
 
-### 6.2.14 命令：更改远程文件的权限`chmod`
 
-PSFTP 允许您修改服务器上文件和目录的文件权限。您可以使用命令执行此操作，该命令的工作方式与Unix命令非常相似。`chmod``chmod`
+该命令 `ls` 的工作方式与 `dir` 完全相同。
 
-基本语法是 ，其中表示对文件权限的修改，并且是要修改的文件名。您可以指定多个文件或通配符。例如：`chmod modes file``modes``file`
+
+
+### 6.2.14 `chmod` 命令：更改远程文件的权限
+
+`PSFTP` 允许您修改服务器上文件和目录的文件权限。
+
+您可以使用命令 `chmod` 执行此操作，该命令的工作方式与 `Unix` 命令 `chmod` 非常相似。
+
+
+
+基本语法是 `chmod modes file` ，其中 `modes` 表示对文件权限的修改，并且 `file` 是要修改的文件名。
+
+您可以指定多个文件或通配符。例如：
 
 ```
 chmod go-rwx,u+w privatefile
@@ -6850,26 +6876,59 @@ chmod a+r public*
 chmod 640 groupfile1 groupfile2
 ```
 
-该参数可以是一组 Unix 样式的八进制数字。（如果您不知道这意味着什么，您可能不想使用它！或者，它可以是权限修改的列表，用逗号分隔。每个修改包括：`modes`
 
-- 受修改影响的人。这可以是（拥有用户）、（拥有组的成员）或（其他人 - “其他人”），或者这些的某种组合。它也可以是（“全部”）同时影响每个人。`u``g``o``a`
-- 或符号，指示是添加还是删除权限。`+``-`
-- 要添加或删除的实际权限。这些可以是（读取文件的权限）、 （写入文件的权限）和（执行文件的权限，或者在目录的情况下，访问目录中文件的权限）。`r``w``x`
 
-所以上面的例子就可以了：
+参数 `modes` 可以是一组 `Unix` 样式的八进制数字。
 
-- 第一个示例：删除所属组成员和其他所有人的读取、写入和执行权限（因此只剩下文件所有者的权限）。 为文件所有者添加写入权限。`go-rwx``u+w`
-- 第二个示例：为每个人添加对所有文件和目录的读取权限，以“public”开头。`a+r`
+（如果您不知道这意味着什么，您可能不想使用它！）
 
-除此之外，Unix系统还有一些额外的特殊情况。在非Unix系统上，这些不太可能有用：
+或者，它可以是权限修改的列表，用逗号分隔。
 
-- 您可以指定 和 添加或删除 Unix 设置用户 ID 位。这通常仅适用于特殊目的;如果您不确定，请参阅您的 Unix 文档。`u+s``u-s`
-- 您可以指定 和 添加或删除 Unix 集组 ID 位。在文件上，这类似于 set-user-id 位（再次查看您的 Unix 文档）;在目录中，它确保拥有该目录的组的成员可以访问在该目录中创建的文件。`g+s``g-s`
-- 您可以指定和添加或删除Unix“粘性位”。当应用于目录时，这意味着该目录中文件的所有者可以删除该文件（而通常只允许*目录*的所有者这样做）。`+t``-t`
+每个修改包括：
 
-### 6.2.15 命令：删除远程文件`del`
+- 受修改影响的人。
 
-要删除服务器上的文件，请键入 然后键入一个或多个文件名：`del`
+  这可以是 `u`（拥有用户）、`g`（拥有组的成员）或 `o`（其他人 - “其他人”），或者这些的某种组合。它也可以是 `a`（“全部”）同时影响每个人。
+
+- `+` 或 `-` 符号，指示是添加还是删除权限。
+
+- 要添加或删除的实际权限。
+
+  这些可以是 `r`（读取文件的权限）、 `w`（写入文件的权限）和 `x` （执行文件的权限，或者在目录的情况下，访问目录中文件的权限）。
+
+
+
+所以上面的例子就可以是这样：
+
+- 第一个示例：`go-rwx` 删除所属组成员和其他所有人的读取、写入和执行权限（因此只剩下文件所有者的权限）。 
+
+  `u+w` 为文件所有者添加写入权限。
+
+- 第二个示例：`a+r` 为每个人添加对所有文件和目录的读取权限，以“public”开头。
+
+
+
+除此之外，`Unix` 系统还有一些额外的特殊情况。
+
+在非 `Unix` 系统上，这些不太可能有用：
+
+- 您可以指定 `u+s` 和 `u-s` 添加或删除 `Unix` 设置用户 `ID` 位。
+
+  这通常仅适用于特殊目的;如果您不确定，请参阅您的 `Unix` 文档。
+
+- 您可以指定 `g+s` 和 `g-s` 添加或删除 `Unix` 用户组 `ID` 位。
+
+  在文件上，这类似于 `set-user-id` 位（再次查看您的 `Unix` 文档）;在目录中，它确保拥有该目录的组成员可以访问在该目录中创建的文件。
+
+- 您可以指定 `+t` 和 `-t` 添加或删除 `Unix` “粘滞位”。
+
+  当应用于目录时，这意味着该目录中文件的所有者可以删除该文件（而通常只允许*目录*的所有者这样做）。
+
+
+
+### 6.2.15 `del` 命令：删除远程文件
+
+要删除服务器上的文件，请键入 `del` ，然后键入一个或多个文件名：
 
 ```
 del oldfile.dat
@@ -6877,21 +6936,25 @@ del file1.txt file2.txt
 del *.o
 ```
 
+
+
 即使指定了多个文件，文件也将被删除，无需进一步提示。
 
-```
-del`只会删除文件。您不能使用它来删除目录;用于此。`rmdir
-```
+`del` 只会删除文件。您不能使用它来删除目录; 可以用 `rmdir` 来删除目录。
 
-该命令的工作方式与 完全相同。`rm``del`
+命令 `rm` 的工作方式与 `del` 完全相同。
 
-### 6.2.16 命令：创建远程目录`mkdir`
 
-若要在服务器上创建目录，请键入 ，然后键入目录名称：`mkdir`
+
+### 6.2.16 `mkdir` 命令：创建远程目录
+
+若要在服务器上创建目录，请键入`mkdir` ，然后键入目录名称：
 
 ```
 mkdir newstuff
 ```
+
+
 
 您可以一次指定要创建的多个目录：
 
@@ -6899,32 +6962,42 @@ mkdir newstuff
 mkdir dir1 dir2 dir3
 ```
 
-### 6.2.17 命令：删除远程目录`rmdir`
 
-若要删除服务器上的目录，请键入 ，然后键入一个或多个目录名称：`rmdir`
+
+### 6.2.17 `rmdir` 命令：删除远程目录
+
+若要删除服务器上的目录，请键入 `rmdir` ，然后键入一个或多个目录名称：
 
 ```
 rmdir oldstuff
 rmdir *.old ancient
 ```
 
+
+
 目录将被删除，无需进一步提示，即使指定了多个目录也是如此。
 
-如果目录中有任何内容，大多数 SFTP 服务器可能会拒绝删除目录，因此您需要先删除内容。
+如果目录中有任何内容，大多数 `SFTP` 服务器可能会拒绝删除目录，因此您需要先删除内容。
 
-### 6.2.18 命令：移动和重命名远程文件`mv`
 
-要重命名服务器上的单个文件，请键入 ，然后键入当前文件名，然后键入新文件名：`mv`
+
+### 6.2.18 `mv` 命令：移动和重命名远程文件
+
+要重命名服务器上的单个文件，请键入 `mv` ，然后键入当前文件名，然后键入新文件名：
 
 ```
 mv oldfile newname
 ```
+
+
 
 您还可以将文件移动到其他目录并更改名称：
 
 ```
 mv oldfile dir/newname
 ```
+
+
 
 要将一个或多个文件移动到现有子目录中，请指定文件（如果需要，请使用通配符），然后指定目标目录：
 
@@ -6934,11 +7007,19 @@ mv file1 dir1/file2 dir2
 mv *.c *.h ..
 ```
 
-和 命令的工作方式与 完全相同。`rename``ren``mv`
+`rename` 和 `ren` 命令的工作方式与 `mv` 完全相同。
 
-### 6.2.19 命令：运行本地窗口命令`!`
 
-您可以使用该命令运行本地 Windows 命令。这是唯一不受[第 6.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp-quoting)中给出的命令引用规则约束的 PSFTP 命令。如果任何命令行以字符开头，则该行的其余部分将直接传递到 Windows，而无需进一步翻译。`!``!`
+
+### 6.2.19 `!` 命令：运行本地窗口命令
+
+您可以使用命令 `!` 运行本地 `Windows` 命令。
+
+这是唯一不受[第 6.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter6.html#psftp-quoting)中给出的命令引用规则约束的 `PSFTP` 命令。
+
+如果任何命令行以字符 `!` 开头，则该行的其余部分将直接传递到 `Windows` ，而无需进一步转换。
+
+
 
 例如，如果要在下载更新版本之前移开文件的现有副本，则可以键入：
 
@@ -6947,23 +7028,396 @@ psftp> !ren myfile.dat myfile.bak
 psftp> get myfile.dat
 ```
 
-使用 Windows 命令重命名本地 PC 上的文件。`ren`
+使用 `Windows` 命令 `ren` 重命名本地 `PC` 上的文件。
 
-## 6.3 通过 PSFTP 使用公钥身份验证
 
-与PuTTY一样，PSFTP可以使用公钥而不是密码进行身份验证。有三种方法可以做到这一点。
 
-首先，PSFTP可以使用PuTTY保存的会话来代替主机名。所以你可以这样做：
+## 6.3 通过 `PSFTP` 使用公钥身份验证
 
-- 运行 PuTTY，并创建一个 PuTTY 保存的会话（请参阅第 4.1.2 节），该会话指定您的私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。您可能还需要指定登录用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
-- 在 PSFTP 中，您现在可以使用会话的名称而不是主机名：键入 ，其中替换为已保存会话的名称。`psftp sessionname``sessionname`
+与 `PuTTY` 一样，`PSFTP` 可以使用公钥而不是密码进行身份验证。
 
-其次，您可以使用该选项在命令行上提供私钥文件的名称。有关详细信息，请参见[第 3.11.3.18 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-identity)。`-i`
+有三种方法可以做到这一点。
 
-第三，如果选美正在运行，PSFTP将尝试使用选美进行身份验证（见[第9章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)）。所以你会这样做：
 
-- 确保 Pageant 正在运行，并且其中存储了您的私钥。
-- 像往常一样为 PSFTP 指定用户名和主机名。PSFTP将自动检测选美比赛并尝试使用其中的键。
+
+首先，`PSFTP` 可以使用 `PuTTY` 保存的会话来代替主机名。
+
+所以你可以这样做：
+
+- 运行 `PuTTY` ，并创建一个 `PuTTY` 保存的会话（请参阅第 4.1.2 节），该会话指定您的私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。
+
+  您可能还需要指定登录用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+
+- 在 `PSFTP` 中，您现在可以使用会话的名称而不是主机名：键入 `psftp sessionname` ，其中替换 `sessionname` 为已保存会话的名称。
+
+
+
+其次，您可以使用选项 `-i` 在命令行上提供私钥文件的名称。
+
+有关详细信息，请参见[第 3.11.3.18 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-identity)。
+
+
+
+第三，如果 `Pageant` 正在运行，`PSFTP` 将尝试使用 `Pageant` 进行身份验证（见[第9章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)）。
+
+所以你会这样做：
+
+- 确保 `Pageant` 正在运行，并且其中存储了您的私钥。
+
+- 像往常一样为 `PSFTP` 指定用户名和主机名。
+
+  `PSFTP` 将自动检测 `Pageant` 并尝试使用其中的密钥键值。
 
 有关公钥身份验证的更多常规信息，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。
 
+
+
+
+
+# 第 7 章：使用命令行连接工具 `Plink`
+
+`Plink` 是一个类似于`UNIX` `ssh` 的命令行连接工具。
+
+它主要用于自动化操作，例如使 `CVS` 访问远程服务器上的存储库。
+
+如果要在控制台窗口中运行交互式会话，则 `Plink` 可能不是您想要的。
+
+图f05
+
+
+
+## 7.1 启动 `Plink`
+
+`Plink` 是一个命令行应用程序。
+
+这意味着您不能只双击其图标来运行它，而是必须打开一个控制台窗口。
+
+在 `Windows 95` ，`98` 和 `ME` 中，这被称为“MS-DOS提示符”，而在 `Windows NT` ，`2000` 和 `XP` 中，它被称为“命令提示符”。
+
+它应该可以从“开始”菜单的“程序”部分获得。
+
+
+
+为了使用 `Plink` ，该文件 `plink.exe` 需要位于您的 `PATH` 目录中或当前目录中。
+
+要将包含 `Plink` 的目录添加到环境变量 `PATH` 中，请在控制台窗口中键入：
+
+```
+set PATH=C:\path\to\putty\directory;%PATH%
+```
+
+
+
+这仅适用于该特定控制台窗口的生存期（译者按：窗口关闭 `PATH` 设定则失效）。
+
+若要在 `Windows NT` 、`2000` 和 `XP` 上永久生效地设置 `PATH` ，请使用“系统控制面板”的“环境”选项卡。
+
+在 `Windows 95` 、`98` 和 `ME` 上，您需要编辑您的 `AUTOEXEC.BAT` 以包含类似上面的 `set` 命令。
+
+
+
+## 7.2 使用 `Plink`
+
+本节介绍如何使用 `Plink` 进行交互式登录和自动化流程的基础知识。
+
+一旦你有一个控制台窗口可以键入，你只需单独键入 `plink` 即可显示使用消息。
+
+这会告诉您正在使用的 `Plink` 版本，并简要总结如何使用 `Plink` ：
+
+```
+C:\>plink
+Plink: command-line connection utility
+Release 0.78
+Usage: plink [options] [user@]host [command]
+       ("host" can also be a PuTTY saved session name)
+Options:
+  -V        print version information and exit
+  -pgpfp    print PGP key fingerprints and exit
+  -v        show verbose messages
+  -load sessname  Load settings from saved session
+  -ssh -telnet -rlogin -raw -serial
+            force use of a particular protocol
+  -ssh-connection
+            force use of the bare ssh-connection protocol
+  -P port   connect to specified port
+  -l user   connect with specified username
+  -batch    disable all interactive prompts
+  -proxycmd command
+            use 'command' as local proxy
+  -sercfg configuration-string (e.g. 19200,8,n,1,X)
+            Specify the serial configuration (serial only)
+The following options only apply to SSH connections:
+  -pwfile file   login with password read from specified file
+  -D [listen-IP:]listen-port
+            Dynamic SOCKS-based port forwarding
+  -L [listen-IP:]listen-port:host:port
+            Forward local port to remote address
+  -R [listen-IP:]listen-port:host:port
+            Forward remote port to local address
+  -X -x     enable / disable X11 forwarding
+  -A -a     enable / disable agent forwarding
+  -t -T     enable / disable pty allocation
+  -1 -2     force use of particular SSH protocol version
+  -4 -6     force use of IPv4 or IPv6
+  -C        enable compression
+  -i key    private key file for user authentication
+  -noagent  disable use of Pageant
+  -agent    enable use of Pageant
+  -no-trivial-auth
+            disconnect if SSH authentication succeeds trivially
+  -noshare  disable use of connection sharing
+  -share    enable use of connection sharing
+  -hostkey keyid
+            manually specify a host key (may be repeated)
+  -sanitise-stderr, -sanitise-stdout, -no-sanitise-stderr, -no-sanitise-stdout
+            do/don't strip control chars from standard output/error
+  -no-antispoof   omit anti-spoofing prompt after authentication
+  -m file   read remote command(s) from file
+  -s        remote command is an SSH subsystem (SSH-2 only)
+  -N        don't start a shell/command (SSH-2 only)
+  -nc host:port
+            open tunnel in place of session (SSH-2 only)
+  -sshlog file
+  -sshrawlog file
+            log protocol details to a file
+  -logoverwrite
+  -logappend
+            control what happens when a log file already exists
+  -shareexists
+            test whether a connection-sharing upstream exists
+```
+
+图f06
+
+
+
+一旦这工作，您就可以使用 `Plink` 了。
+
+
+
+### 7.2.1 使用 Plink 进行交互式登录
+
+要与远程服务器建立简单的交互式连接，只需键入，然后键入主机名：`plink`
+
+```
+C:\>plink login.example.com
+
+Debian GNU/Linux 2.2 flunky.example.com
+flunky login:
+```
+
+然后，您应该能够正常登录并运行会话。服务器发送的输出将直接写入命令提示符窗口，该窗口很可能不会以服务器预期的方式解释终端控制代码。因此，例如，如果您运行任何全屏应用程序，您可能会看到窗口中出现奇怪的字符。像这样的交互式连接不是Plink的重点。
+
+为了使用不同的协议进行连接，您可以为命令行提供选项 、、、 或 。要建立 SSH 连接，例如：`-ssh``-ssh-connection``-telnet``-rlogin``-raw`
+
+```
+C:\>plink -ssh login.example.com
+login as:
+```
+
+如果您已经设置了 PuTTY 保存的会话，则可以提供保存的会话名称，而不是提供主机名。这允许您使用公钥身份验证、指定用户名以及使用 PuTTY 的大多数其他功能：
+
+```
+C:\>plink my-ssh-session
+Sent username "fred"
+Authenticating with public key "fred@winbox"
+Last login: Thu Dec  6 19:25:33 2001 from :0.0
+fred@flunky:~$
+```
+
+（您也可以使用命令行选项加载已保存的会话;请参见[第 3.11.3.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-load)。如果使用 ，则保存的会话存在，并且它指定了主机名，则不能同时指定 or 参数 - 它将被视为远程命令的一部分。`-load``-load``host``user@host`
+
+### 7.2.2 使用 Plink 进行自动连接
+
+更典型的是，Plink与SSH协议一起使用，使您能够直接与服务器上运行的程序通信。为此，您必须确保Plink*使用的是*SSH协议。您可以通过多种方式执行此操作：
+
+- 使用[第 7.2.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-interactive)中所述的选项。`-ssh`
+- 设置一个 PuTTY 保存的会话，该会话描述要连接到的服务器，并将协议指定为 SSH。
+- 将 Windows 环境变量设置为单词 。`PLINK_PROTOCOL``ssh`
+
+通常 Plink 不是由用户直接调用的，而是由另一个进程自动运行。因此，您通常不希望 Plink 提示您输入用户名或密码。
+
+接下来，您可能需要避免 Plink 可能产生的各种交互式提示。系统可能会提示您验证要连接到的服务器的主机密钥、输入用户名或输入密码。
+
+为避免在使用 Plink 进行自动连接时提示输入服务器主机密钥，您可以先*手动连接（*使用 PuTTY 或 Plink 之一）到同一服务器，验证主机密钥（有关更多信息，请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），然后选择“接受”将主机密钥添加到注册表。之后，连接到该服务器的 Plink 命令不应提供主机密钥提示，除非主机密钥更改。或者，您可以在每次使用 Plink 的命令行时在 Plink 的命令行上指定适当的主机密钥;请参见[第 3.11.3.22 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-hostkey)。
+
+要避免系统提示输入用户名，您可以：
+
+- 使用该选项在命令行上指定用户名。例如。`-l``plink login.example.com -l fred`
+- 设置一个 PuTTY 保存的会话，该会话描述您要连接到的服务器，并指定登录时使用的用户名（请参阅[第 4.15.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-username)）。
+
+为避免系统提示输入密码，您几乎肯定应该设置公钥身份验证。（有关公钥身份验证的一般介绍，请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)。同样，您可以通过两种方式执行此操作：
+
+- 设置一个 PuTTY 保存的会话，该会话描述您要连接到的服务器，并指定私钥文件（请参阅[第 4.22.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-privkey)）。要使其在没有提示的情况下工作，您的私钥需要没有密码。
+- 将私钥存储在选美中。更多信息见[第9章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant)。
+
+完成所有这些操作后，您应该能够在SSH服务器计算机上运行远程命令，并在没有提示的情况下自动执行它：
+
+```
+C:\>plink login.example.com -l fred echo hello, world
+hello, world
+
+C:\>
+```
+
+或者，如果您已设置包含所有连接详细信息的已保存会话：
+
+```
+C:\>plink mysession echo hello, world
+hello, world
+
+C:\>
+```
+
+然后，您可以设置其他程序来运行此Plink命令并与之通信，就好像它是服务器计算机上的进程一样。
+
+### 7.2.3 Plink命令行选项
+
+Plink 接受 PuTTY 工具支持的所有常规命令行选项。有关这些选项的说明，请参见[第 3.11.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-general-opts)。
+
+Plink还支持一些自己的选项。以下部分介绍了 Plink 的特定命令行选项。
+
+#### 7.2.3.1 ： 禁用所有交互式提示`-batch`
+
+如果您使用该选项，Plink 在建立连接时永远不会给出交互式提示。例如，如果服务器的主机密钥无效（请参阅[第 2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter2.html#gs-hostkey)），则连接将被简单地放弃，而不是询问您下一步该怎么做。`-batch`
+
+这可能有助于 Plink 在自动脚本中使用时的行为：使用 ，如果在连接时出现问题，批处理作业将失败而不是挂起。`-batch`
+
+#### 7.2.3.2 ： 远程命令是 SSH 子系统`-s`
+
+如果指定该选项，Plink 会将指定的命令作为 SSH“子系统”的名称传递，而不是普通命令行。`-s`
+
+（此选项仅对 SSH-2 协议有意义。
+
+#### 7.2.3.3 ： 测试并尝试共享现有连接。`-share`
+
+此选项用于检测是否可以共享现有连接（有关 SSH 连接共享的详细信息，请参阅[第 4.17.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing)）并重用该连接。
+
+表单的 Plink 调用：
+
+```
+plink -share <session>
+```
+
+将测试当前是否有相关会话的可行“上游”，可以使用您通常与 Plink 一起使用的任何语法来建立实际连接（主机/端口号、裸保存的会话名称等）指定该上游。如果未找到并指定了“上游”可行会话，则此连接将成为后续连接共享尝试的“上游”连接。`-load``-share`
+
+（此选项仅对 SSH-2 协议有意义。
+
+#### 7.2.3.4 ： 上游连接共享测试`-shareexists`
+
+此选项不会建立新连接;相反，它允许测试是否存在可以共享的现有连接。（有关 SSH 连接共享的详细信息，请参见[第 4.17.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-sharing)。
+
+表单的 Plink 调用：
+
+```
+plink -shareexists <session>
+```
+
+将测试当前是否有相关会话的可行“上游”，可以使用您通常与 Plink 一起使用的任何语法来建立实际连接（主机/端口号、裸保存的会话名称等）指定该上游。如果存在可用的“上游”，则返回零退出状态，否则为非零。`-load`
+
+（此选项仅对 SSH-2 协议有意义。
+
+#### 7.2.3.5 *流*：控制输出清理`-sanitise-`
+
+在某些情况下，Plink 会将清理传递应用于从服务器接收的输出，以去除退格键和转义字符等控制字符。
+
+这样做的目的是防止远程进程在将 Plink 用作类似或 CVS 的传输时通过标准错误通道发送令人困惑的转义序列。如果服务器实际上想要发送错误消息，则可能是纯文本;如果服务器滥用该通道试图覆盖终端显示的意外部分，Plink 将尝试阻止它。`git`
+
+默认情况下，这仅适用于发送到 Windows 控制台设备或 Unix 终端设备的输出通道。（任何流向其他地方的输出流都可能需要 8 位协议，并且根本不必须被篡改。如果您告诉 Plink 分配远程伪终端（请参阅[第 3.11.3.12](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-pty) 节和第 [4.24.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-pty)），它也会停止发生，因为在这种情况下，您通常*希望*来自服务器的转义序列转到您的终端。
+
+但是，如果 Plink 猜错了您是否要进行此清理，您可以使用以下选项之一在任一方向上覆盖它：
+
+- `-sanitise-stderr`
+
+  清理写入 Plink 标准错误通道的服务器数据，无论终端、控制台和远程 ptys 如何。
+
+- `-no-sanitise-stderr`
+
+  不要清理写入 Plink 标准错误通道的服务器数据。
+
+- `-sanitise-stdout`
+
+  清理写入 Plink 标准输出通道的服务器数据。
+
+- `-no-sanitise-stdout`
+
+  不要清理写入 Plink 标准输出通道的服务器数据。
+
+#### 7.2.3.6 -无反欺骗：关闭身份验证欺骗保护提示
+
+在SSH中，一些可能的服务器身份验证方法需要用户输入（例如，密码身份验证或输入私钥密码），而其他方法则不需要（例如Pageant中持有的私钥）。
+
+如果您使用 Plink 运行交互式登录会话，并且 Plink 在不需要任何用户交互的情况下进行身份验证，并且如果服务器是恶意的或遭到入侵的，它可能会尝试通过发送*看起来像* Plink 的本地提示之一来诱骗您向其提供不应进入服务器的身份验证数据（例如您的私钥密码）， 好像普林克还没有经过身份验证。
+
+为了防止这种情况，Plink 的默认策略是完成身份验证阶段，并显示如下所示的最后一个简单提示：
+
+```
+Access granted. Press Return to begin session.
+```
+
+这样，如果您在该行*之后*看到任何看起来像身份验证提示的内容，您就会知道它不是来自 Plink。
+
+这个额外的互动步骤很不方便。因此，Plink将在尽可能多的情况下将其关闭：
+
+- 如果 Plink 的标准输入不指向控制台或终端设备（例如，如果您使用 Plink 作为某些自动化应用程序（如版本控制）的传输），那么您无论如何*都无法*在服务器中键入密码短语。在这种情况下，Plink不会试图保护您免受服务器试图欺骗您这样做的伤害。
+- 如果 Plink 处于批处理模式（参见[第 7.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-batch)），则它*永远不会*执行任何交互式身份验证。因此，任何看起来像交互式身份验证提示的东西都会被自动怀疑，因此 Plink 省略了反欺骗提示。
+
+但是，如果您仍然发现保护提示不方便，并且您相信服务器不会尝试这样的技巧，则可以使用“”选项将其关闭。`-no-antispoof`
+
+## 7.3 在批处理文件和脚本中使用 Plink
+
+一旦您将 Plink 设置为能够在没有任何交互式提示的情况下登录到远程服务器（请参阅[第 7.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-batch)），您就可以将其用于许多脚本和批处理目的。例如，若要在远程计算机上启动备份，可以使用如下命令：
+
+```
+plink root@myserver /etc/backups/do-backup.sh
+```
+
+或者，您可能想要获取与特定 Web 区域相关的所有系统日志行：
+
+```
+plink mysession grep /~fred/ /var/log/httpd/access.log > fredlog
+```
+
+您可以在服务器命令行上有用地运行的任何非交互式命令，都可以使用 Plink 以这种方式在批处理文件中运行。
+
+## 7.4 在 CVS 中使用 Plink
+
+要将 Plink 与 CVS 一起使用，您需要将环境变量设置为指向 Plink：`CVS_RSH`
+
+```
+set CVS_RSH=\path\to\plink.exe
+```
+
+您还需要安排能够在没有任何交互式提示的情况下连接到远程主机，如[第 7.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-batch)中所述。
+
+然后，您应该能够按如下方式运行 CVS：
+
+```
+cvs -d :ext:user@sessionname:/path/to/repository co module
+```
+
+如果您在保存的会话中指定了用户名，则甚至不需要指定其中的“用户”部分，只需说：
+
+```
+cvs -d :ext:sessionname:/path/to/repository co module
+```
+
+## 7.5 将 Plink 与 WinCVS 结合使用
+
+Plink也可以与WinCVS一起使用。首先，安排 Plink 能够以非交互方式连接到远程主机，如[第 7.2.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-usage-batch)所述。
+
+然后，在WinCVS中，从“管理”菜单中调出“首选项”对话框，然后切换到*“*端口”选项卡。勾选标有“检查备用名称”的框，然后在右侧的文本输入字段中输入 .在“首选项”对话框中选择“确定”。`rsh``plink.exe`
+
+接下来，从 WinCVS 的“管理员”菜单中选择“命令行”，然后键入 CVS 命令，如[第 7.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter7.html#plink-cvs)所示，例如：
+
+```
+cvs -d :ext:user@hostname:/path/to/repository co module
+```
+
+或（如果您使用的是已保存的会话）：
+
+```
+cvs -d :ext:user@sessionname:/path/to/repository co module
+```
+
+使用“更改文件夹”按钮选择要签出的文件夹，然后单击“确定”以签出您的模块。一旦你签出模块，WinCVS将很乐意从GUI调用plink进行CVS操作。
