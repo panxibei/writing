@@ -8263,6 +8263,407 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 
 
+# 第 9 章：使用 `Pageant` 进行身份验证
+
+`Pageant `是一个 `SSH` 身份验证代理。
+
+它将您的私钥保存在内存中，已经解码，因此您可以经常使用它们，而无需键入密码。
+
+图g01
+
+
+
+## 9.1 `Pageant` 入门
+
+在运行 `Pageant` 之前，您需要有一个 `*.PPK` 格式的私钥。请参阅[第 8 章](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#pubkey)以了解如何生成和使用一个。
+
+当您运行 `Pageant` 时，它会将一个看上去像戴帽子的计算机图标放入系统托盘中。
+
+然后它将坐下来什么都不做，直到您将私钥加载到其中。
+
+（您可能需要使用 `Windows` 的“显示隐藏图标”箭头才能查看 `Pageant` 图标。）
+
+
+
+如果您用鼠标右键单击 `Pageant` 图标，您将看到一个菜单。
+
+从此菜单中选择“查看密钥”，将出现`Pageant`主窗口。
+
+（您也可以通过双击`Pageant`图标来调出此窗口。）
+
+图g02
+
+图g03
+
+
+
+“`Pageant`”窗口包含一个列表框。
+
+这显示了 `Pageant` 持有的私钥。
+
+当您启动 `Pageant` 时，它没有密钥键，因此列表框将为空。
+
+添加一个或多个密钥键后，它们将显示在列表框中。
+
+
+
+要向 `Pageant` 添加密钥，请按“添加密钥”按钮。
+
+`Pageant` 将弹出一个文件对话框，标记为“选择私钥文件”。
+
+在此对话框中找到您的私钥文件，然后按“打开”。
+
+图g04
+
+
+
+`Pageant`现在将加载私钥。
+
+如果密钥受密码保护，`Pageant` 会要求您输入密码。
+
+加载密钥后，它将出现在 `Pageant` 窗口的列表中。
+
+图g05
+
+图g06
+
+
+
+现在启动 `PuTTY` 并打开到接受您的密钥的站点的 `SSH` 会话。
+
+`PuTTY` 会注意到 `Pageant` 正在运行，自动从 `Pageant` 中检索密钥，并使用它来进行身份验证。
+
+您现在可以根据需要打开任意数量的 `PuTTY` 会话，而无需再次输入密码。
+
+
+
+（ `PuTTY` 可以配置为不尝试使用 `Pageant` ，但默认情况下它会尝试。有关详细信息，请参阅[第 4.21.4 节和第 3.11.3.9 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-tryagent)。）
+
+
+
+当您要关闭 `Pageant` 时，请单击系统托盘中 `Pageant` 图标上的右键，然后从菜单中选择“退出”。
+
+关闭 `Pageant` 主窗口*不会*关闭 `Pageant` 。
+
+
+
+如果您希望 `Pageant` 保持运行但想丢弃它获得的所有密钥键，请从系统托盘菜单中选择“删除所有键”。
+
+图g07
+
+
+
+## 9.2 `Pageant` 主窗口
+
+当您左键单击 `Pageant` 系统托盘图标时，或者右键单击并从菜单中选择 `view keys` “查看键”时，就会出现 `Pageant` 主窗口。
+
+您可以使用它来跟踪当前加载到 `Pageant` 中的密钥，并添加新密钥或删除现有密钥。
+
+图g08
+
+
+
+### 9.2.1 键列表框
+
+`Pageant` 主窗口中的大列表框列出了当前加载到 `Pageant` 中的私钥。
+
+该列表可能如下所示：
+
+```
+Ed25519    SHA256:TddlQk20DVs4LRcAsIfDN9pInKpY06D+h4kSHwWAj4w
+RSA  2048  SHA256:8DFtyHm3kQihgy52nzX96qMcEVOq7/yJmmwQQhBWYFg
+```
+
+
+
+对于每个键，列表框将告诉您：
+
+- 密钥的类型。
+
+  目前，这可以是“RSA”（用于 `SSH-2` 协议的 `RSA` 密钥）、“DSA”（用于 `SSH-2` 协议的 `DSA` 密钥）、“NIST”（用于 `SSH-2` 协议的 `ECDSA` 密钥）、“Ed25519”（用于 `SSH-25519` 协议的 `Ed2` 密钥）、“Ed448”（用于 `SSH-448` 协议的 `Ed2` 密钥）或“SSH-1”（用于旧 `SSH-1` 协议的 `RSA` 密钥）。（如果密钥具有关联的证书，则此处会显示“ `cert` ”后缀。）
+
+- 密钥的大小（以位为单位），适用于具有不同大小的密钥类型。（对于 `ECDSA` 的 `“NIST”密钥，这表示为“p256”或“p384”或“p521”。
+
+- 公钥的指纹。
+
+  这应该是 `PuTTYgen` 提供的相同指纹，并且（希望）也与远程实用程序显示的指纹相同，例如 `ssh-keygen` 应用于文件 `authorized_keys` 时。
+
+  对于 `SSH-2` 密钥，默认情况下以“SHA256”格式显示。
+
+  您可以使用“指纹类型”下拉菜单更改为较旧的“MD5”格式（看起来像 `aa:bb:cc:...` ），但请记住，这种格式不太安全，应尽可能避免用于比较目的。
+
+  如果加载到 `Pageant` 中的某些密钥附加了证书，则 `Pageant` 将默认显示底层密钥的指纹。
+
+  这样，同一密钥的认证和未认证版本将具有相同的指纹，因此您可以看到它们匹配。
+
+  您可以改为使用“指纹类型”下拉菜单要求为认证密钥显示不同的指纹，其中包括作为指纹数据一部分的证书。
+
+  这样，您就可以区分两个证书。
+
+- 附加到密钥的注释。
+
+- 延迟解密的状态（如果为此密钥启用）。请参阅[第 9.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-deferred-decryption)。
+
+
+
+### 9.2.2 “添加密钥”按钮
+
+要通过从本地磁盘文件中读取密钥来将密钥添加到 `Pageant` ，请按 `Pageant` 主窗口中的“添加密钥”按钮，或者右键单击系统托盘中的 `Pageant` 图标并从那里选择“添加密钥”。
+
+图g09
+
+图g10
+
+
+
+`Pageant` 将弹出一个文件对话框，标记为“选择私钥文件”。
+
+在此对话框中找到您的私钥文件，然后按“打开”。
+
+如果要一次添加多个键，可以使用 `Shift` 并单击（选择多个相邻文件）或按住 `Ctrl` 并单击（选择不相邻的文件）选择多个文件。
+
+
+
+`Pageant` 现在将加载私钥。
+
+如果密钥受密码保护，`Pageant` 会要求您输入密码。
+
+（这不是向`Pageant` 添加私钥的唯一方法。您还可以使用代理转发从远程系统添加一个;有关详细信息，请参见[第 9.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-forward)。）
+
+
+
+### 9.2.3 “删除密钥”按钮
+
+如果您需要从 `Pageant` 中删除某个键，请在列表框中选择该键，然后按“删除键”按钮。
+
+`Pageant` 将从其内存中删除密钥。
+
+图g11
+
+
+
+您可以将此应用于使用“添加密钥”按钮添加的密钥，或使用代理转发远程添加的密钥（请参阅[第 9.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-forward)）;这没有什么区别。
+
+
+
+## 9.3 `Pageant` 命令行
+
+`Pageant` 可以通过在其命令行上指定指令来使其在启动时自动执行操作。
+
+如果您从 `Windows` `GUI` 启动 `Pageant` ，则可以通过编辑启动它的 `Windows` 快捷方式的属性来安排此操作。
+
+如果 `Pageant` 已在运行，则使用以下选项再次调用它会导致对现有实例而不是新实例执行操作。
+
+
+
+### 9.3.1 使`Pageant`大赛在启动时自动加载密钥
+
+如果您在 `Pageant` 命令行上提供私钥，则 `Pageant` 可以在启动时自动加载一个或多个私钥。
+
+然后，命令行可能如下所示：
+
+```
+C:\PuTTY\pageant.exe d:\main.ppk d:\secondary.ppk
+```
+
+
+
+如果密钥是加密存储的，`Pageant` 将在启动时请求密码。
+
+如果 `Pageant` 已在运行，则此语法会将密钥加载到现有 `Pageant` 中。
+
+您可以指定“`--encrypted`”选项来延迟这些密钥的解密;请参阅[第 9.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter9.html#pageant-deferred-decryption)。
+
+
+
+### 9.3.2 让 `Pageant` 运行另一个程序
+
+您可以安排 `Pageant` 在初始化自身并加载其命令行上指定的任何键后启动另一个程序。
+
+这个程序（也许是一个 `PuTTY` ，或者一个使用 `Plink` 的 `WinCVS` ，或者其他什么）将能够使用 `Pageant` 加载的密钥。
+
+
+
+您可以通过指定后跟命令选项 `-c` 来执行此操作，如下所示：
+
+```
+C:\PuTTY\pageant.exe d:\main.ppk -c C:\PuTTY\putty.exe
+```
+
+
+
+### 9.3.3 与 `Windows` `OpenSSH` 集成
+
+`Windows` 自己的 `OpenSSH` 端口使用与 `Pageant` 相同的机制与其 `SSH` 代理（ `Windows` 命名管道）通信。
+
+这意味着 `Windows`  的 `OpenSSH` 可以直接与 `Pageant` 通信，如果它知道在哪里可以找到 `Pageant` 的命名管道。
+
+
+
+当 `Pageant` 启动时，它可以选择写出一个包含 `OpenSSH` 配置指令的文件，告诉 `Windows`  的 `ssh.exe` 在哪里可以找到 `Pageant` 。
+
+如果从 `Windows` 的 `SSH` 配置中包含此文件，则 `ssh.exe` 应自动使用 `Pageant` 作为其代理，以便您可以将密钥保存在一个位置，并使两个 `SSH` 客户端都能够使用它们。
+
+该选项是 `--openssh-config` ，并在它后面加上文件名。
+
+
+
+要从主 `OpenSSH` 配置中引用此文件，可以使用 `Include` 指令。
+
+例如，您可以像这样运行 `Pageant`（当然，用您自己的用户名替换）：
+
+```
+pageant --openssh-config C:\Users\Simon\.ssh\pageant.conf
+```
+
+
+
+然后将这样的指令添加到您的主 `.ssh\config` 文件中（假设它位于您刚刚放置 `pageant.conf` 的同一目录中）：
+
+```
+Include pageant.conf
+```
+
+
+
+**注意**：此技术仅适用于 `Windows` 的 `OpenSSH` 端口，如果您安装了它，它保存在 `C:\Windows\System32\OpenSSH\ssh.exe` 。
+
+（如果没有，它可以作为 `Windows` 可选功能安装，例如，通过设置>应用程序和功能>可选功能>添加功能> `OpenSSH` 客户端。
+
+
+
+还有其他版本的 `Windows` 版 `OpenSSH` ，特别是 `Windows` 附带的 `git` 版本。
+
+这些可能无法使用相同的配置，因为它们往往依赖于 `MinGW` 或 `MSys` 等 `Unix` 仿真层，因此它们不会说 `Windows` 本机路径名语法或理解命名管道。
+
+上述说明仅适用于 `Windows` 自己的 `OpenSSH` 版本。
+
+
+
+因此，如果您想将 `Windows` 版 `git` 与 `Pageant` 中持有的 `SSH` 密钥一起使用，则必须设置环境变量 `GIT_SSH` ，以指向不同的程序。
+
+您可以在完成此设置后立即将其指向 `c:\Windows\System32\OpenSSH\ssh.exe`  ，但将其指向 `Plink` 也同样容易！
+
+
+
+### 9.3.4 Unix 域套接字：与 WSL 集成 1
+
+Pageant可以监听“Unix域套接字”的WinSock实现。它们与原始 Windows 子系统（现在称为 WSL 1）中的 Unix 域套接字进行互操作。因此，如果您要求 Pageant 收听其中之一，那么您的 WSL 1 流程可以直接与 Pageant 对话。
+
+要配置此项，请使用选项 运行 Pageant，后跟路径名。然后，在 WSL 1 中，将环境变量设置为指向该路径名的 WSL 转换。`--unix``SSH_AUTH_SOCK`
+
+例如，您可以运行
+
+```
+pageant --unix C:\Users\Simon\.ssh\agent.sock
+```
+
+并在 WSL 1 中，设置环境变量
+
+```
+SSH_AUTH_SOCK=/mnt/c/Users/Simon/.ssh/agent.sock
+```
+
+或者，可以在 WSL 中的文件中添加一行，上面写着`.ssh/config`
+
+```
+IdentityAgent /mnt/c/Users/Simon/.ssh/agent.sock
+```
+
+尽管这样做可能意味着命令不会找到代理，即使它本身会。`ssh-add``ssh`
+
+**安全说明**：Unix 域套接字通过其包含目录上的文件保护防止其他用户访问。因此，如果您的 Windows 计算机是多用户计算机，请确保在其他用户根本无法访问的目录中创建套接字。（事实上，这是一般原则的好主意。
+
+**兼容性说明**：WSL 2 进程无法通过此机制与 Pageant 通信，因为 WSL 2 的 Unix 域套接字由单独的 Linux 内核管理，而不是由 WinSock 通信的同一内核管理。
+
+### 9.3.5 从可见的键列表开始
+
+启动`Pageant`，可以选择在启动后立即显示主窗口。`--keylist`
+
+### 9.3.6 限制窗口进程 ACL
+
+`Pageant`支持与其他 PuTTY 实用程序相同的选项来锁定`Pageant`进程的访问控制;请参阅[第 3.11.3.28 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-restrict-acl)，了解您可能想要这样做的原因。`-restrict-acl`
+
+默认情况下，如果 Pageant 以 开头，它不会将其传递给从其系统托盘子菜单启动的任何 PuTTY 会话。用于更改此设置。（同样，有关详细信息，请参阅[第 3.11.3.28 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-restrict-acl)。`-restrict-acl``-restrict-putty-acl`
+
+## 9.4 使用代理转发
+
+代理转发是一种机制，允许 SSH 服务器计算机上的应用程序与客户端计算机上的代理通信。
+
+请注意，目前 SSH-2 中的代理转发是否可用取决于您的服务器。Pageant的协议与OpenSSH服务器兼容，但服务器使用不同的代理协议，PuTTY尚不支持该协议。`ssh.com`
+
+要启用代理转发，请先开始`Pageant`比赛。然后设置启用了“允许代理转发”的 PuTTY SSH 会话（请参阅[第 4.21.7 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-agentfwd)）。正常打开会话。（或者，您可以使用命令行选项;有关详细信息，请参见[第 3.11.3.10 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-cmdline-agent)。`-A`
+
+如果这有效，服务器上的应用程序现在应该可以访问 Unix 域套接字，SSH 服务器将转发回 PuTTY，PuTTY 将转发到代理。要检查这是否确实发生过，您可以在 Unix 服务器计算机上尝试以下命令：
+
+```
+unixbox:~$ echo $SSH_AUTH_SOCK
+/tmp/ssh-XXNP18Jz/agent.28794
+unixbox:~$
+```
+
+如果结果行显示为空白，则表示尚未启用代理转发。
+
+现在，如果您在服务器上运行并使用它来连接到另一台接受 Pageant 中密钥之一的服务器，您应该能够在没有密码的情况下登录：`ssh`
+
+```
+unixbox:~$ ssh -v otherunixbox
+[...]
+debug: next auth method to try is publickey
+debug: userauth_pubkey_agent: trying agent key my-putty-key
+debug: ssh-userauth2 successful: method publickey
+[...]
+```
+
+如果*同时在该 SSH* 连接上启用代理转发（请参阅服务器端 SSH 客户端的手册以了解如何执行此操作），则身份验证密钥仍将在您连接到的下一台计算机上可用 - 距离实际存储密钥的两个 SSH 连接。
+
+此外，如果您在其中一个SSH服务器上有私钥，则可以使用本地命令将其一直发送回Pageant：`ssh-add`
+
+```
+unixbox:~$ ssh-add ~/.ssh/id_rsa
+Need passphrase for /home/fred/.ssh/id_rsa
+Enter passphrase for /home/fred/.ssh/id_rsa:
+Identity added: /home/fred/.ssh/id_rsa (/home/simon/.ssh/id_rsa)
+unixbox:~$
+```
+
+然后，它可用于具有代理转发功能的每台计算机（而不仅仅是您添加代理转发的位置下游的计算机）。
+
+## 9.5 加载密钥而不解密
+
+您可以在*不解密的情况下将*密钥添加到 Pageant。密钥文件将保存在Pageant的内存中，仍然加密，当客户端程序首次尝试使用该密钥时，Pageant将显示一个对话框，提示输入密码，以便可以解密密钥。
+
+无论密钥是由本地运行的 PuTTY 实例使用，还是由通过代理转发连接到 Pageant 的远程客户端使用，其工作方式都相同。
+
+要以这种加密形式向`Pageant`添加密钥，请按`Pageant`主窗口中的“添加密钥（加密）”按钮，或者右键单击系统托盘中的`Pageant`图标，然后从那里选择“添加密钥（加密）”。Pageant将弹出一个文件对话框，其方式与普通的“添加密钥”按钮相同。但它不会要求密码。相反，密钥将在主窗口中列出，后面有“（加密）”。
+
+要首先启动 Pageant 并加载加密密钥，您可以使用命令行上的“”选项。例如：`--encrypted`
+
+```
+C:\PuTTY\pageant.exe --encrypted d:\main.ppk
+```
+
+首次使用解密密钥后，它将保持解密状态，以便可以再次使用。主窗口将列出密钥，后面带有“（重新加密）”。您可以使用`Pageant`主窗口中的“重新加密”按钮将其恢复到需要密码的先前状态。
+
+您还可以通过从系统托盘菜单中选择“重新加密所有密钥”来“重新加密”添加的所有密钥。（请注意，这*不会*丢弃以前未添加加密的明文密钥！
+
+**警告**：当 Pageant 显示解密已加载密钥的提示时，它无法为提示对话框提供键盘焦点。据我所知，这是Windows针对恶意软件的故意防御措施。因此，请确保在输入密码之前单击提示窗口，否则密码可能会发送到您不想信任它的地方！
+
+## 9.6 安全注意事项
+
+使用 Pageant 进行公钥身份验证，您可以方便地打开多个 SSH 会话，而无需每次都键入密码，而且还为您提供了永远不会在磁盘上存储解密私钥的安全优势。许多人认为这是安全性和便利性之间的良好折衷。
+
+然而，*这是一种*妥协。在Pageant中保存解密的私钥比将它们存储在易于查找的磁盘文件中要好，但仍然不如将它们存储在任何地方的安全性。这有两个原因：
+
+- 不幸的是，Windows 无法保护内存片段不被写入系统交换文件。因此，如果Pageant长时间持有您的私钥，则解密的私钥数据可能会被写入系统交换文件，并且稍后获得硬盘访问权限的攻击者可能能够恢复该数据。（但是，如果您在磁盘文件中存储了未加密的密钥，他们*肯定*能够恢复它。
+- 尽管与大多数现代操作系统一样，Windows 可防止程序意外访问彼此的内存空间，但它确实允许程序出于调试等特殊目的故意访问彼此的内存空间。这意味着，如果您在 Pageant 运行时允许病毒、特洛伊木马或其他恶意程序进入您的 Windows 系统，它可能会访问 Pageant 进程的内存，提取解密的身份验证密钥，并将其发送回其主服务器。
+
+同样，使用代理*转发*是对其他一键式身份验证方法的安全性改进，但并不完美。在Windows盒子上的Pageant中持有密钥比在远程服务器机器本身（在代理中或只是在磁盘上未加密）持有密钥具有安全优势，因为如果服务器机器看到您的未加密私钥，那么系统管理员或任何破解机器的人都可以窃取密钥并假装是你只要他们愿意。
+
+但是，服务器计算机的系统管理员始终可以在*该计算机上*假装是您。因此，如果您将代理转发到服务器计算机，则该计算机的系统管理员可以访问转发的代理连接并从您的任何私钥请求签名，因此可以像您一样登录到其他计算机。他们只能在有限的范围内做到这一点 - 当代理转发消失时，他们失去了能力 - 但使用Pageant实际上并不能*阻止*服务器上的系统管理员（或黑客）这样做。
+
+因此，如果您不信任服务器计算机的系统管理员，则*永远不应*使用代理转发到该计算机。（当然，您也不应该在该计算机上存储私钥，在其中键入密码短语，或以任何方式从该计算机登录其他计算机;`Pageant`在这方面并不是独一无二的。
+
 
 
 
