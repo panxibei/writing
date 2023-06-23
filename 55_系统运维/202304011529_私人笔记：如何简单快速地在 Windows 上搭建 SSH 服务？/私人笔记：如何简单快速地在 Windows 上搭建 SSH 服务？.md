@@ -486,6 +486,14 @@ netstat -ano
 
 
 
+**freeSSHd.7z(853K)**
+
+下载链接：https://pan.baidu.com/s/1i2iyq0cz5bDkuoMM-Uz-ZQ
+
+提取码：nmcp
+
+
+
 到此关于 `freeSSHd` 的安装、设置和使用基本介绍完了。
 
 当然作为初学者的我，在这儿也只是向小伙伴们分享比较基础的内容。
