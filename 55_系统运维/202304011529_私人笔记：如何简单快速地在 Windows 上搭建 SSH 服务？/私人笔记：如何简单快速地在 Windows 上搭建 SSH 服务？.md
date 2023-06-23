@@ -4,11 +4,11 @@
 
 英文：private-note-how-to-easily-and-quickly-build-ssh-service-on-windows
 
-关键字：ssh,openssh,sshd,windows,服务
+关键字：ssh,openssh,sshd,windows,服务,freesshd,freeftpd
 
 
 
-通常在 `Linux` 上安装 `SSH` （确切地说应该是 `SSHd` ）服务非常容易。
+通常在 `Linux` 上安装 `SSH` 服务（确切地说应该是 `SSHd` ）非常简单容易。
 
 不过你有没有想过，如何在 `Windows` 上也安装上 `SSH` 服务呢？
 
@@ -16,25 +16,35 @@
 
 慢着，你说的 `SSH` 它是个啥？
 
-哦，简单地说 `SSH` 是一种网络协议，通常用来加密连接登录服务器。
+哦，简单地说 `SSH` （ `Secure Shell` ）是一种网络协议，通常用来加密连接登录服务器，然后通过这个加密后的连接来进一步进行后续的各种操作管理。
 
-熟悉 `Linux` 的小伙伴应该不会对 `SSH` 陌生，它是常用的不能再常用的计算机连接方式了。
-
-
-
-有时出于一些原因（比如调试程序），我们可能需要用到 `SSH` 服务。
-
-然而如果没有现成的安装有 `SSH` 服务的 `Linux` 系统，那么又如何快速有效地搭建起一个呢？
-
-那自然是在我们非常熟悉的 `Windows` 上搞了，那 `Windows` 上有这种程序吗？
-
-还真有，不老少，不过似乎网上主流的免费简单的就找到一个：`freeSSHd` 。
+熟悉 `Linux` 的小伙伴们应该不会对 `SSH` 陌生，它是常用的不能再常用的计算机连接方式了。
 
 
 
-一看名字就知道免费好用，网上也有不少的教程。
+有时出于某些原因（比如调试程序），我们可能需要连到 `Windows` 上。
 
-不过因为自己没怎么使用过，有些教程呢也写得比较笼统，因此特意将自身的安装使用体验整理成了一个笔记，也方便有使用 `freeSSHd` 的小伙伴们参考吧！
+然而只是一些指令性的操作，又不想用远程桌面之类的图形界面来连接 `Windows` ，那么很显然，我们可以用到 `SSH` 服务。
+
+不过要知道这是 `Windows` ，可不像在 `Linux` 上那么方便了，因此我们就要思考一下，如何快速有效地搭建起一个能在 `Windows` 上跑的 `SSH` 服务呢？
+
+
+
+这里我们不得不需要插几句话，从 `Windows 10 1809` 和 `Windows Server 2019` ，`Windows` 开始正式支持 `OpenSSH Server` 了。
+
+因此，如果你的 `Windows` 版本较高，可以直接使用 `OpenSSH` 。
+
+不过为了照顾至今仍在坚守陈旧版本 `Windows` 的小伙伴们，我找到一个通用的第三方免费简单好用的 `SSH` 服务软件： `freeSSHd` 。
+
+至于 `OpenSSH` ，以后我也会写文章分享使用经验给大家。
+
+这次我们先来研究一下这个 `freeSSHd` ！
+
+
+
+`freeSSHd` ，一看名字就知道免费好用，这玩意由来已久，自然网上也有不少的教程。
+
+不过因为自己没怎么用过，有些教程呢又写得比较笼统，因此特意将自身的安装使用体验整理成了一个笔记，也方便需要使用 `freeSSHd` 的小伙伴们参考吧！
 
 各位，准备好了吗？
 
@@ -48,15 +58,17 @@
 http://www.freesshd.com
 ```
 
-像这个样子：
+打开来像这个样子。
 
-图z01
+图01
 
 
 
-一大堆的英文啊，似乎不太友好，还好有翻译神器在哈！
+一大堆的英文啊，似乎不太友好，欺负我这没过四级的，还好有翻译神器在哈！
 
 具体啥意思我就不介绍了，我们直接去下载页面下载 `freeSSHd` 的安装包吧！
+
+
 
 下载页面：
 
@@ -66,7 +78,7 @@ http://www.freesshd.com/?ctt=download
 
 我们找到 `freeSSHd.exe` 那个文件，点击下载即可（文末有备用下载）。
 
-图z02
+图02
 
 
 
@@ -74,43 +86,43 @@ http://www.freesshd.com/?ctt=download
 
 `freeSSHd` 的安装也非常简单，通常按下一步保持默认选项即可。
 
-不过有几个地方可能需要特别说明一下，大家看下面的图示操作。
+不过有几处地方可能需要特别讲解一番，大家看后面的图示操作。
 
 
 
-双击 `freeSSHd` 安装程序。
+先来安装吧，双击 `freeSSHd` 安装程序。
 
-图a01
+图03
 
 
 
 选择安装路径，保持默认吧。
 
-图a02
+图04
 
 
 
 选择 `Full installation` 完全安装，省得一会儿用的时候缺这缺那。
 
-图a03
+图05
 
 
 
 给它起个在开始菜单中的名字，保持默认，要不你能叫它啥呢，二哈吗？
 
-图a04
+图06
 
 
 
 创建桌面图标，就是启动时找起来方便。
 
-图a05
+图07
 
 
 
 准备安装清单列表，按下按钮即开始安装。
 
-图a06
+图08
 
 
 
@@ -120,7 +132,7 @@ http://www.freesshd.com/?ctt=download
 
 建议先别着急看，因为它们是付费软件，我们还是先玩玩 `freeSSHd` 吧！
 
-图a07
+图09
 
 
 
@@ -132,7 +144,7 @@ http://www.freesshd.com/?ctt=download
 Private keys should be created. Should I do it now?
 ```
 
-图a08
+图10
 
 
 
@@ -144,7 +156,7 @@ Private keys should be created. Should I do it now?
 Do you want to run FreeSSHd as a system service?
 ```
 
-图a09
+图11
 
 
 
@@ -152,19 +164,19 @@ Do you want to run FreeSSHd as a system service?
 
 最后安装就完美结束啦！
 
-图a10
+图12
 
 
 
 安装完成后桌面就生成了一个新建的 `FreeSSHd` 图标，点开它我们即可开始使用 `freeSSHd` ！
 
-图b01
+图13
 
 
 
 注意，设置方面可能涉及到权限问题，所以最好是使用管理员权限打开它。
 
-图c05
+图14
 
 
 
@@ -174,7 +186,7 @@ Do you want to run FreeSSHd as a system service?
 Error connecting to freeSSHd.com
 ```
 
-图b02
+图15
 
 
 
@@ -184,13 +196,13 @@ Error connecting to freeSSHd.com
 
 果然，任务栏内多了一个新图标。
 
-图b03
+图16
 
 
 
 我们可以双击任务栏图标，也可以在右键菜单中点选 `Settings...` 来打开设置。
 
-图c04
+图17
 
 
 
@@ -202,7 +214,7 @@ Error connecting to freeSSHd.com
 
 注意，这里有个坑，后面会讲到是怎么回事。
 
-图c01
+图18
 
 
 
@@ -214,7 +226,7 @@ Error connecting to freeSSHd.com
 
 我们先找到 `SSH` 选项卡，这个肯定是关键核心设置。
 
-图c02
+图19
 
 
 
@@ -225,7 +237,7 @@ Error connecting to freeSSHd.com
 * `RSA key` - `RSA` 密钥（一种非对称加密算法）
 * `DSA key` - `DSA` 密钥（另一种非对称加密算法）
 
-图c03
+图20
 
 
 
@@ -239,7 +251,7 @@ Error connecting to freeSSHd.com
 
 如法炮制，两个都这么干就是了。
 
-图c06
+图21
 
 
 
@@ -247,7 +259,7 @@ Error connecting to freeSSHd.com
 
 找到 `User` 用户选项卡，点击 `Add...` 添加。
 
-图c07
+图22
 
 
 
@@ -265,13 +277,13 @@ Error connecting to freeSSHd.com
 
 你看，密码一栏是不需要填写的。
 
-图c08
+图23
 
 
 
 通常我们选择 `Password stored as SHA1 hash` ，这样我们就可以灵活地自定义用户名和密码了。
 
-图c09
+图24
 
 
 
@@ -287,13 +299,13 @@ Error connecting to freeSSHd.com
 
 用户创建好应该是这个样子的。
 
-图c10
+图25
 
 
 
 一旦有用户连上来，我们可以在 `Online users` 选项卡中查看在线用户。
 
-图c16a
+图26
 
 
 
@@ -303,7 +315,7 @@ Error connecting to freeSSHd.com
 
 通常我们设定了用户密码就需要将 `Password authentication` 设定为 `Requied` 必须。
 
-图c11
+图27
 
 
 
@@ -315,13 +327,13 @@ Error connecting to freeSSHd.com
 
 还有一个设置 `Encryption` 加密，默认 `Any` 任意即可。
 
-图c12
+图28
 
 
 
 `Tunneling` 隧道这个不用改什么，暂时没有启用它。
 
-图c13
+图29
 
 
 
@@ -333,19 +345,19 @@ Error connecting to freeSSHd.com
 
 当然你也完全可以指定一个固定的目录路径，那么所有的用户都会跑到同一个目录中。
 
-图c14
+图30
 
 
 
 为了安全起见，`Host restrictions` 主机限制中可以填写一些不希望被访问的客户主机 `IP` 地址（支持通配符）。
 
-图c15
+图31
 
 
 
 再正规一些，我们可以开启日志记录，方便以后出现故障可以有迹可循。
 
-图c16
+图32
 
 
 
@@ -366,7 +378,7 @@ Show info messages from freeSSHd.com
 显示来自 freeSSHd.com 的提示信息
 ```
 
-图c17
+图33
 
 
 
@@ -382,7 +394,7 @@ Show info messages from freeSSHd.com
 The specified address is already in use.
 ```
 
-图d01
+图34
 
 
 
@@ -396,7 +408,7 @@ The specified address is already in use.
 netstat -ano
 ```
 
-图d02
+图35
 
 
 
@@ -404,7 +416,7 @@ netstat -ano
 
 然后再打开任务管理器看看，呐呢，搞了半天乌龙了，原来就是 `FreeSSHd` 的服务进程占用了端口 `22` 。
 
-图d03
+图36
 
 
 
@@ -424,7 +436,7 @@ netstat -ano
 
 好像还有问题，可能会导致用户无法正常登录，会提示密码错误。
 
-图d04
+图37
 
 
 
@@ -432,13 +444,13 @@ netstat -ano
 
 干脆我们来重新启动一下 `FreeSSHd` 服务，说不定是前面的配置并没有生效。
 
-图d05
+图38
 
 
 
 重启服务OK，回头再看看服务状态，应该是这个样子的。
 
-图d06
+图39
 
 
 
@@ -450,39 +462,39 @@ netstat -ano
 
 这时我们以 `WinSCP` 为例，点击 `高级(A)...` ，将文件名 `UTF-8` 编码设置为开启状态。
 
-图d07
+图40
 
-图d08
+图41
 
 
 
 另外，有可能在实际访问远程目录时，会出现无法上传写入的情况。
 
-图d10
+图42
 
 
 
 那么我们可以先将远程目录的权限修改为 `Everyone` 可写（但不可删除自己）。
 
-图d09
+图43
 
 
 
 然后再试下，应该就可以成功上传文件了。
 
-图d11
+图44
 
 
 
 到此关于 `freeSSHd` 的安装、设置和使用基本介绍完了。
 
-当然作为初学者的我，这也只是向小伙伴们分享比较基础的内容。
+当然作为初学者的我，在这儿也只是向小伙伴们分享比较基础的内容。
 
-这些内容关键在于我们可以充分利用手头上有限的资源来搭建简易的 `SSH` 服务，以备不时之需。
+虽然是基础内容，不过关键在于我们可以随时随地利用容易上手的 `Windows` 来搭建简易的 `SSH` 服务，以备不时之需。
 
 至于其他高级用法，如果你有兴趣可以到官网上多多研究。
 
-当然今后如果我有什么关于 `freeSSHd` 的其他有趣的用法，也会收集起来与大家分享。
+当然今后如果有什么关于 `freeSSHd` 的其他有趣的用法，我也会收集整理起来与大家分享。
 
 好了，小伙伴们，今天的小教程你们记下了吗？
 
