@@ -240,11 +240,38 @@ C:\Users\用户名\.ssh\known_hosts
 
 
 
+顺便说一下怎么解决出现登录失败时，总是提示“拒绝访问，请重试”的提示。
+
+```
+网管小贾@localhost's password:
+Permission denied, please try again.
+网管小贾@localhost's password:
+Permission denied, please try again.
+网管小贾@localhost's password:
+Permission denied (publickey,password,keyboard-interactive).
+```
 
 
 
+先将 `OpenSSH` 服务停止，然后用以下加 `-d` 参数的命令行方式开启调试模式。
+
+```
+sshd.exe -d
+```
 
 
+
+然后再连接登录试试看，通常会有相应错误提示。
+
+我这边碰到的是绑定端口 `22` 到 `0.0.0.0` 失败，拒绝访问！
+
+图d09
+
+
+
+这个情况让我非常震惊，其实原因也很简单，因为很明显 `22` 端口被占用了嘛！
+
+只要将占用的程序关闭，或者换个端口，一切问题迎刃而解！
 
 
 
