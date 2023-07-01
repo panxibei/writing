@@ -1,3 +1,0 @@
-OpenSSH.7z - 在线安装后打包自C:\Windows\System32\OpenSSH文件夹的内容
-OpenSSH-Win64.zip - Zip压缩安装包
-OpenSSH-Win64-v9.2.2.0.msi - 微软格式安装程序
