@@ -36,51 +36,51 @@
 
 打开 `Windows` 设置，进入 `应用` 。
 
-图a01
+图01
 
 
 
 在 `应用和功能` 区域点击 `可选功能` （ `OpenSSH` 的服务端和客户端者属于可选功能）。
 
-图a02
+图02
 
 
 
 默认系统已经安装了 `OpenSSH` 客户端，而我们需要的是服务端，接着点击 `添加功能` 。
 
-图a04
+图03
 
-图a03
+图04
 
 
 
 在列表中勾选 `OpenSSH` 服务器，并点击 `安装` 按钮开始安装。
 
-图a06
+图05
 
 
 
 就这样，只要网络正常，它就会自动开始安装了。
 
-图a07
+图06
 
 
 
 成功安装后的样子。
 
-图a08
+图07
 
 
 
 安装后 `OpenSSH` 相关程序都被放到了 `C:\Windows\System32\OpenSSH` 路径下。
 
-图a10
+图08
 
 
 
 如果不幸遭遇安装失败也别着急，通常是因为网络不佳造成的，不过请放心后面会有办法对付它。
 
-图a09
+图09
 
 
 
@@ -112,7 +112,7 @@ State : NotPresent
 
 如下图，要是显示的状态是 `Installed` ，则说明我们已经成功安装过了。
 
-图b03
+图10
 
 
 
@@ -136,7 +136,7 @@ Online        : True
 RestartNeeded : False
 ```
 
-图b04
+图11
 
 
 
@@ -162,7 +162,7 @@ RestartNeeded : False
 
 有个意思的地方，从下载项上看，除打包的 `zip` 文件外还有一个 `msi` 的安装程序，这就更加方便了。
 
-图c01
+图12
 
 
 
@@ -170,7 +170,7 @@ RestartNeeded : False
 
 将它下载并解压到 `C:\Program Files\OpenSSH` 中，切记，**不要放在别的路径下**，这是官方要求的。
 
-图c02
+图13
 
 
 
@@ -184,9 +184,9 @@ cd C:\Program Files\OpenSSH
 powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
 ```
 
-图c03
+图14
 
-图c04
+图15
 
 
 
@@ -200,7 +200,7 @@ sc config sshd start=auto
 net start sshd
 ```
 
-图c06
+图16
 
 
 
@@ -222,7 +222,7 @@ net start sshd
 netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=22
 ```
 
-图c05
+图17
 
 
 
@@ -240,7 +240,7 @@ wf.msc
 
 注意，只要开放了相应的端口就行，这个规则的名字并不一定要相同。
 
-图b01
+图18
 
 
 
@@ -252,7 +252,7 @@ netstat -anp tcp
 
 从输出结果中可以看到 `0.0.0.0:22` ，说明 `OpenSSH` 服务正在愉快地工作。
 
-图b02
+图19
 
 
 
@@ -268,7 +268,7 @@ netstat -anp tcp
 
 通过 `SSH` 登录后会看到这个样子。
 
-图d11
+图20
 
 
 
@@ -280,7 +280,7 @@ netstat -anp tcp
 New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
 ```
 
-图d06
+图21
 
 
 
@@ -288,13 +288,13 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Wi
 
 手脚勤快的小伙伴可以参考着用批处理啥的其他方式也能修改。
 
-图d07
+图22
 
 
 
 修改后再通过 `SSH` 登录后会看到这个样子。
 
-图d10
+图23
 
 
 
@@ -308,7 +308,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Wi
 %programdata%\ssh\sshd_config
 ```
 
-  图d08
+图24
 
 
 
@@ -361,13 +361,13 @@ OK，对于 `Windows` 的 `OpenSSH` 来说，基本的配置可以做到如此�
 
 当然了，第一次登录会询问用户并记录指纹信息，这个也不耽误登录哈！
 
-图d01
+图25
 
 
 
 确认继续连接并保存指纹信息后，只要输入正确密码即可成功登录。
 
-图d02
+图26
 
 
 
@@ -379,7 +379,7 @@ OK，对于 `Windows` 的 `OpenSSH` 来说，基本的配置可以做到如此�
 
 首先一个，如果出现远程服务器信息改变而导致登录失败，原因应该是之前保存下来的指纹记录失效了。
 
-图d13
+图27
 
 
 
@@ -391,7 +391,7 @@ OK，对于 `Windows` 的 `OpenSSH` 来说，基本的配置可以做到如此�
 C:\Users\用户名\.ssh\known_hosts
 ```
 
-图d12
+图28
 
 
 
@@ -420,7 +420,7 @@ sshd.exe -d
 
 我这边碰到的是绑定端口 `22` 到 `0.0.0.0` 失败，拒绝访问！
 
-图d09
+图29
 
 
 
