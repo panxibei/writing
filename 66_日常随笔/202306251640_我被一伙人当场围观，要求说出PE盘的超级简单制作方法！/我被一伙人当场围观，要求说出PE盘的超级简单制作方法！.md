@@ -1,8 +1,8 @@
-安装维护系统的PE盘有没有超级简单的制作方法呢？
+我被一伙人当场围观，要求说出PE盘的超级简单制作方法！
 
-副标题：安装维护系统的PE盘有没有超级简单的制作方法呢？
+副标题：我被一伙人当场围观，要求说出PE盘的超级简单制作方法！
 
-英文：is-there-a-super-simple-way-to-make-a-pe-boot-disk-for-system-installing-and-maintaining
+英文：i-was-surrounded-by-a-group-of-people-on-the-spot-demanding-the-super-simple-method-of-makeing-pe-boot-discs
 
 关键字：pe,windows,boot,disk,启动盘,PE盘
 
