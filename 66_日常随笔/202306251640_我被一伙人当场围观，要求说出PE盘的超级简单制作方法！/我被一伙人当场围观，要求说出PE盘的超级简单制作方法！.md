@@ -359,7 +359,7 @@ https://www.wepe.com.cn/download.html
 
 * `WePE_64_V2.3.exe` - 官网下载的微PE工具箱
 * `WePE_64_V2.3.iso` - 微PE工具箱 `ISO` 镜像文件
-* `WePE_64_V2.3.iso.txt` 微PE工具箱 `ISO` 镜像文件说明
+* `WePE_64_V2.3.iso.txt` - 微PE工具箱 `ISO` 镜像文件说明
 
 下载链接：https://pan.baidu.com/s/1iUYHgA70h2_DsRuvOJaUNg
 
