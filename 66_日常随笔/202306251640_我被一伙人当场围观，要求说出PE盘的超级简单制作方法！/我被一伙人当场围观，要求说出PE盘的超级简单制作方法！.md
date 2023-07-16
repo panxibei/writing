@@ -355,6 +355,18 @@ https://www.wepe.com.cn/download.html
 
 
 
+**WePE备用下载**
+
+* `WePE_64_V2.3.exe` - 官网下载的微PE工具箱
+* `WePE_64_V2.3.iso` - 微PE工具箱 `ISO` 镜像文件
+* `WePE_64_V2.3.iso.txt` 微PE工具箱 `ISO` 镜像文件说明
+
+下载链接：https://pan.baidu.com/s/1iUYHgA70h2_DsRuvOJaUNg
+
+提取码：4tp5
+
+
+
 需要注意的是，如果你的硬盘有过加密，比如 `Bitlocker` ，那么 `I'm sorry` ，在 `PE` 里直接是看不到的，也是需要输入密码才能访问的。
 
 通过双击盘符，输入正确密码的方式解锁，之后也就和平时操作没啥两样了。
