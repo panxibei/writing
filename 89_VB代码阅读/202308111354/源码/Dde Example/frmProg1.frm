@@ -1,19 +1,19 @@
 VERSION 5.00
 Begin VB.Form Form1 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Program 1"
-   ClientHeight    =   6495
+   Caption         =   "程序1"
+   ClientHeight    =   6490
    ClientLeft      =   270
-   ClientTop       =   555
-   ClientWidth     =   5295
+   ClientTop       =   560
+   ClientWidth     =   5300
    Icon            =   "frmProg1.frx":0000
    LinkMode        =   1  'Source
    LinkTopic       =   "frmProgram1"
    MaxButton       =   0   'False
-   ScaleHeight     =   6495
-   ScaleWidth      =   5295
+   ScaleHeight     =   6490
+   ScaleWidth      =   5300
    Begin VB.CommandButton Command8 
-      Caption         =   "Change text and Send"
+      Caption         =   "发送并更改文本..."
       Enabled         =   0   'False
       Height          =   375
       Left            =   3120
@@ -22,7 +22,7 @@ Begin VB.Form Form1
       Width           =   2055
    End
    Begin VB.CommandButton Command7 
-      Caption         =   "Send"
+      Caption         =   "发送"
       Enabled         =   0   'False
       Height          =   375
       Left            =   2160
@@ -40,7 +40,7 @@ Begin VB.Form Form1
       Width           =   1935
    End
    Begin VB.CommandButton Command6 
-      Caption         =   "Close connection"
+      Caption         =   "关闭连接"
       Enabled         =   0   'False
       Height          =   375
       Left            =   2160
@@ -49,7 +49,7 @@ Begin VB.Form Form1
       Width           =   1575
    End
    Begin VB.CommandButton Command5 
-      Caption         =   "Open connection"
+      Caption         =   "打开连接"
       Enabled         =   0   'False
       Height          =   375
       Left            =   360
@@ -67,7 +67,7 @@ Begin VB.Form Form1
       Width           =   5055
    End
    Begin VB.CommandButton Command4 
-      Caption         =   "Close P2"
+      Caption         =   "关闭程序2"
       Enabled         =   0   'False
       Height          =   375
       Left            =   360
@@ -79,14 +79,14 @@ Begin VB.Form Form1
       AutoSize        =   -1  'True
       Height          =   495
       Left            =   1800
-      ScaleHeight     =   435
-      ScaleWidth      =   1395
+      ScaleHeight     =   460
+      ScaleWidth      =   1420
       TabIndex        =   10
       Top             =   2115
       Width           =   1455
    End
    Begin VB.CommandButton Command3 
-      Caption         =   "Request"
+      Caption         =   "请求"
       Enabled         =   0   'False
       Height          =   375
       Left            =   360
@@ -103,7 +103,7 @@ Begin VB.Form Form1
       Width           =   5055
    End
    Begin VB.CommandButton Command2 
-      Caption         =   "Send"
+      Caption         =   "发送"
       Enabled         =   0   'False
       Height          =   375
       Left            =   360
@@ -114,19 +114,19 @@ Begin VB.Form Form1
    Begin VB.PictureBox Picture1 
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
-      Height          =   495
+      Height          =   330
       Left            =   2520
       LinkItem        =   "Picture1"
       Picture         =   "frmProg1.frx":0442
-      ScaleHeight     =   495
-      ScaleWidth      =   1410
+      ScaleHeight     =   330
+      ScaleWidth      =   940
       TabIndex        =   7
       Top             =   1080
-      Width           =   1410
+      Width           =   940
    End
    Begin VB.CommandButton Command1 
       Cancel          =   -1  'True
-      Caption         =   "Exit"
+      Caption         =   "退出"
       Height          =   375
       Left            =   4200
       TabIndex        =   6
@@ -142,7 +142,7 @@ Begin VB.Form Form1
       Width           =   5055
    End
    Begin VB.Label Label6 
-      Caption         =   $"frmProg1.frx":0A02
+      Caption         =   "6）此示例演示LinkOpen和LinkClose事件。这些事件仅在建立或关闭连接的控件中发生："
       Height          =   615
       Left            =   120
       TabIndex        =   13
@@ -151,7 +151,7 @@ Begin VB.Form Form1
       WordWrap        =   -1  'True
    End
    Begin VB.Label Label5 
-      Caption         =   $"frmProg1.frx":0A92
+      Caption         =   "4）在程序2（第5节）的文本框中键入一些内容，你会看到你在那里写的所有内容也总是在这个文本框中。这里的要点是向您演示LinkNotify事件："
       Height          =   615
       Left            =   120
       TabIndex        =   12
@@ -159,7 +159,7 @@ Begin VB.Form Form1
       Width           =   5055
    End
    Begin VB.Label Label4 
-      Caption         =   "7) Close Program 2"
+      Caption         =   "7) 关闭程序2"
       Height          =   255
       Left            =   120
       TabIndex        =   11
@@ -168,18 +168,18 @@ Begin VB.Form Form1
    End
    Begin VB.Label Label3 
       AutoSize        =   -1  'True
-      Caption         =   $"frmProg1.frx":0B60
-      Height          =   615
+      Caption         =   "3）下面的按钮向程序2发送一个 GiveMeAPicture 命令，该命令具有 LinkExecute 功能，并将一张图片发送到下面的图片框："
+      Height          =   360
       Left            =   120
       TabIndex        =   9
       Top             =   1610
-      Width           =   5085
+      Width           =   5090
       WordWrap        =   -1  'True
    End
    Begin VB.Label Label2 
       AutoSize        =   -1  'True
-      Caption         =   "2) The button below will change Program 2's picturebox's picture to the picture that is in this picturebox:"
-      Height          =   390
+      Caption         =   "2）下面的按钮将把程序2的图片框中的图片更改为该图片框内的图片："
+      Height          =   360
       Left            =   120
       TabIndex        =   8
       Top             =   720
@@ -188,8 +188,8 @@ Begin VB.Form Form1
    End
    Begin VB.Label Label1 
       AutoSize        =   -1  'True
-      Caption         =   "1) Type some text here and you will see that Program 2's textbox's text will be always the same as here:"
-      Height          =   390
+      Caption         =   "1）在此处键入一些文本，您将看到程序2的文本框的文本将始终与此处相同："
+      Height          =   360
       Left            =   120
       TabIndex        =   5
       Top             =   0

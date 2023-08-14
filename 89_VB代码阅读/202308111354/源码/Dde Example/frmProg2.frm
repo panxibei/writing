@@ -1,17 +1,17 @@
 VERSION 5.00
 Begin VB.Form Form1 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Program 2"
+   Caption         =   "程序2"
    ClientHeight    =   5070
-   ClientLeft      =   5925
-   ClientTop       =   555
-   ClientWidth     =   5295
+   ClientLeft      =   5930
+   ClientTop       =   560
+   ClientWidth     =   5290
    Icon            =   "frmProg2.frx":0000
    LinkMode        =   1  'Source
    LinkTopic       =   "frmProgram2"
    MaxButton       =   0   'False
    ScaleHeight     =   5070
-   ScaleWidth      =   5295
+   ScaleWidth      =   5290
    Begin VB.TextBox Text3 
       Height          =   285
       Left            =   120
@@ -32,23 +32,23 @@ Begin VB.Form Form1
    Begin VB.PictureBox Picture2 
       AutoSize        =   -1  'True
       BorderStyle     =   0  'None
-      Height          =   495
+      Height          =   330
       Left            =   360
       LinkItem        =   "Picture2"
       Picture         =   "frmProg2.frx":0442
-      ScaleHeight     =   495
-      ScaleWidth      =   1410
+      ScaleHeight     =   330
+      ScaleWidth      =   940
       TabIndex        =   6
       Top             =   2160
-      Width           =   1410
+      Width           =   940
    End
    Begin VB.PictureBox Picture1 
       AutoSize        =   -1  'True
       Height          =   495
       Left            =   360
       LinkItem        =   "Picture1"
-      ScaleHeight     =   435
-      ScaleWidth      =   1410
+      ScaleHeight     =   460
+      ScaleWidth      =   1430
       TabIndex        =   3
       Top             =   1200
       Width           =   1470
@@ -64,7 +64,7 @@ Begin VB.Form Form1
    End
    Begin VB.CommandButton Command1 
       Cancel          =   -1  'True
-      Caption         =   "Exit"
+      Caption         =   "退出"
       Height          =   495
       Left            =   2100
       TabIndex        =   0
@@ -72,15 +72,15 @@ Begin VB.Form Form1
       Width           =   1095
    End
    Begin VB.Label Label5 
-      Caption         =   "5) This is the destination textbox in Program 1's section 5's experinent:"
-      Height          =   255
+      Caption         =   "5）这是程序1第5节体验中的目标文本框："
+      Height          =   370
       Left            =   120
       TabIndex        =   9
       Top             =   3600
-      Width           =   5055
+      Width           =   5060
    End
    Begin VB.Label Label4 
-      Caption         =   "4) Type something into this textbox:"
+      Caption         =   "4）在此文本框中输入点什么:"
       Height          =   255
       Left            =   120
       TabIndex        =   8
@@ -88,7 +88,7 @@ Begin VB.Form Form1
       Width           =   5055
    End
    Begin VB.Label Label3 
-      Caption         =   "3) This picture will be sent to Program 1 if it requests it:"
+      Caption         =   "3）如果程序1请求，此图片将发送到程序1："
       Height          =   255
       Left            =   120
       TabIndex        =   5
@@ -97,22 +97,22 @@ Begin VB.Form Form1
    End
    Begin VB.Label Label2 
       AutoSize        =   -1  'True
-      Caption         =   "2) Here will be the same picture as in Program 1 if you click the <Send> button in Program 1:"
-      Height          =   390
+      Caption         =   "2）如果您在程序1中单击＜发送＞按钮，这里的图片将与程序1中的图片相同："
+      Height          =   360
       Left            =   120
       TabIndex        =   4
       Top             =   720
-      Width           =   5115
+      Width           =   5120
       WordWrap        =   -1  'True
    End
    Begin VB.Label Label1 
       AutoSize        =   -1  'True
-      Caption         =   "1) Here will be the text you type to the textbox in Program 1:"
-      Height          =   195
+      Caption         =   "1）以下是您在程序1的文本框中键入的文本："
+      Height          =   180
       Left            =   120
       TabIndex        =   2
       Top             =   120
-      Width           =   4200
+      Width           =   3600
    End
 End
 Attribute VB_Name = "Form1"
