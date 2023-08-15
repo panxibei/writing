@@ -1,6 +1,6 @@
-同一台电脑上不通过网络，如何做到两个程序之间畅快通话？VB的DDE会话介绍
+不用网络方式，同一台电脑上的两个程序如何做到沟通无障碍？来试试DDE会话吧！
 
-副标题：
+副标题：不用网络方式，同一台电脑上的两个程序如何做到沟通无障碍？来试试DDE会话吧！
 
 英文：
 
@@ -8,11 +8,11 @@
 
 
 
-这个标题是啥意思？
+呃……这个标题没看太明白，到底啥意思？
 
-简单地说，就是两个独立的 `APP` 之间实现互通，不用网络是因为都在同一台电脑上。
+其实很简单，用大白话说，就是两个独立的 `APP` 之间实现数据互通，不用网络连接方式是因为都在同一台电脑上。
 
-有小伙伴会说，那这种功能有什么用啊？
+有的小伙伴会说了，都同那这种功能有什么用啊？
 
 哎，其实用处非常大，通常管这玩意叫做 `DDE` 。
 
@@ -204,121 +204,167 @@ End Sub
 
 `LinkedWindows` 集合
 
-* Count  （属性）    集合内成员的个数，此属性为只读
+* `Count`  （属性）  集合内成员的个数，此属性为只读
 
-* Parent （属性）    返回包含另一对象或集合的对象或集合，此属性为只读
+* `Parent` （属性）  返回包含另一对象或集合的对象或集合，此属性为只读
 
-* VBE    （属性）    返回该 VBE 对象的根，此属性为只读。
+* `VBE`  （属性）    返回该 VBE 对象的根，此属性为只读
 
-  例  返回活动工程名称：Debug. Print Application.VBE.ActiveVBProject.Name
+  例：返回活动工程名称：`Debug.Print Application.VBE.ActiveVBProject.Name`
 
-* Add  (component )  （方法）  将一个对象添加到集合。
-  component 参数：
-  vbext_ct_ClassModule 将一个类模块添加到集合。
-  Vbext_ct_MSForm 将窗体添加到集合。
-  vbext_ct_StdModule 将标准模块添加到集合。
+  
 
-* Item (index )      （方法）返回集合中所索引的成员。
-  index 参数可以是数值或包含对象标题的字符串。字符串必须和集合的 key 参数匹配。
-  Key 参数：
-  Windows          Caption 属性设置
-  LinkedWindows    Caption 属性设置
-  CodePanes        无唯一字符串与此集合相关。
-  VBProjects       Name 属性设置
-  VBComponents     Name 属性设置
-  References       Name 属性设置
-  Properties       Name 属性设置
-
-* Remove (component ) （方法）从集合中删除一项
-  component参数是必需的。
-  对于 LinkedWindows 集合来说，是一个对象。
-  对于 References 集合来说，是一个对类型库，或者对工程的引用。
-  对于 VBComponents 集合来说，是一个枚举型的常数，它代表一个类模块、一个窗体，或者是一个标准模块。
+* `Add(component)` （方法）  将一个对象添加到集合
+  `component` 参数：
+  
+  * `vbext_ct_ClassModule` 将一个类模块添加到集合
+  * `Vbext_ct_MSForm` 将窗体添加到集合
+* `vbext_ct_StdModule` 将标准模块添加到集合
 
 
 
-`DDE` 会话的 `Link` 操作示例
+* `Item(index)`（方法）返回集合中所索引的成员
+  `index` 参数可以是数值或包含对象标题的字符串，字符串必须和集合的 `key` 参数匹配。
+  `Key` 参数：
+  * `Windows`          `Caption` 属性设置
+  * `LinkedWindows`    `Caption` 属性设置
+  * `CodePanes`        无唯一字符串与此集合相关
+  * `VBProjects`       `Name` 属性设置
+  * `VBComponents`     `Name` 属性设置
+  * `References`       `Name` 属性设置
+  * `Properties`       `Name` 属性设置
 
-本示例建立一个 Microsoft Excel 的 DDE 链接，将一些值放置到一个新工作单的第一行的单元里，并按照这些值画图。 LinkExecute 向 Microsoft Excel 发送激活工作单的命令，选择一些值并按照它们画图。
+
+
+* `Remove(component )` （方法）从集合中删除一项
+  `component` 参数是必需的。
+  对于 `LinkedWindows` 集合来说，是一个对象。
+  对于 `References` 集合来说，是一个对类型库，或者对工程的引用。
+  对于 `VBComponents` 集合来说，是一个枚举型的常数，它代表一个类模块、一个窗体，或者是一个标准模块。
+
+
+
+##### `DDE` 会话的 `Link` 操作示例
+
+本示例建立一个 `Microsoft Excel` 的 `DDE` 链接，将一些值放置到一个新工作单的第一行的单元里，并按照这些值画图。
+
+`LinkExecute` 向 `Microsoft Excel` 发送激活工作单的命令，选择一些值并按照它们画图。
 
 ```
 Private Sub Form_Click ()
-     Dim Cmd, I, Q, Row, Z                                    '' 声明变量。
-    Q  =  Chr (34 )                                              '' 定义引用标记。
-    '' 创建一个含有 Microsoft Excel 宏指令的字串。
-    Cmd  = " [ACTIVATE("  & Q  & " SHEET1"  & Q  & " )]"
-    Cmd  = Cmd  & " [SELECT("  & Q  & " R1C1:R5C2"  & Q  & " )]"
-    Cmd  = Cmd  & " [NEW(2,1)][ARRANGE.ALL()]"
-     If Text1.LinkMode  = vbNone  Then
-        Z  =  Shell (" C:\Program Files\Microsoft Office\Office\EXCEL.EXE", 4 )  '' 启动 Microsoft Excel。
-        Text1.LinkTopic  = " Excel|Sheet1"                     '' 设置连接主题。
-        Text1.LinkItem  = " R1C1"                              '' 设置连接项目。
-        Text1.LinkMode  = vbLinkManual                        '' 设置连接模式。
-     End If
-    For I  = 1  To 5
-        Row  = I                                              '' 定义行号。
-        Text1.LinkItem  = " R"  & Row  & " C1"                    '' 设置连接项目。
-        Text1.Text  =  Chr (64  + I )                             '' 将值放置在 Text 中。
-        Text1.LinkPoke                                       '' 将值放入单元。
-        Text1.LinkItem  = " R"  & Row  & " C2"                    '' 设置连接项目。
-        Text1.Text  = Row                                     '' 将值放置在 Text 中。
-        Text1.LinkPoke                                       '' 将值放入单元。
-     Next I
-     on Error Resume Next
-    Text1.LinkExecute Cmd                                    '' 执行 Microsoft Excel 命令。
-     MsgBox " LinkExecute DDE demo with Microsoft Excel finished.", 64
-     End
+	Dim Cmd, I, Q, Row, Z                                    ' 声明变量
+	Q  =  Chr (34 )                                          ' 定义引用标记
+	' 创建一个含有 Microsoft Excel 宏指令的字串。
+	Cmd  = " [ACTIVATE("  & Q  & " SHEET1"  & Q  & " )]"
+	Cmd  = Cmd  & " [SELECT("  & Q  & " R1C1:R5C2"  & Q  & " )]"
+	Cmd  = Cmd  & " [NEW(2,1)][ARRANGE.ALL()]"
+	If Text1.LinkMode  = vbNone  Then
+		Z = Shell("C:\Program Files\Microsoft Office\Office\EXCEL.EXE", 4)  ' 启动 Microsoft Excel
+		Text1.LinkTopic = "Excel|Sheet1"                     ' 设置连接主题
+		Text1.LinkItem = "R1C1"                              ' 设置连接项目
+		Text1.LinkMode = vbLinkManual                        ' 设置连接模式
+	End If
+	For I = 1 To 5
+		Row = I                                             ' 定义行号
+		Text1.LinkItem = "R"  & Row  & "C1"                 ' 设置连接项目
+		Text1.Text =  Chr(64 + I)                           ' 将值放置在 Text 中
+		Text1.LinkPoke                                      ' 将值放入单元
+		Text1.LinkItem = "R" & Row & "C2"                   ' 设置连接项目
+		Text1.Text = Row                                    ' 将值放置在 Text 中
+		Text1.LinkPoke                                      ' 将值放入单元
+	Next I
+	on Error Resume Next
+	Text1.LinkExecute Cmd                                   ' 执行 Microsoft Excel 命令
+	MsgBox "LinkExecute DDE demo with Microsoft Excel finished.", 64
+	End
 End Sub
 ```
 
 
 
-使用 LinkRequest 更新含有 Microsoft Excel 工作单中值的正文框的内容
-计算机上必需正在运行着 Microsoft Excel
+使用 `LinkRequest` 更新含有 `Microsoft Excel` 工作单中值的正文框的内容，计算机上必需正在运行着 `Microsoft Excel` 。
 
 ```
-Private Sub Form_Click ()
-     If Text1.LinkMode  = vbNone  Then                          '' 测试连接模式。
-        Text1.LinkTopic  = " Excel|Sheet1"                     '' 设置连接主题。
-        Text1.LinkItem  = " R1C1"                              '' 设置连接项目。
-        Text1.LinkMode  = vbLinkManual                        '' 设置连接模式。
-        Text1.LinkRequest                                    '' 更新正文框内容。
-     Else
-        If Text1.LinkItem  = " R1C1"  Then
-            Text1.LinkItem  = " R2C1"
-            Text1.LinkRequest                                '' 更新正文框内容。
-         Else
-            Text1.LinkItem  = " R1C1"
-            Text1.LinkRequest                                '' 更新正文框内容。
-         End If
-    End If
+Private Sub Form_Click()
+	If Text1.LinkMode = vbNone Then                          ' 测试连接模式
+		Text1.LinkTopic = "Excel|Sheet1"                     ' 设置连接主题
+		Text1.LinkItem = "R1C1"                              ' 设置连接项目
+		Text1.LinkMode = vbLinkManual                        ' 设置连接模式
+		Text1.LinkRequest                                    ' 更新正文框内容
+	Else
+		If Text1.LinkItem = "R1C1" Then
+			Text1.LinkItem = "R2C1"
+			Text1.LinkRequest                                ' 更新正文框内容
+		Else
+			Text1.LinkItem = "R1C1"
+			Text1.LinkRequest                                ' 更新正文框内容
+		End If
+	End If
 End Sub
 ```
 
 
 
-3.LinkItem、LinkMode、LinkTopic 属性示例
+`LinkItem` 、`LinkMode` 、`LinkTopic` 属性示例。
 
-在这个例子中，每一次敲击鼠标都会使 Microsoft Excel 工作单中的单元更新 Visual Basic
-的 TextBox   先启动 Microsoft Excel，打开一个新的名叫 Sheet1 的工作单，在第一列中放入一些数据。
+在这个例子中，每一次敲击鼠标都会使 `Microsoft Excel` 工作单中的单元更新 `Visual Basic` 
+的 `TextBox` 先启动 `Microsoft Excel` ，打开一个新的名叫 `Sheet1` 的工作单，在第一列中放入一些数据。
 
 ```
-Private Sub Form_Click ()
-     Dim CurRow  As String
-    Static Row                                               '' 工作单的行数.
-    Row  = Row  + 1                                            '' 增加行.
-     If Row  = 1  Then                                          '' 只第一次.
-        '' 确保连接不是活动的.
-        Text1.LinkMode  = 0
-         '' 设置应用程序的名字和题目名.
-        Text1.LinkTopic  = " Excel|Sheet1"
-        Text1.LinkItem  = " R1C1"                              '' 设置 LinkItem.
-        Text1.LinkMode  = 1                                   '' 设置 LinkMode 为自动.
-     Else
-         ''在数据项目中更新行.
-        CurRow  = " R"  & Row  & " C1"
-        Text1.LinkItem  = CurRow                              '' 设置 LinkItem.
-     End If
+Private Sub Form_Click()
+	Dim CurRow As String
+	Static Row                                               ' 工作单的行数
+	Row = Row + 1                                            ' 增加行
+	If Row = 1 Then                                          ' 只第一次
+		' 确保连接不是活动的
+		Text1.LinkMode = 0
+		' 设置应用程序的名字和题目名
+		Text1.LinkTopic = "Excel|Sheet1"
+		Text1.LinkItem = "R1C1"                              ' 设置 LinkItem
+		Text1.LinkMode = 1                                   ' 设置 LinkMode 为自动
+	Else
+		' 在数据项目中更新行.
+		CurRow = "R" & Row & "C1"
+		Text1.LinkItem = CurRow                              ' 设置 LinkItem
+	End If
 End Sub
 ```
+
+
+
+##### 完整示例源码
+
+我收集了一个关于 `DDE` 的完整示例源码，如图。
+
+图a03
+
+
+
+我将界面上的英文汉化，这样小伙伴们可以看得更明白一些。
+
+顺便在这儿简单地介绍一下。
+
+示例中分左右的“程序1”和“程序2”，这两个程序通过 `DDE` 可以互相通讯和传输数据。
+
+比如在程序1中的文本框中写点什么，与此同时在程序2中就会同步显示出相同的内容。
+
+又比如图片也可以同步，并且不仅仅可以发送数据，而且还可以请求，也就是取回数据。
+
+最后甚至还可以使用程序1来关闭程序2！
+
+
+
+至于代码是怎么实现的，你可以下来自行研究哦！
+
+源代码下载链接：
+
+
+
+
+
+
+
+**将技术融入生活，打造有趣之故事**
+
+网管小贾 / sysadm.cc
 
