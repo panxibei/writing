@@ -1,0 +1,5 @@
+stascorp是最先项目创建者，sebaxakerhtc是继承者。
+rdpwrap.ini两者通用，使用的都是来自于后者。
+实际应用推荐后者，较为方便，兼容性好。
+
+网管小贾 / sysadm.cc
