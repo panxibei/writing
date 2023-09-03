@@ -4,7 +4,7 @@
 
 英文：a-tool-that-can-establish-two-or-more-remote-desktop-connections-of-rdp-even-windows-home-edition-can-be-done
 
-关键字：rdp,rdpwrap,远程桌面,remote,desktop,windows
+关键字：rdp,rdpwrap,远程桌面,remote,desktop,windows,远程连接,vnc
 
 
 
