@@ -190,6 +190,10 @@
 
 > https://github.com/stascorp/rdpwrap/issues
 
+最新版rdpwrap.ini
+
+> https://stealthsurfer.online/sebaxakerhtc/rdpwrap.ini
+
 ===================
 
 
