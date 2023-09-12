@@ -168,3 +168,109 @@ type TestRadius.dat | ncat -v -u xxx.xxx.xxx.xxx 1812
 
 
 
+
+
+
+
+开启外部检查
+
+编辑 `zabbix` 配置文件 `/etc/zabbix/zabbix_server.conf` ，设置其中的 `ExternalScripts` 参数。
+
+```
+ExternalScripts=/usr/lib/zabbix/externalscripts
+```
+
+图b01
+
+
+
+编写脚本，起个文件名叫作 `checkradius.sh` 。
+
+```
+#! /bin/bash
+# Description: Radius – Authentication
+# Type: External check
+# Key: checkradius.sh[]
+# Type of information: Numeric (unsigned)
+
+cat /usr/lib/zabbix/externalscripts/$1.rad | nc -u -w 1 $1 1812 | grep "0000000 02" > /dev/null
+if [ $? -eq 0 ]; then
+    echo 1
+    exit 1
+else
+    echo 0
+    exit 0
+fi
+```
+
+该脚本从 `$1.rad` 文件获取要发送到服务器的 `Radius` 数据包。
+
+其中 `$1` 是主机名或 `IP` 地址，例如，`Radius` 服务器的 `IP` 是 `192.168.1.123` ，那么可以将访问请求数据包放到名为 `192.168.1.123.rad` 的文件中。
+
+图b05
+
+
+
+添加监控项，语法如下：
+
+```
+script[<parameter1>,<parameter2>,...]
+```
+
+光看这个肯定懵，还是边举例边解释吧！
+
+这个 `script` 就是你要执行检查的脚本，比如 `checkradius.sh` 。
+
+后面的参数 `parameter` 则要看你的脚本需要了。
+
+我这儿的脚本需要一个参数，即 `Radius` 服务器的 `IP` 地址，那么监控项键值可以这么写。
+
+```
+checkradius.sh[192.168.1.123]
+```
+
+图b02
+
+
+
+
+
+测试如果出错，就应该根据实际情况做出调整。
+
+比如 `Permission denied` ，指的是脚本执行被拒绝。
+
+图b03
+
+
+
+这种情况下可能是我们编写的脚本没有执行权限，简单地处理如下。
+
+```
+chmod +x checkradius.sh
+```
+
+
+
+最后测试，看看返回的结果。
+
+图b04
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**将技术融入生活，打造有趣之故事**
+
+网管小贾 / sysadm.cc
