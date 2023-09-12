@@ -261,9 +261,15 @@ chmod +x checkradius.sh
 
 
 
+参考链接：
+
+> https://nbailey.ca/post/peap-freeradius/
+>
+> https://wiki.freeradius.org/guide/eduroam#tooling_eapol_test
 
 
 
+关于MSChapv2的客户端远程验证
 
 
 
