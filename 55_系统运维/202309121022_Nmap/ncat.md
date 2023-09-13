@@ -358,6 +358,152 @@ cp ./eapol_test/eapol_test /usr/local/bin/
 
 
 
+测试命令
+
+```
+eapol_test -c eap-peap.conf -a 192.168.1.123 -p 1812 -s testing123
+```
+
+* `-c` : `EAP` 配置文件
+* `-a` : `Radius` 服务器 `IP`
+* `-p` : `Radius` 服务器端口
+* `-s` : `Radius` 服务器共享密码
+
+
+
+图d05
+
+
+
+输出最后几个字符，正常情况下是 `SUCCESS` 。
+
+图d06
+
+
+
+这样的字符串不太好处理，可以将它加工一下。
+
+预处理 `JavaScript` 代码。
+
+```
+var strStatus = value.substr(-7);
+if (strStatus == 'SUCCESS') {
+  result = 1;
+} else {
+  result = 0;
+}
+return result;
+```
+
+图d07
+
+
+
+再来测试一下效果，得到结果是 `1` 或 `0` 这样的数字了。
+
+图d08
+
+
+
+不过别慌，这是在 `Radius` 正常工作的情况下没啥问题，要是工作不正常的情况下呢？
+
+没想到直接来个超时，而且也没有任何结果。
+
+图d09
+
+
+
+没有结果可不行，没法判断是不是正常了，至少应该是 `0` 吧！
+
+因此我们要加个超时的时间限制。
+
+请出 `timelimit` 。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+编译安装 `timelimit` 。
+
+解压
+
+```
+tar zxvf timelimit-1.x.x.tar.gz
+```
+
+图e01
+
+
+
+使用它自带的安装脚本安装。
+
+```
+cd timelimit-1.x.x
+./build-and-test-all.pl
+```
+
+图e02
+
+
+
+生成执行文件 `timelimit` 。
+
+图e03
+
+
+
+将它复制到执行文件大本营，方便以后调用。
+
+```
+cp ./timelimit /usr/local/bin
+```
+
+
+
+OK，这时就可以用 `timelimit` 改造一下原来的脚本了。
+
+```
+timelimit -T 1 -t 1 eapol_test -c /foo/eap-peap.conf -a 192.168.1.123 -p 1812 -s testing123
+```
+
+`timelimt` 的参数解释：
+
+* `-T` 杀掉程序的时限
+* `-t` 等待程序的时限
+
+参数在前，要执行的命令在最后。
+
+
+
+这就完了吗？
+
+别急，还得改改 `zabbix` 的配置文件，因为配置文件时也有一个超时限制。
+
+不过这个超时限制太短了，我需要将它搞大一点，要不还没等脚本执行完就已经超时被迫停止了。
+
+```
+# 将超时修改为5秒或10秒（默认我这儿是4秒）
+Timeout=5
+```
+
+图e04
+
+
+
+再测试一下，`Radius` 服务器不工作时，成功返回结果 `0` 。
+
+图e05
+
 
 
 
