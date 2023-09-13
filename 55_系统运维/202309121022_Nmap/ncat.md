@@ -283,6 +283,93 @@ chmod +x checkradius.sh
 
 
 
+安装依赖
+
+```
+# Centos/RHEL
+sudo yum groupinstall "Development Tools"
+sudo yum install git openssl-devel pkgconfig libnl3-devel
+
+# Ubuntu/Debian
+sudo apt-get install git libssl-dev devscripts pkg-config libnl-3-dev libnl-genl-3-dev
+```
+
+
+
+编译安装
+
+```
+# 克隆freeradius项目（其实没必要下载整个项目，只用到了其中的脚本，文末有下载）
+git clone --depth 1 --no-single-branch https://github.com/FreeRADIUS/freeradius-server.git
+
+# 切换到脚本目录
+cd freeradius-server/scripts/ci/
+
+# 运行编译脚本
+./eapol_test-build.sh
+
+# 拷贝安装到可执行目录
+cp ./eapol_test/eapol_test /usr/local/bin/
+```
+
+
+
+其实编译 `eapol_test` 只需要 `ci` 目录中的文件即可，文末有下载。
+
+另外文末下载中还提供了 `Windows` 版的 `eapol_test` ，方便使用 `Windows` 来测试 `Radius` 。
+
+
+
+
+
+给编译脚本文件赋予可执行权限。
+
+```
+chmod +x eapol_test-build.sh
+```
+
+图d01
+
+
+
+很快就编译好了。
+
+图d02
+
+图d03
+
+
+
+将编译好的执行文件复制一份到统一的执行文件目录中。
+
+```
+cp ./eapol_test/eapol_test /usr/local/bin/
+```
+
+
+
+复制好后，加个 `-h` 来测试一下命令是否有效。
+
+图d04
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
