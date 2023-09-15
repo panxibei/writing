@@ -2,7 +2,7 @@
 
 副标题：如何用 Zabbix 监控 Radius 服务？
 
-英文：how-to-monitor-radius-service
+英文：zabbix-how-to-monitor-radius-service
 
 关键字：zabbix,radius,nps,rad,监控,服务,eapol_test,1812,externalscripts,外部检查
 
@@ -132,24 +132,38 @@
 
 
 
-效果图展示，在 `Zabbix` 加 `NPS` 或 `FreeRadius` ，使用 `MSCHAPv2` 验证环境下测试通过。
+最终效果图展示， `Zabbix` 加 `NPS` 或 `FreeRadius` ，使用 `MSCHAPv2` 验证环境下测试通过。
+
+图13
+
+
+
+同时当服务器故障时，触发器也能正常触发问题报警。
+
+图21
 
 
 
 本文相关脚本及程序文末下载。
 
-**`zabbix` 监控 `Radius` 相关文件（文末下载）**
+**`zabbix` 监控 `Radius` 相关文件（文末集中下载）**
 
 * `Linux` 
-  * `checkradius.sh` : 外部检查脚本（ `1K` ）
-  * `eap-peap.conf` : `Radius` 客户端 `MSCHAPV2` 验证配置文件（ `1K` ）
-  * `ci.7z` : `eapol_test` 客户端命令编译源代码（ `16K` ，用于验证 `MSCHAPV2` ）
-  * `timelimit-1.9.2.tar.gz` : `timelimit` 编译源代码（ `15K` ）
+  * 外部检查脚本（ `1K` ）
+  * `Radius` 客户端 `MSCHAPV2` 验证配置文件（ `1K` ）
+  * 验证 `MSCHAPV2` 客户端命令编译源代码（ `16K` ）
+  * 超时程序编译源代码（ `15K` ）
 
 * `Windows` 
-  * `eapol_test.exe` : `eapol_test` 客户端执行文件（ `6.4M` ，用于验证 `MSCHAPV2` ）
+  * 验证 `MSCHAPV2` 客户端 `exe` 可执行文件（ `6.4M` ，可在 `Windows` 下使用）
 
 
+
+具体怎么实现的呢？
+
+在实现的期间又会遇到哪些坑呢？
+
+下面我们就来详细说道说道……
 
 
 
@@ -167,7 +181,7 @@
 ExternalScripts=/usr/lib/zabbix/externalscripts
 ```
 
-图b01
+图01
 
 
 
@@ -203,7 +217,7 @@ checkradius.sh[]
 checkradius.sh
 ```
 
-图b02
+图02
 
 
 
@@ -219,7 +233,7 @@ checkradius.sh[192.168.1.123]
 
 比如我遇到的 `Permission denied` ，指的是脚本执行被拒绝。
 
-图b03
+图03
 
 
 
@@ -310,15 +324,15 @@ cp ./eapol_test/eapol_test /usr/local/bin/
 chmod +x eapol_test-build.sh
 ```
 
-图d01
+图04
 
 
 
 然后执行，很快就可以编译好。
 
-图d02
+图05
 
-图d03
+图06
 
 
 
@@ -332,7 +346,7 @@ cp ./eapol_test/eapol_test /usr/local/bin/
 
 复制好后，加个 `-h` 来测试一下命令是否有效。
 
-图d04
+图07
 
 
 
@@ -379,19 +393,19 @@ eapol_test -c eap-peap.conf -a 192.168.1.123 -p 1812 -s testing123
 
 执行命令，屏幕一番眼花缭乱的翻滚后，我们看到了最后出现了一个 `SUCCESS` 的字样。
 
-图d05
+图08
 
 
 
 当然，你用 `Windows` 版的 `eapol_test` 命令也能做到一模一样的效果。
 
-图c01
+图09
 
 
 
 回过头来，在服务器一侧也能看到审核成功的日志事件。
 
-图c02
+图10
 
 
 
@@ -403,7 +417,7 @@ eapol_test -c eap-peap.conf -a 192.168.1.123 -p 1812 -s testing123
 
 这似乎方便了不少，那我们就只取结果的最后一行吧。
 
-图d06
+图11
 
 
 
@@ -423,13 +437,13 @@ if (strStatus == 'SUCCESS') {
 return result;
 ```
 
-图d07
+图12
 
 
 
 好，来测试一下效果，不错，得到了结果是 `1` 或 `0` 这样的数字了。
 
-图d08
+图13
 
 
 
@@ -437,7 +451,7 @@ return result;
 
 我们把 `Radius` 服务停止或者断开网络，没想到监控项直接来个执行超时，关键是没有返回任何结果。
 
-图d09
+图14
 
 
 
@@ -467,7 +481,7 @@ return result;
 tar zxvf timelimit-1.x.x.tar.gz
 ```
 
-图e01
+图15
 
 
 
@@ -478,13 +492,13 @@ cd timelimit-1.x.x
 ./build-and-test-all.pl
 ```
 
-图e02
+图16
 
 
 
 瞬间生成执行文件 `timelimit` 。
 
-图e03
+图17
 
 
 
@@ -534,7 +548,7 @@ timelimit -T 1 -t 1 eapol_test -c /foo/eap-peap.conf -a 192.168.1.123 -p 1812 -s
 Timeout=5
 ```
 
-图e04
+图18
 
 
 
@@ -542,7 +556,7 @@ OK，用新脚本再跑跑看。
 
 太棒了， `Radius` 服务器在不工作时，脚本成功返回结果 `0` ！
 
-图e05
+图19
 
 
 
@@ -572,19 +586,19 @@ max(/host/checkradius.sh,2m)=0
 
 除了表达式外，只要简单地写上名称和严重性即可。
 
-图f03
+图20
 
 
 
 将 `Radius` 服务停止，多等一会儿，看看会不会触发。
 
-图f01
+图21
 
 
 
 再将 `Radius` 服务启动，触发的问题又解决了。
 
-图f02
+图22
 
 
 
@@ -613,7 +627,9 @@ max(/host/checkradius.sh,2m)=0
 
 
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1SxVDbgt-6jqYrhxnCBEZ3A
+
+提取码：eefn
 
 
 
