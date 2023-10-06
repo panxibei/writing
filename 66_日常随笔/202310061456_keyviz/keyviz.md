@@ -1,4 +1,4 @@
-keyviz
+实时键鼠输入演示可视化神器Keyviz
 
 副标题：
 
@@ -165,7 +165,13 @@ keyviz
 
 
 
-**keyviz.7z(49.8M)**
+OK，大概就这么多了，还是放一张动图让小伙伴们体会一下吧。
+
+图z02.GIF
+
+
+
+**实时键鼠输入演示可视化神器Keyviz(51.6M)**
 
 * `keyviz_v2.0.0a_arm64.dmg` : `Mac` 平台使用
 * `keyviz_v2.0.0a_linux_x64.zip` : `Linux` 平台使用
@@ -173,7 +179,11 @@ keyviz
 * `keyviz_v2.0.0a_x64.deb` : `Debian` 系 `Linux` 系统使用
 * `keyviz-2.0.0a.zip` : 源代码文件
 
-下载链接：
+
+
+下载链接：https://pan.baidu.com/s/15JMg4tnpwTJYOgDkRsRfvA
+
+提取码：qph8
 
 
 
