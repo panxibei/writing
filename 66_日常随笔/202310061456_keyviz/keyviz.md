@@ -178,6 +178,7 @@ OK，大概就这么多了，还是放一张动图让小伙伴们体会一下吧
 * `keyviz_v2.0.0a_windows.zip` : `Windows` 平台使用
 * `keyviz_v2.0.0a_x64.deb` : `Debian` 系 `Linux` 系统使用
 * `keyviz-2.0.0a.zip` : 源代码文件
+* `vcredist_2022_x64.exe` : `Visual C++` 运行库
 
 
 
