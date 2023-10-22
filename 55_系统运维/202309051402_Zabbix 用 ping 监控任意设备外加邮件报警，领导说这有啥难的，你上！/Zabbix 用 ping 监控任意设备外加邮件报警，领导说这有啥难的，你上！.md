@@ -1,6 +1,6 @@
-Zabbix 用 ping 监控任意设备外加邮件报警，领导说这有啥难的，你上！
+Zabbix 用 ping 监控任意设备外加邮件报警，老板说这有啥难的，你上！
 
-副标题：Zabbix 用 ping 监控任意设备外加邮件报警，领导说这有啥难的，你上！
+副标题：Zabbix 用 ping 监控任意设备外加邮件报警，老板说这有啥难的，你上！
 
 英文：zabbix-uses-ping-to-monitor-any-device-with-email-alarm-the-leader-said-its-too-easy-you-do-it
 
