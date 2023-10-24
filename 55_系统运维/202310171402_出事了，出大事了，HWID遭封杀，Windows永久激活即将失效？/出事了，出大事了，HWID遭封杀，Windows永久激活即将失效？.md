@@ -314,7 +314,9 @@ OK，就放在一起提供给小伙伴们测试使用吧！
 
 （适用平台：Windows 10/11 | Server Build > 14393）
 
-下载链接：
+下载链接：https://pan.baidu.com/s/10JuVejDg2hoB2CIAHDEZ9Q
+
+提取码：b2ye
 
 
 
