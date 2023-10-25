@@ -312,7 +312,7 @@ cp ./eapol_test/eapol_test /usr/local/bin/
 
 其实编译 `eapol_test` 只需要 `freeRadius` 的 `ci` 目录中的文件即可，**文末有下载**，像 `git` 之类的并非必需。
 
-另外文末下载中还提供了 `Windows` 版的 `eapol_test.exe` ，方便手头只 `Windows` 的小伙伴来测试 `Radius` 。
+另外文末下载中还提供了 `Windows` 版的 `eapol_test.exe` ，方便手头只有 `Windows` 的小伙伴来测试 `Radius` 。
 
 
 
