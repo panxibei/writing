@@ -305,7 +305,9 @@ OK，就是辣么强大，搞定！
 
 **网管小贾的BitLocker加密检测小助手.7z(10K)**
 
-下载
+下载链接：https://pan.baidu.com/s/16qJdG9QLBOC_vlMDsnZlaA
+
+提取码：t95e
 
 
 
