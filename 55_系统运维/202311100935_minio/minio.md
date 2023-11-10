@@ -174,3 +174,23 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 
 
 
+送两个技巧：
+
+
+
+在 `BE` 端修改主机名称：
+
+```
+Get-BECloudInstance "CloudInstance0001" | Set-BECloudInstance -ServiceHost "MinioServer"
+```
+
+
+
+
+
+在 `BE` 端修改加密模式：
+
+```
+Get-BECloudInstance "CloudInstance0001" | Set-BECloudInstance -SslMode "Full"
+```
+
