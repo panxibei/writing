@@ -158,6 +158,16 @@ BEMSDK Failure Code: E0009B3F
 C:\Program Files\Veritas\Backup Exec\cacert.pem
 ```
 
+> Use the following instructions to add a missing or replace an expired certificate issued by the cloud provider, or Certificate Authority (CA) to the cacert.pem file at BE Install Path.
+>
+> ** NOTE ** An upgrade of the Backup Exec will revert any changes made to the cacert.pem file. The steps will need to be done again when BE is upgraded or updated. 
+>
+> **1)** Confirm that the self-signed or public CA certificate is in Base64 PEM (Privacy Enhanced Mode) format.
+>
+> **2)** Edit cacert.pem from BE Install Path on BE server : 
+>
+> **3)** Append the self-signed or public CA certificate to the beginning or at the bottom of cacert.pem, and save the file. 
+
 图d01
 
 图d02
