@@ -134,6 +134,40 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 
 
 
+如果无法访问，出现如下错误代码，那么说明加密连接失败了。
+
+```
+BEMSDK Failure Code: E0009B3F
+```
+
+图c081
+
+
+
+找来解决方法。
+
+> https://www.veritas.com/support/en_US/article.100034293
+
+图c082
+
+
+
+简单地说，就是将 `MinIO` 服务端生成的 `pubic.crt` 证书中的内容复制到如下文件中。
+
+```
+C:\Program Files\Veritas\Backup Exec\cacert.pem
+```
+
+图d01
+
+图d02
+
+
+
+
+
+
+
 选择逻辑存储单元，也就是选哪个桶 `Bucket` 。
 
 图c09
