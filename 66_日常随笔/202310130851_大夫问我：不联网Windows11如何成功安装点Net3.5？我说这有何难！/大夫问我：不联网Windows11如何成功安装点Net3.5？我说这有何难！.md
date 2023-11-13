@@ -180,7 +180,11 @@ dism.exe /online /enable-feature /featurename:NetFX3 /Source:D:\sources\sxs
 
 
 
-下载
+**Windows11安装点Net3.5离线安装文件**
+
+下载链接：https://pan.baidu.com/s/1d0bB_1X1-cApvXwjUq3W3Q
+
+提取码：n2oq
 
 
 
