@@ -1,10 +1,10 @@
-NET
+干掉程序兼容性助手，让你的VB6程序更年轻更顺畅
 
-副标题：
+副标题：干掉程序兼容性助手，让你的VB6程序更年轻更顺畅
 
-英文：
+英文：get-rid-of-the-program-compatibility-assistant-to-make-your-vb6-program-younger-and-smoother
 
-关键字：
+关键字：pca,兼容性助手,vb,sdk,mt,compatibility,assistant
 
 
 
@@ -303,6 +303,12 @@ mt.exe -mainfest App.exe.mainfest -outputresource:App.exe;1
 ```
 
 图e02
+
+
+
+具体用法可以参考官方文档：
+
+> https://learn.microsoft.com/zh-cn/windows/win32/sbscs/mt-exe
 
 
 
