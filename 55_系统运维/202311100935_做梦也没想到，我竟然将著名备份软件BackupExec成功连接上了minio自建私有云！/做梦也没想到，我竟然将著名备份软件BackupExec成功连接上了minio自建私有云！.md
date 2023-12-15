@@ -1,10 +1,10 @@
-minio
+做梦也没想到，我竟然将著名备份软件BackupExec成功连接上了minio自建私有云！
 
-副标题：
+副标题：做梦也没想到，我竟然将著名备份软件BackupExec成功连接上了minio自建私有云！
 
-英文：
+英文：i-never-dreamed-that-i-could-successfully-connect-the-famous-backup-software-backupexec-to-s3-compatible-object-store-named-minio-private-cloud
 
-关键字：
+关键字：s3,s4,私有云,云,cloud,backupexec,be,backup,object store,对象存储
 
 
 
