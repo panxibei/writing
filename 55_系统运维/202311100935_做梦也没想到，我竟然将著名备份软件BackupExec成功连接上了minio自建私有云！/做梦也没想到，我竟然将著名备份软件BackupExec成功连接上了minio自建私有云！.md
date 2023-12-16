@@ -66,7 +66,7 @@
 
 别说，还真找着了，按照官方文档指示，可以通过 `BE` 自带的控制台命令行 `BEMCLI` 来创建私有云。
 
-图b03
+图02
 
 
 
@@ -78,19 +78,19 @@
 C:\Program Files\Veritas\Backup Exec\CLILauncher.exe
 ```
 
-图a01
+图03
 
 
 
 来吧，双击它，出现一个新的命令行窗口，有点像 `cmd` ，也有点像 `PowerShell` 。
 
-图a02
+图04
 
 
 
 尝试按照官方文档操作，怎么老是失败呢？
 
-图b01
+图05
 
 
 
@@ -100,7 +100,7 @@ C:\Program Files\Veritas\Backup Exec\CLILauncher.exe
 BEMCLI> get-help New-BECloundInstance -detailed
 ```
 
-图a03
+图06
 
 
 
@@ -115,7 +115,7 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 "AuthenticationOnly" -UrlStyle "Path"
 ```
 
-图a04
+图07
 
 
 
@@ -132,7 +132,7 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 
 依葫芦画瓢往上套呗，嘿，搞定了！
 
-图b02
+图08
 
 
 
@@ -144,25 +144,25 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 
 打开配置存储向导，选择云存储。
 
-图c01
+图09
 
 
 
 给云存储起个响亮的名字，以后你还是要经常来看它的。
 
-图c02
+图10
 
 
 
 选择 `S3` ，我们的 `MinIO` 是兼容 `S3` 的嘛！
 
-图c03
+图11
 
 
 
 注意啦，在这一步中，云存储的连接信息选项中，我们可以看到这里已经有了前面添加过的自定义私有云实例。
 
-图c04
+图12
 
 
 
@@ -172,25 +172,25 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 
 在当前界面中点击 `添加/编辑(E)` 按钮。
 
-图c05
+图13
 
 
 
 再点击 `添加(A)` 按钮，给我们的私有云指定登录账号和密码。
 
-图c06
+图14
 
 
 
 把我们私有云的 `Access-key` 和 `Secret-key` 都给它填上，像这个样子。
 
-图c07
+图15
 
 
 
 现在OK了，点击确定继续。
 
-图c08
+图16
 
 
 
@@ -204,7 +204,7 @@ C:\PS> New-BECloudInstance -Name "CloudInstance0002" -Provider "cloudian" -Servi
 BEMSDK Failure Code: E0009B3F
 ```
 
-图c081
+图17
 
 
 
@@ -212,7 +212,7 @@ BEMSDK Failure Code: E0009B3F
 
 > https://www.veritas.com/support/en_US/article.100034293
 
-图c082
+图18
 
 
 
@@ -244,9 +244,9 @@ C:\Program Files\Veritas\Backup Exec\cacert.pem
 
 `MinIO` 生成存储时肯定会有证书信息的，直接把证书文本内容粘贴到 `cacert.pem` 中，`BE` 连接时就能识别存储了。
 
-图d01
+图19
 
-图d02
+图20
 
 
 
@@ -254,25 +254,25 @@ C:\Program Files\Veritas\Backup Exec\cacert.pem
 
 接着选择逻辑存储单元，也就是选哪个桶 `Bucket` ，这个 `Bucket` 是对象存储中的概念了，简单地可以理解为存储文件夹。
 
-图c09
+图21
 
 
 
 并发操作数，默认是 `2` ，也就是两个并发，视你的存储性能而定，一般来说肯定是并发越多越好，但太多了可能容易挂机。
 
-图c10
+图22
 
 
 
 一切就绪，确认没啥毛病，点击 `完成` 。
 
-图c11
+图23
 
 
 
 `BE` 此时会提示需要重启服务，老实照做，否则存储会以脱机形式存在而无法使用。
 
-图c12
+图24
 
 
 
@@ -282,7 +282,7 @@ C:\Program Files\Veritas\Backup Exec\cacert.pem
 
 果然，备份文件有了（不好意思，截图用的是 `Bucket01` ）。
 
-图c13
+图25
 
 
 
@@ -318,7 +318,7 @@ Get-BECloudInstance "CloudInstance0001" | Set-BECloudInstance -SslMode "Full"
 
 `21.X` 及以下版本是没有这一项的，只能用手打命令来实现。
 
-图e01
+图26
 
 
 
@@ -328,31 +328,31 @@ Get-BECloudInstance "CloudInstance0001" | Set-BECloudInstance -SslMode "Full"
 
 比如，输入私有云名称、服务器地址、加密模式、云提供商以及访问端口，最后点击 `Execute Command` 执行按钮即可。
 
-图e02
+图27
 
 
 
 随后程序会自动生成命令行并执行。
 
-图e03
+图28
 
 
 
 一旦连接成功，我们可以看到在黑色区域里输出结果，以便判断操作是否正确。
 
-图e04
+图29
 
 
 
 同样这个 `Generic S3 Configurator` 工具不单可以添加，还可以删除。
 
-图e05
+图30
 
 
 
 然后再接着设定连接生成的云存储实例就显得很方便了。
 
-图e06
+图31
 
 
 
