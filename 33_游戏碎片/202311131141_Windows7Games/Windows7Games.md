@@ -146,3 +146,17 @@ Windows7Games_for_Windows_11_10_8.exe /S
 
 
 
+> I am sure that the game data is under the your_old_user_profile\Saved Games
+>  and
+>  your_old_user_profile\Documents\Saved Games.
+>  Copy these folders to your new computer. 
+
+
+
+
+
+```
+Windows 10 LTSC 32 bits
+try installing DirectX 9
+```
+
