@@ -151,7 +151,7 @@ Windows7Games_for_Windows_11_10_8.exe /S
 >  your_old_user_profile\Documents\Saved Games.
 >  Copy these folders to your new computer. 
 
-
+图d06
 
 
 
@@ -159,4 +159,18 @@ Windows7Games_for_Windows_11_10_8.exe /S
 Windows 10 LTSC 32 bits
 try installing DirectX 9
 ```
+
+
+
+游戏抓图。
+
+图d03
+
+图d04
+
+图d05
+
+图d07
+
+
 
