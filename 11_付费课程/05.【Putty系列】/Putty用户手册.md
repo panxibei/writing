@@ -12054,71 +12054,813 @@ myabs_free(myabs);
 
   
 
-  所有这些的效果是，您可以通过将实际的 vtable 作为参数传递给其他代码段，使其他代码段能够使用其中一种类型的任何实例。例如，该函数采用一个 vtable 指针，指定您喜欢的任何哈希算法，并在内部创建该类型的对象，使用它并释放它。在C++中，您可能会使用模板来执行此操作，这意味着您有多个专业化 - 然后在*运行时*决定需要使用哪一个会更加困难。在这里，仍然只是一个函数，您可以根据需要决定将哪个 vtable 传递给它。`hash_simple``ssh_hashalg``hash_simple``hash_simple`
+  所有这些的效果是，您可以通过将实际的 vtable 作为参数传递给其他代码段，使其他代码段能够使用其中一种类型的任何实例。
 
-- 抽象*实例*结构还可以包含公开可见的数据字段（这次，通常被视为可变的），这些数据字段对于特征的所有实现都是通用的。例如，有很多这样的。`BinaryPacketProtocol`
+  例如，该 `hash_simple` 函数采用一个 `ssh_hashalg` `vtable` 指针，指定您喜欢的任何哈希算法，并在内部创建该类型的对象，使用它并释放它。在C++中，您可能会使用模板来执行此操作，这意味着您有多个专业化 `hash_simple` - 然后在*运行时*决定需要使用哪一个会更加困难。
+
+  在这里，`hash_simple` 仍然只是一个函数，您可以根据需要决定将哪个 vtable 传递给它。
+
+- 抽象*实例*结构还可以包含公开可见的数据字段（这次，通常被视为可变的），这些数据字段对于特征的所有实现都是通用的。例如，`BinaryPacketProtocol` 有很多这样的。
 
 - 并非所有此类抽象都需要虚拟构造函数。这取决于实现的不同程度。
 
-  对于像哈希算法这样的加密原语，构造函数调用对于每个实现类型看起来都是一样的，因此在 vtable 中拥有一个标准化的虚拟构造函数和一个包装函数是有意义的，它可以创建您传递的任何 vtable 的实例。然后，使所有 vtable 对象本身在整个源代码中全局可见，以便任何模块都可以调用（例如）。`ssh_hash_new``ssh_hash_new(&ssh_sha256)`
+  对于像哈希算法这样的加密原语，构造函数调用对于每个实现类型看起来都是一样的，因此在 `vtable` 中有一个标准化的虚拟构造函数和一个 `ssh_hash_new` 包装器函数是有意义的，该函数可以生成您传递的任何vtable的实例。
 
-  但是对于其他类型的对象，每个实现类型的构造函数必须采用一组不同的参数。例如，在构造时，实现通常不可互换，因为构造不同类型的套接字需要完全不同的地址参数。在这种情况下，将 vtable 结构本身保留为实现源文件私有更有意义，而是发布一个普通构造函数，该函数分配并返回该特定子类型的实例，采用适合该子类型的任何参数。`Socket`
+  然后，您可以使所有 `vtable` 对象本身在整个源代码中全局可见，使得任何模块都可以调用（例如）`ssh_hash_new`（ `&ssh_sha256` ）。
 
-- 如果您有虚拟构造函数，则可以选择它们是将 vtable 指针作为参数（如上所示）还是*现有*实例对象。在后一种情况下，它们可以引用对象本身以及 vtable。例如，你可以有一个特征带有一个名为“clone”的虚拟构造函数，意思是“复制这个对象，无论它是哪个实现。
+  但是对于其他类型的对象，每个实现类型的构造函数都必须采用不同的参数集。
 
-- 有时，单个 vtable 结构类型可以在两个完全不同的对象类型之间共享，并包含两者的所有方法。例如，包含用于创建、使用和释放的方法以及不可互换的对象 - 但是将它们的方法放在同一个 vtable 中意味着很容易创建一对相互兼容的匹配对象。`ssh_compression_alg``ssh_compressor``ssh_decompressor`
+  例如，套接字的实现在构建时通常是不可互换的，因为构建不同类型的套接字需要完全不同类型的地址参数。
 
-- 将 vtable 本身作为参数传递给该方法不是强制性的：如果给定的实现仅由单个 vtable 使用，则该函数可以简单地对它写入其构造对象的 vtable 指针进行硬编码。但是传递 vtable 更灵活，因为它允许在多个略有不同的对象类型之间共享单个构造函数。例如，SHA-384 和 SHA-512 共享相同的方法和相同的实现数据类型，因为它们几乎是相同的哈希算法——但它们的 vtables 中的其他几个方法不同，因为“重置”函数必须以不同的方式设置初始算法状态，而“摘要”方法必须写出不同数量的数据。
+  在这种情况下，更合理的做法是将 `vtable` 结构本身保留为实现源文件的私有结构，而不是发布一个普通的构造函数，该函数分配并返回该特定子类型的实例，采用适合该子类型的任何参数。
 
-  ```
-  new
-  ```
+- 如果您有虚拟构造函数，则可以选择它们是将 `vtable` 指针作为参数（如上所示）还是*现有*实例对象。
 
-  ```
-  new
-  ```
+  在后一种情况下，它们可以引用对象本身以及 `vtable` 。
 
-  ```
-  new
-  ```
+  例如，你可以有一个特征带有一个名为 `clone` 的虚拟构造函数，意思是“复制这个对象，无论它是哪个实现。
 
-  在头文件中拥有*foo*系列内联包装器函数的一个实际优点是，如果您以后改变主意是否需要将vtable传递给，则只需更新包装器，然后现有的调用站点就不需要更改。`myabs_``new``myabs_new`
+- 有时，一个 `vtable` 结构类型可以在两个完全不同的对象类型之间共享，并包含两者的所有方法。
 
-- 此方案实现的另一个“特技对象定向”是，您可以编写两个 vtable，它们都对实现对象使用相同的结构布局，并通过覆盖其自己的 vtable 指针字段，让对象在其生命周期中*从一个部分转换为另一个*部分。例如，处理 SSH 终端会话的服务器端的类型有时会在生命周期中期以这种方式转换为 SCP 或 SFTP 文件传输通道，此时客户端发送“”或“”请求，指示这就是它想要对通道执行的操作。
+  例如，`ssh_compression_alg` 包含创建、使用和释放 `ssh_cocompressor` 和 `ssh_decompressor` 对象的方法，这两个对象是不可互换的，但将它们的方法放在同一个vtable中意味着很容易创建一对相互兼容的匹配对象。
 
-  ```
-  sesschan
-  ```
+- 将 `vtable` 本身作为参数传递给新方法不是强制性的：如果给定的新实现仅由单个 `vtable` 使用，那么该函数可以简单地对写入其构造的对象的 `vtable` 指针进行硬编码。
 
-  ```
-  exec
-  ```
+  但是传递 `vtable` 更灵活，因为它允许在多个稍微不同的对象类型之间共享单个构造函数。
+  
+  例如，`SHA-384` 和 `SHA-512` 共享相同的新方法和相同的实现数据类型，因为它们几乎是相同的哈希算法——但它们的 `vtables` 中的其他几个方法不同，因为“重置”函数必须以不同的方式设置初始算法状态，而“摘要”方法必须写出不同数量的数据。
 
-  ```
-  subsystem
-  ```
+  
+  
+  在头文件中拥有 `myabs_foo` 系列内联包装器函数的一个实际优点是，如果您以后改变主意是否需要将 `vtable` 传递给 `new` ，则只需更新 `myabs_new` 包装器，然后现有的调用站点就不需要更改。
 
-  这个概念很难在C++安排。在 Rust 中，它甚至没有*意义*，因为在 Rust 中，实现 trait 的对象甚至根本不包含 vtable 指针——相反，“trait 对象”类型（标识给定特征的某些实现的特定实例）由一对指针组成，一个指向对象本身，一个指向 vtable。在该模型中，使现有对象变成不同特征的唯一方法是知道指向它的所有指针存储在程序其他地方的位置，并说服其所有所有者重写它们。
+- 该方案实现的另一个“特技对象定向”是，您可以编写两个 `vtable` ，这两个 `vtables` 都对实现对象使用相同的结构布局，并通过覆盖其自己的vtable指针字段，在其生命周期的中途将对象从一个转换到另一个。
 
-- 你可以做的另一个噱头是拥有一个根本没有相应实现结构的 vtable，因为其中实现的唯一方法是构造函数，它们最终总是返回其他一些 vtable 的实现。例如，PuTTY的一些加密原语具有硬件加速版本和纯软件版本，并在运行时决定使用哪一个（基于它们运行的CPU是否支持必要的加速指令）。因此，例如，有 vtables for 和 ，每个 vtables 都有自己的数据布局和所有方法的实现;然后有一个顶级 vtable ，它只提供“new”方法，并通过在一种或另一种子类型上调用“new”方法来实现它，具体取决于它发现的有关运行它的机器的内容。该顶级选择器 vtable 几乎总是客户端代码使用的那个。（测试套件除外，它必须实例化这两个子类型以确保它们都通过测试。
+  例如，处理 `SSH` 终端会话的服务器端的 `seshchan` 类型有时会在使用寿命中期以这种方式转换为 `SCP` 或 `SFTP` 文件传输通道，此时客户端会发送一个“exec”或“subsystem”请求，表明这就是它想要对该通道执行的操作。
+  
+  这个概念在 `C++` 中很难安排。
 
-  ```
-  ssh_sha256_sw
-  ```
+  在 `Rust` 中，这甚至没有意义，因为在 `Rust` 里，实现特性的对象甚至根本不包含 `vtable` 指针——相反，“特性对象”类型（标识给定特性的某个实现的特定实例）由一对指针组成，一个指向对象本身，另一个指向 `vtable` 。
+  
+  在该模型中，使现有对象变成不同特性的唯一方法是知道指向它的所有指针存储在程序的其他位置，并说服所有所有者重写它们。
 
-  ```
-  ssh_sha256_hw
-  ```
+- 你可以做的另一个特技是让一个 `vtable` 根本没有相应的实现结构，因为它中唯一实现的方法是构造函数，它们最终总是返回其他 `vtable` 的实现。
 
-  ```
-  ssh_sha256
-  ```
+  例如，`PuTTY` 的一些加密原语有硬件加速版本和纯软件版本，并在运行时决定使用哪一个（基于它们运行的 `CPU` 是否支持必要的加速指令）。
+  
+  因此，例如，有 `ssh_sha256_sw` 和 `ssh_sha 256_hw` 的 `vtables` ，它们每个都有自己的数据布局和所有方法的自己的实现；然后是一个顶级 `vtable` `ssh_sha256` ，它只提供“new”方法，并根据它对运行机器的了解，通过在一个或另一个子类型上调用“new”来实现它。
 
-  因此，顶级选择器 vtable 不需要实现任何接受参数的方法，因为从未构造过字段指向 的对象：它们都指向其他两个完整实现 vtable 之一。`ssh_sha256``ssh_cipher *``ssh_cipher``vt``&ssh_sha256`
+  这个顶级选择器 `vtable` 几乎总是客户端代码使用的选择器。（测试套件除外，它必须实例化这两个子类型，以确保它们都通过测试。）
+  
+  因此，顶级选择器 `vtable` `ssh_sha256` 不需要实现任何采用 `ssh_cipher*` 参数的方法，因为从来没有构建过 `vt` 字段指向 `&sh_sha256:sh_cipher` 对象：它们都指向其他两个完整实现 `vtable` 中的一个。
+
+
 
 ## E.13 照我们说的做，而不是照我们做的做
 
-当前的 PuTTY 代码可能并不严格遵循上面列出的*所有*原则。在应该独立于后端的模块中，可能偶尔会有特定于SSH的代码片段，或者偶尔依赖于Unix下的非标准X库函数。
+当前的 `PuTTY` 代码可能并不严格遵循上面列出的*所有*原则。
 
-这不应被视为继续违反规则的许可证。如果我们自己违反了它们，我们对此并不满意，我们欢迎修复任何现有问题的补丁。请尝试帮助我们使代码更好，而不是更糟！
+在应该独立于后端的模块中，可能偶尔会有特定于 `SSH` 的代码片段，或者偶尔依赖于 `Unix` 下的非标准 `X` 库函数。
+
+这不应被视为继续违反规则的许可证。
+
+如果我们自己违反了它们，我们对此并不满意，我们欢迎修复任何现有问题的补丁。
+
+请尝试帮助我们使代码更好，而不是更糟！
+
+
+
+
+
+# 附录 F：`PuTTY` 下载密钥和签名
+
+我们为从我们网站分发的所有 `PuTTY` 文件创建 `GPG` 签名，以便用户可以确信这些文件没有被篡改。
+
+在这里，我们识别我们的公钥，并解释我们的签名政策，以便您可以准确了解每个签名的保证。
+
+此描述既以 `PuTTY` 网站上的网页形式提供，也以 `PuTTY` 手册中的附录形式提供。
+
+
+
+从版本 `0.58` 开始，所有 `PuTTY` 可执行文件都包含指纹材料（通常通过 `-pgpfp` 命令行选项访问），因此，如果您有信任的可执行文件，则可以使用它来建立信任路径，例如从互联网下载到更新版本。
+
+从版本 `0.67` 开始，`Windows` 可执行文件和安装程序还包含由 `Windows` 自己的机制（“Authenticode”）自动验证的内置签名。
+
+用于此目的的密钥是不同的，此处不予介绍。
+
+（请注意，这里提到的密钥、签名等都与 `SSH` 中使用的密钥无关——它们纯粹是为了验证 `PuTTY` 团队分发的文件的来源。）
+
+
+
+## F.1 公钥
+
+我们维护多个密钥，由于以不同的方式使用，因此具有不同的安全级别。
+
+有关详细信息，请参阅下面的 [F.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixF.html#pgpkeys-security)。
+
+我们提供的密钥是：
+
+- 快照密钥
+
+  用于对 `PuTTY` 的例行开发版本进行签名：每晚快照、预发布版本，有时也用于我们发送给特定用户的自定义诊断版本。
+
+- 版本密钥
+
+  用于对手动发布的 `PuTTY` 版本进行签名。
+
+- 安全联系人密钥
+
+  一种具有加密功能的密钥，适合人们向 `PuTTY` 团队发送机密消息，例如漏洞报告。
+
+- 万能钥匙
+
+  用于将上述所有密钥绑定到 `GPG` 信任网络中。主密钥对所有其他密钥进行签名，其他 `GPG` 用户依次对其进行签名。
+
+
+
+这些密钥的当前版本可从 `PuTTY` 网站下载，也可以使用下面列出的密钥 `ID` 在 `PGP` 密钥服务器上获得。
+
+- [**Master Key** (2021)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/master-2021.asc)
+
+  RSA, 3072-bit. Key ID: `DD4355EAAC1119DE`. Fingerprint: `A872 D42F 1660 890F 0E05 223E DD43 55EA AC11 19DE`
+
+  [**Release Key** (2021)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/release-2021.asc)
+
+  RSA, 3072-bit. Key ID: `E4F83EA2AA4915EC`. Fingerprint: `2CF6 134B D3F7 7A65 88EB D668 E4F8 3EA2 AA49 15EC`
+
+  [**Snapshot Key** (2021)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/snapshot-2021.asc)
+
+  RSA, 3072-bit. Key ID: `B43979F89F446CFD`. Fingerprint: `1FD3 BCAC E532 FBE0 6A8C 09E2 B439 79F8 9F44 6CFD`
+
+  [**Secure Contact Key** (2021)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/contact-2021.asc)
+
+  RSA, 3072-bit. Key ID: `012C59D4211BD62A`. Fingerprint: `E30F 1354 2A04 BE0E 56F0 5801 012C 59D4 211B D62A`
+
+
+
+## F.2 安全细节
+
+各种密钥具有不同的安全级别。本部分介绍这些安全级别是什么，以及您可以期望信任每个密钥的程度。
+
+
+
+### F.2.1 开发快照键
+
+`Development Snapshots` 私钥的并不存储密码。
+
+这是必要的，因为快照是每天晚上生成的，没有人为干预，所以没有人能够输入密码。
+
+
+
+快照在团队成员的家庭计算机上生成并签名，然后上载到从中下载快照的 `Web` 服务器。
+
+因此，来自开发快照密钥的签名*确实*可以保护您免受以下影响：
+
+- 有人篡改 `PuTTY` 网站与您之间的 `PuTTY` 二进制文件。
+- 我们 `Web` 服务器的维护者试图滥用其 `root` 权限来篡改二进制文件。
+
+
+
+但它*并不能*保护您免受以下侵害：
+
+- 人们在二进制文件上传到我们的下载服务器之前对其进行篡改。
+- 人们篡改了构建机器，以便他们构建的下一组二进制文件在某种程度上是恶意的。
+- 人们从它赖以生存的构建机器中窃取未加密的私钥。
+
+
+
+当然，我们会采取一切合理的预防措施来保护构建机器。
+
+但是，当您看到签名时，您应该始终确定它保证了什么，以及它不保证什么。
+
+
+
+### F.2.2 `Releases` 密钥
+
+`Releases` 密钥更安全：因为它仅在发布时使用，因此要手动签署每个版本，我们可以将其加密存储。
+
+`Releases` 私钥在开发人员自己的本地计算机上保持加密。
+
+因此，想要窃取密码的攻击者也必须窃取密码。
+
+
+
+### F.2.3 安全联系人密钥
+
+安全联系人密钥以与发布密钥类似的安全级别存储：它与密码一起存储，并且任何自动脚本都无法访问它。
+
+
+
+### F.2.4 主密钥
+
+万能钥匙几乎没有任何标志。其目的是将其他密钥绑定在一起，并证明它们都由同一个人拥有，并且是同一集成设置的一部分。主密钥生成的唯一签名应该是其他密钥上的签名。
+
+主密钥特别长，其私钥和密码的存储要特别小心。
+
+我们在主密钥上收集了一些第三方签名，以增加您找到合适的信任路径的机会。
+
+我们已将各种密钥上传到公钥服务器，因此，即使您不认识任何签署我们密钥的人，您仍然可以合理地确信攻击者会发现很难同时替换所有公钥服务器上的假密钥。
+
+
+
+## F.3 密钥滚动更新
+
+我们当前的密钥是在 `2018` 年 `8` 月生成的。
+
+每个新的主密钥都与旧主密钥签名，以表明它确实由同一个人拥有，而不是由攻击者替换。
+
+每个新的主密钥还会对以前的版本密钥进行签名，以防您尝试在滚动更新之前验证版本上的签名，并且可以从签署新主密钥的任何人那里找到对这些密钥的信任链。
+
+每个版本都使用发布时最新的版本密钥进行签名。我们不会返回并使用新生成的密钥对旧版本重新签名。
+
+此处提供了所有以前密钥的详细信息。
+
+
+
+**2018 年生成的密钥**
+
+[**Master Key** (2018)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/master-2018.asc)
+
+RSA, 4096-bit. Key ID: `76BC7FE4EBFD2D9E`. Fingerprint: `24E1 B1C5 75EA 3C9F F752 A922 76BC 7FE4 EBFD 2D9E`
+
+[**Release Key** (2018)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/release-2018.asc)
+
+RSA, 3072-bit. Key ID: `6289A25F4AE8DA82`. Fingerprint: `E273 94AC A3F9 D904 9522 E054 6289 A25F 4AE8 DA82`
+
+[**Snapshot Key** (2018)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/snapshot-2018.asc)
+
+RSA, 3072-bit. Key ID: `38BA7229B7588FD1`. Fingerprint: `C92B 52E9 9AB6 1DDA 33DB 2B7A 38BA 7229 B758 8FD1`
+
+[**Secure Contact Key** (2018)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/contact-2018.asc)
+
+RSA, 3072-bit. Key ID: `657D487977F95C98`. Fingerprint: `A680 0082 2998 6E46 22CA 0E43 657D 4879 77F9 5C98`
+
+
+
+**2016 年生成的密钥**（当我们首次引入安全联系人密钥时）
+
+[**Secure Contact Key** (2016)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/contact-2016.asc)
+
+RSA, 2048-bit. Main key ID: `2048R/8A0AF00B` (long version: `2048R/C4FCAAD08A0AF00B`). Encryption subkey ID: `2048R/50C2CF5C` (long version: `2048R/9EB39CC150C2CF5C`). Fingerprint: `8A26 250E 763F E359 75F3 118F C4FC AAD0 8A0A F00B`
+
+
+
+**2015 年生成的密钥**
+
+[**Master Key** (2015)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/master-2015.asc)
+
+RSA, 4096-bit. Key ID: `4096R/04676F7C` (long version: `4096R/AB585DC604676F7C`). Fingerprint: `440D E3B5 B7A1 CA85 B3CC 1718 AB58 5DC6 0467 6F7C`
+
+[**Release Key** (2015)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/release-2015.asc)
+
+RSA, 2048-bit. Key ID: `2048R/B43434E4` (long version: `2048R/9DFE2648B43434E4`). Fingerprint: `0054 DDAA 8ADA 15D2 768A 6DE7 9DFE 2648 B434 34E4`
+
+[**Snapshot Key** (2015)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/snapshot-2015.asc)
+
+RSA, 2048-bit. Key ID: `2048R/D15F7E8A` (long version: `2048R/EEF20295D15F7E8A`). Fingerprint: `0A3B 0048 FE49 9B67 A234 FEB6 EEF2 0295 D15F 7E8A`
+
+
+
+**2000 年生成的原始密钥**（两组，`RSA` 和 `DSA` ）
+
+[**Master Key** (original RSA)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/master-rsa.asc)
+
+RSA, 1024-bit. Key ID: `1024R/1E34AC41` (long version: `1024R/9D5877BF1E34AC41`). Fingerprint: `8F 15 97 DA 25 30 AB 0D 88 D1 92 54 11 CF 0C 4C`
+
+[**Master Key** (original DSA)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/master-dsa.asc)
+
+DSA, 1024-bit. Key ID: `1024D/6A93B34E` (long version: `1024D/4F5E6DF56A93B34E`). Fingerprint: `313C 3E76 4B74 C2C5 F2AE 83A8 4F5E 6DF5 6A93 B34E`
+
+[**Release Key** (original RSA)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/release-rsa.asc)
+
+RSA, 1024-bit. Key ID: `1024R/B41CAE29` (long version: `1024R/EF39CCC0B41CAE29`). Fingerprint: `AE 65 D3 F7 85 D3 18 E0 3B 0C 9B 02 FF 3A 81 FE`
+
+[**Release Key** (original DSA)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/release-dsa.asc)
+
+DSA, 1024-bit. Key ID: `1024D/08B0A90B` (long version: `1024D/FECD6F3F08B0A90B`). Fingerprint: `00B1 1009 38E6 9800 6518 F0AB FECD 6F3F 08B0 A90B`
+
+[**Snapshot Key** (original RSA)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/snapshot-rsa.asc)
+
+RSA, 1024-bit. Key ID: `1024R/32B903A9` (long version: `1024R/FAAED21532B903A9`). Fingerprint: `86 8B 1F 79 9C F4 7F BD 8B 1B D7 8E C6 4E 4C 03`
+
+[**Snapshot Key** (original DSA)](https://www.chiark.greenend.org.uk/~sgtatham/putty/keys/snapshot-dsa.asc)
+
+DSA, 1024-bit. Key ID: `1024D/7D3E4A00` (long version: `1024D/165E56F77D3E4A00`). Fingerprint: `63DD 8EF8 32F5 D777 9FF0 2947 165E 56F7 7D3E 4A00`
+
+
+
+# 附录 G：为 `PuTTY` 指定的 `SSH-2` 名称
+
+`SSH-2` 协议的各个部分都使用文本名称指定内容。以 `@putty.projects.tartarus.org` 结尾的名称保留供 `PuTTY` 团队分配。
+
+此处记录了分配的名称。
+
+
+
+## G.1 连接协议通道请求名称
+
+这些名称可以在邮件中发送 `SSH_MSG_CHANNEL_REQUEST` 消息。
+
+- `simple@putty.projects.tartarus.org`
+
+  它由客户端发送，以宣布它在当前连接中一次打开的通道不会超过一个通道（该通道是发送请求的通道）。其目的是让服务器知道这一点，可以将该通道上的窗口设置为非常大的窗口，并将流量控制留给 TCP。没有特定于消息的数据。
+
+- `winadj@putty.projects.tartarus.org`
+
+  `PuTTY` 将此请求与一些 `SSH_MSG_CHANNEL_WINDOW_ADJUST` 消息一起发送，作为其窗口大小调整的一部分。
+
+  它可以在任何类型的信道上发送。没有特定于消息的数据。服务器必须将其视为未识别的请求，并使用 `SSH_MSG_CHANNEL_FAILURE` 进行响应。
+
+  （某些 `SSH` 服务器对此消息感到困惑，因此有一个 `bug` 兼容模式来禁用它。请参阅[第 4.27.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-bug-winadj)。
+
+
+
+## G.2 密钥交换方法名称
+
+- `rsa-sha1-draft-00@putty.projects.tartarus.org`
+
+- `rsa-sha256-draft-00@putty.projects.tartarus.org`
+
+- `rsa1024-sha1-draft-01@putty.projects.tartarus.org`
+
+- `rsa1024-sha256-draft-01@putty.projects.tartarus.org`
+
+- `rsa2048-sha256-draft-01@putty.projects.tartarus.org`
+
+- `rsa1024-sha1-draft-02@putty.projects.tartarus.org`
+
+- `rsa2048-sha512-draft-02@putty.projects.tartarus.org`
+
+- `rsa1024-sha1-draft-03@putty.projects.tartarus.org`
+
+- `rsa2048-sha256-draft-03@putty.projects.tartarus.org`
+
+- `rsa1024-sha1-draft-04@putty.projects.tartarus.org`
+
+- `rsa2048-sha256-draft-04@putty.projects.tartarus.org`
+
+  这些出现在最终成为 `RFC 4432` 的各种草案中。它们已被 `rsa1024-sha1` 和 `rsa2048-sha256` 取代。
+
+
+
+## G.3 加密算法名称
+
+- `arcfour128-draft-00@putty.projects.tartarus.org`
+
+- `arcfour256-draft-00@putty.projects.tartarus.org`
+
+  这些被用于最终成为 RFC 4345 的草案中。它们已被 `arcfour128` 和 `arcfour256` 取代。
+
+
+
+## G.4 代理扩展请求名称
+
+`SSH` 代理协议仅在撰写本文时在 `Internet-Draft` （[`draft-miller-ssh-agent`](https://datatracker.ietf.org/doc/html/draft-miller-ssh-agent)） 中指定，它定义了一种扩展机制。
+
+这些名称可以在邮件中发送 `SSH_AGENTC_EXTENSION` 消息。
+
+- `add-ppk@putty.projects.tartarus.org`
+
+  有效负载是单个 `SSH-2` `string` ，其中包含[附录 C](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixC.html#ppk) 中定义的 PPK 格式的密钥对。与标准 `SSH_AGENTC_ADD_IDENTITY` 相比，此扩展允许以加密形式添加密钥，代理按需向用户请求解密密码，并能够将密钥恢复为加密形式。
+
+- `reencrypt@putty.projects.tartarus.org`
+
+  有效负载是指定公钥 blob 的单个 `SSH-2` ，如 `SSH_AGENTC_REMOVE_IDENTITY` 中所示。请求代理忘记特定密钥的任何明文形式。
+
+  如果代理最终仅以加密形式持有密钥（即使它已加密），则返回 `SSH_AGENT_SUCCESS` ，如果不是，则返回 `SSH_AGENT_EXTENSION_FAILURE` （如果它根本没有被代理持有，或者仅以明文形式持有）。
+
+- `reencrypt-all@putty.projects.tartarus.org`
+
+  无有效载荷。请求代理忘记其持有加密表单的任何密钥的明文表单。
+
+  如果代理持有任何加密形式的密钥（或者根本没有密钥），则返回 `SSH_agent_SCCESS` 以指示现在没有以明文形式持有此类密钥，然后返回 `uint32` ，指定以明文形式保留的密钥数量（因为代理没有为其持有加密形式）。
+
+  如果代理只持有明文形式的密钥，则返回 `SSH_agent_EEXTENSION_FAILURE` 。
+
+- `list-extended@putty.projects.tartarus.org`
+
+  无有效载荷。返回 `SSH_AGENT_SCCESS` ，后面跟一个类似于 `SSH_AGENT_identities_ANSWER` 的标识列表，只是每个键的末尾都有一个额外的 `SSH-2` 字符串。目前，该字符串包含一个 `uint32` 标志字，定义了以下位：
+
+  * `Bit 0`
+
+  若设置了，密钥将以加密的形式保存（这样重新加密的扩展插件就可以对它做一些有用的事情）。
+
+  * `Bit 1`
+
+  如果设置了，则当前不持有密钥的明文形式（因此用户必须提供密码短语才能使用密钥）。
+
+
+
+
+
+
+
+# 附录 H：`PuTTY` 身份验证插件协议
+
+本附录包含 `PuTTY` 和身份验证帮助程序插件之间通过本地 `IPC` 使用的协议规范。
+
+如果您已经有一个身份验证插件，并且想要配置 `PuTTY` 来使用它，请参阅[第 4.22.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-authplugin)了解如何执行此操作。
+
+本附录适用于编写新身份验证插件的人员。
+
+
+
+## H.1 要求
+
+以下要求告知了该协议的规范。
+
+
+
+**自动执行键盘交互式身份验证。**
+
+我们的动机首先是观察到，通用的 `SSH` 用户身份验证方法“键盘交互”（在 `[RFC4256]` 中定义）可以用于多种挑战/响应或一次性密码类型的身份验证，在其中不止一种情况下，可能会从辅助网络连接（如 `HTTPS` 事务）获得必要的响应。
+
+因此，如果用户不必手动将类型复制或从 `web` 浏览器复制粘贴到 `SSH` 客户端，而是可以自动执行该过程，那么这将非常有用。
+
+
+
+**能够将提示传递给用户。**
+
+另一方面，某些 `userauth` 方法只能*部分*自动化;服务器的某些提示可能仍需要人工输入。
+
+此外，自动执行身份验证的插件可能需要询问 SSH 服务器未提供的问题。（例如，“请输入通过哈希生成真实响应的主密钥”。）
+
+所以插件截获服务器的问题后，需要能够向用户提出自己的问题，这些问题可能与服务器发送的问题相同，也可能不同。
+
+
+
+**允许自动生成用户名。**
+
+有时，身份验证方法附带一种机制，用于发现要在 `SSH` 登录中使用的用户名。
+
+因此，插件必须足够早地启动，以便客户端尚未提交用户名。
+
+
+
+**未来扩展到其他 `SSH userauth` 风格的路由。**
+
+该协议的最初动机是特定于键盘交互的。
+
+但存在其他 `SSH` 身份验证方法，它们将来也可能从自动化中受益。
+
+我们在这里没有试图预测这些方法可能是什么，或者它们如何自动化，但我们确实需要留出一个空间，以便在必要时稍后插入它们。
+
+
+
+**将信息丢失降至最低。**
+
+键盘交互提示和回复应以尽可能接近它们在 `SSH` 本身中网络上的外观的形式传递到插件或从插件传递。
+
+因此，该协议在数据格式和编组方面类似于 `SSH`（例如，从 `SSH` 二进制数据包样式转换为另一种众所周知的格式（如 `JSON` ），这会在字符编码中引入边缘情况）。
+
+
+
+**半双工。**
+
+同时尝试读取一个 `I/O` 流和写入另一个 `I/O` 数据流会给软件增加很多复杂性。
+
+有必要有一个包含 `select` 或 `WaitForMultipleObjects` 或类似内容的有组织的事件循环，它可以为最快发生的事件调用处理程序。
+
+在这样的应用程序中没有必要增加复杂性，因为它不会传输大量的批量数据或多路复用不相关的活动。
+
+因此，为了让插件作者的生活变得简单，我们设定了一条基本规则，即必须始终 `100%` 清楚接下来应该向哪一方发送消息。
+
+这样，插件就可以写成通过协议进行的顺序代码，进行简单的读写调用来接收或发送每条消息。
+
+
+
+**沟通成功/失败，以方便在插件中缓存。**
+
+插件可能希望缓存最近使用的数据以备下次使用，但仅限于使用该数据的身份验证实际成功的情况下。
+
+因此，如果已知的话，客户端必须告诉插件结果是什么。
+
+（但这只是尽力而为。显然，插件不能*依赖于*听到答案，因为任何 `IPC` 协议都存在另一端可能崩溃或被其无法控制的东西杀死的风险。）
+
+
+
+## H.2 传输和配置
+
+插件是客户端平台上的可执行程序。
+
+必须手动配置 `SSH` 客户端才能将插件用于特定连接。配置采用命令行的形式，包括插件可执行文件的位置，以及对特定插件有意义的命令行参数（可选）。
+
+客户端将插件作为子进程调用，并向其传递一对 `8` 位干净的管道作为其标准输入和输出。
+
+在这些管道上，客户端和插件将通过下面指定的协议进行通信。
+
+
+
+## H.3 数据格式和编组
+
+该协议借用了 `SSH` 本身的低级数据格式，特别是 [[RFC4251\]](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixH.html#p0) 第 5 节中的以下线路编码：
+
+- **`byte`**
+
+  一个介于 `0` 和 `0xFF` 之间的整数，作为二进制数据的单个字节传输。
+
+- **`boolean`**
+
+  值 `true` 或 `false` ，分别作为字节 `1` 和 `0` 传输。
+
+- **uint32**
+
+  介于 `0` 和 `0xFFFFFFFF` 之间的整数，以 `4` 个字节的二进制数据形式传输，按 `big-endian`（“network”）字节顺序传输。
+
+- **字符串**
+
+  一个字节序列，前面有一个 `uint32` ，给出序列中的字节数。
+
+  长度字段不包括其自身。例如，空字符串由四个零字节表示（ `uint32` 编码为 `0` ）；字符串“AB”由六个字节 0,0,0,2，'A'，'B'表示。
+
+
+
+与 `SSH` 本身不同，客户端和插件之间使用的协议是未加密的，因为假定本地进程间管道由操作系统内核保护。
+
+因此，二进制数据包协议比 `SSH` 简单得多，并且类似于 `SFTP` 和 `OpenSSH` 代理协议。
+
+在会话的每个方向上发送的数据由 `SSH` 客户端和插件之间交换的一系列**消息**组成。
+
+每条消息都编码为**一个字符串**。字符串的内容以提供消息类型的字节开头，该**字节**决定了消息其余部分的格式。
+
+
+
+## H.4 协议版本控制
+
+此协议本身是受版本控制的。在连接设置时，客户端会声明它知道如何说出的最高版本号，然后插件通过选择实际说出的版本号（可能不高于客户端的值）来响应。
+
+包括版本号可以在以后对协议进行重大更改。
+
+偶数版本号表示此规范的已发布版本。奇数表示版本之间的草稿或开发版本。协商奇数版本号的客户端和插件不能保证互操作;测试组合的开发人员负责确保两者兼容。
+
+本文档介绍该协议的第 `2` 版，这是第一个发布的版本。（初稿有第 1 版。）
+
+
+
+## H.5 事件概览和先后次序
+
+在 `SSH` 的用户身份验证阶段的最开始，客户端启动插件子进程（如果已配置）。它立即发送 `PLUGIN_INIT` 消息，告诉插件一些关于 `SSH` 连接的初始信息。
+
+
+插件以 `plugin_INIT_RESPONSE` 作为响应，它可以选择性地告诉 `SSH` 客户端要使用什么用户名。
+
+
+客户端开始尝试以通常的方式向 `SSH` 服务器进行身份验证，使用插件提供的用户名（如果有的话）或通过其正常（非插件）策略获得的用户名。
+
+
+客户端遵循其正常策略来选择要尝试的身份验证方法。如果客户端选择了该协议未涵盖的方法，则客户端将在不咨询插件的情况下以自己的方式执行该方法。
+
+
+但是，如果客户端和服务器决定尝试此协议所涵盖的方法，则客户端发送 `PLUGIN_protocol` ，指定所使用的身份验证方法的 `SSH` 协议 `id` 。如果插件愿意协助使用此身份验证方法，它将使用 `plugin_PROTOCOL_ACCEPT` 进行响应，如果不愿意，则使用 `plugin _PROTOCOL_REJECT` 进行响应。
+
+
+如果插件发送 `plugin_PROTOCOL_REJECT` ，那么客户端将继续进行，就像插件不存在一样。稍后，如果协商了另一个身份验证方法（可能是因为该方法失败，也可能是因为它成功了，但服务器需要多种身份验证方法），则客户端可以发送另一个 `PLUGIN_PROTOCOL` ，然后重试。
+
+如果插件发送 `plugin_PROTOCOL_ACCEPT` ，则一个特定于该身份验证方法的协议段开始，以 `plugin_auth_SUCCESS` 或 `plugin_auth_FAILURE` 终止。在那之后，客户端可以再次发送另外的 `PLUGIN_PROTOCOL` 。
+
+
+
+
+目前唯一支持的方法是 `[RFC4256]` 中定义的“键盘交互”。一旦客户端向服务器宣布了这一消息，后续协议如下：
+
+
+每次服务器发送 `SSH_MSG_USERAUTH_INFO_REQUEST` 消息请求用户的身份验证响应时，`SSH` 客户端都会将该消息转换为 `PLUGIN_KI_server_REQUEST` 并将其传递给插件。
+
+
+此时，插件可以选择性地发回 `plugin_KI_USER_REQUEST` ，其中包含要呈现给实际用户的提示。在要求用户回复请求消息中的问题后，客户端将使用匹配的 `PLUGIN_KI_USER_RESPONSE` 进行回复。插件可以多次重复此循环。
+
+
+一旦插件获得了响应服务器身份验证提示所需的所有信息，它就会将 `plugin_KI_server_RESPONSE` 发送回客户端，客户端将其转换为 `SSH_MSG_USERAUTH_INFO_REPONSE` 发送到服务器。
+
+之后，如 `[RFC4256]` 中所述，服务器可以自由地接受身份验证、拒绝身份验证或发送另一个 `SSH_MSG_USERAUTH_INFO_REQUEST` 。以与上述相同的方式处理每个`SSH_MSG_USERAUTH_INFO_REQUEST` 。
+
+
+
+
+如果服务器终止了 `SSH_MSG_USERAUTH_SSUCCESS` 或 `SSH_MSG_USERAUTH_FAILURE` 的键盘交互身份验证，则客户端通过发送 `plugin_AUTH_SUCCESS` 或者 `plugin-AUTH_FAILURE` 来通知插件。`PLUGIN_AUTH_SUCCESS` 是在特定身份验证方法成功时发送的，无论SSH服务器随后是否选择请求进一步的身份验证：特别是，带有“部分成功”标志的 `SSH_MSG_USERAUTH_FAILURE`（请参见[RFC4252]第5.1节）会转换为 `PLUGIN-AUTH_SUSUCCESS` 。
+
+当客户端出于任何原因不再需要插件的服务时，插件的标准输入将关闭。
+
+这可能是因为身份验证已完成（总体成功或总体失败），或者因为用户在身份验证过程中手动中止了会话，或者因为客户端崩溃。
+
+
+
+## H.6 消息格式
+
+本节介绍协议中每条消息的格式。
+
+如 [H.3 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixH.html#authplugin-formats)所述，每条消息都以相同的两个字段开头：
+
+- **uint32**：消息的总长度
+- **byte**：消息类型。
+
+长度字段不包括自身，但包含类型代码。
+
+以下各小节分别给出了类型代码之后消息其余部分的格式。
+
+类型代码本身定义如下：
+
+```
+#define PLUGIN_INIT                   1
+#define PLUGIN_INIT_RESPONSE          2
+#define PLUGIN_PROTOCOL               3
+#define PLUGIN_PROTOCOL_ACCEPT        4
+#define PLUGIN_PROTOCOL_REJECT        5
+#define PLUGIN_AUTH_SUCCESS           6
+#define PLUGIN_AUTH_FAILURE           7
+#define PLUGIN_INIT_FAILURE           8
+
+#define PLUGIN_KI_SERVER_REQUEST     20
+#define PLUGIN_KI_SERVER_RESPONSE    21
+#define PLUGIN_KI_USER_REQUEST       22
+#define PLUGIN_KI_USER_RESPONSE      23
+```
+
+如果扩展此协议以能够协助进一步的身份验证方法，则其消息类型代码也将从 `20` 开始，与键盘交互的代码重叠。
+
+
+
+### H.6.1 `PLUGIN_INIT`
+
+**方向**：客户端到插件
+
+**时间**：连接启动时发送的第一条消息
+
+**接下来会发生什么**：插件将发送 `PLUGIN_INIT_RESPONSE` 或 `PLUGIN_INIT_FAILURE`
+
+**类型代码后的消息内容**：
+
+- **uint32**：客户端知道如何对话的此协议的最高版本号。
+- **string**：服务器的主机名。这将是*逻辑*主机名，如果它与网络连接的物理目标不同。无论  `SSH` 客户端使用什么名称来缓存服务器的主机密钥，都与此消息中传递的名称相同。
+- **uint32**：服务器上的端口号。（这与主机名一起构成了标识特定服务器的主键。端口号可能至关重要，因为单个主机可以运行两个不相关的 SSH 服务器，这些服务器具有完全不同的身份验证要求，例如端口 `22` 上的系统 `sshd` 和端口 `29418` 上的 `Gerrit` 。
+- **string**：如果插件选择不覆盖它，客户端将用于登录的用户名。空字符串表示客户端对此没有意见（例如，可能会提示用户）。
+
+
+
+### H.6.2 `PLUGIN_INIT_RESPONSE`
+
+**方向**：插件到客户端
+
+**时间**：响应`PLUGIN_INIT`
+
+**接下来会发生什么**：客户端将发送 `PLUGIN_PROTOCOL` ，或者可能终止会话（如果没有协商插件可以帮助的身份验证方法）
+
+**类型代码后的消息内容**：
+
+- **UInt32**：连接将使用的此协议的版本号。必须不大于 中客户端发送的最大版本号。`PLUGIN_INIT`
+- **string**：插件建议客户端使用的用户名。空字符串意味着插件没有意见，客户端应该坚持使用它已经拥有的用户名（如果没有，则提示用户）。
+
+
+
+### H.6.3 `PLUGIN_INIT_FAILURE`
+
+**方向**：插件到客户端
+
+**时间**：响应`PLUGIN_INIT`
+
+**接下来会发生什么**：会话结束
+
+**类型代码后的消息内容**：
+
+- **字符串**：向用户显示一条错误消息，指示插件无法启动的原因。
+
+
+
+### H.6.4 `PLUGIN_PROTOCOL`
+
+**方向**：客户端到插件
+
+**时间**：在 `PLUGIN_INIT_RESPONSE` 之后发送，或在上一个身份验证阶段以 `PLUGIN_AUTH_SUCCESS` 或 `PLUGIN_AUTH_FAILURE`
+
+**接下来会发生什么**：插件将发送 `PLUGIN_PROTOCOL_ACCEPT` 或 `PLUGIN_PROTOCOL_REJECT`
+
+**类型代码后的消息内容**：
+
+- **string**：客户端打算尝试的身份验证方法的 `SSH` 协议 `ID` 。目前，指定在此协议中使用的唯一方法是 `keyboard-interactive` 。
+
+
+
+### H.6.5`PLUGIN_PROTOCOL_REJECT`
+
+**方向**：插件到客户端
+
+时间： 在 `PLUGIN_PROTOCOL` 之后发送
+
+**接下来会发生什么**：客户端将发送另一个 `PLUGIN_PROTOCOL` 或终止会话
+
+**类型代码后的消息内容**：
+
+- **string**：向用户显示的错误消息，解释为什么插件无法帮助处理此身份验证协议。
+
+  例如，如果插件依赖于用户尚未设置的某些配置，则可能是“无法打开<配置文件>：<操作系统错误消息>”。
+
+  如果插件根本不支持此特定身份验证协议，则此字符串应留空，以便根本不会向用户显示任何消息。
+
+
+
+### H.6.6 `PLUGIN_PROTOCOL_ACCEPT`
+
+**方向**：插件到客户端
+
+时间： 在 `PLUGIN_PROTOCOL` 之后发送
+
+**接下来会发生什么**：取决于商定的身份验证协议。对于键盘交互，客户端将发送 `PLUGIN_KI_SERVER_REQUEST` 或 `PLUGIN_AUTH_SUCCESS` 或 `PLUGIN_AUTH_FAILURE` 。未指定其他方法。
+
+**类型代码后的消息内容**：无。
+
+
+
+### H.6.7 `PLUGIN_KI_SERVER_REQUEST`
+
+**方向**：客户端到插件
+
+**时间**：在 `PLUGIN_PROTOCOL` 之后发送，或在上一个 之后发送 `PLUGIN_KI_SERVER_RESPONSE` ，当 `SSH` 服务器发送 `SSH_MSG_USERAUTH_INFO_REQUEST` 时
+
+**接下来会发生什么**：插件将发送 `PLUGIN_KI_USER_REQUEST` 或 `PLUGIN_KI_SERVER_RESPONSE`
+
+**类型代码后的消息**内容：服务器刚刚发送 `SSH_MSG_USERAUTH_INFO_REQUEST` 的确切内容。有关详细信息，请参见 [[RFC4256\]](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixH.html#p1) 第 3.2 节。摘要：
+
+- **string**：此提示集合的名称（例如用作对话框标题）
+- **string**：此提示集合之前要显示的指令
+- **字符串**：语言标记（已弃用）
+- **uint32**：此集合中的提示数
+- 多个副本：
+  - **string**： `prompt` （ `UTF-8` 格式）
+  - **boolean**：对此提示的响应是否可以安全地回显到屏幕上
+
+
+
+### H.6.8 `PLUGIN_KI_SERVER_RESPONSE`
+
+**方向**：插件到客户端
+
+**时间**：对 `PLUGIN_KI_SERVER_REQUEST` 的反应 ，也许在一对或多对干预 `PLUGIN_KI_USER_REQUEST` 和 `PLUGIN_KI_USER_RESPONSE` 之后
+
+**接下来会发生什么**：客户端将发送进一步的 `PLUGIN_KI_SERVER_REQUEST` 、或 `PLUGIN_AUTH_SUCCESS` 或 `PLUGIN_AUTH_FAILURE`
+
+**类型代码后的消息内容**：客户端应发送回服务器 `SSH_MSG_USERAUTH_INFO_RESPONSE` 的确切内容。有关详细信息，请参见 [[RFC4256\]](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixH.html#p1) 第 3.4 节。摘要：
+
+- **uint32**：响应数（必须与相应服务器请求中的“提示数”字段匹配）
+- 多个副本：
+  - **string**：对第 *n* 个提示符的响应（ `UTF-8` 格式）
+
+
+
+### H.6.9 `PLUGIN_KI_USER_REQUEST`
+
+**方向**：插件到客户端
+
+**时间**： `PLUGIN_KI_SERVER_REQUEST` 响应 ，如果插件在不向用户显示自己的提示的情况下无法应答服务器的身份验证提示
+
+**接下来会发生什么**：客户端将发送 `PLUGIN_KI_USER_RESPONSE`
+
+**类型代码后的消息内容**：与 `PLUGIN_KI_SERVER_REQUEST` 完全相同（参见 [H.6.7 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixH.html#PLUGIN_KI_SERVER_REQUEST)）。
+
+
+
+### H.6.10`PLUGIN_KI_USER_RESPONSE`
+
+**方向**：客户端到插件
+
+**时间**：响应 `PLUGIN_KI_USER_REQUEST`
+
+**接下来会发生什么**：插件将发送 `PLUGIN_KI_SERVER_RESPONSE`，或其他 `PLUGIN_KI_USER_REQUEST`
+
+**类型代码后的消息内容**：与 `PLUGIN_KI_SERVER_RESPONSE` 完全相同（参见 [H.6.8 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixH.html#PLUGIN_KI_SERVER_RESPONSE)）。
+
+
+
+### H.6.11 `PLUGIN_AUTH_SUCCESS`
+
+**方向**：客户端到插件
+
+**时间**：发送 `PLUGIN_KI_SERVER_RESPONSE` 后，或（在异常情况下）发送 `PLUGIN_PROTOCOL_ACCEPT` 后
+
+**接下来会发生什么**：客户端将发送另一个 `PLUGIN_PROTOCOL` 会话或终止会话
+
+**类型代码后的消息内容**：无
+
+
+
+### H.6.12 `PLUGIN_AUTH_FAILURE`
+
+**方向**：客户端到插件
+
+**时间**：发送 `PLUGIN_KI_SERVER_RESPONSE` 后，或（在异常情况下）发送 `PLUGIN_PROTOCOL_ACCEPT` 后
+
+**接下来会发生什么**：客户端将发送另一个 `PLUGIN_PROTOCOL` 会话或终止会话
+
+**类型代码后的消息内容**：无
+
+
+
+## H.7 参考资料
+
+[RFC4251] [RFC 4251](https://www.rfc-editor.org/rfc/rfc4251), ‘The Secure Shell (SSH) Protocol Architecture’.
+
+[RFC4252] [RFC 4252](https://www.rfc-editor.org/rfc/rfc4252), ‘The Secure Shell (SSH) Authentication Protocol’.
+
+[RFC4256] [RFC 4256](https://www.rfc-editor.org/rfc/rfc4256), ‘Generic Message Exchange Authentication for the Secure Shell Protocol (SSH)’ (better known by its wire id ‘keyboard-interactive’).
+
+
 
