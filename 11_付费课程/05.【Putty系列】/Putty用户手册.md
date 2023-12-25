@@ -1,10 +1,6 @@
-Putty用户手册
 
-副标题：
 
-英文：
 
-关键字：
 
 
 
@@ -12,7 +8,17 @@ Putty用户手册
 
 
 
-> https://the.earth.li/~sgtatham/putty/0.78/htmldoc/
+## PuTTY 用户手册中文版
+
+### PuTTY User Manual Chinese Version
+
+![](.\qrcode.png)
+
+**作者：网管小贾 / sysadm.cc (2023年12月25日)**
+
+
+
+
 
 
 
@@ -37,6 +43,10 @@ Putty用户手册
 本手册版权为 `1997-2022 Simon Tatham`，保留所有权利。
 
 您可以在 `MIT` 许可下分发本文档，许可证全文见[附录D](AppendixD.html#licence)。
+
+官网英文版用户手册链接：
+
+> https://the.earth.li/~sgtatham/putty/0.78/htmldoc/
 
 
 
@@ -315,7 +325,7 @@ Putty用户手册
 
 在“***主机名称（或 `IP` 地址）***”框中，输入要连接到的服务器的因特网主机名，您的登录帐户提供商应该已经告诉您这一点。
 
-图a01
+![](./2_01.JPG)
 
 
 
@@ -323,7 +333,7 @@ Putty用户手册
 
 对于登录会话，您应该选择 `SSH` 、`Telnet` 、`Rlogin` 或 `SUPDUP` 。
 
-图a02
+![](./2_02.JPG)
 
 
 
@@ -370,9 +380,7 @@ to the cache, press "Connect Once".
 If you do not trust this host, press "Cancel" to abandon the connection.
 ```
 
-
-
-图a03
+![](./2_03.JPG)
 
 
 
@@ -392,19 +400,17 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 
 
-
-
 `PuTTY` 在 `Windows` 注册表中记录您连接到的每个服务器的主机密钥。
 
 每次连接到服务器时，它都会检查服务器提供的主机密钥是否与上次连接时的主机密钥相同。
 
-图a05
+![](./2_04.JPG)
 
 
 
 如果不是，您将看到更强烈的警告，并且您将有机会在输入任何私人信息（例如密码）之前放弃连接。（请参阅[第 10.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter10.html#errors-hostkey-wrong)以了解其外观。
 
-图a04
+![](./2_05.JPG)
 
 
 
@@ -432,7 +438,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 如果您没有任何看起来像示例的指纹（ `SHA256:` 后跟一长串字符），而是有成对的字符，用冒号分隔，例如 `a4:db:96:a7:...`，那么请尝试按“**更多信息...**”按钮，看看您是否有与“MD5指纹”匹配的指纹。
 
-图a06
+![](./2_06.JPG)
 
 
 
@@ -592,19 +598,19 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 点击鼠标左键并拖动效果。
 
-图b18
+![](./3_01.JPG)
 
 
 
 双击鼠标左键并拖动效果。
 
-图b19
+图![](./3_02.JPG)
 
 
 
 三击鼠标左键效果。
 
-图b20
+图![](./3_03.JPG)
 
 
 
@@ -674,7 +680,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 如果您在 `PuTTY` 终端窗口左上角图标上单击鼠标左键，或在标题栏上点击鼠标右键，您将看到标准 `Windows` 系统菜单，其中包含最小化、移动、大小和关闭等项目。
 
-图b01
+![](./3_04.JPG)
 
 
 
@@ -690,9 +696,11 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 日志中的大多数事件可能会在会话启动期间发生，但少数事件可能发生在会话中的任何时间点，一两个事件发生在会话末尾。
 
-图b02
+![](./3_05.JPG)
 
-图b03
+
+
+![](./3_06.JPG)
 
 
 
@@ -712,7 +720,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 这些是特定于协议的令牌，例如“中断” `break` 信号，除了正常数据之外，还可以通过连接发送。
 
-图b04
+![](./3_07.JPG)
 
 
 
@@ -730,7 +738,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
   将不会有任何效果。
 
-  图b05
+  ![](./3_08.JPG)
 
   
 
@@ -742,7 +750,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
   有关重复密钥交换的更多信息，请参见[第 4.18.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-rekey)。
 
-  图b06
+  ![](./3_09.JPG)
 
   
 
@@ -764,7 +772,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
   不幸的是，`SSH` 协议没有用于主机密钥迁移和滚动更新的整套有效的工具，但允许您手动更新。
 
-  图b07
+  ![](./3_10.JPG)
 
   
 
@@ -782,7 +790,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
   仅在 `SSH-2` 中可用，并且仅在会话期间可用。发送各种 POSIX 信号。并非所有服务器都支持。
 
-  图b08
+  ![](./3_11.JPG)
 
 
 
@@ -834,7 +842,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 
 
-图b11
+![](./3_12.JPG)
 
 
 
@@ -856,7 +864,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
   有关如何创建已保存会话的详细信息，请参阅[第 4.1.2 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-saving)。
 
-图b12
+![](./3_13.JPG)
 
 
 
@@ -866,9 +874,11 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 您可以更改终端的大小、字体、以及各种按键的操作、颜色等。
 
-图b13
+![](./3_14.JPG)
 
-图b14
+
+
+![](./3_15.JPG)
 
 
 
@@ -886,7 +896,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 此系统菜单选项提供了一种方便的方式来复制终端屏幕的全部内容（直到最后一个非空行）并一次性回滚到剪贴板。
 
-图b15
+![](./3_16.JPG)
 
 
 
@@ -908,7 +918,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 如果发生这种情况，选择重置终端应该会解决它。
 
-图b16
+![](./3_17.JPG)
 
 
 
@@ -922,7 +932,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 当您处于全屏模式时，如果您使用鼠标左键单击屏幕最左上角，您仍然可以访问系统菜单，同时可以再次点击“全屏”后退出全屏模式。
 
-图b17
+![](./3_18.JPG)
 
 
 
@@ -932,9 +942,11 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 要开始会话日志，请从系统菜单中选择“修改设置”，然后转到“日志记录”面板。
 
-图c01
+![](./3_19.JPG)
 
-图c02
+
+
+![](./3_20.JPG)
 
 
 
@@ -962,7 +974,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 如果单击“修改设置”并查看“转换”面板，您应该会看到大量可以选择的字符集以及其他相关选项。
 
-图c03
+![](./3_21.JPG)
 
 
 
@@ -984,7 +996,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 然后，您应该在开始 `SSH` 会话之前勾选 `X11` 面板中的“启用 `X11` 转发”框（请参阅[第 4.25 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-x11)）。
 
-图c04
+![](./3_22.JPG)
 
 
 
@@ -1050,7 +1062,7 @@ unixbox:10.0
 
 
 
-图c05
+![](./3_23.JPG)
 
 
 
@@ -1097,7 +1109,7 @@ localhost:3110 popserver.example.com:110
 
 大多数 `Web` 浏览器都可以配置为连接到此 `SOCKS` 代理服务，此外，您可以通过设置“代理” `Proxy` 控制面板通过它转发其他 `PuTTY` 连接（有关详细信息，请参阅[第 4.16 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-proxy)）。
 
-图c06
+![](./3_24.JPG)
 
 
 
@@ -1157,7 +1169,7 @@ finger fred@127.0.0.5
 
 要建立此类型的连接，只需从“会话” `Session` 配置面板上的“连接类型” `Connetion type` 单选按钮中选择“串口” `Serial` （请参阅[第 4.1.1 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-hostname)）。
 
-图c07
+![](./3_25.JPG)
 
 
 
@@ -1209,7 +1221,7 @@ telnet mailserver.example.com 25
 
 要与此类服务建立调试连接，只需从“会话”  `Session` 配置面板的“协议”按钮中选择第四个协议名称“Raw”。
 
-图c08
+![](./3_26.JPG)
 
 
 
@@ -1227,7 +1239,7 @@ telnet mailserver.example.com 25
 
 与 `SSH` 不同，`Telnet` 通过不安全的网络连接运行，因此在充满敌对的 `Internet` 上使用它是一个非常糟糕的主意（尽管截至 `2020` 年它仍然在某种程度上使用）。
 
-图c09
+![](./3_27.JPG)
 
 
 
@@ -1241,7 +1253,7 @@ telnet mailserver.example.com 25
 
 最终，基于服务器信任客户端的 `IP` 地址归它声称的 `Unix` 机器所有，并且该机器将适当地保护其特权端口。
 
-图c10
+![](./3_28.JPG)
 
 
 
@@ -1263,9 +1275,11 @@ telnet mailserver.example.com 25
 
 有关进一步的配置选项（字符集、更多处理、滚动），您可以使用“SUPDUP”配置面板（请参阅[第 4.32 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-supdup)）。
 
-图c11
+![](./3_29.JPG)
 
-图c12
+
+
+![](./3_30.JPG)
 
 
 
@@ -1343,7 +1357,7 @@ putty.exe -load "session name"
 putty.exe -cleanup
 ```
 
-图c13
+![](./3_31.JPG)
 
 
 
@@ -1936,7 +1950,7 @@ plink host1.example.com -nc host2.example.com:1234
 
 保存的会话包含 `PuTTY` 准确启动所需会话所需的所有信息。
 
-图c14
+![](./4_01.JPG)
 
 
 
@@ -1998,7 +2012,7 @@ HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions
 
 如果您可能希望在会话终止后将文本复制并粘贴出会话，或重新启动会话，则应安排关闭此选项。
 
-图c15
+![](./4_02.JPG)
 
 
 
@@ -2020,7 +2034,7 @@ HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions
 
 主要选项是一个单选按钮集，用于指定 `PuTTY` 是否会记录任何内容。
 
-图c16
+![](./4_03.JPG)
 
 
 
@@ -2074,7 +2088,7 @@ HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions
 
 “浏览”按钮可让您浏览文件系统以找到放置文件的正确位置，或者如果您已经确切地知道要保存到哪里，则可以在编辑框中键入路径名。
 
-图c17
+![](./4_04.JPG)
 
 
 
@@ -2106,7 +2120,7 @@ log-unixbox.somewhere.org-20010611-221001.dat
 
 此控件允许您指定 `PuTTY` 在尝试开始写入日志文件并发现该文件已存在时应执行的操作。
 
-图c18
+![](./4_05.JPG)
 
 
 
@@ -2122,7 +2136,7 @@ log-unixbox.somewhere.org-20010611-221001.dat
 
 此选项允许您控制将记录的数据刷新到光盘的频率。
 
-图c19
+![](./4_06.JPG)
 
 
 
@@ -2142,7 +2156,7 @@ log-unixbox.somewhere.org-20010611-221001.dat
 
 此选项允许您选择是否在打开日志文件时的日期和时间中包含标题行。
 
-图c20
+![](./4_07.JPG)
 
 
 
@@ -2158,7 +2172,7 @@ log-unixbox.somewhere.org-20010611-221001.dat
 
 它们只是为了阻止随意的攻击行为，攻击者甚至可以从这些混淆日志中收集大量有用的信息（例如，密码长度）。
 
-图c21
+![](./4_08.JPG)
 
 
 
@@ -2196,7 +2210,7 @@ log-unixbox.somewhere.org-20010611-221001.dat
 
 终端配置面板允许您控制 `PuTTY` 终端仿真的行为。
 
-图c22
+![](./4_09.JPG)
 
 
 
@@ -2458,7 +2472,7 @@ Third line
 
 如果此处的设置似乎都没有帮助，您可能会发现[问题 A.7.13](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/AppendixA.html#faq-keyboard) 很有用。
 
-图c23
+![](./4_10.JPG)
 
 
 
@@ -2665,7 +2679,7 @@ Third line
 
 这并不总是您希望终端响铃功能执行的操作，响铃面板允许您配置替代操作。
 
-图d01
+![](./4_11.JPG)
 
 
 
@@ -2751,7 +2765,7 @@ Third line
 
 功能配置面板允许您禁用 `PuTTY` 的一些更高级的终端功能，以防它们引起麻烦。
 
-图d02
+![](./4_12.JPG)
 
 
 
@@ -2921,7 +2935,7 @@ Third line
 
 窗口配置面板允许您控制 `PuTTY` 窗口的各个方面。
 
-图d03
+![](./4_13.JPG)
 
 
 
@@ -2982,7 +2996,7 @@ Third line
 
 外观配置面板允许您控制 `PuTTY` 窗口外观的各个方面。
 
-图d04
+![](./4_14.JPG)
 
 
 
@@ -3040,7 +3054,7 @@ Third line
 
 行为配置面板允许您控制 `PuTTY` 窗口行为的各个方面。
 
-图d05
+![](./4_15.JPG)
 
 
 
@@ -3132,7 +3146,7 @@ Third line
 
 转换配置面板允许您控制服务器理解的字符集与 `PuTTY` 理解的字符集之间的转换。
 
-图d06
+![](./4_16.JPG)
 
 
 
@@ -3282,7 +3296,7 @@ Third line
 
 “选择”面板允许您在 `PuTTY` 窗口中控制复制和粘贴的工作方式。
 
-图d07
+![](./4_17.JPG)
 
 
 
@@ -3444,7 +3458,7 @@ Third line
 
 复制配置面板控制与从终端窗口复制到剪贴板相关的行为。
 
-图d08
+![](./4_18.JPG)
 
 
 
@@ -3510,7 +3524,7 @@ Third line
 
 “颜色”面板允许您控制 `PuTTY` 对颜色的使用。
 
-图d09
+![](./4_19.JPG)
 
 
 
@@ -3629,7 +3643,7 @@ $ infocmp | grep colors
 
 “连接”面板允许您配置适用于多种连接类型的选项。
 
-图d10
+![](./4_20.JPG)
 
 
 
@@ -3769,7 +3783,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 此面板上的每个选项都适用于多个协议，仅适用于一个协议的选项将显示在该协议的配置面板上。
 
-图d11
+![](./4_21.JPG)
 
 
 
@@ -3841,7 +3855,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 第一个数字表示（来自服务器）的输出速度（*以*位/秒为单位），第二个数字是输入速度（*到*服务器）。
 
-（Rlogin 协议中仅使用第一个。）
+（ `Rlogin` 协议中仅使用第一个。）
 
 
 
@@ -3879,7 +3893,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 此面板中的设置会影响形成 `PuTTY` 会话的主网络连接，以及由于 `SSH` 端口转发而建立的任何额外连接（请参阅[第 3.5 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-port-forwarding)）。
 
-图d12
+![](./4_22.JPG)
 
 
 
@@ -4108,7 +4122,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 `SSH` 面板允许您配置仅适用于 `SSH` 会话的选项。
 
-图d13
+![](./4_23.JPG)
 
 
 
@@ -4234,7 +4248,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 密钥面板（“密钥交换”的缩写）允许您配置与 `SSH-2` 密钥交换相关的选项。
 
-图d14
+![](./4_24.JPG)
 
 
 
@@ -4410,7 +4424,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 “主机密钥”面板允许您配置与主机密钥管理相关的选项。
 
-图d15
+![](./4_25.JPG)
 
 
 
@@ -4528,7 +4542,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 这将启动一个辅助配置对话框，您可以在其中配置 `PuTTY` 将接受哪些 `CA` 的签名。
 
-图d16
+![](./4_26.JPG)
 
 
 
@@ -4650,7 +4664,7 @@ Keepalives仅在Telnet和SSH中受支持;Rlogin，SUPDUP和Raw协议不提供实
 
 当您建立 `SSH` 连接时，`PuTTY` 将从顶部向下搜索列表，直到找到服务器支持的算法，然后使用该算法。
 
-图d17
+![](./4_27.JPG)
 
 
 
@@ -4700,7 +4714,7 @@ Do you want to continue with this connection?
 
 认证面板允许您配置 `SSH` 会话的身份验证选项。
 
-图d18
+![](./4_28.JPG)
 
 
 
@@ -4856,7 +4870,7 @@ Do you want to continue with this connection?
 
 “认证”面板的此子窗格包含配置选项，这些选项指定要提供给服务器的实际*凭据*：密钥文件和证书。
 
-图d19
+![](./4_29.JPG)
 
 
 
@@ -4930,7 +4944,7 @@ Do you want to continue with this connection?
 
 这是一种将身份验证交换委托给客户端计算机上其他位置的库的机制，该库原则上可以通过许多不同的方式进行身份验证，但实际上通常与 `Kerberos` 单点登录协议一起使用以实现无密码登录。
 
-图d20
+![](./4_30.JPG)
 
 
 
@@ -5012,7 +5026,7 @@ Do you want to continue with this connection?
 
 `TTY` 面板允许您配置远程伪终端。
 
-图d21
+![](./4_31.JPG)
 
 
 
@@ -5112,7 +5126,7 @@ Do you want to continue with this connection?
 
 如果您的服务器允许您运行 `X Window System` 图形应用程序，则 `X11` 转发允许您安全地授予这些应用程序访问 `PC` 上的本地 `X` 显示器的权限。
 
-图d22
+![](./4_32.JPG)
 
 
 
@@ -5192,7 +5206,7 @@ Do you want to continue with this connection?
 
 “通道”面板允许您通过 `SSH` 连接配置任意连接类型的隧道。
 
-图d23
+![](./4_33.JPG)
 
 
 
@@ -5329,9 +5343,11 @@ Do you want to continue with this connection?
 
 各种现有服务器中都有错误，这可能使客户端无法与它们通信，除非它知道错误并解决它。
 
-图d24
+![](./4_34.JPG)
 
-图d26
+
+
+![](./4_35.JPG)
 
 
 
@@ -5653,7 +5669,7 @@ Do you want to continue with this connection?
 
 串口面板允许您配置仅在 `PuTTY` 连接到本地串行线路时适用的选项。
 
-图e01
+![](./4_36.JPG)
 
 
 
@@ -5707,7 +5723,7 @@ Do you want to continue with this connection?
 - “始终为 `1` ”：每个字节一起发送一个额外的奇偶校验位，并始终设置为 `1` 。
 - “始终为 `0` ”：每个字节一起发送一个额外的奇偶校验位，并始终设置为 `0` 。
 
-图e02
+![](./4_37.JPG)
 
 
 
@@ -5727,7 +5743,7 @@ Do you want to continue with this connection?
 
 - “ `DSR/DTR` ”：流量控制是使用串行线路上的 `DSR` 和 `DTR` 线完成的。
 
-图e03
+![](./4_38.JPG)
 
 
 
@@ -5735,7 +5751,7 @@ Do you want to continue with this connection?
 
 “ `Telnet` 面板”允许您配置仅适用于 `Telnet` 会话的选项。
 
-图e04
+![](./4_39.JPG)
 
 
 
@@ -5814,7 +5830,7 @@ Do you want to continue with this connection?
 
 `Rlogin` 面板允许您配置仅适用于 `Rlogin` 会话的选项。
 
-图e05
+![](./4_40.JPG)
 
 
 
@@ -5854,7 +5870,7 @@ Do you want to continue with this connection?
 
 有关 `SUPDUP` 协议的更多信息，请参见第 [3.10 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter3.html#using-supdup)。
 
-图e06
+![](./4_41.JPG)
 
 
 
@@ -5978,7 +5994,7 @@ REGEDIT4
 
 `PSCP` 是一个命令行应用程序。
 
-图f01
+![](./5_01.JPG)
 
 
 
@@ -6059,7 +6075,7 @@ Options:
             control what happens when a log file already exists
 ```
 
-图f02
+![](./5_02.JPG)
 
 
 
@@ -6401,7 +6417,7 @@ if errorlevel 1 echo There was an error
 
   相比之下，`PSCP` 旨在执行单个文件传输操作并立即终止。
 
-图f03
+![](./6_01.JPG)
 
 
 
@@ -13855,3 +13871,21 @@ X11 forwarding: Section 3.4, Section 3.11.3.11, Section 4.25
 X server: Section 3.4
 xterm: Section 3.1.1, Section 4.4.2, Section 4.4.3, Section 4.4.3, Section 4.11.1, Section 4.15.3
 xterm mouse reporting: Section 3.1.1, Section 4.6.2, Section 4.11.2
+
+
+
+
+
+
+
+![](./donate.png)
+
+**来杯冰阔落，扫码捐赠网管小贾~**
+
+
+
+![](E:/Writing/11_付费课程/03.【玩转UrBackup系列】/202206080805_UrBackup Server 2.4.x 管理手册中文版（收费版）/202206221118_UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）/qrcode.png)
+
+**扫码关注微信公众号@网管小贾，个人微信：sysadmcc**
+
+网管小贾 / sysadm.cc
