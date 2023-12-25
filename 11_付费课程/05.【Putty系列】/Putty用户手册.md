@@ -4,6 +4,8 @@
 
 
 
+
+
 ![](.\00.JPG)
 
 
@@ -15,6 +17,14 @@
 ![](.\qrcode.png)
 
 **作者：网管小贾 / sysadm.cc (2023年12月25日)**
+
+
+
+
+
+
+
+
 
 
 
@@ -217,6 +227,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 # 第1章 `PuTTY` 简介
 
 `PuTTY` 是一个免费的 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 客户端，用于 `Windows` 系统。
@@ -273,6 +293,10 @@
 
 
 
+
+
+
+
 ## 1.2 `SSH` 、`Telnet` 、`Rlogin` 和 `SUPDUP` 有何不同？
 
 此列表总结了 `SSH` ，`Telnet` ，`Rlogin` 和 `SUPDUP` 之间的一些差异。
@@ -302,6 +326,38 @@
 如果要连接的服务器不支持 `SSH` ， 那么尝试说服管理员安装它可能是值得的 。
 
 如果您的客户端和服务器都在同一个（状态良好）防火墙后面，则使用 `Telnet` 、`Rlogin` 或 `SUPDUP` 有可能是安全的，但我们仍然建议您使用 `SSH` 。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -604,13 +660,13 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 双击鼠标左键并拖动效果。
 
-图![](./3_02.JPG)
+![](./3_02.JPG)
 
 
 
 三击鼠标左键效果。
 
-图![](./3_03.JPG)
+![](./3_03.JPG)
 
 
 
@@ -756,7 +812,7 @@ If you do not trust this host, press "Cancel" to abandon the connection.
 
 - 缓存新的主机密钥类型 ` Cache new host key type `
 
-  仅在 SSH-2 中可用。
+  仅在 `SSH-2` 中可用。
 
   仅当服务器具有 `PuTTY` 尚未缓存的主机密钥类型（因此不用考虑）时，才会显示此子菜单。
 
@@ -1881,6 +1937,56 @@ plink host1.example.com -nc host2.example.com:1234
 相反，它将仅显示主机证书颁发机构的配置对话框，如[第 4.19.4 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter4.html#config-ssh-kex-cert)中所述。
 
 关闭该对话框时，`PuTTY` 将终止。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5980,6 +6086,24 @@ REGEDIT4
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 第 5 章：使用 `PSCP` 安全地传输文件
 
 `PSCP` ，`PuTTY` 安全复制客户端，是一种使用 `SSH` 连接在计算机之间安全传输文件的工具。
@@ -6399,6 +6523,22 @@ if errorlevel 1 echo There was an error
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 第 6 章：使用 `PSFTP` 安全地传输文件
 
 `PSFTP` ，`PuTTY` 的 `SFTP` 客户端，是一个使用 `SSH` 连接在计算机之间安全传输文件的工具。
@@ -6457,7 +6597,7 @@ psftp: no hostname specified; use "open host.name" to connect
 psftp>
 ```
 
-图f04
+![](./6_02.JPG)
 
 
 
@@ -7094,6 +7234,38 @@ psftp> get myfile.dat
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 第 7 章：使用命令行连接工具 `Plink`
 
 `Plink` 是一个类似于`UNIX` `ssh` 的命令行连接工具。
@@ -7102,7 +7274,7 @@ psftp> get myfile.dat
 
 如果要在控制台窗口中运行交互式会话，则 `Plink` 可能不是您想要的。
 
-图f05
+![](./7_01.JPG)
 
 
 
@@ -7207,7 +7379,7 @@ The following options only apply to SSH connections:
             test whether a connection-sharing upstream exists
 ```
 
-图f06
+![](./7_02.JPG)
 
 
 
@@ -7595,6 +7767,56 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 第 8 章：使用公钥进行 `SSH` 身份验证
 
 ## 8.1 公钥认证 - 简介
@@ -7677,13 +7899,13 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 `PuTTYgen` 生成 `RSA` 、`DSA` 、`ECDSA` 和 `EdDSA` 密钥。
 
-图f07
+![](./8_01.JPG)
 
 
 
 当您运行 `PuTTYgen` 时，您将看到一个窗口，您有两个主要选择：`Generate` “生成”，以生成新的公钥/私钥对，或 `Load` “加载”，以加载现有私钥。
 
-图f08
+![](./8_02.JPG)
 
 
 
@@ -7704,7 +7926,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 您可能还希望将公钥复制到您的服务器，方法是将其从“Public key for pasting into OpenSSH authorized_keys file ”框中复制出来（请参阅第 8.2.12 节），或使用 `Save public key` “保存公钥”按钮（[第 8.2.11 节](https://the.earth.li/~sgtatham/putty/0.78/htmldoc/Chapter8.html#puttygen-pastekey)）。
 
-图f09
+![](./8_03.JPG)
 
 
 
@@ -7720,7 +7942,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 当前版本的 `SSH` 协议（ `SSH-2` ）支持几种不同的密钥类型，尽管特定服务器可能不支持所有这些密钥类型。
 
-图f10
+![](./8_04.JPG)
 
 
 
@@ -7755,7 +7977,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
   （为了向后兼容，也接受 `256` ，但效果与 `255` 相同。）
 
-图f11
+![](./8_05.JPG)
 
 
 
@@ -7769,7 +7991,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 （其他键类型根本不需要生成质数。）
 
-图f12
+![](./8_06.JPG)
 
 
 
@@ -7821,7 +8043,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 首先，将出现一个进度条，`PuTTYgen` 将要求您移动鼠标以生成随机性。
 
-图f13
+![](./8_07.JPG)
 
 
 
@@ -7859,7 +8081,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 如果您需要查看较旧的 `MD5` 格式（看起来像 `aa:bb:cc:...` ）的指纹，您可以从“密钥”菜单中选择“将指纹显示为`MD5`”，但请记住，这在加密上不太安全;攻击者使用与您的指纹相同的指纹创建密钥可能是可行的。
 
-图f18
+![](./8_08.JPG)
 
 
 
@@ -7871,7 +8093,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 如果未指定默认注释格式，则包含密钥类型和生成日期，例如 `rsa-key-20011212` 。
 
-图f15
+![](./8_09.JPG)
 
 
 
@@ -7889,7 +8111,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 密码短语将用于加密磁盘上的密钥，因此如果不先输入密码，您将无法使用密钥。
 
-图f16
+![](./8_10.JPG)
 
 
 
@@ -7947,13 +8169,13 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 这将为您提供一个包含私钥和证书的文件，这是向准备接受该证书的服务器进行身份验证所需的一切。
 
-图f17
+![](./8_11.JPG)
 
 
 
 要再次删除证书并恢复未经认证的 `PPK` 文件，还有一个“从密钥中删除证书”选项。
 
-图f19
+![](./8_12.JPG)
 
 
 
@@ -7977,7 +8199,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 选择一个目录，输入文件名，然后按“保存”。
 
-图f20
+![](./8_13.JPG)
 
 
 
@@ -8003,7 +8225,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 选择一个目录，输入文件名，然后按“保存”。
 
-图f21
+![](./8_14.JPG)
 
 
 
@@ -8039,7 +8261,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 从“密钥”菜单中选择“用于保存密钥文件的参数...”，您可以调整存储在磁盘上的 `PPK` 格式私钥文件的某些方面。
 
-图f22
+![](./8_15.JPG)
 
 
 
@@ -8109,7 +8331,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 `PuTTYgen` 将打开一个对话框，您可以在其中浏览文件系统并找到您的密钥文件。
 
-图f23
+![](./8_16.JPG)
 
 
 
@@ -8133,7 +8355,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 使用“转换”菜单中的“导入”命令，`PuTTYgen` 可以加载 `OpenSSH` 格式的 `SSH-2` 私钥和 `ssh.com` 格式的私钥。
 
-图f24
+![](./8_17.JPG)
 
 
 
@@ -8153,7 +8375,7 @@ cvs -d :ext:user@sessionname:/path/to/repository co module
 
 您需要事先输入密码短语，如果您即将保存没有密码的密钥，您将收到警告。
 
-图f25
+![](./8_18.JPG)
 
 
 
@@ -8283,13 +8505,37 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 第 9 章：使用 `Pageant` 进行身份验证
 
 `Pageant `是一个 `SSH` 身份验证代理。
 
 它将您的私钥保存在内存中，已经解码，因此您可以经常使用它们，而无需键入密码。
 
-图g01
+![](./9_01.JPG)
 
 
 
@@ -8311,9 +8557,11 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 （您也可以通过双击`Pageant`图标来调出此窗口。）
 
-图g02
+![](./9_02.JPG)
 
-图g03
+
+
+![](./9_03.JPG)
 
 
 
@@ -8333,7 +8581,7 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 在此对话框中找到您的私钥文件，然后按“打开”。
 
-图g04
+![](./9_04.JPG)
 
 
 
@@ -8343,9 +8591,11 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 加载密钥后，它将出现在 `Pageant` 窗口的列表中。
 
-图g05
+![](./9_05.JPG)
 
-图g06
+
+
+![](./9_06.JPG)
 
 
 
@@ -8369,7 +8619,7 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 如果您希望 `Pageant` 保持运行但想丢弃它获得的所有密钥键，请从系统托盘菜单中选择“删除所有键”。
 
-图g07
+![](./9_07.JPG)
 
 
 
@@ -8379,7 +8629,7 @@ chmod go-w $HOME $HOME/.ssh $HOME/.ssh/authorized_keys
 
 您可以使用它来跟踪当前加载到 `Pageant` 中的密钥，并添加新密钥或删除现有密钥。
 
-图g08
+![](./9_08.JPG)
 
 
 
@@ -8430,9 +8680,11 @@ RSA  2048  SHA256:8DFtyHm3kQihgy52nzX96qMcEVOq7/yJmmwQQhBWYFg
 
 要通过从本地磁盘文件中读取密钥来将密钥添加到 `Pageant` ，请按 `Pageant` 主窗口中的“添加密钥”按钮，或者右键单击系统托盘中的 `Pageant` 图标并从那里选择“添加密钥”。
 
-图g09
+![](./9_09.JPG)
 
-图g10
+
+
+![](./9_10.JPG)
 
 
 
@@ -8458,7 +8710,7 @@ RSA  2048  SHA256:8DFtyHm3kQihgy52nzX96qMcEVOq7/yJmmwQQhBWYFg
 
 `Pageant` 将从其内存中删除密钥。
 
-图g11
+![](./9_11.JPG)
 
 
 
@@ -8794,6 +9046,36 @@ C:\PuTTY\pageant.exe --encrypted d:\main.ppk
 因此，如果您不信任服务器计算机的系统管理员，则*永远不应*使用代理转发到该计算机。
 
 （当然，您也不应该在该计算机上存储私钥，在其中键入密码短语，或以任何方式从该计算机登录其他计算机; `Pageant` 在这方面并不是独一无二的。）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -9196,6 +9478,36 @@ C:\PuTTY\pageant.exe --encrypted d:\main.ppk
 这意味着操作系统拒绝了 `PuTTY` 尝试建立的网络连接的参数，通常没有实际尝试连接到任何东西，因为它们根本无效。
 
 引发此错误的常见方法是意外尝试连接到端口 `0` ，该端口号不是有效的端口号。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10763,6 +11075,30 @@ psftp> get filename.ext
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 附录 B：反馈和错误报告
 
 这是向 `PuTTY` 开发团队提供反馈的指南。
@@ -11131,6 +11467,12 @@ psftp> get filename.ext
 ## B.11 电子邮件地址
 
 要邮寄的实际地址是 ` <putty@projects.tartarus.org> ` 。
+
+
+
+
+
+
 
 
 
@@ -11507,6 +11849,40 @@ Private-MAC: hex-mac-data
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 附录 D：`PUTTY` 许可证
 
 `PuTTY` 版权所有 `1997-2022` 西蒙·塔瑟姆。
@@ -11518,6 +11894,44 @@ Private-MAC: hex-mac-data
 上述版权声明和本许可声明应包含在软件的所有副本或大部分内容中。
 
 本软件按“原样”提供，不提供任何明示或暗示的保证，包括但不限于对适销性、特定用途适用性和不侵权的保证。在任何情况下，版权所有者均不对因本软件或本软件的使用或其他交易而引起、由本软件或本软件的使用或其他交易引起的、由合同、侵权或其他行为引起的任何索赔、损害赔偿或其他责任负责。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12152,6 +12566,62 @@ myabs_free(myabs);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 附录 F：`PuTTY` 下载密钥和签名
 
 我们为从我们网站分发的所有 `PuTTY` 文件创建 `GPG` 签名，以便用户可以确信这些文件没有被篡改。
@@ -12369,6 +12839,10 @@ DSA, 1024-bit. Key ID: `1024D/7D3E4A00` (long version: `1024D/165E56F77D3E4A00`)
 
 
 
+
+
+
+
 # 附录 G：为 `PuTTY` 指定的 `SSH-2` 名称
 
 `SSH-2` 协议的各个部分都使用文本名称指定内容。以 `@putty.projects.tartarus.org` 结尾的名称保留供 `PuTTY` 团队分配。
@@ -12468,6 +12942,10 @@ DSA, 1024-bit. Key ID: `1024D/7D3E4A00` (long version: `1024D/165E56F77D3E4A00`)
   * `Bit 1`
 
   如果设置了，则当前不持有密钥的明文形式（因此用户必须提供密码短语才能使用密钥）。
+
+
+
+
 
 
 
@@ -13871,6 +14349,14 @@ X11 forwarding: Section 3.4, Section 3.11.3.11, Section 4.25
 X server: Section 3.4
 xterm: Section 3.1.1, Section 4.4.2, Section 4.4.3, Section 4.4.3, Section 4.11.1, Section 4.15.3
 xterm mouse reporting: Section 3.1.1, Section 4.6.2, Section 4.11.2
+
+
+
+
+
+
+
+
 
 
 
