@@ -8,6 +8,10 @@ Putty用户手册
 
 
 
+![](.\00.JPG)
+
+
+
 > https://the.earth.li/~sgtatham/putty/0.78/htmldoc/
 
 
@@ -12864,3 +12868,990 @@ DSA, 1024-bit. Key ID: `1024D/7D3E4A00` (long version: `1024D/165E56F77D3E4A00`)
 
 
 
+-4: Section 3.11.3.17
+-6: Section 3.11.3.17
+Abort Output, Telnet special command: Section 3.1.3.2
+Abort Process, Telnet special command: Section 3.1.3.2
+accented characters: Section 3.3, Section 4.4.8
+accessibility: Section 4.9.4
+access to files, changing: Section 6.2.14
+account name: Section 2.3, Section 3.11.3.4, Section 5.2.1.1
+account name, for auto-login: Section 4.15.1
+account name, for proxy: Section 4.16.4
+account name, local, in Rlogin: Section 4.31.1
+account name, local, in Windows: Section 4.31.1
+account names, different: Section 2.3, Section 4.21.8
+ACL, process (Windows): Section 3.11.3.28, Section 9.3.6
+-A command-line option: Section 3.11.3.10
+-a command-line option: Section 3.11.3.10
+active Telnet negotiation: Section 4.30.2
+address, IP: Section 3.5, Section 4.1.1, Section 4.14.4
+ad-hoc proxy: Section 4.16.1, Section 4.16.5, Section 4.30.2
+adjusting a selection: Section 3.1.1, Section 4.11.1
+Advanced Encryption Standard: Section 4.20
+AES: Section 4.20
+-agent: Section 3.11.3.9
+agent, authentication: Section 8.1, Chapter 9
+agent forwarding: Section 3.11.3.10, Section 4.21.7, Section 9.4
+algorithm, encryption: Section 4.20
+algorithm, key exchange: Section 4.18.1
+algorithm, public-key: Section 8.1
+allocation, of pseudo-terminal: Section 3.11.3.12, Section 4.24.1
+alternate screen: Section 4.6.4, Section 4.7.4, Question A.7.16
+ALT-F4: Section 4.9.3
+‘AltGr’ key: Section 4.4.8, Section 4.4.9
+‘Alt’ key: Section 4.9.5
+ALT-Space: Section 4.9.4
+always on top: Section 4.9.6
+ANSI colours: Section 4.13.1, Section 4.13.7
+ANSI graphics: Section 3.3, Section 4.10.4
+ANSI printing: Section 4.3.10
+answerback string: Section 4.3.7
+Application Cursor Keys: Section 4.4.5, Section 4.6.1
+Application key: Section 4.4.8
+Application Keypad: Section 4.4.6, Section 4.6.1
+Arabic: Section 4.6.11
+Arabic text shaping: Section 4.6.10
+Arcfour: Section 4.20, Section 10.5
+Are You There, Telnet special command: Section 3.1.3.2
+Argon2 passphrase hashing function: Section 8.2.13.2
+arguments, command-line: Section 3.11, Section 9.3
+arrow keys, shifted: Section 4.4.4
+ASCII: Section 4.10.5, Question A.2.11
+assertion failed: Section 10.8
+asymmetric key algorithm: Section 8.1
+authentication: Section 4.21
+authentication agent: Section 8.1, Chapter 9
+authentication agent forwarding: Section 3.11.3.10, Section 4.21.7, Section 9.4
+authentication, challenge/response: Section 4.21.5, Section 4.21.6
+authentication, keyboard-interactive: Section 4.21.6
+authentication, public key: Section 3.11.3.18, Section 4.22.1, Section 4.27.11, Section 5.2.4, Section 6.3, Section 7.2.2, Section 8.1
+authentication, to proxy: Section 4.16.4
+authentication, X11: Section 4.25.1
+Authenticode: Appendix F
+authorized_keys file: Section 8.2.12, Section 8.3
+AUTOEXEC.BAT: Section 5.1, Section 7.1
+automated operations: Chapter 7
+auto wrap mode: Section 4.3.1, Question A.7.7
+background colour: Section 4.3.5, Question A.7.6
+background colour, bright: Section 4.3.6
+background colour, default: Section 4.13.6, Section 4.13.7
+backspace, destructive: Section 4.6.8
+backspace key: Section 4.4.1
+bandwidth: Section 4.14.2, Section 4.15.4, Section 4.17.3
+banner: Section 4.21.1
+bare ssh-connection protocol: Section 4.28
+‘basic’ authentication (HTTP): Section 4.16.4
+batch files: Section 4.33, Section 5.2.3, Section 7.3
+-batch Plink command-line option: Section 7.2.3.1
+-batch PSCP command-line option: Section 5.2.2.5
+-batch PSFTP command-line option: Section 6.1.4
+batch scripts in PSFTP: Section 6.1.1
+baud rate, of terminal: Section 4.15.4
+-bc PSFTP command-line option: Section 6.1.2
+beep, terminal: Section 4.5
+beep, with PC speaker: Section 4.5.1
+bell, disabling: Section 4.5.1, Section 4.5.3
+bell overload mode: Section 4.5.3
+bell, terminal: Section 4.5
+bell, visual: Section 4.5.1
+-be PSFTP command-line option: Section 6.1.3
+bidirectional text: Section 4.6.11
+bind address: Section 3.5, Section 3.11.3.5, Section 4.26
+BitchX: Section 4.6.9
+8-bit colour: Section 4.13.5
+32-bit Windows: Question A.6.10
+64-bit Windows: Question A.6.10, Question A.7.22
+black, bold: Section 4.13.4
+blinking cursor: Section 4.8.1
+blinking text: Section 4.3.6
+Blowfish: Section 4.20, Section 10.5
+bold black: Section 4.13.4
+bold text: Section 4.13.4, Section 4.13.6, Section 4.13.7
+box-drawing characters: Section 3.3, Section 4.10.4
+-b PSFTP command-line option: Section 6.1.1
+Break, serial special command: Section 3.1.3.2
+Break, SSH special command: Section 3.1.3.2
+Break, Telnet special command: Section 3.1.3.2
+bright black: Section 4.13.4
+BSD: Section 4.30.1
+bug reporting: Appendix B
+bugs, in SSH servers: Section 4.27
+bulletin board system: Section 1.1
+CA (certification authority): Section 3.11.3.19, Section 3.11.3.29, Section 4.19.4, Section 4.22.2, Section 8.2.9, Section 10.3
+cache, of SSH host keys: Section 2.2, Section 3.1.3.2, Section 3.11.3.21, Section 3.11.3.22, Section 4.14.5, Section 4.19, Section 4.19.3
+Caps Lock: Section 4.10.3
+Carriage Return: Section 4.3.3, Section 4.3.4
+cascading credentials: Section 4.18.1.1
+cat: Question A.7.13
+-C command-line option: Section 3.11.3.15
+-cert: Section 3.11.3.19
+certificates, SSH: Section 3.11.3.19, Section 3.11.3.29, Section 4.19.4, Section 4.22.2, Section 8.2.9, Section 10.3
+ChaCha20-Poly1305: Section 4.20
+challenge/response authentication: Section 4.21.5, Section 4.21.6
+‘Change Settings’: Section 3.1.3.4
+changing permissions on files: Section 6.2.14
+changing user names: Section 2.3, Section 4.21.8
+CHAP: Section 4.16.4
+character classes: Section 4.12.1
+characters, accented: Section 3.3, Section 4.4.8
+character set: Section 3.3, Section 4.6.9, Section 4.10
+characters, line-drawing: Section 3.3, Section 4.10.4
+character width: Section 4.10.2
+Chinese: Section 4.10.2
+choosing a protocol: Section 1.2, Section 3.11.3.2
+cipher algorithm: Section 4.20
+Cisco: Section 3.11.3.6
+CJK: Section 4.10.2
+CJK ambiguous characters: Section 4.10.2
+clean up after PuTTY: Question A.8.2
+-cleanup command-line option: Section 3.11.2
+clear screen: Section 4.3.5
+‘Clear Scrollback’: Section 3.1.3.6
+client: Section 1.1
+clipboard: Section 3.1.1, Section 3.1.3.1, Section 3.1.3.5
+CLIPBOARD selection: Section 4.11.4
+clipboards, multiple: Section 4.11.4
+Close button: Section 2.5, Section 4.9.2
+closing window: Section 4.1.3, Section 4.9.2, Section 4.9.3
+code page: Section 4.10.1
+colour: Section 4.12.2, Section 4.13, Question A.7.2
+colour, background, default: Section 4.13.6, Section 4.13.7
+colour, 8-bit: Section 4.13.5
+colour, foreground, default: Section 4.13.6, Section 4.13.7
+256-colour mode: Section 4.13.2
+colour, of cursor: Section 4.13.6, Section 4.13.7
+colours, ANSI: Section 4.13.1, Section 4.13.7
+colours, system: Section 4.13.6
+columns, in terminal window: Section 4.7.1
+COM1: Section 4.29.1
+command-line arguments: Section 3.11, Section 9.3
+command-line interface: Section 1.1
+command line, loading saved sessions from: Section 3.11.3.1
+-1 command-line option: Section 3.11.3.16
+-2 command-line option: Section 3.11.3.16
+Command Prompt: Section 1.1, Section 1.1, Section 3.11, Section 5.1, Section 7.1
+command, proxy: Section 3.11.3.27, Section 4.16.1, Section 4.16.5
+commands on the server: Section 2.4, Section 3.11.3.6, Section 4.17.1, Section 4.17.2, Question A.6.2
+commands, reading from a file: Section 3.11.3.6
+comment: Section 6.2
+Compose key: Section 4.4.8
+compression: Section 3.11.3.15, Section 4.17.3
+confidentiality: Section 4.18.2
+configuration: Section 3.11.3.24
+configuration options: Chapter 4
+connection, network: Section 3.5, Section 4.14, Section 4.26
+connections, half-open: Section 4.14.3
+connections, idle: Section 4.14.1, Question A.7.8
+connections, interactive: Section 4.14.2, Section 4.24.1, Chapter 7
+connectivity, breaks in: Section 4.14.1, Question A.7.9
+CONNECT proxy (HTTP): Section 4.16.1
+console window: Section 1.1, Section 1.1, Section 3.11, Section 5.1, Section 7.1
+context menu: Section 3.1.1, Section 3.1.3, Section 4.11.1
+Control-?: Section 4.4.1
+Control-H: Section 4.4.1
+control sequences: Section 3.2, Section 4.3.1, Section 4.3.2, Section 4.3.5, Section 4.3.6, Section 4.6.2, Section 4.9.1, Section 4.10.4, Section 4.11.2, Section 4.12.1, Section 4.13.1, Section 4.13.4, Section 4.15.3, Section 4.15.3, Section 7.2.1, Question A.5.1
+cookie, magic: Section 4.25.1
+coordinates, cursor: Section 4.3.2
+Copy All to Clipboard: Section 3.1.3.5
+copy and paste: Section 3.1.1, Section 4.6.2, Section 4.10.5, Section 4.11, Section 4.11.2, Question A.6.6
+copyright: Appendix D
+corruption, of display: Section 4.6.10, Section 4.6.11
+CP437: Section 4.10.1
+CP866: Section 4.10.1
+-c Pageant command-line option: Section 9.3.2
+CRC: Section 10.13
+CR (Carriage Return): Section 4.3.3, Section 4.3.4
+creating directories: Section 6.2.16
+creating key pairs: Section 8.2
+credential delegation, GSSAPI: Section 4.23.1
+credentials, cascading: Section 4.18.1.1
+CryptoCard authentication: Section 4.21.5
+Ctrl-?: Section 4.4.1
+Ctrl-Break: Section 3.1.3.2
+Ctrl-C: Section 3.1.1, Section 3.1.1, Section 4.11.4
+Ctrl-H: Section 4.4.1
+Ctrl-Ins: Section 3.1.1, Section 4.11.4.2
+Ctrl-PgDn: Section 3.1.2
+Ctrl-PgUp: Section 3.1.2
+Ctrl-Shift-C: Section 4.11.4.2
+Ctrl-Shift-PgDn: Section 3.1.2
+Ctrl-Shift-PgUp: Section 3.1.2
+Ctrl-Shift-V: Section 4.11.4.2
+Ctrl-V: Section 4.11.4
+Ctrl, with right mouse button: Section 3.1.1
+current working directory: Section 6.2.7, Section 6.2.8
+cursor: Section 4.8.1
+cursor, blinking: Section 4.8.1
+cursor colour: Section 4.13.6, Section 4.13.7
+cursor coordinates: Section 4.3.2
+cursor keys, ‘Application’ mode: Section 4.4.5, Section 4.6.1
+cut and paste: Section 3.1.1, Section 4.6.2, Section 4.10.5, Section 4.11, Section 4.11.2, Question A.6.6
+CVS: Section 7.4
+CVS_RSH environment variable: Section 7.4
+Cyrillic: Section 4.10.3
+-D command-line option: Section 3.11.3.5
+debugging Internet protocols: Section 3.7
+DEC Compose key: Section 4.4.8
+DEC Origin Mode: Section 4.3.2
+DECterm: Question A.5.1
+Default Beep sound, Windows: Section 4.5
+Default Settings: Section 3.11.1, Section 4.1.2
+delays, in SSH-2 sessions: Question A.7.20
+delegation, of GSSAPI credentials: Section 4.23.1
+deleting directories: Section 6.2.17
+deleting files: Section 6.2.15
+DES: Section 4.20, Section 10.5
+destructive backspace: Section 4.6.8
+development snapshots: Section B.2
+diagnostic, proxy: Section 4.16.6
+dialog box: Section 2.1
+DiceWare: Section 8.2.8
+differences between SSH, Telnet, Rlogin, and SUPDUP: Section 1.2
+different user names: Section 2.3, Section 4.21.8
+Diffie-Hellman group exchange: Section 4.18.1
+Diffie-Hellman key exchange: Section 4.18.1
+Diffie-Hellman key exchange, with elliptic curves: Section 4.18.1
+‘digest’ authentication (HTTP): Section 4.16.4
+digital signature: Section 4.27.8, Section 8.1
+Digital Signature Standard: Section 4.19.1, Section 4.19.1, Section 8.1, Section 8.2.2, Question A.8.3
+directories, creating: Section 6.2.16
+directories, removing: Section 6.2.17
+display corruption: Section 4.6.10, Section 4.6.11
+DISPLAY environment variable: Section 3.4
+DLL: Section 4.23.2, Question A.6.10
+DNS: Section 4.16.3
+DNS name: Section 2.1, Section 4.1.1, Section 4.9.1, Section 4.14.4, Section 5.2.1.2
+DNS resolution: Section 4.16.3
+DNS, with proxy: Section 4.16.2, Section 4.16.3
+Domain Name System: Section 4.16.3
+double-click: Section 3.1.1, Section 4.12.1
+double-width character: Section 4.10.2
+downloading files: Section 5.2.1, Section 6.2.9
+Dragon NaturallySpeaking: Section 4.9.4
+DSA: Section 4.19.1, Section 4.19.1, Section 8.1, Section 8.2.2, Question A.8.3
+DSA authentication: Section 3.11.3.18, Section 4.22.1, Section 4.27.11, Section 5.2.4, Section 6.3, Section 7.2.2, Section 8.1
+DSS: Section 8.1
+‘Duplicate Session’: Section 3.1.3.3, Question A.7.22
+dynamic port forwarding: Section 3.5, Section 3.11.3.5, Section 4.26
+East Asian Ambiguous characters: Section 4.10.2
+‘ECDH’ (elliptic-curve Diffie-Hellman): Section 4.18.1
+ECDSA: Section 8.1, Section 8.2.2
+echo, local: Section 4.3.8, Section 4.3.9, Question A.2.4
+echo, remote: Section 4.3.8
+Ed25519: Section 4.19.1, Section 8.2.3
+Ed448: Section 4.19.1, Section 8.2.3
+EdDSA: Section 4.19.1, Section 4.19.1, Section 8.2.2
+Edwards-curve DSA: Section 4.19.1, Section 4.19.1, Section 8.2.2
+elliptic curve: Section 4.19.1, Section 8.2.2
+elliptic-curve Diffie-Hellman key exchange: Section 4.18.1
+elliptic-curve DSA: Section 8.1, Section 8.2.2
+elliptic curves, NIST-standardised: Section 4.19.1, Section 8.2.3, Section 9.2.1, Section C.3.3
+emulation, terminal: Section 3.1.3.6, Section 4.3, Section 4.3.7, Section 4.4, Section 4.6, Section 4.15.3
+encryption: Section 4.27.12, Section 8.1, Section 8.2.8
+encryption algorithm: Section 4.20
+End key: Section 4.4.2
+End Of File, Telnet special command: Section 3.1.3.2
+End Of Record, Telnet special command: Section 3.1.3.2
+enquiry character: Section 4.3.7
+environment variables: Section 4.15.5, Section 4.30.1
+Erase Character, Telnet special command: Section 3.1.3.2, Section 4.30.3
+Erase Line, Telnet special command: Section 3.1.3.2
+erase screen: Section 4.3.5
+ERASE, special character: Section 4.24.2
+ERRORLEVEL: Section 5.2.3
+error messages: Chapter 10
+escape sequences: Section 3.2, Section 4.3.1, Section 4.3.2, Section 4.3.6, Section 4.6.2, Section 4.9.1, Section 4.10.4, Section 4.11.2, Section 4.12.1, Section 4.13.1, Section 4.13.4, Section 4.15.3, Section 7.2.1
+Event Log: Section 3.1.3.1, Section 4.2
+execute permission: Section 6.2.14
+exit value: Section 5.2.3
+expiry, of passwords: Section 4.21.6
+exporting private keys: Section 8.2.15
+extending a selection: Section 3.1.1, Section 4.11.1
+FAQ: Appendix A
+features, supported: Section A.2
+feedback: Appendix B
+feep: Section 4.5
+filenames containing spaces: Section 6.2.1, Question A.6.9
+files, changing permissions on: Section 6.2.14
+files, deleting: Section 6.2.15
+files, listing: Section 5.2.2.1, Section 6.2.13
+files, receiving: Section 5.2.1, Section 6.2.9
+files, renaming and moving: Section 6.2.18
+files, resuming transfer of: Section 6.2.12
+files, sending: Section 5.2.1, Section 6.2.10
+files, transferring: Chapter 5, Chapter 6
+finger: Section 3.5
+fingerprint, MD5, of SSH host key: Section 2.2, Section 4.19.3
+fingerprint, of PGP key: Section 3.11.3.23
+fingerprint, of SSH authentication key: Section 8.2.6, Section 9.2.1
+fingerprint, of SSH host key: Section 2.2
+fingerprint, SHA-256, of SSH host key: Section 2.2, Section 4.19.3
+firewalls: Section 4.14.1, Section 4.18.2, Section 4.30.2, Section 10.17, Question A.7.8
+flashing cursor: Section 4.8.1
+flashing text: Section 4.3.6
+flow-control window: Section 4.27.5
+font: Section 4.8.2, Section 4.10.4, Section 4.12.2, Section 4.13.4
+font size: Section 4.7.2, Section 4.8.2
+foreground colour, default: Section 4.13.6, Section 4.13.7
+forwarding, of X11: Section 3.4, Section 3.11.3.11, Section 4.25
+forwarding ports in SSH: Section 3.5, Section 3.11.3.5, Section 4.16, Section 4.17.2, Section 4.26
+forwarding ports in SSH, changing mid-session: Section 4.26
+forwarding, SSH agent: Section 3.11.3.10, Section 4.21.7, Section 9.4
+Frequently Asked Questions: Appendix A
+ftp: Chapter 6
+full-screen mode: Section 3.1.3.7, Section 4.7.3, Section 4.9.7
+function keys: Section 4.4.3, Question A.7.13
+generating key pairs: Section 8.2
+glob (wildcard): Section 5.2.1, Section 5.2.1.3, Section 5.2.2.6, Section 6.2.2, Section 6.2.11
+Go Ahead, Telnet special command: Section 3.1.3.2
+GPG signatures, of PuTTY binaries: Appendix F
+graphical applications: Section 3.4, Section 4.25
+group exchange, Diffie-Hellman: Section 4.18.1
+GSSAPI: Section 4.15.2, Section 4.23
+GSSAPI credential delegation: Section 4.23.1
+Gtk: Question A.3.2
+half-open connections: Section 4.14.3
+Hebrew: Section 4.6.11
+history: Section 3.1.2
+HMAC: Section 4.27.10
+home directory: Section 5.2.1.3
+Home key: Section 4.4.2
+-host-ca: Section 3.11.3.29
+-hostkey: Section 3.11.3.22
+host key fingerprint (SSH): Section 2.2
+host key management: Section 2.2, Section 3.1.3.2, Section 3.11.3.21, Section 3.11.3.22, Section 4.14.5, Section 4.19, Section 4.19.3
+host keys, manually configuring: Section 3.11.3.22, Section 4.19.3
+host keys, trusting: Section 2.2
+host keys, upgrading: Section 3.1.3.2
+host key type: Section 4.19.1
+host key, verifying: Section 2.2, Question A.2.9
+host name: Section 2.1, Section 4.1.1, Section 4.9.1, Section 4.14.4, Section 5.2.1.2
+host name, logical: Section 3.11.3.21, Section 4.14.5
+host name resolution: Section 4.16.3
+host name resolution, with proxy: Section 4.16.2, Section 4.16.3
+HTTP: Section 3.7
+HTTP Basic authentication: Section 4.16.4
+HTTP Digest authentication: Section 4.16.4
+HTTP proxy: Section 4.16.1
+-i command-line option: Section 3.11.3.18
+icon, PuTTY's: Section 2.3, Section A.5.3
+icon title: Section 4.9.1
+idle connections: Section 4.14.1, Question A.7.8
+‘ignore’ messages, in SSH: Section 3.1.3.2, Section 4.27.1, Section 4.27.13
+IGNORE message, SSH special command: Section 3.1.3.2
+importing private keys: Section 8.2.15
+inactive window: Section 4.1.3
+indenting: Section 3.1.1
+integrity: Section 4.18.2
+interactive connections: Section 4.14.2, Section 4.24.1, Chapter 7
+intermittent connectivity: Section 4.14.1, Question A.7.9
+internal error: Section 10.8
+internal fault: Section 10.8
+Internet protocols, debugging: Section 3.7
+Internet Protocol version: Section 3.11.3.17, Section 4.14.4, Section 4.26.2
+Interrupt Process, Telnet special command: Section 3.1.3.2, Section 4.30.3
+IP address: Section 3.5, Section 4.1.1, Section 4.14.4
+IP address, loopback: Section 3.5, Section 4.16.2
+IP masquerading: Section 10.17, Question A.7.8
+IPv4: Section 3.11.3.17, Section 4.14.4, Section 4.26.2
+IPv6: Section 3.11.3.17, Section 4.14.4, Section 4.26.2
+IPv6 address: Section 4.26
+ISO-8859: Section 4.10.1
+ISO-10646 (Unicode): Section 4.6.10, Section 4.10.1, Section 4.10.4, Section 4.10.5
+IUTF8 terminal mode: Section 4.24.2
+Japanese: Section 4.10.2
+jump host: Section 4.16.1
+keepalives, application: Section 4.14.1, Section 4.18.2, Section 4.27.1, Section 4.27.13
+keepalives, TCP: Section 4.14.3
+Kerberos: Section 4.23
+kex: Section 4.18
+keyboard: Section 4.4, Section 4.15.3, Question A.7.12, Question A.7.13
+keyboard-interactive authentication: Section 4.21.6
+key exchange: Section 4.18
+key exchange algorithm: Section 4.18.1
+key exchange, Diffie-Hellman: Section 4.18.1
+key exchange, elliptic-curve Diffie-Hellman: Section 4.18.1
+key exchange, forcing repeat: Section 3.1.3.2
+key exchange, repeat: Section 3.1.3.2, Section 4.18.2, Section 4.27.2, Question A.7.20
+--keylist Pageant command-line option: Section 9.3.5
+keypad, ‘Application’ mode: Section 4.4.6, Section 4.6.1
+keypad, NetHack mode: Section 4.4.7
+keypad, numeric: Section 4.4.3
+key pair: Section 8.1
+key pairs, generating: Section 8.2
+known_hosts: Question A.2.9
+Korean: Section 4.10.2
+last selected text: Section 4.11.4.2
+-L command-line option: Section 3.11.3.5
+-l command-line option: Section 3.11.3.4
+left mouse button: Section 3.1.1, Section 4.11.1
+LF (Line Feed): Section 4.3.3, Section 4.3.4
+licence: Appendix D
+line-drawing characters: Section 3.3, Section 4.10.4
+line editing, local: Section 4.3.9
+Line Feed: Section 4.3.3, Section 4.3.4
+lines, selecting: Section 3.1.1
+line wrapping, automatic: Section 4.3.1, Question A.7.7
+links (web browser): Section 4.6.2
+Linux: Section 4.4, Section 4.4.1, Section 4.15.3, Section 4.24.1, Section 4.26.2, Section 6.2.14, Section 10.19, Question A.7.13
+Linux, Red Hat: Question A.7.15
+Linux version of PuTTY tools: PuTTY User Manual, Question A.3.2
+Linux virtual console: Section 4.4.3
+listen address: Section 3.5, Section 3.11.3.5, Section 4.26
+listing files: Section 5.2.2.1, Section 6.2.13
+-load command-line option: Section 3.11.3.1
+loading private keys: Section 8.2.15
+loading saved sessions from command line: Section 3.11.3.1
+loading settings: Section 4.1.2
+loading settings from a file: Section 4.33
+local echo: Section 4.3.8, Section 4.3.9, Question A.2.4
+localhost: Section 3.5, Section 4.16.2, Section 4.26.1, Question A.7.17
+local line editing: Section 4.3.9
+local proxy: Section 3.11.3.27, Section 4.16.1, Section 4.16.5
+local-to-remote port forwarding: Section 3.5, Section 3.11.3.5, Section 4.26
+local user name, in Rlogin: Section 4.31.1
+local user name, in Windows: Section 4.31.1
+local Windows command: Section 6.2.19
+locking up, SSH-2 sessions: Question A.7.20
+-logappend: Section 3.11.3.26
+Log, Event: Section 3.1.3.1, Section 4.2
+log file: Section 3.2, Section 3.11.3.25, Section 4.2
+log file, flushing: Section 4.2.3
+log file, header: Section 4.2.4
+logging in: Section 2.3
+logging out: Section 2.5
+logging, proxy: Section 4.16.6
+-loghost: Section 3.11.3.21
+logical host name: Section 3.11.3.21, Section 4.14.5
+logical palettes: Section 4.13.5
+login name: Section 2.3, Section 3.11.3.4, Section 5.2.1.1
+login name, for auto-login: Section 4.15.1
+login name, for proxy: Section 4.16.4
+login name, local, in Rlogin: Section 4.31.1
+login name, local, in Windows: Section 4.31.1
+login names, different: Section 2.3, Section 4.21.8
+login, passwordless: Section 1.2, Section 4.23, Section 4.31.1, Section 8.2.8, Chapter 9
+login scripts: Section 10.7, Question A.7.1, Question A.7.4
+logo, PuTTY's: Section 2.3, Section A.5.3
+-logoverwrite: Section 3.11.3.26
+loopback IP address: Section 3.5, Section 4.16.2
+low-numbered port: Section 3.5, Section 4.26, Section 4.31.1
+-ls PSCP command-line option: Section 5.2.2.1
+MAC (message authentication code): Section 4.20, Section 4.27.10, Section 10.13, Section 10.13
+Mac OS: Question A.3.6
+magic cookie: Section 4.25.1
+mailing list: Section B.1
+man pages for PuTTY tools: PuTTY User Manual
+manually configuring host keys: Section 3.11.3.22, Section 4.19.3
+maximise window: Section 4.7.2, Question A.6.3
+maximum packet size: Section 4.27.5
+mc: Section 4.6.2
+-m command-line option: Section 3.11.3.6, Section 3.11.3.6
+MD5 fingerprint, of SSH host key: Section 2.2, Section 4.19.3
+menu, context: Section 3.1.1, Section 3.1.3, Section 4.11.1
+menu, system: Section 3.1.3, Section 3.1.3.7, Section 4.9.4, Section 4.9.5, Section 4.9.7
+message authentication code (MAC): Section 4.20, Section 4.27.10, Section 10.13, Section 10.13
+Microsoft Store: Question A.8.5
+middle mouse button: Section 3.1.1, Section 4.11.1, Section 4.11.4
+Midnight Commander: Section 4.6.2
+minimise window: Section 4.9.1
+mistyping a password: Section 2.3
+MIT-MAGIC-COOKIE-1: Section 4.25.1
+modes of files, changing: Section 6.2.14
+mouse: Section 3.1.1
+mouse pointer: Section 3.1.1, Section 4.8.3
+mouse reporting: Section 3.1.1, Section 4.6.2, Section 4.11.2
+mouse, three-button: Section 3.1.1, Section 4.11.1
+moving files: Section 6.2.18
+MS-DOS Prompt: Section 1.1, Section 1.1, Section 3.11, Section 5.1, Section 7.1
+MUDs: Section 1.1, Section 2.1, Section 4.3.9
+multi-user systems: Section 3.11.2, Question A.8.2
+Nagle's algorithm: Section 4.14.2
+name resolution: Section 4.16.3
+name resolution, with proxy: Section 4.16.2, Section 4.16.3
+NAT routers: Section 10.17, Question A.7.8
+NaturallySpeaking: Section 4.9.4
+-nc: Section 3.11.3.14
+-N command-line option: Section 3.11.3.13
+negotiation, of Telnet options: Section 4.30.2
+NetHack keypad mode: Section 4.4.7
+Network Address Translation: Section 10.17, Question A.7.8
+network connection: Section 3.5, Section 4.14, Section 4.26
+network protocols: Section 1.1
+NEW_ENVIRON: Section 4.30.1
+new line: Section 4.3.3, Section 4.3.4, Section 4.30.4
+new line, in Telnet: Section 4.30.4
+‘New Session’: Section 3.1.3.3, Question A.7.22
+new version, verifying: Section 3.11.3.23, Appendix F
+NIST-standardised elliptic curves: Section 4.19.1, Section 8.2.3, Section 9.2.1, Section C.3.3
+NNTP: Section 3.7
+-noagent: Section 3.11.3.9
+-no-antispoof: Section 7.2.3.6
+non-destructive backspace: Section 4.6.8
+No Operation, Telnet special command: Section 3.1.3.2
+No-op, in SSH: Section 3.1.3.2
+-no-sanitise-stderr: Section 5.2.2.7, Section 6.1.4.1, Section 7.2.3.5
+-no-sanitise-stdout: Section 7.2.3.5
+notification area, Windows (aka system tray): Section 3.11.3.28, Section 9.1
+-no-trivial-auth: Section 3.11.3.20
+NTRU Prime: Section 4.18.1
+numeric keypad: Section 4.4.3
+numeric keypad, ‘Application’ mode: Section 4.4.6, Section 4.6.1
+Num Lock: Section 4.4.6, Section 4.4.7
+OLD_ENVIRON: Section 4.30.1
+one-time passwords: Section 4.21.5
+OpenSSH: Section 3.5, Section 4.21.8, Section 4.26, Section 4.26.1, Section 4.27.8, Section 4.27.11, Section 8.2.12, Section 8.3, Section 9.4, Section 10.6, Question A.7.18, Question A.10.1
+OpenSSH certificates: Section 3.11.3.19, Section 3.11.3.29, Section 4.19.4, Section 4.22.2, Section 8.2.9, Section 10.3
+--openssh-config Pageant command-line option: Section 9.3.3
+OpenSSH, on Windows: Section 9.3.3
+OpenSSH private key file format: Section 8.2.15
+option negotiation, Telnet: Section 4.30.2
+options, command-line: Section 3.11, Section 9.3
+out of memory: Section 10.7, Question A.7.3, Question A.7.4
+overriding host keys: Section 3.11.3.22, Section 4.19.3
+packet log, SSH: Section 4.2, Section 4.2.5
+Pageant: Section 3.11.3.9, Section 3.11.3.10, Section 4.21.7, Section 4.22.1, Section 4.27.15, Section 8.1, Chapter 9
+palettes, logical: Section 4.13.5
+passive Telnet negotiation: Section 4.30.2
+passphrase: Section 8.1, Section 8.2.8, Chapter 9
+passphrase hashing, for private key files: Section 8.2.13.2
+passthrough printing: Section 4.3.10
+password: Section 2.3, Section 3.11.3.8
+password camouflage: Section 4.27.13, Section 4.27.14
+password expiry: Section 4.21.6
+password, for proxy: Section 4.16.4
+password hashing, for private key files: Section 8.2.13.2
+passwordless login: Section 1.2, Section 4.23, Section 4.31.1, Section 8.2.8, Chapter 9
+password, mistyping: Section 2.3
+password, one-time: Section 4.21.5
+password, plain text: Section 4.16.4, Section 4.16.4
+password prompt: Question A.7.12
+password, storing: Question A.2.8
+paste, copy and: Section 3.1.1, Section 4.6.2, Section 4.10.5, Section 4.11, Section 4.11.2, Question A.6.6
+patch: Section B.2
+PATH environment variable: Section 5.1, Section 6.1, Section 7.1
+-P command-line option: Section 3.11.3.7
+PC speaker: Section 4.5.1
+Pentium 4: Question A.3.1
+permissions on files, changing: Section 6.2.14
+-pgpfp command-line option: Section 3.11.3.23, Appendix F
+PGP key fingerprint: Section 3.11.3.23
+PGP signatures, of PuTTY binaries: Appendix F
+plain text password: Section 4.16.4, Section 4.16.4
+Plink: Chapter 7, Chapter 7
+PLINK_PROTOCOL environment variable: Section 7.2.2
+plugin: Section 4.22.3
+POP-3: Section 3.5
+port forwarding in SSH: Section 3.5, Section 3.11.3.5, Section 4.16, Section 4.17.2, Section 4.26
+port forwarding in SSH, changing mid-session: Section 4.26
+port number: Section 3.5, Section 3.11.3.7, Section 4.1.1, Section 4.26
+port, privileged: Section 3.5, Section 4.26, Section 4.31.1
+POSIX: Section 4.24.2, Section 6.2.2
+PPK file: Section 3.11.3.18, Section 4.22.1, Section 8.2.10, Section 8.2.15, Section 9.1
+-p PSCP command-line option: Section 5.2.2.2
+preserve file attributes: Section 5.2.2.2
+PRIMARY selection: Section 4.11.4
+prime generation method: Section 8.2.4
+primes, probable: Section 8.2.4
+primes, proven: Section 8.2.4
+printing, remote-controlled: Section 4.3.10
+private key: Section 3.11.3.18, Section 4.22.1, Section 8.1, Chapter 9
+private key file, OpenSSH: Section 8.2.15
+private key file, PuTTY: Section 3.11.3.18, Section 4.22.1, Section 8.2.10, Section 8.2.15, Section 9.1
+private key file, ssh.com: Section 8.2.15
+private keys, generating: Section 8.2
+privileged port: Section 3.5, Section 4.26, Section 4.31.1
+probable primes: Section 8.2.4
+process ACL (Windows): Section 3.11.3.28, Section 9.3.6
+prompt: Section 2.4
+protocol: Section 2.1
+protocols, debugging: Section 3.7
+protocols, differences between: Section 1.2
+protocol selection: Section 3.11.3.2
+protocol version, SSH: Section 3.11.3.16, Section 4.17.4
+proven primes: Section 8.2.4
+proxy authentication: Section 4.16.4
+-proxycmd: Section 3.11.3.27
+proxy command: Section 3.11.3.27, Section 4.16.1, Section 4.16.5
+proxy DNS: Section 4.16.2, Section 4.16.3
+proxy, HTTP: Section 4.16.1
+proxy logging: Section 4.16.6
+proxy password: Section 4.16.4
+proxy server: Section 4.14.4, Section 4.16
+proxy, SOCKS: Section 4.16.1
+proxy, Telnet: Section 4.16.1, Section 4.16.5, Section 4.30.2
+proxy user name: Section 4.16.4
+PSCP: Chapter 5, Chapter 5
+pseudo-terminal allocation: Section 3.11.3.12, Section 4.24.1
+PSFTP: Chapter 6, Chapter 6
+‘psusan’ program: Section 4.28
+pterm: PuTTY User Manual, Question A.3.2
+pty allocation: Section 3.11.3.12, Section 4.24.1
+public key: Section 8.1
+public-key algorithm: Section 8.1
+public key authentication: Section 3.11.3.18, Section 4.22.1, Section 4.27.11, Section 5.2.4, Section 6.3, Section 7.2.2, Section 8.1
+public key file, SSH-2: Section 8.2.11
+public key fingerprint (SSH): Section 8.2.6, Section 9.2.1
+public keys, generating: Section 8.2
+punctuation: Section 4.12.1
+PuTTY Event Log: Section 3.1.3.1, Section 4.2
+PuTTYgen: Section 8.2
+PuTTY icon: Section 2.3, Section A.5.3
+putty.rnd (random seed file): Section 3.11.2, Question A.5.2
+putty @sessionname: Section 3.11.3.1
+PuTTYtel: Section 4.16.4
+PuTTY terminal window: Section 2.3, Section 3.1.1, Section 3.1.3, Section 4.1.3, Section 4.7, Section 4.8, Section 4.9, Section 4.13.7
+-pw command-line option: Section 3.11.3.8
+-pwfile command-line option: Section 3.11.3.8
+-q PSCP command-line option: Section 5.2.2.3
+quantum attacks, resistance to: Section 4.18.1
+QUIT, special character: Section 4.24.2
+quoting, in PSFTP: Section 6.2.1
+random seed file: Section 3.11.2
+-raw command-line option: Section 3.11.1, Section 3.11.3.2
+raw protocol: Section 2.1
+‘Raw’ protocol: Section 3.7
+raw TCP connections: Section 3.7
+RC4: Section 4.20, Section 10.5
+-R command-line option: Section 3.11.3.5
+reading commands from a file: Section 3.11.3.6
+read permission: Section 6.2.14
+receiving files: Section 5.2.1, Section 6.2.9
+rectangular selection: Section 3.1.1, Section 4.11.3
+recursive: Section 5.2.2.4, Section 6.2.9, Section 6.2.10
+Red Hat Linux: Question A.7.15
+Re-encrypt: Section 9.5
+re-encryptable: Section 9.5
+registry entries, removing: Section 3.11.2
+Registry (Windows): Section 2.2, Section 4.1.2, Section 4.33, Question A.5.2
+remote commands: Section 2.4, Section 3.11.3.6, Section 4.17.1, Section 4.17.2, Question A.6.2
+remote-controlled printing: Section 4.3.10
+remote echo: Section 4.3.8
+remote network connection: Section 3.11.3.14
+remote shell: Section 4.17.2
+remote shell, suppressing: Section 3.11.3.13
+remote-to-local port forwarding: Section 3.5, Section 3.11.3.5, Section 4.26
+removing directories: Section 6.2.17
+removing files: Section 6.2.15
+removing registry entries: Section 3.11.2
+renaming files: Section 6.2.18
+repeat key exchange: Section 3.1.3.2, Section 4.18.2, Section 4.27.2, Question A.7.20
+Repeat key exchange, SSH special command: Section 3.1.3.2
+‘Reset Terminal’: Section 3.1.3.6
+resizing, terminal: Section 4.6.3, Section 4.7.1, Section 4.7.2
+‘Restart Session’: Section 3.1.3.3
+-restrict-acl: Section 3.11.3.28, Section 9.3.6
+-restrict-putty-acl: Section 3.11.3.28
+resuming file transfers: Section 6.2.12
+return value: Section 5.2.3
+RFC: Section 4.30.1
+RGB values: Section 4.13.7
+.rhosts file: Section 4.31.1
+‘rhosts’ file: Section 4.31.1
+Rich Text Format: Section 4.12.2
+right mouse button: Section 3.1.1, Section 4.11.1
+right mouse button menu: Section 3.1.1, Section 3.1.3, Section 4.11.1
+right mouse button, with Ctrl: Section 3.1.1
+right-to-left text: Section 4.6.11
+Rijndael: Section 4.20
+Rlogin: Section 2.1, Section 3.9, Section 4.31
+-rlogin command-line option: Section 3.11.1, Section 3.11.3.2
+Rlogin, differences from other protocols: Section 1.2
+routers: Section 4.14.1
+routers, NAT: Section 10.17, Question A.7.8
+rows, in terminal window: Section 4.7.1
+-r PSCP command-line option: Section 5.2.2.4
+RSA: Section 4.19.1, Section 4.27.8, Section 4.27.15, Section 8.1, Section 8.2.2
+RSA authentication: Section 3.11.3.18, Section 4.22.1, Section 4.27.11, Section 5.2.4, Section 6.3, Section 7.2.2, Section 8.1
+RSA-based key exchange: Section 4.18.1
+RTF: Section 4.12.2
+Russian: Section 4.10.3
+rxvt: Section 4.4.2
+-sanitise-stderr: Section 5.2.2.7, Section 6.1.4.1, Section 7.2.3.5
+-sanitise-stdout: Section 7.2.3.5
+saved sessions, loading from command line: Section 3.11.3.1
+‘Saved Sessions’ submenu: Section 3.1.3.3
+saving private keys: Section 8.2.15
+saving settings: Section 4.1.2
+saving settings in a file: Section 4.33
+SCO: Section 4.4.3
+SCP protocol: Section 5.2.1, Section 5.2.2.6
+-scp PSCP command-line option: Section 5.2.2.6
+screen, clearing: Section 4.3.5
+scripts: Section 7.3
+scrollback: Section 3.1.2, Section 4.7.3
+scrollback clearing: Section 4.6.7
+scrollback, clearing: Section 3.1.3.6
+scrollbar: Section 3.1.2, Section 4.7.3
+scrolling region: Section 4.3.2
+SECONDARY selection: Section 4.11.4.2
+secret, shared: Section 4.18
+secure shell: Section 1.2
+security hazard: Section 4.6.6, Section 4.16.4, Section 5.2.1, Section 9.6
+security token: Section 4.21.5
+selecting a protocol: Section 1.2, Section 3.11.3.2
+selecting text: Section 3.1.1, Section 4.11.1
+selecting whole lines: Section 3.1.1
+selecting whole words: Section 3.1.1, Section 4.12.1
+selection, adjusting: Section 3.1.1, Section 4.11.1
+selection, CLIPBOARD: Section 4.11.4
+selection, PRIMARY: Section 4.11.4
+selection, rectangular: Section 3.1.1, Section 4.11.3
+selection, SECONDARY: Section 4.11.4.2
+selections, multiple: Section 4.11.4
+sending files: Section 5.2.1, Section 6.2.10
+-sercfg command-line option: Section 3.11.3.24
+Serial: Section 4.29
+-serial command-line option: Section 3.11.1, Section 3.11.3.2
+serial line: Section 4.1.1, Section 4.29
+serial port: Section 4.29
+server: Section 1.1
+server, commands on: Section 2.4, Section 3.11.3.6, Section 4.17.1, Section 4.17.2, Question A.6.2
+server, HTTP: Section 4.16.1
+server name: Section 2.1, Section 4.1.1, Section 4.9.1, Section 4.14.4, Section 5.2.1.2
+server name resolution: Section 4.16.3
+server name resolution, with proxy: Section 4.16.2, Section 4.16.3
+server, proxy: Section 4.14.4, Section 4.16
+server, SOCKS: Section 4.16.1
+service names: Section 4.26
+session ID: Section 4.27.11
+session log: Section 3.2
+-sessionlog: Section 3.11.3.25
+@sessionname command-line argument: Section 3.11.3.1
+sessions, loading and storing: Section 4.1.2
+session, starting: Section 2.1
+set-group-ID bit: Section 6.2.14
+settings, changing: Section 3.1.3.4
+settings, default: Section 3.11.1, Section 4.1.2
+settings, loading and storing: Section 4.1.2
+set-user-ID bit: Section 6.2.14
+SFTP: Section 5.2.1, Section 5.2.2.6, Chapter 6
+-sftp PSCP command-line option: Section 5.2.2.6
+SHA-256 fingerprint, of SSH host key: Section 2.2, Section 4.19.3
+shaping, of Arabic text: Section 4.6.10
+shared secret: Section 4.18
+-shareexists Plink command-line option: Section 7.2.3.4
+-share-plink: Section 7.2.3.3
+shell account: Section 1.1
+shell, remote: Section 4.17.2
+shell, remote, suppressing: Section 3.11.3.13
+Shift-Backspace: Section 4.4.1
+shifted arrow keys: Section 4.4.4
+Shift-Ins: Section 3.1.1, Section 4.11.4.2
+Shift-PgDn: Section 3.1.2
+Shift-PgUp: Section 3.1.2
+shortcut, Windows: Section 3.11, Section 3.11.3.1, Section 9.3, Question A.6.4
+side-channel attacks: Section 8.2.4, Section 8.2.13.2
+Signal, SSH special command: Section 3.1.3.2
+signature: Section 4.27.8, Section 8.1
+signatures, of PuTTY binaries: Appendix F
+single-DES: Section 4.20, Section 10.5
+single sign-on: Section 4.15.2, Section 4.23
+single-width character: Section 4.10.2
+size, of font: Section 4.7.2, Section 4.8.2
+size, of window: Section 4.7.1
+S/Key: Section 4.21.5, Section 4.21.6
+SMB: Question A.7.17
+SMTP: Section 3.7
+SOCKS port forwarding: Section 3.5, Section 3.11.3.5, Section 4.26
+SOCKS proxy: Section 4.16.1
+SO_KEEPALIVE: Section 4.14.3
+sound file: Section 4.5.1
+spaces in filenames: Section 6.2.1, Question A.6.9
+special character: Section 4.24.2
+special commands: Section 3.1.3.2
+special commands, in SSH: Section 3.1.3.2
+special commands, in Telnet: Section 3.1.3.2, Section 4.30.3
+speed, terminal: Section 4.15.4
+-s Plink command-line option: Section 7.2.3.2
+spoofing: Section 2.2, Section 4.31.1, Section 8.1
+SSH: Section 2.1, Section 2.2, Section 4.1.1, Section 4.17
+SSH-1: Section 3.11.3.16, Section 4.17.4
+SSH-2: Section 3.11.3.16, Section 4.15.5, Section 4.17.2, Section 4.17.4, Section 10.1, Section 10.4
+ssh-add: Section 9.4
+SSH agent forwarding: Section 3.11.3.10, Section 4.21.7, Section 9.4
+SSH certificates: Section 3.11.3.19, Section 3.11.3.29, Section 4.19.4, Section 4.22.2, Section 8.2.9, Section 10.3
+ssh.com: Section 4.27.12, Section 8.2.11, Section 8.3, Section 9.4
+-ssh command-line option: Section 3.11.1, Section 3.11.3.2
+ssh.com private key file format: Section 8.2.15
+-ssh-connection command-line option: Section 3.11.1, Section 3.11.3.2
+ssh-connection protocol, bare: Section 4.28
+SSH, differences from other protocols: Section 1.2
+.ssh directory: Section 8.3
+.ssh2 directory: Section 8.3
+SSH file transfer protocol: Section 5.2.1, Section 5.2.2.6, Chapter 6
+SSH host key fingerprint: Section 2.2
+SSH ‘ignore’ messages: Section 3.1.3.2, Section 4.27.1, Section 4.27.13
+SSH key exchange, forcing repeat: Section 3.1.3.2
+ssh-keygen: Section 9.2.1
+-sshlog: Section 3.11.3.25
+SSH packet log: Section 4.2, Section 4.2.5
+SSH port forwarding: Section 3.5, Section 3.11.3.5, Section 4.16, Section 4.17.2, Section 4.26
+SSH port forwarding, changing mid-session: Section 4.26
+SSH protocol version: Section 3.11.3.16, Section 4.17.4
+SSH-2 public key file format: Section 8.2.11
+SSH public key fingerprint: Section 8.2.6, Section 9.2.1
+-sshrawlog: Section 3.11.3.25
+SSH server bugs: Section 4.27
+SSH special commands: Section 3.1.3.2
+SSH subsystem: Section 4.16.1, Section 7.2.3.2
+SSH tunnelling: Section 3.5, Section 3.11.3.5, Section 4.16, Section 4.17.2, Section 4.26
+SSH tunnelling, changing mid-session: Section 4.26
+SSH X11 forwarding: Section 3.4, Section 3.11.3.11, Section 4.25
+SSPI: Section 4.23.2
+stair-stepping: Section 4.3.3
+standard error, proxy: Section 4.16.6
+starting a session: Section 2.1
+Start Menu: Section 5.1
+startup scripts: Section 10.7, Question A.7.1, Question A.7.4
+statistics: Section 5.2.2.3
+sticky bit: Section 6.2.14
+storing passwords: Question A.2.8
+storing settings: Section 4.1.2
+storing settings in a file: Section 4.33
+Streamlined NTRU Prime: Section 4.18.1
+‘strong’ primes: Section 8.2.4
+stty: Section 4.4.1, Section 4.24.2
+subsystem, SSH: Section 4.16.1, Section 7.2.3.2
+Sun SSH: Section 10.6
+SUPDUP: Section 2.1, Section 3.10, Section 4.32
+-supdup command-line option: Section 3.11.1, Section 3.11.3.2
+SUPDUP, differences from other protocols: Section 1.2
+supported features: Section A.2
+support requests: Section B.6
+Suspend Process, Telnet special command: Section 3.1.3.2, Section 4.30.3
+swap file: Section 9.6
+switches, command-line: Section 3.11, Section 9.3
+symmetric-key algorithm: Section 4.20
+Synch, Telnet special command: Section 3.1.3.2
+system colours: Section 4.13.6
+SYSTEM32 directory, on Windows: Question A.7.22
+system menu: Section 3.1.3, Section 3.1.3.7, Section 4.9.4, Section 4.9.5, Section 4.9.7
+system tray, Windows: Section 3.11.3.28, Section 9.1
+talker systems: Section 1.1, Section 4.3.9
+taskbar: Section 4.5.2
+taskbar notification area, Windows (aka system tray): Section 3.11.3.28, Section 9.1
+-T command-line option: Section 3.11.3.12
+-t command-line option: Section 3.11.3.12
+TCP connections, raw: Section 3.7
+TCP keepalives: Section 4.14.3
+TCP_NODELAY: Section 4.14.2
+TCP proxy: Section 4.16.1, Section 4.16.5, Section 4.30.2
+Telnet: Section 2.1, Section 3.8, Section 4.30
+-telnet command-line option: Section 3.11.1, Section 3.11.3.2
+Telnet, differences from other protocols: Section 1.2
+Telnet New Line: Section 4.30.4
+Telnet option negotiation: Section 4.30.2
+Telnet proxy: Section 4.16.1, Section 4.16.5, Section 4.30.2
+Telnet special commands: Section 3.1.3.2, Section 4.30.3
+Telnet URLs: Section 3.11.1
+termcap: Section 4.4, Section 4.15.3
+TERM environment variable: Section 4.13.2
+terminal bell: Section 4.5
+terminal bell, disabling: Section 4.5.1, Section 4.5.3
+terminal bell overload mode: Section 4.5.3
+terminal control sequences: Section 3.2, Section 4.3.1, Section 4.3.2, Section 4.3.6, Section 4.6.2, Section 4.9.1, Section 4.10.4, Section 4.11.2, Section 4.12.1, Section 4.13.1, Section 4.13.4, Section 4.15.3, Section 7.2.1
+terminal emulation: Section 3.1.3.6, Section 4.3, Section 4.3.7, Section 4.4, Section 4.6, Section 4.15.3
+terminal modes: Section 4.24.2
+terminal, resetting: Section 3.1.3.6
+terminal resizing: Section 4.6.3, Section 4.7.1, Section 4.7.2
+terminal speed: Section 4.15.4
+terminal type: Question A.5.1
+terminal window: Section 2.3, Section 3.1.1, Section 3.1.3, Section 4.1.3, Section 4.7, Section 4.8, Section 4.9, Section 4.13.7
+terminal window, inactive: Section 4.1.3
+terminfo: Section 4.4, Section 4.15.3
+three-button mouse: Section 3.1.1, Section 4.11.1
+timeout, of connections: Section 4.14.1, Question A.7.8
+timestamp: Section 5.2.2.2
+TIS authentication: Section 4.21.5
+token, security: Section 4.21.5
+transferring files: Chapter 5, Chapter 6
+triple-click: Section 3.1.1
+triple-DES: Section 4.20
+trn: Section 4.6.2
+trusting host keys: Section 2.2
+tunnelling using SSH: Section 3.5, Section 3.11.3.5, Section 4.16, Section 4.17.2, Section 4.26
+tunnelling using SSH, changing mid-session: Section 4.26
+typeface: Section 4.8.2, Section 4.10.4, Section 4.12.2, Section 4.13.4
+UDP: Section 4.26
+Unicode: Section 4.6.10, Section 4.10.1, Section 4.10.4, Section 4.10.5
+uninstalling: Question A.8.2
+Unix: Section 4.4, Section 4.4.1, Section 4.15.3, Section 4.24.1, Section 6.2.14, Section 10.19, Question A.7.13
+Unix version of PuTTY tools: PuTTY User Manual, Question A.3.2
+-unsafe PSCP command-line option: Section 5.2.1
+upgraded version, verifying: Section 3.11.3.23, Appendix F
+uploading files: Section 5.2.1, Section 6.2.10
+Uppity: Question A.2.10
+URLs, Telnet: Section 3.11.1
+US-ASCII: Section 4.10.5, Question A.2.11
+user name: Section 2.3, Section 3.11.3.4, Section 5.2.1.1
+user name, for auto-login: Section 4.15.1
+user name, for proxy: Section 4.16.4
+user name, local, in Rlogin: Section 4.31.1
+user name, local, in Windows: Section 4.31.1
+user names, different: Section 2.3, Section 4.21.8
+UTF-8: Section 4.10.1, Section 4.10.2, Section 4.24.2, Question A.7.15
+variables, environment: Section 4.15.5, Section 4.30.1
+-v command-line option: Section 3.11.3.3
+VERASE, special character: Section 4.24.2
+verbose mode: Section 3.11.3.3
+verifying new versions of PuTTY: Section 3.11.3.23, Appendix F
+verifying the host key: Section 2.2, Question A.2.9
+version, of Internet Protocol: Section 3.11.3.17, Section 4.14.4, Section 4.26.2
+version, of PuTTY: Section B.2
+version, of SSH protocol: Section 3.11.3.16, Section 4.17.4
+visual bell: Section 4.5.1
+VQUIT, special character: Section 4.24.2
+VT100+: Section 4.4.3
+VT400: Section 4.4.3
+vt220: Section 4.15.3
+WAV file: Section 4.5.1
+web browser: Section 3.5, Section 3.11.1
+web server: Section 1.1
+web site: Section B.7
+white space: Section 4.12.1
+wildcards: Section 5.2.1, Section 5.2.1.3, Section 5.2.2.6, Section 6.2.2, Section 6.2.11
+WinCVS: Section 7.5
+window border: Section 4.8.4
+window caption: Section 4.5.2, Section 4.9.1
+window, closing: Section 4.1.3, Section 4.9.2, Section 4.9.3
+window, inactive: Section 4.1.3
+window, maximising: Section 4.7.2, Question A.6.3
+window menu: Section 3.1.3, Section 3.1.3.7, Section 4.9.4, Section 4.9.5, Section 4.9.7
+window, minimising: Section 4.9.1
+window resizing: Section 4.6.3, Section 4.7.1, Section 4.7.2
+Windows 3.1: Question A.3.5
+Windows, 32-bit: Question A.6.10
+Windows, 64-bit: Question A.6.10, Question A.7.22
+Windows clipboard: Section 3.1.1
+Windows command: Section 6.2.19
+Windows Default Beep sound: Section 4.5
+Windows file sharing: Question A.7.17
+window size: Section 4.7.1
+Windows OpenSSH: Section 9.3.3
+Windows process ACL: Section 3.11.3.28, Section 9.3.6
+Windows Registry: Section 2.2, Section 4.1.2, Section 4.33, Question A.5.2
+Windows shortcut: Section 3.11, Section 3.11.3.1, Section 9.3, Question A.6.4
+Windows Store: Question A.8.5
+Windows Terminal Services: Question A.7.17
+Windows XP: Question A.7.17, Question A.7.21
+window, terminal: Section 2.3, Section 3.1.1, Section 3.1.3, Section 4.1.3, Section 4.7, Section 4.8, Section 4.9, Section 4.13.7
+window title: Section 4.6.5, Section 4.6.6, Section 4.9.1, Question A.7.11
+Win32s: Question A.3.5
+Win125x: Section 4.10.1
+words, selecting: Section 3.1.1, Section 4.12.1
+working directory: Section 6.2.7, Section 6.2.8
+wrapping, automatic: Section 4.3.1, Question A.7.7
+wrapping, terminal: Section 4.10.2
+write permission: Section 6.2.14
+X11 authentication: Section 4.25.1
+x86 (32-bit processor architecture): Question A.6.10
+-X command-line option: Section 3.11.3.11
+-x command-line option: Section 3.11.3.11
+‘X display location’: Section 3.4
+XDM-AUTHORIZATION-1: Section 4.25.1
+X11 forwarding: Section 3.4, Section 3.11.3.11, Section 4.25
+X server: Section 3.4
+xterm: Section 3.1.1, Section 4.4.2, Section 4.4.3, Section 4.4.3, Section 4.11.1, Section 4.15.3
+xterm mouse reporting: Section 3.1.1, Section 4.6.2, Section 4.11.2
