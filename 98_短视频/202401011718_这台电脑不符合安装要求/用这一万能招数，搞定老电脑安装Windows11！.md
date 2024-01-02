@@ -42,7 +42,7 @@
 
 
 
-好了，然后再在右侧空白的地方新建几个 `DWord` 类型的注册表键。
+好了，然后再在右侧空白的地方新建几个 `DWORD` 32位类型的注册表键。
 
 它们分别是 `BypassTPMCheck` 、`BypassSecureBootCheck` 、`BypassRAMCheck` 、 `BypassStorageCheck` 和 `BypassCPUCheck` ，注意这些名称也要区分大小写！
 
