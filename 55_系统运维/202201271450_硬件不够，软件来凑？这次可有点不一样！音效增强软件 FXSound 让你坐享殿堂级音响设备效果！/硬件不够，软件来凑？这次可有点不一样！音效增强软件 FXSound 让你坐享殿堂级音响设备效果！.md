@@ -366,6 +366,14 @@ OK，今晚吃鸡就用她啦！
 
 
 
+最新版本下载
+
+下载链接：https://pan.baidu.com/s/1fQfgTth7-CND7RyJeLGGOA
+
+提取码：1zzr
+
+
+
 **扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
