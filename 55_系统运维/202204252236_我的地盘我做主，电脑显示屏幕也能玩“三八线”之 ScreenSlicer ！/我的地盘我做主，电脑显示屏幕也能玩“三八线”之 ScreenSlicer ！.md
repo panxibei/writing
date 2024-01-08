@@ -287,6 +287,12 @@
 
 
 
+**ScreenSlicer（含112和115两个版本）.7z**
+
+链接：https://pan.baidu.com/s/1iTM_hdRpzQCD5DJgZX4VKQ
+
+提取码：31sx
+
 
 
 为防止公众号失联，请加我的个人微信：**sysadmcc**。

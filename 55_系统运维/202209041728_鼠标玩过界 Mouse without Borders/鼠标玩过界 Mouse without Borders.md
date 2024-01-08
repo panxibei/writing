@@ -279,7 +279,7 @@ OK，还记得初次启动 `Mouse w/o Borders` 时打开的向导对话框吗？
 
 提取码：5rxb
 
-
+链接失效
 
 
 
@@ -365,6 +365,12 @@ OK，还记得初次启动 `Mouse w/o Borders` 时打开的向导对话框吗？
 好了，最后的最后，如果各位觉得这款小软件很有趣又很有用，那么请自觉排好队哈，关注点赞分享后再优雅离场，谢谢大家！
 
 
+
+**MouseWithoutBordersSetup.7z(640K)**
+
+下载链接：https://pan.baidu.com/s/1aaU8jf0dB2oeovggcy491Q
+
+提取码：lce5
 
 
 

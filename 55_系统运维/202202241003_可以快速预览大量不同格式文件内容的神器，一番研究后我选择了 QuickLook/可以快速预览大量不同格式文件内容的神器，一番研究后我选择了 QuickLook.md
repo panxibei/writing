@@ -344,6 +344,14 @@
 
 
 
+**QuickLook-3.7.3（含便携版及最新打包十多种插件）**
+
+下载链接：https://pan.baidu.com/s/11vcYZZn-VcZl2jIvZsW2Vg
+
+提取码：k9aw
+
+
+
 **扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc

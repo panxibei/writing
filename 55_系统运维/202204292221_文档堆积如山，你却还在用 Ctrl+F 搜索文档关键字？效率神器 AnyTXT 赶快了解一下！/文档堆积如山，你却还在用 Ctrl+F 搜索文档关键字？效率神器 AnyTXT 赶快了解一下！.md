@@ -307,6 +307,12 @@ FINDSTR /R /S [az]*xyz d:\documents\*.txt
 
 
 
+**AnyTXT.Searcher.1.2.726.7z(34.1M)**
+
+下载链接：https://pan.baidu.com/s/1wF32QUBk7I0JrP8zN_7BjA
+
+提取码：jc1s
+
 
 
 **扫码关注@网管小贾 / 个人微信：sysadmcc**
