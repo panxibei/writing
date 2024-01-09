@@ -166,6 +166,8 @@
 
 提取码：0luy
 
+链接失效
+
 
 
 “用法比较简单，将 `PsExec` 从 `PsTools` 压缩包中提取出，然后按以下命令行形式执行程序即可。”
@@ -184,6 +186,8 @@ psexec -i -s C:\Windows\regedit.exe
 本地下载：https://pan.baidu.com/s/1UVdEWcWToQf_iuNEjBEn2w
 
 提取码：qpn6
+
+链接失效
 
 
 
@@ -241,6 +245,8 @@ psexec -i -s C:\Windows\regedit.exe
 
 提取码：8ut4
 
+链接失效
+
 
 
 “由于时间比较紧，目前我也就做了这么一个简单的查询功能。
@@ -264,6 +270,13 @@ psexec -i -s C:\Windows\regedit.exe
 声明：本故事纯属虚构，如有雷同，不用多想，就是那么巧！
 
 本文测试均在 `Windows 10` 系统平台上展开，部分测试内容并不一定适用于其他系统。
+
+
+
+**网管小贾的USB时间记录查看器 XJUsbViewer.7z(68.2K)**
+
+链接：https://pan.baidu.com/s/1bQ1DuCcB22o5wDmJ8H8Aog 
+提取码：on7v
 
 
 
