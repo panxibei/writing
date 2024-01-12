@@ -196,7 +196,9 @@ Add-AppPackage .\Microsoft.Windows.Photos_2023.11110.29003.0_neutral_~_8wekyb3d8
 
 **网管小贾的安装Microsoft照片小工具(166M)**
 
-下载链接：
+下载链接：https://www.123pan.com/s/bI7Mjv-nxAH3.html
+
+提取码：tlbz
 
 
 
