@@ -148,7 +148,9 @@ Dism.exe /Online /Enable-Feature /FeatureName:NetFX3 /Source:D:Sources\sxs
 
 **网管小贾的Windows离线安装点Net3.5小工具**
 
-下载链接：
+下载链接：https://www.123pan.com/s/bI7Mjv-zfAH3.html
+
+提取码：sJAV
 
 
 
