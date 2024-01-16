@@ -1,10 +1,10 @@
-自制一款Windows离线安装点Net3.5安装神器，彻底解决一切烦恼！
+自制一款多版本Windows平台的点Net3.5离线安装神器，彻底解决一切烦恼！
 
-副标题：自制一款Windows离线安装点Net3.5安装神器，彻底解决一切烦恼！
+副标题：自制一款多版本Windows平台的点Net3.5离线安装神器，彻底解决一切烦恼！
 
-英文：homemade-windows-dot-net-3.5-offline-installation-tool-and-completely-solving-all-troubles
+英文：homemade-multi-platform-windows-dot-net-3.5-offline-installation-tool-and-completely-solving-all-troubles
 
-关键字：dot net 3.5,net3.5,framework,windows,net
+关键字：dot net 3.5,net3.5,framework,windows,net,多平台,多版本
 
 
 
