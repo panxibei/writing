@@ -520,6 +520,14 @@ syslinux64.exe -f -d /boot/syslinux/ X:
 
 
 
+**DG+syslinux+BOOTICE+HDDRawCopy.7z(31.6M)**
+
+下载链接：https://pan.baidu.com/s/143oUJ-neV8PNRlp4pVxogA
+
+提取码：n8z2
+
+
+
 **扫码关注@网管小贾，个人微信：sysadmcc**
 
 网管小贾的博客 / www.sysadm.cc
