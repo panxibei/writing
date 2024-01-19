@@ -529,6 +529,16 @@ docker run \
 
 
 
+**filebrowser各平台打包（含校验）**
+
+**`Windows` 、`Linux` 、`MacOS` 以及 `FreeBSD` **
+
+下载链接：https://pan.baidu.com/s/1GZaH3Z7SRBs22-aymjYT7A
+
+提取码：6sw0
+
+
+
 扫码关注@网管小贾，个人微信：sysadmcc
 
 网管小贾 / sysadm.cc
