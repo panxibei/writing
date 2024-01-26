@@ -1,6 +1,6 @@
-干掉程序兼容性助手，让你的VB6程序更年轻更顺畅
+干掉程序兼容性助手，让你的VB6程序更丝滑更年轻
 
-副标题：干掉程序兼容性助手，让你的VB6程序更年轻更顺畅
+副标题：干掉程序兼容性助手，让你的VB6程序更丝滑更年轻
 
 英文：get-rid-of-the-program-compatibility-assistant-to-make-your-vb6-program-younger-and-smoother
 
@@ -66,7 +66,7 @@
 
 
 
-**网管小贾的可执行文件导入Manifest工具.7z**
+**网管小贾的可执行文件导入Manifest工具.7z(包含SDK等镜像库) **
 
 下载链接：https://pan.baidu.com/s/1FCjlR9-V6CgsECRBGIOhBg
 
