@@ -366,6 +366,14 @@ OK，最终界面和菜单都可以变成中文的了。
 
 
 
+**HddRawCopy+Batocera.linux.vmdk**
+
+下载链接：https://www.123pan.com/s/bI7Mjv-rgAH3.html
+
+提取码：i2eN
+
+
+
 **扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
