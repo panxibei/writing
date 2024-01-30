@@ -411,6 +411,14 @@ OK，磁盘被正常识别，可以被分区并安装。
 
 
 
+**HotFix+NVMex64+Win7.NVME.iso.7z**
+
+下载链接：https://www.123pan.com/s/bI7Mjv-GFAH3.html
+
+提取码：MkOx
+
+
+
 **扫码关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
