@@ -235,6 +235,14 @@ shell:\> bootmgfw.efi
 
 
 
+**Win7_UEFI_启动所需文件.7z**
+
+下载链接：https://www.123pan.com/s/bI7Mjv-3YAH3.html
+
+提取码：YpLE
+
+
+
 **关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc

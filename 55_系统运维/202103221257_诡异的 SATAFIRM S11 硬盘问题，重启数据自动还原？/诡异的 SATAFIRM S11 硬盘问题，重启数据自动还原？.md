@@ -212,6 +212,14 @@ c. 刷新固件工具 `s11-flasher.rar`
 
 
 
+**PS3111固件+S11Flasher+Repaires11.7z**
+
+下载链接：https://www.123pan.com/s/bI7Mjv-dYAH3.html
+
+提取码：jHKu
+
+
+
 **关注@网管小贾，阅读更多**
 
 网管小贾的博客 / www.sysadm.cc
