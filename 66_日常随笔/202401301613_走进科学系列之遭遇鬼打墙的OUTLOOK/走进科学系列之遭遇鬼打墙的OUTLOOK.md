@@ -234,7 +234,9 @@ Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Se
 
 **网管小贾的批量添加受信任站点方便程序**
 
-下载链接：
+下载链接：https://www.123pan.com/s/bI7Mjv-b2AH3.html
+
+提取码：T9PY
 
 
 
