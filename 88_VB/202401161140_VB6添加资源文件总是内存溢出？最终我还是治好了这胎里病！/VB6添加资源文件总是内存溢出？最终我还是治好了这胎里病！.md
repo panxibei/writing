@@ -4,7 +4,7 @@ VB6添加资源文件总是内存溢出？最终我还是治好了这胎里病�
 
 英文：vb-is-always-out-of-memory-when-adding-resource-files-finally-i-managed-to-resolve-the-big-problem
 
-关键字：vb,resource,资源文件,资源,memory,overflow,内存溢出
+关键字：vb,resource,资源文件,资源,memory,overflow,内存溢出,out of memory
 
 
 
