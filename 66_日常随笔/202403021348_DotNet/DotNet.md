@@ -38,7 +38,9 @@ DotNet
 
 **网管小贾的Windows离线安装DotNet小工具.7z**
 
-下载链接：
+下载链接：https://www.123pan.com/s/bI7Mjv-jUAH3.html
+
+提取码：bMLb
 
 
 
