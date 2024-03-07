@@ -22,3 +22,32 @@ segoe boot
 
 
 
+
+
+
+
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\BootControl]
+"BootProgressAnimation"=dword:00000001
+```
+
+
+
+
+
+修改前。
+
+图x01.GIF
+
+
+
+修改后。
+
+图x02.GIF
+
+
+
+
+
