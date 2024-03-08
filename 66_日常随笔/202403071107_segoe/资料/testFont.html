@@ -1,0 +1,47 @@
+<!DOCTYPE html>  
+<html dir="ltr" class="" lang="en">
+<head>  
+    <title>网管小贾 - 使用字体显示动态吐泡泡动画</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <style>  
+        .unicode-text {  
+            font-family: Segoe Boot Semilight; /* 使用支持Unicode的字体 */  
+            font-size: 24px;  
+        }  
+    </style>  
+</head>  
+<body>
+    <div>刷新网页，显示 Windows 吐泡泡加载动画！</div>
+	<br>
+	<div>需要事先安装 【Segoe Boot Semilight】 字体！</div>
+	<br><br>
+    <div id="unicodeText"></div>  
+  
+    <script>
+	
+		// 获取元素引用  
+        var unicodeTextElement = document.getElementById('unicodeText');  
+  
+		// 设置Unicode文本内容  
+		// 例如，这里我们设置了一个笑脸表情的Unicode字符（U+1F604）  
+		// var unicodeText = String.fromCharCode(0xE090);
+		let hexString = 'E052';
+		let decimalNumber = parseInt(hexString, 16); // 第二个参数指定基数为16
+
+		for (let i = 0; i < 118; i++) {
+			setTimeout(() => {
+				var unicodeText = String.fromCharCode(decimalNumber + i);
+
+				// 设置元素的内容  
+				unicodeTextElement.textContent = unicodeText;  
+		  
+				// 添加CSS类来应用字体样式  
+				unicodeTextElement.className = 'unicode-text';
+
+			},  i * 50)
+		}
+	
+    </script>  
+</body>  
+</html>
