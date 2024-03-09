@@ -5,9 +5,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <style>  
-        .unicode-text {  
+        .unicode-text1 {  
             font-family: Segoe Boot Semilight; /* 使用支持Unicode的字体 */  
             font-size: 24px;  
+        }  
+        .unicode-text2 {  
+            font-family: Segoe Boot Semilight; /* 使用支持Unicode的字体 */  
+            font-size: 48px;  
+        }  
+        .unicode-text3 {  
+            font-family: Segoe Boot Semilight; /* 使用支持Unicode的字体 */  
+            font-size: 96px;  
         }  
     </style>  
 </head>  
@@ -16,12 +24,16 @@
 	<br>
 	<div>需要事先安装 【Segoe Boot Semilight】 字体！</div>
 	<br><br>
-    <div id="unicodeText"></div>  
+    <div id="unicodeText1"></div>  
+    <div id="unicodeText2"></div>  
+    <div id="unicodeText3"></div>  
   
     <script>
 	
 		// 获取元素引用  
-        var unicodeTextElement = document.getElementById('unicodeText');  
+        var unicodeTextElement1 = document.getElementById('unicodeText1');  
+        var unicodeTextElement2 = document.getElementById('unicodeText2');  
+        var unicodeTextElement3 = document.getElementById('unicodeText3');  
   
 		// 设置Unicode文本内容  
 		// 例如，这里我们设置了一个笑脸表情的Unicode字符（U+1F604）  
@@ -31,13 +43,19 @@
 
 		for (let i = 0; i < 118; i++) {
 			setTimeout(() => {
-				var unicodeText = String.fromCharCode(decimalNumber + i);
+				var unicodeText1 = String.fromCharCode(decimalNumber + i);
+				var unicodeText2 = String.fromCharCode(decimalNumber + i);
+				var unicodeText3 = String.fromCharCode(decimalNumber + i);
 
 				// 设置元素的内容  
-				unicodeTextElement.textContent = unicodeText;  
+				unicodeTextElement1.textContent = unicodeText1;  
+				unicodeTextElement2.textContent = unicodeText2;  
+				unicodeTextElement3.textContent = unicodeText3;  
 		  
 				// 添加CSS类来应用字体样式  
-				unicodeTextElement.className = 'unicode-text';
+				unicodeTextElement1.className = 'unicode-text1';
+				unicodeTextElement2.className = 'unicode-text2';
+				unicodeTextElement3.className = 'unicode-text3';
 
 			},  i * 50)
 		}
