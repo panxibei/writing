@@ -70,9 +70,15 @@
 
 **RustDesk全家桶打包.7z(89.9M)**
 
-下载链接：https://pan.baidu.com/s/1_pbFBZS6_uuPxM6Adw1Qdw
+~~下载链接：https://pan.baidu.com/s/1_pbFBZS6_uuPxM6Adw1Qdw~~
 
-提取码：fpfp
+~~提取码：fpfp~~
+
+
+
+下载链接：https://pan.baidu.com/s/1seV-7L6ylgMxiyxpkWUz7w
+
+提取码：m6oc
 
 
 
