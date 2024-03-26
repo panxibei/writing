@@ -1,10 +1,10 @@
 全新PuTTY用户手册中文版，网管小贾出品，开放下载，含最新版全套中英文工具软件！
 
-副标题：
+副标题：全新PuTTY用户手册中文版，网管小贾出品，开放下载，含最新版全套中英文工具软件！
 
-英文：
+英文：the-brand-new-putty-user-manual-in-chinese-is-open-for-download-and-includes-the-latest-version-of-software
 
-关键字：
+关键字：putty,ssh,telnet,manual,手册,工具,plink,pscp,psftp,puttygen,pageant,linux,windows,Simon Tatham
 
 
 
@@ -82,9 +82,9 @@ OK，来看一看全新 `PuTTY` 用户手册中文版是个啥样子吧！
 
 （含中英文最新版各平台全套工具软件）
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1CddLuxaLDxkYztjilodN-A
 
-
+提取码：7uw5
 
 解压密码：43263444
 
