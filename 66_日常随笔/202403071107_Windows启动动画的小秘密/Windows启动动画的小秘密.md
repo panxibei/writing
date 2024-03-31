@@ -211,7 +211,7 @@ Windows Registry Editor Version 5.00
 
 比如像这个样子。
 
-图13GIF
+图13.GIF
 
 
 
@@ -237,7 +237,11 @@ Windows Registry Editor Version 5.00
 
 `Segoe Boot Semilight` 字体以及启动动画 `JS` 演示代码下载：
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1eq3jZOrgQdJlz3sjATDn8A
+
+提取码：m3vw
+
+解压密码：请加微信号【sysadmcc】免费咨询
 
 
 
