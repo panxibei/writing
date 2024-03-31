@@ -178,6 +178,8 @@ Windows启动动画的小秘密
 
 于是说干就干，凭着我两个星期缺半个钟头的 `Javascript` 编程经验，做了个粗糙的演示代码。
 
+（文末有下载哦）
+
 图11.GIF
 
 
@@ -235,7 +237,7 @@ Windows Registry Editor Version 5.00
 
 
 
-`Segoe Boot Semilight` 字体以及启动动画 `JS` 演示代码下载：
+**`Segoe Boot Semilight` 字体以及启动动画 `JS` 演示代码下载**
 
 下载链接：https://pan.baidu.com/s/1eq3jZOrgQdJlz3sjATDn8A
 
