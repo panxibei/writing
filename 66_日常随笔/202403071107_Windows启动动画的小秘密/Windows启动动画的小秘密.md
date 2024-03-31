@@ -1,10 +1,10 @@
-segoe boot
+Windows启动动画的小秘密
 
-副标题：
+副标题：Windows启动动画的小秘密
 
-英文：
+英文：the-little-secret-of-windows-booting-animation
 
-关键字：
+关键字：windows,boot,animation,字体,segoe boot semilight,font,fish,启动,开机
 
 
 
@@ -82,13 +82,11 @@ segoe boot
 
 
 
-
-
 就在不久前，我看到了这么一条有趣的消息。
 
 有网友发现，`Windows` 启动画面的气泡动画并不是由图像组成，而是基于某种字体。
 
-图z02
+图01
 
 
 
@@ -108,13 +106,13 @@ segoe boot
 
 通过 `控制面板` > `系统和安全` > `Windows 工具` 找到 `字符映射表` 。
 
-图a01
+图02
 
 
 
 嗯，找了一圈也没找到，难道我被忽悠了？
 
-图a02
+图03
 
 
 
@@ -122,7 +120,7 @@ segoe boot
 
 果然结果还是一样的情况。
 
-图c01
+图04
 
 
 
@@ -130,7 +128,7 @@ segoe boot
 
 宋小宝讲话：玩呢……？！
 
-图b01
+图05
 
 
 
@@ -146,7 +144,7 @@ segoe boot
 
 下载下来是这个样子滴。
 
-图a03
+图06
 
 
 
@@ -154,25 +152,25 @@ segoe boot
 
 然后就可以看到，的确是 `Segoe Boot Semilight` 字体。
 
-图a04
+图07
 
 
 
 安装它，再回到字符映射表中查看，即可看到这个字体出现了。
 
-图a05
+图08
 
 
 
 但是很奇怪的是，虽然将字符集拉到最下面，也只能看到气泡点的字符，曲线式的字符却不知所踪。
 
-图a06
+图09
 
 
 
 不管怎么样，我先手动玩一圈，似乎有点动画的那个意思哈！
 
-图1.GIF
+图10.GIF
 
 
 
@@ -180,7 +178,7 @@ segoe boot
 
 于是说干就干，凭着我两个星期缺半个钟头的 `Javascript` 编程经验，做了个粗糙的演示代码。
 
-图x03.GIF
+图11.GIF
 
 
 
@@ -205,7 +203,7 @@ Windows Registry Editor Version 5.00
 "BootProgressAnimation"=dword:00000001
 ```
 
-图b02
+图12
 
 
 
@@ -213,7 +211,7 @@ Windows Registry Editor Version 5.00
 
 比如像这个样子。
 
-图x02.GIF
+图13GIF
 
 
 
@@ -221,13 +219,13 @@ Windows Registry Editor Version 5.00
 
 比如像这个样子。
 
-图x01.GIF
+图14.GIF
 
 
 
 因此我给雷总支的招，其实就是将气泡动画由曲线状修改成点状，这样一来只有胡主任能瞧出来，而别人都是注意不到的。
 
-图z01
+图15
 
 
 
@@ -237,7 +235,7 @@ Windows Registry Editor Version 5.00
 
 
 
-字体以及动画 `JS` 演示代码下载：
+`Segoe Boot Semilight` 字体以及启动动画 `JS` 演示代码下载：
 
 下载链接：
 
