@@ -14,46 +14,46 @@ Postal手册中文版
 
 
 
-* Welcome
+* 欢迎
 
-  * Feature List
-  * FAQs
+  * 功能列表
+  * 常见问题
 
-* Getting Started
+* 开始
 
-  * Getting Started
-  * Pre-requisites
-  * Installation
-  * Upgrading
-  * Configuration
-  * DNS configuration
-  * Upgrading to v3
-  * Upgrading to v2
+  * 开始
+  * 先决条件
+  * 安装
+  * 升级
+  * 配置
+  * `DNS` 配置
+  * 升级到 `v3`
+  * 升级到 `v2`
 
-* Features
+* 特征
 
-  * Click & Open Tracking
-  * Health & Metrics
-  * IP Pools
-  * Logging
-  * OpenID Connect
-  * SMTP Authentication
-  * SMTP TLS
-  * Spam & Virus Checking
+  * 点击并开启跟踪
+  * 运行状况和指标
+  * `IP` 池
+  * 日志
+  * `OpenID` 连接
+  * `SMTP` 身份验证
+  * `SMTP TLS`
+  * 垃圾邮件和病毒检查
 
-* Developer
+* 开发者
 
-  * Using the API
-  * Client Libraries
-  * Receiving e-mail by HTTP
-  * Webhooks
+  * 使用 `API`
+  * 客户端库
+  * 通过 `HTTP` 接收电子邮件
+  * `Webhooks`（网络钩子）
 
-* Other Notes
+* 其他说明
 
-  * Auto-Responders & Bounces
-  * Our container image
-  * Debugging
-  * Wildcards & Address Tags
+  * 自动回复和退回
+  * 我们的容器镜像
+  * 调试
+  * 通配符和地址标签
 
   
 
@@ -63,7 +63,7 @@ Postal手册中文版
 
 # 功能列表
 
-这是 Postal 可以执行的功能列表（排名不分先后）。
+这是 `Postal` 可以执行的功能列表（排名不分先后）。
 
 
 
