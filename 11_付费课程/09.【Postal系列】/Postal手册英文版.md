@@ -1,4 +1,4 @@
-Postal手册
+Postal手册英文版
 
 
 
@@ -65,6 +65,8 @@ Postal手册
 
 This is a list of features (in no real particular order) of things that Postal can do.
 
+
+
 ### General features:
 
 - Support for multiple organizations with mail servers and users within.
@@ -76,6 +78,8 @@ This is a list of features (in no real particular order) of things that Postal c
 - Per server retention configuration to set how long messages should be kept in the database and the maximum size to keep on disk.
 - Complete logging so delivery issues can easily be identified.
 - Mail server wide search tools to find messages that need investigation.
+
+
 
 ### Outgoing e-mails:
 
@@ -103,15 +107,17 @@ This is a list of features (in no real particular order) of things that Postal c
 
 
 
-
-
 ## FAQs
 
 This hasn't been around long enough for anyone to have asked any question  frequently enough for it to be considered an FAQ. We will update this  page as soon as we have some questions to answer.
 
+
+
 ### Should I use this instead of cloud provider?
 
 That's really up to you. There are advantages and disadvantages of both  solutions and you should pick the one that suits each individual  situation. Don't take running your own e-mail platform lightly though,  there are many considerations that need to be taken into account to  ensure you achieve good deliverability (including correct DNS  configuration).
+
+
 
 ### E-Mails sent through Postal are going to spam.
 
@@ -122,6 +128,8 @@ That's really up to you. There are advantages and disadvantages of both  solutio
 - New IPs sending large volumes of e-mail will likely not deliver well initially.
 
 You can run your message through something like [Mail Tester](https://www.mail-tester.com) which will give you a good idea of the spammy-ness of your messages and ensure you have everything configured correctly.
+
+
 
 ### Can you add mailing list feature?
 
@@ -145,6 +153,8 @@ The process for installing Postal is outlined below. When you're ready to get st
 4. Make your first user
 5. Login to the web interface to create your first virtual mail server
 
+
+
 ### A visual learner?
 
 You can watch this video which walks through the installation process.
@@ -156,6 +166,8 @@ You can watch this video which walks through the installation process.
 ## Pre-requisites
 
 There are some things you'll need to do before you can install Postal.
+
+
 
 ### Servers
 
@@ -171,6 +183,8 @@ One thing to be aware of is you'll need to ensure that your provider does  not b
 
 It doesn't matter what operating system you  choose as long as you are able to install Docker on it (see next  section). Nothing in these instructions will make assumptions about your operating system.
 
+
+
 ### Docker
 
 Postal runs entirely using containers which means to run Postal you'll need  some software to run these containers. We recommend using Docker for  this purpose but you can use whatever software you wish.
@@ -180,6 +194,8 @@ You'll need to install Docker Engine on your server to begin with. [Follow the i
 You'll also need to ensure you have the [Docker Compose plugin](https://docs.docker.com/compose/install/linux/) installed.
 
 Before continuing ensure that you can run both `docker` and `docker compose` from your prompt.
+
+
 
 ### System utilities
 
@@ -197,6 +213,8 @@ On CentOS/RHEL:
 yum install git curl jq
 ```
 
+
+
 ### Git & installation helper repository
 
 You'll need to make sure you have `git` installed on your server. You'll then need to clone the Postal  installation helper repository. This contains some bootstrapping config  and other useful things which will speed along your installation.
@@ -205,6 +223,8 @@ You'll need to make sure you have `git` installed on your server. You'll then ne
 git clone https://github.com/postalserver/install /opt/postal/install
 sudo ln -s /opt/postal/install/bin/postal /usr/bin/postal
 ```
+
+
 
 ### MariaDB (10.6 or higher)
 
@@ -236,9 +256,13 @@ If you have a legacy v1 database you might also want to check that raw tables in
 
 
 
+
+
 ## Installation
 
 Once you've completed all the prerequisites, you can go ahead and start to install Postal.
+
+
 
 ### Configuration
 
@@ -260,6 +284,8 @@ Once generated, you should open up `/opt/postal/config/postal.yml` and add all t
 
 Note that the docker setup mounts `/opt/postal/config` as `/config` so any full directory paths mentioned in `postal.yml` will likely need to start with `/config` and not `/opt/postal/config`
 
+
+
 ### Initializing the database
 
 Once you've added your configuration, you need to initialize your database  by adding all the appropriate tables. Run the following commands to  create the schema and then create your first admin user.
@@ -268,6 +294,8 @@ Once you've added your configuration, you need to initialize your database  by a
 postal initialize
 postal make-user
 ```
+
+
 
 ### Running postal
 
@@ -278,6 +306,8 @@ postal start
 ```
 
 This will run a number of containers on your machine. You can use `postal status` to see details of these components.
+
+
 
 ### Caddy
 
@@ -295,7 +325,9 @@ docker run -d \
 
 Once this has started, Caddy will issue an SSL  certificate for your domain and you'll be able to immediately access the Postal web interface and login with the user you created in one of the  previous steps.
 
-图a01
+![](./01.JPG)
+
+
 
 
 
@@ -320,6 +352,8 @@ This will do a few things in the following order:
 
 This is not a zero downtime upgrade so it is recommended to do this at a  time when traffic will be low and you have scheduled the maintenance as  appropriate. If you need zero downtime upgrades, you will need to look  for alternative container orchestration systems that can handle this  (such as Kubernetes).
 
+
+
 ### Changing to a specific version
 
 By default, running `postal upgrade` will install the latest version available from the Postal container  registry. If you need to change the version of Postal to a specific  version, you can specify a version for the `postal upgrade` command as follows:
@@ -327,6 +361,8 @@ By default, running `postal upgrade` will install the latest version available f
 ```bash
 postal upgrade [version]
 ```
+
+
 
 
 
@@ -341,11 +377,15 @@ You can review all the available configuration options.
 
 Note: If you change any configuration, you should be sure to restart Postal
 
+
+
 ### Ports and bind addresses
 
 The web & SMTP server listen on ports and addresses. The defaults for  these can be set through configuration however, if you're running  multiple instances of these on a single host you will need to specify  different ports for each one.
 
 You can use the `PORT` and `BIND_ADDRESS` environment variables to provide instance-specific values for these processes.
+
+
 
 ### Legacy configuration
 
@@ -382,6 +422,8 @@ We'll assume for the purposes of this documentation you have both IPv4 and  IPv6
 - `2a00:1234:abcd:1::3` - IPv6 address
 - `postal.example.com` - the hostname you wish to use to run Postal
 
+
+
 ### A Records
 
 You'll need these records for accessing the API, management interface & SMTP server.
@@ -390,6 +432,8 @@ You'll need these records for accessing the API, management interface & SMTP ser
 | ------------------ | ---- | --------------------- |
 | postal.example.com | A    | `192.168.1.3`         |
 | postal.example.com | AAAA | `2a00:1234:abcd:1::3` |
+
+
 
 ### SPF Record
 
@@ -401,6 +445,8 @@ You can configure a global SPF record for your mail server which means  domains 
 
 You may wish to replace `~all` with `-all` to make the SPF record stricter.
 
+
+
 ### Return Path
 
 The return path domain is the default domain that is used as the `MAIL FROM` for all messages sent through a mail server. You should add DNS records as below.
@@ -411,6 +457,8 @@ The return path domain is the default domain that is used as the `MAIL FROM` for
 | rp.postal.example.com                   | TXT  | `v=spf1 a mx include:spf.postal.example.com ~all` |
 | postal._domainkey.rp.postal.example.com | TXT  | Value from `postal default-dkim-record`           |
 
+
+
 ### Route domain
 
 If you wish to receive incoming e-mail by forwarding messages directly to  routes in Postal, you'll need to configure a domain for this just to  point to your server using an MX record.
@@ -418,6 +466,8 @@ If you wish to receive incoming e-mail by forwarding messages directly to  route
 | Hostname                  | Type | Value                   |
 | ------------------------- | ---- | ----------------------- |
 | routes.postal.example.com | MX   | `10 postal.example.com` |
+
+
 
 ### Example Postal Configuration
 
@@ -436,6 +486,8 @@ dns:
 
 
 
+
+
 ## Upgrading to v3
 
 If you are currently running a version of Postal less than 2.0.0, you should upgrade to v2 before v3.
@@ -447,6 +499,8 @@ Postal v3 was released in March 2024 and introduced some changes to way that  Po
 - Improved logging.
 - Improve configuration management (including the ability to configure with environment variables or a config file).
 
+
+
 ### Database considerations
 
 It is important that any pre-existing tables in your database are set up with the `DYNAMIC` row format. If not, you may receive errors during the database migrations. This has been the default since MariaDB 10.2.1.
@@ -457,9 +511,13 @@ You can check the format of your tables using `SHOW TABLE STATUS FROM postal`. I
 ALTER TABLE `table_name` ROW_FORMAT=DYNAMIC;
 ```
 
+
+
 ### Upgrading
 
 To upgrade, you can follow the same instructions as provided on the [upgrade page](https://docs.postalserver.io/getting-started/upgrading)
+
+
 
 ### Configuration
 
@@ -467,9 +525,13 @@ Postal v3 introduces a new format for its configuration file. An example of the 
 
 While v3 is still compatible with configuration from earlier versions but you should change your configuration to the new format to ensure continued  compatibility. Any newly added configuration options are not available  in the v1 configuration format.
 
+
+
 ### RabbitMQ
 
 Once you have upgraded to v3, you can remove any RabbitMQ services you have that solely support your Postal installation.
+
+
 
 ### Cron & Requeuer Processes
 
@@ -483,6 +545,8 @@ These processes are not required in Postal v3 and should not be running.
 
 In July 2021, we changed the way that Postal is installed. The only  supported method for installing Postal is now using a container that we  provide. You can follow these instructions to upgrade your 1.x  installation to use containers.
 
+
+
 ### How do I know if I'm using Postal v1?
 
 There are a few changes between the two versions which should help identify your version.
@@ -493,6 +557,8 @@ There are a few changes between the two versions which should help identify your
 - If you run `docker ps` and get no results, you are using Postal v1.
 - If you installed Postal before July 2021, you are using Postal v1.
 - If you have an `/opt/postal/app` directory you are using Postal v1 (or you have already upgraded to Postal v2 but not tidied up).
+
+
 
 ### Assumptions
 
@@ -506,6 +572,8 @@ For the purposes of this guide, we're going to make some assumptions about  your
 
 Performing this upgrade will mean that your Postal services will be unavailable  for a short period of time. We recommend scheduling some maintenance and performing the upgrade when traffic is low.
 
+
+
 ### Preparation
 
 There are a few extra system dependencies that you need to install.
@@ -517,9 +585,13 @@ There are a few extra system dependencies that you need to install.
 
 If you're running  an old or unsupported version of your operating system, you may wish to  use this as an opportunity to upgrade. The method for doing so is  outside of the scope of this documentation.
 
+
+
 ### Stopping Postal
 
 Start by stopping the Postal processes using `postal stop`.
+
+
 
 ### Configuring web proxy for open/click tracking
 
@@ -532,6 +604,8 @@ For all the **Tracking Domains** that you have configured (for example `track.yo
 3. Issue an SSL certificate for all these hosts.
 4. Ensure that your web proxy is listening on the IP address that you previously used for the Postal `fast_server`.
 5. As there is no longer a requirement for Postal to have two IP addresses,  you can update all your DNS records that reference your secondary IP to  point to the main IP that you use for Postal.
+
+
 
 ### Checking configuration
 
@@ -555,6 +629,8 @@ smtp_server:
 
 **Important:** if you have referenced files in other parts of your operating system (such as in `/etc`), you must ensure these are now within the `/opt/postal/config` directory otherwise they won't be available within the container that Postal runs within.
 
+
+
 ### Removing the old Postal helper script
 
 Run the following command to backup the old Postal helper script.
@@ -562,6 +638,8 @@ Run the following command to backup the old Postal helper script.
 ```
 mv /usr/bin/postal /usr/bin/postal.v1
 ```
+
+
 
 ### Installing Postal v2
 
@@ -596,9 +674,13 @@ postal_web_1        /docker-entrypoint.sh post ...   Up
 postal_worker_1     /docker-entrypoint.sh post ...   Up
 ```
 
+
+
 ### A note about SMTP ports
 
 If you were previously running the Postal SMTP server on any port other  than 25, you can revert this configuration and have Postal listen on  this port directly. To do this, you can remove any `iptables` rules you might have and update your `postal.yml` with the new port number.
+
+
 
 ### Rolling back
 
@@ -611,6 +693,8 @@ mv /usr/bin/postal.v1 /usr/bin/postal
 postal start
 ```
 
+
+
 ### Tidying up
 
 When you're happy that everything is running nicely, there are some final things you should do:
@@ -620,6 +704,8 @@ When you're happy that everything is running nicely, there are some final things
 - Remove `/opt/postal/vendor`. This is no longer used.
 - Remove the backup Postal helper tool from `/usr/bin/postal.v1`.
 - If you changed any tracking domains to use your main IP address, you can  remove the additional IP from the server after checking that all DNS  updates have applied.
+
+
 
 ### Installing on a new server with existing data
 
@@ -646,13 +732,15 @@ If you want to simply install Postal on a new server and copy your data over, yo
 
 Postal supports tracking opens and clicks from e-mails. This allows you to see when people open messages or they click links within them.
 
-图a02
+![](./02.JPG)
 
 
 
 ### How it works
 
 Once enabled, Postal will automatically scan your outgoing messages and  replace any links and images with new URLs that go via your Postal web  server. When the link is clicked, Postal will log the click and redirect to the user to the original URL automatically. The links that are  included in the e-mail should be on the same domain as the sender and  therefore you need to configure a subdomain like `click.yourdomain.com` and point it to your Postal server.
+
+
 
 ### Configuring your web server
 
@@ -670,6 +758,8 @@ If you're happy things are working, you can enable tracking as follows:
 4. Click **Add a tracking domain**
 5. Enter the domain that you have configured and choose the configuration you want to use. It is **highly** recommended that you use SSL for these connections. Anything else is  likely to cause problems with reputation and user experience.
 
+
+
 ### Disabling tracking on a per e-mail basis
 
 If you don't wish to track anything in an email you can add a header to your e-mails before sending it.
@@ -678,9 +768,13 @@ If you don't wish to track anything in an email you can add a header to your e-m
 X-AMP: skip
 ```
 
+
+
 ### Disabling tracking for certain link domains
 
 If there are certain domains you don't wish to track links from, you can  define these on the tracking domain settings page. For example, if you  list `yourdomain.com` no links to this domain will be tracked.
+
+
 
 ### Disabling tracking on a per link basis
 
@@ -691,9 +785,13 @@ If you wish to disable tracking for a particular link, you can do so by insertin
 
 
 
+
+
 ## Health & Metrics
 
 The Postal worker and SMTP server processes come with additional  functionality that allows you to monitor the health of the process as  well as look at live metrics about their performance.
+
+
 
 ### Port numbers
 
@@ -706,9 +804,13 @@ Unlike other services, if these ports are in use when the process starts, the  h
 
 To configure these ports you can set the `HEALTH_SERVER_PORT` and `HEALTH_SERVER_BIND_ADDRESS` environment variables.
 
+
+
 ### Metrics
 
 The metrics are exposed at `/metrics` and are in a standard Prometheus exporter format. This means they can  be scraped by any tool that can ingest Prometheus metrics. This will  then allow them to be turned in to graphs as appropriate.
+
+
 
 ### Health checks
 
@@ -716,9 +818,13 @@ The `/health` endpoint will return "OK" when the process is running. This can be
 
 
 
+
+
 ## IP Pools
 
 Postal supports sending messages from different IP addresses. This allows you  to configure certain sets of IPs for different mail servers or send from different IPs based on the sender or recipient addresses.
+
+
 
 ### Enabling IP pools
 
@@ -728,6 +834,8 @@ By default, IP pools are disabled and all email is sent from any IP  address on 
 postal:
   use_ip_pools: true
 ```
+
+
 
 ### Configuring IP pools
 
@@ -744,6 +852,8 @@ It's **very important** to make sure that the IP addresses you add in the web in
 ## Logging
 
 All Postal processes log to STDOUT and STDERR which means their logs are  managed by whatever engine is used to run the container. In the default  case, this is Docker.
+
+
 
 ### Redirecting logs to the host syslog
 
@@ -763,6 +873,8 @@ services:
 
 If you wanted to put worker and web server logs there too, you can define those. The example above demonstrates using the `smtp` server process.
 
+
+
 ### Limiting the size of logs
 
 Docker cam be configured to limit the size of the log files it stores. To  avoid storing large numbers of log files, you should configure this  appropriately. This can be achieved by setting a maximum size in your `/etc/docker/daemon.json` file.
@@ -775,6 +887,8 @@ Docker cam be configured to limit the size of the log files it stores. To  avoid
   }
 }
 ```
+
+
 
 ### Sending logs to Graylog
 
@@ -792,6 +906,8 @@ gelf:
 
 
 
+
+
 ## OpenID Connect
 
 Postal supports OpenID Connect (OIDC) allowing you to delegate authentication  to an external service. When enabled, there are various changes:
@@ -803,7 +919,7 @@ Postal supports OpenID Connect (OIDC) allowing you to delegate authentication  t
 - Users cannot change their local password when associated with an OIDC identity.
 - Existing users that currently have a password will continue to be able to use  that password until it is linked with an OIDC identity.
 
-图a03
+![](./03.JPG)
 
 
 
@@ -847,13 +963,19 @@ If your Identity Provider does not  support OpenID Connect discovery (which is e
 
 By default, Postal will look for an email address in the `email` field and a name in the `name` field. These can be overriden using configuration if these values can be found elsewhere.
 
+
+
 ### Logging in
 
 Once enabled, you can log in by pressing the **Login with xxx** button on the login page. This will direct you to your chosen identity  provider. Once authorised, you will be directed back to the application. If a user exists matching the e-mail address returned by the OpenID  provider, it will be linked and you will be logged in. If not, an error  will be displayed.
 
+
+
 ### Debugging
 
 Details about the user matching process will be displayed in the web server  logs when the callback from the Identity provider happens.
+
+
 
 ### Disabling local authentication
 
@@ -864,6 +986,8 @@ oidc:
   # ...
   local_authentication_enabled: false
 ```
+
+
 
 ### Using Google as an identity provider
 
@@ -912,6 +1036,8 @@ If you have enabled "Allow Sender Header" for the server, you can include this d
 ### IP-based authentication
 
 Postal has the option to authenticate clients based on their IP address. To use this, you need to create an **SMTP-IP** credential for the IP or network you wish to allow to send mail. Use this carefully to avoid creating an open relay.
+
+
 
 
 
@@ -1081,6 +1207,8 @@ For both these methods, the API will return the same information as the result. 
 
 
 
+
+
 ## Client Libraries
 
 There are a number of client libraries available to help send e-mail using  the Postal platform. These aren't all developed by the Postal team.
@@ -1097,6 +1225,8 @@ There are a number of client libraries available to help send e-mail using  the 
 All of these libraries will make use of the API rather than using any SMTP  protocol - this is considered to be best approach for delivering your  messages.
 
 If your framework makes use of SMTP, you do not need a  client library however you will also miss out on some of Postals  functionality.
+
+
 
 
 
@@ -1339,6 +1469,8 @@ Postal regularly monitors domains it knows about to ensure that your  SPF/DKIM/M
 
 
 
+
+
 # Other Notes
 
 ## Auto-Responders & Bounces
@@ -1354,6 +1486,8 @@ If you wish to route mail which is sent to your return path address to your appl
 ### A note about bounces
 
 Messages that Postal detects as being bounces for a message you have already  sent will not be delivered to your return path route. The original  message will be updated and a `MessageBounced` webhook event will be triggered.
+
+
 
 
 
@@ -1438,6 +1572,8 @@ The default maximum time to wait is 30 seconds, you can override this using the 
 
 
 
+
+
 ## Debugging
 
 This page contains information on how to identify problems with your installation.
@@ -1464,6 +1600,8 @@ If you aren't sure about whether the SSL certificate you have provided to Postal
 
 
 
+
+
 ## Wildcards & Address Tags
 
 Postal supports the use of wildcards and address tags in routes.
@@ -1484,5 +1622,5 @@ Postal supports the use of "tags" on e-mail addresses which means you can add a 
 
 
 
-aaaaaaaaaaaaaa
+网管小贾 / sysadm.cc
 

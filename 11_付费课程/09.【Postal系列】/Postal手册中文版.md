@@ -1,4 +1,4 @@
-Postal手册
+Postal手册中文版
 
 
 
@@ -61,43 +61,49 @@ Postal手册
 
 # Welcome
 
-## Feature List
+# 功能列表
 
-This is a list of features (in no real particular order) of things that Postal can do.
+这是 Postal 可以执行的功能列表（排名不分先后）。
 
-### General features:
 
-- Support for multiple organizations with mail servers and users within.
-- Graphs and stats showing volume of incoming and outgoing mail.
-- Access to view historical messages.
-- Access to view the full outgoing and incoming message queue.
-- Set up webhooks to receive live information about delivery information in  realtime. Full access to the last 7 days of webhook requests are also  stored for debugging purposes.
-- Built-in DNS checking and monitoring to ensure domains you send mail from are configured correctly for maximum deliverability.
-- Per server retention configuration to set how long messages should be kept in the database and the maximum size to keep on disk.
-- Complete logging so delivery issues can easily be identified.
-- Mail server wide search tools to find messages that need investigation.
 
-### Outgoing e-mails:
+### 一般特征：
 
-- Send messages to the SMTP server or using the HTTP API.
-- Manage multiple credentials per server.
-- Support for DKIM signing of outbound messages.
-- Enable development to hold messages in Postal without actually delivering them to recipients (message can be viewed in the Postal interface).
-- Built-in suppression list to avoid sending mail to recipients that don't exist or can't accept e-mail.
-- Click and open tracking to keep track of when recipients open your e-mails and click links within them.
-- Configure per-server send limits to avoid abuse on mail servers.
-- Management of multiple pools of sending IP addresses.
-- Configure different senders or recipients to have mail delivered from certain IP addresses.
-- Mail tagging so certain e-mails can be given a tag to allow them to be grouped when needed. For example, you may tag `receipts` or `password-reset` e-mails as such.
+- 支持具有邮件服务器和用户的多个组织。
+- 显示传入和传出邮件量的图表和统计信息。
+- 访问以查看历史消息。
+- 访问以查看完整的传出和传入消息队列。
+- 设置 Webhook 以实时接收有关投放信息的实时信息。此外，还存储了对过去 7 天 Webhook 请求的完全访问权限，以便进行调试。
+- 内置 DNS 检查和监控，以确保正确配置您发送邮件的域，以实现最大的送达率。
+- 根据服务器保留配置，设置消息在数据库中应保留的时间以及要保留在磁盘上的最大大小。
+- 完整的日志记录，因此可以轻松识别交付问题。
+- 邮件服务器范围的搜索工具，用于查找需要调查的邮件。
 
-### Incoming e-mails:
 
-- Ability to forward incoming e-mail to HTTP endpoints.
-- Ability to forward incoming e-mail to other SMTP servers.
-- Ability to forward incoming e-mail to other e-mail addresses.
-- Spam & thread checking with SpamAssassin and ClamAV with configurable  thresholds and different methods for dealing with spam messages.
 
-This is a list of features (in no real particular order) of things that Postal can do.
+### 外发电子邮件：
+
+- 将邮件发送到 SMTP 服务器或使用 HTTP API。
+- 管理每台服务器的多个凭据。
+- 支持对出站邮件进行 DKIM 签名。
+- 使开发能够将邮件保存在 Postal 中，而无需实际将其传递给收件人（可以在 Postal 界面中查看邮件）。
+- 内置黑名单，可避免将邮件发送给不存在或无法接受电子邮件的收件人。
+- 单击并打开跟踪以跟踪收件人何时打开您的电子邮件并单击其中的链接。
+- 配置每台服务器的发送限制，以避免邮件服务器滥用。
+- 管理多个发送 IP 地址池。
+- 将不同的发件人或收件人配置为从某些 IP 地址传递邮件。
+- 邮件标记，以便可以为某些电子邮件提供标记，以便在需要时对其进行分组。例如，您可以这样标记或发送电子邮件。`receipts``password-reset`
+
+
+
+### 传入电子邮件：
+
+- 能够将传入电子邮件转发到 HTTP 端点。
+- 能够将传入电子邮件转发到其他 SMTP 服务器。
+- 能够将传入的电子邮件转发到其他电子邮件地址。
+- 使用 SpamAssassin 和 ClamAV 进行垃圾邮件和线程检查，具有可配置的阈值和处理垃圾邮件的不同方法。
+
+这是 Postal 可以执行的功能列表（排名不分先后）。
 
 
 
