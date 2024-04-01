@@ -132,7 +132,7 @@ Postal手册中文版
 
 
 
-# 常见问题
+## 常见问题
 
 在足够的时间内任何人有过频繁地提出相应的问题，则将其视为常见问题解答。
 
@@ -140,7 +140,7 @@ Postal手册中文版
 
 
 
-## 我应该使用它而不是使用云提供商吗？
+### 我应该使用它而不是使用云提供商吗？
 
 这真的取决于你。
 
@@ -180,88 +180,146 @@ Postal手册中文版
 
 
 
-# Getting Started
+# 开始
 
-## Getting Started
+## 开始
 
-Postal is fairly easy to install but running your own mail server isn't something for everyone. If you use Postal, you will be responsible for configuring your DNS as well as maintaining the platform (including running upgrades). If this doesn't sound like something you're up for, try a hosted platform.
+`Postal` 安装起来相当容易，但运行自己的邮件服务器并不适合每个人。
 
-The process for installing Postal is outlined below. When you're ready to get started go to the Pre-Requisites page.
+如果您使用 `Postal` ，您还将负责配置您的 `DNS` 作为维护平台（包括运行升级）。
 
-1. Install Docker and other pre-requisites
-2. Add appropriate configuration and DNS entries
-3. Start Postal
-4. Make your first user
-5. Login to the web interface to create your first virtual mail server
-
-### A visual learner?
-
-You can watch this video which walks through the installation process.
+如果这听起来不像您想要的事情，请尝试托管平台。
 
 
 
+安装 `Postal` 的过程概述如下。
+
+当您准备好开始使用 转到“先决条件”页。
+
+1. 安装 `Docker` 和其他先决条件
+2. 添加适当的配置和 `DNS` 条目
+3. 启动 `Postal`
+4. 创建您的第一个用户
+5. 登录到 `Web` 界面以创建您的第一个虚拟邮件服务器
 
 
-## Pre-requisites
 
-There are some things you'll need to do before you can install Postal.
+### 可视化学习？
 
-### Servers
+您可以观看此视频，该视频将介绍安装过程。
 
-We **strongly** recommend installing Postal on its own dedicated server (i.e. a server  running no other software). The minimum specification for Postal is as  follows:
+（请通过官网查看教学视频）
 
-- At least 4GB of RAM
-- At least 2 CPU cores
-- An appropriate amount of disk space (at least 25GB) for your use case
 
-Most people install Postal on virtual servers. There are lots of providers to choose from including [Digital Ocean](https://m.do.co/c/17696597a9ed) and [Linode](https://www.linode.com).
 
-One thing to be aware of is you'll need to ensure that your provider does  not block port 25 outbound. This is quite common and is used to prevent  abuse from spammers.
 
-It doesn't matter what operating system you  choose as long as you are able to install Docker on it (see next  section). Nothing in these instructions will make assumptions about your operating system.
+
+## 先决条件
+
+在安装 `Postal` 之前，您需要执行一些操作。
+
+
+
+### 服务器
+
+我们**强烈**建议将 `Postal` 安装在其自己的专用服务器（即不运行其他软件的服务器）上。
+
+`Postal` 的最低配置要求如下：
+
+- 至少 `4GB` 内存
+- 至少 `2` 个 `CPU` 内核
+- 适合您的使用案例的磁盘空间量（至少 `25GB` ）
+
+
+
+大多数人在虚拟服务器上安装 `Postal` 。
+
+有很多提供商可供选择，包括 `Digital Ocean` 和 `Linode` 。
+
+
+
+需要注意的一件事是，您需要确保提供商不会阻止端口 `25` 出站。
+
+这很常见，用于防止垃圾邮件发送者的滥用。
+
+
+
+您选择什么操作系统并不重要，只要您能够在其上安装 `Docker`（见下一节）。
+
+这些说明中的任何内容都不会对您的操作系统做出可预见的影响。
+
+
 
 ### Docker
 
-Postal runs entirely using containers which means to run Postal you'll need  some software to run these containers. We recommend using Docker for  this purpose but you can use whatever software you wish.
+`Postal` 完全使用容器运行，这意味着要运行 `Postal` ，您需要一些软件来运行这些容器。
 
-You'll need to install Docker Engine on your server to begin with. [Follow the instructions on the Docker website](https://docs.docker.com/engine/install/) to install Docker.
+为此，我们建议使用 `Docker` ，但您可以使用任何您想要的软件。
 
-You'll also need to ensure you have the [Docker Compose plugin](https://docs.docker.com/compose/install/linux/) installed.
 
-Before continuing ensure that you can run both `docker` and `docker compose` from your prompt.
 
-### System utilities
+首先，您需要在服务器上安装 `Docker` 引擎。
 
-There are a few system utilities that you need to have installed before you'll be able to run some of the Postal commands.
+按照 Docker 网站上的说明安装 Docker。
 
-On Ubuntu/Debian:
+您还需要确保已安装 `Docker` `Compose` 插件。
+
+在继续操作之前，请确保可以同时运行 `docker` 和 `docker compose` 。
+
+
+
+### 系统实用程序
+
+在运行某些 `Postal` 命令之前，您需要安装一些系统实用程序。
+
+
+
+在 `Ubuntu/Debian` 上：
 
 ```
 apt install git curl jq
 ```
 
-On CentOS/RHEL:
+
+
+在 `CentOS/RHEL` 上：
 
 ```
 yum install git curl jq
 ```
 
-### Git & installation helper repository
 
-You'll need to make sure you have `git` installed on your server. You'll then need to clone the Postal  installation helper repository. This contains some bootstrapping config  and other useful things which will speed along your installation.
+
+### Git & 安装助手存储库
+
+您需要确保 `git` 已安装在服务器上。
+
+然后，您需要克隆 `Postal` 安装助手程序存储库。
+
+这包含一些引导配置和其他有用的东西，这些东西将加快您的安装速度。
 
 ```
 git clone https://github.com/postalserver/install /opt/postal/install
 sudo ln -s /opt/postal/install/bin/postal /usr/bin/postal
 ```
 
-### MariaDB (10.6 or higher)
 
-Postal requires a database engine to store all email and other essential  configuration data. You will need to provide credentials that allow full access to create and delete databases as well as having full access to  any databases created. Postal will provision a database automatically  for each mail server that you create.
 
-We do not support using MySQL in place of MariaDB.
+### MariaDB（10.6 或更高版本）
 
-You can run MariaDB in a container, assuming you have Docker, using this command:
+`Postal` 需要一个数据库引擎来存储所有电子邮件和其他基本配置数据。
+
+您需要提供凭据，以允许创建和删除数据库的完全访问权限，以及对创建的任何数据库具有完全访问权限。
+
+`Postal` 将为您创建的每个邮件服务器自动配置一个数据库。
+
+
+
+我们不支持使用 `MySQL` 来代替 `MariaDB` 。
+
+
+
+假设您有 `Docker` ，您可以使用以下命令在容器中运行 `MariaDB` ：
 
 ```
 docker run -d \
@@ -273,15 +331,25 @@ docker run -d \
    mariadb
 ```
 
-- This will run a MariaDB instance and have it listen on port 3306.
-- Be sure to choose a secure password. You'll need to put this in your  Postal configuration when you install it so be sure to make a (secure)  note of it.
-- If you are unable or unwilling to grant root access, the database user you create separately needs all permissions on  databases called `postal` and `postal-*` (this prefix can be configured in the `message_db` part of your configuration).
+- 这将运行一个 `MariaDB` 实例，并让它侦听端口 `3306` 。
+
+- 请务必选择安全密码。
+
+  安装时，您需要将其放入您的 `Postal` 配置中，因此请务必（安全）记下它。
+
+- 如果您无法或不愿意授予 `root` 访问权限，则您单独创建的数据库用户需要对名为 `postal` 和 `postal-*` （可以在配置  `message_db` 部分中配置此前缀）赋予数据库的所有权限。
 
 ```
-Whilst you can configure the maximum message size however you wish, you will need to verify that MariaDB is configured with `innodb_log_file_size` to at least 10 times the biggest message you wish to send (150MB for 15MB email, 250MB for 25MB email, etc).
+虽然您可以根据需要配置最大消息尺寸，但您需要验证 MariaDB 配置的 innodb_log_file_size 至少是您希望发送的最大消息的10倍（15MB电子邮件为150MB，25MB电子邮件为250MB，诸如此类）。
 
-If you have a legacy v1 database you might also want to check that raw tables in the database have the type `LONGBLOB`.
+如果您有旧版v1数据库，您可能还需要检查数据库中的原始表是否具有 LONGBLOB 类型。
 ```
+
+
+
+
+
+
 
 
 
