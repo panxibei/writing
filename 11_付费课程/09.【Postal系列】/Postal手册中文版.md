@@ -59,9 +59,9 @@ Postal手册中文版
 
 
 
-# Welcome
+# 欢迎
 
-# 功能列表
+## 功能列表
 
 这是 `Postal` 可以执行的功能列表（排名不分先后）。
 
@@ -70,68 +70,111 @@ Postal手册中文版
 ### 一般特征：
 
 - 支持具有邮件服务器和用户的多个组织。
+
 - 显示传入和传出邮件量的图表和统计信息。
+
 - 访问以查看历史消息。
+
 - 访问以查看完整的传出和传入消息队列。
-- 设置 Webhook 以实时接收有关投放信息的实时信息。此外，还存储了对过去 7 天 Webhook 请求的完全访问权限，以便进行调试。
-- 内置 DNS 检查和监控，以确保正确配置您发送邮件的域，以实现最大的送达率。
-- 根据服务器保留配置，设置消息在数据库中应保留的时间以及要保留在磁盘上的最大大小。
+
+- 设置 `Webhook` 以实时接收有关投放信息的实时信息。
+
+  此外，还存储了对过去 `7` 天 `Webhook` 请求的完全访问权限，以便进行调试。
+
+- 内置 `DNS` 检查和监控，以确保正确配置您发送邮件的域，以实现最大的送达率。
+
+- 每台服务器保留配置，设置消息在数据库中应保留的时间以及要保留在磁盘上的最大大小。
+
 - 完整的日志记录，因此可以轻松识别交付问题。
+
 - 邮件服务器范围的搜索工具，用于查找需要调查的邮件。
 
 
 
 ### 外发电子邮件：
 
-- 将邮件发送到 SMTP 服务器或使用 HTTP API。
+- 将邮件发送到 `SMTP` 服务器或使用 `HTTP API` 。
+
 - 管理每台服务器的多个凭据。
-- 支持对出站邮件进行 DKIM 签名。
-- 使开发能够将邮件保存在 Postal 中，而无需实际将其传递给收件人（可以在 Postal 界面中查看邮件）。
+
+- 支持对出站邮件进行 `DKIM` 签名。
+
+- 使开发能够将邮件保存在 `Postal` 中，而无需实际将其传递给收件人（可以在 `Postal` 界面中查看邮件）。
+
 - 内置黑名单，可避免将邮件发送给不存在或无法接受电子邮件的收件人。
+
 - 单击并打开跟踪以跟踪收件人何时打开您的电子邮件并单击其中的链接。
+
 - 配置每台服务器的发送限制，以避免邮件服务器滥用。
-- 管理多个发送 IP 地址池。
-- 将不同的发件人或收件人配置为从某些 IP 地址传递邮件。
-- 邮件标记，以便可以为某些电子邮件提供标记，以便在需要时对其进行分组。例如，您可以这样标记或发送电子邮件。`receipts``password-reset`
+
+- 管理多个发送 `IP` 地址池。
+
+- 将不同的发件人或收件人配置为从某些 `IP` 地址传递邮件。
+
+- 邮件标记，以便可以为某些电子邮件提供标记，以便在需要时对其进行分组。
+
+  例如，您可以这样标记 `receipts` 或 `password-reset` 来发送电子邮件。
 
 
 
 ### 传入电子邮件：
 
-- 能够将传入电子邮件转发到 HTTP 端点。
-- 能够将传入电子邮件转发到其他 SMTP 服务器。
+- 能够将传入电子邮件转发到 `HTTP` 端点。
+- 能够将传入电子邮件转发到其他 `SMTP` 服务器。
 - 能够将传入的电子邮件转发到其他电子邮件地址。
-- 使用 SpamAssassin 和 ClamAV 进行垃圾邮件和线程检查，具有可配置的阈值和处理垃圾邮件的不同方法。
+- 使用 `SpamAssassin` 和 `ClamAV` 进行垃圾的邮件和线程检查，具有可配置的阈值和处理垃圾邮件的不同方法。
 
-这是 Postal 可以执行的功能列表（排名不分先后）。
-
-
+这是 `Postal` 可以执行的功能列表（排名不分先后）。
 
 
 
 
 
-## FAQs
 
-This hasn't been around long enough for anyone to have asked any question  frequently enough for it to be considered an FAQ. We will update this  page as soon as we have some questions to answer.
 
-### Should I use this instead of cloud provider?
+# 常见问题
 
-That's really up to you. There are advantages and disadvantages of both  solutions and you should pick the one that suits each individual  situation. Don't take running your own e-mail platform lightly though,  there are many considerations that need to be taken into account to  ensure you achieve good deliverability (including correct DNS  configuration).
+在足够的时间内任何人有过频繁地提出相应的问题，则将其视为常见问题解答。
 
-### E-Mails sent through Postal are going to spam.
+一旦我们有一些问题要回答，我们将立即更新此页面。
 
-- Check you've configured your DNS correctly. To start you need reverse DNS for your IPs, you need to configure DKIM & SPF, you need to make sure  your rDNS matches the HELO given to the recipient's mail server.
-- Ensure your sending IPs have reverse DNS (PTR) records configured.
-- Check that the IP address you're sending mail from isn't on any blacklists.
-- Check that your actual e-mail doesn't look like spam.
-- New IPs sending large volumes of e-mail will likely not deliver well initially.
 
-You can run your message through something like [Mail Tester](https://www.mail-tester.com) which will give you a good idea of the spammy-ness of your messages and ensure you have everything configured correctly.
 
-### Can you add mailing list feature?
+## 我应该使用它而不是使用云提供商吗？
 
-No. Postal is a mail transport agent and not a mailing list manager. We  don't want to add features that are better suited in another  application, for example, address books or handling the un-subscription  of people from a database.
+这真的取决于你。
+
+这两种解决方案都有优点和缺点，您应该选择适合每种情况的解决方案。
+
+但是，不要掉以轻心地运行自己的电子邮件平台，需要考虑许多因素，以确保实现良好的可传递性（包括正确的 `DNS` 配置）。
+
+
+
+### 通过 `Postal` 发送的电子邮件将成为垃圾邮件。
+
+- 检查是否正确配置了 `DNS` 。
+
+  首先，您需要为您的 `IP` 提供反向 `DNS` ，您需要配置 `DKIM` 和 `SPF` ，您需要确保您的 `rDNS` 与提供给收件人邮件服务器的 `HELO` 匹配。
+
+- 确保您的发送 `IP` 配置了反向 `DNS` （ `PTR` ）记录。
+
+- 检查您发送邮件的 `IP` 地址是否不在任何黑名单上。
+
+- 检查您的实际电子邮件是否看起来像垃圾邮件。
+
+- 发送大量电子邮件的新 `IP` 最初可能无法很好地传递。
+
+您可以通过 `Mail Tester` （邮件测试器）之类的东西运行您的邮件，这将使您很好地了解邮件传递的垃圾级别，并确保您正确配置了所有内容。
+
+
+
+### 您可以添加邮件列表功能吗？
+
+不。
+
+`Postal` 是邮件传输代理，而不是邮件列表管理器。
+
+我们不希望添加更适合其他应用程序的功能，例如，通讯簿或处理数据库中人员的取消订阅。
 
 
 
