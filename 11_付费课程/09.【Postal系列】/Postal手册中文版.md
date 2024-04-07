@@ -1122,40 +1122,79 @@ X-AMP: skip
 
 
 
-## IP Pools
+## IP 池
 
-Postal supports sending messages from different IP addresses. This allows you  to configure certain sets of IPs for different mail servers or send from different IPs based on the sender or recipient addresses.
+`Postal` 支持从不同的 `IP` 地址发送消息。
 
-### Enabling IP pools
+这允许您为不同的邮件服务器配置某些 `IP` 集，或根据发件人或收件人地址从不同的 `IP` 发送。
 
-By default, IP pools are disabled and all email is sent from any IP  address on the host running the workers. To use IP pools, you'll need to enable them in the configuration file. You can do this by setting the  following in your `postal.yml` configuration file. You'll then need to restart Postal using `postal stop` and `postal start`.
+
+
+### 启用 IP 池
+
+默认情况下，`IP` 池处于禁用状态，所有电子邮件都从运行工作线程的主机上的任何 `IP` 地址发送。
+
+若要使用 `IP` 池，需要在配置文件中启用它们。
+
+您可以通过在配置文件 `postal.yml` 中设置以下内容来执行此操作。
+
+然后，您需要使用 `postal stop` 和 `postal start` 重新启动 `Postal` 。
 
 ```yaml
 postal:
   use_ip_pools: true
 ```
 
-### Configuring IP pools
-
-Once you have enabled IP pools, you'll need to set them up within the web interface. You'll see an **IP Pools** link in the top right of the interface. From here you can add pools and then add IP addresses within them.
-
-Once an IP pool has been added, you'll need to assign it any organization  that should be permitted to use it. Open up the organization and choose **IPs** and then tick the pools you want to allocate.
-
-Once allocated to an organization, you can assign the IP pool to servers from the server's **Settings** page. You can also use the IP pool to configure IP rules for the organization or server.
-
-It's **very important** to make sure that the IP addresses you add in the web interface are  actually configured on your Postal servers. If the IPs don't exist on  the server, message delivery may fail or messages will not be dequeued  correctly.
 
 
+### 配置 IP 池
 
-## Logging
+启用 `IP` 池后，您需要在 `Web` 界面中设置它们。
 
-All Postal processes log to STDOUT and STDERR which means their logs are  managed by whatever engine is used to run the container. In the default  case, this is Docker.
+您将在界面的右上角看到一个**`IP` 池**链接。
 
-### Redirecting logs to the host syslog
+从这里可以添加池，然后在其中添加 `IP` 地址。
 
-If you want to send your log data to the host system's syslog then you can configure this. This is useful if you wish to use external tools like `fail2ban` to block users from accessing your system.
 
-The quickest way to achieve this is to use a docker compose overide file in `/opt/postal/install/docker-compose.override.yml`. The contents of this file, would contain the following:
+
+添加 `IP` 池后，需要为其分配应允许使用它的任何组织。
+
+打开组织并选择 **IP，**然后勾选要分配的池。
+
+
+
+分配给某个组织后，您可以从服务器的**“设置**”页面将 `IP` 池分配给服务器。
+
+您还可以使用 `IP` 池为组织或服务器配置 `IP` 规则。
+
+```
+确保您在 Web 界面中添加的 IP 地址实际上是在您的 Postal 服务器上配置的，这一点非常重要。
+如果服务器上不存在 IP，则邮件传递可能会失败，或者邮件无法正确出列。
+```
+
+
+
+
+
+## 日志
+
+所有 `Postal` 进程都记录到 `STDOUT` 和 `STDERR` ，这意味着它们的日志由用于运行容器的任何引擎管理。
+
+默认情况下，这里的容器指的是 `Docker` 。
+
+
+
+### 将日志重定向到主机系统日志
+
+如果要将日志数据发送到主机系统的系统日志，则可以对其进行配置。
+
+如果您希望使用外部工具（例如 `fail2ban` 阻止用户访问您的系统），这将非常有用。
+
+
+
+实现此目的的最快方法是在 `/opt/postal/install/docker-compose.override.yml` 中使用 `docker compose` 覆盖文件。
+
+此文件的内容将包含以下内容：
 
 ```yaml
 version: "3.9"
@@ -1167,11 +1206,21 @@ services:
         tag: postal-smtp
 ```
 
-If you wanted to put worker and web server logs there too, you can define those. The example above demonstrates using the `smtp` server process.
 
-### Limiting the size of logs
 
-Docker cam be configured to limit the size of the log files it stores. To  avoid storing large numbers of log files, you should configure this  appropriately. This can be achieved by setting a maximum size in your `/etc/docker/daemon.json` file.
+如果您也想将工作线程和 `Web` 服务器日志放在那里，则可以定义它们。
+
+上面的示例演示了使用 `smtp` 服务器进程。
+
+
+
+### 限制日志的大小
+
+`Docker` 可以配置为限制其存储的日志文件的大小。
+
+若要避免存储大量日志文件，应对其进行适当配置。
+
+这可以通过在 `/etc/docker/daemon.json` 文件中设置最大大小来实现。
 
 ```json
 {
@@ -1182,9 +1231,13 @@ Docker cam be configured to limit the size of the log files it stores. To  avoid
 }
 ```
 
-### Sending logs to Graylog
 
-Postal includes support for sending log output to a central Graylog server  over UDP. This can be configured using the following options:
+
+### 将日志发送到 Graylog
+
+`Postal` 支持通过 `UDP` 将日志输出发送到中央 `Graylog` 服务器。
+
+这可以使用以下选项进行配置：
 
 ```yaml
 gelf:
@@ -1198,28 +1251,40 @@ gelf:
 
 
 
-## OpenID Connect
 
-Postal supports OpenID Connect (OIDC) allowing you to delegate authentication  to an external service. When enabled, there are various changes:
 
-- You are not required to enter a password when you add new users.
-- When a user first logs in with OIDC, they will be matched to a local user based on their e-mail address.
-- On subsequent logins, the user will be matched based on their unique identifier provided by the OIDC issuer.
-- Users without local passwords cannot reset their password through Postal.
-- Users cannot change their local password when associated with an OIDC identity.
-- Existing users that currently have a password will continue to be able to use  that password until it is linked with an OIDC identity.
+## OpenID 连接
+
+`Postal` 支持 `OpenID Connect` （ `OIDC` ），允许您将身份验证委托给外部服务。
+
+启用后，有很多变化：
+
+- 添加新用户时，无需输入密码。
+- 当用户首次使用 `OIDC` 登录时，将根据其电子邮件地址将其与本地用户进行匹配。
+- 在后续登录时，将根据 `OIDC` 颁发者提供的唯一标识符匹配用户。
+- 没有本地密码的用户无法通过 `Postal` 重置密码。
+- 用户在与 `OIDC` 身份关联时无法更改其本地密码。
+- 当前拥有密码的现有用户将继续能够使用该密码，直到该密码与 `OIDC` 标识相关联。
 
 图a03
 
 
 
-### Configuration
+### 配置
 
-To get started, you'll need to find an OpenID Connect enabled provider.  You should create your application within the provider in order to  obtain a identifier (client ID) and a secret (client secret).
+首先，您需要找到启用了 `OpenID Connect` 的提供商。
 
-You may be prompted to provide a "redirect URI" during this process. You should enter `https://postal.yourdomain.com/auth/oidc/callback`.
+应在提供程序中创建应用程序，以获取标识符（客户端 `ID`）和机密（客户端密码）。
 
-Finally, you'll need to place your configuration in the Postal config file as normal.
+
+
+在此过程中，系统可能会提示您提供“重定向 `URI` ”。
+
+您应该输入 `https://postal.yourdomain.com/auth/oidc/callback` 。
+
+
+
+最后，您需要像往常一样将配置放在 `Postal` 配置文件中。
 
 ```yaml
 oidc:
@@ -1249,21 +1314,43 @@ oidc:
     - email
 ```
 
-If your Identity Provider does not  support OpenID Connect discovery (which is enabled by default, you can  manually configure it.) For full details of the options available see  the [example config file](https://github.com/postalserver/postal/blob/main/doc/config/yaml.yml).
 
-By default, Postal will look for an email address in the `email` field and a name in the `name` field. These can be overriden using configuration if these values can be found elsewhere.
 
-### Logging in
+如果您的身份提供程序不支持 `OpenID Connect` 发现（默认情况下处于启用状态，您可以手动配置它）有关可用选项的完整详细信息，请参阅示例配置文件。
 
-Once enabled, you can log in by pressing the **Login with xxx** button on the login page. This will direct you to your chosen identity  provider. Once authorised, you will be directed back to the application. If a user exists matching the e-mail address returned by the OpenID  provider, it will be linked and you will be logged in. If not, an error  will be displayed.
 
-### Debugging
 
-Details about the user matching process will be displayed in the web server  logs when the callback from the Identity provider happens.
+默认情况下，`Postal` 将在 `email` 字段中查找电子邮件地址，并在 `name` 字段中查找名称。
 
-### Disabling local authentication
+如果这些值可以在其他地方找到，则可以使用配置覆盖这些值。
 
-Once you have established your OpenID Connect set up, you can fully disable  local authentication. This will change the login page as well as user  management options.
+
+
+### 登录
+
+启用后，您可以通过按登录页面上的 **Login with xxx** 按钮登录。
+
+这会将您定向到您选择的身份提供商。
+
+一旦获得授权，您将被引导回应用程序。
+
+如果存在与 `OpenID` 提供程序返回的电子邮件地址匹配的用户，则该用户将被链接并登录。
+
+否则，将显示错误。
+
+
+
+### 调试
+
+当身份提供商进行回调时，有关用户匹配过程的详细信息将显示在 `Web` 服务器日志中。
+
+
+
+### 禁用本地身份验证
+
+建立 `OpenID Connect` 设置后，您可以完全禁用本地身份验证。
+
+这将更改登录页面以及用户管理选项。
 
 ```yaml
 oidc: 
@@ -1271,9 +1358,17 @@ oidc:
   local_authentication_enabled: false
 ```
 
-### Using Google as an identity provider
 
-Setting up Postal to authenticate with Google is fairly straight forward.  You'll need to use the Google Cloud console to generate a client ID and  secret ([see docs](https://developers.google.com/identity/openid-connect/openid-connect)). When prompted for a redirect URI, you should be `https://postal.yourdomain.com/auth/oidc/callback`. The following configuration can be used to enable this:
+
+### 使用 Google 作为身份提供商
+
+设置 `Postal` 以使用 `Google` 进行身份验证相当简单。
+
+您需要使用 `Google` `Cloud` 控制台生成客户端 `ID` 和密钥（请参阅文档）。
+
+当系统提示您输入重定向 `URI` 时，您应该是 `https://postal.yourdomain.com/auth/oidc/callback` 。
+
+以下配置可用于启用此功能：
 
 ```yaml
 oidc:
@@ -1285,60 +1380,82 @@ oidc:
   scopes: [openid, email]
 ```
 
-------
+
+
+
+
+## SMTP 身份验证
+
+要通过 `Postal` `SMTP` 服务器发送外发电子邮件，您需要通过 `Postal` `Web` 界面生成**凭据**。
+
+此凭据与服务器相关联，允许您从与该域关联的任何域（或拥有该域的组织）发送邮件。
+
+
+
+### 身份验证类型
+
+向 `SMTP` 服务器进行身份验证时，有三种受支持的身份验证类型。
+
+- `PLAIN` - 凭据以纯文本形式传递到服务器。
+
+  使用此功能时，您可以提供任何字符串作为用户名（例如 `x` ），密码应包含您的凭据字符串。
+
+- `LOGIN` - 凭据以 `Base64` 编码传递到服务器。
+
+  如上所述，您可以使用任何内容作为用户名，并且密码应包含凭据字符串（ `Base64` 编码）。
+
+- `CRAM-MD5` - 这是一种基于 `HMAC-MD5` 算法的质询-响应机制。
+
+  与上述两种机制不同，用户名确实很重要，并且应该包含组织和服务器永久链接，以 `/` 或 `_` 字符分隔。
+
+  使用的密码应为凭据中的值。
+
+
+
+### 发件人/发件人验证
+
+通过 `SMTP` 服务器发送传出电子邮件时，标头必须包含服务器或其组织拥有的域，这一点很重要。
+
+如果这无效，您将收到 `From``530 From/Sender name is not valid` 的错误。
+
+
+
+如果已为服务器启用了“允许发件人标头”，则可以在标头 `Sender` 中包含此域，并在标头 `From` 中包含您希望的任何值。
+
+
+
+### 基于 IP 的身份验证
+
+`Postal` 可以选择根据客户端的 `IP` 地址对客户端进行身份验证。
+
+要使用此功能，您需要为希望允许发送邮件的 `IP` 或网络创建 **SMTP-IP** 凭据。
+
+请小心使用，以避免创建为一个开放中继。
 
 
 
 
 
-## SMTP Authentication
+## SMTP TLS 协议
 
-For sending outgoing emails through the Postal SMTP server you will need to generate a **credential** through the Postal web interface. This credential is associated with a  server and allows you to send mail from any domain associated with that  domain (or the organization that owns the domain.)
+默认情况下，`Postal` 的 `SMTP` 服务器未启用 `TLS` ，但您可以通过生成并提供合适的证书来启用它。
 
-
-
-### Authentication types
-
-When authenticating to the SMTP server, there are three supported authentication types.
-
-- `PLAIN` - the credentials are passed in plain text to the server. When using this, you can provide any string as the username (e.g. `x`) and the password should contain your credential string.
-- `LOGIN` - the credentials are passed Base64-encoded to the server. As above,  you can use anything as the username and the password should contain the credential string (Base64-encoded).
-- `CRAM-MD5` - this is a challenge-response mechanism based on the HMAC-MD5  algorithm. Unlike the above two mechanism, the username does matter and  should contain the organization and server permalinks separated by a `/` or `_` character. The password used should be the value from your credential.
+我们建议您使用由注册证书颁发机构颁发的证书，但这对于使用此功能不是必需的。
 
 
 
-### From/Sender validation
+### 密钥和证书位置
 
-When sending outgoing email through the SMTP server, it is important that the `From` header contains a domain that is owned by the server or its organization. If this it not valid, you will receive a `530 From/Sender name is not valid` error.
+证书应放在您的 `/opt/postal/config` 目录中。
 
-If you have enabled "Allow Sender Header" for the server, you can include this domain in the `Sender` header instead and any value you wish in the `From` header.
-
-
-
-### IP-based authentication
-
-Postal has the option to authenticate clients based on their IP address. To use this, you need to create an **SMTP-IP** credential for the IP or network you wish to allow to send mail. Use this carefully to avoid creating an open relay.
+- `/opt/postal/config/smtp.key` - `PEM` 格式的私钥
+- `/opt/postal/config/smtp.cert` - `PEM` 格式的证书
 
 
 
-## SMTP TLS
+#### 生成自签名证书
 
-By default, Postal's SMTP server is not TLS enabled however you can enable it by generating and providing a suitable certificate. We recommend  that you use a certificate issued by a regnognised certificate authority but this isn't essential to use this feature.
-
-
-
-### Key & certificate locations
-
-Certificates should be placed in your `/opt/postal/config` directory.
-
-- `/opt/postal/config/smtp.key` - the private key in PEM format
-- `/opt/postal/config/smtp.cert` - the certificate in PEM format
-
-
-
-#### Generating a self signed certificate
-
-You can use the command below to generate a self signed certificate.
+您可以使用以下命令生成自签名证书。
 
 ```bash
 openssl req -x509 -newkey rsa:4096 -keyout /opt/postal/config/smtp.key -out /opt/postal/config/smtp.cert -sha256 -days 365 -nodes
@@ -1346,9 +1463,11 @@ openssl req -x509 -newkey rsa:4096 -keyout /opt/postal/config/smtp.key -out /opt
 
 
 
-### Configuration
+### 配置
 
-Once you have a key and certificate you will need to enable TLS in the configuration file (`/opt/postal/config/postal.yml`). Additional options are available too.
+获得密钥和证书后，您需要在配置文件（ `/opt/postal/config/postal.yml` ）中启用 `TLS` 。
+
+其他选项也可用。
 
 ```yaml
 smtp_server:
@@ -1360,37 +1479,49 @@ smtp_server:
   # ssl_version: SSLv23
 ```
 
-You will need to run `postal restart` if you change the configuration or your key/certificate.
+
+
+如果更改配置或密钥/证书，则需要运行 `postal restart` 。
 
 
 
-## Spam & Virus Checking
-
-Postal can integrate with SpamAssassin and ClamAV to automatically scan  incoming and outgoing messages that pass through mail servers.
-
-This functionality is disabled by default.
 
 
+## 垃圾邮件和病毒检查
 
-### Setting up SpamAssassin
+`Postal` 可以与 `SpamAssassin` 和 `ClamAV` 集成，以自动扫描通过邮件服务器的传入和传出邮件。
 
-By default, Postal will talk to SpamAssassin's `spamd` using an TCP socket connection (port 783). You'll need to install SpamAssassin on your server and then enable it within Postal.
+默认情况下，此功能处于禁用状态。
 
 
 
-#### Installing SpamAssassin
+### 设置 SpamAssassin
+
+默认情况下，`Postal` 将使用 `TCP` 套接字连接（端口 `783` ）与 `SpamAssassin` 的 `spamd` 通信。
+
+您需要在服务器上安装 `SpamAssassin` ，然后在 `Postal` 中启用它。
+
+
+
+#### 安装 SpamAssassin
 
 ```
 sudo apt install spamassassin
 ```
 
-Once you have installed this, you will need to open up `/etc/default/spamassassin` and change `ENABLED` to `1` and  `CRON` to `1`. On some systems (such as Ubuntu 20.04 or newer), you might need to enable the SpamAssassin daemon with the following command.
+
+
+安装后，您需要打开 `/etc/default/spamassassin` 并更改 `ENABLED` 为 `1`  以及 `CRON` 为 `1` 。
+
+在某些系统（如 `Ubuntu 20.04` 或更高版本）上，您可能需要使用以下命令启用 `SpamAssassin` 守护程序。
 
 ```bash
 update-rc.d spamassassin enable
 ```
 
-Then you should restart SpamAssassin.
+
+
+然后你应该重新启动 `SpamAssassin` 。
 
 ```
 sudo systemctl restart spamassassin
@@ -1398,54 +1529,88 @@ sudo systemctl restart spamassassin
 
 
 
-#### Enabling in Postal
+#### 在 `Postal` 中启用
 
-To enable spam checking, you'll need to add the following to your `postal.yml` configuration file and restart. If you have installed SpamAssassin on a different host to your Postal installation you can change the host here but be sure to ensure that the `spamd` is listening on your external interfaces.
+若要启用垃圾邮件检查，需要将以下内容添加到配置文件 `postal.yml` 中，然后重新启动。
+
+如果您已将 `SpamAssassin` 安装在与 `Postal` 安装不同的主机上，您可以在此处更改主机，但请务必确保 `spamd` 正在侦听您的外部接口。
 
 ```yaml
 spamd:
   enabled: true
   host: 127.0.0.1
   port: 783
+```
+
+```
 postal stop
 postal start
 ```
 
 
 
-#### Classifying Spam
+#### 对垃圾邮件进行分类
 
-The spam system is based on a numeric scoring system and different scores  are assigned to different issues which may appear in a message. You can  configure different thresholds which define when a message is treated as spam. We recommend starting at 5 and updating this once you've seen how your incoming messages are classified.
+垃圾邮件系统基于数字评分系统，为邮件中可能出现的不同问题分配不同的分数。
 
-You have three options which can be configured on a per route basis which defines how spam messages are treated:
+您可以配置不同的阈值，以定义何时将邮件视为垃圾邮件。
 
-- **Mark** - messages will be sent through to your endpoint but the spam information will be made available to you.
-- **Quarantine** - the message will placed into your hold queue and you'll need to  release them if you wish them to be passed to your application. They  will only remain here for 7 days,
-- **Fail** - the message will be marked as failed and will only be recorded in your message history without being sent.
+我们建议您从 `5` 开始，并在了解传入邮件的分类方式后进行更新。
 
 
 
+您有三个选项可以按路由进行配置，这些选项定义了垃圾邮件的处理方式：
 
-
-# Developer
-
-## Using the API
-
-The HTTP API allows you to send messages to us using JSON over HTTP. You  can either talk to the API using your current HTTP library or you can  use one of the pre-built libraries.
-
-[Full API documentation](https://apiv1.postalserver.io)
-
-This API does not support managing all the functions of Postal. There are  plans to introduce a new v2 API which will have more functionality and  significantly better documentation. We do not have an ETA for this.  Additionally, we will not be accepting any pull requests to extend the  current API to have any further functionality than it currently does.
+- **标记** - 邮件将发送到你的终结点，但垃圾邮件信息将提供给你。
+- **隔离** - 邮件将放入保留队列中，如果您希望将它们传递到您的应用程序，则需要释放它们。他们只会在这里停留 `7` 天，
+- **失败** - 邮件将被标记为失败，并且只会记录在邮件历史记录中，而不会发送。
 
 
 
-### General API Instructions
 
-- You should send POST requests to the URLs shown below.
-- Parameters should be encoded in the body of the request and `application/json` should be set as the `Content-Type` header.
-- The response will always be provided as JSON. The status of a request can be determined from the `status` attribute in the payload you receive. It will be `success` or `error`. Further details can be found in the `data` attribute.
 
-An example response body is shown below:
+# 开发者
+
+## 使用 API
+
+`HTTP API` 允许您使用 `JSON over HTTP` 向我们发送消息。
+
+您可以使用当前的 `HTTP` 库与 `API` 通信，也可以使用其中一个预构建的库。
+
+
+
+> 完整的 API 文档
+>
+> https://apiv1.postalserver.io/
+
+
+
+```
+此 API 不支持管理 Postal 的所有功能。
+我们计划引入一个新的 v2 API，它将具有更多的功能和更好的文档。
+我们没有这方面的预计到达时间。
+此外，我们不会接受任何拉取请求来扩展当前 API 以具有比当前更进一步的功能。
+```
+
+
+
+### 一般 API 说明
+
+- 您应该将 `POST` 请求发送到下面显示的 `URL` 。
+
+- 参数应在请求正文中编码，并 `application/json` 应设置为 `Content-Type` 标头。
+
+- 响应将始终以 `JSON` 格式提供。
+
+  请求的状态可以通过您收到的有效负载中的 `status` 属性来确定。
+
+  它将是 `success` 或 `error` 。
+
+  可以在 `data` 属性中找到更多详细信息。
+
+
+
+响应正文示例如下所示：
 
 ```javascript
 {
@@ -1456,22 +1621,37 @@ An example response body is shown below:
 }
 ```
 
-To authenticate to the API you'll  need to create an API credential for your mail server through the web  interface. This is a random string which is unique to your server.
-
-To authenticate a request to the API, you need to pass this key in the `X-Server-API-Key` HTTP header.
 
 
+要对 `API` 进行身份验证，您需要通过 `Web` 界面为邮件服务器创建 `API` 凭据。
 
-### Sending a message
+这是一个随机字符串，对于您的服务器是唯一的。
 
-There are two ways to send a message - you can either provide each attribute  needed for the e-mail individually or you can craft your own RFC 2822  message and send this instead.
+若要对 `API` 的请求进行身份验证，需要在 `HTTP` 标头 `X-Server-API-Key` 中传递此密钥。
 
-Full details about these two methods can be found in our API documentation:
 
-- Sending a message
-- Sending an RFC 2822 message
 
-For both these methods, the API will return the same information as the result. It will contain the `message_id` of the message that was sent plus a `messages` hash with the IDs of the messages that were sent by the server to each recipient.
+### 发送消息
+
+有两种方法可以发送邮件 - 您可以单独提供电子邮件所需的每个属性，也可以制作自己的 `RFC 2822` 邮件并发送此邮件。
+
+
+
+有关这两种方法的完整详细信息，请参阅我们的 `API` 文档：
+
+- 发送消息
+
+  (https://postalserver.github.io/postal-api/controllers/send/message)
+
+- 发送 `RFC 2822` 消息
+
+  (https://postalserver.github.io/postal-api/controllers/send/raw)
+
+
+
+对于这两种方法，`API` 将返回与结果相同的信息。
+
+它将包含已发送的消息  `message_id` 以及服务器发送给每个收件人的消息的 `ID` 的 `messages` 哈希值。
 
 ```javascript
 {
@@ -1483,52 +1663,74 @@ For both these methods, the API will return the same information as the result. 
 }
 ```
 
-------
 
 
 
-## Client Libraries
 
-There are a number of client libraries available to help send e-mail using  the Postal platform. These aren't all developed by the Postal team.
+## 客户端库
 
-- [Ruby](https://github.com/postalserver/postal-ruby)
-- [Rails](https://github.com/postalserver/postal-rails)
-- [Ruby (mail gem)](https://github.com/postalserver/postal-mailgem)
-- [PHP](https://github.com/postalserver/postal-php)
-- [Node](https://github.com/postalserver/postal-node)
-- [Java](https://github.com/matthewmgamble/postal-java)
-- [.Net](https://github.com/KingdomFirst/PostalServer-DotNet-Framework)
-- [Go](https://github.com/Pacerino/postal-go)
+有许多客户端库可以帮助使用 `Postal` 平台发送电子邮件。
 
-All of these libraries will make use of the API rather than using any SMTP  protocol - this is considered to be best approach for delivering your  messages.
+这些并非都是由 `Postal` 团队开发的。
 
-If your framework makes use of SMTP, you do not need a  client library however you will also miss out on some of Postals  functionality.
-
-
-
-## Receiving e-mail by HTTP
-
-One of the most useful features in Postal is the ability to have incoming  messages delivered to your own application as soon as they arrive. To  receive incoming messages from Postal you can set it up to pass them to  an HTTP URL of your choosing.
-
-Each endpoint has an HTTP URL (we  highly recommend making use of HTTPS where possible) as well as a set of rules which defines how data is sent to you.
-
-- You can choose whether data is encoded as normal form data or whether Postal sends JSON as the body of the request.
-- You can choose whether to receive the raw message (raw) or have it as a JSON dictionary (processed).
-- You can choose whether you'd like replies and signatures to be separated from the plain body of the message.
-
-Your server should accept Postals incoming request and reply within 5  seconds. If it takes longer than this, Postal will assume it has failed  and the request will be retried. Your server should send a `200 OK` status to signal to Postal that you've received the request.
-
-Messages will be tried up to 18 times with an exponential back-off until a successful response is seen except in the case of `5xx` statuses which will fail immediately.
-
-When a message permanently fails to be delivered to your endpoint (i.e. the  server returned a 5xx status code or it wasn't accepted after 18  attempts), the recipient will be sent a bounce message.
-
-You can view the attempts (along with debugging information) on the message page in the web interface.
+- `Ruby` - https://github.com/postalserver/postal-ruby
+- `Rails` - https://github.com/postalserver/postal-rails
+- `Ruby (mail gem)` - https://github.com/postalserver/postal-mailgem
+- `PHP` - https://github.com/postalserver/postal-php
+- `Node` - https://github.com/postalserver/postal-node
+- `Java` - https://github.com/matthewmgamble/postal-java
+- `.Net` - https://github.com/KingdomFirst/PostalServer-DotNet-Framework
+- `Go` - https://github.com/Pacerino/postal-go
 
 
 
-### The processed payload
+所有这些库都将使用 `API` 而不是使用任何 `SMTP` 协议 - 这被认为是传递邮件的最佳方法。
 
-When you chose to receive the message as JSON (processed), you'll receive a payload with the following attributes.
+如果您的框架使用 `SMTP` ，则不需要客户端库，但是您也会错过某些 `Postals` 功能。
+
+
+
+
+
+## 通过 HTTP 接收电子邮件
+
+`Postal` 中最有用的功能之一是能够在收到的邮件到达后立即将其传递到您自己的应用程序。
+
+要接收来自 `Postal` 的传入邮件，您可以将其设置为将它们传递到您选择的 `HTTP URL` 。
+
+
+
+每个端点都有一个 `HTTP URL`（我们强烈建议尽可能使用 `HTTPS` ）以及一组规则，用于定义如何将数据发送给您。
+
+- 您可以选择是将数据编码为普通表单数据，还是将 `Postal` 发送 `JSON` 作为请求的正文。
+- 您可以选择是接收原始消息（原始消息）还是将其作为 `JSON` 字典（已处理）。
+- 您可以选择是否希望将回复和签名与邮件的纯正文分开。
+
+
+
+您的服务器应接受 `Postals` 传入请求并在 `5` 秒内回复。
+
+如果花费的时间超过此时间，`Postal` 将假定它已失败，并且将重试请求。
+
+您的服务器应发送 `200 OK` 状态，以向 `Postal` 发出您已收到请求的信号。
+
+
+
+消息将尝试多达 `18` 次，并呈指数退避，直到看到成功的响应，但 `5xx` 状态将立即失败的情况除外。
+
+
+
+当消息永久无法传递到您的终结点时（即服务器返回了 `5xx` 状态代码或在 `18` 次尝试后未被接受），收件人将收到退回邮件。
+
+
+
+您可以在 `Web` 界面的消息页面上查看尝试（以及调试信息）。
+
+
+
+### 已处理的有效负载
+
+当您选择以 `JSON`（已处理）形式接收消息时，您将收到具有以下属性的有效负载。
 
 ```javascript
 {
@@ -1564,14 +1766,14 @@ When you chose to receive the message as JSON (processed), you'll receive a payl
 }
 ```
 
-- You will only have the `attachments` attribute if you have enabled it.
-- The `data` attribute for each attachment is Base64 encoded.
+- 只有启用了 `attachments` 该属性，您才会拥有该属性。
+- 每个附件的 `data` 属性都是 `Base64` 编码的。
 
 
 
-### The raw message payload
+### 原始消息有效负载
 
-When you choose to receive the full message, you will receive the following attributes.
+当您选择接收完整消息时，您将收到以下属性。
 
 ```javascript
 {
@@ -1582,7 +1784,9 @@ When you choose to receive the full message, you will receive the following attr
 }
 ```
 
-- The `base64` attribute specifies whether or not the `message` attribute is encoded with Base64. This is likely to be true all the time.
+- 该 `base64` 属性指定是否使用 `Base64` 对 `message` 属性进行编码。
+
+  这很可能一直都是如此。
 
 
 
@@ -1590,20 +1794,30 @@ When you choose to receive the full message, you will receive the following attr
 
 ## Webhooks
 
-Postal supports sending webhooks over HTTP when various events occur during the lifecycle of a message.
+`Postal` 支持在消息生命周期内发生各种事件时通过 `HTTP` 发送 `Webhooks` 。
 
-This page lists all the different types of event along with an example JSON  payload that you'll receive. In many cases, only a small amount of  information will be sent, if you require more information you should use the API to obtain it.
+此页面列出了所有不同类型的事件，以及您将收到的示例 `JSON` 有效负载。
+
+在许多情况下，只会发送少量信息，如果您需要更多信息，您应该使用 `API` 来获取它。
 
 
 
-### Message Status Events
+### 消息状态事件
 
-These events are triggered on various events in an e-mail's lifecycle. The  payload format is identical for all messages however the `status` attribute may change. The following statuses may be delivered.
+这些事件是在电子邮件生命周期中的各种事件上触发的。
 
-- `MessageSent` - when a message is successfully delivered to a recipient/endpoint.
-- `MessageDelayed` - when a message's delivery has been delayed. This will be sent each  time Postal attempts a delivery and a message is delayed further.
-- `MessageDeliveryFailed` - when a message cannot be delivered.
-- `MessageHeld` - when a message is held.
+所有邮件的有效负载格式都相同，但 `status` 属性可能会更改。
+
+
+
+可能会提供以下状态。
+
+- `MessageSent` - 当消息成功传递到收件人/端点时。
+- `MessageDelayed` - 当消息的传递延迟时。每次 `Postal` 尝试投递并且邮件进一步延迟时，都会发送此消息。
+- `MessageDeliveryFailed `- 当消息无法传递时。
+- `MessageHeld` - 当消息被保留时。
+
+
 
 ```javascript
 {
@@ -1630,9 +1844,9 @@ These events are triggered on various events in an e-mail's lifecycle. The  payl
 
 
 
-### Message Bounces
+### 邮件退回
 
-If Postal receives a bounce message for a message that was previously accepted, you'll receive the `MessageBounced` event.
+如果 `Postal` 收到之前已接受的邮件的退回邮件，您将收到 `MessageBounced` 事件。
 
 ```javascript
 {
@@ -1665,9 +1879,9 @@ If Postal receives a bounce message for a message that was previously accepted, 
 
 
 
-### Message Click Event
+### 消息点击事件
 
-If you have click tracking enabled, the `MessageLinkClicked` event will tell you that a user has clicked on a link in one of your e-mails.
+如果您启用了点击跟踪，则 `MessageLinkClicked` 事件将告诉您用户单击了您的一封电子邮件中的链接。
 
 ```javascript
 {
@@ -1692,9 +1906,9 @@ If you have click tracking enabled, the `MessageLinkClicked` event will tell you
 
 
 
-### Message Loaded/Opened Event
+### 消息加载/打开事件
 
-If you have open tracking enabled, the `MessageLoaded` event will tell you that a user has opened your e-mail (or, at least, have viewed the tracking pixel embedded within it.)
+如果启用了打开跟踪，则 `MessageLoaded` 事件将告诉您用户已打开您的电子邮件（或者至少已查看其中嵌入的跟踪像素）。
 
 ```javascript
 {
@@ -1717,9 +1931,11 @@ If you have open tracking enabled, the `MessageLoaded` event will tell you that 
 
 
 
-### DNS Error Event
+### DNS 错误事件
 
-Postal regularly monitors domains it knows about to ensure that your  SPF/DKIM/MX records are correct. If you'd like to be notified when the  checks fail, you can subscribe to the `DomainDNSError` event.
+`Postal` 会定期监控其所知道的域，以确保您的 `SPF/DKIM/MX` 记录正确无误。
+
+如果您希望在检查失败时收到通知，可以订阅 `DomainDNSError` 事件。
 
 ```javascript
 {
@@ -1745,102 +1961,124 @@ Postal regularly monitors domains it knows about to ensure that your  SPF/DKIM/M
 
 
 
-# Other Notes
-
-## Auto-Responders & Bounces
-
-When you send an e-mail you may be automatically be sent a bounce message or an auto responder by the destination mail server. These are handled  slightly differently to normal incoming e-mail and it's worth  understanding how these work.
-
-Messages like these aren't usually sent to the e-mail address that sent the message but are sent to the **return path** address. This is an address which Postal assigns to your mail server  and is provided to the destination mail server for the purpose of  sending this type of message. The return to address will be something  like `abcdef@psrp.yourdomain.com`.
-
-If you wish to route mail which is sent to your return path address to your application, you can set up a **return path route**. This is the same as a normal route except you should enter the name as `__returnpath__` and leave the domain field blank. You can only choose HTTP endpoints  for this type of route. Once added, messages sent to your return path  that aren't detected as bounces will be sent to HTTP endpoint you  choose.
 
 
+# 其他说明
 
-### A note about bounces
+## 自动回复和退回
 
-Messages that Postal detects as being bounces for a message you have already  sent will not be delivered to your return path route. The original  message will be updated and a `MessageBounced` webhook event will be triggered.
+当您发送电子邮件时，目标邮件服务器可能会自动向您发送退回邮件或自动回复。
+
+这些电子邮件的处理方式与普通传入电子邮件略有不同，值得了解它们的工作原理。
 
 
 
-## Our container image
+此类邮件通常不会发送到发送邮件的电子邮件地址，而是发送到**返回路径**地址。
 
-This page contains information about how Postal actually is packaged and run within a container.
+这是 `Postal` 分配给您的邮件服务器的地址，并提供给目标邮件服务器，用于发送此类邮件。
 
-
-
-### Where's the container?
-
-Postal is packaged and hosted at `ghcr.io/postalserver/postal`.
-
-The `latest` tag will always track the `main` branch within the repository and therefore will have the latest copy of the application. It is not recommended to use this tag in production  because you may start using it at any time without noticing.
-
-Each version of Postal will also be tagged, for example, `3.0.0`. We always recommend using a version tag in production. To upgrade, you  simply need to start using the newer version of the container and be  sure to run the `upgrade` command. You can view all the tags which exist [on GitHub](https://github.com/postalserver/postal/pkgs/container/postal) and in [our CHANGELOG](https://github.com/postalserver/postal/blob/main/CHANGELOG.md).
+返回地址将类似于 `abcdef@psrp.yourdomain.com` 。
 
 
 
-### What processes need to run?
+如果您希望将发送到您的退回路径地址的邮件路由到您的应用程序，您可以设置**回信路径路由**。
 
-There are 3 processes that need to be running for a successful Postal  installation. All processes are run within the same image (`ghcr.io/postalserver/postal`). The table below identifies the processes.
+这与普通路由相同，只是您应该输入名称像 `__returnpath__` 并将域字段留空。
 
+您只能为此类型的路由选择 `HTTP` 终端节点。
 
-
-#### The web server
-
-- **Command:** `postal web-server`
-- **Ports:** 5000
-
-This is the main web server that handles all web traffic for Postal's admin  interface and open/click tracking requests. By default, it listens on  port 5000 but this can be configured in the `postal.yml` file by changing the `web_server.default_port` option or setting the `PORT` environment variable.
-
-You can run multiple web servers and load balance between them to add additional capacity for web requests.
+添加后，发送到返回路径且未被检测为退回邮件的消息将发送到您选择的 `HTTP` 终结点。
 
 
 
-#### The SMTP server
+## 关于退回的说明
 
-- **Command:** `postal smtp-server`
-- **Ports:** 25
-- **Capabilities required:** `NET_BIND_SERVICE`
+如果 `Postal` 检测到您已发送的邮件被退回，则不会递送到您的退回路径路由。
 
-This is the main SMTP server for receiving messages from clients and other  MTAs. As with the web server, you can configure this to run on any port  by changing the `smtp_server.default_port` option in the `postal.yml` config file or setting the `PORT` environment variable.
-
-You can run multiple SMTP servers and load balance between them to add additional capacity for SMTP connections.
+原始消息将被更新，并将触发一个叫作 `MessageBounced`  的 `Webhook` 事件。
 
 
 
-#### The worker(s)
+## 我们的容器镜像
 
-- **Command:** `postal worker`
-
-This runs a worker which will receive jobs from the message queue.  Essentially, this handles processing all incoming and outgoing e-mail.  If you're needing to process lots of e-mails, you may wish to run more  than one of these. You can run as many of these as you wish.
+此页面包含有关 `Postal` 实际如何在容器中打包和运行的信息。
 
 
 
-### Configuration
+### 容器在哪里？
 
-The image expects all configuration to be mounted at `/config`. At a minimum, this directory must contain a `postal.yml` and a `signing.key`. You can see a minimal example `postal.yml` in the [installation tool repository](https://github.com/postalserver/install/blob/main/examples/postal.v3.yml). For a full example, [see here](https://github.com/postalserver/postal/blob/main/doc/config/yaml.yml).
+`Postal` 打包并托管在 `ghcr.io/postalserver/postal` 。
 
-The `signing.key` can be generated using the following command:
+
+
+`latest` 标记将始终跟踪存储库中的 `main` 分支，因此将拥有应用程序的最新副本。
+
+不建议在生产中使用此标记，因为您可能随时开始使用它而不会注意到。
+
+
+
+每个版本的 `Postal` 也会被标记，例如 `3.0.0` ，我们始终建议在生产环境中使用版本标记。
+
+若要升级，只需开始使用较新版本的容器，并确保运行 `upgrade` 命令。
+
+您可以查看 `GitHub` 和我们的 `CHANGELOG` 中存在的所有标签。
+
+
+
+## [需要运行哪些流程？](https://docs.postalserver.io/other/containers#what-processes-need-to-run)
+
+要成功安装 Postal，需要运行 3 个进程。所有进程都在同一映像 （） 中运行。下表列出了这些过程。`ghcr.io/postalserver/postal`
+
+### [Web 服务器](https://docs.postalserver.io/other/containers#the-web-server)
+
+- **命令：** `postal web-server`
+- **端口数：**5000
+
+这是处理 Postal 管理界面和打开/单击跟踪请求的所有 Web 流量的主要 Web 服务器。默认情况下，它侦听端口 5000，但可以通过更改选项或设置环境变量在文件中进行配置。`postal.yml``web_server.default_port``PORT`
+
+您可以运行多个 Web 服务器并在它们之间进行负载平衡，以便为 Web 请求添加额外的容量。
+
+### [SMTP 服务器](https://docs.postalserver.io/other/containers#the-smtp-server)
+
+- **命令：** `postal smtp-server`
+- **端口：**25
+- **所需功能：** `NET_BIND_SERVICE`
+
+这是用于接收来自客户端和其他 MTA 的邮件的主要 SMTP 服务器。与 Web 服务器一样，您可以通过更改配置文件中的选项或设置环境变量来将其配置为在任何端口上运行。`smtp_server.default_port``postal.yml``PORT`
+
+您可以运行多个 SMTP 服务器并在它们之间进行负载平衡，以便为 SMTP 连接添加额外的容量。
+
+### [工人](https://docs.postalserver.io/other/containers#the-workers)
+
+- **命令：** `postal worker`
+
+这将运行一个工作线程，该工作线程将从消息队列接收作业。从本质上讲，这处理所有传入和传出电子邮件。如果您需要处理大量电子邮件，您可能希望运行其中的多个电子邮件。您可以根据需要运行任意数量的这些。
+
+## [配置](https://docs.postalserver.io/other/containers#configuration)
+
+该映像要求所有配置都挂载到 。此目录至少必须包含 a 和 .您可以在[安装工具存储库](https://github.com/postalserver/install/blob/main/examples/postal.v3.yml)中看到一个最小的示例。有关完整示例，[请参阅此处](https://github.com/postalserver/postal/blob/main/doc/config/yaml.yml)。`/config``postal.yml``signing.key``postal.yml`
+
+可以使用以下命令生成：`signing.key`
+
+
 
 ```
 openssl genrsa -out path/to/signing.key 2018
 ```
 
+## [联网](https://docs.postalserver.io/other/containers#networking)
+
+如果希望利用 IP 池，则需要使用主机网络运行 Postal。这是因为 Postal 需要能够确定哪些物理 IP 可供其使用，并能够在这些 IP 上发送和接收流量。
+
+如果不使用 IP 池，则无需使用主机网络，可以根据需要公开上面列出的端口。
+
+## [等待服务](https://docs.postalserver.io/other/containers#waiting-for-services)
+
+容器的入口点支持在启动基础进程之前等待外部服务准备就绪。要使用它，您需要使用服务和端口列表设置环境变量。例如，替换为 MariaDB 服务器的主机名或 IP。您可以通过用空格分隔多个终结点来指定它们。`WAIT_FOR_TARGETS``mariadb:3306``mariadb`
+
+默认的最长等待时间为 30 秒，您可以使用环境变量覆盖此时间。`WAIT_FOR_TIMEOUT`
 
 
-### Networking
-
-If you wish to utilise IP pools, you will need to run Postal using host  networking. This is because Postal will need to be able to determine  which physical IPs are available to it and be able to send and receive  traffic on those IPs.
-
-If you are not using IP pools, there is no need to use host networking and you can expose the ports listed above as appropriate.
-
-
-
-### Waiting for services
-
-The container's entrypoint supports waiting for external services to be  ready before starting the underlying process. To use this you need to  set the `WAIT_FOR_TARGETS` environment variable with a list of services and ports. For example, `mariadb:3306`, replacing `mariadb` with the hostname or IP of your MariaDB server. You can specify multiple endpoint by separating them with a space.
-
-The default maximum time to wait is 30 seconds, you can override this using the `WAIT_FOR_TIMEOUT` environment variable.
 
 
 
