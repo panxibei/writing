@@ -972,93 +972,153 @@ postal start
 
    无需复制 `rails.secret` - 新主机上的新密钥不会有问题。
 
-7. 如果在开始之前完全停止了 Postal，则无需从 RabbitMQ 复制任何持久化数据。
+7. 如果在开始之前完全停止了 `Postal` ，则无需从 `RabbitMQ` 复制任何持久化数据。
 
-8. 关闭旧的邮政服务器。
+8. 关闭旧的 `Postal` 服务器。
 
-9. 将 IP 地址从旧服务器移动到新服务器（如果旧服务器和新服务器都使用同一提供商）。
+9. 将 `IP` 地址从旧服务器移动到新服务器（如果旧服务器和新服务器都使用同一提供商）。
 
-10. 使用 在新服务器上启动 Postal。`postal start`
-
-
+10. 使用 `postal start` 在新服务器上启动 `Postal` 。
 
 
 
 
 
-# Features
+# 特征
 
-## Click & Open Tracking
+## 点击并打开跟踪
 
-Postal supports tracking opens and clicks from e-mails. This allows you to see when people open messages or they click links within them.
+`Postal` 支持跟踪电子邮件的打开和点击。
+
+这使您可以查看用户何时打开消息或单击其中的链接。
 
 图a02
 
 
 
-### How it works
+### 运作方式
 
-Once enabled, Postal will automatically scan your outgoing messages and  replace any links and images with new URLs that go via your Postal web  server. When the link is clicked, Postal will log the click and redirect to the user to the original URL automatically. The links that are  included in the e-mail should be on the same domain as the sender and  therefore you need to configure a subdomain like `click.yourdomain.com` and point it to your Postal server.
+启用后，`Postal` 将自动扫描您的外发邮件，并将任何链接和图像替换为通过您的 `Postal` `Web` 服务器的新 `URL` 。
 
-### Configuring your web server
+单击链接时，`Postal` 将记录点击并自动将用户重定向到原始 `URL` 。
 
-To avoid messages being marked as spam, it's important that the subdomain  that Postal uses in the re-written URLs is on the same domain as that  sending the message. This means if you are sending mail from `example.com`, you'll need to setup `click.example.com` (or whatever you choose) to point to your Postal server.
+电子邮件中包含的链接应与发件人位于同一域中，因此您需要配置一个子域，例如 `click.yourdomain.com` ，并将其指向您的 `Postal` 服务器。
 
-You'll need to add an appropriate virtual host on your web server that proxies traffic from that domain to the Postal web server. The web server must  add the `X-Postal-Track-Host: 1` header so the Postal web server knows to treat requests as tracking requests.
 
-Once you have configured this, you should be able to visit your chosen domain in a browser and see `Hello.` printed back to you. If you don't see this, review your configuration  until you do. If you still don't see this and you enable the tracking,  your messages will be sent with broken links and images.
 
-If you're happy things are working, you can enable tracking as follows:
+### 配置 Web 服务器
 
-1. Find the web server you wish to enable tracking on in the Postal web interface
-2. Go to the **Domains** item
-3. Select **Tracking Domains**
-4. Click **Add a tracking domain**
-5. Enter the domain that you have configured and choose the configuration you want to use. It is **highly** recommended that you use SSL for these connections. Anything else is  likely to cause problems with reputation and user experience.
+为避免邮件被标记为垃圾邮件，`Postal` 在重写的 `URL` 中使用的子域必须与发送邮件的子域位于同一域中。
 
-### Disabling tracking on a per e-mail basis
+这意味着，如果您从 `example.com` 发送邮件，则需要设置 `click.example.com` （或您选择的任何内容）以指向您的 `Postal` 服务器。
 
-If you don't wish to track anything in an email you can add a header to your e-mails before sending it.
+
+
+您需要在 `Web` 服务器上添加适当的虚拟主机，以将流量从该域代理到 `Postal` `Web` 服务器。
+
+`Web` 服务器必须添加 `X-Postal-Track-Host: 1` 标头，以便 `Postal` `Web` 服务器知道将请求视为跟踪请求。
+
+
+
+配置完成此操作后，您应该能够在浏览器中访问您选择的域并看到打印 `Hello.` 回给您。
+
+如果您没有看到此消息，请检查您的配置，直到您看到为止。
+
+如果您仍然没有看到此消息并启用跟踪，则您的消息将带有断开的链接和图像。
+
+
+
+如果您对工作感到满意，可以按如下方式启用跟踪：
+
+1. 在 `Postal` `Web` 界面中找到要启用跟踪的 `Web` 服务器
+
+2. 转到 **`域`** 项
+
+3. 选择 **`跟踪域`**
+
+4. 点击 **`添加跟踪网域`**
+
+5. 输入已配置的域，然后选择要使用的配置。
+
+   **强烈**建议您将 `SSL` 用于这些连接。
+
+   其他任何事情都可能导致声誉和用户体验问题。
+
+
+
+### 禁用基于每封电子邮件的跟踪
+
+如果您不想跟踪电子邮件中的任何内容，则可以在发送电子邮件之前为电子邮件添加标头。
 
 ```text
 X-AMP: skip
 ```
 
-### Disabling tracking for certain link domains
 
-If there are certain domains you don't wish to track links from, you can  define these on the tracking domain settings page. For example, if you  list `yourdomain.com` no links to this domain will be tracked.
 
-### Disabling tracking on a per link basis
+### 禁用对某些链接域的跟踪
 
-If you wish to disable tracking for a particular link, you can do so by inserting `+notrack` as shown below. The `+notrack` will be removed leaving a plain link.
+如果您不希望跟踪某些域中的链接，则可以在跟踪域设置页面上定义这些域。
+
+例如，如果您列出 `yourdomain.com` ，则不会跟踪指向此域的链接。
+
+
+
+### 禁用基于每个链接的跟踪
+
+如果您希望禁用对特定链接的跟踪，可以通过如下所示的插入 `+notrack` 来实现。
+
+`+notrack` 将被删除，留下一个纯链接。
 
 - `https+notrack://postalserver.io`
 - `http+notrack://katapult.io/signup`
 
 
 
-## Health & Metrics
 
-The Postal worker and SMTP server processes come with additional  functionality that allows you to monitor the health of the process as  well as look at live metrics about their performance.
 
-### Port numbers
+## 运行状况和指标
 
-By default, the health server listens on a different port for each type of process.
+`Postal` `worker` 和 `SMTP` 服务器进程具有附加功能，允许您监视进程的运行状况以及查看有关其性能的实时指标。
 
-- Worker - listens on port `9090`
-- SMTP server - listens on port `9091`
 
-Unlike other services, if these ports are in use when the process starts, the  health server will simply not start but the rest of the process will run as normal. This will be shown in the logs.
 
-To configure these ports you can set the `HEALTH_SERVER_PORT` and `HEALTH_SERVER_BIND_ADDRESS` environment variables.
+### 端口号
 
-### Metrics
+缺省情况下，运行状况服务器在不同类型的进程的不同端口上侦听。
 
-The metrics are exposed at `/metrics` and are in a standard Prometheus exporter format. This means they can  be scraped by any tool that can ingest Prometheus metrics. This will  then allow them to be turned in to graphs as appropriate.
+- `Worker` - 侦听端口 `9090`
+- `SMTP` 服务器 - 侦听端口 `9091`
 
-### Health checks
 
-The `/health` endpoint will return "OK" when the process is running. This can be used for health check monitoring.
+
+与其他服务不同，如果这些端口在进程启动时正在使用中，则运行状况服务器将根本不会启动，但进程的其余部分将正常运行。
+
+这将显示在日志中。
+
+
+
+要配置这些端口，您可以设置 `HEALTH_SERVER_PORT` 和 `HEALTH_SERVER_BIND_ADDRESS` 环境变量。
+
+
+
+### 指标
+
+这些指标以 `/metrics` 形式并按标准的 `Prometheus` 导出器格式显示。
+
+这意味着它们可以被任何可以摄取 `Prometheus` 指标的工具抓取。
+
+然后，这将允许它们根据需要转换为图表。
+
+
+
+### 健康检查
+
+进程运行时，`/health` 节点将返回“OK”。
+
+这可用于运行状况检查监控。
+
+
 
 
 
