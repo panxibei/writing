@@ -349,56 +349,84 @@ docker run -d \
 
 
 
+## 安装
+
+完成所有先决条件后，可以继续安装 `Postal` 。
 
 
 
+### 配置
 
-## Installation
+在启动 `Postal` 之前，需要进行一些配置。
 
-Once you've completed all the prerequisites, you can go ahead and start to install Postal.
+克隆的存储库包含一个用于自动生成一些初始配置文件的工具。
 
-### Configuration
 
-Before you can start Postal, you'll need some configuration. The repository  you cloned includes a tool to automatically generate some initial  configuration files.
 
-Run the command below and replace `postal.yourdomain.com` with the actual hostname you want to access your Postal web interface  at. Make sure you have set up this domain with your DNS provider before  continuing.
+运行以下命令，并替换 `postal.yourdomain.com` 为您要访问 `Postal` `Web` 界面的实际主机名。
+
+在继续操作之前，请确保您已通过 `DNS` 提供商设置此域。
 
 ```bash
 postal bootstrap postal.yourdomain.com
 ```
 
-This will generate three files in `/opt/postal/config`.
 
-- `postal.yml` is the main postal configuration file
-- `signing.key` is the private key used to sign various things in Postal
-- `Caddyfile` is the configuration for the Caddy webserver
 
-Once generated, you should open up `/opt/postal/config/postal.yml` and add all the appropriate values for your installation (database passwords etc...).
+这将在 `/opt/postal/config` 中生成三个文件。
 
-Note that the docker setup mounts `/opt/postal/config` as `/config` so any full directory paths mentioned in `postal.yml` will likely need to start with `/config` and not `/opt/postal/config`
+- `postal.yml` 是 `Postal` 主配置文件
+- `signing.key` 是用于在 `Postal` 中签署各种事物的私钥
+- `Caddyfile` 是 `Caddy` `Web` 服务器的配置
 
-### Initializing the database
 
-Once you've added your configuration, you need to initialize your database  by adding all the appropriate tables. Run the following commands to  create the schema and then create your first admin user.
+
+以上文件一旦生成后，您应该打开 `/opt/postal/config/postal.yml` 并添加所有适当的安装值（比如数据库密码等）。
+
+```
+请注意，docker 设置挂载 /opt/postal/config 为 /config ，因此 postal.yml 中提到的任何完整目录路径都可能需要以 /config 开头，而不是以 /opt/postal/config 开头。
+```
+
+
+
+### 初始化数据库
+
+添加配置后，需要通过添加所有适当的表来初始化数据库。
+
+运行以下命令以创建架构，然后创建第一个管理员用户。
 
 ```bash
 postal initialize
 postal make-user
 ```
 
-### Running postal
 
-You're now ready to actually run Postal itself. You can go ahead and do this by running:
+
+### 运行 Postal
+
+您现在已准备好实际运行 `Postal` 本身。
+
+您可以通过运行以下命令来继续执行此操作：
 
 ```
 postal start
 ```
 
-This will run a number of containers on your machine. You can use `postal status` to see details of these components.
+
+
+这将在您的计算机上运行多个容器。
+
+您可以使用 `postal status` 来查看这些组件的详细信息。
+
+
 
 ### Caddy
 
-To handle SSL termination and all web traffic, you'll need to configure a  web proxy. You can use anything that takes your fancy here - nginx,  Apache, HAProxy, anything - but in this example, we're going to use Caddy. It's a great little server that requires very little configuration and is very easy to set up.
+要处理 `SSL` 终端和所有 `Web` 流量，您需要配置 `Web` 代理。
+
+您可以在这里使用任何你喜欢的东西 - `nginx` ， `Apache` ， `HAProxy` ，任何东西 - 但在这个例子中，我们将使用 `Caddy` 。
+
+这是一个很棒的小型服务器，需要很少的配置并且非常容易设置。
 
 ```
 docker run -d \
@@ -410,17 +438,23 @@ docker run -d \
    caddy
 ```
 
-Once this has started, Caddy will issue an SSL  certificate for your domain and you'll be able to immediately access the Postal web interface and login with the user you created in one of the  previous steps.
+
+
+一旦开始，`Caddy` 将为您的域颁发 `SSL` 证书，您将能够立即访问 `Postal` `Web` 界面并使用您在前面步骤之一中创建的用户登录。
 
 图a01
 
 
 
-## Upgrading
+## 升级
 
-If you're not currently running Postal v2, you'll need to follow the  Upgrading from 1.x documentation before you can use these instructions.
+```
+如果当前未运行 `Postal` `v2` ，则需要先按照从 `1.x` 升级文档进行操作，然后才能使用这些说明。
+```
 
-Once you have installed Postal, you can upgrade it by running this command.  This will always upgrade you to the latest version of Postal that is  available.
+安装 `Postal` 后，可以通过运行此命令对其进行升级。
+
+这将始终将您升级到可用最新版本的 `Postal` 。
 
 ```bash
 cd /opt/postal/install
@@ -428,18 +462,28 @@ git pull origin
 postal upgrade
 ```
 
-This will do a few things in the following order:
 
-- Fetch the latest copy of the installation helpers repository using Git.
-- Pull the latest version of the Postal containers.
-- Perform any necessary updates to the database schema.
-- Restart all running containers
 
-This is not a zero downtime upgrade so it is recommended to do this at a  time when traffic will be low and you have scheduled the maintenance as  appropriate. If you need zero downtime upgrades, you will need to look  for alternative container orchestration systems that can handle this  (such as Kubernetes).
+这将按以下顺序执行一些操作：
 
-### Changing to a specific version
+- 使用 `Git` 获取安装帮助程序存储库的最新副本
+- 拉取最新版本的 `Postal` 容器
+- 对数据库架构执行任何必要的更新
+- 重新启动所有正在运行的容器
 
-By default, running `postal upgrade` will install the latest version available from the Postal container  registry. If you need to change the version of Postal to a specific  version, you can specify a version for the `postal upgrade` command as follows:
+
+
+这不是零停机时间升级，因此建议在流量较低且已适当安排维护时执行此操作。
+
+如果您需要零停机时间升级，则需要寻找可以处理此问题的替代容器管理系统（例如 `Kubernetes` ）。
+
+
+
+### 更改为特定版本
+
+默认情况下，运行 `postal upgrade` 将安装 `Postal` 容器注册中提供的最新版本。
+
+如果需要将 `Postal` 的版本更改为特定版本，可以使用命令 `postal upgrade`  来指定版本，如下所示：
 
 ```bash
 postal upgrade [version]
@@ -447,98 +491,151 @@ postal upgrade [version]
 
 
 
-## Configuration
+## 配置
 
-Postal can be configured through its configuration file or environment  variables. There are a fair number of areas which can be configured.
+`Postal` 可以通过其配置文件或环境变量进行配置。
 
-You can review all the available configuration options.
-
-- Full Postal Configuration file - this is an example configuration file that contains all the  configuration options along with their defaults and a description. This  file would usually exist in `/opt/postal/config/postal.yml`.
-- All environment variables - this page lists all the environment variables. All configuration that can be set in the config file can also be set by an environment  variable.
-
-Note: If you change any configuration, you should be sure to restart Postal
-
-### Ports and bind addresses
-
-The web & SMTP server listen on ports and addresses. The defaults for  these can be set through configuration however, if you're running  multiple instances of these on a single host you will need to specify  different ports for each one.
-
-You can use the `PORT` and `BIND_ADDRESS` environment variables to provide instance-specific values for these processes.
-
-### Legacy configuration
-
-The current version for the Postal configuration file is `2`. This is shown by the `version: 2` in the configuration file itself.
-
-Postal still supports the version 1 (or legacy) configuration format from  Postal v2 and earlier. If you are using this config file, you will  receive a warning in the logs when starting Postal. We recommend  changing your configuration to follow the new v2 format which is  documented above.
-
-The key differences between v1 and v2 configuration is shown below.
-
-- `web.host` changes to `postal.web_hostname`
-- `web.protocol` changes to `postal.web_protocol`
-- `web_server.port` changes to `web_server.default_port`
-- `web_server.bind_address` changes to `web_server.default_bind_address`
-- `smtp_server.port` changes to `smtp_server.default_port`
-- `smtp_server.bind_address` changes to `smtp_server.default_bind_address`
-- `dns.return_path` changes to `dns.return_path_domain`
-- `dns.smtp_server_hostname` changes to `postal.smtp_hostname`
-- `general.use_ip_pools` changes to `postal.use_ip_pools`
-- `general.*` changes to various new names under the `postal.` namespace
-- `smtp_relays` changes to `postal.smtp_relays` and now uses an array of strings which should be in the format of `smtp://{host}:{port}?ssl_mode={mode}`
-- `logging.graylog.*` changes to `gelf.*`
+有相当多的区域可以配置。
 
 
 
+您可以查看所有可用的配置选项。
+
+- 完整的 `Postal` 配置文件 - 这是一个示例配置文件，其中包含所有配置选项及其默认值和描述。
+
+  此文件通常存在于 `/opt/postal/config/postal.yml` 中。
+
+- 所有环境变量 - 此页面列出了所有环境变量。
+
+  配置文件中可以设置的所有配置也可以由环境变量设置。
+
+```
+注意：如果更改任何配置，则应确保重新启动 Postal
+```
 
 
-## DNS configuration
 
-To work properly, you'll need to configure a number of DNS records for  your Postal installation. Review the table below and create appropriate  DNS records with your DNS provider. You will need to enter the record  names you choose in your `postal.yml` configuration file.
+### 端口和绑定地址
 
-We'll assume for the purposes of this documentation you have both IPv4 and  IPv6 available to your server. We'll use the following values in this  documentation, you'll need to replace them as appropriate.
+`Web` 和 `SMTP` 服务器侦听端口和地址。
 
-- `192.168.1.3` - IPv4 address
-- `2a00:1234:abcd:1::3` - IPv6 address
-- `postal.example.com` - the hostname you wish to use to run Postal
+这些端口的默认值可以通过配置进行设置，但是，如果您在单个主机上运行多个实例，则需要为每个实例指定不同的端口。
 
-### A Records
 
-You'll need these records for accessing the API, management interface & SMTP server.
 
-| Hostname           | Type | Value                 |
-| ------------------ | ---- | --------------------- |
-| postal.example.com | A    | `192.168.1.3`         |
-| postal.example.com | AAAA | `2a00:1234:abcd:1::3` |
+您可以使用 `PORT` 和 `BIND_ADDRESS` 环境变量为这些进程提供特定于实例的值。
 
-### SPF Record
 
-You can configure a global SPF record for your mail server which means  domains don't need to each individually reference your server IPs. This  allows you to make changes in the future.
 
-| Hostname               | Type | Value                                                 |
-| ---------------------- | ---- | ----------------------------------------------------- |
-| spf.postal.example.com | TXT  | `v=spf1 ip4:192.168.1.3 ip6:2a00:1234:abcd:1::3 ~all` |
+### 旧配置
 
-You may wish to replace `~all` with `-all` to make the SPF record stricter.
+`Postal` 配置文件的当前版本是 `2` 。
 
-### Return Path
+这在配置文件本身中显示为 `version: 2` 。
 
-The return path domain is the default domain that is used as the `MAIL FROM` for all messages sent through a mail server. You should add DNS records as below.
 
-| Hostname                                | Type | Value                                             |
-| --------------------------------------- | ---- | ------------------------------------------------- |
-| rp.postal.example.com                   | MX   | `10 postal.example.com`                           |
-| rp.postal.example.com                   | TXT  | `v=spf1 a mx include:spf.postal.example.com ~all` |
-| postal._domainkey.rp.postal.example.com | TXT  | Value from `postal default-dkim-record`           |
 
-### Route domain
+`Postal` 仍支持 `Postal` `v2` 及更早版本中的版本 `1`（或旧版）配置格式。
 
-If you wish to receive incoming e-mail by forwarding messages directly to  routes in Postal, you'll need to configure a domain for this just to  point to your server using an MX record.
+如果您使用的是此配置文件，则在启动 `Postal` 时，您将在日志中收到警告。
 
-| Hostname                  | Type | Value                   |
-| ------------------------- | ---- | ----------------------- |
-| routes.postal.example.com | MX   | `10 postal.example.com` |
+我们建议更改配置以遵循上面介绍的新 `v2` 格式。
 
-### Example Postal Configuration
 
-In your `postal.yml` you should have something that looks like the below to cover the key DNS records.
+
+`v1` 和 `v2` 配置之间的主要区别如下所示。
+
+- `web.host` 更改为 `postal.web_hostname`
+- `web.protocol` 更改为 `postal.web_protocol`
+- `web_server.port `更改为 `web_server.default_port`
+- `web_server.bind_address` 更改为 `web_server.default_bind_address`
+- `smtp_server.port` 更改为 `smtp_server.default_port`
+- `smtp_server.bind_address` 更改为 `smtp_server.default_bind_address`
+- `dns.return_path `更改为 `dns.return_path_domain`
+- `dns.smtp_server_hostname `更改为 `postal.smtp_hostname`
+- `general.use_ip_pools` 更改为 `postal.use_ip_pools`
+- `general.*` 对命名空间 `postal` 下各种新名称的更改
+- `smtp_relays` 更改为 `postal.smtp_relays` 并且现在使用字符串数组，其格式应为 `smtp://{host}:{port}?ssl_mode={mode}`
+- `logging.graylog.*` 更改为 `gelf.*`
+
+
+
+
+
+## DNS 配置
+
+若要正常工作，需要为 `Postal` 安装配置大量 `DNS` 记录。
+
+查看下表，并与 `DNS` 提供商一起创建相应的 `DNS` 记录。
+
+您需要在配置文件 `postal.yml` 中输入您选择的记录名称。
+
+
+
+在本文档中，我们假设您的服务器同时拥有 `IPv4` 和 `IPv6` 。
+
+我们将在本文档中使用以下值，您需要根据需要替换它们。
+
+- `192.168.1.3` - `IPv4` 地址
+- `2a00:1234:abcd:1::3` - `IPv6` 地址
+- `postal.example.com` - 您希望用于运行 `Postal` 的主机名
+
+
+
+### A 记录
+
+您将需要这些记录来访问 `API` 、管理界面和 `SMTP` 服务器。
+
+| 主机名               | 类型   | 记录值                |
+| -------------------- | ------ | --------------------- |
+| `postal.example.com` | `A`    | `192.168.1.3`         |
+| `postal.example.com` | `AAAA` | `2a00:1234:abcd:1::3` |
+
+
+
+### SPF 记录
+
+您可以为邮件服务器配置全局 `SPF` 记录，这意味着域不需要每个域单独引用您的服务器 `IP` 。
+
+这允许您在将来进行更改。
+
+| 主机名                   | 类型  | 记录值                                                |
+| ------------------------ | ----- | ----------------------------------------------------- |
+| `spf.postal.example.com` | `TXT` | `v=spf1 ip4:192.168.1.3 ip6:2a00:1234:abcd:1::3 ~all` |
+
+```
+您可能希望将 ~all 替换为 -all 以使 SPF 记录更严格。
+```
+
+
+
+### 返回路径
+
+返回路径域是默认域，用作 `MAIL FROM` 通过邮件服务器发送的所有邮件的域。
+
+您应该按如下方式添加 `DNS` 记录。
+
+| 主机名                                    | 类型  | 记录值                                            |
+| ----------------------------------------- | ----- | ------------------------------------------------- |
+| `rp.postal.example.com`                   | `MX`  | `10 postal.example.com`                           |
+| `rp.postal.example.com`                   | `TXT` | `v=spf1 a mx include:spf.postal.example.com ~all` |
+| `postal._domainkey.rp.postal.example.com` | `TXT` | 值从 `postal default-dkim-record`                 |
+
+
+
+### 路由域
+
+如果您希望通过将邮件直接转发到 `Postal` 路由来接收传入电子邮件，则需要为此配置一个域，以便使用 `MX` 记录指向您的服务器。
+
+| 主机名                      | 类型 | 记录值                  |
+| --------------------------- | ---- | ----------------------- |
+| `routes.postal.example.com` | `MX` | `10 postal.example.com` |
+
+
+
+### Postal 配置示例
+
+在您的 `postal.yml` 中，您应该有如下所示的内容来涵盖关键的 `DNS` 记录。
 
 ```yaml
 dns:
@@ -553,106 +650,185 @@ dns:
 
 
 
-## Upgrading to v3
 
-If you are currently running a version of Postal less than 2.0.0, you should upgrade to v2 before v3.
 
-Postal v3 was released in March 2024 and introduced some changes to way that  Postal runs. The noteable changes between v2 and v3 are as follows:
+## 升级到 v3
 
-- No need to use RabbitMQ.
-- No need to run `cron` or `requeuer` processes.
-- Improved logging.
-- Improve configuration management (including the ability to configure with environment variables or a config file).
+```
+如果您当前运行的 Postal 版本低于 2.0.0，则应先升级到 v2，然后再升级到 v3。
+```
 
-### Database considerations
 
-It is important that any pre-existing tables in your database are set up with the `DYNAMIC` row format. If not, you may receive errors during the database migrations. This has been the default since MariaDB 10.2.1.
 
-You can check the format of your tables using `SHOW TABLE STATUS FROM postal`. If you have tables which are incorrect, you can change them with the following:
+`Postal` `v3` 于 `2024` 年 `3` 月发布，对 `Postal` 的运行方式进行了一些更改。
+
+`v2` 和 `v3` 之间的显著变化如下：
+
+- 无需使用 `RabbitMQ`
+- 无需运行 `cron` 或 `requeuer` 进程
+- 改进了日志记录
+- 改进配置管理（包括使用环境变量或配置文件进行配置的能力）
+
+
+
+### 数据库注意事项
+
+数据库中任何预先存在的表都必须使用 `DYNAMIC` 行格式进行设置，这一点很重要。
+
+否则，您可能会在数据库迁移过程中收到错误。
+
+这是自 `MariaDB` `10.2.1` 以来的默认设置。
+
+
+
+您可以使用 `SHOW TABLE STATUS FROM postal` 检查表的格式。
+
+如果您的表不正确，可以使用以下命令进行更改：
 
 ```sql
 ALTER TABLE `table_name` ROW_FORMAT=DYNAMIC;
 ```
 
-### Upgrading
 
-To upgrade, you can follow the same instructions as provided on the [upgrade page](https://docs.postalserver.io/getting-started/upgrading)
 
-### Configuration
+### 升级
 
-Postal v3 introduces a new format for its configuration file. An example of the full, new, configuration file format [can be found in our repository](https://github.com/postalserver/postal/blob/main/doc/config/yaml.yml).
+要升级，您可以按照升级页面上提供的相同说明进行操作。
 
-While v3 is still compatible with configuration from earlier versions but you should change your configuration to the new format to ensure continued  compatibility. Any newly added configuration options are not available  in the v1 configuration format.
+
+
+### 配置
+
+`Postal` `v3` 为其配置文件引入了一种新格式。
+
+可以在我们的存储库中找到完整的新配置文件格式的示例。
+
+
+
+虽然 `v3` 仍与早期版本的配置兼容，但应将配置更改为新格式以确保持续兼容。
+
+任何新添加的配置选项在 `v1` 配置格式中都不可用。
+
+
 
 ### RabbitMQ
 
-Once you have upgraded to v3, you can remove any RabbitMQ services you have that solely support your Postal installation.
-
-### Cron & Requeuer Processes
-
-These processes are not required in Postal v3 and should not be running.
+升级到 `v3` 后，您可以删除仅支持 `Postal` 安装的任何 `RabbitMQ` 服务。
 
 
 
+### Cron & Requeuer 进程
+
+这些进程在 `Postal` `v3` 中不是必需的，也不应运行。
 
 
-## Upgrading to v2
 
-In July 2021, we changed the way that Postal is installed. The only  supported method for installing Postal is now using a container that we  provide. You can follow these instructions to upgrade your 1.x  installation to use containers.
 
-### How do I know if I'm using Postal v1?
 
-There are a few changes between the two versions which should help identify your version.
+## 升级到 v2
 
-- The Postal web interface now has a footer on all pages (except the login  page) which show the current version. If you have no footer, you're not  using Postal v2.
-- If you installed Postal without using containers, you are most likely using Postal v1.
-- If you run `ps aux | grep procodile` and get any results, you are using Postal v1.
-- If you run `docker ps` and get no results, you are using Postal v1.
-- If you installed Postal before July 2021, you are using Postal v1.
-- If you have an `/opt/postal/app` directory you are using Postal v1 (or you have already upgraded to Postal v2 but not tidied up).
+`2021` 年 `7` 月，我们更改了 `Postal` 的安装方式。
 
-### Assumptions
+安装 `Postal` 的唯一支持方法是现在使用我们提供的容器。
 
-For the purposes of this guide, we're going to make some assumptions about  your installation. If any of these assumptions are not true, you will  need to determine the appropriate route for you to upgrade.
+您可以按照以下说明升级 `1.x` 安装以使用容器。
 
-- You have Postal installed on a single server.
-- Your server has a MariaDB (or MySQL) database server running on it and listening port 3306.
-- Your server has a RabbitMQ server running on it and listening on port 5672.
-- Your current installation is located at `/opt/postal` and your configuration is in `/opt/postal/config`.
-- You use a web proxy (such as nginx, Caddy or Apache) in front of the Postal web server.
 
-Performing this upgrade will mean that your Postal services will be unavailable  for a short period of time. We recommend scheduling some maintenance and performing the upgrade when traffic is low.
 
-### Preparation
+### 我如何知道我是否在使用 `Postal` `v1`？
 
-There are a few extra system dependencies that you need to install.
+两个版本之间有一些更改，这应该有助于识别您的版本。
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [docker-compose](https://docs.docker.com/compose/install/)
+- `Postal` `Web` 界面现在在所有页面（登录页面除外）上都有一个页脚，显示当前版本。
 
-**Important:** use the latest versions of these rather than simply just installing the latest package available from your operating system vendor's  repositories. Instructions are linked above.
+  如果没有页脚，则表示您没有使用 `Postal` `v2` 。
 
-If you're running  an old or unsupported version of your operating system, you may wish to  use this as an opportunity to upgrade. The method for doing so is  outside of the scope of this documentation.
+- 如果在不使用容器的情况下安装了 `Postal` ，则很可能使用的是 `Postal` `v1` 。
 
-### Stopping Postal
+- 如果运行 `ps aux | grep procodile` 并可获得任何结果，则您使用的是 `Postal` `v1` 。
 
-Start by stopping the Postal processes using `postal stop`.
+- 如果运行 `docker ps` 但未获得任何结果，则使用的是 `Postal` `v1` 。
 
-### Configuring web proxy for open/click tracking
+- 如果您在 `2021` 年 `7` 月之前安装了 `Postal` ，则您使用的是 `Postal` `v1` 。
 
-In Postal 2.x onwards, we no longer provide a dedicated server process for serving requests for open & click tracking. If you don't use this,  you can skip to the next section. However, if you do, you need to add  some configuration to your web proxy and issue some SSL certificates.
+- 如果您有一个目录 `/opt/postal/app` ，您正在使用 `Postal` `v1`（或者您已经升级到 `Postal` `v2` 但尚未整理）。
 
-For all the **Tracking Domains** that you have configured (for example `track.yourdomain.com`) you will need to do the following:
 
-1. Configure a virtual host in your web proxy to route all requests for each  tracking domain to the Postal web server (on port 5000).
-2. Ensure that all requests going through the proxy have the `X-Postal-Track-Host: 1` header.
-3. Issue an SSL certificate for all these hosts.
-4. Ensure that your web proxy is listening on the IP address that you previously used for the Postal `fast_server`.
-5. As there is no longer a requirement for Postal to have two IP addresses,  you can update all your DNS records that reference your secondary IP to  point to the main IP that you use for Postal.
 
-### Checking configuration
+### 假设
 
-Your existing configuration for Postal can remain in the same place as it was before at `/opt/postal/config`. If you have referenced any other files in your `postal.yml`, you will need to ensure that these files are within the `/opt/postal/config` folder and you replace the path with `/config`. For example, if you have this:
+出于本指南的目的，我们将对您的安装做出一些假设。
+
+如果这些假设中的任何一个都不成立，则需要确定适当的升级路线。
+
+- 您已在单个服务器上安装了 `Postal` 。
+- 您的服务器上运行着 `MariaDB`（或 `MySQL` ）数据库服务器，并侦听端口 `3306` 。
+- 您的服务器上运行着一个 `RabbitMQ` 服务器，并侦听端口 `5672` 。
+- 您当前的安装位于 `/opt/postal` 中，您的配置位于 `/opt/postal/config` 中。
+- 您在 `Postal` `Web` 服务器前面使用 `Web` 代理（例如 `nginx` 、 `Caddy` 或 `Apache` ）。
+
+```
+执行此升级将意味着您的 Postal 服务将在短时间内不可用。
+我们建议安排一些维护，并在流量较低时执行升级。
+```
+
+
+
+### 预备
+
+您需要安装一些额外的系统依赖项。
+
+- Docker
+- docker-compose
+
+```
+重要提示：使用这些软件的最新版本，而不仅仅是安装操作系统供应商存储库中提供的最新软件包。
+说明请参考前面链接。
+```
+
+
+
+如果您运行的是旧版本或不受支持的操作系统版本，您可能希望利用此机会进行升级。
+
+执行此操作的方法超出了本文档的范围。
+
+
+
+### 停止 Postal
+
+首先使用 `postal stop` 停止 `Postal` 进程。
+
+
+
+### 配置用于打开/单击跟踪的 Web 代理
+
+在 `Postal` `2.x` 中，我们不再提供专用的服务器进程来处理打开和点击跟踪的请求。
+
+如果不使用此功能，可以跳到下一部分。
+
+但是，如果这样做，则需要向 `Web` 代理添加一些配置并颁发一些 `SSL` 证书。
+
+
+
+对于您配置的所有**跟踪域**（例如 `track.yourdomain.com` ），您需要执行以下操作：
+
+1. 在 `Web` 代理中配置虚拟主机，以将每个跟踪域的所有请求路由到 `Postal` `Web` 服务器（在端口 `5000` 上）。
+2. 确保通过代理的所有请求都具有 `X-Postal-Track-Host: 1` 标头。
+3. 为所有这些主机颁发 `SSL` 证书。
+4. 确保您的 `Web` 代理正在侦听您之前用于 `Postal` `fast_server` 的 `IP` 地址。
+5. 由于 `Postal` 不再需要有两个 `IP` 地址，因此您可以更新引用辅助 `IP` 的所有 `DNS` 记录，以指向用于 `Postal` 的主 `IP` 。
+
+
+
+### 检查配置
+
+您现有的 `Postal` 配置可以保留在与 `/opt/postal/config` 之前相同的位置。
+
+如果您引用了 `postal.yml` 中的任何其他文件，则需要确保这些文件位于 `/opt/postal/config` 文件夹中，并将路径替换为 `/config` 。
+
+
+
+例如，如果您有以下内容：
 
 ```yaml
 smtp_server:
@@ -661,7 +837,9 @@ smtp_server:
   tls_private_key_path: /opt/postal/config/smtp.key
 ```
 
-You will need to update `/opt/postal/config` to `/config` as follows:
+
+
+您需要将 `/opt/postal/config` 更新为 `/config` ，如下：
 
 ```yaml
 smtp_server:
@@ -670,38 +848,58 @@ smtp_server:
   tls_private_key_path: /config/smtp.key
 ```
 
-**Important:** if you have referenced files in other parts of your operating system (such as in `/etc`), you must ensure these are now within the `/opt/postal/config` directory otherwise they won't be available within the container that Postal runs within.
+```
+重要提示：如果您在操作系统的其他部分（例如 /etc 中）引用了文件，则必须确保这些文件现在位于目录 /opt/postal/config 中，否则它们在 Postal 运行的容器中将不可用。
+```
 
-### Removing the old Postal helper script
 
-Run the following command to backup the old Postal helper script.
+
+### 删除旧的 Postal 帮助程序脚本
+
+运行以下命令以备份旧的 `Postal` 帮助程序脚本。
 
 ```
 mv /usr/bin/postal /usr/bin/postal.v1
 ```
 
-### Installing Postal v2
 
-The next thing to do is to download the new Postal installation helpers repo and set up the new `postal` command.
+
+### 安装 Postal v2
+
+接下来要做的是下载新的 `Postal` 安装帮助程序存储库并设置新 `postal` 命令。
 
 ```
 git clone https://github.com/postalserver/install /opt/postal/install
 sudo ln -s /opt/postal/install/bin/postal /usr/bin/postal
 ```
 
-Next, run a normal upgrade using the new Postal  command line helper. This will run a new image to upgrade your database  schema to that required for Postal v2.
+
+
+接下来，使用新的 `Postal` 命令行帮助程序运行正常升级。
+
+这将运行一个新镜像，将数据库架构升级到 `Postal` `v2` 所需的架构。
 
 ```
 postal upgrade
 ```
 
-Finally, you can start the Postal components.
+
+
+最后，您可以启动 `Postal` 组件。
 
 ```
 postal start
 ```
 
-You should now find that Postal is running again and working as normal. Confirm that all process types are running using `postal status`. Your output should look like this:
+
+
+您现在应该会发现 `Postal` 再次运行并正常工作。
+
+使用  `postal status` 确认所有进程类型都在运行。
+
+
+
+输出应如下所示：
 
 ```
       Name                     Command               State   Ports
@@ -713,13 +911,19 @@ postal_web_1        /docker-entrypoint.sh post ...   Up
 postal_worker_1     /docker-entrypoint.sh post ...   Up
 ```
 
-### A note about SMTP ports
 
-If you were previously running the Postal SMTP server on any port other  than 25, you can revert this configuration and have Postal listen on  this port directly. To do this, you can remove any `iptables` rules you might have and update your `postal.yml` with the new port number.
 
-### Rolling back
+### 有关 SMTP 端口的说明
 
-If something goes wrong and you need to rollback to the previous version you can still do that by reverting the `postal` helper and starting it again.
+如果预先在 `25` 以外的任何端口上运行 `Postal` `SMTP` 服务器，则可以还原此配置并让 `Postal` 直接侦听此端口。
+
+为此，您可以删除可能拥有的任何 `iptables` 规则，并使用新的端口号更新您的 `postal.yml` 。
+
+
+
+### 回滚
+
+如果出现问题并且需要回滚到以前的版本，您仍然可以通过恢复 `postal` 帮助程序并重新启动它来执行此操作。
 
 ```
 postal stop
@@ -728,30 +932,55 @@ mv /usr/bin/postal.v1 /usr/bin/postal
 postal start
 ```
 
-### Tidying up
 
-When you're happy that everything is running nicely, there are some final things you should do:
 
-- Remove `/opt/postal/app`. This is where the application itself lived and is no longer required.
-- Remove `/opt/postal/log`. Logs are no longer stored here.
-- Remove `/opt/postal/vendor`. This is no longer used.
-- Remove the backup Postal helper tool from `/usr/bin/postal.v1`.
-- If you changed any tracking domains to use your main IP address, you can  remove the additional IP from the server after checking that all DNS  updates have applied.
+### 整理
 
-### Installing on a new server with existing data
+当您对一切运行良好感到满意时，您应该做一些最后的事情：
 
-If you want to simply install Postal on a new server and copy your data over, you can do so by following these instructions.
+- 删除 `/opt/postal/app` 。这是应用程序本身所在的位置，不再需要。
+- 删除 `/opt/postal/log` 。此处不再存储日志。
+- 删除 `/opt/postal/vendor` 。这不再使用。
+- 从 `/usr/bin/postal.v1` 中删除备份 `Postal` 帮助程序工具。
+- 如果您更改了任何跟踪域以使用您的主 `IP` 地址，则可以在检查是否应用了所有 `DNS` 更新后从服务器中删除其他 `IP` 。
 
-1. Create your new server and follow the instructions for installing Postal. You should have a working installation at this point.
-2. On your old server, stop Postal using `postal stop`. Make sure it has fully stopped before continuing using `postal status`.
-3. On your new server, stop Postal using `postal stop`.
-4. Use whatever tool takes your fancy (`mysqldump`, `Mariabackup` etc...) to copy your databases to your new server. Make sure you copy the `postal` database as well as all other databases prefixed with `postal` (or whatever you have configured your prefix to be in the `message_db` part of your configuration).
-5. On your new server, run `postal upgrade-db` to update the copied database with the changed table structures
-6. Ensure that your `postal.yml` is merged appropriately. For example, make sure your `dns` section is correct. There is no need to copy the `rails.secret` - a new secret on the new host won't be a problem.
-7. If you stopped Postal cleanly before beginning, there is no need to copy any persisted data from RabbitMQ.
-8. Shutdown your old Postal server.
-9. Move the IP address(es) from the old server to the new one (if both old and new servers are with the same provider).
-10. Start Postal on the new server using `postal start`.
+
+
+### 使用现有数据在新服务器上安装
+
+如果您只想在新服务器上安装 `Postal` 并复制数据，您可以按照以下说明进行操作。
+
+1. 创建新服务器，并按照说明安装 `Postal` 。
+
+   此时，您应该有一个有效的安装。
+
+2. 在旧服务器上，使用 `postal stop` 停止 `Postal` 。
+
+3. 在继续使用 `postal status` 之前，请确保它已完全停止。
+
+   在新服务器上，使用 `postal stop` 停止 `Postal` 。
+
+4. 使用任何您喜欢的工具（ `mysqldump` 、 `Mariabackup` 等）将数据库复制到新服务器。
+
+   确保复制 `postal` 数据库以及所有其他 `postal` 为前缀的数据库（或已将前缀配置为 `message_db` 配置部分的任何内容）。
+
+5. 在新服务器上，运行 `postal upgrade-db` 以使用更改的表结构更新复制的数据库。
+
+6. 确保 `postal.yml` 正确合并。
+
+   例如，确保您的 `dns` 部分是正确的。
+
+   无需复制 `rails.secret` - 新主机上的新密钥不会有问题。
+
+7. 如果在开始之前完全停止了 Postal，则无需从 RabbitMQ 复制任何持久化数据。
+
+8. 关闭旧的邮政服务器。
+
+9. 将 IP 地址从旧服务器移动到新服务器（如果旧服务器和新服务器都使用同一提供商）。
+
+10. 使用 在新服务器上启动 Postal。`postal start`
+
+
 
 
 
