@@ -2138,51 +2138,75 @@ openssl genrsa -out path/to/signing.key 2018
 
 
 
-## Debugging
+## 调试
 
-This page contains information on how to identify problems with your installation.
+本页包含有关如何识别安装问题的信息。
 
 
 
 ### DNS
 
-Whilst Postal can verify DNS records on its own, it can be useful to check what the rest of the internet is seeing.
+虽然 `Postal` 可以自行验证 `DNS` 记录，但检查互联网其余部分所看到的内容这一项可能很有用。
 
-You can make use of [Whats My DNS](https://whatsmydns.net) for a quick global check or the `dig` command if you have it on a terminal, i.e. `dig txt yourdomain.com` or `dig a yourdomain.com`.
+您可以使用 `Whats My DNS` 进行快速全局检查，或者使用终端上的 `dig` 命令，即 `dig txt yourdomain.com` 或 `dig a yourdomain.com` 。
 
 
 
 ### SMTP
 
-The quickest way to ensure the internet can connect to your Postal SMTP is with `telnet postal.yourdomain.com 25`. You can proceed to attempt sending a message manually if you are  familiar with the raw SMTP commands to further verify your Postal  installation is working correctly.
+确保互联网可以连接到您的 `Postal`  `SMTP` 的最快方法是使用 `telnet postal.yourdomain.com 25` 。
+
+如果您熟悉原始 `SMTP` 命令，则可以继续尝试手动发送邮件，以进一步验证您的 `Postal` 安装是否正常工作。
 
 
 
 #### SMTP SSL
 
-If you aren't sure about whether the SSL certificate you have provided to Postal is set up correctly you can use `openssl s_client -connect postal.yourdomain.com:25 -starttls smtp` to get some information about your certificate from the point of view of SMTP.
+如果您不确定提供给 `Postal` 的 `SSL` 证书是否设置正确，则可以使用 `openssl s_client -connect postal.yourdomain.com:25 -starttls smtp` 从 `SMTP` 的角度获取有关证书的一些信息。
 
 
 
-## Wildcards & Address Tags
+## 通配符和地址标签
 
-Postal supports the use of wildcards and address tags in routes.
-
-
-
-### Using a wildcard
-
-Wildcards will allow you to receive all e-mail for every address on a domain.  However, for most use cases, this isn't recommended because it means  that large volumes of spam may be processed by your mail server that  would otherwise have been rejected by Postal without troubling you.
-
-Just enter `*` in the name box to create a route for this.
+`Postal` 支持在路由中使用通配符和地址标签。
 
 
 
-### Using address tags
+### 使用通配符
 
-Postal supports the use of "tags" on e-mail addresses which means you can add a single route but still receive from multiple addresses. For example, if you add a route for `email` you will also receive messages for `email+anything@yourdomain.com` without any additional configuration.
+通配符将允许您接收域上每个地址的所有电子邮件。
+
+但是，对于大多数用例，不建议这样做，因为这意味着您的邮件服务器可能会处理大量垃圾邮件，否则这些垃圾邮件会被 `Postal` 拒绝而不会给您带来麻烦。
+
+
+
+只需在名称框中输入 `*` 即可为此创建路由。
+
+
+
+### 使用地址标签
+
+`Postal` 支持在电子邮件地址上使用“标签”，这意味着您可以添加单个路由，但仍可以从多个地址接收。
+
+例如，如果您添加了 `email` 一个路由，您还将收到 `email+anything@yourdomain.com` 的消息，而无需任何其他配置。
 
 
 
 aaaaaaaaaaaaaa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
