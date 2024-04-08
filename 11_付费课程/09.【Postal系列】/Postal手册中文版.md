@@ -2120,11 +2120,19 @@ openssl genrsa -out path/to/signing.key 2018
 
 
 
-## [等待服务](https://docs.postalserver.io/other/containers#waiting-for-services)
+### 等待服务
 
-容器的入口点支持在启动基础进程之前等待外部服务准备就绪。要使用它，您需要使用服务和端口列表设置环境变量。例如，替换为 MariaDB 服务器的主机名或 IP。您可以通过用空格分隔多个终结点来指定它们。`WAIT_FOR_TARGETS``mariadb:3306``mariadb`
+容器的入口点支持在启动基础进程之前等待外部服务准备就绪。
 
-默认的最长等待时间为 30 秒，您可以使用环境变量覆盖此时间。`WAIT_FOR_TIMEOUT`
+要使用它，您需要使用服务和端口列表设置环境变量 `WAIT_FOR_TARGETS` 。
+
+例如 `mariadb:3306` ，替换 `mariadb` 为 `MariaDB` 服务器的主机名或 `IP` 。
+
+您可以通过用空格分隔多个端点来指定它们。
+
+
+
+默认的最长等待时间为 `30` 秒，您可以使用环境变量 `WAIT_FOR_TIMEOUT` 覆盖此时间。
 
 
 
