@@ -1,8 +1,14 @@
-Postal手册英文版
 
 
 
 
+
+
+## Postal User Manual Chinese Version
+
+![](E:/Writing/11_付费课程/05.【Putty系列】/qrcode.png)
+
+**Author：网管小贾 / sysadm.cc (8/4/2024)**
 
 
 
@@ -1624,3 +1630,24 @@ Postal supports the use of "tags" on e-mail addresses which means you can add a 
 
 网管小贾 / sysadm.cc
 
+
+
+
+
+
+
+
+
+
+
+![](E:/Writing/11_付费课程/09.【Postal系列】/donate.png)
+
+**来杯冰阔落，扫码捐赠网管小贾~**
+
+
+
+![](E:/Writing/11_付费课程/09.【Postal系列】/qrcode.png)
+
+**扫码关注微信公众号@网管小贾，个人微信：sysadmcc**
+
+网管小贾 / sysadm.cc

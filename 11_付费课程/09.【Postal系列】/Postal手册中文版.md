@@ -1,4 +1,14 @@
-Postal手册中文版
+
+
+
+
+## Postal 用户手册中文版
+
+### Postal User Manual Chinese Version
+
+![](E:/Writing/11_付费课程/05.【Putty系列】/qrcode.png)
+
+**作者：网管小贾 / sysadm.cc (2024年4月8日)**
 
 
 
@@ -2203,6 +2213,18 @@ aaaaaaaaaaaaaa
 
 
 
+
+![](./donate.png)
+
+**来杯冰阔落，扫码捐赠网管小贾~**
+
+
+
+![](./qrcode.png)
+
+**扫码关注微信公众号@网管小贾，个人微信：sysadmcc**
+
+网管小贾 / sysadm.cc
 
 
 
