@@ -2025,52 +2025,100 @@ postal start
 
 
 
-## [需要运行哪些流程？](https://docs.postalserver.io/other/containers#what-processes-need-to-run)
+### 需要运行哪些进程？
 
-要成功安装 Postal，需要运行 3 个进程。所有进程都在同一映像 （） 中运行。下表列出了这些过程。`ghcr.io/postalserver/postal`
+要成功安装 `Postal` ，需要运行 `3` 个进程。
 
-### [Web 服务器](https://docs.postalserver.io/other/containers#the-web-server)
+所有进程都在同一镜像 （ `ghcr.io/postalserver/postal` ） 中运行。
+
+下表列出了这些进程。
+
+
+
+#### Web 服务器
 
 - **命令：** `postal web-server`
-- **端口数：**5000
+- **端口：** `5000`
 
-这是处理 Postal 管理界面和打开/单击跟踪请求的所有 Web 流量的主要 Web 服务器。默认情况下，它侦听端口 5000，但可以通过更改选项或设置环境变量在文件中进行配置。`postal.yml``web_server.default_port``PORT`
 
-您可以运行多个 Web 服务器并在它们之间进行负载平衡，以便为 Web 请求添加额外的容量。
 
-### [SMTP 服务器](https://docs.postalserver.io/other/containers#the-smtp-server)
+这是处理 `Postal` 管理界面和打开/单击跟踪请求的所有 `Web` 流量的主要 `Web` 服务器。
+
+默认情况下，它侦听端口 `5000` ，但可以在文件 `postal.yml` 中通过更改选项  `web_server.default_port`  或设置环境变量 `PORT` 进行配置。
+
+
+
+您可以运行多个 `Web` 服务器并在它们之间进行负载平衡，以便为 `Web` 请求添加额外的容量。
+
+
+
+#### SMTP 服务器
 
 - **命令：** `postal smtp-server`
-- **端口：**25
-- **所需功能：** `NET_BIND_SERVICE`
+- **端口：** `25`
+- **所需功能：**  `NET_BIND_SERVICE`
 
-这是用于接收来自客户端和其他 MTA 的邮件的主要 SMTP 服务器。与 Web 服务器一样，您可以通过更改配置文件中的选项或设置环境变量来将其配置为在任何端口上运行。`smtp_server.default_port``postal.yml``PORT`
 
-您可以运行多个 SMTP 服务器并在它们之间进行负载平衡，以便为 SMTP 连接添加额外的容量。
 
-### [工人](https://docs.postalserver.io/other/containers#the-workers)
+这是用于接收来自客户端和其他 `MTA` 的邮件的主要 `SMTP` 服务器。
+
+与 `Web` 服务器一样，您可以通过更改配置文件 `postal.yml` 中的选项 `smtp_server.default_port` 或设置环境变量 `PORT` 来将其配置为在任何端口上运行。
+
+
+
+您可以运行多个 `SMTP` 服务器并在它们之间进行负载平衡，以便为 `SMTP` 连接添加额外的容量。
+
+
+
+#### 工作线程
 
 - **命令：** `postal worker`
 
-这将运行一个工作线程，该工作线程将从消息队列接收作业。从本质上讲，这处理所有传入和传出电子邮件。如果您需要处理大量电子邮件，您可能希望运行其中的多个电子邮件。您可以根据需要运行任意数量的这些。
-
-## [配置](https://docs.postalserver.io/other/containers#configuration)
-
-该映像要求所有配置都挂载到 。此目录至少必须包含 a 和 .您可以在[安装工具存储库](https://github.com/postalserver/install/blob/main/examples/postal.v3.yml)中看到一个最小的示例。有关完整示例，[请参阅此处](https://github.com/postalserver/postal/blob/main/doc/config/yaml.yml)。`/config``postal.yml``signing.key``postal.yml`
-
-可以使用以下命令生成：`signing.key`
 
 
+这将运行一个工作线程，该工作线程将从消息队列接收作业。
+
+从本质上讲，这将处理所有传入和传出电子邮件。
+
+如果您需要处理大量电子邮件，您可能希望运行其中的多个电子邮件。
+
+您可以根据需要运行任意数量。
+
+
+
+### 配置
+
+该镜像要求所有配置都挂载到 `/config` 。
+
+此目录至少必须包含一个 `postal.yml` 和 `signing.key` 。
+
+您可以在安装工具存储库中看到一个最小的 `postal.yml` 示例。
+
+有关完整示例，请参阅此处。
+
+> https://github.com/postalserver/postal/blob/main/doc/config/yaml.yml
+
+
+
+signing.key` 可以使用以下命令生成：`
 
 ```
 openssl genrsa -out path/to/signing.key 2018
 ```
 
-## [联网](https://docs.postalserver.io/other/containers#networking)
 
-如果希望利用 IP 池，则需要使用主机网络运行 Postal。这是因为 Postal 需要能够确定哪些物理 IP 可供其使用，并能够在这些 IP 上发送和接收流量。
 
-如果不使用 IP 池，则无需使用主机网络，可以根据需要公开上面列出的端口。
+### 网络主机
+
+如果希望利用 `IP` 池，则需要使用网络主机运行 `Postal` 。
+
+这是因为 `Postal` 需要能够确定哪些物理 `IP` 可供其使用，并能够在这些 `IP` 上发送和接收流量。
+
+
+
+如果不使用 IP 池，则无需使用网络主机，可以根据需要公开上面列出的端口。
+
+
 
 ## [等待服务](https://docs.postalserver.io/other/containers#waiting-for-services)
 
