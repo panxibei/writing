@@ -292,7 +292,9 @@ remove letter=X
 
 **HackBGRT安装包（含测试Logo及驱动证书）**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1_li5fIqpvdsfhJrPBYCTiQ
+
+提取码：bg26
 
 
 
