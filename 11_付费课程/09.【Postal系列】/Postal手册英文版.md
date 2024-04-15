@@ -95,6 +95,10 @@
 
 
 
+
+
+
+
 # Welcome
 
 ## Feature List
@@ -177,6 +181,20 @@ No. Postal is a mail transport agent and not a mailing list manager. We  don't w
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started
 
 ## Getting Started
@@ -220,6 +238,10 @@ Most people install Postal on virtual servers. There are lots of providers to ch
 One thing to be aware of is you'll need to ensure that your provider does  not block port 25 outbound. This is quite common and is used to prevent  abuse from spammers.
 
 It doesn't matter what operating system you  choose as long as you are able to install Docker on it (see next  section). Nothing in these instructions will make assumptions about your operating system.
+
+
+
+
 
 
 
@@ -764,9 +786,31 @@ If you want to simply install Postal on a new server and copy your data over, yo
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Features
 
-## Click & Open Tracking
+### Click & Open Tracking
 
 Postal supports tracking opens and clicks from e-mails. This allows you to see when people open messages or they click links within them.
 
@@ -1122,6 +1166,8 @@ You will need to run `postal restart` if you change the configuration or your ke
 
 
 
+
+
 ## Spam & Virus Checking
 
 Postal can integrate with SpamAssassin and ClamAV to automatically scan  incoming and outgoing messages that pass through mail servers.
@@ -1180,6 +1226,38 @@ You have three options which can be configured on a per route basis which define
 - **Mark** - messages will be sent through to your endpoint but the spam information will be made available to you.
 - **Quarantine** - the message will placed into your hold queue and you'll need to  release them if you wish them to be passed to your application. They  will only remain here for 7 days,
 - **Fail** - the message will be marked as failed and will only be recorded in your message history without being sent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1509,6 +1587,62 @@ Postal regularly monitors domains it knows about to ensure that your  SPF/DKIM/M
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Other Notes
 
 ## Auto-Responders & Bounces
@@ -1660,7 +1794,47 @@ Postal supports the use of "tags" on e-mail addresses which means you can add a 
 
 
 
-网管小贾 / sysadm.cc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
