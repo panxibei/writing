@@ -4,11 +4,27 @@
 
 
 
-## Postal User Manual Chinese Version
 
-![](E:/Writing/11_付费课程/05.【Putty系列】/qrcode.png)
+
+![](./00.JPG)
+
+## Postal User Manual English Version
+
+![](./qrcode.png)
 
 **Author：网管小贾 / sysadm.cc (8/4/2024)**
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,6 +81,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Welcome
 
 ## Feature List
@@ -99,6 +129,8 @@ This is a list of features (in no real particular order) of things that Postal c
 - Management of multiple pools of sending IP addresses.
 - Configure different senders or recipients to have mail delivered from certain IP addresses.
 - Mail tagging so certain e-mails can be given a tag to allow them to be grouped when needed. For example, you may tag `receipts` or `password-reset` e-mails as such.
+
+
 
 ### Incoming e-mails:
 
