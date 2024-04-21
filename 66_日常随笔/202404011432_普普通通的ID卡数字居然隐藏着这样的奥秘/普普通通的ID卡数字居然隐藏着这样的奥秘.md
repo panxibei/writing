@@ -164,7 +164,9 @@ C8,BC76 -> 200,48246
 
 **网管小贾的ID卡18位数字换算程序**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1VdxZh1Dc1ugC6OkfzivPtw
+
+提取码：zmxr
 
 
 
