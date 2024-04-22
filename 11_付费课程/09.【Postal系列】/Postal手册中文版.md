@@ -304,13 +304,13 @@
 
 在继续操作之前，请确保可以同时运行 `docker` 和 `docker compose` 。
 
+![](./下载/01.JPG)
+
 
 
 ### 系统实用程序
 
 在运行某些 `Postal` 命令之前，您需要安装一些系统实用程序。
-
-
 
 在 `Ubuntu/Debian` 上：
 
@@ -318,13 +318,15 @@
 apt install git curl jq
 ```
 
-
-
 在 `CentOS/RHEL` 上：
 
 ```
 yum install git curl jq
 ```
+
+![](./下载/02.JPG)
+
+![](./下载/03.JPG)
 
 
 
@@ -340,6 +342,10 @@ yum install git curl jq
 git clone https://github.com/postalserver/install /opt/postal/install
 sudo ln -s /opt/postal/install/bin/postal /usr/bin/postal
 ```
+
+![](./下载/05.JPG)
+
+![](./下载/06.JPG)
 
 
 
@@ -368,6 +374,12 @@ docker run -d \
    -e MARIADB_ROOT_PASSWORD=postal \
    mariadb
 ```
+
+![](./下载/07.JPG)
+
+![](./下载/08.JPG)
+
+
 
 - 这将运行一个 `MariaDB` 实例，并让它侦听端口 `3306` 。
 
@@ -409,6 +421,8 @@ docker run -d \
 postal bootstrap postal.yourdomain.com
 ```
 
+![](./下载/09.JPG)
+
 
 
 这将在 `/opt/postal/config` 中生成三个文件。
@@ -420,6 +434,10 @@ postal bootstrap postal.yourdomain.com
 
 
 以上文件一旦生成后，您应该打开 `/opt/postal/config/postal.yml` 并添加所有适当的安装值（比如数据库密码等）。
+
+![](./下载/10.JPG)
+
+
 
 ```
 请注意，docker 设置挂载 /opt/postal/config 为 /config ，因此 postal.yml 中提到的任何完整目录路径都可能需要以 /config 开头，而不是以 /opt/postal/config 开头。
@@ -438,6 +456,14 @@ postal initialize
 postal make-user
 ```
 
+![](./下载/11.JPG)
+
+![](./下载/12.JPG)
+
+![](./下载/13.JPG)
+
+![](./下载/14.JPG)
+
 
 
 ### 运行 Postal
@@ -450,11 +476,15 @@ postal make-user
 postal start
 ```
 
+![](./下载/15.JPG)
+
 
 
 这将在您的计算机上运行多个容器。
 
 您可以使用 `postal status` 来查看这些组件的详细信息。
+
+![](./下载/16.JPG)
 
 
 
@@ -476,11 +506,17 @@ docker run -d \
    caddy
 ```
 
+![](./下载/17.JPG)
+
 
 
 一旦开始，`Caddy` 将为您的域颁发 `SSL` 证书，您将能够立即访问 `Postal` `Web` 界面并使用您在前面步骤之一中创建的用户登录。
 
 ![](./01.JPG)
+
+
+
+
 
 
 
@@ -528,6 +564,10 @@ postal upgrade
 ```bash
 postal upgrade [version]
 ```
+
+
+
+
 
 
 
@@ -1033,34 +1073,6 @@ postal start
 9. 将 `IP` 地址从旧服务器移动到新服务器（如果旧服务器和新服务器都使用同一提供商）。
 
 10. 使用 `postal start` 在新服务器上启动 `Postal` 。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
