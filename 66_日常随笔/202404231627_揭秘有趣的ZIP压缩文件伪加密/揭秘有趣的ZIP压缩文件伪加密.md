@@ -1,6 +1,6 @@
-揭秘有趣的ZIP压缩文件伪加密
+来个大揭秘，有趣的ZIP压缩文件伪加密
 
-副标题：揭秘有趣的ZIP压缩文件伪加密
+副标题：来个大揭秘，有趣的ZIP压缩文件伪加密
 
 英文：uncovering-interesting-zip-compressed-file-pseudo-encryption
 
