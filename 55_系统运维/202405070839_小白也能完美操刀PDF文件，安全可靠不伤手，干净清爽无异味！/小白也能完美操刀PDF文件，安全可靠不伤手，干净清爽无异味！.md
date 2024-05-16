@@ -1,10 +1,10 @@
-Stirling PDF
+小白也能完美操刀PDF文件，安全可靠不伤手，干净清爽无异味！
 
-副标题：
+副标题：小白也能完美操刀PDF文件，安全可靠不伤手，干净清爽无异味！
 
-英文：
+英文：even-beginners-can-also-operate-pdf-files-perfectly-safe-and-reliable-without-hurting-hands-clean-refreshing-and-odorless
 
-关键字：
+关键字：pdf,stirling,咱们屯里的人,分割,组合,盖章,水印
 
 
 
@@ -92,7 +92,7 @@ Stirling PDF
 
 好，安装完 `Java` 后，找到 `java.exe` 执行文件路径，通过观察版本信息输出来看看它是否工作正常。
 
-图b01
+图01
 
 
 
@@ -110,7 +110,7 @@ Stirling PDF
 "C:\Program Files\Java\jdk-17\bin\java.exe" -jar Stirling-PDF.jar
 ```
 
-图b02
+图02
 
 
 
@@ -132,7 +132,7 @@ http://localhost:8080
 
 然后我们就能看到 `Stirling PDF` 被打开了。
 
-图a01
+图03
 
 
 
@@ -140,7 +140,7 @@ http://localhost:8080
 
 没关系，点击右上角的小地球，在里面选择简体中文吧。
 
-图a02
+图04
 
 
 
@@ -152,31 +152,31 @@ http://localhost:8080
 
 有页面操作功能。
 
-图a03
+图05
 
 
 
 有转换功能。
 
-图a04
+图06
 
 
 
 还有安全相关的功能。
 
-图a05
+图07
 
 
 
 还有其他一些可能会有用的功能。
 
-图a06
+图08
 
 
 
 点击右上角的齿轮，可以查看当前 `Stirling PDF` 的版本信息和一些功能设置。
 
-图a07
+图09
 
 
 
@@ -186,7 +186,7 @@ http://localhost:8080
 
 上传 `PDF` 文件，然后可以做一些基本的操作，比如旋转页面、修改顺序、添加新页面等等。
 
-图c03
+图10
 
 
 
@@ -194,7 +194,7 @@ http://localhost:8080
 
 接下来再找一个“页面操作”中的“拆分 `PDF` ”功能来展开说明一下。
 
-图b03
+图11
 
 
 
@@ -259,9 +259,9 @@ http://localhost:8080
 
 解压缩这个文件即可看到分割后的 `PDF` 文件了。
 
-图c01
+图12
 
-图c02
+图13
 
 
 
@@ -289,7 +289,7 @@ http://localhost:8080
 
 前者是配置文件，后者是数据库文件，我们只用到前者。
 
-图d01
+图14
 
 
 
@@ -299,7 +299,7 @@ http://localhost:8080
 
 保存退出后，再次运行 `Stirling-PDF-with-login.exe` ，然后再打开页面，你会发现登录页面出现了。
 
-图d02
+图15
 
 
 
