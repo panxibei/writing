@@ -160,3 +160,7 @@ http://localhost/phpipam
 
 
 
+```
+C:\wamp64\www\phpipam>php phpipam-agent/index.php discover
+```
+
