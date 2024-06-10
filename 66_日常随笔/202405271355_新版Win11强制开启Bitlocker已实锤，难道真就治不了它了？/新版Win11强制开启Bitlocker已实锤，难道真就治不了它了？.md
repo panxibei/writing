@@ -1,6 +1,6 @@
-新版Win11强制开启Bitlocker已实锤，难道真就治不了它了？
+新版Win11强制开启Bitlocker已实锤，难道真就治不了它了？（含自制工具下载）
 
-副标题：新版Win11强制开启Bitlocker已实锤，难道真就治不了它了？
+副标题：新版Win11强制开启Bitlocker已实锤，难道真就治不了它了？（含自制工具下载）
 
 英文：it-has-been-confirmed-that-the-upgraded-windows-11-has-been-forced-to-enable-bitlocker-is-there-really-no-other-way
 
