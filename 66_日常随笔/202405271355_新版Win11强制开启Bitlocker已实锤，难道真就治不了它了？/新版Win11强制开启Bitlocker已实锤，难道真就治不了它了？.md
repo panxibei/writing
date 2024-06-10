@@ -168,9 +168,9 @@
 
 **网管小贾的BitLocker加密检测小助手专业版**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1g9cpKmW3IZSrkdu68ZuWrg
 
-
+提取码：4xhj
 
 
 
