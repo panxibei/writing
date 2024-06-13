@@ -96,15 +96,123 @@ manjaro
 
 
 
+简单安装过程。
+
+从官网下载你喜欢的镜像文件。
+
+> https://manjaro.org/download/
 
 
-默认终端字体比较难看，修改之。
+
+选择 `x86` 还是 `ARM` ，通常自己的电脑是 `x86` 的。
+
+图d01
+
+
+
+然后选择你喜欢的桌面版，`PLASMA` 、`XFCE` 或 `GNOME` 等桌面。
+
+这些不同的桌面指的是系统桌面、菜单、显示风格等等不同的程序。
+
+这也是 `Linux` 和 `Windows` 两者最大不同点之一，你可以理解为 `Windows` 的桌面程序只有一套，怎么装都是一个样，而 `Linux` 可以有好几套，看你装的是哪个，自然用起来样子就各种各样了。
+
+当然这些不同桌面的 `manjaro` 系统还分官方版和社区版，你可以将社区版当作是爱好者们魔改后的版本。
+
+图d02
+
+
+
+现在的安装过程都比较简单，如果你懂得 `Linux` 原理，那么可以使用专家模式安装。
+
+如果你是初学者，那么直接勾勾划划、填填写写，来几个下一步就OK了。
+
+
+
+开机启动画面。
+
+图a01
+
+
+
+系统启动后开启安装向导程序，直接点窗口中的，或是桌面上的都行。
+
+图a02
+
+
+
+改下语言，中文更懂你。
+
+图a03
+
+
+
+修正时区，选择上海。
+
+图a05
+
+
+
+保持默认键盘布局。
+
+图a06
+
+
+
+初学者可以让程序来自动帮你分区，不用动啥。
+
+注意备份数据，不要轻易在有系统的硬盘上尝试哦！
+
+图a07
+
+
+
+孩子马上就要出生，起个名字庆祝一下！
+
+图a08
+
+
+
+选择安装或不安装 `Office` 软件。
+
+图a09
+
+
+
+准备开始安装啦！
+
+图a12
+
+
+
+安装过程比较可爱。
+
+图a14.GIF
+
+
+
+安装成功，重启看到了我们 `manjaro` 新系统诞生了！
+
+图a15
+
+图b01
+
+
+
+开源办公软件，和微软的大差不差。
+
+图b03
+
+
+
+软件很丰富，即使有些还没有安装上，也可以通过在线安装获取。
+
+在最初安装完后，默认的终端字体比较难看，像这样。
 
 图c01
 
 
 
-在终端中执行以下两条命令。
+改得好看一点吧，在终端中执行以下两条命令。
 
 ```
 sudo pacman -S wqy-bitmapfont
@@ -117,17 +225,21 @@ sudo pacman -S wqy-zenhei
 
 
 
-完成后重新打开终端即可。
+完成后重新打开终端即可，颜值飙升。
 
 图c04
 
 
 
- Arch Linux CN 软件源 
+如果你有一些动手能力，可以将 `manjaro` 的软件源更新为国内，这样安装更新软件会快很多。
+
+国内有很多这种软件源，比如中科大 `Arch` 软件源。
 
 > https://mirrors.ustc.edu.cn/help/archlinuxcn.html
 
 
+
+修改方法如下：
 
 在 `/etc/pacman.conf` 文件末尾添加两行：
 
@@ -136,7 +248,7 @@ sudo pacman -S wqy-zenhei
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 ```
 
-然后请安装 `archlinuxcn-keyring` 包以导入 GPG key。
+然后请安装 `archlinuxcn-keyring` 包以导入 `GPG key` 。
 
 
 
@@ -146,9 +258,72 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 error: archlinuxcn-keyring: Signature from "Jiachen YANG (Arch Linux Packager Signing Key) " is marginal trust
 ```
 
- 应该本地信任 farseerfc 的 GPG key 
+ 应该本地信任 `farseerfc` 的 `GPG key` 。
 
 ```
 sudo pacman-key --lsign-key "farseerfc@archlinux.org"
 ```
+
+
+
+如果你不太明白，其实也不用修改，但是动手实践也是你学习 `Linux` 的一个过程，有助于你了解熟悉 `Linux` 。
+
+
+
+`manjaro` 安装、更新和移除软件非常简单，就一条命令。
+
+```
+# 安装
+sudo pacman -S 软件名称
+
+# 更新
+sudo pacman -Syu 软件名称
+
+# 移除
+sudo pacman -R 软件名称
+```
+
+
+
+比如，安装 `Chrome` 浏览器。
+
+```
+sudo pacman -S google-chrome
+```
+
+
+
+又比如，安装深度截图软件。
+
+```
+sudo pacman -S deepin-screenshot
+```
+
+
+
+最后介绍一下 `manjaro` 中输入法的安装。
+
+这是在 `XFCE` 桌面系统下的安装方法，其他桌面系统可能有所不同。
+
+```
+# 安装搜狗输入法、五笔、日语等
+sudo pacman -S fcitx-im
+sudo pacman -S fcitx-configtool
+sudo pacman -S fcitx-sogoupinyin
+sudo pacman -S fcitx-mozc
+```
+
+
+
+然后添加输入法配置文件 `sudo vim ~/.xprofile`，如果没有找到这个文件就新建一个。
+
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+
+
+
+设定好后重启电脑即可生效，尝试一下吧！
 
