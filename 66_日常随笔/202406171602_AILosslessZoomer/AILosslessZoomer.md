@@ -55,6 +55,7 @@ AILosslessZoomer
 * `Lossless.Zoomer.x64.zip` - `v3.1.0 x64` 绿色便捷版
 * `AI.Lossless.Zoomer-2.1.0-x64.exe` - `v2.1.0 x64` 安装版
 * `AI.Lossless.Zoomer-2.1.0-x64.zip` - `v2.1.0 x64` 绿色便捷版
+* `vulkan-1.dll` - 可能缺失的链接库文件，将其放到程序目录中即可
 
 下载链接：
 
