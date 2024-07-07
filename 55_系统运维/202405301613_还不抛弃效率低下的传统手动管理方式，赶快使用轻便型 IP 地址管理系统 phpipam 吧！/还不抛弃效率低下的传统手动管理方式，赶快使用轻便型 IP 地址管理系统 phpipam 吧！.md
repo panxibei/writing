@@ -1,10 +1,10 @@
-phpipam
+还不抛弃效率低下的传统手动管理方式，赶快使用轻便型 IP 地址管理系统 phpipam 吧！
 
-副标题：
+副标题：还不抛弃效率低下的传统手动管理方式，赶快使用轻便型 IP 地址管理系统 phpipam 吧！
 
-英文：
+英文：abandoning-inefficient-traditional-manual-methods-and-quickly-use-the-light-modern-and-useful-ip-address-management-application-phpipam
 
-关键字：
+关键字：phpipam,ip,php,pear,地址管理
 
 
 
@@ -249,6 +249,14 @@ http://localhost/phpipam
 由于时间仓促给忙忘了，后续没有更进一步的记录。
 
 其实官网上有很多详细的说明，但基本的使用方法就是这么简单，有兴趣的小伙伴可以参考官网文档。
+
+
+
+**phpipam安装包（含所需辅助程序）**
+
+下载链接：https://pan.baidu.com/s/157-q_0ufNHaDWblfEOXRiw
+
+提取码：o84v
 
 
 
