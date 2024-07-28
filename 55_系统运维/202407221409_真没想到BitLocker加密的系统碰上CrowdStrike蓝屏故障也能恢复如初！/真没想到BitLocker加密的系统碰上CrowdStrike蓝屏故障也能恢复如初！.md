@@ -2,9 +2,9 @@
 
 副标题：真没想到BitLocker加密的系统碰上CrowdStrike蓝屏故障也能恢复如初！
 
-英文： system-with-bitlocker-can-also-recovery-even-crowdstrike-caused-blue-screen-failure 
+英文： system-with-bitlocker-can-also-recovery-even-crowdstrike-caused-blue-screen-failure
 
-关键字：bitlocker,crowdstrike,加密,蓝屏,windows,recovery,恢复,密钥,keys,safe mode,安全模式
+关键字：bitlocker,crowdstrike,加密,蓝屏,windows,recovery,恢复,密钥,keys,safe mode,安全模式,bluescreen
 
 
 
