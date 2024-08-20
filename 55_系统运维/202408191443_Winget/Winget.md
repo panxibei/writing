@@ -54,3 +54,52 @@ winget  [<命令>] [<选项>]
 >--disable-interactivity             禁用交互式提示
 >--proxy                                      设置要用于此执行的代理
 >--no-proxy                                禁止对此执行使用代理
+
+
+
+
+
+使用 `WinGet` 安装程序。
+
+```
+winget <程序名称>
+```
+
+
+
+使用 `WinGet` 安装多个应用程序。
+
+```
+USAGE: winget install <程序名称1> <程序名称2> ...
+```
+
+举个例子，安装 `Windows` 终端，`PowerToys` 和 `VSCode` 。
+
+```
+winget install Microsoft.WindowsTerminal Microsoft.PowerToys Microsoft.VisualStudioCode
+```
+
+
+
+
+
+列出所有安装的程序。
+
+```
+winget list
+```
+
+图b04
+
+
+
+下载安装程序。
+
+```
+winget download <程序名称>
+```
+
+图b05
+
+
+
