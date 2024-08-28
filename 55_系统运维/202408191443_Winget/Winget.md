@@ -10,6 +10,12 @@ Winget
 
 
 
+
+
+
+
+
+
 `WinGet` ，全名为 **Windows Package Manager**，即 `Windows` 程序包管理器的意思。
 
 它是微软官方推出的一个命令行工具，用于在 `Windows` 系统上安装、管理和升级软件包。
@@ -281,7 +287,13 @@ winget download ZhornSoftware.Stickies
 
 
 
+**Microsoft.DesktopAppInstaller.7z**
 
+* `Microsoft.DesktopAppInstaller_2024.709.2344.0_neutral_~_8wekyb3d8bbwe.Msixbundle`
+* `Microsoft.UI.Xaml.2.8_8.2310.30001.0_x64__8wekyb3d8bbwe.Appx`
+* `Microsoft.VCLibs.140.00.UWPDesktop_14.0.33728.0_x64__8wekyb3d8bbwe.Appx`
+
+下载链接：
 
 
 
