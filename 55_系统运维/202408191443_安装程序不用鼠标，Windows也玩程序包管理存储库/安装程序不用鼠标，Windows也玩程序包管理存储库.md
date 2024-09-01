@@ -385,9 +385,11 @@ winget download ZhornSoftware.Stickies
 * `Microsoft.UI.Xaml.2.8_8.2310.30001.0_x64__8wekyb3d8bbwe.Appx`
 * `Microsoft.VCLibs.140.00.UWPDesktop_14.0.33728.0_x64__8wekyb3d8bbwe.Appx`
 
-下载链接：
 
 
+下载链接：https://pan.baidu.com/s/1b2_rFnJQKc5BSOQcq_u-hw
+
+提取码：byzv
 
 
 
