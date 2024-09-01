@@ -1,10 +1,10 @@
-Winget
+安装程序不用鼠标，Windows也玩程序包管理存储库
 
-副标题：
+副标题：安装程序不用鼠标，Windows也玩程序包管理存储库
 
-英文：
+英文：installing-does-not-require-mouse-and-windows-also-uses-package-management-repositories
 
-关键字：
+关键字：windows,winget,apt,dnf,yum,安装,repo,仓库
 
 
 
@@ -122,7 +122,7 @@ Winget
 
 `WinGet` 怎么获取呢？
 
-（文末有备用 下载）
+（文末有备用下载）
 
 
 
@@ -130,7 +130,7 @@ Winget
 
 > https://www.microsoft.com/p/app-installer/9nblggh4nns1#activetab=pivot:overviewtab
 
-图a01
+图01
 
 
 
@@ -156,7 +156,7 @@ https://store.rg-adguard.net/
 
 当然，它在这里并不叫 `WinGet` ，而是叫作 `Microsoft.Desktop.AppInstall` 。
 
-图a02
+图02
 
 
 
@@ -176,7 +176,7 @@ Add-AppxPackage .\Microsoft.DesktopAppInstaller_2024.709.2344.0_neutral_~_8wekyb
 
 如果你遇到了错误，安装失败。
 
-图a03
+图03
 
 
 
@@ -190,13 +190,13 @@ Add-AppxPackage .\Microsoft.DesktopAppInstaller_2024.709.2344.0_neutral_~_8wekyb
 Add-AppxPackage .\Microsoft.UI.Xaml.2.8_8.2310.30001.0_x64__8wekyb3d8bbwe.Appx
 ```
 
-图a04
+图04
 
 
 
 然后再回过头来，安装 `WinGet` ，应该没问题了。
 
-图a05
+图05
 
 
 
@@ -204,7 +204,7 @@ Add-AppxPackage .\Microsoft.UI.Xaml.2.8_8.2310.30001.0_x64__8wekyb3d8bbwe.Appx
 
 打开命令提示符，输入命令看看有没有反应。
 
-图a06
+图06
 
 
 
@@ -291,13 +291,13 @@ winget search firefox
 
 但是为什么会失败呢？
 
-图b02
+图07
 
 
 
 再来搜索一下 `PowerToys` 。
 
-图b03
+图08
 
 
 
@@ -306,8 +306,6 @@ winget search firefox
 原来软件的名称没那么简单，要写完整才算数。
 
 也就是说，要写成 `Microsoft.powertoys` ，它才能识别，感觉有点智障啊！
-
-图b03
 
 
 
@@ -323,7 +321,7 @@ winget search firefox
 winget list
 ```
 
-图b04
+图09
 
 
 
@@ -339,7 +337,7 @@ winget download <程序名称>
 winget download microsoft.powertoys
 ```
 
-图b05
+图10
 
 
 
@@ -365,7 +363,7 @@ winget search stickynotes
 winget download ZhornSoftware.Stickies
 ```
 
-图b06
+图11
 
 
 
@@ -393,7 +391,15 @@ winget download ZhornSoftware.Stickies
 
 
 
-听说某某著名大学的建筑专业才4名新生。
+我说得吐沫横飞，正在兴头上，有人提醒午休时间到了。
+
+我抬手一看表，可不是嘛，都11点60了。
+
+行吧，基本的就这些了，先到这儿吧，大家赶快去吃饭吧！
+
+看大家都散了，我就招呼大刘：“大刘……大刘……我的两个鸡腿……”
+
+还没等我找着大刘，一同事拍我肩膀，跟我说，大刘突然家里有急事，刚跟领导请了三天假……
 
 
 
