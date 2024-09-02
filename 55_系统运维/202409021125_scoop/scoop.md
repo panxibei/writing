@@ -64,6 +64,18 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 
 
+它被安装到哪儿了呢？
+
+在这里。
+
+```
+C:\Users\用户名\scoop\apps\scoop\current\bin
+```
+
+图b05
+
+
+
 
 
 查询应用程序。
