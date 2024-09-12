@@ -211,19 +211,31 @@ scoop bucket add nirsoft
 
 好吧，操不完的心啊，干脆还是手动安装吧！
 
+文末提供下载。
+
 将 `Buckets` 放到相应的文件夹内。
 
 ```
 C:\Users\用户名\scoop\buckets\
 ```
 
-文末提供下载。
-
 图d04
 
 
 
 
+
+更换国内镜像。
+
+```
+# 更换scoop的repo地址
+scoop config SCOOP_REPO "https://gitee.com/scoop-installer/scoop"
+
+# 拉取新库地址
+scoop update
+```
+
+图d05
 
 
 
