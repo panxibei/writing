@@ -119,7 +119,13 @@ C:\Users\用户名\scoop\apps\scoop\current\bin
 
 
 
-1. 
+安装 `Buckets` 。
+
+```
+scoop bucket add <Bucket名称>
+```
+
+
 
 
 
@@ -157,21 +163,75 @@ C:\Users\用户名\scoop\apps\aria2\1.37.0-1\
 
 
 
-```
-aria2-enabled (默认值: true)
-aria2-retry-wait (默认值: 2)
-aria2-split (默认值: 5)
-aria2-max-connection-per-server (默认值: 5)
-aria2-min-split-size (默认值: 5M)
-```
-
-
-
 安装软件
 
 ```
 scoop install <软件名称>
 ```
+
+
+
+
+
+安装 `hotkeyslist` ，一款查看当前系统中快捷键的小程序。
+
+```
+scoop install hostkeyslist
+```
+
+
+
+发现没找到。
+
+图d01
+
+
+
+这个 `hostkeyslist` 应该是在 `nirsoft` 的 `Buckets` 中。
+
+因此我们先要安装仓库 `nirsoft` 。
+
+```
+scoop bucket add nirsoft
+```
+
+
+
+正常情况下安装很简单。
+
+图d03
+
+
+
+你说什么？`Github` 又抽了？
+
+图d02
+
+
+
+好吧，操不完的心啊，干脆还是手动安装吧！
+
+将 `Buckets` 放到相应的文件夹内。
+
+```
+C:\Users\用户名\scoop\buckets\
+```
+
+文末提供下载。
+
+图d04
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
