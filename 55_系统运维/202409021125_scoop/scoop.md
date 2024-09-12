@@ -84,11 +84,94 @@ C:\Users\用户名\scoop\apps\scoop\current\bin
 
 
 
+一般情况下，`scoop` 会到 `main` 默认的软件仓库中找你要安装的软件。
+
+不过可能 `main` 仓库中并不一定有你想要的，所以诞生了更多的软件仓库。
+
+他们管这些软件仓库叫作 `Buckets` 。
+
+
+
+通常的 `Buckets` 有这些，可以到对应的 `Buckets` 中搜索想要安装的软件。
+
+1. `main` - Default bucket for the most common (mostly CLI) apps
+2. `extras` - Apps that don’t fit the main bucket’s criteria
+3. `games` - Open source/freeware games and game-related tools
+4. `nerd-fonts` - Nerd Fonts
+5. `nirsoft` - A subset of the 250 Nirsoft apps
+6. `java` - Installers for Oracle Java, OpenJDK, Zulu, ojdkbuild, AdoptOpenJDK, 7、Amazon Corretto, BellSoft Liberica & SapMachine
+7. `jetbrains` - Installers for all JetBrains utilities and IDEs
+8. `nonportable` - Non-portable apps (may require UAC)
+9. `php` - Installers for most versions of PHP
+10. `versions` - Alternative versions of apps found in other buckets
+
+
+
+
+
+
+
 `Buckets` 如下：
 
 后面打对勾的是官方的 `Bucket` ，后面带问号的则是社区版。
 
 图a01
+
+
+
+1. 
+
+
+
+
+
+玩法：
+
+有个东东叫作 `aria2` 是一种下载器软件。
+
+`scoop` 可以利用这个 `aria2` 来加速下载软件，因此我们可以先安装 `aria2` 。
+
+```
+scoop install aria2
+```
+
+图c01
+
+
+
+但是有时因 `Github` 脑抽而无法正常下载安装包。
+
+只好将安装包先想办法下载下来，接着手动解压到相应文件夹内即可。
+
+放在下面这个路径中，通常应该在 `scoop` 的 `apps` 文件夹中。
+
+```
+C:\Users\用户名\scoop\apps\aria2\1.37.0-1\
+```
+
+文末打包 `aria2` 一块下载。
+
+图c02
+
+
+
+
+
+```
+aria2-enabled (默认值: true)
+aria2-retry-wait (默认值: 2)
+aria2-split (默认值: 5)
+aria2-max-connection-per-server (默认值: 5)
+aria2-min-split-size (默认值: 5M)
+```
+
+
+
+安装软件
+
+```
+scoop install <软件名称>
+```
 
 
 
