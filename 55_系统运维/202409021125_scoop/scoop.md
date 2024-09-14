@@ -251,17 +251,15 @@ C:\Users\用户名\scoop\apps\scoop\current\bin
 
 
 
-打开官网页面，其中 `Buckets` 菜单中，所有的仓库都在这儿了。
+打开官网页面，其中在 `Buckets` 菜单中，所有的仓库都在这儿了。
 
-`Buckets` 如下：
-
-后面打对勾的是官方的 `Bucket` ，后面带问号的则是社区版。
+这些软件仓库分官方的还是社区版的，后面打对勾的是官方的 `Bucket` ，后面带问号的则是社区版。
 
 图a01
 
 
 
-安装 `Buckets` 。
+默认 `Scoop` 只安装有 `main` 仓库，所以想要安装某个仓库的软件，需要事先安装对应的 `Buckets` 。
 
 ```
 scoop bucket add <Bucket名称>
@@ -269,15 +267,17 @@ scoop bucket add <Bucket名称>
 
 
 
+使用 `Scoop` 安装软件很简单，就像这样。
+
+```
+scoop install <软件名称>
+```
 
 
-
-
-玩法：
 
 有个东东叫作 `aria2` 是一种下载器软件。
 
-`scoop` 可以利用这个 `aria2` 来加速下载软件，因此我们可以先安装 `aria2` 。
+`scoop` 可以利用这个 `aria2` 来加速下载软件，因此我们也可以先尝试安装 `aria2` 。
 
 ```
 scoop install aria2
@@ -297,25 +297,15 @@ scoop install aria2
 C:\Users\用户名\scoop\apps\aria2\1.37.0-1\
 ```
 
-文末打包 `aria2` 一块下载。
+（文末打包 `aria2` 一块下载。）
 
 图c02
 
 
 
+好了，开始安装软件吧。
 
-
-安装软件
-
-```
-scoop install <软件名称>
-```
-
-
-
-
-
-安装 `hotkeyslist` ，一款查看当前系统中快捷键的小程序。
+比如，安装 `hotkeyslist` ，一款查看当前系统中快捷键的小程序。
 
 ```
 scoop install hostkeyslist
@@ -323,7 +313,7 @@ scoop install hostkeyslist
 
 
 
-发现没找到。
+发现没找到？
 
 图d01
 
@@ -351,9 +341,9 @@ scoop bucket add nirsoft
 
 
 
-好吧，操不完的心啊，干脆还是手动安装吧！
+哎，操不完的心啊，干脆还是手动安装吧！
 
-文末提供下载。
+（文末继续提供下载）
 
 将 `Buckets` 放到相应的文件夹内。
 
@@ -365,9 +355,9 @@ C:\Users\用户名\scoop\buckets\
 
 
 
+这个 `Github` 老是抽风，或者干脆用不了。
 
-
-更换国内镜像。
+想想办法吧，嗯，可以更换成国内镜像。
 
 ```
 # 更换scoop的repo地址
@@ -381,11 +371,21 @@ scoop update
 
 
 
+好了，接下来会不会顺利一点呢？
 
 
 
 
 
+**Scoop(包含aria2及Butckets)**
+
+下载链接：
+
+
+
+
+
+其实说实话，有些软件的链接好像都是在 `Github` 上的，所以有时不一定好使啊！
 
 
 
