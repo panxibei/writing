@@ -40,6 +40,12 @@ uac
 
 怎么破？
 
+可以通过启动 `WinRE` 环境来解决。
+
+所谓 `WinRE` ，你可以简单地理解为 `Windows` 系统自带的系统恢复程序或功能。
+
+
+
 打开 `设置` ，`系统` > `恢复` 。
 
 图b01
@@ -116,4 +122,18 @@ net localgroup administrators user /add
 
 
 用户帐户控制提示窗口中又可以选择“是”了。
+
+
+
+
+
+最后，当然别忘记把放大镜程序给换回来。
+
+```
+# 删除cmd.exe的替身文件
+del Magnify.exe
+
+# 再将备份还原回去
+copy Magnify.bak Magnify.exe
+```
 
