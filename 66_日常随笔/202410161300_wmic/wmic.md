@@ -26,3 +26,11 @@ DISM /Online /Remove-Capability /CapabilityName:WMIC~~~~
 DISM /Online /add-Capability /CapablilityName:WMIC~~~~ /Source:wim:D:\Sources\Install.wim:6
 ```
 
+
+
+```
+dism /mount-image /imagefile:C:\install.wim /mountdir:C:\mount /Index:6
+```
+
+
+
