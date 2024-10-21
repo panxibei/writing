@@ -42,6 +42,16 @@ dism /mount-image /imagefile:C:\install.wim /mountdir:C:\mount /Index:4 /ReadOnl
 
 
 
+Windows 11 版本 24H2 语言和可选功能 ISO
+
+> https://learn.microsoft.com/zh-cn/azure/virtual-desktop/windows-11-language-packs
+
+
+
+
+
+
+
 ```
 Dism /Image:C:\mount /Add-Package /PackagePath:C:\Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~amd64~zh-CN~.cab
 ```
@@ -58,6 +68,16 @@ Dism /Image:C:\mount /Add-Package /PackagePath:C:\Microsoft-Windows-WMIC-FoD-Pac
 
 ```
 Dism /Online /Add-Capability /CapabilityName:WMIC~~~~ /Source:G:\LanguagesAndOptionalFeatures /LimitAccess
+```
+
+
+
+
+
+最后可以试一下是否安装成功，最简单的就用如下命令，看看有没有输出。
+
+```
+wmic os
 ```
 
 
