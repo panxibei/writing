@@ -23,14 +23,44 @@ DISM /Online /Remove-Capability /CapabilityName:WMIC~~~~
 挂载 `Windows` 系统安装镜像，通过镜像来安装。
 
 ```
-DISM /Online /add-Capability /CapablilityName:WMIC~~~~ /Source:wim:D:\Sources\Install.wim:6
+DISM /Online /add-Capability /CapabilityName:WMIC~~~~ /Source:wim:D:\Sources\Install.wim:4
+```
+
+
+
+注意：带有 `/Online` 参数时，一定要连接上网络才行，否则会报错。
+
+
+
+
+
+```
+dism /mount-image /imagefile:C:\install.wim /mountdir:C:\mount /Index:4 /ReadOnly
+```
+
+
+
+
+
+```
+Dism /Image:C:\mount /Add-Package /PackagePath:C:\Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~amd64~zh-CN~.cab
 ```
 
 
 
 ```
-dism /mount-image /imagefile:C:\install.wim /mountdir:C:\mount /Index:6
+Dism /Image:C:\mount /Add-Package /PackagePath:C:\Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~wow64~zh-CN~.cab
 ```
+
+
+
+通过 `foD` 镜像安装。
+
+```
+Dism /Online /Add-Capability /CapabilityName:WMIC~~~~ /Source:G:\LanguagesAndOptionalFeatures /LimitAccess
+```
+
+
 
 
 
