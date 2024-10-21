@@ -80,13 +80,15 @@ wmic os
 
 
 
-
-
+Windows 11 版本 21H2 语言和可选功能 ISO
+Windows 11 版本 22H2 和 23H2 语言和可选功能 ISO
 Windows 11 版本 24H2 语言和可选功能 ISO
 
 > https://learn.microsoft.com/zh-cn/azure/virtual-desktop/windows-11-language-packs
 
 
+
+Windows 11 版本 24H2 语言和可选功能 ISO
 
 备用下载：
 
