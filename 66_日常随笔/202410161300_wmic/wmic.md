@@ -4,6 +4,18 @@ windows11安装wmic，另附离线安装方法及安装包
 
 
 
+
+
+
+
+可用按需功能
+
+> https://learn.microsoft.com/zh-cn/windows-hardware/manufacture/desktop/features-on-demand-non-language-fod?view=windows-11
+
+图f01
+
+
+
 添加 `WMIC` 。
 
 ```
