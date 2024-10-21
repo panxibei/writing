@@ -42,10 +42,6 @@ dism /mount-image /imagefile:C:\install.wim /mountdir:C:\mount /Index:4 /ReadOnl
 
 
 
-Windows 11 版本 24H2 语言和可选功能 ISO
-
-> https://learn.microsoft.com/zh-cn/azure/virtual-desktop/windows-11-language-packs
-
 
 
 
@@ -81,6 +77,18 @@ wmic os
 ```
 
 
+
+
+
+
+
+Windows 11 版本 24H2 语言和可选功能 ISO
+
+> https://learn.microsoft.com/zh-cn/azure/virtual-desktop/windows-11-language-packs
+
+
+
+备用下载：
 
 
 
