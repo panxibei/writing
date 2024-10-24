@@ -100,9 +100,11 @@ Windows 11 版本 24H2 语言和可选功能 ISO
 
 
 
-Windows 11 版本 24H2 语言和可选功能 ISO
-
 备用下载：
 
+Windows 11 版本 24H2 语言和可选功能 ISO
 
+下载链接：https://pan.baidu.com/s/15GBwlL_io2i-FK3byezFew
+
+提取码：jv5v
 
