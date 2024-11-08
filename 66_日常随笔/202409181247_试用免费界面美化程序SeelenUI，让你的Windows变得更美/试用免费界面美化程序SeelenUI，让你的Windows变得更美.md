@@ -196,9 +196,9 @@ winget install --id Seelen.SeelenUI
 
 **SeelenUI安装程序包（含WebView2组件安装包）**
 
-下载链接：
+下载链接：https://pan.baidu.com/s/1L_0rDwhAW8_mJDAcsoevBg
 
-
+提取码：gauo
 
 
 
