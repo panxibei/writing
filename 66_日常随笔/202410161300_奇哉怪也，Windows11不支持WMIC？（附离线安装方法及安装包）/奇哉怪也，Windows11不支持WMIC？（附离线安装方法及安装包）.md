@@ -1,10 +1,10 @@
-奇哉怪也，Windows11不支持WMIC？（附离线安装方法及安装包）
+真是奇哉怪也，Windows11居然不支持WMIC？（附离线安装方法及安装包）
 
-副标题：奇哉怪也，Windows11不支持WMIC？（附离线安装方法及安装包）
+副标题：真是奇哉怪也，Windows11居然不支持WMIC？（附离线安装方法及安装包）
 
-英文：
+英文：its-really-strange-that-windows-11-does-not-support-wmic-attached-offline-installation-methods-and-installation-packages
 
-关键字：
+关键字：wmic,win11,fod,水浒,offline,离线,安装,11,24h2,wmic~~~~,languagesandoptionalfeatures
 
 
 
