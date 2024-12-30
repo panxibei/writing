@@ -1,10 +1,10 @@
-华为手机没有SIM卡想连接USB
+神秘代码绕开限制，手机没有SIM卡照样可以连接USB
 
-副标题：
+副标题：神秘代码绕开限制，手机没有SIM卡照样可以连接USB
 
-英文：
+英文：bypass-restrictions-mysterious-code-makes-phone-can-still-connect-to-usb-without-sim-card
 
-关键字：
+关键字：sim,手机,phone,usb,优化,裁员
 
 
 
