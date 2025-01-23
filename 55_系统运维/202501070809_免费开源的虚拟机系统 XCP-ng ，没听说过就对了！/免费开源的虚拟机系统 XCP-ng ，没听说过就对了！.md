@@ -304,6 +304,14 @@
 
 
 
+**`XCP-ng` 镜像文件及管理程序 `XCP-ng-Center`**
+
+下载链接：https://pan.baidu.com/s/1nyMkuCW8wYmegSR9fQrKGg
+
+提取码：7mv9
+
+
+
 哈哈，看来这套开源的虚拟系统也挺有意思的嘛！
 
 没想到寂寞难耐之时，还能看到这般有趣的东西。
