@@ -1,0 +1,11 @@
+cRARk压缩文件暴力破解工具
+
+crark7z.7z - 破解7-Zip
+crark55.rar - 破解WinRAR
+
+使用方法：
+请参考微信公众号【网管小贾】文章介绍内容
+
+如需要Linux/MacOS版本以及GUI图形界面程序，请参考【官方原版】文件夹。
+
+网管小贾 / sysadm.cc
