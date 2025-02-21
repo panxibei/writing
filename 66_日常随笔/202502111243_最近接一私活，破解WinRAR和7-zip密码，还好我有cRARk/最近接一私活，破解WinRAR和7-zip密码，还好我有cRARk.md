@@ -4,7 +4,7 @@
 
 英文：recently-i-received-a-private-project-to-crack-winrar-and-7-zippasswords-fortunately-i-have-crark
 
-关键字：winrar,7zip,7-zip,7z,rar,crark,crark-7z,password,aes,破解,密码,压缩
+关键字：winrar,7zip,7-zip,7z,rar,crark,crark-7z,password,aes,破解,密码,压缩,私活
 
 
 
@@ -381,7 +381,9 @@ crark.exe -l4 -g4 test.rar
 
 **cRARk压缩文件（WinRAR&7-Zip）暴力破解工具（含自制简易修改版、GUI程序及说明手册）**
 
-下载
+下载链接: https://pan.baidu.com/s/1nm2mUCHRLM0y2oKbeL5qIg
+
+提取码: rgts
 
 
 
