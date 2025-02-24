@@ -58,9 +58,19 @@ VxKex NEXT 不会修改任何系统文件。它对整个系统的影响极小。
 
 
 
+目前，VxKex NEXT 只适用于 Windows 7。如果您使用的是 Windows 8 或 8.1，VxKex NEXT 将毫无用处。 
 
 
 
+VxKex NEXT 的工作原理是在启用 VxKex NEXT 的每个程序中加载一个 DLL。
+
+这是通过使用 IFEO（图像文件执行选项）注册表键来实现的。
+
+具体来说，“VerifierDlls”值被设置为指向 VxKex NEXT DLL，该 DLL 会加载到进程中。
+
+API 扩展是通过编辑程序的动态链接库导入表来实现的，这样程序就不会从 Windows 8/8.1/10/11 动态链接库中导入，而是导入 VxKex NEXT 动态链接库。
+
+这些 VxKex NEXT 动态链接库包含较新版本 Windows 中引入的 Windows API 函数的实现。
 
 
 
