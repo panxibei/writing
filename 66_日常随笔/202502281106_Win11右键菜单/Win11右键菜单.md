@@ -68,6 +68,16 @@ Win11右键菜单
 
 
 
+或者如果你的电脑上没有 `应用安装程序` ，那么还可以用命令行的方式来安装。
+
+```
+Add-AppxPackage [程序所在路径]\ContextMenuCustomGithubPackage_5.5.7.0_x64.msixbundle
+```
+
+图h01
+
+
+
 点击安装继续。
 
 图c02
