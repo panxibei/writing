@@ -1,10 +1,10 @@
-VxKex
+Win7老顽固们的春天，跑最新软件就用 VxKex NEXT
 
-副标题：
+副标题：Win7老顽固们的春天，跑最新软件就用 VxKex NEXT
 
-英文：
+英文：spring-for-win7-die-hards-run-the-latest-software-with-vxkex-next
 
-关键字：
+关键字：win7,vxkex,vxkex next,ai,豆包,人工智能,doubao,哪吒
 
 
 
@@ -56,7 +56,7 @@ VxKex
 
 在安装使用时，提示出错，无法继续。
 
-图a01
+图01
 
 
 
@@ -168,15 +168,15 @@ VxKex
 
 （安装包文末下载）
 
-图a02
+图02
 
-图a03
+图03
 
 
 
 安装很简单，这里面有个全局设置，一般来说不用特殊设置什么。
 
-图a04
+图04
 
 
 
@@ -184,7 +184,7 @@ VxKex
 
 就拿豆包来说吧，右键点击豆包程序，选择 `属性` 。
 
-图a05
+图05
 
 
 
@@ -194,13 +194,13 @@ VxKex
 
 确定保存退出，就这么简单！
 
-图a06
+图06
 
 
 
 好，打开豆包，体验一下吧！
 
-图a07
+图07
 
 
 
@@ -208,7 +208,7 @@ VxKex
 
 这里再多说一句，如果有些程序会在启动时检查当前 `Windows` 系统的版本，以此来判断程序运行走向，那么在 `VxKex` 选项卡中，我们只要再勾选 `报告其他版本的 Windows:(R)` 一项，然后再下面选择合适的版本号就行了。
 
-图a08
+图08
 
 
 
@@ -229,6 +229,14 @@ VxKex
 这些 `VxKex NEXT` 动态链接库包含较新版本 `Windows` 中引入的 `Windows API` 函数的实现。
 
 当然，不是太懂也没关系，直接用就是了。
+
+
+
+**VxKex NEXT KexSetup 安装程序**
+
+下载链接: https://pan.baidu.com/s/1zjc6JD2lHgncZReD6-anSQ
+
+提取码: qs3y
 
 
 
