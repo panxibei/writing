@@ -1,10 +1,10 @@
-Win11右键菜单
+不改回经典样式，你让我直接改造反人类设计的Win11的右键菜单？
 
-副标题：
+副标题：不改回经典样式，你让我直接改造反人类设计的Win11的右键菜单？
 
-英文：
+英文：do-not-revert-back-to-the-classic-style-and-directly-modify-the-anti-human-design-of-Win11-right-click-menu
 
-关键字：
+关键字：win11,右键菜单,菜单,反人类,Context Menu,自定义菜单,right click menu,富二代,柯尼赛格,寻亲
 
 
 
@@ -228,7 +228,7 @@ Win11右键菜单
 
 
 
-证书搞定后，接下来安装 `ContextMenuCustom` ，也就是 `上下文菜单` 程序。
+证书搞定后，接下来安装 `ContextMenuCustom` ，也就是 `上下文菜单` 程序。
 
 双击程序，即可开始安装。
 
@@ -236,7 +236,7 @@ Win11右键菜单
 
 
 
-点击 `安装` 继续。
+点击 `安装` 继续。
 
 图08
 
@@ -260,7 +260,7 @@ Add-AppxPackage [程序所在路径]\ContextMenuCustomGithubPackage_5.5.7.0_x64.
 
 
 
-成功安装并打开 `ContextMenuCustom` 后，我们点击左下角的齿轮图标来做一些设置。
+成功安装并打开 `ContextMenuCustom` 后，我们点击左下角的齿轮图标来做一些设置。
 
 图11
 
@@ -334,7 +334,7 @@ Add-AppxPackage [程序所在路径]\ContextMenuCustomGithubPackage_5.5.7.0_x64.
 
 效果不错，不过可能还有一个要求，比如需要经常用某个文本编辑器打开文件，例如 `Notepad--` 。
 
-通常 `Ndd` （ `Notepad--` 的简称）安装完成后，在经典右键菜单中是有显示的。
+通常 `Ndd` （ `Notepad--` 的简称）安装完成后，在经典右键菜单中是有显示的。
 
 图21
 
@@ -390,7 +390,9 @@ Add-AppxPackage [程序所在路径]\ContextMenuCustomGithubPackage_5.5.7.0_x64.
 
 **Windows11右键菜单编辑器（含自签名证书及简体中文语言包）**
 
-下载
+下载链接: https://pan.baidu.com/s/1nE_Xdos2STFRUfcCA3t-WQ
+
+提取码: ns84
 
 
 
