@@ -1,8 +1,8 @@
-[下载]Restic 官方管理手册中文版（网管小贾）
+[下载]Restic备份官方管理手册中文版（网管小贾）
 
-副标题：Restic 官方管理手册中文版（网管小贾）
+副标题：Restic备份官方管理手册中文版（网管小贾）
 
-英文： restic-offical-management-manual-chinese-edition 
+英文： restic-offical-management-manual-chinese-edition
 
 关键字：restic,备份,chinese,中文,手册,manual,documentation,文档,guide,说明
 
@@ -86,7 +86,7 @@
 
 
 
-**Restic 管理手册中英文版（网管小贾出品）.7z**
+**Restic备份管理手册中英文版（网管小贾出品）.7z**
 
 下载链接: https://pan.baidu.com/s/1QLhleOsVXAosUsPawpa_ow
 
@@ -100,7 +100,7 @@ PDF阅读密码：sysadm.cc
 
 
 
-Restic 管理手册中文版截图：
+Restic备份管理手册中文版截图：
 
 图01
 
@@ -114,7 +114,7 @@ Restic 管理手册中文版截图：
 
 顺便也将英文版整理好后放在一起提供下载。
 
-Restic 管理手册英文版截图：
+Restic备份管理手册英文版截图：
 
 图05
 
