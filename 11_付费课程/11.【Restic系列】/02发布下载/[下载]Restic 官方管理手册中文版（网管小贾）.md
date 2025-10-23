@@ -1,10 +1,10 @@
-[下载]Restic 管理手册中文版（网管小贾）
+[下载]Restic 官方管理手册中文版（网管小贾）
 
-副标题：Restic 管理手册中文版（网管小贾）
+副标题：Restic 官方管理手册中文版（网管小贾）
 
-英文：
+英文： restic-offical-management-manual-chinese-edition 
 
-关键字：
+关键字：restic,备份,chinese,中文,手册,manual,documentation,文档,guide,说明
 
 
 
@@ -50,7 +50,7 @@
 
 （文末下载）
 
-这是一份 `PDF` 文档，有目录，可跳转，可复制文字，非常详细清晰，内容一目了然。
+这是一份 `PDF` 文档，有目录，可跳转，可复制文字，非常详细清晰，内容一目了然。
 
 
 
