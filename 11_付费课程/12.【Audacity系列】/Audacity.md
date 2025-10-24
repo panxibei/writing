@@ -1666,3 +1666,814 @@ Audacity 大约每 6 或 12 秒写入一次磁盘，具体取决于您的偏好�
 
 使用耳机而不是扬声器进行录音也有助于避免这种情况。
 
+
+
+
+
+
+
+### 2.2.4 录制 - 操作方法
+
+
+
+#### 2.2.4.1 如何以立体声录制？
+
+默认情况下，Audacity 应该已经设置为立体声录制。
+
+如果不是这种情况，请使用[设备工具栏](device_toolbar.html)选择播放和录制设备，并将通道设置为**“2（立体声）录制通道”**。
+
+
+
+或者，您可以打开 [Audacity 首选项](preferences.html)，选择左侧的“[音频设置](audio_settings_preferences.html)”部分，然后在“录音”面板中，将录音通道数更改为“2（立体声）”。
+
+> **Windows：**许多 USB 录音设备，即使是立体声，也被视为“麦克风”，因此 Windows 设置为单声道录制。如果 Audacity 设置为立体声录制，这将导致两个通道与其中一个通道具有相同的内容。
+
+
+
+若要将 Windows 设置为以立体声录制设备，请执行以下作：
+
+- 根据系统时钟，右键单击**扬声器图标**，选择**声音**，然后选择**录音选项卡，**然后单击列表中的 **USB 设备**并单击属性。单击**“高级**”选项卡，从“**默认格式”**下拉列表中设置所需的比特率和采样率（通常为**“2 通道 16 位 44,100 Hz”**）。
+
+
+
+有关上述 Windows 步骤的更详细演练*（或者如果这不适用于你的 Windows 版本），*请参阅 **[Windows：访问 Windows 声音控件](windows_accessing_the_windows_sound_controls.html)。**
+
+
+
+
+#### 2.2.4.2 最佳录音电平的目标是什么？
+
+使用录音仪表上的录音音量滑块调整电平，目标是[在录音仪表](meter_toolbar.html#recording)上达到 -6 ***[dB](glossary.html#decibel)*** 左右的最大峰值（如果仪表设置为***[线性](glossary.html#linear)***刻度，则为 0.5）。
+
+这应该可以确保避免***[剪裁](glossary.html#clipping)***。在默认[波形](audacity_waveform.html)显示上，录音只会显示 0.5 左右的最大峰值，但考虑到耳朵听到声音的方式，这实际上比明显的“半音量”要大得多。
+
+
+
+如有必要，您可以在录制和编辑后使用**“效果”>[“](amplify.html)**放大”或“**效果”>[“归一化](normalize.html)**”来提高电平。
+
+
+
+
+#### 2.2.4.3 如何从黑胶唱片、盒式磁带或迷你光盘进行录音？
+
+1. 将 Audacity 设置为[立体声录制](#How_can_I_record_in_stereo.3F)。
+2. 将立体声电缆的一端插入磁带机、MiniDisc 播放器或立体声系统上的“线路输出”或“耳机”连接器。将另一端插入计算机的“线路输入”端口。如果您没有合适的电缆，可以在电子商店找到一根。
+3. 在 Audacity 的[设备工具栏](device_toolbar.html)或[音频设置首选项](audio_settings_preferences.html)中选择“Line In”作为录音源。
+4. 按红色**的录制**按钮。在 Audacity 录制时，开始播放磁带或光盘。捕获要录制的音频后，按 **停止** 按钮。您还可以按“**暂停**”按钮暂停录音，再次按“暂停”以恢复同一轨道上的录音。
+
+
+
+有关详细教程，请参阅[将磁带、LP 或 MiniDisc 复制到 CD](tutorial_copying_tapes_lps_or_minidiscs_to_cd.html)。这涵盖了从录制唱片、磁带或 MiniDisc 到导出为音频文件和刻录到[音频 CD](burning_music_files_to_a_cd.html) 的所有步骤。
+
+黑胶唱片或虫胶唱片也可以使用连接到计算机 USB 端口的特殊类型的转盘录制到 Audacity 中。这些转盘的设置需要与连接到线路输入的转盘不同。有关设置说明，请参阅使用 [USB 转盘或 USB 盒式录音机进行录音](recording_with_usb_turntables.html)，然后在主教程中查看[基本录音、编辑和导出](basic_recording_editing_and_exporting.html)。
+
+> > **连接提示：**
+>
+> - **请勿将转盘直接连接到您的计算机。**来自转盘的信号必须通过唱机前置放大器或具有提供唱机放大器的“唱机”输入的接收器 amplation。
+>
+>   否则，它会太安静，并且由于均衡不正确而听起来“细小”。
+>
+> - 请**勿将立体声设备插入计算机的“麦克风”端口。**此端口通常仅设计用于低电平单声道麦克风输入。
+>
+>   如果连接唱机，它会产生失真 amp放大输出。
+>
+>   如果有“线路输入”端口（在某些笔记本电脑或其他便携式计算机上，“麦克风”端口可以切换到线路电平输入）。
+>
+>   请参阅[进一步的帮助](how_to_connect_your_equipment.html#avoid_mic)。
+
+
+
+另见：
+
+- [如何将长录音拆分为多个文件](faq_opening_and_saving_files.html#split)。
+- [如何将录音保存在音频 CD 上？](faq_opening_and_saving_files.html#tocd)
+
+
+
+
+#### 2.2.4.4 我可以在播放曲目的同时录制新曲目吗？
+
+这称为录制***配音***以创建***多轨***录音。
+
+它可以与自己录制和声，或向现有录音添加新乐器或人声。
+
+要在 Audacity 中执行此作，请按照以下说明作：
+
+1. 在[设备工具栏](device_toolbar.html)的录音设备菜单中选择您插入的录音设备（可能是麦克风或线路输入）
+   - 如果您没有看到所需的录音设备，请启用它并将其设为作系统混音器中的默认设备。对于 Windows，请参阅 [Windows：访问 Windows 声音控件](windows_accessing_the_windows_sound_controls.html)。 }}
+2. [导入](importing_audio.html)或录制第一首曲目
+3. 选择 {{menu|传输>传输选项 >在[录制期间收听其他曲目](transport_menu_transport_options.html#overdub_onoff)
+4. 按**录制**按钮 ![录制按钮图像](../m/images/e/e8/record.png) 。
+
+> 如果您使用麦克风录制，请确保使用耳机，以便麦克风仅拾取您正在录制的内容。有关如何进行配音录音的详细图解说明，请参阅[教程 - 录制多轨配音。](tutorial_recording_multi_track_overdubs.html)
+
+
+
+另见：
+
+- [为什么我的新曲目与之前的曲目不同步？](faq_recording_troubleshooting.html#sync)
+
+- [为什么我听不到我正在录制的内容？](faq_recording_troubleshooting.html#playthrough)
+
+- [为什么我不能在 Windows 中录制？](faq_recording_troubleshooting.html#vista_7)
+
+
+
+
+#### 2.2.4.5 Audacity 可以录制 YouTube、网络广播或其他流媒体音频吗？
+
+- 对于大多数 Windows 和 Linux 音频设备，可以录制计算机当前正在播放的任何声音，包括网络广播流。
+- Mac 用户可以使用第三方独立应用程序或系统扩展来捕获流媒体音频。
+
+
+
+有关详细信息，请参阅在[计算机上录制音频](tutorial_recording_audio_playing_on_the_computer.html)教程，请点击适用于您的特定作平台的链接。
+
+
+
+
+#### 2.2.4.6 最大录制长度是多少？
+
+Audacity 不会限制最大录制长度，超出录制占用驱动器空间的实际限制，因此您只能在驱动器仍有可用空间时进行录制。
+
+
+
+当您开始录制时，Audacity 会在 Audacity 窗口底部的[状态栏](status_bar.html)中显示“磁盘空间仍可供录制”信息，提供当前可用的录制时间。
+
+使用默认的 Audacity 设置，立体声录制每小时占用 1.2 GB 的空间。
+
+
+
+录制后，您仍然需要空间将录制内容[导出](file_export_dialog.html)为计算机的音频文件。
+
+在导出之前编辑录制内容会占用额外的空间。每次编辑一个片段都需要与最初录制该部分所需的额外磁盘空间一样多。
+
+
+
+要获得更多录制时间：
+
+- 删除您的旧文件和文件夹（尤其是完成旧的 [Audacity 项目](audacity_projects.html)文件后）
+- 在“[目录”偏好设置](directories_preferences.html)中选择具有更多空间的备用驱动器（但不要录制到外置 USB 或 FireWire 磁盘，因为录制需要尽可能快地访问磁盘）
+- 以单声道而不是立体声录制（可在[设备工具栏](device_toolbar.html)或[音频设置偏好设置](audio_settings_preferences.html)中的“录音通道”中进行设置)
+- 将[“音频设置”偏好设置](audio_settings_preferences.html)中的“默认样本格式”设置为 16 位而不是 32 位（对于无需编辑即可立即导出的“快速录音”来说，这是一个不错的选择）。
+
+
+
+有关更多详细信息，请参阅[录制长度](recording_length.html)。
+
+
+
+
+#### 2.2.4.7 我可以将 Audacity 设置为在特定时间录制吗？
+
+是的，请参阅[“传输”菜单](transport_menu.html)中的[定时器记录](timer_record.html)。
+
+
+
+您还可以按照[特定时间长度的录制](recording.html#duration)说明，使 Audacity 在一定时间限制后停止录制，而无需使用定时器录制功能。
+
+
+
+
+#### 2.2.4.8 我可以从多声道设备（不仅仅是立体声）进行录音吗？
+
+是的，但这并不简单;通常，这在 Windows 使用者系统上“开箱即用”不起作用，并且始终需要使用适当的硬件和设备驱动程序。
+
+在通道选择和通道到轨道分配方面存在一些已知的 Audacity 限制。
+
+采样率必须在所有地方（Audacity、作系统和设备）匹配。 
+
+有关更多详细信息，请参阅[多通道录制](multi_channel_recording.html)。
+
+
+
+
+#### 2.2.4.9 我可以同时从两个麦克风（或两个音频接口）录制吗？
+
+Audacity 一次只能从一个声音设备录制，但这里有一些解决方案。
+
+
+
+- 如果您的声音设备具有单独的左右麦克风输入，请将单独的麦克风连接到这些输入。
+
+- 将单独的麦克风连接到混音器并从混音器录制。
+
+- 如果这些是不需要额外电源的动圈麦克风，请购买一个适配器，该适配器具有两个麦克风输入，带有一个用于计算机麦克风端口的 1/8 英寸 TRS 连接器（这通常只会为您提供组合单声道输入）。
+
+- 将每首曲目录制到不同的计算机。
+
+- 如果您有两个 USB 麦克风或任何其他单独的声音设备，您可以将它们聚合为单个设备以在 Audacity 中录制，或者使用其他录音软件将两个设备录制到单独的轨道上。
+
+  - 在 **Windows** 上，您可以尝试以下作。
+
+    - 某些应用程序可以将两个设备路由到一个流。使用 [Voice Meeter](http://vb-audio.pagesperso-orange.fr/Voicemeeter/index.htm)（捐赠软件 - 请参阅此 [YouTube 视频教程](http://youtu.be/atobXq-iA-k)）或[虚拟音频线](http://software.muzychenko.net/eng/vac.htm)（非免费）。
+
+    - 在 Windows 上也可以使用“监听”功能将输入路由到输出，尽管这有轻微的损失。
+
+      1. 右键单击系统时钟旁的扬声器图标，选择“声音”，然后选择“录音设备”。
+      2. 右键单击第一台设备，选择“属性”，然后选择“收听”选项卡（如果可用）。
+      3. 选中“收听此设备”并将其设置为通过所需的音频接口播放。
+      4. 对其他设备重复上述步骤。
+      5. 使用音频接口上的“立体声混音”功能（如果有这样的功能）来[录制计算机播放](tutorial_recording_computer_playback_on_windows.html)。
+
+    - [Alis](http://sourceforge.net/projects/alis/) 可以从不同的音频接口捕获同时录音。
+
+    - **高深：**使用 ASIO 支持编译 Audacity 将允许您聚合两个 USB 麦克风，例如使用 WDM 音频的 [ASIO4ALL](http://www.asio4all.com/) 驱动程序。
+
+      聚合两个使用 ASIO 驱动程序的设备不太可能正常工作。
+
+  - 在 **Mac** 上，使用“音频 MIDI 设置”来聚合设备。
+
+  - 在 **Linux** 上，您可以使用 JACK 将[两个设备路由到](http://jackaudio.org/faq/multiple_devices.html) Audacity 可以录制的一个流。另请参阅这两个论坛帖子
+
+    1. https://forum.audacityteam.org/viewtopic.php?f=27&t=56492&p=146769p142160#p142160
+    2. https://forum.audacityteam.org/viewtopic.php?f=27&t=56492&p=146769p142160#p146769 .
+
+
+
+单独的音频设备（例如两个 USB 麦克风或不同计算机上的设备）将具有单独的时钟速度（在没有要同步的主时钟的情况下）。
+
+因此，随着时间的推移，两个输入可能会分开。
+
+
+
+
+
+
+
+### 2.2.5 回放
+
+
+
+#### 2.2.5.1 为什么我在 Windows 上连接 USB 设备后失去声音？
+
+当您将 USB 音频设备连接到 Windows 计算机时，它可能会自动成为通常用于播放和录音的“默认”设备。
+
+如果 USB 音频设备不是电脑的播放设备（如麦克风、转盘或录音机），你可能会在 Audacity 或电脑上的大多数应用程序中丢失声音。
+
+您可以按如下方式解决该问题。
+
+
+
+右键单击系统时钟旁的**扬声器图标**，选择**声音**，**然后单击播放选项卡**。
+
+然后右键单击您正在使用的扬声器或耳机设备，选择“**设置为默认设备**”并单击“确定”。
+
+
+
+有关上述 Windows 步骤的更详细演练*（或者如果这不适用于你的 Windows 版本），*请参阅 **[Windows：访问 Windows 声音控件](windows_accessing_the_windows_sound_controls.html)。**
+
+
+
+或者，您可以在完成录制后断开 USB 设备与计算机的连接。
+
+
+
+**注意：**要在录制时听到音频，请确保“启用声音输入监听”为“打开”。
+
+可以通过单击 **传输>传输选项 > [启用声音输入监控](transport_menu_transport_options.html#software_playthrough_onoff)**来打开/关闭此功能。
+
+
+
+#### 2.2.5.2 为什么录制或调整录制音量时播放会变静？
+
+您可能会在 Windows 上注意到这一点，例如在播放现有曲目时录制[配音](faq_recording_how_to_s.html#overdub)时。
+
+当音频通过 Windows 中设置为“默认通信设备”的录制或播放设备时，此系统设置会关闭或静音其他声音。
+
+此功能在拨打或接听 Internet 电话时可能很有用，但对于其他音频来说是不可取的。
+
+要关闭此调整：
+
+1. 右键单击系统时钟旁的**扬声器图标**，然后选择**声音**
+2. 在打开的对话框中，单击**“通信”**选项卡
+3. 在“当 Windows 检测到通信活动时”下方，选择“不执行任何作”并单击“确定”
+4. 在“*播放”*和*“录制*”选项卡上，您可以选择右键单击设备并将其设置为或取消设置为“默认通信设备”。
+
+
+
+有关上述 Windows 步骤的更详细演练*（或者如果这不适用于你的 Windows 版本），*请参阅 **[Windows：访问 Windows 声音控件](windows_accessing_the_windows_sound_controls.html)。**
+
+
+
+如果音频输入或输出无法正常交互存在其他问题，请确保您的声音设备具有特定于您的特定计算机型号和作系统的最新驱动程序。
+
+驱动程序应从主板或计算机制造商处获得 网站，或者如果那里没有，请从声音设备制造商的网站。
+
+如需更多帮助。
+
+另请注意，Skype 有时可以在运行时纵播放和录音级别，即使不使用。
+
+
+
+另见：
+
+- [为什么我的录音会淡出或听起来像是在隧道中制作的？](faq_recording_troubleshooting.html#enhancements)
+
+
+
+
+
+#### 2.2.5.3 为什么我在 Mac 上听到点击播放？
+
+如果您使用 *Soundflower* 或外部 USB 或 FireWire 播放设备而不是内置音频输出，则最有可能发生这种情况。
+
+该问题通常可以通过打开[音频设置首选项](audio_settings_preferences.html)并调整“缓冲区长度”设置来解决，这也会影响播放。
+
+将设置减少到 0 毫秒。
+
+如果播放中断或未开始，请以 10 毫秒的增量增加“缓冲区长度”，直到播放流畅。
+
+
+
+有时，在 Audacity 运行时运行其他音频应用程序可能会导致 Audacity 中的点击播放。
+
+如果您正在运行其他音频编辑器、Apple Music/iTunes 或 QuickTime Player，则可能会出现这种情况。
+
+
+
+如果您正在播放在 Audacity 中制作的录音，并且每次播放时点击都在同一位置，则可能需要在较低的缓冲区设置下重做录音。
+
+
+
+另见：
+
+- [如何防止在 Mac 上录制咔嗒声？](faq_recording_troubleshooting.html#mac_crackle)
+
+
+
+#### 2.2.5.4 为什么导出的文件会出现非常低级的嘶嘶声？
+
+当您*将缩减采样*到较低的***[采样格式](glossary.html#sample_format)***时，例如，当您从默认 32 位深度的项目导出到 16 位 ***[WAV](glossary.html#wav)*** 或 ***[AIFF](glossary.html#aiff)*** 文件时，或者当您在包含 16 位音频的项目上运行效果时，通常会添加故意的低级噪声。
+
+额外的噪声称为[抖动](dither.html)，通常是有益的。
+
+抖动可防止由于无法以 16 位格式准确表示 32 位值而可能出现的咔嗒声。
+
+
+
+如果您仍想关闭所有数据处理（包括导出）的抖动，您可以在[“质量偏好设置”](quality_preferences.html)中的“高质量转换”中执行此作。
+
+或者，您可以仅在导出步骤中关闭抖动。
+
+如果您定期在同一文件上导出，这可能有助于避免累积抖动噪声。
+
+
+
+#### 2.2.5.5 如何暂停播放以便在那里进行编辑？
+
+Audacity 无法在播放暂停时应用[效果](index_of_effects_generators_and_analyzers.html)或更改音频。
+
+要停止播放并将编辑光标设置在停止的位置，最简单的方法是按键盘上的 **X** 键“停止并设置光标”（如果有[选择区域](audacity_selection.html)，**X** 会修剪选择的左边缘以从停止位置开始）。
+
+使用**空格键**或 **X** 从停止位置重新开始播放。
+
+
+
+请注意，除了 [Scrub 或 Seek 播放](scrubbing_and_seeking.html)外，使用**空格键**或 Stop 按钮![停止按钮](../m/images/f/f9/stop.png)停止会将编辑光标留在播放开始的位置 - 可能不是您想要的。
+
+
+
+您不必总是自己停止暂停的播放。
+
+如果您有选择区域，则在暂停时仍然可以访问许多菜单项，并且 Audacity 将停止播放以将更改应用于该区域。
+
+如果没有选择区域，Audacity 将停止播放，但会警告您未选择要作的音频。
+
+
+
+还有许多其他替代工作流程，具体取决于您的目的。下面是两个例子：
+
+- 当您听到每个兴趣点时，不要在每个编辑点停止，而是继续播放并使用 **Ctrl + M**（在 *Mac 上为 **⌘ + .***）添加[标签](label_tracks.html)。停止后，单击任意标签以将光标设置在那里进行编辑。
+- 在播放和聆听编辑片段时，当您听到感兴趣的音频的开头时，使用键盘上的 **[** ，然后在听到感兴趣的音频的结尾时按下 **]。****]** 快捷键从按 **[** 到按 **]** 的点绘制一个选择区域。现在，您可以按两次**空格键**轻松停止播放，然后播放该选择。
+
+> 您可以在[“键盘偏好设置”](keyboard_preferences.html)中更改上述任何快捷键。
+
+
+
+请参阅[导航提示，](navigation_tips.html)了解查找要编辑的音频然后标记要剪切的点或片段的有用方法。
+
+
+
+
+
+#### 2.2.5.6 如何播放或导出多声道（环绕声）文件？
+
+Audacity 可以通过在[导入/导出首选项](import_export_preferences.html)中启用“**使用自定义混音**”来导出多通道文件。
+
+您需要根据要导出到的格式的[通道顺序](https://en.wikipedia.org/wiki/Surround_sound#Channel_identification)调整高级[混音选项](advanced_mixing_options.html)中轨道到通道的映射，尽管某些文件或播放软件/硬件可能不一定遵循该顺序。
+
+
+
+但是，Audacity 播放目前仅限于将曲目混合为单声道或立体声（两个通道）。
+
+因此，除非您将设备配置为将音频复制到其他通道，否则播放将仅到达设备的两个通道。
+
+许多播放系统还具有可选的“低音管理”，您可以在其中将立体声信号中的低音信号路由到低音炮扬声器的低频通道。
+
+
+
+
+
+### 2.2.6 打开和保存文件
+
+
+
+#### 2.2.6.1 如何保存音频以用于其他应用程序？保存项目（AUP3 文件）可以做到这一点吗？
+
+**AUP3 文件只能在 Audacity 中保存和使用。**
+
+如果需要，它可以让您稍后在 Audacity 中继续处理该音频。
+
+
+
+**每当您想在其他应用程序中使用音频时**，请选择标准音频格式，例如 ***[WAV](glossary.html#wav)***、***[AIFF](glossary.html#aiff)*** 或 ***[MP3](glossary.html#mp3)***。
+
+- WAV 和 AIFF 是***[无损](glossary.html#lossless)***文件，您也可以将其刻录到[音频 CD](#tocd) 或再次用于进一步编辑。
+- MP3 和 ***[M4A/MP4](glossary.html#aac)*** 是***[有损](glossary.html#lossy)***较小的文件，可用于便携式音乐播放器或通过 Internet 发送。
+
+> 如果您已经保存了 AUP 文件，但现在想要导出音频文件，请使用**“文件”>[“打开](file_menu.html#open)**”重新打开该 AUP。如果最近保存了项目，您还可以在“**文件”>“[最近的文件](file_menu.html#recentfiles)**”菜单中找到该项目。
+
+
+
+要了解有关使用 AUP 文件的更多信息，请参阅 [Audacity 项目](audacity_projects.html)。
+
+
+
+
+#### 2.2.6.2 Audacity 崩溃了，或者我不再有 AUP3 项目文件。我可以恢复数据吗？
+
+如果在 Audacity 有未保存的数据（例如尚未保存为项目的录音或具有未保存更改的现有项目）时发生崩溃，Audacity 将在下次启动 Audacity 时尝试恢复该数据。
+
+有关完整详细信息，请参阅[自动崩溃恢复](recovery.html)。
+
+
+
+如果计算机本身崩溃，请参阅为什么[我在 Audacity 中播放或录制时计算机会重新启动或显示蓝屏消息？](faq_errors.html#reboot)。
+
+
+
+如果 Audacity 崩溃并且您看到[调试报告“Audacity”](help_menu.html#data)对话框，请[写信给我们](http://audacityteam.org/contact/#feedback)，附上压缩的支持数据，以便我们进行调查，告诉我们您在崩溃前在 Audacity 中做了什么。
+
+
+
+#### 2.2.6.3 Audacity 可以导入或导出 WMA、AC3 或 Apple Music/iTunes 文件 （M4A/MP4） 等格式吗？
+
+Audacity 出厂时可以导入或导出以下音频格式：
+
+- ***[未压缩的](glossary.html#uncompressed_format)***音频格式：大多数 ***[WAV](glossary.html#wav)*** 和 ***[AIFF](glossary.html#aiff)*** 文件，包括所有 ***[PCM](glossary.html#pcm)*** 变体
+
+- ***[压缩](glossary.html#compressed_format)***音频格式：***[Ogg Vorbis](glossary.html#ogg)***、***[FLAC](glossary.html#flac)*** 和 ***[MP2](glossary.html#mp2)***
+
+
+
+您可以安装可选的 [FFmpeg 库](faq_installation_and_plug_ins.html#ffdown)来导入和导出范围更大的音频格式，包括 **AC3、M4A、MP4 和 WMA***（仅在 Mac 上，Audacity 可以导入未受保护的 M4A、MP4 和 MOV 文件，而无需 FFmpeg）。
+
+受 [DRM 保护](http://en.wikipedia.org/wiki/Digital_rights_management)且仅在特定软件中工作的音频文件无法导入。
+
+FFmpeg 还将从大多数不受 DRM 保护的视频文件或 DVD 中导入音频。
+
+
+
+您可以通过导出到计算机上的任何位置来导出到 Apple Music/iTunes，然后[将文件添加到 Apple Music/iTunes 资料库。](sample_workflow_for_exporting_to_itunes.html)
+
+请参阅[导入音频](importing_audio.html)和导出[对话框，以](file_export_dialog.html)获取有关导入和导出的更多帮助。
+
+
+
+如果要导入的音频文件受 DRM 保护（例如，较旧的 iTunes M4P 文件），请先在获得播放许可的应用程序中将其刻录到***[音频 CD](glossary.html#audio_cd)***。
+
+然后[将 CD 轨道翻录](#fromcd)为 WAV 或 AIFF。
+
+如果您的声音设备支持此功能，您还可以在文件在计算机上播放时[录制](faq_recording_how_to_s.html#streaming)文件，尽管这可能会导致质量略有下降。
+
+> Audacity 本身不支持 **Opus**。如果安装了 [FFmpeg，Audacity](faq_installation_and_plug_ins.html#ffdown) 将尝试使用 FFmpeg 导入 **Opus** 文件。
+
+
+
+另见：
+
+- [如何导出为“导出音频”对话框中未列出的格式？](#export_extra)
+
+
+
+#### 2.2.6.4 如何导出为“导出音频”对话框中未列出的格式？
+
+如果您安装了可选的 [FFmpeg](faq_installation_and_plug_ins.html#ffdown) 库，则可以使用[“导出音频”对话框](file_export_dialog.html)中的 （FFmpeg） 选项来导出 ***[M4A （AAC）、](glossary.html#aac)***AC3 和 ***[WMA](glossary.html#wma)***。
+
+如果您没有看到其中一种特定 FFmpeg 格式的选项，则表示您要链接的 FFmpeg 内部版本未编译为支持该格式的编码。
+
+
+
+导出为更多格式的最灵活方法是在“导出音频”对话框中选择（外部程序），该对话框将打开 Audacity 命令[行编码器的](exporting_to_an_external_program.html)对话框。
+
+将您的命令指向支持您要写入的格式的编码器，该编码器可以是 FFmpeg 或其他编码器（例如，替代 AAC 或 MP3 编码器）。
+
+在 Windows 上，推荐的 [FFmpeg](faq_installation_and_plug_ins.html#ffdown) EXE 安装程序包含一个可用于此目的的ffmpeg.exe。
+
+在 Mac 上，如果您在线搜索，您可以下载独立的“ffmpeg”二进制文件。
+
+
+
+或者，你可以通过在 导出音频（Export Audio） 对话框中选择 [自定义FFmpeg导出（Custom FFmpeg Export](custom_ffmpeg_export_options.html)） 来导出为FFmpeg构建支持的一些其他格式。
+
+
+
+#### 2.2.6.5 为什么导出的文件不包括专辑艺术家或 BPM 元数据、专辑封面或歌词？
+
+导出文件时，默认情况下会弹出元[数据编辑器](metadata_editor.html)，您可以在其中添加、删除或更改有关文件的嵌入信息。
+
+许多音频格式都很好地支持[元数据](glossary.html#metadata)，尤其是 ***[MP3](glossary.html#mp3)*** 使用的 ***[ID3](glossary.html#id3)*** 标签，但在 ***[WAV](glossary.html#wav)*** 中支持较少。
+
+- 导入的 ***[MP2](glossary.html#mp2)*** 和 MP3 文件中的元数据（默认元数据编辑器标签“艺术家姓名”、“曲目标题”、“专辑标题”、“曲目编号”、“年份”、“流派”和“评论”除外）将导出为“自定义”ID3 帧。
+
+  这意味着导出的自定义标签（例如“专辑艺术家”、“BPM”或“作曲家”）将不会出现在 Windows Media Player、Windows 资源管理器、iTunes 或其他忽略自定义标签的软件中。
+
+- 相对较少的音频应用程序或播放器能够读取其他应用程序生成的 WAV 元数据，例如 iTunes 无法读取。
+
+  对于 iTunes，您可以导出到 ***[AIFF](glossary.html#aiff)*** 作为支持元数据的替代***[无损](glossary.html#lossless)***格式。
+
+- 对于 WAV 文件，Audacity 将所有七个默认标签以及“版权”和“软件”的元数据导出为 [RIFF INFO 块](http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/RIFF.html#Info)。它还将所有输入的标签导出为 [ID3 标签](http://en.wikipedia.org/wiki/ID3)。
+
+  可以读取 WAV 文件中的 ID3 标签的应用程序可以读取这些标签。
+
+- 可选的 [FFmpeg 库](faq_installation_and_plug_ins.html#ffdown)支持的某些音频格式可能无法导出完整的元数据。
+
+- 对于所有格式，Audacity 目前在导出时会丢弃任何现有的歌词或专辑封面。您可以复制歌词（或在线搜索），然后将它们添加回您喜爱的媒体播放器中的导出文件中。
+
+  使用 [IDTE](http://sourceforge.net/projects/idteid3tagedito/) 等标签编辑器提取专辑封面（或使用 [Windows Media Player](http://windows.microsoft.com/en-us/windows/add-change-media-player-album-art#1TC=windows-7) 或 iTunes 在线搜索插图），然后使用媒体播放器将插图添加回导出的文件。
+
+
+
+另见：
+
+- [如何下载和安装 LAME MP3 编码器？](faq_installation_and_plug_ins.html#lame)
+- [如何下载和安装 FFmpeg 导入/导出库？](faq_installation_and_plug_ins.html#ffdown)
+
+
+
+#### 2.2.6.6 如何从音频 CD 导入曲目？
+
+Audacity 无法直接从音频 CD 导入曲目。
+
+您必须使用单独的应用程序（如 Windows Media Player 或 [iTunes\xc2\xae](http://www.apple.com/itunes/)）将 CD 曲目提取（或“翻录”）为 Audacity 可以读取的格式，例如 ***[WAV](glossary.html#wav)*** 或 ***[AIFF](glossary.html#aiff)*** 。
+
+然后您可以将这些 WAV 或 AIFF 文件导入 Audacity。
+
+
+
+唯一的例外是，在配备光驱的 Mac 电脑上，CD 轨道作为 AIFF 文件安装在 Finder 中，因此可以直接导入到 Audacity 中。
+
+
+
+有关更多详细信息，请参阅教程教程 [- 如何导入 CD](tutorial_how_to_import_cds.html)。
+
+
+
+#### 2.2.6.7 如何将录音保存在音频 CD 上？
+
+在 Audacity 中录制或编辑文件后，请按照以下步骤将您的作品保存在音频 CD 上。
+
+1. 在[“导出音频”对话框](file_export_dialog.html)“另存为类型”下拉菜单中选择“WAV （Microsoft） 签名的 16 位 PCM”或“AIFF （Apple） 签名的 16 位 PCM”以导出为音频文件。
+
+2. 使用任何 CD 刻录软件（例如 iTunes® 或 Nero）将此文件刻录到 CD。
+
+   如果您在同时是媒体播放器的应用程序（如 iTunes® 或 Windows Media Player）中刻录，您可能需要将要刻录的文件拖到播放列表或库中。
+
+   如有疑问，请参阅应用程序的帮助文件。
+
+
+
+要制作可以在所有 CD 播放器中播放的光盘，请确保创建“音乐”或“音频”CD（而不是“数据”CD）。
+
+使用 CD-R 光盘，因为某些播放器无法读取 CD-RW。
+
+在大多数情况下，您只能将 74 分钟刻录到音频 CD，但根据 CD-R 的不同，最多可以刻录 80 分钟。
+
+这是音频 CD 格式的限制。
+
+
+
+某些 CD 软件将仅刻录 16 位、44,100 Hz 立体声音频文件。
+
+如果您的 CD 刻录软件无法打开您的文件，请在 Audacity 中选择以下设置后再次导出文件：
+
+1. 在[“音频设置”偏好设置中](audio_settings_preferences.html)，将**“投影速率”**设定为 4410 Hz。
+2. 如果项目尚未包含立体声轨道，请选取**“轨道”>“添加新的>[立体声轨道](tracks_menu_add_new.html#stereo_track)**”。这将使 Audacity 导出立体声文件。
+
+
+
+有关使用 Windows Media Player 或 iTunes\xc2\xae 刻录 CD 以及刻录“无缝”CD 或[更长](burning_music_files_to_a_cd.html#longer)的“数据”CD 的提示，请参阅将[音乐文件刻录到 CD](burning_music_files_to_a_cd.html) 教程。
+
+
+
+另见：
+
+- [如何将长录音拆分为多个轨道？](#split)
+
+
+
+#### 2.2.6.8 如何将长录音拆分为多个文件或 CD 轨道？
+
+请按照以下步骤为每首歌曲或长录音的片段创建单独的音频文件。
+
+如果您正在创建音频 CD，这特别有用，因为将每个文件刻录到 CD 后，每首歌曲都会有一个单独的 CD 轨道，您可以在 CD 播放器中跳到该曲目。
+
+
+
+1. 点按以将光标放在第一首歌曲的开头。
+2. 选择“**编辑>标签”>“[在选择时添加标签](edit_menu_labels.html#addlabelatselection)**”。如果您愿意，您可以在标签中输入歌曲的名称。
+3. 对每首歌曲重复步骤 1 和 2。
+4. 完成后，选择 **文件 > [导出音频](file_export_dialog.html)** 并选择 [多个文件](export_multiple.html).当您单击“**导出**”按钮时，Audacity 会使用您选择的格式和位置将每首歌曲保存为单独的文件。
+
+
+
+或者，Audacity 可以尝试检测曲目之间的静音并自动标记它们。
+
+请参阅[将录音拆分为单独的轨道](splitting_a_recording_into_separate_tracks.html)中的完整说明。
+
+
+
+**另见：**
+
+- [如何将录音保存在音频 CD 上？](#tocd)
+
+
+
+#### 2.2.6.9 为什么 Audacity 在导出或保存时会警告名称或什么也没发生？
+
+##### 2.2.6.9.1 为导出的音频文件的名称添加扩展名和句点（点）
+
+在 **Windows** 上，当您[导出](file_export_dialog.html)音频文件时，Audacity 在大多数情况下会为您选择的***[格式](glossary.html#formats)***添加句点（点）和适当（或最常见）***[的扩展名](glossary.html#extension)***。因此，如果您想导出名为“rhythms.wav”的 ***[WAV](glossary.html#wav)*** 文件，您需要做的就是键入“rhythms”（不带引号）。
+
+如果您在名称本身中输入所需的句点，Audacity 通常会为您添加最后的句点和扩展名。
+
+
+
+但是，如果您键入以句点和字符结尾的名称，则 Audacity 将显示警告，这些名称是任何常见媒体、文档或图像类型的扩展名，并且此扩展名对于您的音频格式来说是意外的。
+
+如果您真的想使用此文件名导出，请按警告中的“是”，或按“否”返回导出对话框。
+
+例如，如果这是您的明确要求，这使您可以灵活地导出带有 M4B 有声读物扩展名的 ***[M4A （AAC）](glossary.html#aac)*** （FFmpeg） 文件。
+
+
+
+**更多 Windows 示例***（不要在给定的示例中键入引号）*
+
+- 如果您导出为 WAV 文件并键入“1.2 小时”，则该文件将导出为“1.2 hours.wav”，没有警告。
+- 如果您导出为 ***[MP3](glossary.html#mp3)*** 文件并键入“rhythms.jpg”，Audacity 将显示警告，因为 JPG 是一种图像格式。您必须键入“rhythms.jpg.mp3”才能生成具有该名称和扩展名的文件。
+- 如果导出为 M4A （AAC） （FFmpeg） 文件并键入“rhythms.mp4”或“rhythms.m4r”（表示 MP4 格式的[铃声](tutorial_making_ringtones_and_ivr_messages.html)），则不会显示警告，因为这些是该格式的可识别扩展名。
+- 如果导出为 M4A （AAC） （FFmpeg） 文件并键入“rhythms.mp3”，则会显示警告，因为导出的文件 Windows 会将其视为 MP3，但包含 MP4 音频。
+
+
+
+在 **Mac 和 GNU/Linux** 上，如果您导出的文件名中包含**任何**句点的音频文件，Audacity 会警告您（除非隐含扩展名是您所选格式的公认替代扩展名）。
+
+如果您对警告回答“是”，Audacity **将不会**为该格式添加标准扩展名。
+
+因此，如果您需要在文件名中添加句点，则必须对任何警告回答“否”，然后在名称末尾添加另一个句点，然后在名称末尾添加正确的扩展名。
+
+否则，该文件可能无法播放。
+
+
+
+##### 2.2.6.9.2 操作系统禁止的字符
+
+导出和保存 [Audacity 项目](audacity_projects.html)时，如果您键入的文件名包含作系统禁止的字符，Audacity 也可能会警告您（或无法正确响应）。
+
+
+
+| **禁止角色：**                        |                   |
+| ------------------------------------- | ----------------- |
+| **在 Windows 上**，以下所有           | \ / : * ?" < > \| |
+| **在 Mac OS X/macOS 上**，仅冒号（1） | :                 |
+| **在 Linux 上**，仅正斜杠             | /                 |
+
+(1)  保存的文件名中的“/”在 Audacity 中显示为冒号。
+
+
+
+除了作系统限制外，Audacity 还完全支持文件名中的可打印 [Unicode](http://en.wikipedia.org/wiki/List_of_Unicode_characters) 字符。
+
+但是，如果您想将文件发送给其他人、在其他作系统上使用它或在 Internet 上提供，请**仅使用 A 到 Z 或 a 到 z 字符、整数（0 到 9）、下划线或连字符减号（或使用 NUMPAD_SUBTRACT 键）。**
+
+这将确保文件名始终兼容。
+
+
+
+可能存在其他限制，例如文件路径中允许的最大字符数，或者某些文件名可能为作系统保留。
+
+可以在[此处](https://docs.microsoft.com/en-gb/windows/win32/fileio/naming-a-file)找到 Windows 的完整详细信息。
+
+> 在**计算机上显示文件扩展名：**当您在 Mac 上的 Windows 资源管理器或 Finder 中查看保存或导出的文件时，您可能只能看到文件名本身（例如，“92.3 FM 捕获”），而看不到它后面的扩展名。
+>
+> 这不是 Audacity 错误，而是您需要将作系统设置为显示文件扩展名。
+>
+> - **Windows：**打开文件资源管理器，单击“查看”选项卡，然后在顶部功能区右端附近，在“文件扩展名”中打勾。
+> - **macOS：**在 Finder 中，选择 **Finder >首选项，**然后在“高级”选项卡上启用“[显示所有文件扩展名](http://www.bleepingcomputer.com/tutorials/show-file-extensions-on-a-mac/)”。
+
+
+
+#### 2.2.6.10 如何备份我的 Audacity 项目？
+
+Audacity 具有非常强大的[崩溃恢复](recovery.html)功能，在许多情况下，可以在发生电源故障、[计算机崩溃](faq_errors.html#reboot)或 Audacity 本身崩溃的情况下恢复您的大部分或全部工作。
+
+但是，明智的预防措施是定期将[项目](audacity_projects.html)备份到单独命名的 AUP3 文件，以防 Audacity 无法正确恢复。这也使您可以灵活地重新打开项目，因为它在不同时间点，因为一旦项目的会话关闭，Audacity 就无法恢复项目的[历史记录](undo_redo_and_history.html)。
+
+
+
+复制已保存项目的最佳方法是使用**“文件”>“保存项目”>[“备份项目](file_menu_save_project.html#backup_project)**”并保存为新名称。
+
+这将使当前项目的副本处于当前状态，使当前项目保持开放状态以供继续工作。
+
+有关如何使用 Audacity 项目文件的更多信息，请参阅[管理 Audacity 项目](audacity_projects.html)。
+
+
+
+请记住，计算机硬盘驱动器可能会发生故障，从而破坏所有数据。
+
+因此，如果可能的话，应定期备份到存储当前项目的设备以外的一两个设备。
+
+例如，可以备份到计算机上的另一个内部驱动器，或者最好备份到外部 USB 驱动器或上传到在线（云）存储服务。
+
+
+
+如果您刚刚录制了[录音](record.html)，强烈建议您在开始编辑项目之前立即将其归**档>[导出音频](file_export_dialog.html)**作为安全副本将其归档导出到***[WAV](glossary.html#wav)***或***[AIFF](glossary.html#aiff)***（最好是外部驱动器）。
+
+如果您正在录制[多轨配音](tutorial_multi_track_overdubbing.html)（一个接一个地录制轨道，例如鼓声后是吉他声，后面是人声），请立即导出每个录制的轨道，请立即停止录音。
+
+
+
+
+#### 2.2.6.11 如何将 Audacity 3.x AUP3 项目移回 Audacity 2.x AUP 格式？
+
+虽然可以在 Audacity 3.x.x 中打开使用 Audacity 2.x.x 或 1.3.x 创建和保存的项目，但反之则不然。
+
+一旦项目保存在单一 AUP3 项目文件中，就无法再在早期版本的 Audacity 中打开它。
+
+
+
+有几种解决方法：
+
+- 将整个项目导出为单个 WAV 文件并将该 WAV 文件导入 Audacity 2.x.x
+- 使用**“文件”>[“导出多个](export_multiple.html)**”将每个单独的曲目导出为 WAV 文件，然后将它们导入到较旧的 Audacity 版本中。
+
+有关更多详细信息，请参阅[将 AUP3 项目从 Audacity 3.x 移动到 Audacity 2.x](moving_aup3_projects_from_audacity_3.x_to_audacity_2.html)。
+
+
+
+
+
+### 2.2.7 MP3 导出问题
+
+
+
+#### 2.2.7.1 为什么 Audacity 在 MP3 导出时崩溃或使用过多的处理时间？
+
+如果 Audacity 在导出 MP3 时崩溃或挂起，或者导出需要很长时间来处理，通常的原因是您在[音频设置首选项](audio_settings_preferences.html)中选择的项目速率与屏幕上音轨的采样率有很大不同（如静音/独奏按钮上方的轨道控制面板上的 Hz 所示）。因此，导出时必须进行重新采样，这可能会在长轨道上产生问题。在导出为 MP3 之前，尝试将曲目重新采样为您选择的项目速率。为此，请通过单击“轨道控制面板”来选择所有轨道，然后单击“**轨道”>“混合[”>“混合和渲染](tracks_menu_mix.html#mix_and_render)**”。如果由于重新采样而在轨道末尾添加了任何静音，您可以选择并删除它。现在，当您导出 MP3 时，该过程应该会顺利快速地进行。如果没有，可能有多种原因，例如，如果您将病毒扫描程序设置为扫描所有创建的文件，这将大大减慢写入导出文件的过程。导出的比特率越高，文件就越大，因此如果启用病毒扫描，时间损失会更大。
+
+
+
+## 为什么我导出的 MP3 无效/无法播放？
+
+有时导出的 MP3 可能无效且只有几个字节大小;结果，它不会播放并给出错误。
+
+最安全的解决方案是**始终将“投影速率”设定为 44100 Hz**。在导出之前制定规则来检查这一点，因为导入其他采样速率的文件可能会将“投影速率”更改为该速率。
+
+在[音频设置偏好设置](audio_settings_preferences.html)中使用**项目采样率**设置执行此作。
+
+LAME 会自动从 44100 Hz 下采样到 56 kbps 或更低的较低采样率，因为低比特率可能会在较高采样率下产生较差的质量。如果特别需要，可以使用当前版本的 Audacity 中的命令行导出器强制执行任何有效的采样率/比特率组合（在“导出文件”对话框的“另存为类型”中选择“外部程序”）。或者从 Audacity 导出为 WAV，然后在命令行中使用 LAME.exe 转换为 MP3。
+
+
+
+## 为什么我导出的 MP3 播放速度太快？
+
+如果 MP3 以错误的速度播放（通常太快），则您导出它的采样率不适合您的播放器应用程序。同样，安全的解决方案是**始终将您的项目速率设置为 44100 Hz。**
+
+在[音频设置偏好设置](audio_settings_preferences.html)中使用**项目采样率**设置执行此作。
+
+这是 Adobe Flash Player 的一个已知问题，直到进入版本 9：为了使文件正常播放，采样率必须为 1,025 Hz 或其倍数，例如 22050 Hz 或 44100 Hz。这在当前的 [Adobe Flash Player](http://www.adobe.com/products/flashplayer/) 中已修复。
+
+
+
+## 为什么我导出的 MP3 音量低或没有声音？
+
+如果您可以看到导出的 MP3 正在播放，因为媒体播放器上的计时器在移动，但它没有声音，请确保声音设备未静音（在播放器或系统控制面板中），并确保使用正确的播放设备（在播放器首选项或系统控制面板中）。如果这不是问题，请返回 Audacity 并确保轨道控制面板（静音/独奏按钮所在的位置）上的 -....+ 增益/音量滑块集中设置在“增益/音量：0 db”。如果此滑块位于左侧，它将降低或终止导出的 MP3 中的音量。
+
+
+
+## 为什么我导出的 MP3 比导入的 MP3 大？
+
+如果您将 MP3 文件导入 Audacity，那么导出后您会发现它比以前大得多，这是因为您导出它的[比特率](http://en.wikipedia.org/wiki/Bit_rate)高于原始文件的比特率。
+
+Audacity 默认为 128 kbps 比特率，然后在更改时记住上次使用的比特率。
+
+如果您需要导出的 MP3 大小与以前相同：
+
+1. 通过在 Windows Media Player 中打开它并单击“**文件”>“属性**”来找出导入文件的比特率，或者在 Apple Music/iTunes 中，右键单击或按住 Control 键单击该文件并单击**“歌曲信息”**/**“获取信息**”。您还可以使用独立程序，例如 [MediaInfo](http://mediainfo.sourceforge.net/en)。
+2. 单击**文件>[导出音频](file_export_dialog.html)**，然后在“格式”字段中选择 **MP3**。
+
+如果您以与原始比特率相同的比特率导出低比特率 MP3，则与以较高比特率导出相比，其质量的下降程度将大大增加。较高比特率的缺点是新文件会更大，并且文件合并工具可能无法再将新 MP3 连接到具有原始比特率的其他文件。如果您以相同的比特率导出高比特率 MP3，您将有助于最大限度地减少质量损失（但不会在文件大小上节省任何内容）。
+
+
+
