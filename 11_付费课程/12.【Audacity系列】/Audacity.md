@@ -6,135 +6,511 @@ Audacity
 
 
 
+1. 手册主页
+
+   1.1 导游
+
+   ​	1.1.1 录制、播放和编辑 - Audacity 的基础知识
+
+   ​	1.1.2 保存您的作品 - 音频格式
+
+   ​	1.1.3 自定义 Audacity - 主题、颜色、首选项、布局和插件扩展
+
+   ​	1.1.4 更快的做事方式 - 快捷方式和宏
+
+   ​	1.1.5 更改音频的响度 - 淡入淡出、放大、声像和增益/音量
+
+   ​	1.1.6 音频中的噪音 - 减少、添加、微调
+
+   ​	1.1.7 导航和改变速度和音调
+
+   ​	1.1.8 实时效果
+
+   ​	1.1.9 很多你可能不知道 Audacity 可以做的事情
+
+2. 使用 Audacity
+
+   1. 开始
+   2. 操作方法
+   3. 教程
+   4. 技巧
+
+3. Audacity 图形用户界面
+
+   1. 菜单栏
+   2. 工具栏
+   3. 轨道
+   4. 影响
+
+4. 定制
+
+   1. 偏好
+   2. 快捷键
+   3. 主题
+   4. 工具栏
+   5. 影响
 
 
-2 参考
 
-2 常见问题（FAQ）
 
-目录
 
-1. 关于 Audacity
-   1. [Audacity 真的免费吗？为什么？](faq_about_audacity.html#free)
-   2. [Audacity 使用安全吗？](faq_about_audacity.html#safe)
-   3. [我可以分发 Audacity 的副本吗？](faq_about_audacity.html#distributor)
-   4. [有人在 eBay 上出售 Audacity。这合法吗？](faq_about_audacity.html#ebay)
-   5. [搜索结果误导我为 Audacity 下载付费。我该怎么办？](faq_about_audacity.html#misled)
-   6. [Audacity 未以预期或期望的语言显示。我可以更改此设置吗？](faq_about_audacity.html#language)
-   7. [会有适用于 iPhone/iPod、iPad 或其他智能手机或平板电脑的 Audacity 版本吗？](faq_about_audacity.html#mobile)
-   8. [我可以在 Chromebook 笔记本电脑上运行 Audacity 吗？](faq_about_audacity.html#chrome)
-   9. [Audacity 是否适用于盲人用户的屏幕阅读器应用程序？](faq_about_audacity.html#accessible)
-   10. [Audacity 在语音转录或语音识别方面有哪些功能？](faq_about_audacity.html#transcribe)
-   11. [Audacity 可以在 64 位系统上运行吗？](faq_about_audacity.html#64bit)
-   12. [Audacity 是否支持低延迟 ASIO 驱动程序？](faq_about_audacity.html#asio)
-   13. [如何找到我拥有的 Audacity 版本，这是否是最新版本？](faq_about_audacity.html#version)
-   14. [我该如何帮助改进 Audacity？](faq_about_audacity.html#improve)
-2. [安装、启动和插件](#install)
-   1. [如何安装或更新 Audacity？](faq_installation_and_plug_ins.html#install)
-   2. [如何卸载 Audacity？](faq_installation_and_plug_ins.html#win_uninstall)
-   3. [如果我在下载或安装 Audacity 时遇到问题，我该怎么办？](faq_installation_and_plug_ins.html#probs)
-   4. [如何下载和安装 LAME MP3 编码器？](faq_installation_and_plug_ins.html#lame)
-   5. [如何下载和安装 FFmpeg 导入/导出库？](faq_installation_and_plug_ins.html#ffdown)
-   6. [Audacity 支持哪些效果器、生成器和分析器插件以及如何安装它们？](faq_installation_and_plug_ins.html#plug-ins)
-   7. [如何解决 Audacity 在启动时不出现或崩溃，或者添加插件后崩溃的问题？](faq_installation_and_plug_ins.html#launch)
-   8. [如果 Audacity 界面在 Mac 上响应缓慢，我该怎么办？](faq_installation_and_plug_ins.html#lag)
-   9. [如果我在构建 Audacity 时遇到错误，我该怎么办？](faq_installation_and_plug_ins.html#build)
-   10. [Windows：如何在双击 WAV 或其他音频文件时启动 Audacity？](faq_installation_and_plug_ins.html#win_associate)
-   11. [Mac：为什么我在启动 Audacity 时看到“正在验证”或“已损坏”消息？](faq_installation_and_plug_ins.html#mac_launch)
-   12. [如何重置我的 Audacity 设置？](faq_installation_and_plug_ins.html#reset)
-   13. [为什么我在 Audacity 中播放或录制时计算机会重新启动或显示蓝屏消息？](faq_installation_and_plug_ins.html#reboot)
-3. [录制 - 故障排除](#rectrouble)
-   1. [如何在没有小跳过（丢失）或重复的情况下进行录音？](faq_recording_troubleshooting.html#skips)
-   2. [为什么我不能在 Windows 中录制？](faq_recording_troubleshooting.html#vista_7)
-   3. [为什么我在 Mac 上录制时会出现平坦的线条并且没有声音？](faq_recording_troubleshooting.html#mac_silence)
-   4. [如何防止在 Mac 上录制咔嗒声？](faq_recording_troubleshooting.html#mac_crackle)
-   5. [为什么 Audacity 看不到我刚刚连接的音频设备？](faq_recording_troubleshooting.html#new_device)
-   6. [为什么我听不到我正在录制的内容？](faq_recording_troubleshooting.html#playthrough)
-   7. [为什么在收听我正在录制的内容时会出现延迟或回声？](faq_recording_troubleshooting.html#delay)
-   8. [为什么我的录音会淡出或听起来像是在隧道中制作的？](faq_recording_troubleshooting.html#enhancements)
-   9. [为什么我的新曲目与之前的曲目不同步，或者听起来噼啪作响或音调错误？](faq_recording_troubleshooting.html#sync)
-   10. [为什么我不能使用 USB 数据线录制我的电子键盘或电子乐器？](faq_recording_troubleshooting.html#keyboards)
-   11. [为什么从 YouTube（或其他流媒体音频）录制不起作用？](faq_recording_troubleshooting.html#stream)
-   12. [为什么录音声音很大时会发出噼啪声、爆裂声或失真？](faq_recording_troubleshooting.html#clipping)
-   13. [为什么我看到刚录制的曲目中有很多垂直的红线？](faq_recording_troubleshooting.html#red_line)
-   14. [为什么 Audacity 录音滑块在最大值时显示为灰色？](faq_recording_troubleshooting.html#input_slider)
-   15. [为什么我的录制不断自动暂停或为什么我的录制光标卡住？](faq_recording_troubleshooting.html#pauses)
-   16. [为什么我尝试录制时只有一条平线而没有声音？](faq_recording_troubleshooting.html#flatline)
-   17. [为什么录音时每 6 - 12 秒就会有周期性噪音？](faq_recording_troubleshooting.html#noise6)
-   18. [如何防止半音量单声道录音？](faq_recording_troubleshooting.html#half_volume)
-   19. [如何防止立体声录音不平衡或分离不良？](faq_recording_troubleshooting.html#unbalanced)
-   20. [如何纠正不平衡的立体声录音？](faq_recording_troubleshooting.html#rebalance)
-   21. [为什么记录的波形不是在0.0处的水平线上居中？](faq_recording_troubleshooting.html#offset)
-   22. [为什么使用打孔和滚动录音时，我在拼接点处会发出一阵声音？](faq_recording_troubleshooting.html#squawks)
-4. [录音 -作方法](#rechowto)
-   1. [如何以立体声录制？](faq_recording_how_to_s.html#rinstereo)
-   2. [最佳录音电平的目标是什么？](faq_recording_how_to_s.html#olevel)
-   3. [如何从黑胶唱片、盒式磁带或迷你光盘进行录音？](faq_recording_how_to_s.html#vinyltapes)
-   4. [我可以在播放曲目的同时录制新曲目吗？](faq_recording_how_to_s.html#overdub)
-   5. [Audacity 可以录制 YouTube、网络广播或其他流媒体音频吗？](faq_recording_how_to_s.html#streaming)
-   6. [最大录制长度是多少？](faq_recording_how_to_s.html#remaining)
-   7. [我可以将 Audacity 设置为在特定时间录制吗？](faq_recording_how_to_s.html#timer)
-   8. [我可以从多声道设备（不仅仅是立体声）进行录音吗？](faq_recording_how_to_s.html#multi)
-   9. [我可以同时从两个麦克风（或两个音频接口）录制吗？](faq_recording_how_to_s.html#twomics)
-5. [回放](#playback)
-   1. [为什么我在 Windows 上连接 USB 设备后失去声音？](faq_playback.html#usb)
-   2. [为什么录制或调整录制音量时播放会变静？](faq_playback.html#muted)
-   3. [为什么我在 Mac 上听到点击播放？](faq_playback.html#mac_buffer)
-   4. [为什么导出的文件会出现非常低级的嘶嘶声？](faq_playback.html#dither)
-   5. [如何暂停播放以便在那里进行编辑？](faq_playback.html#set_cursor)
-   6. [如何播放或导出多声道（环绕声）文件？](faq_playback.html#multi-channel)
-6. [打开和保存文件](#files)
-   1. [如何保存音频以用于其他应用程序？保存项目（AUP3 文件）可以做到这一点吗？](faq_opening_and_saving_files.html#alternative)
-   2. [Audacity 崩溃了，或者我不再有 AUP3 项目文件。我可以恢复数据吗？](faq_opening_and_saving_files.html#crashed)
-   3. [Audacity 可以导入或导出 WMA、AC3 或 Apple Music/iTunes 文件 （M4A/MP4） 等格式吗？](faq_opening_and_saving_files.html#foreign)
-   4. [如何导出为“导出音频”对话框中未列出的格式？](faq_opening_and_saving_files.html#export_extra)
-   5. [为什么导出的文件不包括专辑艺术家或 BPM 元数据、专辑封面或歌词？](faq_opening_and_saving_files.html#meta)
-   6. [如何从音频 CD 导入曲目？](faq_opening_and_saving_files.html#fromcd)
-   7. [如何将录音保存在音频 CD 上？](faq_opening_and_saving_files.html#tocd)
-   8. [如何将长录音拆分为多个文件或 CD 轨道？](faq_opening_and_saving_files.html#split)
-   9. [为什么 Audacity 在导出时会警告名称或什么也没发生？](faq_opening_and_saving_files.html#extensions)
-   10. [如何备份我的 Audacity 项目？](faq_opening_and_saving_files.html#backup)
-   11. [如何将 Audacity 3.x AUP3 项目移回 Audacity 2.x AUP 格式？](faq_opening_and_saving_files.html#compatibility)
-7. [MP3 导出问题](#mp3)
-   1. [为什么 Audacity 在 MP3 导出时崩溃或使用过多的处理时间？](faq_mp3_export_problems.html#hang)
-   2. [为什么我导出的 MP3 无效/无法播放？](faq_mp3_export_problems.html#invalid)
-   3. [为什么我导出的 MP3 播放速度太快？](faq_mp3_export_problems.html#fast)
-   4. [为什么我导出的 MP3 音量低或没有声音？](faq_mp3_export_problems.html#volume)
-   5. [为什么我导出的 MP3 比导入的 MP3 大？](faq_mp3_export_problems.html#large)
-8. [编辑](#edit)
-   1. [为什么我不能使用效果或其他菜单项？](faq_editing.html#grayed)
-   2. [为什么我不能选择少于一秒或在整秒之间点击？](faq_editing.html#snap)
-   3. [为什么在移除或粘贴音频时，或者在曲目的开头或结尾时听到咔嗒声？](faq_editing.html#clicks)
-   4. [如何在一个轨道中选择音频？](faq_editing.html#select)
-   5. [如何将所选片段扩展或移动到其他轨道？](faq_editing.html#selcopy)
-   6. [如何将两个文件合并为一个较长的文件？](faq_editing.html#join)
-   7. [如何将两首曲目混合在一起？](faq_editing.html#mix)
-   8. [我可以从录音中删除人声以制作卡拉 OK 曲目吗？](faq_editing.html#karaoke)
-   9. [我可以使用 Audacity 创建铃声或 IVR 消息吗？](faq_editing.html#ringtones)
-   10. [为什么我看到刚录制的曲目中有很多垂直的红线？](faq_editing.html#clipping)
-   11. [Audacity 可以实时预览或应用效果吗？](faq_editing.html#real_time)
-   12. [如何将立体声轨道转换为单声道，或将单声道转换为立体声？](faq_editing.html#stereomono)
-9. [错误](#errors)
-   1. [打开声音设备时出错，或打开录音设备时出错](faq_errors.html#sound_device)
-   2. [FFmpeg 错误 - 无法打开音频编解码器0x15002（或 0x15003）](faq_errors.html#codec_multi)
-   3. [Audacity 已经在运行......](faq_errors.html#already_running)
-   4. [Audacity 无法写入文件。可能是<驱动器>不可写或磁盘已满](faq_errors.html#full)
-   5. [Audacity 配置错误](faq_errors.html#locked)
-   6. [不合适的驱动器](faq_errors.html#unsuitable)
-   7. [不允许将一种类型的轨道粘贴到另一种类型中](faq_errors.html#paste)
-   8. [不允许将立体声音频复制到单声道轨道中](faq_errors.html#copy)
-   9. [没有足够的空间来粘贴选择](faq_errors.html#room)
-   10. [没有足够的空间来扩展切割线](faq_errors.html#room2)
-   11. [Audacity 无法打开<驱动器>中的文件。](faq_errors.html#open)
-   12. [Audacity 无法从  中的文件中读取。](faq_errors.html#read)
-   13. [重采样失败。](faq_errors.html#resample)
-   14. [数据大小不好。无法导入音频。](faq_errors.html#bad)
-   15. [批处理命令 ...不认可](faq_errors.html#batch)
-   16. [无法导出](faq_errors.html#esoteric)
-   17. [打开 Audacity 项目时出错](faq_errors.html#aup3)
-10. BUG
-    1. [我发现了一个错误。现在怎么办？](faq_errors.html#bugs)
-    2. [功能 X 不够好或缺失。](faq_errors.html#frs)
+
+
+
+
+2. 参考
+
+   1. 参考
+
+      1. 搜索手册
+      2. 数字音频
+      3. 词汇表
+      4. 所有命令
+      5. 错误
+      6. 指数
+
+   2. 常见问题（FAQ）
+
+      1. 关于 Audacity
+         1. [Audacity 真的免费吗？为什么？](faq_about_audacity.html#free)
+         2. [Audacity 使用安全吗？](faq_about_audacity.html#safe)
+         3. [我可以分发 Audacity 的副本吗？](faq_about_audacity.html#distributor)
+         4. [有人在 eBay 上出售 Audacity。这合法吗？](faq_about_audacity.html#ebay)
+         5. [搜索结果误导我为 Audacity 下载付费。我该怎么办？](faq_about_audacity.html#misled)
+         6. [Audacity 未以预期或期望的语言显示。我可以更改此设置吗？](faq_about_audacity.html#language)
+         7. [会有适用于 iPhone/iPod、iPad 或其他智能手机或平板电脑的 Audacity 版本吗？](faq_about_audacity.html#mobile)
+         8. [我可以在 Chromebook 笔记本电脑上运行 Audacity 吗？](faq_about_audacity.html#chrome)
+         9. [Audacity 是否适用于盲人用户的屏幕阅读器应用程序？](faq_about_audacity.html#accessible)
+         10. [Audacity 在语音转录或语音识别方面有哪些功能？](faq_about_audacity.html#transcribe)
+         11. [Audacity 可以在 64 位系统上运行吗？](faq_about_audacity.html#64bit)
+         12. [Audacity 是否支持低延迟 ASIO 驱动程序？](faq_about_audacity.html#asio)
+         13. [如何找到我拥有的 Audacity 版本，这是否是最新版本？](faq_about_audacity.html#version)
+         14. [我该如何帮助改进 Audacity？](faq_about_audacity.html#improve)
+
+      2. 安装、启动和插件](#install)
+         1. [如何安装或更新 Audacity？](faq_installation_and_plug_ins.html#install)
+         2. [如何卸载 Audacity？](faq_installation_and_plug_ins.html#win_uninstall)
+         3. [如果我在下载或安装 Audacity 时遇到问题，我该怎么办？](faq_installation_and_plug_ins.html#probs)
+         4. [如何下载和安装 LAME MP3 编码器？](faq_installation_and_plug_ins.html#lame)
+         5. [如何下载和安装 FFmpeg 导入/导出库？](faq_installation_and_plug_ins.html#ffdown)
+         6. [Audacity 支持哪些效果器、生成器和分析器插件以及如何安装它们？](faq_installation_and_plug_ins.html#plug-ins)
+         7. [如何解决 Audacity 在启动时不出现或崩溃，或者添加插件后崩溃的问题？](faq_installation_and_plug_ins.html#launch)
+         8. [如果 Audacity 界面在 Mac 上响应缓慢，我该怎么办？](faq_installation_and_plug_ins.html#lag)
+         9. [如果我在构建 Audacity 时遇到错误，我该怎么办？](faq_installation_and_plug_ins.html#build)
+         10. [Windows：如何在双击 WAV 或其他音频文件时启动 Audacity？](faq_installation_and_plug_ins.html#win_associate)
+         11. [Mac：为什么我在启动 Audacity 时看到“正在验证”或“已损坏”消息？](faq_installation_and_plug_ins.html#mac_launch)
+         12. [如何重置我的 Audacity 设置？](faq_installation_and_plug_ins.html#reset)
+         13. [为什么我在 Audacity 中播放或录制时计算机会重新启动或显示蓝屏消息？](faq_installation_and_plug_ins.html#reboot)
+      3. [录制 - 故障排除](#rectrouble)
+         1. [如何在没有小跳过（丢失）或重复的情况下进行录音？](faq_recording_troubleshooting.html#skips)
+         2. [为什么我不能在 Windows 中录制？](faq_recording_troubleshooting.html#vista_7)
+         3. [为什么我在 Mac 上录制时会出现平坦的线条并且没有声音？](faq_recording_troubleshooting.html#mac_silence)
+         4. [如何防止在 Mac 上录制咔嗒声？](faq_recording_troubleshooting.html#mac_crackle)
+         5. [为什么 Audacity 看不到我刚刚连接的音频设备？](faq_recording_troubleshooting.html#new_device)
+         6. [为什么我听不到我正在录制的内容？](faq_recording_troubleshooting.html#playthrough)
+         7. [为什么在收听我正在录制的内容时会出现延迟或回声？](faq_recording_troubleshooting.html#delay)
+         8. [为什么我的录音会淡出或听起来像是在隧道中制作的？](faq_recording_troubleshooting.html#enhancements)
+         9. [为什么我的新曲目与之前的曲目不同步，或者听起来噼啪作响或音调错误？](faq_recording_troubleshooting.html#sync)
+         10. [为什么我不能使用 USB 数据线录制我的电子键盘或电子乐器？](faq_recording_troubleshooting.html#keyboards)
+         11. [为什么从 YouTube（或其他流媒体音频）录制不起作用？](faq_recording_troubleshooting.html#stream)
+         12. [为什么录音声音很大时会发出噼啪声、爆裂声或失真？](faq_recording_troubleshooting.html#clipping)
+         13. [为什么我看到刚录制的曲目中有很多垂直的红线？](faq_recording_troubleshooting.html#red_line)
+         14. [为什么 Audacity 录音滑块在最大值时显示为灰色？](faq_recording_troubleshooting.html#input_slider)
+         15. [为什么我的录制不断自动暂停或为什么我的录制光标卡住？](faq_recording_troubleshooting.html#pauses)
+         16. [为什么我尝试录制时只有一条平线而没有声音？](faq_recording_troubleshooting.html#flatline)
+         17. [为什么录音时每 6 - 12 秒就会有周期性噪音？](faq_recording_troubleshooting.html#noise6)
+         18. [如何防止半音量单声道录音？](faq_recording_troubleshooting.html#half_volume)
+         19. [如何防止立体声录音不平衡或分离不良？](faq_recording_troubleshooting.html#unbalanced)
+         20. [如何纠正不平衡的立体声录音？](faq_recording_troubleshooting.html#rebalance)
+         21. [为什么记录的波形不是在0.0处的水平线上居中？](faq_recording_troubleshooting.html#offset)
+         22. [为什么使用打孔和滚动录音时，我在拼接点处会发出一阵声音？](faq_recording_troubleshooting.html#squawks)
+      4. [录音 -作方法](#rechowto)
+         1. [如何以立体声录制？](faq_recording_how_to_s.html#rinstereo)
+         2. [最佳录音电平的目标是什么？](faq_recording_how_to_s.html#olevel)
+         3. [如何从黑胶唱片、盒式磁带或迷你光盘进行录音？](faq_recording_how_to_s.html#vinyltapes)
+         4. [我可以在播放曲目的同时录制新曲目吗？](faq_recording_how_to_s.html#overdub)
+         5. [Audacity 可以录制 YouTube、网络广播或其他流媒体音频吗？](faq_recording_how_to_s.html#streaming)
+         6. [最大录制长度是多少？](faq_recording_how_to_s.html#remaining)
+         7. [我可以将 Audacity 设置为在特定时间录制吗？](faq_recording_how_to_s.html#timer)
+         8. [我可以从多声道设备（不仅仅是立体声）进行录音吗？](faq_recording_how_to_s.html#multi)
+         9. [我可以同时从两个麦克风（或两个音频接口）录制吗？](faq_recording_how_to_s.html#twomics)
+      5. [回放](#playback)
+         1. [为什么我在 Windows 上连接 USB 设备后失去声音？](faq_playback.html#usb)
+         2. [为什么录制或调整录制音量时播放会变静？](faq_playback.html#muted)
+         3. [为什么我在 Mac 上听到点击播放？](faq_playback.html#mac_buffer)
+         4. [为什么导出的文件会出现非常低级的嘶嘶声？](faq_playback.html#dither)
+         5. [如何暂停播放以便在那里进行编辑？](faq_playback.html#set_cursor)
+         6. [如何播放或导出多声道（环绕声）文件？](faq_playback.html#multi-channel)
+      6. [打开和保存文件](#files)
+         1. [如何保存音频以用于其他应用程序？保存项目（AUP3 文件）可以做到这一点吗？](faq_opening_and_saving_files.html#alternative)
+         2. [Audacity 崩溃了，或者我不再有 AUP3 项目文件。我可以恢复数据吗？](faq_opening_and_saving_files.html#crashed)
+         3. [Audacity 可以导入或导出 WMA、AC3 或 Apple Music/iTunes 文件 （M4A/MP4） 等格式吗？](faq_opening_and_saving_files.html#foreign)
+         4. [如何导出为“导出音频”对话框中未列出的格式？](faq_opening_and_saving_files.html#export_extra)
+         5. [为什么导出的文件不包括专辑艺术家或 BPM 元数据、专辑封面或歌词？](faq_opening_and_saving_files.html#meta)
+         6. [如何从音频 CD 导入曲目？](faq_opening_and_saving_files.html#fromcd)
+         7. [如何将录音保存在音频 CD 上？](faq_opening_and_saving_files.html#tocd)
+         8. [如何将长录音拆分为多个文件或 CD 轨道？](faq_opening_and_saving_files.html#split)
+         9. [为什么 Audacity 在导出时会警告名称或什么也没发生？](faq_opening_and_saving_files.html#extensions)
+         10. [如何备份我的 Audacity 项目？](faq_opening_and_saving_files.html#backup)
+         11. [如何将 Audacity 3.x AUP3 项目移回 Audacity 2.x AUP 格式？](faq_opening_and_saving_files.html#compatibility)
+      7. [MP3 导出问题](#mp3)
+         1. [为什么 Audacity 在 MP3 导出时崩溃或使用过多的处理时间？](faq_mp3_export_problems.html#hang)
+         2. [为什么我导出的 MP3 无效/无法播放？](faq_mp3_export_problems.html#invalid)
+         3. [为什么我导出的 MP3 播放速度太快？](faq_mp3_export_problems.html#fast)
+         4. [为什么我导出的 MP3 音量低或没有声音？](faq_mp3_export_problems.html#volume)
+         5. [为什么我导出的 MP3 比导入的 MP3 大？](faq_mp3_export_problems.html#large)
+      8. [编辑](#edit)
+         1. [为什么我不能使用效果或其他菜单项？](faq_editing.html#grayed)
+         2. [为什么我不能选择少于一秒或在整秒之间点击？](faq_editing.html#snap)
+         3. [为什么在移除或粘贴音频时，或者在曲目的开头或结尾时听到咔嗒声？](faq_editing.html#clicks)
+         4. [如何在一个轨道中选择音频？](faq_editing.html#select)
+         5. [如何将所选片段扩展或移动到其他轨道？](faq_editing.html#selcopy)
+         6. [如何将两个文件合并为一个较长的文件？](faq_editing.html#join)
+         7. [如何将两首曲目混合在一起？](faq_editing.html#mix)
+         8. [我可以从录音中删除人声以制作卡拉 OK 曲目吗？](faq_editing.html#karaoke)
+         9. [我可以使用 Audacity 创建铃声或 IVR 消息吗？](faq_editing.html#ringtones)
+         10. [为什么我看到刚录制的曲目中有很多垂直的红线？](faq_editing.html#clipping)
+         11. [Audacity 可以实时预览或应用效果吗？](faq_editing.html#real_time)
+         12. [如何将立体声轨道转换为单声道，或将单声道转换为立体声？](faq_editing.html#stereomono)
+      9. [错误](#errors)
+         1. [打开声音设备时出错，或打开录音设备时出错](faq_errors.html#sound_device)
+         2. [FFmpeg 错误 - 无法打开音频编解码器0x15002（或 0x15003）](faq_errors.html#codec_multi)
+         3. [Audacity 已经在运行......](faq_errors.html#already_running)
+         4. [Audacity 无法写入文件。可能是<驱动器>不可写或磁盘已满](faq_errors.html#full)
+         5. [Audacity 配置错误](faq_errors.html#locked)
+         6. [不合适的驱动器](faq_errors.html#unsuitable)
+         7. [不允许将一种类型的轨道粘贴到另一种类型中](faq_errors.html#paste)
+         8. [不允许将立体声音频复制到单声道轨道中](faq_errors.html#copy)
+         9. [没有足够的空间来粘贴选择](faq_errors.html#room)
+         10. [没有足够的空间来扩展切割线](faq_errors.html#room2)
+         11. [Audacity 无法打开<驱动器>中的文件。](faq_errors.html#open)
+         12. [Audacity 无法从  中的文件中读取。](faq_errors.html#read)
+         13. [重采样失败。](faq_errors.html#resample)
+         14. [数据大小不好。无法导入音频。](faq_errors.html#bad)
+         15. [批处理命令 ...不认可](faq_errors.html#batch)
+         16. [无法导出](faq_errors.html#esoteric)
+         17. [打开 Audacity 项目时出错](faq_errors.html#aup3)
+      10. BUG
+          1. [我发现了一个错误。现在怎么办？](faq_errors.html#bugs)
+          2. [功能 X 不够好或缺失。](faq_errors.html#frs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Audacity 项目窗口指南
+
+**1** **[菜单栏](man/menu_reference.html)** **2** **[走带工具栏](man/transport_toolbar.html)** **3** **[工具工具栏](man/tools_toolbar.html)** **4** **[编辑工具栏](man/edit_toolbar.html)** **5** **[音频设置工具栏](man/audio_setup_toolbar.html)** **6** **[共享和效果工具栏](man/share_audio_toolbar.html)**
+
+**7** **[录音仪表工具栏](man/meter_toolbar.html#recording)** **8** **[播放仪表工具栏](man/meter_toolbar.html#playback)** **9** **[时间轴上下文菜单](man/timeline.html#menu)** **10** **[时间轴](man/timeline.html)**
+
+**11** **[轨道控制面板](man/track_control_panel_and_vertical_scale.html)** **12** **[垂直音阶](man/track_control_panel_and_vertical_scale.html#vscale)** **13** **[音轨](man/audio_tracks.html)** **14** **[标签轨道](man/label_tracks.html)**
+
+**15** **[拍号工具栏](man/time_signature_toolbar.html)** **16** **[捕捉工具栏](man/snapping_toolbar.html)** **17** **[时间工具栏](man/time_toolbar.html)** **18** **[选择工具栏](man/selection_toolbar.html)** **19** **[快速播放工具栏](man/play_at_speed_toolbar.html)** **20** **[状态栏](man/status_bar.html)**
+
+
+
+![首页 3-7-3 78 numbered.png](m/images/4/49/front_page_3_7_3_78_numbered.png)
+
+
+
+> 此图像*（以及手册中的许多其他波形图像）*已**打开** **[RMS](man/glossary.html#rms)** 显示，光色位于波形中心。RMS 显示现在默认关闭，但您可以使用“**在[波形中显示 ”查看>显示 RMS](man/view_menu.html)**“来启用它。有关更多详细信息，请参阅 [**RMS 显示**](man/audacity_waveform.html#rms)。
+
+
+
+
+
+# 1 导航
+
+## 1.1 导游
+
+
+
+### 1.1.1 录制、播放和编辑 - Audacity 的基础知识
+
+Audacity 可以**[播放](playback.html)** ![播放按钮](./m/images/9/90/play.png) **[、录制](recording.html)**![录制按钮](m/images/e/e8/record.png)和**[编辑](edit.html)**音频。要播放或录制，请单击工具栏上的按钮：
+
+ ![TransportToolbarAnnotated.png](m/images/4/4f/transporttoolbarannotated.png) 
+
+[![点击了解详情](m/images/6/63/bigpointercursor.png)](click_tip.html)
+
+**点击图片了解更多**
+
+
+ 
+
+##### [循环](tutorial_looping.html)
+
+![“循环”按钮](m/images/d/d5/loop_button.png)打开或关闭[循环播放](playing_and_recording.html#transport)。如果您在启用循环的情况下按下播放，它将一遍又一遍地循环播放当前循环区域，直到您按下停止。
+
+
+
+##### [新的业绩记录](recording.html#newtrack)
+
+按住 **Shift** 键，录制按钮从 ***“录制新曲目”变***![录制按钮](m/images/e/e8/record.png)为![“录制新轨道”按钮](m/images/7/72/record_new_track.png)“录制新曲目”。单击 （*或使用快捷键 **Shift + R** ）*在当前光标位置或当前选择的开头开始在新轨道中录制。
+
+默认情况下，Audacity 将在当前选择（或唯一）曲目的末尾录制
+
+
+
+##### [选择和编辑](selecting_audio_the_basics.html)
+
+通过拖动[选择音频，](selecting_audio_the_basics.html)然后使用[剪切、复制和粘贴](edit_toolbar.html)等按钮重新排列音频。您还可以将[音频效果](effect_menu_built_in.html)应用于所选音频。
+
+
+
+有关播放、录制和编辑的更多详细信息，请参阅手册的[入门](../quick_help.html)部分。
+
+
+
+##### [打孔和滚动记录](punch_and_roll_record.html)
+
+这使您能够在录制会话过程中轻松纠正错误。
+
+- 您可以停止、备份错误并继续录制，从而产生一个轨道，消除错误并正确计时，而无需使用剪切、粘贴和剪辑移动命令，或混合多个轨道。
+- 您可以边做边做粗略的编辑，对表演的干扰最小，之后剩下的工作也更少。
+
+有关更多详细信息，请参阅打[孔和滚动记录](punch_and_roll_record.html)页面。
+
+
+
+### 1.1.2 保存您的作品 - 音频格式
+
+##### [保存](file_menu.html#save)
+
+Audacity 区分了以只有 **[Audacity 才能打开的 Audacity 项目格式](audacity_projects.html)**保存音频，以及以 WAV 和 MP3 等格式导出音频以用于其他应用程序。
+
+
+
+##### [导出](file_export_dialog.html)
+
+如果您想创建音频格式的文件以在 Audacity 之外播放，请使用导出。
+
+- **[FFmpeg](faq_installation_and_plug_ins.html#ffdown)：**可选的 [FFmpeg 库](faq_opening_and_saving_files.html#foreign)允许 Audacity 导入和导出范围更大的[音频格式](custom_ffmpeg_export_options.html)，包括 ***[M4A （AAC）、](glossary.html#aac)***AC3 和 ***[WMA](glossary.html#wma)***。Audacity 可以使用 FFmpeg 从大多数视频文件导入音频。
+
+
+
+### 1.1.3 定制 Audacity
+
+##### [主题](themes.html)
+
+Audacity 有四个预配置的、用户可选择的主题。
+
+|      | [![主题灯光3-6-0.png](m/images/2/29/theme_light_3_6_0.png)](themes.html#light) |      | [![主题：暗3-6-0.png](m/images/f/f4/theme_dark_3_6_0.png)](themes.html#dark) |      | [![主题高对比度3-6-0.png](m/images/2/27/theme_high_contrast_3_6_0.png)](themes.html#highcontrast) |      | [![主题经典3-6-0.png](m/images/c/c8/theme_classic_3_6_0.png)](themes.html#classic) |
+| ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|      | **浅色**主题                                                 |      | **深色**主题                                                 |      | **高对比度**主题                                             |      | **经典**主题                                                 |
+
+有关详细信息，请参阅[主题](themes.html)页面。
+
+
+
+##### [波形配色](audio_tracks.html#colors)
+
+选择主题后，您可以选择更改项目中显示的各个波形的配色。有关详细信息，请参阅[音轨](audio_tracks.html#colors)页面。
+
+
+
+##### [偏好](preferences.html)
+
+Audacity 有无数的设置来调整其行为。您不必调整这些，但它们就在那里，如果您愿意，可以在[首选项](preferences.html)中进行调整。
+
+
+
+##### [布局](customizing_toolbar_layout.html)
+
+您可以通过移动、调整大小、隐藏和显示各种[工具栏](toolbars_overview.html)来更改 Audacity 的布局，而不是[首页上显示](../index.html#reference)的布局。有关详细信息，请参阅[自定义工具栏布局](customizing_toolbar_layout.html)页面。
+
+
+
+##### [效果插件](customization.html#plugins)
+
+您可以使用插件添加到 Audacity 中可用的效果。其中一些具有带有图表和按钮的非常漂亮的界面，并提供具有不同功能的类似效果，或 Audacity 不附带的效果。有几种类型的插件。例如，**[奈奎斯特](customization.html#plug-ins)**类型的插件是 Audacity 自己的插件格式。奈奎斯特插件只需在文件中写入文本即可制作，因此 Audacity 的贡献者经常使用这种格式来创建新效果。
+
+
+
+### 1.1.4 更快的做事方式 - [快捷方式](keyboard_shortcut_reference.html)和[宏](macros.html)
+
+##### [快捷方式](keyboard_shortcut_reference.html)
+
+许多按钮和菜单命令都分配了预定义的[键盘快捷键](keyboard_shortcut_reference.html)。您可以修改这些或使用[快捷方式首选项](keyboard_preferences.html)添加您自己的首选项（在 Windows 和 Linux 上的“编辑”菜单或 Mac 上的“Audacity”菜单中）。
+
+
+
+##### [宏](macros.html)
+
+曾经想对大量音频文件做同样的事情，例如从中去除噪音并转换为 MP3？宏是此功能。给它一个要处理的文件列表，并告诉它要做的事情顺序。程序员可能希望改用[脚本，](scripting.html)这是一种实验性但更灵活的宏版本。这需要一个名为 mod-script-pipe 的免费实验模块和编程经验。
+
+
+
+##### [导出多个音频文件](export_multiple.html)
+
+您可以一次保存多个音频文件，而不是一个一个地保存它们。
+
+
+
+## 1.1.5 更改音频的响度 - 淡入淡出、放大、声像和增益/音量
+
+ ![Envelope.png的小图像](m/images/b/b0/a_small_image_of_an_envelope.png) 
+
+
+
+##### [放大](amplify.html)
+
+“**[放大”](amplify.html)**音频效果使音频变大或变小。另外两个修改响度的效果是**[淡入](fades.html#linearfade)**和**[淡出](fades.html#linearfade)**。这些通常用于音频的开头和结尾。
+
+- **[包络](envelope_tool.html)**提供了一种更灵活的方式来控制响度。您需要选择“**[包络工具”](envelope_tool.html)**或**[“多功能工具](multi_tool.html)**”才能使用包络。使用包络，您可以以图形方式控制音频何时变大和变小。
+
+
+
+##### [声像](audio_tracks.html#pan)和[增益/音量](audio_tracks.html#gain)
+
+这是轨道轨道[控制面板](audio_tracks.html#panel)中的两个滑块。增**益/音量**滑块使您能够设置轨道的响度。“**声相**”滑块可让您在左侧或右侧使音频更响亮。您可以移动这些滑块以影响音频播放。
+
+
+
+##### [静音](audio_tracks.html#mute)和[独奏](audio_tracks.html#solo)
+
+这两个按钮位于轨道的轨道控制面板中。单击“[**静音**](audio_tracks.html#panel)”按钮可在播放时将此轨道静音，再次单击以再次收听。单击“[**独奏**](audio_tracks.html#panel)”按钮以仅播放此轨道。再次单击以释放按钮。
+
+
+
+##### [自动鸭子](auto_duck.html)
+
+每当放置在下方的单个未选定的“控制轨道”的音量达到特定阈值级别时，这会降低（[闪避](http://en.wikipedia.org/wiki/Ducking)）一个或多个选定轨道的音量。它可用于为播客或 DJ 集创建画外音，用于广播制作中背景音乐的自动“斜坡”，以及在翻译开始后立即关闭原始语言的声音。
+
+
+
+##### [搅拌机](mixer_board.html)
+
+主轨道窗口中音轨的替代视图，类似于硬件混音板。每个音轨都显示在轨道条中，其中包含一对自己的仪表、增益/音量滑块、声相滑块和静音/独奏按钮，在其轨道控制面板中镜像该轨道的控件。
+
+
+
+### 1.1.6 音频中的噪音 - 减少、添加、微调
+
+ ![小光谱Selection.png](m/images/6/65/a_small_spectral_selection.png) 
+
+
+
+##### [光谱选择](spectral_selection.html)
+
+这是**[频谱图](spectrogram_view.html)**中的一项特殊功能，可让您查看音频的频率内容，然后仅编辑选定的频率。这对于录音特别有用。除其他目的外，频谱选择和编辑可用于通过删除特定频率、增强某些共振、改变声音质量或从语音工作中删除口音来清理不需要的声音。
+
+
+
+##### [噪](noise_reduction.html)
+
+Audacity 可以从录音中去除某些类型的噪音。降噪是一种“音频效果”，是可以使用的更小技巧的音频效果之一。此效果最适合相当恒定的噪音，例如背景嘶嘶声。您首先选择仅是噪音的音频并创建一个“噪音配置文件”。一旦 Audacity 知道噪声配置文件，它就可以降低您选择的音频中此类噪声的响度。
+
+
+
+##### [陷波滤波器](notch_filter.html)
+
+这可用于通过在这一点上从频谱中切出一个“缺口”来帮助您消除电源嗡嗡声或电哨声，同时将对剩余音频的损坏降至最低。
+
+
+
+##### [生成噪声](generate_menu.html#noise)
+
+Audacity 也可以为录音添加噪音。可以产生三种不同类型的噪声。白噪声具有最大的掩盖其他声音的能力，因为它在所有频率水平上都具有相似的能量。如果您想添加一些房间噪音以使静音更逼真，请尝试以 0.001 振幅添加它。
+
+
+
+##### [绘制工具](draw_tool.html)
+
+如果将音频放大到**足够大，**则可以编辑单个音频样本。通常每秒音频有 44100 个样本点。这使您可以了解音频在计算机中的存储方式。偶尔，音频中可能会出现咔嗒声，最好使用绘图工具去除，而不是使用**[单击删除](click_removal.html)**或**[修复](repair.html)**效果。修复最好在放大很多时使用，因为它只适用于短音频片段。
+
+
+
+### 1.1.7 导航和改变速度和音调
+
+##### [快速播放](play_at_speed_toolbar.html)
+
+Audacity 有一个 **[Play-at-Speed 工具栏](play_at_speed_toolbar.html)**，带有一个带有绿色箭头指向右侧的小按钮，看起来像带有绿色箭头的较大按钮，用于“播放”。使用按钮右侧的滑块设置速度以更快或更慢。速度变化也会改变音高。这是播放期间的临时更改。若要永久更改速度和音高，请使用“更改速度”和“音高”效果（如下）。
+
+
+
+##### [擦洗和搜索](scrubbing_and_seeking.html)
+
+这是向右或向左移动鼠标指针以调整播放位置、速度或方向的动作，向前或向后，同时收听音频 - 一种快速导航波形以查找特定事件的便捷方法感兴趣。在拖动或搜索时，您还可以使用鼠标滚轮来更改拖动或搜索的速度，因此这是更改播放速度的另一种方法。
+
+
+
+##### [改变速度和音高](change_speed.html)，[改变音高](change_pitch.html)，[改变速度](change_tempo.html)
+
+您可以通过应用更改音频的效果来加快或减慢音频速度：
+
+- 使用**[“更改速度”和“音高](change_speed.html)**”可使音频更快或更慢，音调更高或更低。
+- 使用**[“更改音高”](change_pitch.html)**可更改选区的音高，而不更改其速度（速度）。
+- 如果您希望在加速或减速时音高保持不变，请使用**[“更改速度”](change_tempo.html)**。随着速度的大幅变化，变化速度并不总是那么好，最终结果可能听起来有点奇怪。
+
+
+
+##### [时间轨迹](time_tracks.html)
+
+时间轨迹是一条图形线，您可以拖动它来更改随时间变化的加速或减速量，而不必是恒定的速度变化。与“以速度播放”一样，速度会立即更改，而无需等待运行效果，但除非删除时间轨迹，否则导出时会应用更改。因此，为了安全起见，在使用时间轨迹之前，将您的作品副本导出为 WAV 格式。
+
+
+
+### 1.1.8 [实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)
+
+如果单击轨道轨道控制面板中的效果按钮，效果堆栈将在轨道控制面板的左侧打开。
+
+在这里，您可以将启用实时的效果*（一些 Audacity 和许多启用实时的第 3 方插件）*添加到堆栈中。
+
+这些效果可以在 Audacity 播放时动态更改，因此您可以实时动态地听到更改。
+
+
+
+有关更多详细信息，请参阅[**使用实时效果**](https://support.audacityteam.org/audio-editing/using-realtime-effects)。
+
+
+
+### 1.1.9 很多你可能不知道 Audacity 可以做的事情
+
+
+
+##### [同步锁](sync_locked_track_groups.html)
+
+当您有一个混音（几个轨道彼此相叠并一起播放）并且所有内容都排列得很好时，对一个轨道进行编辑（例如剪切一段音频）可能会导致混音不再同步播放。要在剪切、粘贴或移动音频时保持轨道对齐，请使用同步锁定轨道。
+
+
+
+##### [标签](label_tracks.html)
+
+使用标签轨道来标记或注释音频。与 Sync-Lock 结合使用，您可以保持标签和音频同步。
+
+
+
+##### [撤消和重做](undo_redo_and_history.html)
+
+这些在处理效果时最有用。应用效果后，您可能会改变主意。撤消按钮或菜单项**编辑>撤消**将允许您撤消更改。“**[历史记录”](undo_redo_and_history.html#history)**菜单项可让您进一步回顾并一步撤消更多更改。
+
+
+
+##### [截断静音](truncate_silence.html)
+
+一种方便的效果，适用于采访和演讲的录音，可以消除长时间的沉默。您可以告诉它什么算作长时间静音、响度级别和持续时间，以及要删除每个长时间静音的量。
+
+
+
+##### [捕捉](snapping_toolbar.html)
+
+在进行选择时，有时将选择边界自动移动到最接近的秒（或其他时间测量单位）会有所帮助。如果你 [**Snap** to](snapping_toolbar.html) seconds，你的选择将始终是整数秒 - 例如，你不能选择半秒的声音。将时间格式设置为秒或帧或您想要捕捉到的任何时间单位，并启用**捕捉**。
+
+
+
+##### [多夹子](audacity_tracks_and_clips.html)
+
+许多人在每个音轨上都有一段音频。但是，您可以在同一轨道上拥有多个不重叠的音频片段。这些称为剪辑。可以使用**[“拆分”](audacity_tracks_and_clips.html#split)**创建剪辑，并通过单击剪辑之间的暗线边界重新连接在一起。您可以将剪辑拖动到轨道上的不同位置，或使用[剪辑手柄拖动条](audacity_tracks_and_clips.html#move)将它们拖动到不同的轨道。
 
 
 
@@ -298,7 +674,7 @@ Audacity 可以以多种非英语语言显示。
 
 **如果您能阅读 Audacity 当前运行的语言，则**很容易更改为另一种语言。
 
-打开首**[选项](preferences.html)**，然后从左侧列表中选择 **[界面](interface_preferences.html)** 。
+打开首**[选项](preferences.html)**，然后从左侧列表中选择 **[界面](interface_preferences.html)** 。
 
 现在从“语言”框中选择所需的特定语言，然后单击“确定”。
 
@@ -574,7 +950,7 @@ Audacity 不是专门的转录或语音识别软件，但有一些有用的 手�
 >
 > [LV2](http://en.wikipedia.org/wiki/LV2) 是最初在 Linux 上开发的 LADSPA 插件架构的更高级演变。[Vamp](http://www.vamp-plugins.org/) 插件通常用于分析音频，因此会出现在 Audacity 的[分析菜单](analyze_menu.html)下。
 
-要添加新插件，请参阅 [**Audacity 支持**](https://support.audacityteam.org/)网站上的[**安装插件**](https://support.audacityteam.org/basics/installing-plugins) 。
+要添加新插件，请参阅 [**Audacity 支持**](https://support.audacityteam.org/)网站上的[**安装插件**](https://support.audacityteam.org/basics/installing-plugins) 。
 
 了解所有三个平台的插件安装详细信息。
 
@@ -2430,50 +2806,662 @@ Audacity 具有非常强大的[崩溃恢复](recovery.html)功能，在许多情
 
 #### 2.2.7.1 为什么 Audacity 在 MP3 导出时崩溃或使用过多的处理时间？
 
-如果 Audacity 在导出 MP3 时崩溃或挂起，或者导出需要很长时间来处理，通常的原因是您在[音频设置首选项](audio_settings_preferences.html)中选择的项目速率与屏幕上音轨的采样率有很大不同（如静音/独奏按钮上方的轨道控制面板上的 Hz 所示）。因此，导出时必须进行重新采样，这可能会在长轨道上产生问题。在导出为 MP3 之前，尝试将曲目重新采样为您选择的项目速率。为此，请通过单击“轨道控制面板”来选择所有轨道，然后单击“**轨道”>“混合[”>“混合和渲染](tracks_menu_mix.html#mix_and_render)**”。如果由于重新采样而在轨道末尾添加了任何静音，您可以选择并删除它。现在，当您导出 MP3 时，该过程应该会顺利快速地进行。如果没有，可能有多种原因，例如，如果您将病毒扫描程序设置为扫描所有创建的文件，这将大大减慢写入导出文件的过程。导出的比特率越高，文件就越大，因此如果启用病毒扫描，时间损失会更大。
+如果 Audacity 在导出 MP3 时崩溃或挂起，或者导出需要很长时间来处理，通常的原因是您在[音频设置首选项](audio_settings_preferences.html)中选择的项目速率与屏幕上音轨的采样率有很大不同（如静音/独奏按钮上方的轨道控制面板上的 Hz 所示）。
+
+因此，导出时必须进行重新采样，这可能会在长轨道上产生问题。
+
+在导出为 MP3 之前，尝试将曲目重新采样为您选择的项目速率。
+
+为此，请通过单击“轨道控制面板”来选择所有轨道，然后单击“**轨道”>“混合[”>“混合和渲染](tracks_menu_mix.html#mix_and_render)**”。
+
+如果由于重新采样而在轨道末尾添加了任何静音，您可以选择并删除它。
+
+现在，当您导出 MP3 时，该过程应该会顺利快速地进行。
+
+如果没有，可能有多种原因，例如，如果您将病毒扫描程序设置为扫描所有创建的文件，这将大大减慢写入导出文件的过程。
+
+导出的比特率越高，文件就越大，因此如果启用病毒扫描，时间损失会更大。
 
 
 
-## 为什么我导出的 MP3 无效/无法播放？
+#### 2.2.7.2 为什么我导出的 MP3 无效/无法播放？
 
 有时导出的 MP3 可能无效且只有几个字节大小;结果，它不会播放并给出错误。
 
+
+
 最安全的解决方案是**始终将“投影速率”设定为 44100 Hz**。在导出之前制定规则来检查这一点，因为导入其他采样速率的文件可能会将“投影速率”更改为该速率。
 
-在[音频设置偏好设置](audio_settings_preferences.html)中使用**项目采样率**设置执行此作。
 
-LAME 会自动从 44100 Hz 下采样到 56 kbps 或更低的较低采样率，因为低比特率可能会在较高采样率下产生较差的质量。如果特别需要，可以使用当前版本的 Audacity 中的命令行导出器强制执行任何有效的采样率/比特率组合（在“导出文件”对话框的“另存为类型”中选择“外部程序”）。或者从 Audacity 导出为 WAV，然后在命令行中使用 LAME.exe 转换为 MP3。
-
-
-
-## 为什么我导出的 MP3 播放速度太快？
-
-如果 MP3 以错误的速度播放（通常太快），则您导出它的采样率不适合您的播放器应用程序。同样，安全的解决方案是**始终将您的项目速率设置为 44100 Hz。**
 
 在[音频设置偏好设置](audio_settings_preferences.html)中使用**项目采样率**设置执行此作。
 
-这是 Adobe Flash Player 的一个已知问题，直到进入版本 9：为了使文件正常播放，采样率必须为 1,025 Hz 或其倍数，例如 22050 Hz 或 44100 Hz。这在当前的 [Adobe Flash Player](http://www.adobe.com/products/flashplayer/) 中已修复。
+
+
+LAME 会自动从 44100 Hz 下采样到 56 kbps 或更低的较低采样率，因为低比特率可能会在较高采样率下产生较差的质量。
+
+如果特别需要，可以使用当前版本的 Audacity 中的命令行导出器强制执行任何有效的采样率/比特率组合（在“导出文件”对话框的“另存为类型”中选择“外部程序”）。
+
+或者从 Audacity 导出为 WAV，然后在命令行中使用 LAME.exe 转换为 MP3。
 
 
 
-## 为什么我导出的 MP3 音量低或没有声音？
+#### 2.2.7.3 为什么我导出的 MP3 播放速度太快？
 
-如果您可以看到导出的 MP3 正在播放，因为媒体播放器上的计时器在移动，但它没有声音，请确保声音设备未静音（在播放器或系统控制面板中），并确保使用正确的播放设备（在播放器首选项或系统控制面板中）。如果这不是问题，请返回 Audacity 并确保轨道控制面板（静音/独奏按钮所在的位置）上的 -....+ 增益/音量滑块集中设置在“增益/音量：0 db”。如果此滑块位于左侧，它将降低或终止导出的 MP3 中的音量。
+如果 MP3 以错误的速度播放（通常太快），则您导出它的采样率不适合您的播放器应用程序。
+
+同样，安全的解决方案是**始终将您的项目速率设置为 44100 Hz。**
 
 
 
-## 为什么我导出的 MP3 比导入的 MP3 大？
+在[音频设置偏好设置](audio_settings_preferences.html)中使用**项目采样率**设置执行此作。
+
+
+
+这是 Adobe Flash Player 的一个已知问题，直到进入版本 9：为了使文件正常播放，采样率必须为 1,025 Hz 或其倍数，例如 22050 Hz 或 44100 Hz。
+
+这在当前的 [Adobe Flash Player](http://www.adobe.com/products/flashplayer/) 中已修复。
+
+
+
+#### 2.2.7.4 为什么我导出的 MP3 音量低或没有声音？
+
+如果您可以看到导出的 MP3 正在播放，因为媒体播放器上的计时器在移动，但它没有声音，请确保声音设备未静音（在播放器或系统控制面板中），并确保使用正确的播放设备（在播放器首选项或系统控制面板中）。
+
+如果这不是问题，请返回 Audacity 并确保轨道控制面板（静音/独奏按钮所在的位置）上的 -....+ 增益/音量滑块集中设置在“增益/音量：0 db”。
+
+如果此滑块位于左侧，它将降低或终止导出的 MP3 中的音量。
+
+
+
+#### 2.2.7.5 为什么我导出的 MP3 比导入的 MP3 大？
 
 如果您将 MP3 文件导入 Audacity，那么导出后您会发现它比以前大得多，这是因为您导出它的[比特率](http://en.wikipedia.org/wiki/Bit_rate)高于原始文件的比特率。
 
+
+
 Audacity 默认为 128 kbps 比特率，然后在更改时记住上次使用的比特率。
+
+
 
 如果您需要导出的 MP3 大小与以前相同：
 
-1. 通过在 Windows Media Player 中打开它并单击“**文件”>“属性**”来找出导入文件的比特率，或者在 Apple Music/iTunes 中，右键单击或按住 Control 键单击该文件并单击**“歌曲信息”**/**“获取信息**”。您还可以使用独立程序，例如 [MediaInfo](http://mediainfo.sourceforge.net/en)。
+1. 通过在 Windows Media Player 中打开它并单击“**文件”>“属性**”来找出导入文件的比特率，或者在 Apple Music/iTunes 中，右键单击或按住 Control 键单击该文件并单击**“歌曲信息”**/**“获取信息**”。
+
+   您还可以使用独立程序，例如 [MediaInfo](http://mediainfo.sourceforge.net/en)。
+
 2. 单击**文件>[导出音频](file_export_dialog.html)**，然后在“格式”字段中选择 **MP3**。
 
-如果您以与原始比特率相同的比特率导出低比特率 MP3，则与以较高比特率导出相比，其质量的下降程度将大大增加。较高比特率的缺点是新文件会更大，并且文件合并工具可能无法再将新 MP3 连接到具有原始比特率的其他文件。如果您以相同的比特率导出高比特率 MP3，您将有助于最大限度地减少质量损失（但不会在文件大小上节省任何内容）。
+
+
+如果您以与原始比特率相同的比特率导出低比特率 MP3，则与以较高比特率导出相比，其质量的下降程度将大大增加。
+
+较高比特率的缺点是新文件会更大，并且文件合并工具可能无法再将新 MP3 连接到具有原始比特率的其他文件。
+
+如果您以相同的比特率导出高比特率 MP3，您将有助于最大限度地减少质量损失（但不会在文件大小上节省任何内容）。
+
+
+
+
+
+### 2.2.8 MP3 编辑
+
+
+
+#### 2.2.8.1 为什么我不能使用效果或其他菜单项？
+
+许多菜单项和其他功能在播放或录制时被禁用。
+
+要启用它们，请按 **停止** 按钮 [![停止按钮](../m/images/f/f9/stop.png)](https://alphamanual.audacityteam.org/man/File:Stop.png)。
+
+若要停止播放并将光标设置在停止的位置，以便从那里恢复播放，您可以使用[键盘快捷键](keyboard_shortcut_reference.html) **X**。
+
+
+
+所有[效果](effect_menu.html)、大多数[编辑菜单](edit_menu.html)项以及[编辑工具栏](edit_toolbar.html)中的剪切、复制、修剪和静音都需要您选择要更改的音频。
+
+- 要选择音频的特定区域，请在启用选择[工具](tools_toolbar.html)的情况下单击并拖动，以突出显示所选轨道。
+- 要选择项目中的所有音频，请选择全**选>**或其快捷键 **Ctrl + A**。
+
+- 您可以在播放或录制期间暂停，然后使用效果和其他菜单项，这将停止音频流。
+
+- 如果您选择效果或其他需要选择的菜单项而不进行选择，则默认情况下，Audacity 将选择项目中的所有音频。
+
+  你可以在[轨道偏好设置](tracks_preferences.html#behaviors)中禁用此行为，方法是取消选中 **选择项目中的所有音频，如果没有选择，但**如果没有选择，则需要选择的菜单项将显示为灰色。
+
+- 如果您在拖动或搜索时暂停，菜单命令暂时显示为灰色。
+
+
+
+#### 2.2.8.2 为什么我不能选择少于一秒或在整秒之间点击？
+
+将[捕捉工具栏](snapping_toolbar.html)中的“[捕捉](snapping_toolbar.html)”更改为“关闭”。
+
+如果将“捕捉”设置为“打开”，则根据在捕捉工具栏中选择的[选择格式](snapping_toolbar.html)，选择边缘或光标将被强制捕捉到精确的时间单位（例如，整秒）或最近的***[样本](glossary.html#sample)***或介质帧。
+
+
+
+
+#### 2.2.8.3 为什么在移除或粘贴音频时，或者在曲目的开头或结尾时听到咔嗒声？
+
+[删除](edit_menu.html#remove)或[粘贴](edit_menu.html#paste)音频的咔嗒声可能是由于波形中的[直流偏移](glossary.html#dc_offset)或编辑点选择不当造成的。
+
+
+
+DC 偏移也可能导致轨道开头或结尾出现咔嗒声，即使您在[导出](file_export_dialog.html)之前没有编辑音频也是如此。
+
+在录制或导入音频后立即使用[“归一化](normalize.html)”效果，并选中“删除任何 DC 偏移”，使其成为工作流程的一部分。
+
+
+
+删除或粘贴音频时，**“选择>区域”>[“到”过零点“的](select_menu_region.html#ends_to_zero_crossings)**结束可用于将光标点或选择边界移动到音频***[样本](glossary.html#sample)***处于静音状态的安全位置。
+
+这在单声道轨道上非常有效。
+
+
+
+在立体声轨道中，过零点可能位于左右声道的不同位置，因此“查找过零点”仍可能在其中一个声道中留下咔嗒声。
+
+将立体声轨道拆分为左右声道，然后在每个声道上找到零交叉点将无济于事，因为剪切或粘贴必须位于每个声道上的同一位置才能保持同步。
+
+
+
+解决方案是注意编辑点在立体声轨道中的位置。
+
+例如[，放大](zooming.html)然后尝试将选择边缘或光标点放置在静音的地方，或者放在强节拍的开始处（这将掩盖任何咔嗒声）。
+
+
+
+如果这些解决方案都不可用，您可以通过以下任何一种方法来修复点击，从而产生最佳听效效果：
+
+- 使用[修复](repair.html)效果
+- 对点击应用[短线性淡入](fade_and_crossfade.html#declick)
+- **编辑>将选择[复制](edit_menu.html#duplicate)**到下面的新轨道，然后[交叉淡入淡出](creating_a_crossfade.html)连接，使其听起来无缝。
+
+
+
+
+#### 2.2.8.4 如何在一个轨道中选择音频？
+
+请参阅 [Audacity 选择，](audacity_selection.html)了解选择音频的原则的扩展概述。
+
+- 如何使用鼠标选择一个轨道中的音频？
+
+  - 确保选择了工具工具栏中的选择工具[![选择工具](../m/images/2/25/tool_select.png)](https://alphamanual.audacityteam.org/man/File:Tool_select.png)，或按键盘上的 **F1**。
+
+    左键单击将光标放在轨道的[波形](audacity_waveform.html)上，按住鼠标左键，沿任一方向拖动鼠标，然后松开按钮。
+
+    如果您需要从左到右查看更详细的内容，[请放大](zooming.html#horizontal)。
+
+- 如何使用鼠标扩展或收缩现有选择？
+
+  - 将鼠标悬停在任一选择边缘上。当鼠标指针变为指向手指时，按住鼠标左键并向任一方向拖动。
+
+    当边缘处于正确位置时松开按钮。
+
+  - 通常，按住 **Shift** 键，然后左键单击并按住要将选择边缘移动到的点上的按钮会更快。
+
+    然后拖动以微调边缘位置，并在满意时释放。
+
+    收缩选区时，按住 **Shift** 键并在该选区内单击中心左侧以移动左边缘，或单击中心右侧以移动右边缘。
+
+- **如何使用键盘选择和修改选择？**
+
+1. 如有必要，使用键盘上的**向上**或**向下**箭头将焦点放在轨道上，然后输入**以**选择它。
+
+2. 按 **J** 移动到轨道的开头，然后使用 **Shift + .** 向右*搜索*（移动光标）15 秒，或**使用 向**右搜索 1 秒。
+
+   或者按 **K** 移动到轨道末尾，并在快捷键中使用逗号而不是句点来向左搜索。
+
+   可以在[“播放偏好设置”](playback_preferences.html)中更改寻道长度。
+
+   不播放轨道时，**向左**或**向右将**光标向该方向轻推一个屏幕像素。
+
+3. 当光标处于正确位置时，使用 **Shift + Right** 向右展开选择，或使用 **Shift + Left** 向左展开。**Ctrl + Shift + Left** 从右侧收缩选择，**Ctrl + Shift + Right** 从左侧收缩。
+
+   > 或者，使用[捕捉工具栏](snapping_toolbar.html)准确放置选区，而无需放大。
+
+- 有没有一种快速方法可以从光标中选择开始或结束？
+
+  - **从光标中选择以跟踪开始：**选择“**选择>区域”>[“跟踪开始到光标](select_menu_region.html#track_start_to_cursor)**”或使用 **Shift + J** 快捷键。
+
+  - **从光标中选择到跟踪结束：**选择“**选择>区域”[>光标以跟踪结束](select_menu_region.html#cursor_to_track_end)**“或使用 **Shift + K** 快捷键。
+
+  - **从光标到项目开始位置选择：**按住 **Shift** 键并单击“[![“跳到开始”按钮](../m/images/0/01/rewind.png)](https://alphamanual.audacityteam.org/man/File:Rewind.png)跳到开始”按钮。
+
+    或者，使用 **Shift + Home** 快捷键。
+
+    如果您的另一首曲目没有在时间零开始，这可能很有用。
+
+  - **从光标到项目结束进行选择：**按住 **Shift** 键并单击 [![跳到结束按钮](../m/images/0/07/ffwd.png)](https://alphamanual.audacityteam.org/man/File:FFwd.png) 跳到结束 按钮。
+
+    或者，使用 **Shift + End** 快捷键。如果您的轨道长度不等，这可能很有用。
+
+另见：
+
+- [如何扩展或移动所选片段以使其显示在其他轨道中？](#selcopy)
+
+
+
+#### 2.2.8.5 如何将所选片段扩展或移动到其他轨道？
+
+[选择](audacity_selection.html)始终显示在[时间轴](timeline.html)上，但该选择仅在选择轨道时才存在于轨道中。
+
+例如，您可能想要将所选片段向上或向下扩展到多个轨道，这样您就可以同时编辑所有这些轨道中的选择。
+
+要使该选择显示在其他轨道中，您必须更改所选择的轨道。
+
+- **若要将所选片段向上或向下延伸到其他轨道：**将鼠标悬停在任一选择边缘上。
+
+  当鼠标指针变为指向手指时，按住鼠标左键，然后直接向上或向下拖动到相邻轨道中。
+
+  如果您还想向左或向右扩展或收缩选择，则可以在释放按钮之前向左或向右拖动。
+
+  如果不想更改选择长度，则无需拖动。
+
+  按住 **Ctrl**（在 Mac 上为 **⌘**）的同时单击波形左侧的[轨道控制面板](audio_tracks.html)，将该轨道包含在选择中，从而将选择扩展到其中。
+
+  在某些情况下，单击轨道的轨道控制面板以将其选中，然后按住 **Shift** 并单击另一个轨道的轨道控制面板以选择您单击的轨道之间的*所有*轨道（包括您单击的轨道）可能会更快。
+
+  - 键盘用户可以在选择中包含轨道，方法是使用**“向上”**或**“向下”**更改具有彩色*焦点*边框的轨道*（实际颜色取决于所选[主题](themes.html)），*然后按 **Enter** 键选择该轨道。按住 **Shift 键**并按**向上**或**向下**键可向上或向下扩展相邻轨道的选择。
+
+- **若要将所选片段移至其他轨道：**如上所述，将选择扩展到要包含选择的所有轨道。
+
+  然后按住 **Ctrl**（在 Mac 上或 **⌘**）并单击要从中移动所选内容的一个或多个轨道的轨道控制面板，以取消选择这些轨道。
+
+  - 键盘用户可以按**向上**或**向下**将焦点移动到要从中删除所选内容的轨道，然后按 **Enter**。
+
+    > 将所选片段扩展或移动到其他轨道中仅决定所选片段是否显示在轨道中。它不会移动所选内容的音频内容。若要复制或移动所选内容，请使用**“编辑”>“[复制”](edit_menu.html#copy)**或“**编辑”>[“剪切”](edit_menu.html#cut)**，然后使用“**编辑”>[“粘贴](edit_menu.html#paste)**”。
+
+
+
+另见：
+
+- [如何在一个轨道中选择音频？](#select)
+
+
+
+#### 2.2.8.6 如何将两个文件合并为一个较长的文件？
+
+请按照以下步骤将两个文件拼接在一起：
+
+1. 使用**“文件”>“导入>[音频](file_menu_import.html#audio)**”将两个文件导入到单独的 Audacity 轨道中，一个接一个
+
+2. 通过单击其[轨道控制面板](audio_tracks.html#panel)上的“静音/独奏”按钮上方来选择第二个文件（其中显示以 ***[Hz](glossary.html#hz)*** 为单位的***[采样率](glossary.html#sample_rate)***）
+
+3. 选择**“选择>区域>[到过零点结束](select_menu_region.html#ends_to_zero_crossings)**
+
+4. 选择**编辑>[剪切](edit_menu.html#cut)**
+
+5. 将光标放在第一个轨道的末尾，方法是单击它，然后按 **K**
+
+6. 选择**编辑>[粘贴](edit_menu.html#Paste)**
+
+7. （可选）单击 X 轨道关闭按钮 轨道[控制面板](audio_tracks.html#panel) 在您剪切音频的轨道上。
+
+8. 按绿色的“播放”按钮收听结果，然后使用**文件>[导出音频](file_export_dialog.html)**命令将其保存为音频文件。
+
+   > 如果您有许多轨道要组合，则可以节省时间的替代方法是选择“**全选>**”，然后选择“**轨道”>“对齐轨道”>“[首尾对齐](tracks_menu_align_tracks.html#align_end_to_end)**”。这会将所选轨道一个接一个地对齐，以便它们遵循[时间轴](timeline.html)。如果将结果制作成一个 Audacity 轨道更方便，则可以选择**轨道>混合>[混合和渲染](tracks_menu_mix.html#mix_and_render)**。
+
+
+
+#### 2.2.8.7 如何将两首曲目混合在一起？
+
+要混合两个文件，请将它们都导入 Audacity。它们将出现在单独的轨道中。
+
+
+
+当您按下**“播放**”按钮时，您会听到两个轨道一起播放。因为这会将声音加在一起，所以最终结果可能会变得太大声和失真。
+
+要解决此问题，请调低每个轨道上的 **-...+ 增益/音量滑块**，直到您在[播放表](meter_toolbar.html#playback)上看不到削波灯。
+
+使用 **L...R 平移滑块**调整混音中每个轨道的空间位置。
+
+您还可以使用 **View > [Mixer Board](mixer_board.html)** 在单独的窗口中一起显示每个轨道的控件。
+
+
+
+当您使用**“文件”>[“导出音频”](file_export_dialog.html)**时，轨道将自动混合到音频文件中，以便在其他应用程序中使用。
+
+如果要在导出之前将轨道显式混合在一起，以便将它们替换为单个混合轨道，请选择轨道，[然后选择](audacity_selection.html)轨道，然后选择“**轨道”>“混合”>“[混合和渲染](tracks_menu_mix.html#mix_and_render)**”。
+
+
+
+有关更多详细信息，请参阅[混合音轨](mixing.html)。
+
+
+
+#### 2.2.8.8 我可以从录音中删除人声以制作卡拉 OK 曲目吗？
+
+这仅适用于**某些立体声轨道**。当两个立体声通道上的人声完全相同时，您可以通过从另一个通道中“减去”一个通道来删除它们。
+
+这适用于人声轨道精确地在中心混合并且未添加立体声混响的录音。
+
+请参阅此教程：[人声去除和隔离](tutorial_vocal_removal_and_isolation.html)。
+
+
+
+#### 2.2.8.9 我可以使用 Audacity 创建铃声或 IVR 消息吗？
+
+请参阅手册中的本教程：[制作铃声和 IVR 消息](tutorial_making_ringtones_and_ivr_messages.html)。
+
+
+
+[IVR](glossary.html#ivr) 代表交互式语音响应，这是一种允许计算机通过使用通过键盘输入的语音和 DTMF 音调与人类交互的技术。
+
+
+
+#### 2.2.8.10 为什么我看到刚录制的曲目中有很多垂直的红线？
+
+当您的录音过饱和时，就会发生这种情况，其中发生[了削波](glossary.html#clipping)，即信号已超过最大允许电平。
+
+垂直红线显示发生剪切的位置。可以通过选择“**查看”>[“在波形中显示削波](view_menu.html#showclippingonoff)**”来打开和关闭削波指示器*（Audacity 的默认设置为“关闭”*）。
+
+
+
+有关波形显示方式的更多说明，请参阅 [Audacity 波形](audacity_waveform.html)页面。
+
+
+
+#### 2.2.8.11 Audacity 可以实时预览或应用效果吗？
+
+对于某些启用实时的效果，是的。
+
+3.2.0 版及更高版本引入了新的实时效果堆栈，通过效果按钮访问轨道的轨道控制面板。
+
+
+
+有关详细信息，请参阅 Audacity 支持网站上[**的使用实时效果**](https://support.audacityteam.org/audio-editing/using-realtime-effects)。
+
+
+
+高级用户可以通过在 VST 主机中应用效果并将效果输出路由到 Audacity 录制来实时将效果应用于录音。请参阅[此论坛主题](https://forum.audacityteam.org/viewtopic.php?f=26&t=5033)，并在论坛上询问您是否需要任何帮助。
+
+
+
+#### 2.2.8.12 如何将立体声轨道转换为单声道，或将单声道转换为立体声？
+
+使用**轨道>混音>将[立体声低至单声道](tracks_menu_mix.html#mix_stereo_down_to_mono)**。
+
+这会将[选定](audacity_selection.html)的立体声轨道转换为相同数量的单声道轨道，平均组合左右声道。
+
+此命令不适用于拆分为左右声道的立体声轨道。
+
+“立体声轨道到单声道”将两个通道混合在一起，然后将混音的音量降低 -6 ***[dB](glossary.html#decibel)***（音量减半）以产生两个通道的平均值。
+
+因此，如果立体声轨道的一个通道比另一个通道响亮，则生成的单声道轨道的峰值音量将降低。
+
+如果原始立体声轨道没有剪辑，则生成的轨道将永远不会***[剪辑](glossary.html#clipping)***。
+
+
+
+或者，你可以使用 音[轨控制面板（Track Control Panel](audio_tracks.html#panel)） 中 音[轨下拉菜单](audio_track_dropdown_menu.html)中的 将**[立体声拆分为单声道（Split Stereo to Mono](audio_track_dropdown_menu.html#split)**） 为每个通道创建单独的单声道轨道。
+
+如果要完全丢弃一个有故障或嘈杂的通道，请使用轨道左上角的 X 按钮，或选择轨道，然后选择**轨道>[删除轨道](tracks_menu.html#remove_tracks)**。
+
+如果您要混合多个轨道，将立体声拆分为单声道也很有用。
+
+与使用 轨道下拉菜单将立体声轨道拆分为左右声道相比，在单声道轨道上使用[平移滑块](audio_tracks.html#pan)可以进行更多控制。
+
+
+
+将单声道轨道转换为立体声没有一般的音频优势。单声道轨道已经在立体声播放器的两个扬声器上播放。
+
+
+
+
+
+
+
+### 2.2.9 错误
+
+
+
+#### 2.2.9.1 打开声音设备时出错“或”打开录音设备时出错”
+
+这些错误消息要求您检查录音或播放设备设置以及 Audacity [项目采样率](audio_settings_preferences.html)。
+
+如果消息提到“录音设备”，则表示您的 Audacity、作系统或声音设备录音设置存在问题。
+
+如果消息提到“播放设备”，则表示您的播放设置有问题。
+
+
+
+此消息有两种形式：
+
+- **打开录音设备时出错 - 错误代码 -xxxx** 这意味着您的 Audacity、作系统或声音设备录音设置存在问题，其中 xxxx 被数字代码替换，[有关详细信息，请参阅此处](error_opening_sound_device.html#codes)。
+- **打开声音设备时出错 ...**这是与无法启动音频播放流相关的通用消息。
+
+
+
+这些消息可能表明声音设备的驱动程序存在问题，或者您可能要求设备执行它无法执行的作。
+
+例如，如果您尝试[录制](transport_menu.html#record)到比设备支持的更多的通道，或者您尝试在可以录制或播放但不能同时播放的设备上进行[配音](faq_recording_how_to_s.html#overdub)，您将看到此错误。
+
+
+
+当其中一个声音设备输入未正确启用或无法响应 Audacity 开始录制的请求时，录制设备消息最常出现在 Windows 上。
+
+
+
+有关如何解决此问题的详细信息，请参阅[打开声音设备时出错](error_opening_sound_device.html)。
+
+
+
+#### 2.2.9.2 FFmpeg 错误 - 无法打开音频编解码器0x15002（或 0x15003）
+
+如果使用“M4A （AAC） 文件 （FFmpeg）”导出选项导出超过 2 声道 M4A 文件（例如 5.1 环[绕声](faq_playback.html#multi-channel)文件），则会出现**错误 0x15002**。
+
+要更正错误并导出最多 8 个通道，请选取[（外部程序）](exporting_to_an_external_program.html)并指定一个[命令](exporting_to_an_external_program.html#multi-channel)，告知 Audacity 显式使用本机 FFmpeg AAC 编码器。
+
+
+
+如果导出超过 6 通道的 AC3 文件，则会出现**错误 0x15003**。AC3 的最大可能通道为 6 个。
+
+
+
+#### 2.2.9.3 Audacity 已经在运行了......” 错误信息
+
+如果旧的 Audacity“锁定文件”仍然存在，则可能会发生这种情况（*我们认为此错误仅发生在 Mac 计算机上）。*
+
+
+
+> 在 Mac 上，锁定文件位于：**~/库/应用程序支持/audacity/SessionData**查看 SessionData 文件夹并删除您在那里找到的所有文件和文件夹。
+
+
+
+有关详细信息，请参阅[常见问题解答：安装、启动和插件](faq_installation_and_plug_ins.html#already)。
+
+
+
+#### 2.2.9.4 Audacity 无法写入文件。也许<驱动器>不可写或磁盘已满
+
+此错误消息告诉您您正在使用的磁盘已满，或者您尝试写入的磁盘或文件可能已受写保护。
+
+有关如何解决此问题的详细信息，请参阅[错误：磁盘已满或不可写](error_disk_full_or_not_writable.html)。
+
+
+
+#### 2.2.9.5 Audacity 配置错误
+
+此错误消息告诉您（至少）您的一个 Audacity 设置文件已变得不可写。
+
+它所在的驱动器的文件可能已被锁定。
+
+
+
+有关如何解决此问题的详细信息，请参阅[错误：Audacity 配置错误](error_audacity_settings_file_unwritable.html)。
+
+
+
+#### 2.2.9.5 不合适的驱动器
+
+此错误消息告诉您尝试使用的驱动器不适合 Audacity，
+
+有关如何解决此问题的详细信息，请参阅[错误：不合适的驱动器](error_unsuitable_drive.html)。
+
+
+
+#### 2.2.9.6 不允许将一种类型的轨道粘贴到另一种类型中
+
+这意味着您尝试将一种类型的轨道（音轨、标签轨道、音符轨道）粘贴到另一种非相同类型的轨道中。
+
+这没有意义，被 Audacity 阻止了。
+
+
+
+有关详细信息，请参阅 [错误：复制或粘贴](error_copying_or_pasting.html) 。
+
+
+
+#### 2.2.9.7 不允许将立体声音频复制到单声道轨道中
+
+虽然可以从单声道轨道复制到立体声轨道*（Audacity 在左右声道中放置相同的内容），*但 Audacity 无法从立体声粘贴到单声道，因为这两个通道可能具有不同的音频数据。
+
+
+
+有关详细信息，请参阅[错误：复制或粘贴。](error_copying_or_pasting.html)
+
+
+
+#### 2.2.9.8 没有足够的空间来粘贴选择
+
+如果有足够的空间来粘贴您放置在 Audacity 剪贴板上的选择，而不需要移动后续剪辑，那么将进行粘贴。
+
+如果空间不足，则将显示此错误消息，并且不会粘贴剪贴板内容。
+
+有关详细信息，请参阅[错误：轨道空间不足](error_insufficient_space_in_track.html)。
+
+
+
+#### 2.2.9.9 没有足够的空间来扩展切割线
+
+如果您在[轨道行为偏好](tracks_behaviors_preferences.html#cut)设置中打开了“打开”“启用**剪切线**”，则可以随时单击剪切线以恢复剪切的音频。
+
+如果没有足够的空间在不移动后续剪辑的情况下恢复剪切的音频，则会显示此错误，并且不会恢复剪切的音频。
+
+有关详细信息，请参阅[错误：轨道空间不足](error_insufficient_space_in_track.html)。
+
+
+
+#### 2.2.9.10 Audacity 无法打开<驱动器>中的文件
+
+Audacity 无法打开文件 - 文件或驱动器可能损坏。
+
+有关详细信息[，请参阅错误：打开或读取文件。](error_opening_or_reading_file.html)
+
+
+
+#### 2.2.9.11 Audacity 无法从 <drive> 中的文件中读取。
+
+Audacity 无法读取文件 - 文件或驱动器可能损坏。
+
+有关详细信息[，请参阅错误：打开或读取文件。](error_opening_or_reading_file.html)
+
+
+
+#### 2.2.9.12 重采样失败
+
+仅在以下情况下才会发生这种情况：
+
+- 重采样尝试对它没有的样本进行重采样
+- 重新采样器表示，它产生的样本数量为负数。
+
+有关详细信息，请参阅[错误：重采样。](error_resampling.html)
+
+
+
+#### 2.2.9.13 数据大小不好，无法导入音频
+
+在正常使用 Audacity 时，您不应该遇到此消息。
+
+这只能使用经过精心修改的虚假非 WAV 文件来生成。
+
+有关详细信息[，请参阅错误：导入原始音频](error_importing_raw_audio.html)。
+
+
+
+#### 2.2.9.14 批处理命令 ...不认可
+
+从以前的 Audacity 版本更新时，宏中的一个或多个命令有时可能会出现此错误。如果共享宏的用户具有不同的 Audacity 版本或宏中使用的插件的不同版本，也可能会发生此错误。
+
+有关更多详细信息，请参阅[宏](manage_macros.html#error)页面。
+
+
+
+#### 2.2.9.15 无法导出
+
+Audacity 中有很多**无法导出**的陷阱。
+
+这些都有一个帮助按钮 wg=chich 链接到以下登录页面此登录页面[错误：无法导出](error_unable_to_export.html)。
+
+他们还给出了一个代码，告诉我们错误是什么。
+
+
+
+## 2.2.9.16 [打开 Audacity 项目时出错](faq_errors_on_opening_or_recovering_an_audacity_project.html)
+
+如果您尝试打开在更高版本的 Audacity 中创建的 AUP3 项目文件，您可能会收到错误。
+
+您需要升级到最新版本的 Audacity 才能打开此项目文件。
+
+
+
+##### 2.2.9.16.1 [神秘的系统/数据库错误](faq_errors_on_opening_or_recovering_an_audacity_project.html#cryptic-error)
+
+在极少数情况下，您可能会收到看起来像神秘的数据库错误消息。这些消息包含有价值的数据，供开发人员帮助解决问题。
+
+如果您遇到其中之一，请在 [**Audacity 论坛**](https://forum.audacityteam.org/index.php)上详细报告，最好附上消息的屏幕截图。
+
+该消息可能具有“显示日志”按钮。如果是这样，请按它并将带有该日志的完整错误消息的屏幕截图发送给我们，因为这将为我们分析问题提供有价值的数据。
+
+有关更多详细信息，请参阅[常见问题解答：打开或恢复 Audacity 项目时出错](faq_errors_on_opening_or_recovering_an_audacity_project.html)页面。
+
+
+
+
+
+### 2.2.10 BUG
+
+
+
+#### 2.2.10.1 “我发现了一个BUG，现在怎么办？”
+
+报告错误时最重要的是尽可能**具体**，并首先在发行说明中检查我们是否已经知道该问题。
+
+如果不知道该错误，请向我们提供足够的信息，以便我们可以在正确的作系统上自行重现该错误。
+
+否则我们不太可能修复它。
+
+
+
+> **请在您的报告中包括以下基本信息：**
+>
+> 您的确切三部分 Audacity 版本号（例如，2.0.0）- 您可以在**帮助> 关于 Audacity** 或 **Audacity >** 关于 Mac 计算机上的 Audacity 中查看您使用的确切作系统（例如，Windows 10 家庭版、macOS 10.14.4、Linux Ubuntu 11.10）有关您的计算机及其音频连接的任何其他可能相关的信息（例如，2 GB RAM、2.2 GHz、M-Audio Fast Track USB 接口）。
+
+
+
+如果您可以始终如一地使问题发生，请告诉我们从启动导致错误发生的 Audacity 开始的确切事件顺序。
+
+如果您看到错误消息，请务必向我们发送错误消息的确切文本，或附上图片。如果您使用的是 Mac 或 Linux，崩溃报告也很有用。
+
+准备好错误报告后，请在我们的[论坛](https://forum.audacityteam.org)上发帖。
+
+
+
+## 2.2.10.2 “功能 X 不够好或缺失”
+
+您可以将您对新功能或改进功能的想法发送到我们的[论坛](https://forum.audacityteam.org/viewforum.php?f=20)。
+
+同样，尽可能具体，并随时建议您首选的方式来实现您想要的功能。
+
+
+
+如果您是 C++ 程序员，您可以向我们发送补丁，或者最好是 Git 拉取请求以获取错误修复或新功能。
+
+
+
+感谢您的所有报告、建议和补丁。所有这些都有助于我们让 Audacity 变得更好。
 
 
 
