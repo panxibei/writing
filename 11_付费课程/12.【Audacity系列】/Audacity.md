@@ -2159,6 +2159,174 @@ Audacity可以让音频听起来更高或更低
 
 
 
+### 1.5.6 减少动态范围（压缩器/限制器）
+
+高[动态范围](https://en.wikipedia.org/wiki/Dynamic_range_compression)可能导致曲目中安静的部分比响亮部分过于安静，导致听众不断调整音量以保持音量在可接受的范围内。Audacity有多种工具可以帮助降低动态范围并提高音色的响度。
+
+
+
+#### 1.5.6.1 压缩机
+
+![](m/basics/audio-editing/20.JPG)
+
+Audacity 的压缩机
+
+
+
+该效果可在 **Effect -> 音量和压缩 -> 压缩**器中找到。
+
+压缩器可用于将所有超过阈值的声音以一定比例降低动态范围。这样做会让最终的音频变小，所以你需要添加补音增益来弥补——或者，第二步对轨道进行归一化。膝盖宽度和平滑参数是为了减少变形。[更多信息可见手册。](https://manual.audacityteam.org/man/compressor.html)
+
+
+
+> **最佳实践：**
+>
+> - 开始时，可以从**“预设与设置**”按钮里尝试出**厂预设**。这种效果为各种内容提供了实用的预设。
+> - 把这个效果当作[主效果或实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)，实时查看它的效果图。
+
+
+
+
+
+#### 1.5.6.2 限幅器
+
+![](m/basics/audio-editing/21.JPG)
+
+Audacity 的限制器
+
+
+
+限制器实际上与压缩器相同，区别在于它更为严厉：压缩器使用较低的比率，可能让声音暂时超过曲线上的线，而限制器则不允许任何声音超过阈值。
+
+
+
+> **最佳实践：**
+>
+> - 开始时，可以从**“预设与设置**”按钮里尝试出**厂预设**。这种效果为各种内容提供了实用的预设。
+> - 把这个效果当作[主效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)，实时看到它的工作图，并防止项目出现裁剪。
+
+
+
+
+
+### 1.5.7 将录音拆分成独立轨道
+
+Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出一个音频文件。比如你可以录制一张音频CD，然后把每首歌导出成一个独立的文件。
+
+
+
+#### 1.5.7.1 从录音中删除不需要的音频
+
+使用**选择**工具去除录音开头不必要的音频（主要是静音）。
+
+1. 点击**“跳过开始**”按钮
+2. 放大到能看到曲目开头到音乐开头
+3. 点击并拖动音乐开头到轨道开头
+4. 点击**编辑**>[**删除**](https://manual.audacityteam.org/man/edit_menu.html#delete)
+
+同样，从录音结尾和中间（LP或磁带的第1面和第2面之间）去除不需要的音频。
+
+
+
+在本教程后面我们会提到，你可以使用**“分析>标签声音......**”命令来识别歌曲之间的空格，所以在编辑第一面和第二面之间的过渡时，一定要留出2到3秒的静默，类似于歌曲之间的静默。
+
+**保存你的作品！**点击文件>保存项目>[保存项目](https://manual.audacityteam.org/man/file_menu_save_project.html#save_project)。
+
+
+
+### 1.5.7.2 给歌曲贴标签
+
+**标记第一首歌的开始**
+
+1. 点击**“跳过开始**”按钮![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252F6sLr8EpT8R7o4G3S1CkS%252FRewind.png%3Falt%3Dmedia%26token%3D63c5f96a-5002-452a-9cf1-e63bf581b0d4&width=300&dpr=4&quality=100&sign=557dc670&sv=2)
+
+2. 点击**编辑>标签>**[**选择**处添加标签](https://manual.audacityteam.org/man/edit_menu_labels.html#addlabelatselection)，或使用快捷键**Ctrl + B**。
+
+   在音频轨道下方的新[标签轨道](https://manual.audacityteam.org/man/label_tracks.html)中创建一个新的标签。标签内容已选定，准备编辑。如果你需要播放轨道来决定分割点的位置，可以用播放**位置的添加标签**（直接在[选择处添加标签](https://manual.audacityteam.org/man/edit_menu_labels.html#addlabelatselection)下方），或者用快捷键**Ctrl + M***（在Mac上是****⌘+）。****）。*
+
+3. 输入第一首歌的标题
+
+**标记剩下的歌曲**
+
+1. 使用**选择**工具，点击第二首歌开头附近
+2. 反复点击**放大**按钮![放大工具](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fmanual.audacityteam.org%2Fm%2Fimages%2Fe%2Fe0%2Ftool_edit_zoomin.png&width=300&dpr=4&quality=100&sign=1f981c58&sv=2)直到你能看到歌曲的前几秒
+3. 点击尽可能接近歌曲开头
+4. 点击**编辑>标签>**[**选择时**添加标签](https://manual.audacityteam.org/man/edit_menu_labels.html#addlabelatselection)，或使用快捷键 **Ctrl + B**
+5. 把歌曲的名字输入唱片标签
+6. 反复点击**缩放按钮** ![缩放工具](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fmanual.audacityteam.org%2Fm%2Fimages%2Fd%2Fd3%2Ftool_edit_zoomout.png&width=300&dpr=4&quality=100&sign=a24b926a&sv=2)直到你能看到第三首歌的开头
+7. 继续这样，添加标签标记每首歌的开头
+
+![](m/basics/audio-editing/22.JPG)
+
+**音频轨中第二首歌开头的标签**
+
+
+
+你可以通过**使用“分析>**[**标签声音......**”来节省时间。自动标记](https://manual.audacityteam.org/man/label_sounds.html)歌曲要导出的区域。因此，这种方法可以排除歌曲之间的部分或全部区域。
+
+这个工具依赖于正确检测轨道之间的“静默”，这取决于如何根据你的轨道设置参数。
+
+
+
+### 1.5.7.3 最大化录音音量
+
+如果你是正确录制并避免了削波，录音音量可能没有达到最大。为了让LP或CD以最大音量刻录，从而与你收藏中的其他LP或CD匹配，我们需要修正这个问题。
+
+1. 点击[**“**](https://manual.audacityteam.org/man/select_menu.html#all)**全部>选择**”，或使用快捷键**Ctrl + A**
+2. 点击**效果>音量和压缩 >** [**归一化......**](https://manual.audacityteam.org/man/normalize.html)
+
+该对话框默认选项是最大放大至-1.0 dB。最大设置是0 dB，但默认设置为-1.0 dB，提供了一些余量，因为有些播放器在0 dB时可能会遇到播放问题。
+
+一些消费级唱盘、磁带机和/或放大器可能会录制立体声通道，其中一个通道的信号比另一个更强，你可能需要修正这个问题。在这种情况下，勾选“**独立规范立体声通道**”的选项。
+
+复制唱片时的一个问题是，一个通道的响亮点击声会导致 Normalize 在立体声平衡中产生不必要的变化。在这种情况下，你可以考虑在归一化步骤之前用[点击移除](https://manual.audacityteam.org/man/click_removal.html)功能移除点击。
+
+
+
+### 1.5.7.4 导出多个文件
+
+最后一步是从Audacity项目中创建多个音频文件。
+
+1. 点击**文件 >导出>**[**导出多个......**。](https://manual.audacityteam.org/man/export_multiple.html)
+2. 点击“**选择......**”按钮，选择导出曲目将被保存的位置。
+3. 从下拉菜单中选择导出**格式**：
+   - 如果使用 Windows 或 Linux，选择 16 位 [***WAV***](https://manual.audacityteam.org/man/glossary.html#wav);如果使用 Mac，则选择 [***AIFF***](https://manual.audacityteam.org/man/glossary.html#aiff)
+   - 加载到MP3播放器时，选择[***MP3***](https://manual.audacityteam.org/man/glossary.html#mp3)
+   - 加载到 Apple Music/iTunes/iPod 时，你可以导出为 WAV，并用 Apple Music/iTunes 将 WAV 转换为 [***AAC***](https://manual.audacityteam.org/man/glossary.html#aac) 或 MP3。
+4. 基于以下内容的*分割文件*：
+   - ![选中单选按钮](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fmanual.audacityteam.org%2Fm%2Fimages%2F7%2F7e%2Fradioselected.png&width=300&dpr=4&quality=100&sign=cf4fea6b&sv=2) **标签应**当检查
+   - ![未勾选的复选框](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fmanual.audacityteam.org%2Fm%2Fimages%2Fa%2Fa8%2Fcheckboxnotchecked.png&width=300&dpr=4&quality=100&sign=8cc4157f&sv=2) 在**第一个标签之前包含音频**应取消勾选，因为第一个标签之前没有音频
+5. 姓名*档案*：
+   - ![选中单选按钮](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fmanual.audacityteam.org%2Fm%2Fimages%2F7%2F7e%2Fradioselected.png&width=300&dpr=4&quality=100&sign=cf4fea6b&sv=2) 使用**标签/曲目名称**应勾选。
+6. 点击**导出**按钮。
+7. 元[数据编辑器](https://manual.audacityteam.org/man/metadata_editor.html)将出现在第一首歌曲时。曲目标题和曲目编号会从唱片公司预先填写，但你可以输入任何你想要的额外信息（例如艺人名和专辑名）。
+8. 点击元数据编辑器中的确定按钮（**不是**保存按钮）。
+9. 元数据编辑器将用于下一首及后续歌曲;和之前一样，输入任何额外信息，并为每个窗口点击“确定”。当你在窗口点击最后一首歌的“确定”时，所有文件都会导出。
+
+
+
+### 1.5.7.5 备份
+
+备份导出的WAV或MP3文件——你不想丢失所有宝贵的工作，还得重新做。电脑硬盘可能会故障，导致所有数据被毁坏。
+
+理想情况下使用专用硬盘*（1+ TB外置磁驱方便且经济*），或者上传到在线（云）存储服务来存储WAV或MP3。更好的方法是分别在不同的外部设备上复制两份，更好的是同时保留在线备份和本地备份。
+
+你可能想创建一个分类文件结构——例如，每张专辑可以存储在一个以专辑命名的文件夹中，再存储在一个以艺术家（或古典音乐的作曲家）命名的文件夹中，这样搜索和检索更方便。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 2 参考
