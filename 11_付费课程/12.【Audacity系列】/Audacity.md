@@ -245,7 +245,7 @@ Audacity 可以**[播放](playback.html)** ![播放按钮](./m/images/9/90/play.
 **点击图片了解更多**
 
 
- 
+
 
 ##### 1.1.1.1 循环
 
@@ -270,6 +270,8 @@ Audacity 可以**[播放](playback.html)** ![播放按钮](./m/images/9/90/play.
 通过拖动[选择音频，](selecting_audio_the_basics.html)然后使用[剪切、复制和粘贴](edit_toolbar.html)等按钮重新排列音频。
 
 您还可以将[音频效果](effect_menu_built_in.html)应用于所选音频。
+
+![selected_audio_for_tour_guide.png](m/images/4/46/selected_audio_for_tour_guide.png)
 
 
 
@@ -520,6 +522,8 @@ Audacity 有一个 **[Play-at-Speed 工具栏](play_at_speed_toolbar.html)**，�
 
 这是播放期间的临时更改。若要永久更改速度和音高，请使用“更改速度”和“音高”效果（如下）。
 
+ ![play_at_speedtoolbar.png](m/images/2/27/play_at_speedtoolbar.png) 
+
 
 
 ##### [擦洗和搜索](scrubbing_and_seeking.html)
@@ -562,13 +566,19 @@ Audacity 有一个 **[Play-at-Speed 工具栏](play_at_speed_toolbar.html)**，�
 
 这些效果可以在 Audacity 播放时动态更改，因此您可以实时动态地听到更改。
 
-
+![](m/images/1/19/real_time_effects_stack.png)
 
 有关更多详细信息，请参阅[**使用实时效果**](https://support.audacityteam.org/audio-editing/using-realtime-effects)。
 
 
 
 ### 1.1.9 很多你可能不知道 Audacity 可以做的事情
+
+![](m/images/b/b7/a_small_image_of_sync_lock.png)
+
+ **一对同步锁定的单声道轨道：选择会自动扩展到第二轨** 
+
+
 
 ##### [同步锁](sync_locked_track_groups.html)
 
@@ -627,6 +637,1403 @@ Audacity 有一个 **[Play-at-Speed 工具栏](play_at_speed_toolbar.html)**，�
 可以使用**[“拆分”](audacity_tracks_and_clips.html#split)**创建剪辑，并通过单击剪辑之间的暗线边界重新连接在一起。
 
 您可以将剪辑拖动到轨道上的不同位置，或使用[剪辑手柄拖动条](audacity_tracks_and_clips.html#move)将它们拖动到不同的轨道。
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 1.2 开始使用
+
+了解如何：
+
+- [导入并播放](man/play.html)现有音频文件
+- [录制](man/record.html)你的声音、吉他、标准唱盘或磁带机
+- [使用USB设备录制](man/usb_recording.html)*（USB唱盘、USB磁带机或USB音频接口）*
+- 选择要处理[的音频](man/selecting_audio_the_basics.html)
+- [编辑](man/edit.html)音效，包括应用[效果](man/effect_menu.html)
+- [保存或打开Audacity项目](man/saving.html)
+- [导出](man/file_export_dialog.html)为MP3或其他音频文件
+- [刻录成光盘](man/burncd.html)
+
+
+
+
+
+## 1.3 Audacity 基础
+
+### 1.3.1 安装和更新Audacity
+
+- [安装和更新Audacity](https://support.audacityteam.org/basics/downloading-and-installing-audacity)
+- [重置Audacity为默认设置](https://support.audacityteam.org/troubleshooting/resetting-audacity)
+- [FFmpeg 导入/导出](https://support.audacityteam.org/basics/installing-ffmpeg)库，提供更多导入/导出音频格式
+- 主题——学习如何选择你喜欢[的](https://support.audacityteam.org/basics/customizing-audacity/using-themes)Audacity风格和感觉
+- [安装插件](https://support.audacityteam.org/basics/installing-plugins)——你可以下载并安装插件，为Audacity添加额外功能
+
+
+
+
+
+#### 1.3.1.1 下载和安装Audacity
+
+Audacity 是一款易于使用的多轨音频编辑器和录音机，适用于 Windows、macOS、GNU/Linux 及其他作系统。本页将引导您完成下载和安装流程。
+
+
+
+##### 1.3.1.1.1 Windows
+
+###### 从Microsoft商店安装
+
+你可以从[Microsoft Store](https://apps.microsoft.com/store/detail/audacity/XP8K0J757HHRDW)安装Audacity。
+
+- 访问[**Microsoft Store官网**](https://apps.microsoft.com/store/detail/audacity/XP8K0J757HHRDW)。
+
+- 搜索Audacity。
+
+- 找到Audacity后，点击**“进入商店”应用**按钮。![](m/basics/downloading-and-installing-audacity/01.JPG)
+
+  
+
+- Microsoft Store 应用将打开。要安装 Audacity，请点击**安装**按钮。![](m/basics/downloading-and-installing-audacity/02.JPG)
+
+  
+
+- 接下来，Windows安装程序会要求你更换系统。点击**“是”按钮**。
+
+- ![](m/basics/downloading-and-installing-audacity/03.JPG)
+
+
+
+Audacity 已经安装，你可以从开始菜单打开它。
+
+
+
+###### 从互联网安装 Audacity
+
+- 前往 https://www.audacityteam.org/ 的 Audacity 下载页面，然后点击**“无 MuseHub 下载 Audacity**”按钮。
+
+  你也可以通过 MuseHub 下载 Audacity，此时以下作方式将有所不同。
+
+- 下载开始后，你可以点击**“运行**”或**“保存**”。
+
+- 如果你点击**保存**按钮，进入你的下载文件夹（通常是C：\users\your name\Downloads*），*找到Audacity安装程序，双击它。
+  
+  - 如果你使用的是Windows 11，可能会被警告Audacity尚未获得Microsoft的认证。不过你还是应该点击**安装。**
+
+![](m/basics/downloading-and-installing-audacity/04.JPG)
+
+运行Audacity安装程序时的Windows 11警告
+
+- 如果你点击**“运行**”按钮，Windows 会自动启动安装过程。
+- 当Windows安装程序要求你对系统进行更改时，点击“**是**”。
+
+  ![](m/basics/downloading-and-installing-audacity/05.JPG)
+- 选择安装时将使用的语言，然后点击**确定**。
+
+![](m/basics/downloading-and-installing-audacity/06.JPG)
+
+选择安装时使用的语言
+
+- 一旦 Audacity 的欢迎页面出现，点击**“下一步**”按钮。
+
+![](m/basics/downloading-and-installing-audacity/07.JPG)
+
+欢迎页面 - 点击下一步
+
+- 接下来，**信息**页面将介绍Audacity的许可证。该软件采用GNU通用公共许可证（GPL）版本发布。点击**“下一步**”继续。
+
+![](m/basics/downloading-and-installing-audacity/08.JPG)
+
+信息页面 - 了解更多关于 Audacity 及其授权的信息链接
+
+- **选择目的地位置**页面将允许您选择是否在推荐目的地安装 Audacity，或通过“**浏览......**”按钮自行选择位置。点击**“下一步**”继续。
+
+![](m/basics/downloading-and-installing-audacity/09.JPG)
+
+选择安装Audacity的文件夹
+
+- **选择额外任务**页面允许你在桌面安装 Audacity 的快捷方式。如果你之前安装过Audacity，可以选择**重置偏好设置。**
+
+![](m/basics/downloading-and-installing-audacity/09.JPG)
+
+选择是否创建快捷方式打开Audacity
+
+- 在Audacity安装程序中核实你所做的选择，然后点击**安装。**
+
+![](m/basics/downloading-and-installing-audacity/11.JPG)
+
+验证你的选择并点击安装
+
+- 完成设置过程可能需要一些时间。
+
+![](m/basics/downloading-and-installing-audacity/12.JPG)
+
+等设置过程完成后再说
+
+- 当“**完成 Audacity 设置d向导**”窗口出现时，点击**完成**关闭安装程序。如果你愿意，在继续前选择“**启动Audacity**”复选框。
+
+![](m/basics/downloading-and-installing-audacity/13.JPG)
+
+
+
+ 点击“结束”关闭安装程序 
+
+
+
+
+
+##### 1.3.1.1.2 macOS
+
+- 进入下载页面：https://www.audacityteam.org/，点击“**无MuseHub下载**”按钮。
+
+  或者，你也可以通过MuseHub下载Audacity，此时作步骤会有所不同。
+
+- 如果系统提示，点击**保存**。
+
+- Audacity官网会把Audacity的DMG文件保存在你的下载文件夹里。
+
+  接下来，双击DMG文件开始安装过程。
+
+- 当 Audacity 应用图标出现后，将其拖入 Applications 文件夹（见下文）。
+
+  完成此任务需要管理员权限。*不要从DMG文件夹启动Audacity。* 
+
+  - 您可以选择将 Audacity 应用迁移到任何其他地点。
+
+  ![](m/basics/downloading-and-installing-audacity/14.JPG)
+
+- 从应用程序文件夹或你选择的位置启动 Audacity.app。
+
+- Audacity出现在屏幕上后，按下**确定**键开始编辑！如果你不想再次看到欢迎窗口，可以勾选“启动时不要再次显示此内容”提示。
+
+   ![](m/basics/downloading-and-installing-audacity/15.JPG)
+
+
+
+
+
+##### 1.3.1.1.3 Linux
+
+###### 1.3.1.1.3.1 用AppImage安装Audacity
+
+1. 进入下载页面：https://www.audacityteam.org/ 并点击下载按钮。
+
+2. 下载的AppImage需要是可运行的。要实现这一点，请**右键点击**文件 **-> 属性 -> 权限**，或在终端内执行以下命令：
+
+   ```shell
+   chmod +x <path to your Audacity.AppImage>
+   ```
+
+3. 双击AppImage即可运行Audacity。
+
+> **注意：**如果你在打开AppImage时遇到困难，可以试试安装**libfuse2**。
+>
+> 各种分布的具体步骤可在以下网站找到
+>
+> https://github.com/AppImage/AppImageKit/wiki/FUSE
+
+
+
+###### 1.3.1.1.3.2 使用仓库中的包安装
+
+你的Linux发行版（例如Ubuntu、Fedora或Debian）可能包含Audacity包作为仓库的一部分。
+
+通常，发行版仓库中的版本比最新的 AppImage 还*要早*，但它可能更适合集成到你的发行版中。
+
+
+
+请在您电脑上的软件中心、App Store或类似软件访问此版本，或尝试以下命令：
+
+- Ubuntu、Debian，Pop_OS!，Linux Mint：`sudo apt install audacity`
+- RHEL，Fedora：`sudo yum install audacity`
+- Arch Linux：`sudo pacman -Syu audacity`
+
+> 仓库包由社区维护，而非 Audacity 团队。
+
+
+
+###### 1.3.1.1.3.3 使用Flatpak或Snap安装
+
+社区维护的Flatpak和Snaps可在 [Flathub](https://flathub.org/apps/org.audacityteam.Audacity) 和 [Snapcraft](https://snapcraft.io/audacity) 购买。
+
+
+
+#### 1.3.1.2 安装FFmpeg
+
+FFmpeg 允许你导入/导出额外的音频文件格式到 Audacity 或
+
+由于专利限制，FFmpeg 无法直接通过 Audacity 分发。然而，FFmpeg 需要导入和导出多种音频格式，包括 M4A 和 WMA。
+
+
+
+**注意：**在之前的Audacity版本中，LAME需要导出MP3文件。现在它默认包含在Windows和macOS上的Audacity中。如果你遇到任何LAME错误，确保你使用的是最新版本的Audacity。
+
+你可以按以下方式下载和安装FFmpeg：
+
+
+
+##### 1.3.1.2.1 Windows
+
+###### 1.3.1.2.1.1 推荐安装商
+
+1. 从 https://lame.buanzo.org/ffmpeg.php 下载FFmpeg安装程序。
+
+   对于大多数电脑来说，64位Windows版本是正确的。
+
+   原生Windows ARM版本请访问 https://github.com/tordona/ffmpeg-win-arm64。
+
+2. 运行安装程序。你可以忽略“未知出版商”警告。
+
+3. 阅读并接受许可
+
+4. 选择安装FFmpeg的位置。默认情况下，Audacity 会将 FFmpeg 安装在 **C：\Program Files\FFmpeg 中**
+
+5. 完成安装
+
+6. 重启Audacity
+
+Audacity 现在应该会自动检测到 FFmpeg 并允许你使用它。
+
+
+
+###### 1.3.1.2.1.2 使用 WinGet 安装
+
+Audacity 版 FFmpeg 也可在 WinGet 上下载：
+
+```shell
+winget install --id=Buanzo.FFmpegforAudacity  -e
+```
+
+
+
+###### 1.3.1.2.1.3 其他FFMPEG构建
+
+如果你更喜欢手动安装FFmpeg，可以从其他来源下载ZIP文件：
+
+- https://github.com/BtbN/FFmpeg-Builds/releases
+- https://www.gyan.dev/ffmpeg/builds/#release-builds
+- Windows ARM64：https://github.com/tordona/ffmpeg-win-arm64
+- 或者像这里描述的那样从源代码编译：https://trac.ffmpeg.org/wiki/CompilationGuide
+
+> **注意：**
+>
+> - 并非所有FFmpeg版本都支持所有版本。
+>   - Audacity 3.1之前只支持avformat-55.dll。
+>   - Audacity 3.1及以后版本支持avformat-55.dll、avformat-57.dll和avformat-58.dll。
+>   - Audacity 3.2及更高版本也支持avformat-59.dll。
+>   - Audacity 3.3及更高版本也支持avformat-60.dll。
+>   - Audacity 3.5及更高版本也支持avformat-61.dll。
+>   - 你可以[在这里](https://ffmpeg.org/download.html#releases)查看哪个DLL出现在哪个FFmpeg版本里。
+> - 一定要下载完整的FFmpeg副本，而不是单独下载avformat的*.dll。此外，确保下载或构建**共享**版本，因为只有共享版本包含.dll。
+> - 不同版本的FFmpeg可能启用了不同的编解码器。特别是，AMR（窄带）未出现在推荐安装程序中。
+
+
+
+###### 1.3.1.2.1.4 手动安装
+
+如果你是从其他来源安装了FFmpeg，或者安装在不同位置，你需要告诉Audacity在哪里可以找到它。
+
+具体做法：
+
+1. 前往**编辑 > 偏好设置 > 库**
+
+2. 点击定位**......**按钮。
+
+   ![](m/basics/installing-ffmpeg/01.JPG)
+
+3. **如果出现以下提示**，Audacity已自动识别FFmpeg：
+
+   ![](m/basics/installing-ffmpeg/02.JPG)
+
+   你可以点**“否”**，因为Audacity已经知道FFmpeg的位置。
+
+   如果**该消息未出现**，请继续下一步。
+
+4. 在这个对话框中，点击“**浏览......**”以找到你在其他地方下载/安装的 FFmpeg 文件夹中的 avformat-*.dll
+
+   ![](m/basics/installing-ffmpeg/03.JPG)
+
+5. 找到后，点击**打开****，然后确定**，再按**确定**，关闭偏好设置。
+
+
+
+
+
+#### 1.3.1.3 用麦克风录音你的声音
+
+Audacity 可以使用多种麦克风和其他音频设备来录制音频。
+
+
+
+##### 1.3.1.3.1 连接你的麦克风
+
+你可以把麦克风插到合适的接口上。
+
+一般来说，这意味着：
+
+- 如果你有USB麦克风，插到USB接口上。
+- 如果你有带3.5mm插孔的麦克风，插到麦克风输入口。
+- 如果你有XLR麦克风，把它插到XLR-USB音频接口上，接口再插到USB接口。
+
+你如何连接麦克风取决于你的电脑型号和麦克风。请使用手册或支持页面获取更多信息。如果你的电脑没有合适的麦克风接口，可能需要适配器。
+
+
+
+> **注意：**许多笔记本电脑和笔记本都内置麦克风。虽然他们可能足够好录好你的声音，但他们制作的其他录音往往会有些不愉快。
+
+
+
+##### 1.3.1.3.2 选择你的麦克风
+
+一旦你把麦克风插到电脑上，在**音频设置**工具栏里选择要录制的麦克风。
+
+![](m/basics/recording-your-voice-and-microphone/01.JPG)
+
+使用**音频设置**工具栏选择你想录制的麦克风
+
+该工具栏可能会显示一些意想不到的设备（例如网络摄像头），以及虚拟设备（假装是麦克风的软件）。
+
+选择与你真正想使用的麦克风匹配的条目。音频**设置**工具栏还允许你选择是单声道还是立体声录音。
+
+
+
+![](m/basics/recording-your-voice-and-microphone/02.JPG)
+
+**音频设置**工具栏还显示麦克风可用的录音通道数量
+
+
+
+> **注意：**大多数麦克风都是单声道的，单声道通常是录音的最佳选择。只有在需要方向性时才用立体声。
+
+
+
+##### 1.3.1.3.3 测试你的设置
+
+选择麦克风图标，选择**开始监听**（如下图），用手指轻敲麦克风。如果你看到点击麦克风时绿色条在移动，说明你在前一步选对了设备。
+
+![](m/basics/recording-your-voice-and-microphone/03.JPG))
+
+点击麦克风开始监听
+
+![](m/basics/recording-your-voice-and-microphone/04.JPG)
+
+Audacity会在录音仪表中显示麦克风电平
+
+
+
+然后尽量用正常音量说话。一般来说，音量应始终保持在绿色区域（一般来说，-18到-12 dB之间为最佳）。
+
+
+
+> **谨慎：**如果输入音量太低（低于-42 dB）或太高（经常在红色区域），音频质量很可能会受影响。请参见此页面了解如何修复：[设置录制和播放音量](https://support.audacityteam.org/basics/recording-your-voice-and-microphone/setting-recording-levels-and-playback-levels) 
+
+
+
+接下来，做一个测试录音。要开始在Audacity录制你的声音，只需按下红色录制按钮。
+
+![](m/basics/recording-your-voice-and-microphone/05.JPG)
+
+运输工具栏：录制按钮位于右数第二个
+
+
+
+录音结束后，回放一遍。如果一切顺利，你现在应该能清楚地听到自己的声音。一旦你清楚地听到自己的声音，你就可以继续下一步了。
+
+
+
+
+
+#### 1.3.1.4 设置录制和播放音量
+
+录制和回放电平可以通过录制和播放计工具栏中的滑块设置：
+
+![](m/basics/recording-your-voice-and-microphone/06.JPG)
+
+录音计量工具栏和带电平滑块的播放计量工具栏
+
+- 带有麦克风图标的滑块用于设置系统级别的录音音量。如果作系统禁止此作，该滑块将处于失效状态。
+
+![](m/basics/recording-your-voice-and-microphone/07.JPG)
+
+录制音量滑块会在系统层面改变录音设备的音量
+
+- 带有扬声器图标的滑块可以设置播放音量相对于系统音量。导出文件的音量不会影响，使用每轨的增益滑块来编辑。
+
+
+
+**最佳实践：**开始录音前，点击麦克风图标，选择**开始监听**以激活录音电平计。 如果在正常音量测试时进入黄色或红色区域（-9 dB到0 dB），请降低录音音量以防止真实录音中的削波和失真。
+
+![](m/basics/recording-your-voice-and-microphone/08.JPG)
+
+开始录音前先激活录音电平计
+
+![](m/basics/recording-your-voice-and-microphone/09.JPG)
+
+当音量过高时，使用录音音量滑块来降低
+
+
+
+如果你在**音频设置>录音通道**中选择**了1个（单声道）录音通道**，仪表只会显示**左**侧左侧通道的音量
+
+![](m/basics/recording-your-voice-and-microphone/10.JPG)
+
+监听1（单声道）录制通道电平
+
+
+
+
+
+#### 1.3.1.5 录制桌面音频
+
+Audacity可以录制电脑音频（包括YouTube、Spotify等音频）。
+
+
+
+##### 1.3.1.5.1 选择环回设备
+
+###### 1.3.1.5.1.1 Windows
+
+- 点击**音频设置**，选择**Windows WASAPI**作为主机。
+
+![](m/basics/recording-desktop-audio/01.JPG)
+
+**在主机音频设置中选择Windows WASAPI>**
+
+- 选择你想用的输出（你用来监听的设备）作为输入。它的名字后面会有一个（回环）标记。
+
+![](m/basics/recording-desktop-audio/02.JPG)
+
+选择你想录制音频设备的**回环**选项。
+
+
+
+使用（默认）MME设备时，你可能会发现一个名为*立体声混音*、*听到的*声音或类似的虚拟麦克风。这也能录下你的桌面音频。
+
+![](m/basics/recording-desktop-audio/03.JPG)
+
+选择立体声混音作为录制桌面音频的替代方案
+
+
+
+###### 1.3.1.5.1.2 检查所有设置是否正确
+
+录制桌面音频会录制所有桌面音频，包括通知提示音、游戏和Audacity本身（例如如果你用叠录，时间线上的其他轨道）。所以除非你特别想听这些声音，否则一定要关掉它们。
+
+
+
+录制桌面音频时**不要使用软件播放**。确保在菜单中关闭：**运输>传输选项 > 软件播放（开关）**——旁边的✔️勾选必须关闭。你也可以在这里关闭叠录。
+
+
+
+###### 1.3.1.5.1.3 记录
+
+点击播放确认音频正在播放，然后按录制按钮录制桌面音频。
+
+
+
+录制桌面音频**时，确保先播放音频**，因为虽然WASAPI可以录制静音音频流，但当没有音频流时就不能录制。
+
+
+
+#### 1.3.1.6 音频编辑
+
+本页是一个关于Audacity编辑的入门教程。内容涵盖了如何导入文件、剪辑、重新排列剪辑和应用特效！
+
+##### 1.3.1.6.1 导入文件
+
+要开始编辑，你需要某种声音来编辑。你可以[录制一些声音](https://support.audacityteam.org/basics/recording-your-voice-and-microphone)，或者通过拖拽导入已有的声音文件（比如MP3或WAV）。你也可以通过**“导入”菜单**导入文件>导入。
+
+
+
+> **注意：**  要导入专有文件格式如M4A或WMA，你需要先[安装FFMPEG](https://support.audacityteam.org/basics/installing-ffmpeg)。
+
+
+
+一旦你有了这个，你就会看到声音的波形：
+
+![](m/basics/audacity-editing/01.JPG)
+
+歌曲的波形
+
+
+
+这种波形是歌曲的视觉表现。蓝色“斑点”越大，部分越响亮。独立的线（“尖峰”）表示突然且短暂的响亮段落，如点击声、断裂声、拍手声和鼓点敲击。经过一定练习，你可以用波形快速浏览音频文件。
+
+
+
+##### 1.3.1.6.2 删除歌曲的部分
+
+要删除音频文件中的某一段，首先通过**点击并拖**动波形来选择该部分。
+
+![](m/basics/audacity-editing/02.JPG)
+
+选定波形
+
+
+
+> **提示**：你可以用Zoom+图标放大，或者用（）精确调整选择的开头和结尾。![](m/basics/audacity-editing/03.JPG)`Ctrl+Scroll``Cmd+Scroll`
+
+一旦你选定了某个选项，按或键删除它。`Delete``Backspace`
+
+
+
+##### 1.3.1.6.3 音频的移动部分（片段）
+
+Audacity 支持剪辑，即项目内部可以独立移动的音频片段。从技术上讲，你录制或导入的任何音频都已经作为一个片段存在，用波形上方圆形的剪辑把手表示。
+
+你可以点击剪辑把手上的**+拖动**来移动剪辑。
+
+![](m/basics/audacity-editing/04.JPG)
+
+一个剪辑把手。双击重命名，点击并拖动移动。
+
+
+
+##### 1.3.1.6.4 拆分片段
+
+要将一个剪辑拆分为两个独立的剪辑，
+
+1. 点击你想拆分片段的波形。
+
+   **提示：** 要进行精确调整，请先放大。
+
+2. **右键点击>分段剪辑** (`Ctrl+I` / `Cmd+I`)
+
+
+
+**注意：** 如果你选择了某个音频，它会从中生成一个片段。
+
+
+
+##### 1.3.1.6.5 剪辑尺寸调整与裁剪
+
+要裁剪剪辑，将光标悬停在剪辑左右边缘的**上三分之一**处：
+
+![](m/basics/audacity-editing/05.JPG)
+
+要裁剪剪辑，点击边长上三分之一处的+拖动键。
+
+然后**点击并拖动**边缘，将剪辑到想要的长度。
+
+
+
+**注意：** 裁剪是非破坏性的作。你可以随时取消剪辑。如果你是通过[拆分](https://support.audacityteam.org/basics/audacity-editing#splitting-up-clips)一个较大的剪辑创建的剪辑，你甚至可以将当前剪辑解剪直到长度与旧剪辑相同。如果你想永久删除裁剪数据，可以将剪辑复制到另一个项目，粘贴时选择**仅选定音频**，然后返回。
+
+
+
+##### 1.3.1.6.6 效果应用
+
+Audacity 支持多种效果和插件。这些效果可用于[降噪、去除](https://support.audacityteam.org/repairing-audio/noise-reduction-removal)等功能，虽然每个效果功能不同，但通常可通过以下方式应用：
+
+1. 选择你想应用效果的音频。
+
+2. 进入**效果菜单。**
+
+3. 选择你想使用的效果。通常，这样的窗口会打开：
+
+   ![](m/basics/audacity-editing/06.JPG)
+
+4. 根据喜好调整效果。你可以点击**预览**按钮，听一段简短的样本，然后再应用到整个选区。
+
+5. 按下确定键应用效果。
+
+
+
+> **最佳实践：** 如果你想给整首曲子应用效果，就用[实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)。这样你就可以在之后任何时候改变效果。
+
+
+
+#### 1.3.1.7 保存与出口项目
+
+有两种方法可以让你的作品从Audacity中取出：保存项目，以及导出音频。
+
+
+
+##### 1.3.1.7.1 将项目保存到云端
+
+> 云项目有备份和版本控制，确保即使电脑故障，你的工作也不会丢失。此外，你还可以轻松地与合作者分享。
+
+
+
+要将项目保存到云端，首先进入**文件 -> “保存到云**端”。在接下来的对话框中，点击**“链接账户**”。
+
+![](m/basics/saving-and-exporting-projects/01.JPG)
+
+存档到 audio.com
+
+
+
+您将被引导完成 [audio.com](https://audio.com/) 注册流程，最后会有将 [audio.com](https://audio.com/) 账户关联到Audacity的选项。
+
+一旦你将 audio.com 账户绑定到 Audacity，只需**输入项目名称**并点击**保存**。项目现在会在后台上传。
+
+你第一次保存时，系统会问你想多久生成一次混音。混音用于 [audio.com](https://audio.com/) 上预览文件。如果你不打算与他人合作，可能就不需要生成混音。你可以随时在**编辑 ->偏好设置 ->云中**更改偏好。
+
+
+
+##### 1.3.1.7.2 将项目保存到电脑（.aup3）
+
+你可以通过**文件 -> 保存项目 - 保存项目 - 保存项目菜单>保存项目**。
+
+保存的项目包含关于你项目最多的信息。如果你保存了一个项目，之后可以更改[实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)，或者取消剪辑。
+
+
+
+> **警告：**避免将活动项目保存到外置硬盘、U盘或网络存储中。Audacity 在录制和编辑时需要快速且不中断地访问你的存储空间。
+
+
+
+##### 1.3.1.7.3 导出音频（.mp3、.wav、.ogg等）
+
+> **注意：**你可能需要[安装FFMPEG](https://support.audacityteam.org/basics/installing-ffmpeg)才能访问这些选项。
+
+
+
+你可以用**“文件->导出音频......**”菜单项将项目导出为音频文件。导出的音频文件可以用各种程序打开。
+
+![](m/basics/saving-and-exporting-projects/02.JPG)
+
+导出音频窗口
+
+
+
+> **技巧与窍门**
+>
+> - 如果你不需要方向性（比如只是录音），就用单声道。
+> - 作为MP3的替代方案，Opus和M4A（AAC）选项在相同文件大小下提供更高质量，相较MP3。
+> - 作为 WAV 的替代方案，FLAC 和 Wavpack 选项提供无损压缩，文件大小可减少多达一半，同时不丢失任何信息。
+
+
+
+
+
+#### 1.3.1.7 在线分享音频
+
+从Audacity 3.2及以后，你可以轻松地在线分享音频。
+
+
+
+![](m/basics/sharing-audio-online/01.JPG)
+
+分享音频按钮的位置
+
+
+
+借助Audacity 3.2，您可以使用新的服务 [audio.com](https://audio.com/) 快速在线分享音频。作方法是点击**“分享音频**”按钮。
+
+你现在可以通过点击**继续**上传你的音频。如果你想先关联已有的 audio.com，可以通过点击**“链接账户**”来实现。
+
+![](m/basics/sharing-audio-online/02.JPG)
+
+Audacity现在会准备轨道上传并上传你的音频。
+
+
+
+> **注意：**这可能需要几分钟，具体取决于你的电脑速度、网络连接速度以及音频长度。
+
+
+
+上传音频后，请按**继续**。您将被带到 audio.com 网站。
+
+![](m/basics/sharing-audio-online/03.JPG)
+
+
+
+audio.com 现在你可以创建账户使用，或者复制匿名链接。分享链接，
+
+1. 关闭报名面板，
+2. 点击**分享按钮**（如下图），然后
+3. 选择**复制链接**
+
+![](m/basics/sharing-audio-online/04.JPG)
+
+分享按钮的位置
+
+
+
+你现在可以通过发送这个链接来分享你的音频。
+
+
+
+> 所有上传的音频默认都是私密的。只有有权限访问该链接的人才能收听。
+
+
+
+##### 1.3.1.7.1 将 audio.com 与Audacity联系起来
+
+把你的 audio.com 账号绑定到Audacity，就能直接从Audacity获得可共享的链接。要关联你的账户，
+
+1. 按下**“分享音频**”按钮。 注意：你的项目中需要有某种音频，这个按钮才能正常工作
+
+2. 你的浏览器会打开 audio.com
+
+3. 如果你还没登录，请**登录或注册** 
+
+4. 您将看到以下页面：![](m/basics/sharing-audio-online/05.JPG)
+
+5. 点击“**Link audacity**”。
+
+6. 你可能会弹出一个提示，问你是否想在 Audacity 中开启。
+
+   ![](m/basics/sharing-audio-online/06.JPG)
+
+   点击打开Audacity的选项
+
+
+
+
+
+#### 1.3.1.8 定制Audacity（Audacity）
+
+
+
+##### 1.3.1.8.1 主题运用
+
+Audacity 预装了四个主题：光、暗、经典和高对比。你可以通过选择**编辑 -> 偏好设置 -> 界面**（macOS：Audacity -> 偏好设置 -> 界面）切换主题。
+
+![](m/basics/customizing-audacity/01.JPG)
+
+主题选项的位置
+
+
+
+选定主题后，点击**确定**关闭偏好设置对话框并加载新主题。
+
+
+
+###### 1.3.1.8.1.1 安装自定义主题
+
+自定义主题通常以称为ImageCache.png的文件形式分发。
+
+你可以在这里找到一些自定义主题：
+
+
+
+
+
+要安装自定义主题，请将ImageCache.png放入以下文件夹。
+
+如果文件夹不存在，你可以创建它们。
+
+- **窗户：** `C:\Users\<username>\AppData\Roaming\Audacity\Theme\custom\`
+- **MacOS：**`~/Library/Application Support/Audacity/Theme/自定义/`
+- **Linux：** `~/.local/share/audacity/Theme/custom/`
+
+
+
+然后
+
+1. 重启Audacity，
+2. 打开偏好设置 -> 界面页面，
+3. 选择自定义作为主题，
+4. 按确定。
+
+
+
+> **注意：**自定义主题仅针对某个 Audacity 版本进行优化，且可能在不同版本之间出现差异。如果某个主题和截图看起来不一样，那很可能就是原因。
+
+
+
+###### 1.3.1.8.1.2 创建自定义主题
+
+关于创建自定义主题的说明，请查看以下页面：
+
+
+
+
+
+##### 1.3.1.8.2 安装插件
+
+你可以在这里下载各种插件：
+
+[Audacity 插件](https://plugins.audacityteam.org/)
+
+大多数插件安装后会自动激活。
+
+
+
+> **谨慎：**
+
+- 64位Audacity只能运行64位插件，32位Audacity只能运行32位插件。
+- 此外，Apple Silicon（arm64）Audacity无法运行Intel（x86-64）插件，反之亦然。
+- 插件的“乐器”版本（VSTi、LV2i）不被支持。
+
+
+
+###### 1.3.1.8.2.1 手动安装插件
+
+如果某个插件没有被 Audacity 找到，或者没有安装程序，请将插件文件迁移到以下任一位置：
+
+
+
+**1.3.1.8.2.1.1 Windows**
+
+你可以通过点击“运行”并输入快速访问“Common Files文件夹`🪟 WINDOWS key + R``%ProgramFiles%\Common Files`
+
+- VST2：或`C:\Program Files\Common Files\VST2``C:\Program Files\Steinberg\VSTPlugins`
+- VST3：`C:\Program Files\Common Files\VST3`
+- LV2：**注意：**务必复制完整的.lv2*文件夹*`C:\Program Files\Common Files\LV2`
+- LADSPA：**注意：**你可以通过点击启动“运行”并输入快速访问该文件夹`C:\Users\\Appdata\Roaming\audacity\Plug-ins\``🪟 WINDOWS key + R``%AppData%\audacity\Plug-ins`
+- 鞋面：`C:\Program Files\Vamp Plugins\`
+- 奈奎斯特：见下文
+
+
+
+**1.3.1.8.2.1.2 macOS**
+
+所有插件都可以按 `per-user()` 或 `system-wide()` 安装。
+
+以下仅命名系统范围的路径`~/Library/Audio/Plug-Ins/...``/Library/Audio/Plug-Ins/...` 
+
+- Audio Unit: `/Library/Audio/Plug-Ins/Components/`
+- VST2: `/Library/Audio/Plug-Ins/VST/`
+- VST3: `/Library/Audio/Plug-Ins/VST3/`
+- LV2:  or , **Note:** always copy the entire .lv2 *folder*`~/.lv2``/Library/Audio/Plug-Ins/LV2`
+- Vamp: `/Library/Audio/Plug-Ins/Vamp`
+- Nyquist: See below
+
+
+
+**1.3.1.8.2.1.1.3 Linux**
+
+- LV2: ,  (for 32-bit) or  (for 64-bit) **Note**: Always copy the entire .lv2 *folder*`~/.lv2``/usr/local/lib/lv2``/usr/local/lib64/lv2`
+- VST2:  or  **Note**: Many VST effects are Windows-only`~/.vst``/usr/local/lib/vst`
+- VST3:  or `~/.vst3``/usr/local/lib/vst3`
+- LADSPA:  or `~/.ladspa``/usr/local/lib/ladspa`
+- Vamp:  or `~/.vamp``/usr/local/lib/vamp`
+- Nyquist: See below
+
+
+
+###### 1.3.1.8.2.2 安装Nyquist插件
+
+要安装奈奎斯特插件，请按照以下步骤作：
+
+1. 下载相关的插件。
+2. 打开Audacity，进入**Nyquist插件安装>工具**
+3. 点击**浏览**，找到你下载的插件
+4. 点击**打开，**然后**申请**，最后**确定**。
+5. 重启Audacity。
+6. 该插件现在应该会在相应的生成、效果或分析菜单中提供。
+
+
+
+###### 1.3.1.8.2.3 停用和重新激活插件
+
+1. 前往**工具 > 插件管理器**
+2. 选择你想关闭的插件或效果
+3. 点击**禁用**。
+4. 要重新启用插件，选择它们并点击**启用**。
+5. 点击**确定**关闭**插件管理器**并保存你的设置。
+
+
+
+##### 1.3.1.8.3 效果预设
+
+Audacity中的每个效果都包含一套预定义的数值，你可以根据需求和工作流程调整和保存这些值。
+
+当你选择要应用到音频上的效果（例如效果**>噪声消除与修复>噪声门......**）Audacity 会显示效果设置窗口，你可以根据需要调整不同的数值。
+
+![](m/basics/customizing-audacity/02.JPG)
+
+**噪声门**效果默认设置
+
+
+
+找到最适合你需求的设置后，可以用**预设和设置**按钮保存设置以备将来使用：
+
+- 点击“**预设与设置**”按钮，选择**“保存预设......**
+
+![](m/basics/customizing-audacity/03.JPG)
+
+输入一个名字并按**确定**来保存你的预设
+
+- 保存预设后，下次需要应用同样效果时可以调用它们。点击“**预设与设置**”按钮，选择**“用户预设”......**并选择之前保存过的预设名称：
+
+![](m/basics/customizing-audacity/04.JPG)
+
+要调回之前保存的预设，点击“**预设与设置”>** 
+
+
+
+> 要恢复出厂默认设置**，选择 Presets & settings > Factory Presets > Defaults**
+
+
+
+
+
+#### 1.3.1.9 键盘快捷键
+
+本页面列出了Audacity菜单中的所有命令以及所有预定义的键盘快捷键。
+
+与早期版本的Audacity相比，默认的**标准**快捷方式集有所缩减，以简化快捷方式集，并为希望创建自己快捷方式的用户提供更大的灵活性。此外，还有一套扩展的“**完整**”键盘快捷键，可以通过键盘偏好设置对话框中的默认按钮选择。这**套完整**套装是 Audacity 2.1.3 及更早版本中可用的。您可以使用键盘偏好设置来更改或移除现有快捷方式，或为没有默认快捷方式的命令分配快捷方式。
+
+- 标准快捷方式如下所示： 。`Ctrl + A`
+- 只有**完整**套装里才有的捷径会这样显示：*额外*。`Ctrl + #`
+- 那些还没分配的快捷键，可以用键盘偏好设置，会显示成这样*（未分配）。*
+
+一些较少使用的命令不在默认菜单中，但可以通过在界面偏好设置中启用**“显示额外菜单**”来通过菜单访问
+
+
+
+**注意：**你可以通过偏好设置>键盘更改所有快捷方式。这包括添加新的快捷方式，或移除默认存在的快捷方式。
+
+**其他提示和提示：**
+
+- **Mac用户：**Ctrl = ⌘，Alt = Option。比如，Ctrl + Alt + K = ⌘ + Option + K。
+- 关于更改曲目焦点和选择的示例，请参见Audacity Selection。
+- PAGE Up 向右滚动项目，PAGE DOWN 向左滚动，相当于在水平滚动条两侧的白色区域内单击一次。这些快捷键无法在键盘偏好设置中配置。
+- 有多种按键组合可以配合鼠标点击使用。这些无法配置。它们被列在鼠标偏好设置中
+
+
+
+##### 1.3.1.9.1 文件菜单
+
+文件菜单提供了创建、打开和保存Audacity项目以及导入和导出音频文件的命令
+
+| 动作           | 快捷键       | 描述                                                         |
+| -------------- | ------------ | ------------------------------------------------------------ |
+| 新增功能       | Ctrl+N       | 创建一个新的空项目窗口，开始制作新轨道或导入轨道。           |
+| 打开...        | Ctrl+O       | 呈现一个标准对话框，你可以选择音频文件、文件列表（。LOF）或Audacity Project文件以打开。 |
+| 近期档案       | *（未分配）* | 列出了最近保存或打开的十二个项目或最近导入音频文件的完整路径 |
+| 关闭           | Ctrl+W       | 关闭当前项目窗口，提示你保存作品（如果还没保存）。           |
+| 保存项目       | *（未分配）* | 挽救项目的各种方法。                                         |
+| 紧凑项目       | Shift+A      | 压缩项目，节省磁盘空间。使用这个命令会删除你的撤销/重做历史记录和Audacity剪贴板的内容。 |
+| 导出           | *（未分配）* | 用于导出音频文件                                             |
+| 导入           | *（未分配）* | 用于导入音频文件或标签文件到你的项目中                       |
+| 页面设置...... | *（未分配）* | 在打印前打开标准的页面设置对话框                             |
+| 打印...        | *（未分配）* | 打印当前项目窗口中的所有波形（以及标签轨道或其他轨道的内容），并显示上方的时间线。所有内容都印在一页上。 |
+| 退出           | *（未分配）* | 关闭所有项目窗口并退出Audacity。如果你的项目有任何未保存的更改，Audacity 会询问你是否想保存。 |
+
+
+
+##### 1.3.1.9.2 档案：近期档案
+
+列出了最近保存或打开的十二个项目或最近导入音频文件的完整路径
+
+| 动作 | 快捷键       | 描述                     |
+| ---- | ------------ | ------------------------ |
+| 清除 | *（未分配）* | 清除最近使用的文件列表。 |
+
+
+
+##### 1.3.1.9.3 文件：保存项目
+
+挽救项目的各种方法。
+
+| 动作             | 快捷键       | 描述                                                         |
+| ---------------- | ------------ | ------------------------------------------------------------ |
+| 保存项目         | Ctrl+S       | 拯救了当前的Audacity项目。AUP3文件。                         |
+| 保存项目为...... | *（未分配）* | 和上面提到的“保存项目”一样，但允许你把打开的项目保存到不同的名字或位置 |
+| 备份项目......   | *（未分配）* | 将你的项目备份保存在 。AUP3格式改为不同名称或地点            |
+
+
+
+
+
+## 1.4 修复音频录音 
+
+### 1.4.1 降噪与去除
+
+去除背景噪音是大多数音频清理工作的核心。Audacity有多种工具可以帮助实现这一点。
+
+
+
+> **最佳实践：**虽然可以通过降噪技术挽救本来无法使用的文件，但如果你在录音*前*采取措施确保环境无噪，录音效果会更好。
+
+
+
+#### 1.4.1.1 噪
+
+降噪效果最适合消除持续存在的噪音源，比如风扇的嘶嘶声、冰箱的嗡嗡声，或者嗡嗡声、哨声和嗡嗡声。
+
+使用时，请按以下步骤作：
+
+1. 找一段录音中只有背景噪音的部分，最好是几秒钟，然后选择它。
+2. 进入**效果>降噪**，点击“**获取降噪配置文件**”按钮。
+3. 选择你想减少噪音的所有音频。
+4. 再去一次效果**>降噪**。现在你可以根据喜好调整减速的设置。**提示：**调校设置时，使用“残留”开关来听到将被去除的声音。
+5. 满意后，点击**确定**将其应用到所选音频上。**注意：** 如果你之前用过残留开关，记得在按确定前先切回减小。
+
+
+
+> **技巧：**
+>
+> - 如果你把灵敏度调得太低，或者使用了一个无法准确反映整首曲目的噪声的噪声配置文件，你可能会遇到**伪影**（随机的非常短音爆发）。
+> - 如果你在设置好噪声配置文件后不需要调整设置，可以按 / 立即将效果应用到你的选择中。`Ctrl+R``Cmd+R`
+
+
+
+#### 1.4.1.2 噪声门
+
+噪声门效应会削弱任何低于某个阈值的声音，而让较响的声音完全不受影响。用它
+
+1. 选择音频中只是背景噪音的部分。
+2. 去**效果>噪音门......**打开效果。
+3. 点击**“选择功能：分析噪声水平**”，然后点击**确定**。Audacity现在会告诉你噪音水平，并推荐一个阈值。
+4. 选择你想应用效果的音频。
+5. 回到**效果>噪声门......**，设置回选择功能：门，输入之前的阈值。
+6. 根据你来说，调整其他参数。
+7. 按确定键应用噪声门。
+
+
+
+> **最佳实践：**在应用降噪后使用噪声门。这样，你可以使用较少激进的降噪设置，从而获得更干净的效果。
+
+
+
+#### 1.4.1.3 缺口滤波器
+
+陷波滤波器在特定频率下去除嗡嗡声或哨声。使用方法：
+
+1. 选择你想应用效果的音频
+2. 进入**效果>刘海滤镜**打开效果。
+3. 输入你想降低的频率，以及Q值（你希望影响的主要频率周围有多少个频率——数字越大，频率越少）。
+4. 按下确定键应用效果。
+
+
+
+> **技巧：** 
+>
+> - 电网的“市电嗡嗡声”在北美和中部为60Hz，在大多数其他国家为50Hz。
+> - 如果你不确定频率在哪里，可以用**分析>剧情谱**来查找问题频率。
+> - 声音通常有泛音或泛音。它们是主频的整数倍，所以对于50Hz的声音，你可能需要在100Hz、150Hz等频率上加陷波滤波器，才能完全去除。
+
+
+
+### 1.4.2 重新录制一段
+
+录音的穿孔修复是一种简单快捷的方法，可以通过重新录制来修复录音中的短片段。
+
+
+
+#### 1.4.2.1 及时修正故障部分（打孔滚录）
+
+
+
+> **最佳实践：** 
+>
+> - 确保在**传输>传输选项**中开启了叠录功能。
+> - 确保你的延迟设置正确。
+
+
+
+如果你的音频录音出了问题，你立刻发现了（比如说错了台词或咳嗽），可以通过打字录音立即停止录音并纠正错误。使用方法：
+
+1. 在犯错之前，就照常录音。
+2. 停止录音。
+3. 在错误发生前，点击音频选择接线点。对于口语内容，这应该放在单词之间，这样你更容易插入。**注意：**接线点之后轨道上的所有音频都会被删除。
+4. 用 **Transport > Recording > Punch and roll 录制**（）开始打孔滚录 （）。这会回放几秒钟的录音，让你找到正确的节奏和音色，在第三步设置的拼接点，它会切换到录制模式并进行交叉淡入淡出。`Shift+D`
+5. 从现在开始，你可以像往常一样继续录制。如果再犯同样的错误，可以停止录制并撤销（Ctrl+Z / Cmd+Z）再试一次。如果你之后再犯错，可以通过重复上述步骤来做一次Punch and Roll的录制。
+
+
+
+> 提示：你可以在“Punch and Roll”录制部分的偏好设置中更改预卷音频和交叉淡入淡出的数量**>**录音。
+
+
+
+#### 1.4.2.2 之后修复一个有问题的部分
+
+如果你的音频录音在某个特定时间点出现了故障（例如救护车经过），但你是在录制完所有内容后才注意到，可以用打孔修复技术重新录制这段音频。
+
+
+
+> **最佳实践：**  
+>
+> - 确保开启了叠录，关闭了软件播放。这两个设置都可以在**运输>运输选项**中找到
+> - 编辑项目**前一定要备份**。对于连续录制，通常通过[保存和导出项目](https://support.audacityteam.org/basics/saving-and-exporting-projects#exporting-audio)来实现。
+
+
+
+使用方法：
+
+1. 选择录音中坏的部分并将其静音。你可以通过点击“**静音音频选择**”按钮（位于*撤销*和*剪切/复制/粘贴*按钮旁边）来实现，或者按![](m/basics/repairing-audio/01.JPG)`Ctrl+L` (`Cmd+L`)
+
+2. 在坏的部分之前和之后选择几秒钟的音频。开启叠录后，录音会回放录音，帮助你匹配时间。
+
+   ![](m/basics/repairing-audio/02.JPG)
+
+3. 重新录制新轨道。作方法是**按Shift键**或按。
+
+   它会自动从你选择的开头开始录制。`Shift+R`
+
+
+
+
+
+### 1.4.3 去除咔嗒声和爆响声
+
+#### 1.4.3.1 使用点击移除效果
+
+消除点击效果可以自动移除整首曲目的点击。
+
+![](m/basics/repairing-audio/03.JPG)
+
+点击移除效果对话框
+
+使用方法：
+
+1. 选择你想去除点击声的音频。 提示：
+2. 点击消除**>噪音和修复>点击消除**
+3. 设置阈值和最大尖刺宽度。默认设置在大多数情况下应该能正常工作。你可以预览效果，感受它对赛道的影响。
+4. 点击**确定**来应用效果。
+
+
+
+> **注意**：
+>
+> - 点击移除效果需要较大的音频选择（4096个采样）才能发挥作用。选择单点点击时可能无法使用。
+> - 如果你有快速的轻微咔嗒声（比如乙烯基的爆裂声），使用[降噪](https://support.audacityteam.org/repairing-audio/noise-reduction-removal#noise-reduction)效果可能更好。
+
+
+
+## 1.4.3.2 修复单个点击
+
+修复效果可用于修复短击。使用方法：
+
+1. 选择一段短小的音频部分（最多128个采样）。 提示：你可以在底部工具栏设置选择时钟，显示选择的开始时间和时长，并将时钟改为显示采样而非毫秒。
+2. 前往**>噪音消除和修复>修复**。
+
+
+
+## 1.4.3.3 让部门静音
+
+在大多数情况下，短暂的静音比响亮的点击声更可取，因此如果其他方法失败，完全静音点击是有效的策略。只需点击并按下**静音按钮**（快捷方式：/ ）。 ![](m/basics/repairing-audio/04.JPG) `Ctrl+L``Cmd+L`
+
+
+
+
+
+##  1.5 音频编辑
+
+### 1.5.1 使用主效果与实时效果
+
+
+
+#### 1.5.1.1 为轨道添加效果
+
+您可以通过以下步骤添加实时效果：
+
+![](m/basics/audio-editing/01.JPG)
+
+1 **点击效果**按钮或按**E**键激活实时效果面板
+
+![](m/basics/audio-editing/02.JPG)
+
+2 点击**添加效果**以显示可用效果列表
+
+![](m/basics/audio-editing/03.JPG)
+
+3 选择要添加到你的轨道上的效果
+
+![](m/basics/audio-editing/04.JPG)
+
+4 如果需要，你可以切换效果的状态
+
+
+
+> **注意：** 实时效果总是适用于整首曲子。由于它们是实时计算的，不会改变源波形。
+
+
+
+#### 1.5.1.2 为所有轨道添加效果（母带效果）
+
+要添加主效果，首先**打开实时效果面板**（快捷方式：）。面板底部有一个**主音效果**板块。`E`
+
+母带效果是应用于母带混音的效果（即在项目中所有单独轨道混合后，并应用了每轨的实时效果以及增益和声像推子）。
+
+
+
+> 技巧与技巧：
+>
+> - 音乐方面，在母带上加点混响，让项目听起来不那么“枯燥”。
+> - 你可以在主台上加个限制器来防止削波。限制器确实会让音频有些失真，但没有削波那么严重。
+> - 在这个阶段你可以调整整个混音的响度，并做其他调整让音频听起来更好——这叫做“母带处理”。
+
+
+
+
+
+#### 1.5.1.3 更改效果设置
+
+![](m/basics/audio-editing/05.JPG)
+
+你可以通过点击效果名称来更改效果设置。
+
+这会打开一个设置窗口，通常带有一个图形界面，但看起来完全不像 Audacity 本身。
+
+在效果设置打开时，你仍然可以与主Audacity窗口互动。
+
+
+
+#### 1.5.1.4 绕过效应
+
+![](m/basics/audio-editing/06.JPG)
+
+你可以按效果旁边的蓝色电源键（或整个效果堆栈）来绕过它，这样它就不会被应用到你的音频上。
+
+
+
+> **提示：** 如果你想完全移除某个效果，点击效果名称旁边的**三角形**，选择“**无效果**”。
+
+
+
+#### 1.5.1.5 对波形应用效果堆栈
+
+通常不需要应用效果叠加。[**导出音频**](https://support.audacityteam.org/basics/saving-and-exporting-projects#exporting-audio)时，堆栈会自动应用。
+
+不过，你可以通过先选择轨道，然后进入**“轨道>混合>混合和渲染**”来应用效果堆栈。
+
+
+
+> **谨慎：**当同时选择多条轨道时，混合和渲染选项会将所有轨道混合在一起。
+>
+> 母带特效只有在导出文件时才会渲染。
+
+
+
+
+
+#### 1.5.1.6 获得更多效果
+
+虽然Audacity目前还没有自带太多实时效果，但你可以下载相应的插件。
+
+目前支持的插件格式包括 **Audio Units**（仅限 macOS）、**VST3**、**VST**、**LV2** 和 **LADSPA**。
+
+你可以通过Muse Hub获得许多这些效果，我们也收集了一些插件 [plugins.audacityteam.org](https://plugins.audacityteam.org/)。
+
+安装插件后，重启后Audacity应该能检测到，如果没有，[请查看安装说明](https://support.audacityteam.org/basics/customizing-audacity/installing-plugins)。
+
+
+
+### 1.5.2 制作交叉淡入淡出
+
+交叉淡入淡出将一首歌的结尾与下一首歌的开头融合在一起。在Audacity中有多种实现这一目标的方法。
+
+
+
+#### 1.5.2.1 交叉淡入淡出片段
+
+如果你想在一条轨道里做两个片段交叉淡入淡出，可以使用**交叉淡入淡出**片段效果。使用方法：
+
+1. 在一轨里放两个片段。
+
+2. 选择你想应用交叉淡入淡的区域。尽量在两个片段中选择大致相同的时间。
+
+   ![](m/basics/audio-editing/07.JPG)**注意：**剪辑之间的空隙会在交叉淡入淡出时自动被移除并忽略。
+
+3. 使用**效果>渐隐>交叉淡入**淡出片段来实现交叉淡化。
+
+
+
+#### 1.5.2.2 轨道间的交叉淡入淡出
+
+要在轨道间进行交叉淡入淡入，请使用以下步骤：
+
+1. 将片段在轨道上定位，使其在你想要交叉淡入的范围内重叠，并在两个片段中选择重叠区域的音频：
+
+   ![](m/basics/audio-editing/08.JPG)
+
+   
+
+2. 使用**效果>淡入淡出>交叉淡入**淡出轨道来横淡入淡出轨道。
+
+   ![](m/basics/audio-editing/09.JPG)
+
+
+
+
+
+### 1.5.3 音频的加速和减速
+
+Audacity有多种方法可以改变音频的速度和节奏。
+
+
+
+#### 1.5.3.1 保持音高的同时改变速度
+
+在 Audacity 3.4 及以后版本中，按住 （macOS： ） 并将鼠标悬停在剪辑边缘时会显示一个时钟光标（如下图）。一旦出现，拖动边缘向内或向外可以改变剪辑速度。这个动作可以无限次重复。`Alt``Option`
+
+![](m/basics/audio-editing/10.JPG)
+
+带有时间拉伸光标的剪辑示例
+
+要精确更改速度，右键点击剪辑头，选择“更改速度”。这会打开一个对话框，你可以输入一个数字。
+
+另外，如果你想渲染拉伸效果，这个选项也在同一个右键菜单里。
+
+![](m/basics/audio-editing/11.JPG)
+
+与速度相关的
+
+
+
+**注意：**直接对波形应用效果（而不是[使用实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)）时，会为你选择的片段拉伸渲染。多次渲染剪辑拉伸会导致一定的画质损失。
+
+## 速度和音高随时间动态变化
+
+你可以用时间轨迹改变整个项目的速度。要添加一个，请进入**“Tracks”>“添加新的>时间”Track**。
+
+然后点击蓝线，向上或向下拖动，即可改变当时的速度。每次点击都会新增一个控制点，允许你随时间调整速度
+
+![](m/basics/audio-editing/12.JPG)
+
+带控制点的时间追踪
+
+
+
+**注意：**时间轨迹总是影响整个项目。因此，每个项目只能有一个时间跟踪。
+
+## 改变剪辑的速度和音高
+
+要同时改变速度和音高，使用**效果>音高和节奏>改变速度和音高**。
+
+![](m/basics/audio-editing/13.JPG)
+
+“改变速度和音高”效果对话框
+
+与[Change Tempo](https://support.audacityteam.org/audio-editing/speeding-up-and-slowing-down-audio#using-the-change-tempo-and-paulstretch-effects)不同，Change Speed and Pitch效果保持了波形的完整，因此你可以反复使用这种方法而不会有显著的画质损失。
+
+## 使用变速和保拉拉伸效果
+
+
+
+**谨慎：**变速和保罗拉伸效果会在音频中造成永久的伪影。建议采用上述无损方法以获得最佳质量。
+
+要在保持音高的同时改变速度，选择你想应用效果的音频，然后选择效果 **-> 音高与节奏 -> 改变节奏**
+
+![](m/basics/audio-editing/14.JPG)
+
+“改变节奏”效果对话框
+
+拖动滑块或输入数字，可以调整你想加快或减慢音频的速度。控件是关联的，所以你只需要更改你关心的值，其他的会自动更新。
+
+对于极端减速（从慢10倍到慢几千倍），你可以用**Effect -> Pitch和Tempo -> Paulstretch**。
+
+![](m/basics/audio-editing/15.JPG)
+
+“保罗拉伸”效果对话框
+
+
+
+**注意：**Paulstretch只能减速，所以拉伸因素取决于你想减慢音频的次数。
+
+时间分辨率决定算法是专注于频率和音高，牺牲节奏（高时间分辨率），还是以牺牲音高为代价（低时间分辨率）而关注节奏。一般。0.25 是大多数音乐的不错折中值
+
+## 改变播放速度
+
+如果你想以比平时更快或更慢的速度预览音频，但不影响最终效果，可以使用**“快速播放”工具栏** ![](m/basics/audio-editing/16.JPG)
+
+使用时，将滑块拖到想要的速度（0.01x到3x之间），然后点击旁边的小播放按钮，以该速度播放音频。你可以用普通的停止和暂停控制来停止/暂停播放。
+
+
 
 
 
@@ -3426,7 +4833,7 @@ DC 偏移也可能导致轨道开头或结尾出现咔嗒声，即使您在[导�
 
 
 
-有关详细信息，请参阅 [错误：复制或粘贴](error_copying_or_pasting.html) 。
+有关详细信息，请参阅 [错误：复制或粘贴](error_copying_or_pasting.html) 。
 
 
 
