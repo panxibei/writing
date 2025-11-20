@@ -157,7 +157,9 @@ qemu-system-i386 -cdrom C:\MyraOS\MyraOS.iso -drive file=C:\MyraOS\fs.img,format
 * `MyraOS-v1.0.0.zip` - ISO镜像安装文件
 * `qemu-w64-setup-20250826.exe` - `Qemu` 虚拟机安装程序
 
-下载链接：
+下载链接: https://pan.baidu.com/s/15laByFG55_XeThdG8RQY8A
+
+提取码: v9du
 
 
 
