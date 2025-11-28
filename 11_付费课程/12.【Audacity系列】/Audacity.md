@@ -2219,7 +2219,7 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 
 使用**选择**工具去除录音开头不必要的音频（主要是静音）。
 
-1. 点击**“跳过开始**”按钮
+1. 点击**“跳过开始**”按钮![](m/basics/audio-editing/22.png)
 2. 放大到能看到曲目开头到音乐开头
 3. 点击并拖动音乐开头到轨道开头
 4. 点击**编辑**>[**删除**](https://manual.audacityteam.org/man/edit_menu.html#delete)
@@ -2234,11 +2234,11 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 
 
 
-### 1.5.7.2 给歌曲贴标签
+#### 1.5.7.2 给歌曲贴标签
 
 **标记第一首歌的开始**
 
-1. 点击**“跳过开始**”按钮![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252F6sLr8EpT8R7o4G3S1CkS%252FRewind.png%3Falt%3Dmedia%26token%3D63c5f96a-5002-452a-9cf1-e63bf581b0d4&width=300&dpr=4&quality=100&sign=557dc670&sv=2)
+1. 点击**“跳过开始**”按钮![](m/basics/audio-editing/22.png)
 
 2. 点击**编辑>标签>**[**选择**处添加标签](https://manual.audacityteam.org/man/edit_menu_labels.html#addlabelatselection)，或使用快捷键**Ctrl + B**。
 
@@ -2256,7 +2256,7 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 6. 反复点击**缩放按钮** ![缩放工具](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fmanual.audacityteam.org%2Fm%2Fimages%2Fd%2Fd3%2Ftool_edit_zoomout.png&width=300&dpr=4&quality=100&sign=a24b926a&sv=2)直到你能看到第三首歌的开头
 7. 继续这样，添加标签标记每首歌的开头
 
-![](m/basics/audio-editing/22.JPG)
+![](m/basics/audio-editing/23.JPG)
 
 **音频轨中第二首歌开头的标签**
 
@@ -2268,7 +2268,7 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 
 
 
-### 1.5.7.3 最大化录音音量
+#### 1.5.7.3 最大化录音音量
 
 如果你是正确录制并避免了削波，录音音量可能没有达到最大。为了让LP或CD以最大音量刻录，从而与你收藏中的其他LP或CD匹配，我们需要修正这个问题。
 
@@ -2283,7 +2283,7 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 
 
 
-### 1.5.7.4 导出多个文件
+#### 1.5.7.4 导出多个文件
 
 最后一步是从Audacity项目中创建多个音频文件。
 
@@ -2305,7 +2305,7 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 
 
 
-### 1.5.7.5 备份
+#### 1.5.7.5 备份
 
 备份导出的WAV或MP3文件——你不想丢失所有宝贵的工作，还得重新做。电脑硬盘可能会故障，导致所有数据被毁坏。
 
@@ -2315,7 +2315,1473 @@ Audacity可以帮你把长录音拆分成独立的歌曲，作为每首歌导出
 
 
 
+### 1.5.8 响度归一化
 
+应用该归一化效应来设定播客平台、电视/广播节目及部分网站所需的目标响度
+
+Audacity 为你提供了两种内置的归一化效果，可以通过 **Effect -> 音量和压缩**菜单提供：
+
+- **响度归一化**
+- **正常化**
+
+
+
+#### 1.5.8.1 正常化
+
+**归一**化是一种峰值归一化效果，它对所选音频施加增益或减弱，使峰值的电平被调整到所需的电平。你在应用效果前，先设定峰值的期望水平（以dBFS）。该效应不考虑所选音频的感知响度，只考虑期望的峰值水平。
+
+
+
+### 1.5.9 宏
+
+宏（以前称为链条）允许你串联多个命令，以自动化重复性任务。
+
+
+
+#### 1.5.9.1 管理宏量营养素
+
+管理宏功能允许您编辑、删除或重命名已有宏，或添加新的宏。它还允许你将宏应用到你的项目或一组文件上。
+
+在[效果菜单](https://manual.audacityteam.org/man/effect_menu.html)中显示的任何[内置](https://manual.audacityteam.org/man/effect_menu.html#built-in) [LADSPA、](https://manual.audacityteam.org/man/effect_menu_ladspa.html)[LV2](https://manual.audacityteam.org/man/effect_menu_lv2.html)、[奈奎斯特](https://manual.audacityteam.org/man/effect_menu_nyquist.html)、[VST](https://manual.audacityteam.org/man/effect_menu_vst.html) 或 [Audio Unit](https://manual.audacityteam.org/man/effect_menu_audiounit.html)（Mac）效果都可以添加到宏中。你还可以添加任何格式的插件，这些插件显示在[生成](https://manual.audacityteam.org/man/generate_menu.html)或[分析](https://manual.audacityteam.org/man/analyze_menu.html)菜单中（包括[吸血鬼](https://manual.audacityteam.org/man/analyze_menu.html#vamp)分析效果）、内置[的查找剪辑](https://manual.audacityteam.org/man/find_clipping.html)分析器以及多个导出命令中显示。
+
+宏可以应用于当前项目的全部，或通过“Tools > [Macros...](https://support.audacityteam.org/community/contributing/tutorials/todo/using-macros-to-automate-frequent-tasks)”命令对部分文件进行应用。
+
+在宏中可以使用[降噪](https://manual.audacityteam.org/man/noise_reduction.html)，但有关噪声剖面的捕捉方式，请参见降[噪技巧](https://manual.audacityteam.org/man/noise_reduction.html#macros)。
+
+
+
+所有宏命令的完整列表及描述可在 Scripting Reference 获取。
+
+
+
+##### 1.5.9.1.1 访问宏
+
+您可以通过以下方式访问**“管理宏**”对话框：
+
+- 菜单中的[**“工具**](https://manual.audacityteam.org/man/tools_menu.html)**>管理巨集**”，或者
+- 宏[调色板](https://support.audacityteam.org/audio-editing/macros/macros-palette)对话框中的展开按钮。
+
+![](m/basics/audio-editing/24.JPG)
+
+管理宏对话框
+
+
+
+##### 1.5.9.1.2 选择宏
+
+***选择宏***包含已定义的宏列表。你可以定义一个新宏的名称，并选择哪个宏处于激活状态。
+
+对话框左侧框（标记为**“选择宏**”）包含已定义的宏列表。在你添加新的宏之前，它只有内置**的MP3转换**和**淡出结束巨**集。
+
+用左键（*或用上、下键）*选择你想做的宏
+
+- **新：**在列表中新增一个宏。
+- **移除**：从列表中移除所选宏——*当选择作为Audacity一部分发售的宏时，宏会显示灰色。*
+- **重命名......**：重新命名所选宏——*当选择作为Audacity一部分的宏时，宏会显示灰色。*
+- **恢复**：将 Audacity 提供的任何宏重置为默认设置——*当选择用户自给宏时，该宏会显示灰色。*
+- **导入...**：允许您从TXT文件导入宏。
+- **导出**：将选中的宏导出为TXT文件。
+
+
+
+##### 1.5.9.1.3 宏中的编辑步骤
+
+***编辑步骤***列出了在左侧[**选择**](https://support.audacityteam.org/audio-editing/macros/manage-macros#select-macro)宏框中所选宏的命令顺序，按从头到尾（结束）。
+
+- 宏可以包含多种常见的Audacity功能和效果，按你指定的任意顺序执行。
+- 要在宏过程中创建音频文件，必须包含“导出”命令（例如[**导出为 WAV**](https://manual.audacityteam.org/man/manage_macros.html#export)）。
+  - 导出命令会使用你上次使用相同命令时用的设置**>导出>导出......**菜单命令，或者如果你从未使用过该命令，则使用默认设置。
+- 在许多情况下，宏中每个命令的参数可以在**“管理宏”**对话框中指定。
+
+您可以：
+
+- 添加或移除所选宏的命令
+- 更改宏中命令的执行顺序
+- 编辑宏中某些效果的参数
+
+
+
+##### 1.5.9.1.4 命令
+
+- **插入**：向列表中插入新命令
+- **编辑......**：编辑当前选择命令的参数
+- **删除**：删除列表中当前选择的命令
+- **向上移动**：将当前选择的命令在列表中向上移动
+- **向下移动**：将当前选择的命令从列表中向下移动
+- **保存**：只有在你对宏做了编辑时，这个按钮才会激活。它允许你保存这些更改。
+
+
+
+你也可以通过双击命令，或者用**上**键或**下**键选择后按空格键来编辑已有的命令。该命令的参数设置对话框会显示出来。
+
+
+
+##### 1.5.9.1.5 插入新命令
+
+宏管理器中有意省略了一些命令（如 **Close：**），因为它们不适合在宏中使用。
+
+要在宏中插入新命令，左键点击或使用**上**、**下**键箭头选择已有命令，然后按下**插入**。新命令会放在该选定命令之上。
+
+- 会出现**“选择命令**”对话框，列出所有可用的命令。双击列表中的命令，插入“命令”框，如下图所示，插入“Normalize”后。
+
+或者，使用**上键**或**下**键箭头选择命令，然后按空格键。
+
+
+
+#### 1.5.9.2 宏量营养素调色板
+
+您可以使用**宏调色板**应用任何现有的宏。要打开它，你可以选择：
+
+- 使用菜单中的**“工具”>“应用宏>**[**调色板**](https://manual.audacityteam.org/man/tools_menu_apply_macro.html)，或者
+- 使用[“管理宏](https://manual.audacityteam.org/man/manage_macros.html)”对话框中的**缩小**按钮
+
+![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FBCpg8ibGFOuoyjn32QE2%252Fmacrospalette.png%3Falt%3Dmedia%26token%3Dea381aff-829b-4329-8837-97af40803098&width=768&dpr=4&quality=100&sign=c28dbc17&sv=2)
+
+宏调色板显示多个用户添加的宏，以及原厂MP3转换和淡出结束宏
+
+
+
+一旦调用，宏调色板窗口将始终显示在屏幕上，且处于活跃状态，除非你关闭或关闭Audacity。
+
+
+
+##### 1.5.9.2.1 选择宏
+
+在“宏”列表中，**左键点击**宏（或使用**上下****键箭**头）选择你想应用的宏。
+
+
+
+##### 1.5.9.2.2 应用宏 于
+
+###### 1.5.9.2.2.1 项目
+
+使用**项目**按钮将选中的宏应用到当前项目中。
+
+这个选项的典型目的是效果**自动化**——为项目应用一系列效果，使用效果参数和你发现适合你处理音频类型的效果的顺序。这节省了时间，也让你的工作流程保持一致。
+
+宏中的效果会应用到所选[音频轨道](https://manual.audacityteam.org/man/audio_tracks.html)中[选定](https://manual.audacityteam.org/man/audacity_selection.html)的[波形](https://manual.audacityteam.org/man/audacity_waveform.html)区域。通常所选宏***不会***包含[导出](https://manual.audacityteam.org/man/exporting_audio.html)命令，以便利用[导出音频对话框](https://manual.audacityteam.org/man/file_export_dialog.html)的更大灵活性。
+
+如果宏中包含导出命令，整个项目音频都会被导出，无论轨道或区域选择如何。因此，如果项目包含多个音频轨道，它们会被[混音](https://manual.audacityteam.org/man/mixing.html)，除非轨道控制[面板](https://manual.audacityteam.org/man/audio_tracks.html#panel)中任何轨道被静音。
+
+- 如果项目已被保存，导出的文件会保存在一个名为**macro-output**的文件夹中。宏输出文件夹会位于[目录偏好设置](https://manual.audacityteam.org/man/directories_preferences.html)中指定的位置。
+- 如果项目中的音频作为初始步骤来自导入文件*（即为命名项目），*宏**输出**文件夹也会位于[目录偏好设置](https://manual.audacityteam.org/man/directories_preferences.html)中指定的位置。
+- 如果项目未保存且未命名，会出现正常[的导出音频对话框，](https://manual.audacityteam.org/man/file_export_dialog.html)允许你选择导出文件的名称和位置。
+
+
+
+宏会基于你在运行宏之前在项目中预先做出的选择来处理。但选择可以被宏本身覆盖，因为音频中有宏命令可以影响选曲。特别是 **All（全部选择）**会选择整个项目并选择可参数化的 **Select**（参见提供的 **Fade Ends** 宏示例，其中音频的首秒和最后一秒被选中用于淡入淡出）。
+
+
+
+###### 1.5.9.2.2.2 文件。。。
+
+该选项的典型目的是批量**处理**——将宏应用于多个音频文件，以便对其应用一个或多个效果，和/或转换为其他文件格式。你可以从[Audacity支持](https://manual.audacityteam.org/man/faq_opening_and_saving_files.html#foreign)的任何文件格式转换为WAV、MP3、OGG或FLAC。
+
+**使用文件......**按钮将选中的宏应用到同一目录中的外部音频文件。
+
+如果你当前项目窗口已经有音频，必须先用**文件>**[**关闭**](https://manual.audacityteam.org/man/file_menu.html#close)保存并关闭该项目，然后再给文件应用宏。
+
+
+
+你不能对多个Audacity AUP3项目文件应用宏，你需要使用Python脚本。
+
+
+
+所选宏***必须***包含**导出**步骤，否则处理后的音频将无法被保留。
+
+即使导入[/导出偏好设置](https://manual.audacityteam.org/man/import_export_preferences.html#export)为“使用自定义混音”，你也无法使用巨像处理[多声道音频文件](https://manual.audacityteam.org/man/file_export_dialog.html#compare)（例如5.1环绕声文件）。你导入的任何多声道文件导出时都会被混音。
+
+- 会弹出一个标准的“文件打开”对话框。选择一个目录后，你可以选择该目录中一个或任意数量的支持音频文件，包括较早的 AUP 项目文件*（****但不包括*** *AUP3 项目文件）。*
+  - 你不能选择该目录外的文件，目录内文件夹里的文件也不会被处理。
+  - 因此，先将所有想处理的音频文件放到一个文件夹中再应用宏是方便的。
+- 选择你想处理的音频文件后，选择打开。
+- 每个文件都会导入Audacity并处理，导出为宏中选择的格式，然后处理好的音频会被移除，以清除已使用的临时磁盘空间。
+- 导出的文件会保存在目录[偏好设置](https://manual.audacityteam.org/man/directories_preferences.html)中宏**输出**字段指定的“**macro-output**”文件夹中，名为“macro-output”的文件夹中保存。原始文件***未***被篡改。
+- 如果你在目录偏好设置中将**宏输出**条目留空，Audacity 会默认创建一个名为“**macro-output**”的文件夹：
+  - **窗户：**C：\Users\<你的用户名>\Documents\Audacity
+  - **Mac：**/用户/<你的用户名>/文档
+  - **Linux：**/home/<your username>/Documents
+
+
+
+当宏应用到文件时，唯一的选项是导入并处理整个文件。因此，除非宏中的某个动作或效果（如[Cut](https://manual.audacityteam.org/man/edit_toolbar.html#cut)或[Truncate Silence](https://manual.audacityteam.org/man/truncate_silence.html)）删除了部分音频，否则整个文件都会被导出。
+
+- 如果在导出前修改音频，选择[时间](https://manual.audacityteam.org/man/extra_menu_scriptables_i.html#select_time)功能可能有助于选择删除或修改的音频。
+- 一些可选[的奈奎斯特插件](https://wiki.audacityteam.org/wiki/Nyquist_Plug-ins)有参数可以[裁剪或延长音频特定长度](https://wiki.audacityteam.org/wiki/Download_Nyquist_Plug-ins#time)，奈奎斯特也能做计算，所以在宏里使用奈奎斯特插件可能会有帮助。
+
+
+
+建议一次处理文件不要超过500个。
+
+
+
+##### 1.5.9.2.3 按钮
+
+###### 1.5.9.2.3.1 扩大
+
+使用展开键返回全尺寸、全功能的[“管理宏](https://support.audacityteam.org/audio-editing/macros/manage-macros)”对话框。
+
+应用宏按钮也可在[“管理宏”](https://support.audacityteam.org/audio-editing/macros/manage-macros)对话框中使用——因此所有宏作都可以从该完整对话框中完成。
+
+
+
+###### 1.5.9.2.3.2 取消以退出对话
+
+要关闭对话框，只需点击取消按钮
+
+否则对话框会保持在屏幕上，但允许你执行其他Audacity功能。
+
+
+
+
+
+#### 1.5.9.3 宏示例
+
+本页提供了Audacity中宏功能的一些使用示例。
+
+
+
+##### 1.5.9.3.1 示例1：响亮的MP3
+
+一个批量**处理**宏，用于压缩和规范化 [***WAV***](https://manual.audacityteam.org/man/glossary.html#wav) 文件，然后转换为 MP3：
+
+1. 插入[压缩](https://manual.audacityteam.org/man/compressor.html)器以减少每个WAV的[***动态范围***](https://manual.audacityteam.org/man/glossary.html#dynamic_range)，同时将其归一化至最大[***振幅***](https://manual.audacityteam.org/man/glossary.html#amplitude)0 [***dB***](https://manual.audacityteam.org/man/glossary.html#decibel)
+2. 插入**导出为MP3**以转换为[***MP3***](https://manual.audacityteam.org/man/glossary.html#mp3)格式
+3. 点击**“应用宏到：****文件......**选择要运行宏的文件。
+4. 点击确定关闭**“管理宏**”窗口
+
+![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FBwKNOatBE9KsFdh8yVga%252Fmacro_example_loud_mp3.png%3Falt%3Dmedia%26token%3D1b9b8aab-256a-4348-91c7-26424db5dae4&width=768&dpr=4&quality=100&sign=ea298dff&sv=2)
+
+宏示例：响亮的MP3
+
+
+
+或者，您也可以选择“**应用宏......”工具>**“应用宏”，选择**“响亮的MP3**宏”，然后点击“**应用宏至：****文件......”** 你可以选择要运行宏的文件
+
+
+
+##### 1.5.9.3.2 示例2：NR&EQ
+
+当前项目中应用降噪和均衡的**效果自动化**宏：
+
+1. 插入标准[化](https://manual.audacityteam.org/man/normalize.html)，设置如下：
+   1. 去除任何[***直流偏移***](https://manual.audacityteam.org/man/glossary.html#dc_offset)
+   2. -10 dB（以便后期在宏中提升[***频率***](https://manual.audacityteam.org/man/glossary.html#frequency)而不[***削波***](https://manual.audacityteam.org/man/glossary.html#clipping))
+2. 插入式[降噪](https://manual.audacityteam.org/man/noise_reduction.html)
+3. 插入[滤波曲线均衡](https://manual.audacityteam.org/man/filter_curve_eq.html)器（用于频率调整）
+4. 插入另一个Normalize，设置不同设置（不去除偏移，最终幅度为-1 dB）
+5. 点击确定关闭[“管理宏](https://support.audacityteam.org/audio-editing/macros/manage-macros)”窗口
+
+![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FCU0TH4H59suwdL4PFEAJ%252Fmacro_example_nr_eq.png%3Falt%3Dmedia%26token%3Dc25335b8-4b34-46b6-957a-29300dc30841&width=768&dpr=4&quality=100&sign=2ee491c6&sv=2)
+
+宏示例：降噪与均衡
+
+当工作流程中需要时，选择工具>[应用宏......](https://support.audacityteam.org/audio-editing/macros/macros-palette)，选择**NR&EQ**宏，然后点击**“应用宏到：****项目**”，在当前项目窗口中将宏应用到选定的轨道上。
+
+
+
+- 如果存在噪声剖面，就会使用该噪声剖面。通常最好在运行宏前捕捉合适的噪声特征。
+- 如果不存在噪声剖面：
+  - 如果宏应用到当前项目（如上所述），则使用当前选择来创建噪声轮廓。因此，宏中的其他效果命令也只适用于该选择。如果添加了导出命令，整个文件都会被导出。
+  - 如果将宏应用于文件，第一个文件（全部）用于创建噪声配置文件。准备一个包含合适噪声配置文件的文件并命名为宏中最先执行的文件，可能会很有用。
+
+
+
+##### 1.5.9.3.3 实用命令
+
+带有“**Relative** To=Selection”的Select命令可用于扩展和收缩选择。
+
+**命令：“**选择：RelativeTo=选择开始=-1 结束=1” **描述：**该命令将选区扩展两秒
+
+**命令：“**选择：RelativeTo=选择开始=1 结束=-1” **描述：**该命令将选择缩小两秒
+
+**命令：“**选择：RelativeTo=选择开始=1 结束=1” **描述：**该命令将选区向右移动一秒
+
+**命令：“**SelTrackStartToEnd” **描述：**该命令（从“选择>区域 > 轨道开始到结束”）选择所有选定轨道中的所有音频。
+
+**命令：“**SelNextClip”和“SelPrevClip” **描述**：这些命令对剪辑非常有用
+
+
+
+##### 1.5.9.3.4 额外宏量营养素
+
+###### 1.5.9.3.4.1 幽灵魔法怪诞宏观
+
+该宏将单声道轨道转换为立体声轨道，一个通道为频谱图，另一个通道为波形。
+
+这正是如何创造性地滥用宏系统的一个例子，因为Audacity并未设计来处理波浪轨迹上的混合视图。
+
+- 注意在立体声轨道中选择两个通道中的一个时，使用了0.5的轨道计数。
+- TrackCount 为 0 时用于取消所有曲目。
+
+```
+SelectAll:
+Duplicate:
+Select:"Mode=Set"
+SetTrack:Pan="-1"
+Select:"Mode=Set" Track="1"
+SetTrack:Pan="1"
+Select:Mode="Set" TrackCount="2"
+MixAndRender:
+Select:Mode="Set" TrackCount="0.5"
+SetTrack:Display="Spectrogram"
+Select:"Mode=Set" TrackCount="0"
+```
+
+
+
+###### 1.5.9.3.4.2 赔偿魔法咒语
+
+在正常项目速率为44100Hz时，这会选择大约126个以光标为中心的采样，并对其应用“修复”效果。“修复”最多只能处理128个样本。
+
+复制
+
+```
+SelectTime:End="0.00143" RelativeTo="Selection Start" Start="-0.00143"
+Repair:Use_Preset="<Factory Defaults>"
+```
+
+
+
+#### 1.5.9.4 有声书母带制作
+
+这是一套Audacity工具和流程，帮助你制作符合ACX技术合规标准的有声书朗读。
+
+
+
+有关此过程的一般信息，请参见文末的[注释和评论](https://support.audacityteam.org/audio-editing/audiobook-mastering#notes-and-comments)
+
+
+
+##### 1.5.9.4.1 安装ACX Check插件
+
+下载并安装[ACX Check](https://plugins.audacityteam.org/analyzers/analysis-plugins#acx-check)插件，它能帮助你检查录音音量。
+
+
+
+查看[安装Nyquist插件](https://support.audacityteam.org/basics/customizing-audacity/installing-plugins#installing-nyquist-plugins)，了解如何安装ACX Check插件
+
+如果你使用的是 Audacity 2.4.1 之前的版本，你还需要下载并安装 [rms-normalize](https://forum.audacityteam.org/t/rms-normalize/45334)
+
+
+
+##### 1.5.9.4.2 设置
+
+从未剪辑的录音开始这个过程。没有处理、调整或修复。
+
+导出一个WAV（Microsoft）16位原始音频文件，保存在安全的地方——最好不要放在机器上。你绝不应该因为意外而被迫再读一章。不建议保存Audacity项目。
+
+
+
+##### 1.5.9.4.3 过程
+
+###### 1.5.9.4.3.1 自动
+
+要自动化有声书母带制作过程，首先下载宏：
+
+
+
+498B
+
+[Audiobook-Mastering-Macro.txt](https://2387260374-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MhmBVzGzh8SctWQ6jPR%2Fuploads%2FlBfItC14IZBtyLxB5GjC%2FAudiobook-Mastering-Macro.txt?alt=media&token=82894303-675b-4db7-9fc5-dbe0da5d27be)
+
+下载[打开](https://2387260374-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MhmBVzGzh8SctWQ6jPR%2Fuploads%2FlBfItC14IZBtyLxB5GjC%2FAudiobook-Mastering-Macro.txt?alt=media&token=82894303-675b-4db7-9fc5-dbe0da5d27be)
+
+然后，在 Audacity 里，进入 **Tools -> 宏管理器**，按下**导入......**按钮，浏览到文件。导入后关闭宏管理器。
+
+你现在可以通过工具应用有声书母带宏 **-> 应用宏 -> 有声书-母带-宏**，就像应用任何单个效果一样。
+
+
+
+###### 1.5.9.4.3.2 手动
+
+这些说明简要说明：菜单 > 工具 ：选项 > 应用
+
+点击Track控制面板底部的**“选择**”按钮，选择整本阅读材料或章节。
+
+- 效果>均衡器和滤波器>滤波曲线均衡器......： 预设和设置 > 出厂预设 > 低 语音 > 应用。
+- 音量和压缩> >响度归一化效果......：将有效值归一化为-20dB >应用。
+- 音量和压缩>效果限制器>......：软限制，0.00,0.00，-3.50dB，10.00，无>适用。
+- 分析>ACX检查。
+
+前两个读数，峰值（不超过-3dB）和有效值（介于-18dB到-23dB之间）应该几乎完美。如果噪音低于大约-65dB（-60dB限制），而且节目听起来合理，那你可能就没机会了。
+
+工具设置是固定的，你不必一直输入。如果你不做其他编辑，掌握一章的过程就是：
+
+- 选择音轨或剪辑。
+- 效果>均衡器和滤波器>滤波曲线......>申请。
+- 音量>压缩>响度归一化的影响......>申请。
+- 音量>压缩>限制器......>申请。
+
+如果你在噪声问题上失败了，那么这个过程会有趣得多。详见下文[的噪声合规](https://support.audacityteam.org/audio-editing/audiobook-mastering#noise-compliance)部分。
+
+
+
+##### 1.5.9.4.4 注释与评论
+
+ACX有自己的帮助页面、教程和视频：https://help.acx.com/
+
+该母带处理解决了技术层面。这里没有任何处理戏剧性错误，比如刺耳的齿音、沙哑的声音或湿润的嘴巴声。没有表演的过滤。你必须会朗读。
+
+原始录音的质量非常重要。很容易记录那些无法修正的错误。在安静的房间里录制一个合理的音量（偶尔峰值为-6dB），没有回声。
+
+完成章节后，**>文件**导出为WAV（Microsoft，16位），并用唯一名称保存音频文件。那是你的紧急备份，这样如果你损坏了作品或丢失编辑内容，就不用再读一遍。
+
+只有在那之后，才开始编辑、处理、过滤和修正。在你做的过程中，继续用 **ACX Check** 插件测试工作。选择该作品并**>ACX检查进行分析**。
+
+
+
+###### 1.5.9.4.4.1 ACX 对每个提交音频文件的技术要求
+
+- 峰值不超过-3dB。
+- RMS（表演响度）介于-18dB到-23dB之间。
+- 噪音不要大于-60dB。
+
+这就是ACX检查面板中显示的三个值
+
+
+
+
+
+ACX（通过ACX-Check技术测试后的院线测试）的人类质量控制不喜欢繁重的处理。你应该尽量温柔，尽量少纠正。甚至别想提交听起来像坏手机、对着酒杯说话或在厕所里读书的占卜。
+
+
+
+有声书的比喻就像有人在喝茶时听你讲故事。任何干扰这一理想的事物都应避免。
+
+
+
+## 1.5.9.4.5 噪声合规
+
+我们假设你已经通过了有声书母带处理，因为噪音（大于-60dB）而未通过ACX技术合规，或者你的表演有不喜欢的奇怪背景音效。噪音在家庭录音室很常见。
+
+
+
+### 1.5.9.4.5.1 麦克风嘶嘶声
+
+
+
+442KB
+
+[NoisyMicrophone.mp3](https://2387260374-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MhmBVzGzh8SctWQ6jPR%2Fuploads%2F632kRr1mqWWJ7ksdxLjz%2FNoisyMicrophone.mp3?alt=media&token=1fd2842b-a6c1-42e7-9dd6-ea01c9a0b32d)
+
+下载[打开](https://2387260374-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MhmBVzGzh8SctWQ6jPR%2Fuploads%2F632kRr1mqWWJ7ksdxLjz%2FNoisyMicrophone.mp3?alt=media&token=1fd2842b-a6c1-42e7-9dd6-ea01c9a0b32d)
+
+麦克风嘶嘶声采样
+
+这是你声音背后传来的温柔春雨，在树林中响起。麦克风系统自然会产生这种声音，你的任务是把声音调得足够大，这样别人不会注意到，但又不能太大以免声音失真。
+
+如果嘶嘶声不严重，可以尝试温和的纠正方法，比如“野兽降噪”（6， 6， 6）或“**编辑>撤销**”，然后试试9、6、6。随着你调高第一个数字，你能听到嘶嘶声渐渐变小，逐渐退到背景中。先用鼻子缩减，然后再试一次ACX Check。如果你需要降低到12、6、6，你的声音可能会变得酒杯般的玻璃音或白人，演出可能无法通过ACX的检测。
+
+
+
+详情请参见降[噪与消除](https://support.audacityteam.org/repairing-audio/noise-reduction-removal)。
+
+解决办法可能是改变你的播报风格，甚至是麦克风。你应该离麦克风只有一根沙卡......
+
+![img](https://support.audacityteam.org/~gitbook/image?url=http%3A%2F%2Fwww.kozco.com%2Ftech%2Faudacity%2Fpix%2FShakaMicSpacing.png&width=768&dpr=4&quality=100&sign=d63e41f&sv=2)
+
+建议距离麦克风
+
+... 或者近到拳头（声音更大、更亲密），但你可能需要一个爆破和爆破滤镜。
+
+![img](https://support.audacityteam.org/~gitbook/image?url=http%3A%2F%2Fkozco.com%2Ftech%2Faudacity%2Fpix%2FLaptopMixerMicrophone.jpg&width=768&dpr=4&quality=100&sign=95f87215&sv=2)
+
+靠近麦克风时使用防爆滤镜
+
+
+
+### 1.5.9.4.5.2 机器噪音
+
+电脑风扇、空调、冰箱或其他机器。
+
+如果可能的话，演示时关闭风扇或机器。是的，我们理解需要同时盯着Audacity屏幕、把吵闹的电脑移出房间、又要把电脑放在USB麦克风旁边的矛盾。
+
+有人通过将键盘、鼠标和显示器延长到工作室外面，但有人警告不要在音频（或视频）制作中延长USB线。
+
+不要堵住电脑的通风孔。
+
+如果机器噪音持续且不算特别大，它们可能会响应“**噪声消除与修复效果”>噪声消除>降噪......**
+
+试试温和的纠正方法，比如“野兽降噪”（6， 6， 6）或恢复，然后试试9， 6， 6。随着你增加第一个数字：鼻子缩小，你能听到嘶嘶声渐渐变小并退居背景。试试ACX-Check。如果你需要降低到12、6、6，你的声音可能会变得酒杯般的玻璃音或白人，演出可能无法通过ACX的检测。
+
+
+
+详情请参见降[噪与消除](https://support.audacityteam.org/repairing-audio/noise-reduction-removal)。
+
+
+
+### 1.5.9.4.5.3 蚊子哀鸣
+
+有些电脑和USB麦克风互相厌恶，会产生蚊子哀鸣声。
+
+
+
+300KB
+
+[USBMicrophoneWhineClip.mp3](https://2387260374-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MhmBVzGzh8SctWQ6jPR%2Fuploads%2FzfGdGwmA2GU1422FpOoa%2FUSBMicrophoneWhineClip.mp3?alt=media&token=93869a20-e927-4160-a66c-f6939796f50d)
+
+下载[打开](https://2387260374-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MhmBVzGzh8SctWQ6jPR%2Fuploads%2FzfGdGwmA2GU1422FpOoa%2FUSBMicrophoneWhineClip.mp3?alt=media&token=93869a20-e927-4160-a66c-f6939796f50d)
+
+USB麦克风啸叫音样
+
+Whine对效果**>噪音消除和修复>****降噪**效果不佳。
+
+下载并安装[Mosquito-Killer4](https://forum.audacityteam.org/t/usb-whine-filtering-yeti-curse/45601/35)。
+
+**效果 > n / a >蚊虫杀手4**： ...蚊子需要杀死？： 8 >适用。
+
+我们期望该工具能让常见的USB啸叫消失，但有些版本的啸叫响应并不完美。仔细听，如果Mosquito_Killer4失败或效果不佳，请**编辑>撤销**，并在[Audacity论坛](https://forum.audacityteam.org/)或Discord的[Audacity服务器](https://discord.gg/audacity)发布帮助消息，附上作品样本。
+
+
+
+请按照提供的说明[发布音频样本](https://forum.audacityteam.org/viewtopic.php?f=49&t=72887)
+
+我不知道有什么简单、万无一失的方法能永久修复USB麦克风，一旦你有了嗡嗡声。最可能的解决办法是更换电脑。ACX通过不使用USB麦克风实现了这一点。他们使用了一只非常高质量的模拟麦克风，插入稳定的USB接口。
+
+
+
+### 1.5.9.4.5.4 永久噪声或不可能噪声
+
+没有工具可以去除不断变化的噪音。如果头顶的喷气机、交通噪音、狗叫声和隔壁的电视都被纳入你的演出，它们现在就是你的永久表演伙伴。在安静的房间里再读一遍作品。门禁也帮不上忙。
+
+
+
+### 1.5.9.4.5.5 组合包
+
+没人说不能有多个声音。ACX有声书噪音测试用家庭录音系统可能很难通过。如果你用上述工具无法达到，或者声音听起来不对，可以发到[Audacity论坛](https://forum.audacityteam.org/)或Discord[的Audacity服务器](https://discord.gg/audacity)，发一个干净、原始的音频。提到三位数的Audacity号码。
+
+> 请按照提供的说明[发布音频样本](https://forum.audacityteam.org/viewtopic.php?f=49&t=72887) 
+
+
+
+
+
+### 1.5.10 音乐
+
+#### 1.5.10.1 启用音乐视图
+
+##### 1.5.10.1.1 为音乐工作流程设置
+
+你可以在 Audacity 中启用更音乐化的视图如下：
+
+1. 右键点击时间线尺，选择拍**子和小节**。![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FnzqmjaBSaFf7LRbG5vt1%252Fimage.png%3Falt%3Dmedia%26token%3Dd8345aca-5215-42ea-bb24-61b1633b1b9e&width=300&dpr=4&quality=100&sign=11d56a96&sv=2)
+2. 在时间小部件中，选择**节拍**，或更多细分选择节**拍和16th。**![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FnS8OsaRM60zhClP1EEWH%252Fimage.png%3Falt%3Dmedia%26token%3D1d91f564-7bc2-42f5-bfd4-da414b9bb089&width=300&dpr=4&quality=100&sign=23b1257&sv=2)
+3. 启用吸附，并将吸附间隔设置为音乐选项（例如 1/4、1/8 或 1/16）。![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252ForCwb7RwuFiK2U1G11AU%252Fimage.png%3Falt%3Dmedia%26token%3D16eac37d-da4e-4053-8a74-202638356f62&width=300&dpr=4&quality=100&sign=3b092c60&sv=2)
+
+一旦你启用了所有这些，你的 Audacity 可能看起来像这样：
+
+![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FLGYLitNKY9rb7tK52XoU%252FAudacity_Sl9mXdU2vI.png%3Falt%3Dmedia%26token%3D1bd47d38-c18a-4012-ac78-e9fbe873a684&width=768&dpr=4&quality=100&sign=efe6f22c&sv=2)
+
+Audacity时，时间线尺设置为拍子和小节，启用拍号工具栏，吸附到16分音符，时间和选择工具栏设置为拍子、小节和刻度。还可见：[实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)侧边栏
+
+
+
+## 1.5.10.1.2 音乐视图的优势
+
+音乐视图有助于你将[音乐与节拍和小节对齐](https://support.audacityteam.org/music/aligning-music-to-beats-and-measures)。
+
+它还会自动调整新导入文件的节奏，以适应你的项目节奏。
+
+
+
+# 1.5.10.2 将音乐与节拍和小节对齐
+
+
+
+**注意：** 小节和小节是同一回事。Audacity 在“measure”太长的地方用“bar”。
+
+
+
+## 1.5.10.2.1 检测速度（BPM）
+
+要将音乐对齐到节拍和小节网格，首先需要知道歌曲的节奏，通常以每分钟拍数（BPM）来衡量。
+
+- 如果你自己录音乐，试着用节拍器演奏，确保自己保持节奏。
+- 如果你用的是从网上下载的音乐，试着摸索一下它的节奏。在某些情况下，网上搜索就足够了。`*song title*`` tempo`
+- 你也可以下载一个BPM检测插件。[Vamp插件包](https://www.vamp-plugins.org/pack.html)包含多种节奏检测插件，例如：
+  - *IBT - INESC 节拍追踪器*
+  - *简单固定节奏估计器*，来自Vamp SDK示例库
+  - *节奏与节拍追踪器：*伦敦玛丽女王大学的节奏
+
+
+
+Audacity 还无法处理歌曲中段的节奏变化。
+
+
+
+## 1.5.10.2.2 准备扣子
+
+Audacity会根据你的节奏和拍拍设置，将片段开头的节拍和小节网格映射。如果你的第一个节拍不是从片段的开头开始，你可以修剪片段的开头。要修剪夹子，只需将上边缘向内拖动即可。
+
+![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252F3BPVgWEXGwJnSFk3sOu5%252FScreenshot%2520from%25202023-10-18%252011-17-01.png%3Falt%3Dmedia%26token%3D298dadae-581c-47d4-9d66-9c21cea0ddd2&width=768&dpr=4&quality=100&sign=2f29218a&sv=2)
+
+
+
+修剪夹子时，可能需要关闭扣合功能以进行更细微的调整。
+
+
+
+## 1.5.10.2.3 对齐节拍和小节
+
+一旦你设置好并启用了吸附功能，只需拖动你的剪辑就能对齐到节拍和小节网格上。
+
+![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FmTBlTxXlunq0aJpAEqj3%252Fimage.png%3Falt%3Dmedia%26token%3D0ba1c5da-cacc-4c34-b830-329b2cd96fde&width=768&dpr=4&quality=100&sign=5cf2a7ab&sv=2)
+
+那个带有下拉菜单的吸附工具栏。
+
+------
+
+一旦你对齐了音乐，就可以开始为项目添加循环和其他内容[。处理音频循环](https://support.audacityteam.org/music/working-with-audio-loops)
+
+
+
+#### 1.5.10.3 处理音频循环
+
+介绍Audacity基于循环的音乐制作能力
+
+##### 1.5.10.3.1 获得循环
+
+你可以在互联网各处找到循环，包括[Muse Hub](https://www.musehub.com/)。
+
+你也可以手动把歌曲的一段转换成循环。
+
+[制作音频循环](https://support.audacityteam.org/music/working-with-audio-loops/making-audio-loops)
+
+
+
+##### 1.5.10.3.2 调整环路以适应项目
+
+导入循环到项目时，Audacity 会自动尝试匹配节奏。如果做不到，你也可以自己按住（macOS：）并拖动剪辑边缘来调整节奏，使其适应。`Alt``Option)`
+
+[音频的加速和减速](https://support.audacityteam.org/audio-editing/speeding-up-and-slowing-down-audio)
+
+另外，如果循环的调和你的项目不同，你也可以选择一个片段，按键按半音调整音高。`Alt+↓↑`
+
+[音高变化](https://support.audacityteam.org/audio-editing/changing-pitch)
+
+
+
+##### 1.5.10.3.3 重复循环
+
+Audacity目前还没有传统DAW中常见的循环功能。相反，你可以通过**复制粘贴**循环，或者使用**效果 -> 特殊 -> 重复**效果来重复。
+
+
+
+##### 1.5.10.3.4 制作音频循环
+
+本页介绍如何从已有音频文件创建背景节拍和音频循环。
+
+音频循环是一种反复播放几小节的音乐。它们可以通过从已有内容中取样并无缝循环生成。
+
+###### 1.5.10.3.4.1 启用回放循环
+
+![](m/music/working-with-audio-loops/01.png)
+
+要启用回放循环，只需点击**循环按钮**（1）。当你这样做时，你会注意到蓝色环形区域出现在时间线（2）中。你可以通过拖动区域，它能分别进入和出出。
+
+
+
+**提示：**你总可以通过拖拽时间线内现有区域以外的任何地方来创建新区域。
+
+###### 1.5.10.3.4.2 寻找环形区域
+
+![](m/music/working-with-audio-loops/02.png)
+
+用音乐做循环时，你经常能看到波形中的重复，因为你的源素材里可能已经包含某些循环（比如鼓手整首歌都在打同一个节拍）。你可以用这些方法大致找到合适的循环区域，并将循环区域放在上面。
+
+
+
+**笔记：** 
+
+- 如果你找不到合适的立体声音轨区域，建议先把它转为单声道：**Tracks > Mix > Mix Stereo to Mono**
+- 调整环形区域时，尽量瞄准*峰值前*一点。这样做可能让你完全跳过微调。
+- 即使播放开启，你也可以调整循环区域。
+
+
+
+**微调循环并去除咔嗒声**
+
+为了让循环无缝，你可能需要用放大镜（）或放大镜再放大一些。`Ctrl+Scroll``Cmd+Scroll`![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252FiPK7ryh7zjxtJssk6t8M%252FZoomIn.png%3Falt%3Dmedia%26token%3D60ab0053-1916-485b-87e4-1eac564cae25&width=300&dpr=4&quality=100&sign=2e9e677a&sv=2)
+
+
+
+**最佳实践：**将循环点设为零交叉点，即波形（蓝线）与0（黑线）交叉：
+
+![](m/music/working-with-audio-loops/03.png)
+
+
+
+###### 1.5.10.3.4.3 把你的环转成片段
+
+一旦你的循环听起来合适，你可以在波形中选择它的长度。当光标正确对齐环路区域时，会出现一条黄色线条。选定后，你只需**右键点击>分段剪辑**（）。`Ctrl+I, Cmd+I`
+
+拿到片段后，你可以复制粘贴到项目的任何地方。
+
+
+
+**提示：** 如果你想重复使用这个片段，可以用**效果>重复。** 
+
+
+
+###### 1.5.10.3.4.4 导出剪辑
+
+如果你想在更多项目中使用该片段，最好单独保存。作方法是**选择**你之前制作的片段，点击**“文件 -> 导出音频......**”。在对话框中，选择文件名和位置，选择**导出范围：当前选择**。
+
+
+
+**最佳实践：** 
+
+- **使用无损格式**。WAV、WavPack和FLAC是循环格式的好选择，MP3则不行，因为它每次保存都会丢失信息（[代际损失](https://en.wikipedia.org/wiki/Generation_loss)）。
+- **保持你的圈子有条理**。一般来说，把循环存放在分类文件夹里，并在文件名里直接写属性是个好主意。比如说，如果你有3个鼓循环、2个钢琴循环和4个合成循环，那么有：
+  - 这些文件夹称为“鼓”、“钢琴”、“合成器”，以及
+  - 如果你知道速度（BPM）和调性（例如，Amin.wav bpm.wav辅修）。Audacity和其他程序可能能读取你这里写的一些信息，并在你导入项目时自动调整循环。
+
+
+
+# 1.5.10.4 从歌曲中分离或移除人声
+
+本页介绍了一些尝试在立体声轨道中分离人声的方法。
+
+## 1.5.10.4.1 用AI分离人声
+
+
+
+此功能仅在Windows和Linux上提供
+
+你可以用Intel OpenVINO Music Separation插件来把人声和音乐分开。要做到这一点，首先按照这里描述的下载并安装插件。
+
+
+
+
+
+安装后并重启 Audacity，你可以在 **Effect -> OpenVINO AI Effects -> OpenVINO 音乐分离**中找到它。
+
+![](m/music/isolating-or-removing-vocals-from-a-song/01.JPG)
+
+OpenVINO 插件
+
+在这里，选择合适的分离模式。双主干——器乐和主唱版本在大多数歌曲中都很合适，而四主控版本则适合只提取鼓和贝斯，如果歌曲恰好包含这些乐器。
+
+推理设备设置允许你选择哪个处理器来完成这项工作：
+
+- CPU总是能用，但通常最慢
+- GPU通常在高端电脑上最快
+- NPU只能在现代Intel处理器上使用，速度与GPU相当。
+
+
+
+注意：该效果需要大量计算能力，所有AI效果也是如此。模型热身后，第二次运行时通常会更快。
+
+## 1.5.10.4.2 手动分离立体声场
+
+一种更快但通常不那么可靠的去除方法是利用人声在立体声场中通常的位置
+
+1. 从立体声音轨下拉菜单选择**“立体声分流转单道**”![](m/music/isolating-or-removing-vocals-from-a-song/02.png)
+2. 拆分立体声轨道后，你会得到两条类似的单声道轨道：![](m/music/isolating-or-removing-vocals-from-a-song/03.JPG)
+3. 通过**选择**其中一条单声道轨道，然后选择**效果 -> 反转**
+4. 回放结果。
+
+这样会移除中间所有声像，不仅仅是人声，并返回双单声道结果（两个通道的音频相同）。在某些音乐中，这可能意味着去除乐器部分。人声的去除往往不完整，留下遗留的杂音;尤其是在有和声或加了混响（回声）的地方，因为混响会分散声音源，使得声音很难相互提取。
+
+## 1.5.10.4.3 替代AI模型
+
+
+
+**注意：** 这是一个实验性功能，不是普通Audacity安装的一部分。
+
+要在Audacity中使用AI模型，首先需要从 https://interactiveaudiolab.github.io/project/audacity 下载当前带有此功能的alpha版本 
+
+安装此版本后，您可以通过**Effects → Deep Learning Effects**下载并应用AI模型。
+
+
+
+1.5.11 音频分析
+
+# 1.5.11.1 谱分析
+
+Audacity 拥有多个强大的频谱分析工具：每轨的频谱图视图、图谱，以及对插件的支持。
+
+## 1.5.11.1.1 频谱图视图
+
+Audacity 中的每条音轨都可以在声谱图视图中查看：
+
+![](m/audio-analysis/spectral-analysis/01.JPG)
+
+轨道的频谱图视图
+
+要访问它，点击**轨道菜单下拉菜单**，选择**声谱图。**
+
+轨道菜单还包含频谱图设置，你可以调整比例、颜色、所用算法和窗口大小。
+
+![](m/audio-analysis/spectral-analysis/02.png)
+
+轨道菜单下拉菜单
+
+
+
+> **提示：**如果要同时查看波形和频谱图，请选择多**视图**。
+
+### 1.5.11.1.1.1 提升频谱图视图的准确性
+
+你可能会注意到频谱图通常有些模糊，即使你有一个精确的频率，频谱图看起来像是播放了整个频率范围。这是与窗口大小相关的固有数学权衡：
+
+![](m/audio-analysis/spectral-analysis/03.png)
+
+不同窗口大小的对比
+
+根据你的需求，你可以调整窗口大小以适应你的分析：较小的窗口大小有助于时间分辨率，较大的窗口大小有助于频率分辨率。
+
+
+
+**提示：**如果你将**算法从频率**切换为**重新分配**，Audacity将尝试通过重新分配方法同时提升时间和频率分辨率。这对时间和频率相较于分析窗口可分离的信号效果最佳。
+
+你可以在轨道菜单下拉菜单的频谱图设置中更改窗口大小和算法。
+
+### 1.5.11.1.2 聚焦特定频率
+
+你可以在频谱图视图中右**键点击频率刻度**来垂直放大。
+
+此外，在频率尺度上滑鼠时，你可以
+
+- Ctrl+滚动可放大/缩小频率刻度，
+- 按Shift+滚动键即可在保持相同缩放水平的同时上下滚动。
+
+
+
+## 1.5.11.1.2 剧情光谱
+
+用情节光谱来说，
+
+1. **选择**你想分析的音频
+2. 前往**分析 -> 情节谱**系。
+
+![img](![](m/audio-analysis/spectral-analysis/04.png)
+
+情节光谱窗口
+
+### 1.5.11.1.2.1 选项
+
+#### 算法
+
+- **频谱**（默认） 绘制数据的快速傅里叶变换（**FFT**），FFT窗口大小由**Size**下拉菜单确定。振幅经过归一化，使得0 dB的正弦波（纯音）在图上大约为0 dB。
+- **自** 这些选项测量声音重复的程度。 这是通过取两份音频，再向前移动一份一个采样来实现的。然后将两份副本相乘，所有数值加起来。重复两个样本差，依此类推，直到**大小**选项中的样本数。如果波形是随机的（例如噪声），结果会很小;如果波形是重复的（比如音符），结果会很大。通过观察图中的峰值，即使噪声较大，也能确定存在的关键频率。
+- **琴弦** 音频信号的逆频与频谱相关，但显示不同频谱带的变化速率。它对人声轨道的属性特别有用，例如在软件中用来通过声音特征识别说话者。
+
+#### 功能
+
+Function提供Rectangular、Hann、Hamming等多种选择。我们建议你在大多数情况下使用默认的Hann。
+
+
+
+
+
+### 1.5.11.1.2.2 导出频谱以供进一步分析
+
+点击**导出......**按钮，将当前视图导出为制表符分隔的文本文件。
+
+
+
+## 1.5.11.1.3 分析仪插件
+
+Audacity 支持 **Vamp** 插件格式等多种格式。其中很多都可以在[Vamp插件包](https://plugins.audacityteam.org/realtime-effects/plugin-suites#vamp-plugin-pack)中找到。
+
+
+
+
+
+# 1.5.12 故障排查
+
+1.5.12.1 错误代码
+
+# 1.5.12.1 错误 -9996：设备错误
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+该错误表示尝试使用的设备无效，例如：
+
+- 设备被拔掉了
+- 设备连接不良或松动
+- 设备本身有问题，或者不是真正的音频设备。
+
+当你尝试录制当前配置中不支持的多个通道时，也会出现这种错误。
+
+当使用 Windows 上的 Audacity 并以 Windows WASAPI 作为主机时，如果所选录制设备被其他应用程序独占使用，也可能出现此错误。一些可以独占使用录音设备的应用程序包括ASIO4ALL、Voicemod（配置时）或Voicemeeter（配置时）。
+
+## 修复
+
+你可以尝试以下方法来解决这个问题：
+
+- **换个USB接口和USB线。** 如果问题出在线缆上，这样就能解决问题。
+- **换个音频主机**吧。有时WASAPI能用，而MME不行，有时则相反。
+- **使用不同数量的频道**。例如，有些Realtek只在单声道录制时工作，而另一些则只能在录制（回环）流时在立体声下工作。
+
+
+
+# 1.5.12.2 错误 -9997：采样率无效
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+该误差可能表明采样率未被支持。
+
+当使用 Audacity 在 Windows 上录制一首曲目同时听另一条现有轨道（也称为叠录），且 Windows WASAPI 作为主机时，如果录音设备的采样率与播放设备的采样率不同，也会出现此错误。
+
+当你尝试录制当前配置中不支持的多个通道时，也会出现这种错误。
+
+## 修复
+
+- 请再次确认你的**作系统设置**和**Audacity项目频率**是否都设置为支持的采样率（通常是44100 Hz或48000 Hz）。
+- **换个音频主机**吧。有时WASAPI能用，而MME不行，有时则相反。
+- **使用不同数量的频道**。例如，有些Realtek只在单声道录制时工作，而另一些则只能在录制（回环）流时在立体声下工作。
+- **使用你用作录音设备的播放设备**，尤其是在录制桌面音频时。
+
+
+
+# 1.5.12.3 错误 -9998：通道数量无效
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+当你尝试录制不支持数量的通道时，就会出现此错误。
+
+## 修复
+
+进入音频设置 - > 录制通道，选择不同数量的通道。通常有效的数值是1（单声道）、2（立体声）以及列表中显示的最高数字。所以对于8声道接口，8声道应该可以。
+
+
+
+# 1.5.12.4 错误 -9999：意外主机错误
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+这个错误最常见的意思是“出了问题”
+
+- USB音频设备的连接丢失
+- 作系统缺少麦克风权限。
+- 你的设备在录制时无法播放其他轨道。
+  - 这种情况最常见的是你试图录制采样率与设备播放率不同的采样率。确保 Windows 设置和 Audacity 的**音频设置 -> 音频设置**中的采样率都匹配，可能会解决这个问题。
+  - 通过**Transport -> Transport Options**关闭Overdub可能会解决这个问题。
+
+## 修复
+
+你可以尝试[常见的故障排除步骤](https://support.audacityteam.org/troubleshooting/common-troubleshooting-steps)，或者尝试本页的其他变通方法。
+
+
+
+# 1.5.12.5 错误开启声音装置
+
+了解该错误的原因和修复方法。
+
+这个错误表明播放所用硬件存在问题，无论是权限、驱动、连接，还是你让设备做它无法做的事情。你可以尝试以下步骤来解决这个问题。
+
+
+
+# 1.5.12.6 错误开启录音设备
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+这个错误表明录制设备硬件有问题，无论是权限、驱动、连接，还是你让设备做它做不到的事情。
+
+## 修复
+
+你可以尝试常见的排查步骤来解决这个问题
+
+
+
+# 1.5.12.7 错误：Audacity 未能读取 C 格式的文件，错误：未能打开数据库文件
+
+了解该错误的原因和修复方法。
+
+## 其他名称
+
+- 错误代码11
+- 错误代码13
+- 错误代码101
+
+## 原因
+
+这些错误可能发生在你试图打开的项目处于只读位置时。
+
+这些错误也可能在尝试加载损坏的 .aup3 项目文件时出现。
+
+## 修复
+
+- 确保 Audacity 有写文件所在文件夹的权限，或者把项目文件移到别的地方。
+- 如果你的项目受损，你也可以尝试[项目恢复](https://support.audacityteam.org/troubleshooting/recovering-corrupted-projects)。
+
+
+
+# 1.5.12.8 错误 Audacity 未识别该文件的类型
+
+了解该错误的原因和修复方法。
+
+当你试图打开的文件没有解码器时，会出现这个错误。
+
+## 原因
+
+这可能由多种原因引起：
+
+- FFmpeg库可能缺失了。
+- 负责文件导入的模块可能缺失或禁用。
+- 文件本身可能会误报内容（例如：说是，尽管实际上是），或者文件损坏。`.mp3``.m4a`
+- 你可能设置了自定义导入规则。
+
+## 修复
+
+你可以尝试以下方法来修复它：
+
+- **安装FFMPEG。**FFMPEG允许你打开大多数类型的媒体文件。阅读更多：[安装FFmpeg](https://support.audacityteam.org/basics/installing-ffmpeg)
+- 查看**偏好设置 - >模块**。你应该会看到几个模块，类似“mod-mp3”或“mod-pcm”，它们都应该设置为“enabled”，或者像“mod-script-pipe”那样设置为“no choice made”。如果你缺少模块，请重新安装Audacity并重置偏好设置。
+- **检查你要打开的文件是否如其名**。例如，一些低质量程序会将任何音频文件命名为 ，无论它是否真的是MP3文件。阅读更多：[无法打开MP3文件](https://support.audacityteam.org/troubleshooting/solving-other-problems#cant-open-an-mp3-file)`*.mp3`
+- **检查你的文件是否真的是音频文件**。某些程序中用于输出音频的文件实际上并不包含声音，而是程序发出某些声音的指令。试着看看用来创建文件的程序是否有导出按钮。如果不行，你也可以尝试在其他程序播放文件时录制桌面音频。阅读更多：[录制桌面音频](https://support.audacityteam.org/basics/recording-desktop-audio)
+- **检查一下你是不是不小心创建了自定义导入规则**。在**编辑 -> 偏好设置 -> 扩展导入**（macOS 上：Audacity ->偏好设置 -> 扩展导入）中，确保你没有创建任何自定义规则。如果有任何规则，你可以放心**删除。**
+- **导入音频为RAW**。这只适用于未压缩音频。你可以通过**文件 -> 导入 -> 导入原始数据......**
+
+
+
+# 1.5.12.9 错误：Audacity IPC 服务器未能初始化
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+如果你使用的是低端机器，这可能是由于资源不足，特别是内存不足。
+
+如果你在文件里给自己分配了静态IP，也会发生这种情况。`hosts`
+
+## 修复
+
+- 试着关闭其他程序或重启电脑以清理内存。
+- 如果你在文件中使用静态IP赋值，只需注解赋值即可解决这个问题。`hosts`
+
+
+
+# 1.5.12.10 错误代码=12：无法分配内存（macOS）
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+这是由于系统状态异常引起的。具体来说，macOS通常允许分配32个共享内存实例，Audacity需要从中分配一个实例才能启动。不过，你电脑上的其他应用可能已经占满了这些分配，这时Audacity无法启动。
+
+## 修复
+
+- **重启电脑**通常会解决这个问题，因为它会清除共享内存。
+- 你也可以编辑 macOS 内核以允许更多共享内存，但这是一个非常技术性的过程。本质上，各种共享内存限制需要提高。[这个帖子](https://forums.developer.apple.com/forums/thread/669625)（Catalina）或[这篇帖子](https://github.com/audacity/audacity/issues/5983#issuecomment-1954253824)（Sonoma）可能会有进一步的说明。
+
+
+
+# 1.5.12.11 错误：缺少插件
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+这是由于缺少[实时效果](https://support.audacityteam.org/audio-editing/using-realtime-effects)造成的。
+
+
+
+Audacity 目前在绝对路径中寻找插件。这意味着如果你打开在另一台电脑上创建的项目，Audacity会继续检查插件是否处于与旧电脑相同的位置。
+
+## 修复
+
+- 你可以替换效果侧边栏中缺失的效果。
+- 在新电脑上打开项目前，确保你用过的所有插件都和旧电脑的位置一致。
+
+
+
+# 1.5.12.12 错误 FFmpeg：1008
+
+了解该错误的原因和修复方法。
+
+## 原因
+
+这个错误表明FFmpeg加载不正确。
+
+## 修复
+
+重启Audacity可以解决这个问题。如果问题依旧，试着重装FFmpeg和Audacity。
+
+
+
+# 1.5.12.13 安装出口代码
+
+安装程序可能会返回以下退出代码之一：
+
+
+
+| 出口代码 | 定义                                                         |
+| -------- | ------------------------------------------------------------ |
+| 0        | 设置是否成功完成，或者/HELP或/？使用命令行参数。             |
+| 1        | 设置失败了。                                                 |
+| 2        | 用户在实际安装开始前在向导中点击取消，或在开头的“This will install...”中选择“否”。留言框。 |
+| 3        | 在准备进入下一安装阶段时（例如从显示预安装向导页面进入实际安装过程）时发生了致命错误。除非在极为罕见的情况下，比如内存或Windows资源不足，否则这种情况绝不应发生。 |
+| 4        | 在实际安装过程中发生了致命错误。*注意：*导致显示中止-重试-忽略选项的错误并非致命错误。如果用户在该消息框选择*中止*，将返回退出代码5。 |
+| 5        | 用户在实际安装过程中点击取消，或在中止-重试-忽略框中选择*中止*。 |
+| 6        | 调试器强制终止了设置进程（运行Terminate在编译器集成开发环境中使用）。 |
+
+
+
+在返回1、3或4的退出码之前，通常会显示一个解释问题的错误信息。
+
+未来版本可能会返回额外的退出代码，因此检查退出代码的应用程序应被编程以优雅地处理意外退出代码。任何非零的退出码都表示设置未完成。
+
+
+
+# 1.5.12.14 修复被腐化的项目
+
+使用 Audacity 项目工具恢复损坏的项目
+
+本文将讨论Audacity中的以下错误代码：
+
+- 错误代码11
+- 错误代码13
+- 错误代码101
+- “Audacity未能读取C语言中的文件：”（或D：， E：， ...）
+
+一定要用最新版本的Audacity。更多信息请参见[下载与安装Audacity](https://support.audacityteam.org/basics/downloading-and-installing-audacity)。
+
+有时候，只要打开最新版本的文件，项目就会自动恢复。如果没有，请按以下步骤进行：
+
+首先，下载最新版本的Audacity项目工具：
+
+[![商标](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2Fgithub.com%2Ffluidicon.png&width=20&dpr=4&quality=100&sign=d777eded&sv=2)发行作品 ·Audacity/Audacity-project-toolsGitHub](https://github.com/audacity/audacity-project-tools/releases)
+
+下载后，按照你系统相关的说明作。注意：macOS尚未支持。
+
+
+
+**谨慎：**确保你的电脑空间足够。你需要大约是.aup3的4倍大小才能成功恢复。如果你有10GB文件，至少应该有40GB可用。
+
+窗户
+
+Linux
+
+1. 在你的下载文件夹里，创建一个名为“AudRepair”的新子文件夹。
+2. 解**压**你下载的audacity-project-tools的ZIP文件
+3. 把解压的文件**移**到 AudRepair 里
+4. 把你有缺陷的.aup3项目文件**复制**到AudRepair里
+5. 将.aup3文件**重命名**为broken.aup3
+6. 打开**终端**或**Konsole**程序。
+7. 通过输入并点击`cd ~/Downloads/AudRepair``Enter`
+8. 输入并按。应列出以下三个文件：、和`ls``Enter``audacity-project-tools``broken.aup3``sqlite3`
+9. 通过输入并点击 ，将 Audacity 项目工具和 sqlite3 可执行文件化。`chmod +x audacity-project-tools sqlite3``Enter`
+10. 输入并按。`./audacity-project-tools -drop_autosave broken.aup3``Enter`
+11. 会出现“Project 需要 Audacity 3.0.0” 的消息。
+12. 当命令提示符（）重新出现时，再次输入ls。`you@pc:~/Downloads/AudRepair$`
+13. 如果出现文件，用Audacity打开。 如果文件正常，就去**“文件->另存新档”，**然后保存到你平时的位置。恢复过程现在已经结束，你可以继续正常工作。 如果该文件未出现或仍然损坏，请继续执行以下步骤：`broken.recovered.aup3`
+14. 输入并按。`./audacity-project-tools -recover_db -recover_project broken.aup3``Enter`
+15. 会出现“， 和 ”“ 的消息。之后，在重建已救援文件时，会出现“”这一消息。**注意：**这个过程可能会花相当长的时间，取决于你的具体机器。没有状态（或完成度）指示，所以你只能**耐心等待**。 你应该计划每GB使用15-30分钟，虽然如果你的电脑速度快，可能会更快。**注意可用的磁盘空间**。 由于故障，有时程序完成时会出现单个字符，例如“”。如果发生这种情况，只需按**退格**键。`Project requires Audacity 3.0.0``Using 'sqlite3' for recovery``Executing query #xxxx....``z`
+16. 流程完成后，你应该能在Audacity**里打开**“broken.recovered.aup3”。 第一次打开恢复的项目时会出现“文件未正确保存”的提示。这是正常的，你可以忽略这条消息。
+
+如果显示“”“，检查一下是否有音频被静音——通常是你最近编辑的地方。这些信息通常是虚假的。`Invalid block xxxx: Block not found`
+
+
+
+**注意：**
+
+- 没有保证所有内容都能恢复，甚至完全无法恢复。
+- Audacity 项目工具的一些额外命令可以在 [Github](https://github.com/audacity/audacity-project-tools#using-the-audacity-project-tools) 上找到。
+- 如果缺少一段音频，可能需要手动重新录制。更多信息请参见[“重新录制”部分](https://support.audacityteam.org/repairing-audio/re-recording-a-section)。
+
+
+
+# 1.5.12.15 在 Audacity 旧版本中恢复损坏的项目
+
+
+
+本文仅适用于Audacity版本，最高至2.4.2。
+
+如果Audacity崩溃或电脑断电，Audacity通常会在你重启时[自动恢复项目](https://manual.audacityteam.org/man/recovery.html)。本页步骤描述了如何在以下情况下从项目_data文件夹或Audacity临时文件夹恢复音频：
+
+- 自动崩溃恢复功能无法正常工作
+- 你保存了一个项目，没有明显崩溃，但Audacity在AUP项目文件写入前就被关闭了，或者你没有可用的AUP文件。
+
+本页步骤只能恢复未编辑的录音（立体声录音可能会恢复左声道和右声道部分处于错误声道）。
+
+
+
+如果自动崩溃恢复未能正确恢复项目，**请不要关闭或保存**项目。
+
+- 如果你需要在手动修复错误的自动崩溃恢复前关机，可以在系统任务管理器里强制关闭Audacity。这将保留下一次Audacity发射的临时数据。
+- 如果你在崩溃前成功保存了项目，可能更简单的做法是先在自动崩溃恢复对话框中丢弃未保存的项目，然后打开保存的AUP文件。
+
+## 1.5.12.15.1 项目位置_data文件夹
+
+如果你保存了AUP项目文件，你需要恢复的_data文件夹会在你最初保存AUP文件的目录里。
+
+## 1.5.12.15.2 临时文件夹的位置
+
+如果你从未保存过AUP项目文件，你需要从Audacity的临时文件夹恢复。你可以在目录偏好设置里看到具体位置，否则你可以在audacity.cfg设置文件里的“TempDir”一行里看到位置。默认情况下，Audacity的临时文件夹应为以下内容。
+
+- Windows：C：\Users\<你的用户名>\AppData\Local\Audacity\SessionData
+- Mac：/用户/<你的用户名>/Library/Application Support/audacity/SessionData
+- GNU/Linux：/var/tmp/audacity-<your username>
+
+如果你是从之前的 Audacity 升级，如果之前的位置容易被清理应用或系统重启删除，该版本的临时目录可能会被更改到上述相关的安全位置。
+
+
+
+**提示：**要在Windows或Mac上查看Audacity临时文件夹的默认位置，你需要显示隐藏文件和文件夹，或者在文件管理器的地址栏输入文件夹位置。
+
+窗户
+
+macOS
+
+- 打开Finder，使用“前往”菜单，选择“前往文件夹”，输入所需的路径。
+
+如果不行，试着通过终端输入以下命令让Finder显示隐藏的文件和文件夹：
+
+复制
+
+```
+默认 writes com.apple.finder  AppleShowAllFiles TRUE
+杀手寻觅者
+```
+
+## 1.5.12.15.3 手动恢复
+
+如果你只有几个 AU 文件需要恢复，可以用“导入音频”命令打开 Audacity 临时文件夹或项目_data文件夹里的所有 .au 文件。使用Shift点击或Control点击来选择多个文件。这些文件将以大约6秒为一组，在Audacity界面中分成不同的轨道。立体声轨道的文件会在左右声道之间交替播放。
+
+1. 点击最顶曲目的轨道控制面板（通过静音/独奏按钮）。
+2. 捷径或选择>区域，>尽头是零过境。`Z`
+3. 编辑>移除特殊>装饰。
+4. 点击你想连接到最顶轨道的第一个轨道的控制面板。
+5. 快捷 Z 或编辑>找到零交叉点。
+6. 快捷键Z或选择>区域，>尽为零交叉点。
+7. 点击最顶端的轨道结束后。
+8. 按下键盘上的结束键。
+9. 点击编辑>粘贴，剪辑轨会附着到最顶轨的末尾。
+10. 必要时重复此作，将所有轨道合并到最顶轨道上。
+
+播放结果。
+
+如果发现文件顺序或通道错误，请按需剪切粘贴。
+
+## 1.5.12.15.4 自动恢复工具
+
+为遗留版Audacity 1.2编写的工具可以自动化数据恢复。
+
+
+
+所有这些工具都需要将 .au 文件按字母数字顺序连续输入。Audacity 给文件命名是随机的，所以文件需要重新命名。
+
+在系统文件管理器中打开Audacity的临时或项目_data文件夹。按时间戳顺序排序文件（最早者先排序），然后用连续的字母数字序列重命名，先按最小的数字。类似这样的安排应该可以：
+
+b001.au 15：56：02 b002.au 15：56：02 b003.au 15：56：10 b004.au 15：56：10
+
+### 1.5.12.15.4.1 将文件重命名为连续字母数字顺序的工具
+
+- 在 Windows 上，资源管理器无法将名称重命名为恢复工具可接受的序列。你可以在21天的专业版或终极版[xplorer2](http://zabkat.com/x2down.htm)中使用大规模重命名工具。这些版本允许你恢复未经编辑的立体声录音，并且有精确的左右声道分配，前提是Windows运行的是[NTFS](https://en.wikipedia.org/wiki/NTFS)文件系统。[xplorer2的免费版本](http://zabkat.com/x2lite.htm)无法保证频道分配正确。
+  1. *（仅限专业版和终极版）*点击“查看>原始内容”以启用最大日期分辨率。
+  2. 在xplorer2中打开所需文件夹，按修改时间排序.au文件。
+  3. 按Ctrl + A选择所有文件。
+  4. 文件>大规模重命名。
+  5. 在“批量重命名向导”中，点击“目标名称模板”，在字母后面加上 $ 输入字母 e。例如，e$0001.au 会将文件重命名为 e0001.au、e0002.au 等。在文件名中使用足够的零，使所有 .au 文件的数字数相同。
+  6. 点击“预览”，如果预览看起来正确，点击“重命名”
+- 在Mac上，试试Applications > [Automator](http://www.macosxautomation.com/automator/)。
+- 在Linux上，可以试试[xfce桌面](http://xfce.org/)里自带的文件管理器[Thunar](http://en.wikipedia.org/wiki/Thunar)[。这里有](http://www.ubuntugeek.com/switch-to-a-lightweight-filemanager.html)关于在Ubuntu桌面上运行Thunar的帮助。
+
+### 1.5.12.15.4.2 Linux命令行时间戳排序替代方案
+
+1. 打开终端，然后“cd”进入包含AU 文件的目录。
+2. 在终端中输入以下命令，将文件按数值时间戳顺序排序并重命名：`mkdir "renamed" | find -type f -name "*.au" -printf "cp %h/%f renamed/%h/%TY%Tm%Td-%TH%TM%TS_%f\n"|sh`
+3. “renamed”文件夹中生成的文件名顺序不连续，不适合Audacity恢复工具。相反，使用[Nyquist](https://wiki.audacityteam.org/wiki/Nyquist_Plugins)插件[Append Import](https://forum.audacityteam.org/viewtopic.php?f=42&t=59528)，自动按文件名顺序从头到尾导入Audacity。
+
+### 1.5.12.15.4.3 自动恢复工具的局限性
+
+- 从重建的临时文件创建的任何 WAV 文件最大容量为 2 GB。这意味着最多只能恢复2000个.au文件。有时（可能是工具的bug）只恢复大约1000个文件时会出现错误。在这种情况下，你需要把临时or_data文件夹里的.au文件拆分成两个或多个文件夹，每个文件夹包含连续编号的文件，并从每个文件夹恢复一个独立的WAV文件。
+- 在大多数情况下，未剪辑的单声道录音恢复应该是正确的。
+- 未编辑立体声录音的恢复有时会在某些地方出现左右声道的移调。只有在你使用NTFS（Windows）或[ext 4](https://en.wikipedia.org/wiki/Ext4)（Linux）文件系统，并且文件管理器支持足够精细的日期解析（见上面Windows示例）时，通道分配才是正确的。这是因为每个通道的文件可能的时间戳过于接近，其他文件系统无法正确区分。
+- 如果项目数据被编辑过，通常无法正确恢复。
+
+## 1.5.12.15.5 其他工具/脚本
+
+这些工具并不意味着一定能实现你想要的功能，也没有经过Audacity Team的测试。
+
+### 1.5.12.15.5.1 GNU/Linux 和 Mac 脚本
+
+**audacity_rescue.sh**
+
+这个 [shell 脚本](https://gist.github.com/mef/2c90295920dc66f669a6)可以重组几千个 .au 文件。在bash终端上应用可能比本页提到的一些方案更简单，尤其是单声道录音。
+
+### **1.5.12.15.5.2 袜 队**
+
+1. 使用 [SoX](http://sox.sourceforge.net/)，从单声道录音中复制临时目录及其文件：
+
+   `cp -r /tmp/audacity1.2-jbn ~/rescue`
+
+2. 把AU文件转换成原始（无头）文件。文件必须已经经过时间排序并以前置零编号：
+
+   `for f in *.au ; do sox ${f} -t raw ${f}.raw ; done`
+
+3. 把这些原始文件串接在一起，形成一个长的RAW文件。将AU文件串接在一起（每个文件都有自己的头部）会导致AU文件之间的连接处产生噪声。
+
+   `cat *.raw > bigfile.raw`
+
+4. 最后，将原始文件导入 Audacity，指定合适的编码、端序、通道和采样率。
+
+
+
+
+
+# 1.5.12.1 常见的故障排除步骤
+
+## 1.5.12.1.1 音频设备重新扫描
+
+如果Audacity在尝试录制或播放音频时出现错误信息，开始使用**传输>重新扫描音频设备**来更新设备列表。
+
+![](m\troubleshooting\common-troubleshooting-steps\01.png)
+
+尝试播放音频时出现错误信息
+
+![](m\troubleshooting\common-troubleshooting-steps\02.png)
+
+刷新设备列表
+
+
+
+重新扫描音频设备后，尝试用**音频设置**按钮选择不同的主机，并确保你选择的设备是录音或播放设备
+
+![](m\troubleshooting\common-troubleshooting-steps\03.png)
+
+试着更换**主机**
+
+
+
+![](m\troubleshooting\common-troubleshooting-steps\04.png)
+
+重新检查是否选中了正确的设备
+
+
+
+如果错误依然存在，试着把项目速率改成不同的值。这可以通过**音频设置 - > 音频设置 - > 项目采样率**来实现。常见的数值是44100和48000。
+
+## 1.5.12.1.2 录音与播放音量
+
+确认**录音计量器工具栏**和**播放计**量器工具栏的滑块是否设置在合适的电平。将鼠标光标放在计量器上，Audacity 会显示对应的等级
+
+![](m\troubleshooting\common-troubleshooting-steps\05.png)
+
+## 1.5.12.1.3 隐私权限
+
+有些作系统可能会阻止不受信任的应用访问麦克风。你需要允许 Audacity 使用麦克风才能录音。
+
+**Windows**
+
+1. 
+   开放**设置**
+2. 前往**隐私**或**隐私与安全**
+3. 进入**麦克风**
+4. 切换麦克风**访问**，**允许应用访问您的麦克风**，如果有的话，**允许桌面应用访问您的麦克风**
+
+
+
+**macOS**
+
+1. 在你的Mac上，选择**系统偏好设置中的苹果菜单>**然后选择左侧菜单中的**“安全与隐私**”，再点击**“隐私**”标签。
+2. 在左侧菜单点击**“麦克风**”。
+3. 选择应用程序（Audacity）旁的复选框，允许它访问麦克风。
+
+
+
+**Linux**
+
+如果你安装了 Audacity 作为 Snap 或 Flatpak 格式，可能需要进入系统设置>应用程序设置
+
+
+
+## 1.5.12.1.4 启用麦克风
+
+如果你的麦克风没有在“**音频设置>录音设备**”下拉菜单中，选择**“传输>重新扫描音频设备**”以刷新录音设备列表。如果重新扫描后依然没有出现，可能是在作系统音频设置中禁用了。你需要启用它才能录制。
+
+**Windows**
+
+1. 打开**音效**控制面板，选择**录制**标签页
+2. 确保选择**“显示已禁用设备**”
+3. 找你的麦克风并**启用**它
+
+![](m\troubleshooting\common-troubleshooting-steps\11.gif)
+
+  使用Windows声音控制面板启用麦克风 
+
+启用麦克风后，使用Audacity**的传输 - 重新扫描音频设备**选项来更新可用设备列表。 
+
+
+
+**macOS**
+
+目前没有Linux的说明可用。
+
+
+
+**Linux**
+
+目前没有Linux的说明可用。
+
+
+
+## 1.5.12.1.5 更新音效设备驱动和固件
+
+建议更新你正在使用的音频设备的驱动程序。具体作方式取决于具体设备，但一般建议访问厂商支持网站。
+
+一些音频设备会安装一个辅助应用程序，提供检查固件和驱动更新的选项。
+
+#### 使用 Windows 设备管理器
+
+Windows用户可以尝试通过**设备管理器**手动更新驱动，然后再在网上查找驱动。这最简单，但不一定能找到最新或最合适的驱动。
+
+- **Windows 10 / Windows 11**：右键点击**开始**按钮，选择**设备管理器**
+- **Windows 8 / Windows 7 / Windows Vista：**点击控制面板开始>，然后通过“类别”视图，点击“硬件与声音”，在屏幕顶部附近找到“设备和打印机”，然后点击“设备管理器”（列表下方的最后一项）。“图标”视图有直接链接到设备管理器，Windows Vista 上的“经典视图”也有。
+
+然后点击+符号展开**声音、视频和游戏控制器**，右键点击声音设备，点击**更新驱动**。
+
+![](m\troubleshooting\common-troubleshooting-steps\06.png)
+
+使用**设备管理器**手动更新音频设备的驱动程序
+
+更新后（即使找不到更新驱动），你应该再次右键点击设备，点击属性，然后在驱动标签页中查看“驱动提供者”。你不需要Microsoft的驱动——大多数情况下这些只是通用驱动，没有专门匹配你的硬件。这常常导致无法正确选择输入或录制不正确等问题。这些必须用硬件制造商制造的驱动程序替换，以确保与硬件正确匹配。
+
+如果你现在已经有了更新的非Microsoft驱动，试试录像问题是否解决。
+
+## 1.5.12.1.6 检查物理连接
+
+使用**录音计****工具栏**检查 Audacity 从所选**录音设备**接收到的音频音量。点击麦克风图标以开始/停止监控音频音量。
+
+![](m\troubleshooting\common-troubleshooting-steps\07.png)
+
+**录音计量工具栏**显示麦克风音频电平
+
+如果仪表上没有电平，检查作系统音频设置中麦克风是否静音：
+
+![](m\troubleshooting\common-troubleshooting-steps\08.png)
+
+检查一下作系统的音频设置，看看麦克风是否静音了
+
+你也可以检查设备是否提供物理控制，可以静音或设置音量。
+
+![](m\troubleshooting\common-troubleshooting-steps\09.JPG)
+
+带麦克风静音和音量控制的USB声卡
+
+![](m\troubleshooting\common-troubleshooting-steps\10.JPG)
+
+USB接口，带麦克风和乐器增益控制
+
+如果你设备的控制设置正确，应该检查电脑和录音设备之间的连接。
+
+## 1.5.12.1.7 WASAPI和USB设备
+
+由于Windows的限制，你不能在USB设备上使用WASAPI，同时在板载音频卡上回听。用MME或DirectSound代替，或者用USB设备同时接收输入和输出（如果可能的话）。
 
 
 
