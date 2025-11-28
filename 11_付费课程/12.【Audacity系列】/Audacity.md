@@ -226,6 +226,260 @@ Audacity
 
 
 
+## 1 菜单吧
+
+***菜单栏在Windows上的图片***
+
+
+
+![](m/images/8/8e/menubar.png)
+
+**点击图片了解更多信息**
+
+菜单栏位于Audacity窗口顶部。
+
+Mac 版菜单栏略有不同，有“Audacity”和“Window”菜单，这取决于该作系统的惯例。
+
+
+
+## 额外菜单
+
+> **额外菜单**
+>
+> 上方显示的Audacity菜单栏显示了一个额外的可选菜单：**额外**。
+>
+> * **额外**菜单可在**“查看>额外[菜单”（开/关）](view_menu.html#extra_menus_onoff)**或[偏好设置](preferences.html)中的界面面板中开启。
+> * **额外**菜单增加了许多较少使用的命令。这些工具对视障或运动障碍用户尤其有用，但其他人也可能觉得有用。
+> * 如果你只需要经常访问这些额外命令的一小部分，可以设置快捷方式，并隐藏额外的菜单。
+
+
+
+## 菜单
+
+|                    菜单                     |                      你会在那里找到什么                      |
+| :-----------------------------------------: | :----------------------------------------------------------: |
+| [Audacity](audacity_menu.html)*（仅Mac版）* | 关于Audacity、偏好设置、系统服务、显示与隐藏Audacity及其他应用程序，以及退出。 |
+|           [文件](file_menu.html)            |             处理Audacity项目文件和其他音频文件。             |
+|           [编辑](edit_menu.html)            |                     修改你项目中的音频。                     |
+|          [选择](select_menu.html)           |              在项目中选择轨道，或轨道内的选择。              |
+|           [视图](view_menu.html)            | 调整[变焦](zooming.html)等级。显示***[剪辑、](glossary.html#clipping)***[撤销历史记录](undo_redo_and_history.html#history)、[调音器](view_menu.html#mixer)、[工具栏](toolbars_overview.html)和[卡拉OK窗口](view_menu.html#karaoke)。 |
+|         [运输](transport_menu.html)         |                       控制录音和播放。                       |
+|          [轨道](tracks_menu.html)           |                    添加、对齐和标记音轨。                    |
+|         [生成](generate_menu.html)          |    在你的项目中创建新的音频。音频生成插件也会出现在这里。    |
+|          [影响](effect_menu.html)           |     处理你项目中的音频。外部效果插件也会出现在该菜单中。     |
+|          [分析](analyze_menu.html)          | 分析你项目中的音频。外部插件会在音频上工作但不产生音频输出，以及标签[声音](label_sounds.html)和频谱图等工具。 |
+|    [窗口](window_menu.html)*（仅限Mac）*    |            缩小并缩放窗口，选择项目窗口到最前面。            |
+|           [工具](tools_menu.html)           |                   宏和其他插件的额外菜单。                   |
+|           [额外](extra_menu.html)           | 额外菜单提供了工具[栏](toolbars_overview.html)作以及用于轨道[聚焦](audio_tracks.html#focus)和编辑或回放光标移动的额外命令，这些在默认的Audacity菜单中没有。这些网站对视障用户或使用鼠标有困难的人尤其感兴趣。如有需要，这些命令可被分配[快捷指令](keyboard_preferences.html)。 |
+|           [帮助](help_menu.html)            | 简短而全面的帮助;截取Audacity截图;下载最新Audacity;音频设备信息;显示日志并生成支持数据;Audacity的版本号、授权和构建信息。 |
+
+
+
+## 工具栏——上下停靠区
+
+Audacity有两个工具栏的停靠区。
+
+工具栏可以在两个码头中的任意一个内[摆放和调整大小](customizing_toolbar_layout.html)，或者悬浮在码头之外。
+
+### [上工具栏停靠区](#upper)
+
+![](m/images/8/80/upper_tooldock_3_6_0.png)
+
+ **在 Audacity 中，剪[切/复制/粘贴工具栏](cut_copy_paste_toolbar.html)和[设备工具栏](device_toolbar.html)\*默认不会\*显示。** 
+
+### 下工具栏停靠区](#lower)
+
+![](m/images/2/20/lower_tooldock_3_6_0.png)
+
+
+
+> 以下简要介绍了各个工具栏。点击任意工具栏标题或图片，即可进入该工具栏的详细信息页面。
+
+
+
+## 上工具栏停靠区
+
+### [运输工具栏](transport_toolbar.html)
+
+![](m/images/d/d1/transport_toolbar_3_6_0.png)
+
+- 控制 播放与录制
+- 当既不播放也不录音时，会跳到项目开始或结束。
+
+------
+
+### [工具栏](tools_toolbar.html)
+
+![](m/images/8/8b/tools_toolbar_3_6_0.png)
+
+- 选择多种工具进行选择、维修和音量调节。
+- 点击任何工具，了解该工具的功能详情。
+
+------
+
+### [编辑工具栏](edit_toolbar.html)
+
+![编辑工具栏3-6-0.png](/m/images/2/23/edit_toolbar_3_6_0.png)
+
+- 最上一行有一套缩放工具：放大、缩小、缩放到选择、缩放到合适的项目和缩放切换
+- 最底一排有：修剪、静音、撤销和重做
+
+
+
+------
+
+### [剪切/复制/粘贴工具栏](cut_copy_paste_toolbar.html)
+
+![剪切-复制-粘贴工具栏3-6-0.png](m/images/9/9e/cut_copy_paste_toolbar_3_6_0.png)
+
+- 一个工具栏，用于“剪切”、“复制”、“粘贴”和“删除”功能。
+- 该工具栏***默认不***显示。选择**“查看>工具栏”>[“剪切、复制、粘贴工具栏](cut_copy_paste_toolbar.html)**”以显示该工具栏，默认该工具栏会停靠在上方的停靠区。
+
+
+
+------
+
+### [音频设置工具栏](audio_setup_toolbar.html)
+
+![音频设置工具栏3-6-0.png](m/images/2/2f/audio_setup_toolbar_3_6_0.png)
+
+- 它有一个菜单，可以管理音频输入和输出设备的设置，并调整电脑的延迟。
+
+
+
+------
+
+### [分享音频工具栏](share_audio_toolbar.html)
+
+![](m/images/d/db/share_audio_toolbar_3_6_0.png)
+
+
+
+- 让你能够在线与他人分享你的音频。
+
+
+
+------
+
+### [记录仪表工具栏](meter_toolbar.html#recording)
+
+
+
+![记录仪表工具栏3-6-0.png](m/images/8/81/recording_meter_toolbar_3_6_0.png)
+
+- 显示录制音量，并在未录制时切换[输入监控](meter_toolbar.html#recordinglevel)
+
+
+
+------
+
+### [播放计量工具栏](meter_toolbar.html#playback)
+
+![播放计量器工具栏3-6-0.png](m/images/c/c4/playback_meter_toolbar_3_6_0.png)
+
+- 显示播放音量
+
+
+
+
+
+------
+
+### [设备工具栏](device_toolbar.html)
+
+![设备工具栏3-6-0.png](m/images/f/f8/device_toolbar_3_6_0.png)
+
+- 选择音频主机、录音设备、录音通道数量和播放设备。
+
+> **设备工具栏**在 Audacity ***中不再***默认显示。要启用它，请点击**“查看>工具栏**”，并点击**“设备工具栏**”。
+
+
+
+## 下工具栏停靠区
+
+### [时间签名工具栏](time_signature_toolbar.html)
+
+![拍号工具栏3-6-0.png](m/images/4/4c/time_signature_toolbar_3_6_0.png)
+
+- 在使用[**时间线**](timeline.html#ruler)的节**拍和小节**显示模式时，设置**节奏**、拍子/分和**拍号**。
+
+
+
+------
+
+### [吸附工具栏](snapping_toolbar.html)
+
+![弹跳工具栏3-6-0.png](m/images/9/97/snapping_toolbar_3_6_0.png)
+
+- 支持将吸附为整秒（或其他整时格式）。
+
+
+
+------
+
+### [时间工具栏](time_toolbar.html)
+
+![时间工具栏3-6-0.png](m/images/4/43/time_toolbar_3_6_0.png)
+
+- 一个只读工具栏，显示当前音频位置。
+  - 当Audacity不在播放或录制时，这会显示当前光标位置或当前选择的开头（如果有）。
+  - 播放或录音时，会动态显示当前播放头或录音头的位置
+
+
+
+------
+
+### [选择工具栏](selection_toolbar.html)
+
+![选择工具栏3-6-0.png](m/images/5/5e/selection_toolbar_3_6_0.png)
+
+- 显示当前选择的范围（若无选择则显示光标位置）。
+- 通过键盘输入调整光标和[选择区域](audacity_selection.html)位置。
+
+
+
+
+
+------
+
+### [快速游玩工具栏](play_at_speed_toolbar.html)
+
+![快速游玩工具栏3-2-3.png](m/images/f/fb/play_at_speed_toolbar_3_2_3.png)
+
+- 播放音频的速度比正常时慢或快，影响音高。
+
+
+
+
+
+------
+
+### [频谱选择工具栏](spectral_selection_toolbar.html)
+
+![频谱选择工具栏3-6-0.png](m/images/8/88/spectral_selection_toolbar_3_6_0.png)
+
+- 它可以让你在不进入[频谱图视图](audio_track_dropdown_menu.html#spgram)的情况下调整当前的频谱（*频率）*选择。
+- 该工具栏***默认不***显示。选择**“查看>工具栏”>[“谱选工具栏](spectral_selection_toolbar.html)**”以显示该工具栏，默认该工具栏会停靠在下方的扩展坞。
+- 从下拉菜单中选择你喜欢的格式选项：中心频率和宽度![菜单下拉菜单](m/images/e/ed/menudownarrow.png)，或低频和高频![菜单下拉菜单](m/images/e/ed/menudownarrow.png)。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # 1 导航
@@ -4185,7 +4439,7 @@ Audacity 3.2.3 版本引入了默认禁用的**剪切/复制/粘贴工具栏**�
 
 ## 1.5.17.7 设备工具栏
 
-![img](https://support.audacityteam.org/~gitbook/image?url=https%3A%2F%2F2387260374-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MhmBVzGzh8SctWQ6jPR%252Fuploads%252F5pSNgexc4V8ycAx0kbgD%252Fimage.png%3Falt%3Dmedia%26token%3Da431ec5f-ffda-4788-b1fa-28e4d3839e81&width=768&dpr=4&quality=100&sign=26911a1c&sv=2)
+![](m\troubleshooting\missing-features\02.JPG)
 
 设备工具栏的外观
 
@@ -4201,15 +4455,87 @@ Audacity 的时移工具在 3.1.0 版本中已被移除。后来每个弹夹顶�
 
 
 
+1.5.18 特殊用途
+
+# 1.5.18.1 预期用途
+
+Audacity 是一款音频编辑器，DAW 功能有限。因此，我们期望并测试以下用途：
+
+- 录音，包括模拟媒体数字化
+- 应用效果以改变或增强音频
+- 安装插件以扩展 Audacity 的功能
+- 音频分析
+- 制作播客、有声书、歌曲及其他音频作品
+- 将项目保存到磁盘或 audio.com 云
+- 将项目导出成各种文件格式。
+
+## 1.5.18.2 未支持的用途
+
+Audacity 也可以在各种其他场景中使用。不过，虽然我们感谢你发现了比我们最初预期更多的Audacity用途，但这些情景尚未经过测试，使用风险自负：
+
+- 使用 Audacity 作为 HEX 编辑器。
+- 使用 Audacity 处理非音频文件（“数据弯曲”）。
+- 使用除 audio.com 以外的云同步服务来进行开放项目。这是因为 Audacity 的项目格式在正常作中会创建[临时文件](https://sqlite.org/wal.html)，而通用云同步服务可能难以有效同步。因此，使用 audio.com 以外的云服务可能导致数据损坏。
+- 在遗留作系统上使用 Audacity。虽然我们没有明确添加任何检查来人为限制 Audacity 能运行的系统，但我们也没有测试与它的兼容性。
+- 使用自编译或修改版本。Audacity 被第三方广泛转发，有些选择禁用某些功能或应用某些更改。我们只测试 [audacityteam.org](https://audacityteam.org/) 上可用的版本。
 
 
 
+# 1.5.19 系统管理员信息
+
+关于Audacity在学校、企业、机构和企业中的部署与合规信息
+
+## 1.5.19.1 部署
+
+目前，Audacity 没有任何针对机构规模部署的组策略或安装程序。然而：
+
+- Audacity 通过 WinGet 发行。你也许可以在部署脚本中集成一个[WinGet配置文件](https://learn.microsoft.com/en-us/windows/package-manager/configuration/)。
+- Audacity 不需要安装;独立的ZIP可以直接复制到任何地方。
+
+## 1.5.19.2 合规
+
+### 可及性
+
+《Audacity》基本上是易于理解的。使用指南可在侧边栏找到;VPAT文件可在 [audacityteam.org/VPAT](https://audacityteam.org/VPAT) 查阅。
+
+### 隐私
+
+Audacity 默认只收集少量用于更新检查和崩溃报告的数据;详情可见[隐私政策](https://www.audacityteam.org/desktop-privacy-notice/)。Audacity的数据存储在荷兰;**唯一存储的个人数据是UUID**（可在偏好设置中关闭）。AI插件也是如此——它们[在](https://www.audacityteam.org/download/openvino/)你自己的设备上处理所有数据，而不是把数据发送到云服务器（这也是安装程序下载大量数据的原因）。
+
+此外，它还包含一个 Audio.com（[隐私政策](https://audio.com/legal/privacy-notice.pdf)）集成，需要用户明确作（注册）才能激活。
+
+### 通过偏好设置禁用功能
+
+这两个功能都可以在偏好设置中关闭：
+
+- 要禁用更新检查，请进入**偏好设置 -> 应用**，并关闭相关复选框。
+- 要禁用 Audio.com 功能，请进入**偏好设置 -> 模块**，并禁用 mod-cloud-audiocom。
 
 
 
+注意：Audacity 的偏好设置默认是按用户存储的。如果你想设置全局设置或在注销后重置状态，可以在与可执行文件相同的目录中创建一个文件夹（audacity.exe）。确保Audacity有读写权限。`Portable Settings`
+
+### 永久禁用功能
+
+你可以从源代码编译Audacity，但禁用某些功能。你可以从 [audacityteam.org/download](https://www.audacityteam.org/download/) 下载源代码。每个源的 BUILDING.md 文件中都包含汇编说明。默认情况下，从源代码编译时不会启用网络功能。
 
 
 
+注意：你也可以从Audacity的二进制文件中删除库（.dll）文件，例如。不过这只适用于模块。`mod-cloud-audiocom.dll`
+
+### 文书选项
+
+如果您需要填写特殊的合规表格或合同以使用Audacity，请按照以下步骤作：
+
+1. 仔细阅读你需要填写的合规表格。你可能会发现，自由分发的开源软件可以免于这些文书工作。
+2. 尽量预先填写表格，记住Audacity收集的数据有限。如果你需要帮助，可以咨询你自己的合规官——一般来说，最清楚什么是允许或不允许的，是你的组织。Audacity的法人实体为MuseCY SM Ltd.，地址为Spyrou Kyprianou 84,4004 Cyprus
+3. 将预填表格发送给 [**privacy@audacityteam.org**](mailto:privacy@audacityteam.org)。
+
+一般来说，表格越完整，我们响应得越快。
+
+
+
+如果可以的话，试着找一份“跟随”合同加入。我们目前已与伊利诺伊州斯普林菲尔德学区第186号签署了学生数据隐私协议，其他地方教育局也可以订阅。
 
 
 
@@ -7150,7 +7476,7 @@ Audacity 中有很多**无法导出**的陷阱。
 
 
 
-## 2.2.10.2 “功能 X 不够好或缺失”
+#### 2.2.10.2 “功能 X 不够好或缺失”
 
 您可以将您对新功能或改进功能的想法发送到我们的[论坛](https://forum.audacityteam.org/viewforum.php?f=20)。
 
