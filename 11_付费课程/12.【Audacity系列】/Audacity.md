@@ -466,7 +466,538 @@ Audacity有两个工具栏的停靠区。
 
 
 
+# 音轨
 
+>每条包含数字音频***的音轨***从左到右分别是：
+>
+>每条包含数字音频***的音轨***从左到右分别是：
+>
+>- 一个带有[音频轨道下拉菜单](audio_track_dropdown_menu.html)的[轨道控制面板](#panel)，用于更改视图模式和该轨道的音频属性
+>- 一个带有单位的[垂直刻度](#scale)
+>- 音频[波形](audacity_waveform.html)的视觉表示。
+>
+>每导入音频文件时，都会生成新的轨道。菜单中的“**[新增轨道”>](tracks_menu.html#add_new)**“允许你明确添加新的空单声道或立体声音轨。
+
+
+
+## 关于曲目
+
+**一首曲子**就像你交响乐中的一种乐器，或者播客中的一个人声。你可以添加更多轨道，所有轨道都会[被混合](mixing.html)成最终输出，但在编辑过程中你可以独立作每条轨道。如果你有两个麦克风录制的采访，每个麦克风都可以放在独立轨道里。如果有背景音乐，可以放进第三轨。
+
+非空轨道至少包含一个**片段**。片段是一段连续的音频，例如录音或背景音乐。片段可以在[时间线](timeline.html)上移动，使其在混音的不同时间点播放，也可以在轨道间拖曳。关于片段在轨道中的工作原理，请参见 [Audacity Tracks 和 Clips](audacity_tracks_and_clips.html)。
+
+
+
+## 立体声音轨
+
+下图展示了Audacity立体声轨道的各个组成部分：带[音频轨道下拉菜单](audio_track_dropdown_menu.html)的轨道控制面板、垂直音阶和波形显示本身，典型的最终编辑录音。按照惯例，上波形和垂直刻度代表左声道，下波形和垂直音程代表右声道。
+
+![](m/images/c/c1/stereo_waveform_annotated.png)
+
+ 图像波形中显示了均方根。这不是默认设置，但可以通过**[查看](view_menu.html)**菜单开启。 
+
+>有关波形及替代[波形（dB）](audacity_waveform.html#db)视图模式（通过轨道下拉菜单选择）的更多详情，请参见[Audacity波形](audacity_waveform.html)。声[谱图](audio_track_dropdown_menu.html#spgram)视图可以在同一菜单中选择。
+>
+>* 要更改所有轨道创建时显示的默认视图模式，请使用[曲目偏好设置](tracks_preferences.html)。
+
+
+
+在立体声轨道中，轨道上的所有编辑作对两个通道都相同，尽管有些[效果](index_of_effects_generators_and_analyzers.html)器可能会对每个通道的处理方式不同。例如，效果**>[放大](effect_menu.html#amplify)**和默认效果**>[归一](effect_menu.html#normalize)**化，只设置最响亮通道的峰值***[幅度](glossary.html#amplitude)***，然后将同样*的幅度变化*应用到另一个通道，保持通道间的平衡。如果需要，Normalize 可以独立将左右声道归一化到相同的振幅。详情请参见[“放大与归一](amplify_and_normalize.html)化”。
+
+
+
+## 单声道音轨（单声道，左声或右声道）
+
+单一音频轨道与立体声轨道具有相同的组成部分，但只有单一波形和一个垂直音阶，而非两个。如果在轨道下拉菜单中使用“分立体声轨道”将立体声轨道拆分为两个单轨，这一点很容易看出。同一个菜单可以让单轨道变成单声道、左声道或右声道。每条单条轨道都可以[单独选择](audacity_selection.html)，因此可以独立于其他轨道进行编辑。
+
+![](m/images/f/f9/mono_track_example.png)
+
+
+
+## [轨道控制面板与垂直比例](track_control_panel_and_vertical_scale.html)
+
+### 轨道控制面板
+
+![](m/images/2/2e/tcp_for_3.6.0.png)
+
+音轨左侧的**轨道控制面板**有该轨的控制和状态指示。除按键外，左键点击可执行曲目选择和移动，具体如下。
+
+- **键盘：**使用**上行**或**下**键切换轨道[焦点](#focus)，然后按**回车**键选择;按住**Shift**，然后用**上或****下**键将选择扩展到另一首曲目。更多内容请阅读[键盘选择](audacity_selection.html#keyboard)。
+- 当有其他曲目时，点击拖拽可以上下移动这条轨道
+  - 键盘**：**在当前重点轨道上的**Shift+M**下[拉菜单](audio_track_dropdown_menu.html)中选择**Move轨道**之一。
+- [**静音**](#panel)或[**独奏**](#panel)按钮控制播放或导出哪些曲目。
+- 影响揭示实时效果堆栈。详情请参见 [**GitBook 中的实时效果**](https://support.audacityteam.org/audio-editing/using-realtime-effects)。
+
+
+
+- 增**益/音量滑块**，用于调节轨道音量
+- 通过**声像滑块**将该轨道的音频定位在立体声舞台中
+
+
+
+### 垂直尺度
+
+![](m/images/0/0a/vertical_scale_ruler.png)
+
+- 垂直**刻度**显示振***[幅](glossary.html#amplitude)***时显示波***[形](glossary.html#waveform)***，显示***[频率](glossary.html#frequency)***时显示***[频谱](glossary.html#spectrum)***或***[音高](glossary.html#pitch)***。
+
+- 左图所示的幅度刻度是默认***[的线性](glossary.html#linear)***刻度
+  - 1.0 是正信号的最大值，负信号的最大值是 -1.0。
+  - 或者，你也可以从[**垂直刻度**](track_control_panel_and_vertical_scale.html#vscale)的上下文菜单中选择线性视图的分贝刻度。
+
+
+
+## [音轨下拉菜单](audio_track_dropdown_menu.html)
+
+通过点击向下指向的三角形的“曲目名称”进入音频[轨道下拉菜单](audio_track_dropdown_menu.html)![](m/images/a/a9/trackdropdown.png)在[赛道控制面板](#panel)中。
+
+或者，你可以通过按下**Shift+M**进入当前聚焦音轨的轨道下拉菜单。
+
+![](m/images/d/da/audio_track_dropdown_menu.png)
+
+您可以使用音频轨道下拉菜单来作单个单声道或立体声轨道：
+
+- 重新命名赛道
+- 在项目窗口中将轨道上下移动
+- 为赛道设置当前的视图类型
+- 选择用于波形显示的配色
+- 切换立体声轨道的通道
+- 制作或分割立体声轨道
+- 为该轨道设置当前***[采样率](glossary.html#sample_rate)***和***[采样格式](glossary.html#sample_format)***。
+
+进入下拉菜单前无需[选择](audacity_selection.html)曲目。
+
+> Note Tracks 和 Label Tracks 也有类似的下拉菜单，但范围更为有限。
+
+
+
+### 曲目波形的上下文菜单
+
+通过右键点击曲目波形，还有一个辅助的上下文菜单。
+
+![](m/images/a/ae/waveform_context_menu_3_6_0.png)
+
+你可以用它来：
+
+- 剪切、复制或粘贴音频选段
+- 根据当前选择拆分或连接剪辑
+- 静音或取消静音音轨
+- 将当前选中的片段重新命名
+- 更改当前选中的片段速度
+- 渲染当前选中的剪辑速度变化
+
+
+
+## [剪辑](audacity_tracks_and_clips.html)
+
+![](m/images/9/98/a_pair_of_clips.png)
+
+[片段](audacity_tracks_and_clips.html)存在于轨道中。你可以通过顶部圆角来辨认剪辑的起点和终点。
+
+- 剪辑手柄拖曳条包含剪辑名称，剪辑主体包含波形。
+- 你可以通过剪辑手柄[移动剪辑](audacity_tracks_and_clips.html#move)。
+- 你可以通过拖拽剪辑左右边缘的上角来裁[**剪**](audacity_tracks_and_clips.html#trim)。
+
+
+
+- 你可以通过按住**Alt**并拖拽它左右边缘的上角来改变剪辑的速度。
+
+
+
+- 你可以双击片段后编辑名称，重新命名。
+- 你可以右键点击剪辑*（**不是**剪辑柄），*在[右键菜单](audacity_tracks_and_clips.html#context)中查看更多选项。
+
+
+
+关于剪辑的详细信息可在[**音频剪辑**](audacity_tracks_and_clips.html)页面找到。
+
+
+
+## 轨道的分割与连接
+
+通过音频**[轨道下拉菜单](audio_track_dropdown_menu.html)**，你可以：
+
+- 将立体声轨道分成左右声道的独立轨道
+- 将立体声轨道拆分为两条独立的单声道轨道
+- 在立体声轨道中交换通道
+- 将两个单声道、左轨或右轨合并成一条立体声轨。
+
+或者你也可以右键点击轨道中的波形，使用[**剪辑菜单**](audacity_tracks_and_clips.html#context)。
+
+更多信息请参见**[“立体声轨道的拆分与连接](splitting_and_joining_stereo_tracks.html)**”。
+
+
+
+## 更换赛道显示
+
+> 点击并拖动两个波形之间以改变它们的相对高度（**Esc**键可以中止拖拽）。
+
+### 改变立体声轨道中通道的高度
+
+点击并拖拽通道之间的线。
+
+![](m/images/4/4f/resizing_channels.png)
+
+要将轨道恢复默认，使每个通道大小相同，只需双击通道之间的灰色条带即可。
+
+### 改变轨道高度
+
+点击并拖曳轨道（**Esc**键可以中止拖动）。
+
+![](m/images/6/61/resizing_a_track.png)
+
+### 赛道起点的箭头
+
+这表明轨道在开始前就已经有音频数据。
+
+![](m/images/4/47/track_audio_before_zero.png)
+
+你无法看到零之前的音频。
+
+### 茎图
+
+在[Tracks偏好设置](tracks_preferences.html)中有一个显示**样本**的条目。该设置改变[了波形](audacity_waveform.html)和[波形dB](audacity_waveform.html#db)视图的显示方式。只有当你放大到能看到单个采样点时，它才会影响波形的外观。在较低的变焦档下，这并没有什么区别。
+
+- **主干图：**这是默认设置，从轨道中心线到采样点绘制一条垂直线，从而更清晰地反映采样的相对振幅。如下方图片所示，当缩放到接近茎图最小值时，样本点之间的水平距离可能比连接点默认时更不均匀。
+- **连接点：**这种替代设置会产生一个波形，每个采样点通过一条线连接下一个采样点。违约。
+
+![](m/images/e/ef/connect_dots_stem_plot_examples.png)
+
+> 间距不均是由于“锯齿”引起的，但进一步放大时，无论选择连点图还是干图，间距都会得到平衡。
+
+### 波形（dB）视图
+
+通过右键点击轨道[**的垂直刻度**](#scale)，并从下拉菜单中选择“**dB**”，可以切换到***[dB](glossary.html#decibel)***对*数视图。*
+
+![](m/images/1/1f/trackexampledb.png)
+
+这个视图比简单的波形视图更清楚地显示录音音量足够大，并且能很好地填满整个显示。
+
+### 多视角——波形与频谱图
+
+也可以在同一轨道中使用波形视图和[**频谱图视图**](spectrogram_view.html)。
+
+![](m/images/b/b7/multi_view_mono_default_50_50.png)
+
+ **单声道音频轨的多视图分割50：50波形/频谱图示例** 
+
+要获得分段多视图，请从曲[**目控制面板**](#panel)下拉菜单中选择“**多视图**”。
+
+详情请参见**[多视角](multi_view.html)**
+
+
+
+## 轨道焦点
+
+你可能注意到本页图片中有些曲目周围有彩色边框*（具体颜色取决于你选择的[主题](themes.html)）。*这个边框表示这条轨道有*焦点*。
+
+带有焦点的轨道是指接受任何包含“focused track”的命令的轨道。这些命令包括“关闭聚焦轨道”（**Shift + C**）、“静音/取消静音聚焦轨道”（**Shift + U**）和“切换聚焦轨道”（**RETURN** 或 **Enter**，切换是否[选择](audacity_selection.html)焦点轨道）。
+
+“聚焦轨道”命令的完整列表可通过[在键盘偏好](keyboard_preferences.html)设置中搜索“焦点轨道”（无引号）或在[键盘快捷指令参考](keyboard_shortcut_reference.html)中查看这些命令的描述。
+
+轨道焦点用于[选择音频](faq_editing.html#select)，并通过键盘[将选择区域扩展或移动到其他轨道](faq_editing.html#selcopy)。
+
+> ![建议](m/images/b/ba/warningicon.png)***请注意***，一首有焦点的曲目并不一定意味着当前的曲目就在那个曲目里。很有可能一首曲子里有选曲，另一首曲子却被重点放在另一首。
+
+
+
+## 音轨工作
+
+关于使用音频轨道的更多信息，请参见：
+
+- **[Audacity 曲目与片段](audacity_tracks_and_clips.html)**：关于片段、曲目及其互动的更详细信息。
+- [音频选择](audacity_selection.html)：音频选择的特殊特性以及Audacity提供的工具，帮助你做出所需的选择
+- [同步锁定轨道组](sync_locked_track_groups.html)：保持一组轨道同步
+- [放大](zooming.html)：看到你需要看到的东西
+
+
+
+
+
+效果
+
+# 效果索引、生成器、分析器和工具
+
+> 本页面是Audacity随机附带的效果器、生成器、分析器和工具的索引。你还可以添加各种流行格式[的新插件](customization.html#Plugins)。
+>
+> - **[效果器](#effects)**会以某种方式改变音频。
+>   - 有些效应会使波形的峰值水平显著提高。
+> - **[生成器可以](#generators)**生成新的音频，无论是在已有轨道中还是新轨道中。
+> - **[分析仪对](#analyzers)**部分音频进行分析——它们不改变音频，也不创建新的音频。
+> - **[工具](#tools)**提供各种指令，作用于项目，但不属于效果、生成器或分析器类别。
+> - **[\**插件管理器\**](manage_effects_generators_and_analyzers.html)** 管理你可用的内置效果器、生成器、分析器和插件列表。
+>
+> 虽然默认情况下大多数效果、生成或分析命令没有提供快捷键，但你可以为这些命令设置自己的快捷方式。关于如何作的说明请参见[键盘偏好设置](keyboard_preferences.html)。
+>
+> 请参[见此页面](navigating_effects_without_using_a_mouse.html)，了解如何在不使用鼠标的情况下作特效。
+>
+> > ![提示](m/images/d/d7/bulbicon.png)**实时效果：**现在可以通过**效果堆栈**在任意轨道上实时作一些外部插件效果。请参见 [**Audacity 支持**](https://support.audacityteam.org/)网站上的[**“使用实时效果**](https://support.audacityteam.org/audio-editing/using-realtime-effects)”。
+>
+> > ![建议](m/images/b/ba/warningicon.png)请注意，当你对[**时间拉伸的剪辑**](audacity_tracks_and_clips.html#speed)应用效果或生成器时，剪辑速度的变化会自动被[**渲染**](edit_menu_clip_boundaries.html#render)出来。如果你在[时间拉伸的片段](audacity_tracks_and_clips.html#speed)中对选区应用效果或生成器，Audacity 会[**将原始剪辑拆分**](audacity_tracks_and_clips.html#split)，使得该选区可以作为效果应用的一部分进行渲染。分析仪***不受***此影响。
+
+> ![建议](m/images/b/ba/warningicon.png)播放、录制或暂停时，效果菜单会显示为灰色，因为音频数据的更改必须按下**停止**![停止按钮](../m/images/f/f9/stop.png)键。
+
+> ![提示](m/images/d/d7/bulbicon.png)宏[调色板](apply_macro.html#palette)，通过**Tools > Apply Macros > [Palette](apply_macro.html)**访问，是为常用效果组建立一套喜欢预设的好方法。
+
+
+
+## [效果](#effects)、[生成器](#generators)、[分析](#analyzers)器和[工具](#tools)的字母索引
+
+> 当某个效果、生成器或分析仪有设置时，其描述页（可通过下方链接访问）显示界面图像及其默认设置。
+
+| [可调衰落](adjustable_fade.html)   | [交叉淡入淡出片段](crossfade_clips.html)  | [厂牌声音](label_sounds.html)                        | [剧情光谱](plot_spectrum.html)               | [光谱删除](spectral_delete.html)                       |
+| ---------------------------------- | ----------------------------------------- | ---------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------ |
+| [放大](amplify.html)               | [交叉淡入淡出轨道](crossfade_tracks.html) | [限幅器](limiter.html)                               | [采摘](pluck.html)                           | [频谱编辑多功能工具](spectral_edit_multi_tool.html)    |
+| [自动鸭](auto_duck.html)           | [延迟](delay.html)                        | [响度归一化](loudness_normalization.html)            | [定期间隔标签](regular_interval_labels.html) | [频谱编辑参数均衡器](spectral_edit_parametric_eq.html) |
+| [低音与高音](bass_and_treble.html) | [失真](distortion.html)                   | [低通滤波器](low_pass_filter1.html)                  | [修](repair.html)                            | [幽灵编辑架](spectral_edit_shelves.html)               |
+| [节拍查找器](beat_finder.html)     | [DTMF音调](dtmf_tones.html)               | [测度RMS](measure_rms.html)                          | [重复](repeat.html)                          | [语气](tone.html)                                      |
+| [变音](change_pitch.html)          | [回波](echo.html)                         | [噪声门](noise_gate.html)                            | [混响](reverb.html)                          | [颤音](tremolo.html)                                   |
+| [变速和音高](change_speed.html)    | [淡入](fades.html#linearfade)             | [噪](noise_reduction.html)                           | [反向](reverse.html)                         | [截断沉默](truncate_silence.html)                      |
+| [节奏变化](change_tempo.html)      | [淡出](fades.html#linearfade)             | [噪声](noise.html)                                   | [节奏轨道](rhythm_track.html)                | [声码器](vocoder.html)                                 |
+| [啁啾](chirp.html)                 | [工作室淡出](fades.html#studio_fadeout)   | [正常化](normalize.html)                             | [里塞特鼓](risset_drum.html)                 | [哇哇](wahwah.html)                                    |
+| [经典过滤镜](classic_filters.html) | [查找裁剪](find_clipping.html)            | [缺口滤波器](notch_filter.html)                      | [样本数据导出](sample_data_export.html)      |                                                        |
+| [点击移除](click_removal.html)     | [滤波曲线均衡器](filter_curve_eq.html)    | [Nyquist 插件安装器](nyquist_plug_in_installer.html) | [示例数据导入](sample_data_import.html)      |                                                        |
+| [剪辑修复](clip_fix.html)          | [图形均衡](graphic_eq.html)               | [奈奎斯特提示](nyquist_prompt.html)                  | [架子过滤器](shelf_filter.html)              |                                                        |
+| [压缩机](compressor.html)          | [高通滤波器](high_pass_filter.html)       | [保罗拉伸](paulstretch.html)                         | [沉默](silence.html)                         |                                                        |
+| [反差](contrast.html)              | [转化](invert.html)                       | [相位](phaser.html)                                  | [滑动拉伸](sliding_stretch.html)             |                                                        |
+
+> 在 Audacity 3.6.2 及以后版本中，Compressor 和 Limiter 的旧版本被重新引入，形式如下：
+>
+> - [遗留压缩器](legacy_compressor.html)
+> - [遗留限制器](legacy_limiter.html)
+>
+> 这些特效列表列在默认效果列表的新“遗产”部分。
+>
+> - [经典过滤器](classic_filters.html)也被移至遗产版块。
+
+
+
+> 从 Audacity 3.5.0 版本起，[**Vocal Reduction and Isolation**](vocal_reduction_and_isolation.html) 不再随 Audacity 一起发布。
+>
+> - 对于Windows用户来说，新的[**OpenVINO AI插件**](https://plugins.audacityteam.org/ai-plugins/ai-plugins)带来了更好的效果。
+> - 对于Mac和Linux用户*（以及Windows用户），*[**Vocal Reduction and Isolation**](https://plugins.audacityteam.org/nyquist-plugins/effect-plugins/filters-and-eq#vocal-reduction-and-isolation)仍可作为[**Muse支持网站**](https://plugins.audacityteam.org/nyquist-plugins/effect-plugins/filters-and-eq#vocal-reduction-and-isolation)下载的Nyquist插件。
+> - 相关文档保存在[**手册中**](vocal_reduction_and_isolation.html)。
+
+
+
+ 
+
+
+
+## [插件管理器](manage_effects_generators_and_analyzers.html)
+
+从[效果菜单](effect_menu.html)（或生成[菜单](generate_menu.html)、[分析菜单](analyze_menu.html)或[工具菜单](tools_menu.html)）选择此选项，会进入一个对话框，在 Audacity 中启用或禁用特定的效果、生成器和分析器。即使你没有添加任何第三方插件，也可以根据需要让效果菜单变短或变长。详情请参见[插件管理器](manage_effects_generators_and_analyzers.html)。
+
+默认情况下，Audacity 中所有内置效果都是开启的。
+
+> Audacity 还可以加载额外的插件：
+>
+> - 有关三个平台插件安装详情，请参见 [**Audacity 支持**](https://support.audacityteam.org/)网站上[**的“安装插件**](https://support.audacityteam.org/basics/installing-plugins)”。
+> - 另请参阅这[套可下载的奈奎斯特插件](https://plugins.audacityteam.org/nyquist-plugins/effect-plugins)
+
+
+
+## 对话框中的按钮
+
+根据效果、生成器或分析仪的不同，你会在对话框顶部看到以下按钮：
+
+- 预设和设置会有一个下拉菜单，方便你管理工具的预设，并查看工具的详细信息。详情请参见[“管理预设](manage_presets.html)”。
+- 预览会播放一段简短的音频预览，展示如果用当前设置应用效果会是什么样子，而不会对音频做实际修改。预览时长由你在“编辑偏好设置>播放>设置中[决定，默认](playback_preferences.html)设置是6秒。
+- 应用时，将效果或分析器应用到当前效果设置的选定音频上，然后关闭对话。
+- 生成将生成器应用到选定的音频或当前光标位置，并设置当前效果，然后关闭对话。
+
+> 你可能会看到一个调试按钮，请忽略它，那是给开发者测试工具用的。
+
+
+
+
+
+## [插件管理器](manage_effects_generators_and_analyzers.html)
+
+## 备份或转移你的设置
+
+要备份效果器、生成器和分析仪的设置，或者将设置迁移到另一台电脑，只需访问Audacity的设置文件夹：
+
+- Windows：**C：\用户\<你的用户名>\Appdata\漫游\audacity**
+- Mac：**~/Library/Application Support/audacity**
+- Linux： **/home//audacity-data**
+
+> ![提示](m/images/d/d7/bulbicon.png)请参阅[**此常见问题**](faq_installation_and_plug_ins.html#reset)解答，了解如何访问三个平台上的该文件夹。
+
+
+
+在那个文件夹里，你会找到一个叫 **pluginsettings.cfg** 的文件。这是包含你效果生成器和分析器设置、上次使用的设置以及你通过每个效果对话框中的“管理”按钮保存的用户预设的文件。
+
+- 要备份设置，只需将这个文件复制到安全位置即可。
+- 你可以把这个文件复制到另一台电脑的同一个位置，以便转移设置。
+
+
+
+## 按功能划分的效应
+
+详情请参见[效果菜单](effect_menu.html)。
+
+### 音量与压缩
+
+这些方法可以让声音变大或变小：
+
+- **[扩音](amplify.html)：**可以调节你选择的音频音量。
+- **[自动鸭子](auto_duck.html)：**当指定的“控制”轨道音量达到某个水平时，会降低（蹲伏）一条或多条轨道的音量。通常用于在解说音轨中听到语音时让音乐轨道更柔和。
+- **[压缩机](compressor.html)：**通过两种替代方法压缩***[动态范围](glossary.html#dynamic_range)***。默认的“***[RMS](glossary.html#rms)***”方法会让较响的部分变小，但保持较小的声音不变。另一种“峰值”方法会让整个音频更响，但放大较响的部分不及较小的部分。补***[色增益](glossary.html#gain)***可以应用于任一方法，使效果尽可能响亮且不***[失真](glossary.html#clipping)***，同时不进一步改变动态范围。
+- **[限制器](limiter.html)：**限制器通过低于指定输入电平的信号不受影响或轻微减弱，同时防止强信号峰值超过该阈值。母带制作工程师常将这种动态范围压缩结合补偿增益，以增强音频母带制作过程中的听觉响度。
+- **[响度归一](loudness_normalization.html)**化：对响度和均方根值进行归一化，改变音频音量*（通常降至推荐范围）。*它基于[EBU R 128](perceived_loudness_ebu_r_128.html)关于限制音频信号响度的建议。
+- **[归一](normalize.html)**化：使用归一化效果设置轨道的最大振幅，均衡立体声轨道左右声道的振幅，并可选择性地移除轨道中的任何[直流偏移](dc_offset.html)。
+
+### 衰落
+
+这些功能可以淡入或淡出一段：
+
+- **[可调节褪色](fades.html#adjustable)：**通过调整各种参数，你可以控制要应用的褪入（非线性褪色）形状;允许部分（*即不从零或到零）*逐渐淡出或下降。
+- **[交叉淡入淡出片段](crossfade_clips.html)：**使用交叉淡入淡入点片段，对单个音轨中的选定片段对一对片段进行简单的交叉淡入淡出。
+- **[交叉淡出曲目](crossfade_tracks.html)：**使用交叉淡入淡曲（Crossfade Tracks）来实现两条重叠轨道之间的平滑过渡。将要淡入的轨道放在要淡入的轨道上方，然后选择两条轨道的重叠区域并应用效果。
+- **[淡入](fades.html#linearfade)：**对所选音频应用***[线性](glossary.html#linear)***淡入——淡入的快速程度完全取决于所应用选择的长度。如果想要更可自定义的***[对数](glossary.html#log)***渐变，可以使用[工具栏](tools_toolbar.html)上的[包络工具](envelope_tool.html)。
+- **[淡出](fades.html#linearfade)：**对所选音频进行***[线性](glossary.html#linear)***淡出——淡出速度完全取决于所应用选择的长度。如果想要更可自定义的***[对数](glossary.html#log)***渐变，可以使用[工具栏](tools_toolbar.html)上的[包络工具](envelope_tool.html)。
+- **[工作室淡出](fades.html#studio_fadeout)：**对所选音频应用更音乐化的渐隐，使音质更悦耳。
+
+> 关于不同类型的渐变功能，请参见[“渐远](fades.html)”。
+
+### 音高与速度
+
+这些参数可以让声音更快、更慢、音调更低或更高音调：
+
+- **[变换音高](change_pitch.html)：**改变选曲的音高而不改变节奏。
+- **[改变速度和音高](change_speed.html)：**改变选曲速度，同时改变音高。
+- **[节奏变化](change_tempo.html)：**在不改变音高的情况下，可以改变选曲的节奏和时长（时长）。
+- **[保罗斯特拉奇](paulstretch.html)：**只在极端的时间拉伸或“静止”效果时使用Paulstretch，这对合成器垫音色、识别演奏故障或创造有趣的听觉质感很有用。比如把歌曲放慢到“练习”速度，使用Change Tempo或Sliding Stretch代替Paulstretch。
+- **[滑动拉伸](sliding_stretch.html)：**这个效果允许你通过选择初始和/或最终变化值，持续改变选曲的节奏和/或音高。
+
+### 均衡器与滤波器
+
+这些变化会改变音质：
+
+- **[低音与高音](bass_and_treble.html)：**可以独立调节音频的低***[频](glossary.html#frequency)***和高频;表现就像立体声系统的低音和高音控制一样。
+- **[滤波曲线均衡](filter_curve_eq.html)器：**通过绘制曲线调整特定频率的音量水平
+- **[图形均衡](graphic_eq.html)：**通过滑块调节特定频率的音量。
+- **[高通滤波器](high_pass_filter.html)：**通过高于截止频率的频率，衰减低于截止频率的频率。
+- **[低通滤波器](low_pass_filter.html)：**通过低于截止频率的频率，并在截止频率以上的频率衰减。
+- **[缺口滤波](notch_filter.html)器：**大幅衰减（“缺沟”）狭窄的频带。这是去除主电源嗡嗡声或特定频率的哨声的好方法，且对其余音频的损害最小。
+- 架**[子过滤器](shelf_filter.html)：**架状滤波器曲线在两端都是平坦的，而不是仅在经过的频率处平坦。
+
+### 噪音消除与修复
+
+- **[点击移除](click_removal.html)：**点击移除旨在去除音轨上的点击声，特别适合去除黑胶唱片录音中的点击声。
+- **[剪辑修复](clip_fix.html)：**Clip Fix 尝试通过插值丢失的信号重建被截断的区域。
+- **[噪声门](noise_gate.html)：**将声音水平降至指定阈值以下。>噪声门是一种“动态处理器”，允许超过指定阈值的音频不受影响地通过（门*“开”）*，并停止或减少低于阈值电平（门“*闭合”）*的声音。
+- **[降噪](noise_reduction.html)**：该效果非常适合减少持续的背景噪声，如风扇、磁带噪声或嗡嗡声。它不太适合去除背景中的说话或音乐。更多详情[请见此处](noise_reduction.html)。
+- **[维修：](repair.html)**修复一个特定的短点击、爆音或其他不超过128采样的故障。
+
+### 延迟与混响
+
+这些会为你的音频增加混响或回声：
+
+- **[延迟](delay.html)：**一种可配置的延迟效果，延迟时间可变，延迟的音高移位。
+- **[Echo](echo.html)：**反复播放选中的音频，通常每次声音都更柔和，且通常在开始后一段时间才与原始声音融合。每次重复之间的延迟时间固定，中间没有暂停。关于更具可调节延迟时间和音高变化回声的回声效果，请参见[延迟。](effect_menu.html#Delay)
+- **[混响](reverb.html)：**可配置立体声混响效果，内置和用户添加预设。它可以用来为单声道音色添加氛围音（即声音发生空间的印象）。也可以用它来增加立体声音频中听起来过于“干涩”或“接近”的混响。
+
+> 有关延迟和混响效果的基本原理详情，请参见维基[中的此页面](https://wiki.audacityteam.org/wiki/Principles_of_delay_effects)。
+
+### 失真与调制
+
+- 失**[真](distortion.html)：**使用失真效果让音频听起来失真。通过扭曲波形，频率内容会发生变化，这通常会使声音变得“沙哑”或“刺耳”。严格来说，这个效果是[波形塑形器](https://en.wikipedia.org/wiki/Waveshaper)。波形整形的结果等同于对音频波形施加非线性放大。提供了预设塑形函数，每种函数会产生不同类型的失真。
+- **[相位枪](phaser.html)：**“相位器”这个名字来源于“相位移器”，因为它通过将相位移信号与原始信号结合来工作。相位偏移信号的运动通过低***[频](glossary.html#frequency)***振荡器（LFO）进行控制。
+- **[颤音：](tremolo.html)**在对话中选择的深度和速率下调制选择的音量。这和吉他和键盘手熟悉的颤音效果相同。
+- **[声码器](vocoder.html)：**在立体声轨道的左声道合成音频（通常是人声），右声道合成载*波*（通常是白噪声），以产生左声道的修改版本。用白噪音配音普通声音，会产生类似机器人的声音以产生特效。
+- **[Wahwah](wahwah.html)**：音色快速变化，比如那把吉他在70年代非常流行。
+
+### 特殊
+
+- **[倒立：](invert.html)**这个效果会把音频采样翻转过来。这通常不会影响音频的声音。它偶尔对去除声带很有用。
+- **[重复：](repeat.html)**重复指定次数的选择。
+- **[反面](reverse.html)：**反转选定音频;效果结束后，音频的结尾会先响，开头的声音最后响起。
+- **[截断沉默](truncate_silence.html)：**自动尝试寻找并消除可听见的静默。不要用这个来处理渐弱的音频。
+
+### 光谱工具
+
+这些要求你的音频必须处于[声谱](spectrogram_view.html)图视图中：
+
+- **[幽灵删除](spectral_delete.html)：**会删除音频中的频谱选择。
+- **[光谱编辑多功能工具](spectral_edit_multi_tool.html)：**当选定轨道处于[频谱图](audio_track_dropdown_menu.html#spgram)或[频谱图 log（f）](audio_track_dropdown_menu.html#spgram_log) 视图时，根据谱谱选择应用***[陷波器](glossary.html#notch)***、***[高通滤波](glossary.html#hp)***器或***[低通滤波器](glossary.html#lp)***。该效果也可用于改变音频质量，作为滤[波曲线均衡](filter_curve_eq.html)器或[图形均衡](graphic_eq.html)器的替代方案。
+- **[频谱编辑参数均衡](spectral_edit_parametric_eq.html)器：**当所选轨道处于[频谱图](audio_track_dropdown_menu.html#spgram)或[频谱图log（f）](audio_track_dropdown_menu.html#spgram_log)视图，且频谱选择有中心频率和上下边界时，执行指定的***[带状割除](glossary.html#band_stop)***或***[带带增强](glossary.html#band_pass)***。这可以作为[滤波曲线均衡](filter_curve_eq.html)器和[图形均衡](graphic_eq.html)的替代方案，或者通过减少频率尖峰或提升其他频率来掩盖峰值，从而修复受损音频。
+- **[幽灵编辑书架](spectral_edit_shelves.html)：**当所选轨道处于[频谱图](audio_track_dropdown_menu.html#spgram)或[频谱图 log（f）](audio_track_dropdown_menu.html#spgram_log) 视图时，根据所选频谱选择应用低频或高频搁置滤波器，或同时使用两个滤波器。这可以作为[滤波曲线均衡](filter_curve_eq.html)器和[图形均衡](graphic_eq.html)的替代方案，或者通过减少频率尖峰或提升其他频率来掩盖峰值，从而修复受损音频。
+
+### 遗产影响
+
+- **[传统压缩机](legacy_compressor.html)：**这是Audacity 3.5及更早版本中使用的旧压缩机。
+- **[遗留限制器](legacy_limiter.html)：**这是Audacity 3.5及更早版本中使用的旧限制器。
+- **[经典滤镜](classic_filters.html)：**提供三种不同类型的***[滤波器](glossary.html#filter)***，共同模拟绝大多数模拟滤波器，为分析和测量提供了有用的图形工具。
+
+
+
+## 按功能分类的生成元
+
+详情请参见[生成菜单](generate_menu.html)。
+
+### 生成音调
+
+- **[啾啾](generate_menu.html#chirp)：**它能生成四种不同的音色波形，类似于[音调发生](#tone)器，同时还允许设置起始和结束的振幅和频率。
+- **[DTMF音调](generate_menu.html#dtmf)：**产生双音多频（DTMF）音调，类似于电话键盘产生的音调。
+- **[基调](generate_menu.html#tone)：**生成四种不同的音色波形之一：*正弦*波、*方波*、*锯齿波*或*方波（无别名），*频率介于1 Hz到*当前[项目采样率](audio_settings_preferences.html)的一半*之间。
+
+### 制造安静或噪音
+
+- **[噪音](generate_menu.html#noise)：**产生“白噪音”、“粉色”或“棕色”噪声。
+- **[沉默](generate_menu.html#silence)：**生成的音频幅度为零，唯一可配置的就是时长。
+
+### 生成乐器或节拍器
+
+- **[节奏轨道](rhythm_track.html)：**生成一条具有规律间隔音色、指定速度和每小节拍数（小节）的曲目。
+- **[拔气](pluck.html)：**一种合成拨弦音色，带有突然或渐近的渐淡，以及可选择的音高，对应于***[MIDI](glossary.html#midi)***音符。
+- **[Risset鼓](risset_drum.html)：**能产生逼真的鼓声。
+
+### 从导入数据生成
+
+- **[样本数据导入：从](sample_data_import.html)**导入的数值数据创建音频。
+
+
+
+## 按功能分类的分析仪
+
+详情请参见[分析菜单](analyze_menu.html)。
+
+### 分析振幅或其他音频特性
+
+- **[对比](contrast.html)：**分析单声道或立体声语音轨，以确定前景语音与背景音乐、观众噪音或类似声音之间的平均***[有效值](glossary.html#rms)****音量（*对比度）差异。目的是判断演讲内容是否能被听力障碍者理解。
+- **[查找剪辑](find_clipping.html)：**以[标签轨道](label_tracks.html)显示***[剪辑采](glossary.html#clipping)***样的片段，作为屏幕阅读器替代**观看>[剪辑](view_menu.html#Show_Clipping)**的替代方案。每次运行必须包含至少一个剪辑样本，但也可以包含未剪辑的样本。
+- **[测量RMS](measure_rms.html)：**一个简单的分析仪，用于测量轨道中的***[均方根（RMS](glossary.html#rms)****）*水平。
+- **[剧情光谱](plot_spectrum.html)：**将选定的音频（一组在某一时刻的声压值）转换为频率与***[振幅](glossary.html#amplitude)***的图表。
+
+> “**测量RMS**”插件的主要目的是为[奈奎斯特插件](nyquist.html)编写者提供示例，展示如何将翻译添加到插件中。
+
+### 用标签划分声音或静音
+
+- **[厂牌音效](label_sounds.html)：**是一种工具，用于为长录音中不同的歌曲或段落（或静默）进行标记，例如LP或磁带中的曲目。
+
+### 马克·比茨使用标签
+
+- **[节拍查找器](beat_finder.html)：**尝试在比周围音频响亮得多的节拍上贴[标签](label_tracks.html)。它是一个相当粗糙且现成的工具，不一定适合典型现代流行音乐的压缩***[动态范围](glossary.html#dynamic_range)***曲目。如果检测不到足够的节拍，试着降低“阈值百分比”设置。
+
+
+
+## 按功能划分的工具
+
+### 奈奎斯特
+
+- **[奈奎斯特提示](nyquist_prompt.html)**：弹出一个对话框，你可以输入奈奎斯特命令。奈奎斯特是一种用于生成、处理和分析音频的编程语言。更多信息请参见[Nyquist插件参考资料](https://wiki.audacityteam.org/wiki/Nyquist_Plugins_Reference)。
+- **[Nyquist 插件安装器](nyquist_plug_in_installer.html)**Nyquist 插件安装器本身就是一个 Nyquist 插件，简化了其他 Nyquist 插件的安装。
+
+### 用标签分割音频
+
+- **[固定间隔标签](regular_interval_labels.html)：**在长轨道中放置[标签](label_tracks.html)，将其分割成更小且大小相同的段落。
+
+### 数据导出与导入
+
+- **[样本数据导出](sample_data_export.html)**读取所选音频中连续采样的值，并将这些数据打印成纯文本、CSV或HTML文件。更多信息可作为文件顶部的“头部”添加。
+- **[示例数据导入](sample_data_import.html)**从[纯ASCII文本](https://en.wikipedia.org/wiki/Plain_text)文件读取数值，并为每个读数值创建[PCM](https://en.wikipedia.org/wiki/Pulse-code_modulation)样本。
 
 
 
