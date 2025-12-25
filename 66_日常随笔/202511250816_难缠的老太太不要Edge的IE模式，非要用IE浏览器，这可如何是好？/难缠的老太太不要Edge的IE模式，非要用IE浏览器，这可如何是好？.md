@@ -114,9 +114,11 @@
 
 
 
-**网管小贾的Windows11无损打开IE小工具**
+**网管小贾的Windows11无损打开IE小工具.7z**
 
-下载链接：
+下载链接: https://pan.baidu.com/s/1QT8PXH9clstdOznyfRrrHg
+
+提取码: rf6t
 
 
 
