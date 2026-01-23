@@ -136,7 +136,7 @@ Windows记事本支持Markdown了？我不信！
 
 如果双击不行的话，可以打开 `Powershell` ，用命令行的方式安装。
 
-```
+```powershell
 # 基础安装命令（替换为实际文件路径）
 Add-AppxPackage -Path "C:\Downloads\你的应用包.msixbundle"
 
@@ -162,7 +162,7 @@ Add-AppxPackage -Path "C:\Downloads\你的应用包.msixbundle" -ForceApplicatio
 
 小背心正在洋洋得意，这时来了一名保安，手里攥着根棍子。
 
-“这……都谁家的狗？嚷嚷啥呢，咋都不拴狗绳呢！谁的啊？没人领今晚加餐了……”
+“这……都谁家的狗？叫唤啥呢，咋都不拴狗绳呢！谁的啊？没人领今晚加餐了……”
 
 
 
