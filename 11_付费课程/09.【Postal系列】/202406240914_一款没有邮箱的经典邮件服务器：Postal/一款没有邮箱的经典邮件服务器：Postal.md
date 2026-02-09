@@ -435,6 +435,18 @@ dU0xUzUzbmpIalhKd1N6cEZHQThsdE5y
 
 
 
+**Postal手册中英文版合集**
+
+下载链接：https://pan.baidu.com/s/1wNp8rHEh8hpnYHV1L7cmHA
+
+提取码：ei5q
+
+解压密码：28766403
+
+PDF密码：sysadm.cc
+
+
+
 
 
 **将技术融入生活，打造有趣之故事**
