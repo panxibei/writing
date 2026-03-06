@@ -232,6 +232,16 @@ qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=C:/UEFIGame/RELE
 
 
 
+
+
+**202603051505_UEFIGame（上）.7z**
+
+下载链接：
+
+
+
+
+
 **将技术融入生活，打造有趣之故事**
 
 网管小贾 / sysadm.cc
