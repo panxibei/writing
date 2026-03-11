@@ -20,9 +20,9 @@ Screenbox是一款基于LibVLC技术的现代媒体播放器，专为Windows 10/
 
 * 流畅的设计用户界面
 * 支持通过手势来寻找和调整音量
-* 窗口大小调整热键（数字键 `1` - `4` ）
-* 参考B站或 `YouTube` 操作习惯的热键布局
-* 画中画 `PiP` 模式
+* 窗口大小调整热键（数字键 `1` - `4` ）
+* 参考B站或 `YouTube` 操作习惯的热键布局
+* 画中画 `PiP` 模式
 * 可将视频帧保存为图片
 * `Chromecast` 支持
 * 通过网络浏览和播放媒体
@@ -59,7 +59,7 @@ Add-AppxPackage -Path C:\Sysadm\Screenbox_0.17.0.0_neutral.msixbundle
 
 
 
-打开 `Screenbox` 后，是这个样子的，很符合 `Windows 11` 的风格。
+打开 `Screenbox` 后，是这个样子的，很符合 `Windows 11` 的风格。
 
 图b03
 
@@ -90,4 +90,8 @@ Add-AppxPackage -Path C:\Sysadm\Screenbox_0.17.0.0_neutral.msixbundle
 图b07
 
 
+
+**Screenbox开源播放器安装包.7z**
+
+下载链接：
 
