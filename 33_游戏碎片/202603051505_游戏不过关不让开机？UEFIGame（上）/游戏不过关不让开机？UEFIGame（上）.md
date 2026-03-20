@@ -194,8 +194,6 @@ UEFIGame------------------RELEASEX64_OVMF.fd（OVMF文件）
 
 
 
-
-
 游戏附加文本文件到底是个什么？
 
 它们是怎样的一种存在呢？
@@ -321,14 +319,6 @@ qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=C:/UEFIGame/RELE
 在接下来的日子里玛丽·冯能否完成她的秘密任务呢？
 
 请看下回分解……
-
-
-
-
-
-
-
-
 
 
 
