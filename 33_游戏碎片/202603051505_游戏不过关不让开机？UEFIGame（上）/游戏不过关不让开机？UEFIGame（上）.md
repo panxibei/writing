@@ -300,11 +300,11 @@ qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=C:/UEFIGame/RELE
 
 
 
-**UEFIGame+QEMU+OVMF（虚拟机跑UEFIGame）.7z**
+**UEFIGame+QEMU+OVMF（上篇：虚拟机跑UEFIGame）.7z**
 
-下载链接：
+下载链接: https://pan.baidu.com/s/14Qx_Hv67vbGeijmphsmhZg
 
-
+提取码: wccm
 
 
 

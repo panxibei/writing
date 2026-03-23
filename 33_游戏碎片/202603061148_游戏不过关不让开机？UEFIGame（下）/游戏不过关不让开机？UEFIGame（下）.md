@@ -149,7 +149,9 @@ FK公司地下某间秘密办公室里却像与世隔绝一般显得格外安静
 
 **UEFIGame+BOOTICE+DiskGenius（下篇：物理机跑UEFIGame）.7z**
 
-下载链接：
+下载链接: https://pan.baidu.com/s/1SyRzMVfl5R5uryE6WPkGKg
+
+提取码: r4y9
 
 
 
