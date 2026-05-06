@@ -4,7 +4,7 @@
 
 英文： shutdown-if-game-failured-uefigame-2
 
-关键字：uefigame,uefit,efi
+关键字：uefigame,uefi,efi
 
 
 
