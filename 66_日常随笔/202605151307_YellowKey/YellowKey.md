@@ -24,6 +24,12 @@ U盘盘符:\System Volume Information\
 
 可以用一些第三方磁盘工具软件将 `FsTx` 文件夹复制到 `System Volume Information` 中。
 
+图b01
+
+图b02
+
+图a03
+
 
 
 最后，如果你的U盘盘符是F盘，那么应该是这样的。
@@ -36,7 +42,7 @@ F:\System Volume Information\FsTx
 
 3、重启电脑到 `WinRE` 环境。
 
-这个 `WinRE` 环境是指 `Windows` 自带的恢复代理环境，是用来修复自身系统的，类似于 `WinPE` 。
+这个 `WinRE` 环境是指 `Windows` 自带的恢复代理环境，是用来修复自身系统的，类似于 `WinPE` 。
 
 可以这样操作：
 
@@ -44,17 +50,35 @@ F:\System Volume Information\FsTx
 
 
 
+
+
 4、没有问题的话，会自动触发进入 `SYSTEM` 权限的命令行，从而绕过 `Bitlocker` 。
+
+正常情况下应该会跳过以下开机时的 `Bitlocker` 密码输入界面。
+
+图a05
+
+
 
 只要有了最高权限的命令行界面，那么接下来想干什么就不用我多说了吧！
 
-图
+图a02
+
+
+
+
+
+如果启动 `WinRE` 失败，则会显示系统修复界面。
+
+图a04
+
+
 
 
 
 5、一旦成功绕过，原来的U盘上的 `FxTx` 文件夹会自动被删除。
 
-
+图a01
 
 
 
