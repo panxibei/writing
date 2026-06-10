@@ -2152,7 +2152,11 @@ EPSM 方形声道的工作原理与 Sunsoft 5B 方形通道相同，唯一不同
 
 小贴士：你可以按住**Ctrl**，同时使用项目资源管理器的滑块，这样滚动更准确。
 
-![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\10-12.GIF)
+
+
+<video src="10-12.mp4" controls width="800">
+  抱歉，您的浏览器不支持 video 标签。
+</video>
 
 ------
 
