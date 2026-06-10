@@ -2928,3 +2928,960 @@ FamiStudio还附带了几首演示曲。除非特别说明，这些演示歌曲�
 
 
 
+# 十七、变更日志
+
+每个版本的版本历史/发布说明。
+
+如需下载旧版本或查看发布日期，请访问[Github发布](https://github.com/BleuBleu/FamiStudio/releases)页面。
+
+## 版本 4.5.1（热修复）
+
+这次发布完全由Steo负责，我只是发布而已。谢谢！！
+
+变更/修复：
+
+- 修复了几个VGM问题（也整合了Perkka的一些内容）
+- 导出对话框默认选择当前歌曲
+- 在NSF中增加了VRC7延音位（覆盖释放）
+- 新增了上下文菜单子菜单，并将缩放选项迁移到了子菜单中
+- 新增了暗不可支持频道的选项
+- 新增了让部分图案独特的选项（图标应在主要版本中随之出现）
+- 修复了导入时N163循环/释放点的问题（4.5.0引入的bug）
+- 修复了 FamiTracker N163 导出问题（块长度和截断为 32）
+- 修复了一些导出对话本地化错误
+
+## 版本 4.5.0
+
+这次发行和上一次一样，主要由Steo负责。非常感谢他们持续的努力。在我专注于其他项目期间，这种情况很可能会持续到可预见的未来
+
+变更/修复：
+
+- 新增了禁用DPCM攻击的选项，这样会忽略初始DMC值
+- 增加了在示波器视频导出中使用DPCM采样颜色的选项
+- 新增了导入NSF初始DMC值的选项
+- 在钢琴卷轴的菜单中添加了音阶，右键/长按空位即可访问
+- 在项目资源管理器中添加了双击/点击以打开他们的属性
+- 为每种模式添加了保存项目导出设置
+- 将DMC初始值添加到文本导出时
+
+## 版本 4.4.4（热修复）
+
+变更/修复：
+
+- 修正了警告图标可能与某些控制重叠的问题（谢谢Steo！）
+- 修复了一个问题，就是导出到NSF/Sound Engine时，歌曲循环点使用了错误的琶音包络线（谢谢Steo！）
+- 修复了一个导出到 NSF/Sound Engine 时可能跳过版本的问题。
+- 修复了导出到 NSF/Sound Engine 时延迟剪辑的问题。
+- 在Linux上输入带有斜杠的文件名时已修复崩溃问题（感谢Steo！）
+- 未经测试尝试在安卓上恢复armv7（32位）支持可能会崩溃。
+
+## 版本4.4.3（热修复）
+
+变更/修复：
+
+- 修复了切换歌曲时显示错误通道效果的问题（谢谢Steo！）
+- 修复了文本导入问题，文件可能有无效的模式长度/节奏错误（谢谢Steo！）
+- 已修复 NumericUpDown 文本框在最大值更改后仍被错误夹住的问题（感谢 Steo！）
+- 修复了钢琴卷轴视频渲染问题，启用滚动条导致出现空隙（感谢Steo！）
+- 修复了音序器特殊粘贴插入器的问题，导致偏移的常规模式保持自定义（感谢Steo！）
+- 使用全宽数字作为名字时修复了崩溃问题（谢谢Steo！）
+- 修复了导出带有重复采样映射的歌曲崩溃的问题（感谢James Rowe！）
+- 当名字带有破折号时，已修正ASM6音效导出
+- 修复了延迟剪辑的声音引擎导出问题
+- 修复了 MacOS Retina 上过大的移动光标问题
+- 修复了 DPCM 样本预览在安卓上听起来断断续续
+- 还原了一些最近可能在某些情况下延迟音符1帧的MIDI更改
+- 新增了更新DPCM样本源的选项
+- Android 原生库与 16KB 页面对齐，以让 Google 满意
+
+## 版本 4.4.2（热修复）
+
+变更/修复：
+
+- 在iOS上快速按下播放/倒带时的死锁问题解决了问题
+- 使用三角形长度计数器固定导入NSF
+- 修复了导出到 NSF/ROM 时 DPCM 采样混淆的问题
+- 在某个安卓版本中输入纹理时出现的灰色方块问题已修复（感谢Steo！）
+- 多项DPI修复，包括macOS上的手动缩放（感谢Steo！）
+- 多次 VGM 导入修复（感谢 Perkka！）
+- 导出到音效引擎时新增了DPCM选项（感谢Alex的反馈和测试！）
+- 已升级到最新的Android SDK
+
+## 版本 4.4.1（热修复）
+
+变更/修复：
+
+- 使用空白FDS仪表时的修复崩溃
+- 固定N163 <->FDS仪器转换
+- 修复了影响某些旧进口设备的FDS问题（Gyruss在某些仪器上有正弦波）
+- 修复与改进的FDS调制（声音引擎与FS模拟）
+- 已修复移动端工具栏问题，涉及上下文菜单无响应
+- 修复了合并相同模式时出现错误琶音的问题
+- 解决了使用空白波形时FDS或N163上“重采样周期”非常短的问题
+- 多个Linux和GTK对话框问题
+- 多个小部件的改进/修复
+- 本地化更新
+
+## 版本 4.4.0
+
+变更/修复：
+
+- FDS多波支持（谢谢Steo！）
+- DPCM选项有“修剪至16”和“修剪至16+1”（感谢Steo！）
+- FDS用的是独立的低频滤波器（谢谢Steo！）
+- FDS的PWM，包括第四个PWM预设（多亏了Steo！）
+- VGM FDS导入支持（感谢Steo！）
+- NSF/VGM导入调谐选项（谢谢Steo！）
+- Linux支持kdialog和zenity支持对话（感谢Steo！）
+- 重新设计了C绑定，并能在音效引擎中合并相同通道（感谢jroweboy！）
+
+行为改变/破坏：
+
+- FDS的默认滤波选项略有调整，以更好地匹配硬件
+
+**注：**这是第一个几乎完全由社区贡献驱动的重大发布。虽然我专注于另一个项目，但Stea已经大力推动，进行了广泛的硬件比较并增加了许多生活质量改进。感谢他以及所有为本次发布做出贡献的人！
+
+## 版本4.3.4（iOS热修复）
+
+变更/修复：
+
+- 部分设备上的屏幕缩放问题已修复。
+
+## 版本 4.3.3（热修复）
+
+变更/修复：
+
+- 首次iOS发布！
+- 提升播放速度精度以更好地匹配硬件
+- 提升NSF进口时效准确性
+- 修复了调整尺寸时工具栏问题，可能导致时间码丢失位置
+- NSF和VGM导入时DPCM位的固定反转
+- 修复了导致Linux卡顿的临时文件夹问题
+- 修复了几个错别字和本地化问题
+- 固定DPCM装填按钮始终视觉启用
+- 在某些操作中尝试使用撤销/重做时，修复了崩溃问题
+- 如果应用在移动端首次被最小化，应用就不会让你保存新项目
+- 在使用Wayland使用高DPI缩放时，已修复Linux上的问题
+- 固定乐器/琶音滴管
+- 固定节拍器音量直到你重启应用才生效
+- 新增了“全部选择 / 选择无”的工具提示
+- 将《前往西利乌斯之旅》演示曲的部分倒转，使其听起来符合作者意图
+- 大部分修复和改进都是和Steo合作完成的，谢谢！
+
+行为改变/破坏：
+
+- 手机端默认的快拍精度现在是1/4拍（1/16分音符）
+
+<iframe src="https://www.youtube.com/embed/MhEeVK23k_s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 4.3.2（热修复）
+
+变更/修复：
+
+- 修复了导出音频/视频时的崩溃
+
+## 版本4.3.1（热修复）
+
+变更/修复：
+
+- 修复了MMC5音量太小的问题（谢谢Steo！）
+- 修复了在不同扩展包的项目间粘贴图案时的崩溃（感谢Steo！）
+- 固定MIDI通道10鼓键映射
+- 修复了仪表参数滑块上的撤销/重做功能无法正常工作
+- 在手机上取消预览后导出视频时的问题已修复
+- 修复了PAL对ROM文件的切换（谢谢Steo！）
+- 修复了DPCM预览按钮播放音频比预期更多的次数（谢谢Steo！）
+- 修复了多个拼写错误和本地化问题（感谢Alex和Nyaongi！）
+- 修复了使用非原生操作系统对话框时的多个问题
+- 在数字上下输入多个“-”时修复崩溃
+- 修复了屏幕尺寸调整后手机复选框重置的问题
+- 恢复了非功能性的平面拾音视频更改
+- 在音效引擎的压缩分发中添加了缺失的音符表
+- 新增Linux可执行文件
+
+## 版本 4.3.0
+
+[![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\17-1.JPG)](https://famistudio.org/doc/releases/430/)
+
+变更/修复：
+
+- 支持按项目自定义调音（例如：A 不是 440Hz）
+- N163波形自动位置分配
+- 在歌曲/项目间复制粘贴时，提升冲突解决
+- 新应用内字体（Noto Sans）：低分辨率下更易读，支持国际字符
+- 统一桌面和移动端的UI代码，移动端对话框现在看起来和感觉会更像桌面版
+- 让更多移动端功能可用：
+  - 害羞模式
+  - MIDI 导入
+  - MIDI 导出
+  - 能够从存储中导入歌曲
+  - 能够从存储器导入乐器
+  - 能够从设备存储中导入其他FMS项目中的DPCM样本
+- PAL扩展音频支持（谢谢Steo！）
+- 对NES APU体积的小幅调整（谢谢Steo！）
+- SDAS/GBDK支持（感谢Michel Iwaniec！）
+- 俄语翻译（感谢Alex、Mkliukang1和Furmilion！）
+- 韩文翻译（感谢Nyaongi和Ospaggi！）
+- 将所有平台升级到 .NET 8.0
+
+行为改变/破坏：
+
+- 默认的低音截止和滤波频率也被调整为更符合硬件
+- NES的APU体积也做了些微调整，以更好地匹配硬件
+- 大多数“全部选择”/“选择不”按钮已被上下文菜单取代（桌面右键，手机长按）。
+
+## 版本 4.2.1（热修复）
+
+变更/修复：
+
+- 修复了MSI安装程序指向.NET 5.0而不是7.0
+- 修复了项目属性中没有保存的声音引擎设置
+- 固定的低音滤波器设置没有保存在应用设置中
+- 通过将 VRC6 初始化写入 0 至 $9003 修复了声音引擎中的初始化
+- 修复了音响引擎中颤音可能卡顿的问题
+- 在移动端项目资源管理器中修正了DPCM采样的“+”按钮
+- 修复了使用文件夹时在项目间粘贴物品时的崩溃问题
+- 已修复Linux上的 GLFW 兼容性问题（谢谢 Steo！）
+- 修正了FDS磁盘的错误尺寸
+- 修复了Sound Engine/NSF/ROM中非循环的相对音高包线问题
+- 修复了Sound Engine/NSF/ROM中音量滑动和FamiTracker节奏的问题
+- 让视频循环和应用里音频循环更一致
+- 更清楚地说明不能重命名多个图案
+- 优化的VGM导入
+
+## 版本 4.2.0
+
+[![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\17-2.JPG)](https://famistudio.org/doc/releases/420/)
+
+变更/修复：
+
+- S5B包络支持（S5B和EPSM）
+- FDS自动调制支持
+- FDS模拟改进：适当的过滤、DAC仿真及修复。
+- 相位复位支持
+- Accurate Seek support（从一开始完全模拟整首歌，适合相位重置）
+- 如果所有乐器包络线匹配，允许禁用音符的起音（对FM通道非常有用）
+- 项目资源管理器中的文件夹支持
+- 更多音频扩展的过滤选项以及项目中存储设置的能力
+- 声源支持最多256种乐器（常规和扩展乐器）
+- 德语翻译（感谢Arda和VRC6Lover123！）
+- 音频后台改进：
+  - 所有平台的音频延迟都降低了
+  - 在Windows上切换到WASAPI（非独占模式）
+  - 音频设备更换检测及 macOS 上改进的蓝牙耳机支持
+- 视频导出改进：
+  - 统一钢琴卷轴模式
+  - 钢琴卷轴3D效果
+  - 叠加寄存器的选项
+  - 预览模式
+- 生活质量的小改善：
+  - 橡皮擦模式
+  - 能够在乐器间复制采样
+  - 能够输入效果值和项目浏览器参数
+  - 功能用于替换特定仪器
+  - 对于具有巨大数值的效果和参数使用对数滑块
+
+行为改变/破坏：
+
+- FDS模组的速度/深度效果会重置为带有攻击音符的乐器值。
+- FDS模拟现在与硬件匹配得更加紧密。有些乐器现在听起来可能有很大不同。
+- S5B/EPSM 噪声不再有“NOP”频率，噪声频率会被调频器包线启用。
+
+系统需求变更：
+
+- 升级到.NET 7.0
+- 桌面的最低OpenGL要求降至OpenGL 3.0（之前为3.3）
+
+## 版本 4.1.3（热修复）
+
+变更/修复：
+
+- 打开N163项目或播放N163歌曲时，会有“爆音”问题被固定
+- 在安卓上执行特定操作时，固定颜色会逐渐褪色
+- 修复了如果你在Android上输入与现有项目完全相同名称，覆盖确认对话框不会出现
+- 修复了包络编辑器允许你在FDS波形上设置释放的问题
+- 修复了“取消分配未使用的DPCM乐器按键”清理选项，如果其他DPCM乐器使用了相同的钢琴键，则无法正常工作
+- 修复了4.1.2引入的bug，音符如果音符之间留有空隙，会重放攻击
+- 已修复导出到 NSF/ROM/SoundEngine 时，跨越循环点时音符攻击无条件被重新触发的问题
+- 修正了一个漏洞，可以通过复制模式来禁用DPCM通道的音符攻击
+- 修复了从 FamiTracker TXT 文件导入 DPCM 采样错误的问题
+- 已修复从FamiTracker文件导入琶音有时无法播放的问题
+- 修复了将N163歌曲导出为NSF/ROM/FDS/SoundEngine时仅通过特殊字符区分乐器名称的问题
+- 修复了按键同时按键时QWERTY钢琴输入卡住的问题
+- 太长无法放进项目资源管理器的名称现在会被省略号截断（...），在桌面端（移动端时已经存在了）
+- 升级到Android API 33级（Android 13.0）
+
+## 版本 4.1.2（热修复）
+
+变更/修复：
+
+- 修复了使用左键点击时乐器菜单消失的问题
+- 修复了使用小百分比值时的“跟随模式”抖动问题
+- 导入包含FDS仪器的.fti时，修复了超出范围的音量
+- 固定效果图标有时会在图案结束后出现
+- 修复了当使用停止音时，乐器加载失败的问题
+- 修复了在所有频道播放音符并启用所有扩展时崩溃的问题
+- 修复了demo歌曲中的几个小问题
+- 修复了N163模拟问题，波形偏置不当，偏差为-8
+- OPNI 对 EPSM 仪器的导入支持 （Perkka 贡献）
+- 小幅定位修复
+- Android 版本的 APK 现已可供下载，但如果无法在你的设备上使用，将不提供支持
+
+行为改变/破坏：
+
+- 使用7或8个N163声道的歌曲可能会稍微小一点，音量的反应也可能有所不同
+
+## 版本 4.1.1（热修复）
+
+变更/修复：
+
+- 修复了用VRC6导出到ROM时DPCM采样无法播放的问题
+- DPCM采样的固定移位错误影响所有仪器
+- 修复了“清除效果值”不总是有效
+- 修复了Linux上RTMIDI启动崩溃的问题，并更新了我们提供的版本
+- 固定导出带有FamiStudio文本格式的DPCM采样
+- 在使用便携版EXE时，Windows上的文件关联问题已修复
+- MacOS上修复的文件关联问题并不总是正常工作
+- 修正了鼠标点击在右键菜单外被忽略的问题（会像4.0.x那样表现）
+- 修复了在 MacOS 上使用指令键 Cmd+Q 时偶尔发生的崩溃
+- 已修复 macOS 上 MIDI 设备的问题
+- MacOS 上的固定触控板控制
+- 修正了与选择/强制显示通道的键盘快捷键混淆
+- 修复了一些小的本地化问题。
+- 更改了ffmpeg路径选项，允许输入文本，并且如果在PATH上，允许使用ffmpeg
+- 更改了默认的键盘快捷方式，强制显示通道在 MacOS 上使用 SHIFT + F 键，以避免问题
+
+## 版本 4.1.0
+
+变更/修复：
+
+- DPCM改进：
+  - 不再有“DPCM仪器”，每个仪器都可以分配DPCM采样（类似FamiTracker）
+  - 使用银行切换可获得最多256KB的采样。
+- 可配置键盘快捷键
+- 文本渲染变化，小文字可能会显得稍微模糊。
+- 更多UI缩放百分比选项
+- 应用内有更多上下文菜单选项
+- 是否混合N163的选项
+- 项目探索器排序改进
+- NSF 在 Android 上的导入支持
+- 安卓支持立体声和延迟导出。
+- Sunsoft 5B 噪声支持（Perkka 贡献）
+- VGM 和 WAV 代码清理（alexmush 贡献）
+- VGM 导入支持（Perkka 和 alexmush 贡献）
+- 译本：
+  - 西班牙语（NicolAR、zukinnyk 和 LagMager 贡献）
+  - 葡萄牙语（哔哔声，贡献）
+  - 简体中文（xwjcool123 和 FRC 贡献）
+
+行为改变/破坏：
+
+- ROM 导出现已使用 MMC5 映射器而非 MMC3，适用于 MMC5、ESPM 和 2A03。此举是为了更好地支持 DPCM 银行切换。
+
+系统需求变更：
+
+- Windows 版本现在是 64 位，目标是 .NET 5.0。
+- Linux/MacOS 版本现使用 .NET 6.0。Mono 已不再使用（详见[安装](https://famistudio.org/doc/install/)页面获取 .NET 下载链接）
+- MacOS现在至少需要Catalina，如果你安装了.NET的ARM版本，可以在ARM上原生运行
+- 所有桌面版本现在都需要OpenGL 3.3。
+- Android 版本现在需要 OpenGL ES 2.0。
+- Windows 7 和 32 位系统已不再被支持。
+
+<iframe src="https://www.youtube.com/embed/1xQbFUGz0Co" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 4.0.6（热修复）
+
+变更/修复：
+
+- 修正了修改N163重复包络线时有时会重置环点的问题。
+
+## 版本 4.0.5（热修复）
+
+变更/修复：
+
+- 新增默认图案名称选项
+- 新增了停止播放时倒带到上一位置的选项
+- 当用户编辑与当前选择的琶音不同时，新增警告
+- 当歌曲太大无法导出到NSF、ROM或音频引擎时，新增了正式警告
+- NSF进口时允许使用更长的图案
+- 使用2048帧模式长度时的固定崩溃
+- 当FamiStudio设置为默认应用时，NSF已固定打开
+- 修复了一个可能导致钢琴卷轴音符视觉重叠的故障
+- 固定音符在歌曲接近尾声时提前结束
+- 修复了导出为NSF、ROM或音效引擎时使用某些颤音设置时的崩溃
+- 修复了从其他项目导入乐器时的多个问题
+- 已修复导出NSFe在歌曲#2开始的问题。
+- 修复了当MIDI音符超出范围时的崩溃。
+- 已修复图案缩略图中的光栅化问题
+- 修复了多个FamiTracker（FTM/TXT）导入导出问题
+- 在手机上修复钢琴卷轴的小烦恼
+- 修复了在Windows上使用超过2GB内存时应用崩溃的问题
+- 固定漏洞，允许FDS包络线清理或调整大小
+- 修复了下拉列表滚动条的各种问题
+- 修复了导出多频道视频时的崩溃问题
+- VRC7 和 EPSM 的固定版本
+- 修正了多个不一致之处，并改进了寄存器查看器（感谢alexmush！）
+
+音效引擎变更/修复：
+
+- 修复了主应用颤音的不一致
+- 修复了相对音高包络的问题
+- 固定音符总是在 EPSM FM 频道 4、5、6 的 NSF 驱动中重新套用乐器（感谢 Perkka！）
+- 修正了偶尔缺拍的EPSM节奏（感谢Perkka！）
+- EPSM的固定音量差一分（谢谢Perkka！）
+
+行为改变/破坏：
+
+- 登记器查看器现在会显示真实的音高，不一定与钢琴卷轴上的音符匹配
+- 遗憾的是，目前音源无法支持超过13的颤音深度。会先发出警告，而不是给出错误的结果。
+- VRC7/EPSM乐器的发布将被正确处理。这一直是他们的打算，但有个bug让它们无法工作
+
+## 版本 4.0.4（热修复）
+
+修复方法：
+
+- 当项目中有超过32个频道时，视频导出是固定的。
+
+## 版本 4.0.3（热修复）
+
+修复方法：
+
+- 固定的下拉列表需要双击。
+
+## 版本 4.0.2（热修复）
+
+修复方法：
+
+- 在示波器导出中增加了触发算法选项（仅桌面版）
+- Linux 文件对话框中未正确显示的无扩展名文件
+- 包含 Unicode 字符的文件的固定拖放功能
+- 修复了编辑时用 CTRL+S 保存时的崩溃问题
+- 修复了导出带有破折号的 NSF/ROM 仪表时的崩溃
+- 修复了尝试导出FDS项目为NES ROM时的崩溃
+- 在 Linux/MacOS 上导入包含非 ASCII 字符的 NSF 时已修复崩溃问题
+- 修复了在导入某些 Famitracker 模块/仪器时 N163 仪器的崩溃
+- 为通过分支生成的Famitracker N163仪器进口增加了安全措施
+- 新增了Alt+右键缩放手势选项（设置中的输入部分），默认关闭
+- 修正错别字
+
+## 版本 4.0.1（Linux 和 Android 热修复）
+
+修复方法：
+
+- Linux 上修正了文件对话框。
+- 修复了一些在安卓上被忽略的钢琴敲击。
+
+## 版本 4.0.0
+
+变化：
+
+- 改版桌面版：
+  - 重新设计的控制，更接近移动版：上下文菜单、小玩意儿等。
+  - 基于GLFW，使用自定义绘制的小部件，在Win/MacOS/Linux上保持一致
+  - 摆脱对 OpenTK、WinForms、GTK# 和 System.Drawing 的所有依赖，为最终迁移到现代 .NET 做准备。
+  - 入门教程用的动画GIF
+- 对音序器的高度控制更多，并能在桌面上隐藏未使用的通道
+- 支持多音频扩展，支持EPSM
+- 支持N163多波形
+- 支持单音频扩展以导出ROM
+- 对N163/FDS波形进行波形重采样，导入WAV文件并调整周期和偏移。
+- 基础的NSFe导出支持，目前只跟踪名称和时长。
+- 示波器稳定性提升：
+  - 在导出视频中渲染示波器时使用模拟生成触发器，或在预览乐器时使用工具栏。
+  - 在播放歌曲时，工具栏示波器的触发检测有所改进（采用“峰值速度触发”算法）。
+- 导出视频或音频时的音频延迟效应。
+- Snapping的改进，最显著的包括：
+  - **Alt+1**、**Alt+2**、**Alt+3** 和 **Alt+4** 在常见的吸附值之间快速切换
+  - 调整音符大小或移动音符时，随时按**住Alt**键暂时禁用吸附
+  - 用上下文菜单设置吸附到特定音符时长
+  - 吸附效果值的选项
+
+行为改变/破坏：
+
+- 音效引擎现在有了专门的发行说明定义。如果你使用发布说明，现在必须设置 。`FAMISTUDIO_USE_RELEASE_NOTES`
+
+<iframe src="https://www.youtube.com/embed/pgJYHGu8yio" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 3.3.1（热修复）
+
+修复/变更：
+
+- 修复了导出（或取消导出）为音频或视频时的崩溃
+- 在Sequencer中撤销某些操作时修复崩溃
+- 在手机上允许注册查看器（默认关闭）
+
+## 版本 3.3.0
+
+变化：
+
+- EPSM支持（谢谢Perkka！）
+- 注册查看器（仅桌面版）
+- 三角洲计数器（Zxx）效果支持
+- 能够覆盖每个样本分配的初始DMC值
+- VGM导出（谢谢Perkka！）
+- Bamboo Tracker 乐器导入（仅桌面版）（感谢 Perkka！）
+- 一些小的外观调整（ADSR图、仪器编辑器中的标签等）
+- 在桌面上，按CTRL+A选择音序器/钢琴卷轴中的所有模式/音符
+- 手机上的额外选择选项（选择音符/模式/全部）
+- 不固定句点/笔记的选项，让应用更像NSF驱动的表现
+- MacOS 上的实验性文件关联（感谢 beetrootpaul！）
+- 大量小bug修复（N163调校、崩溃等）
+
+<iframe src="https://www.youtube.com/embed/n1sOtT-s65A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本3.2.3（热修复）
+
+修复/变更：
+
+- 修复了 OpenGL 在找到 SDL2.dll 时启动时崩溃的问题
+- 使用音频扩展时，固定导出到音效引擎
+- 编辑包络时错误演奏乐器的问题
+- 部分噪声通道音符的固定FTM导入
+- 导入Famitracker文件时，将音高值夹在FamiStudio支持的范围（-64...63）
+- 新增了一个关于弹指的新教程
+- 将吸附设置保存到INI文件中
+
+## 版本 3.2.2（热修复）
+
+修复/变更：
+
+- 修复了一些效果值可能超出预期范围，导致桌面崩溃的问题。
+- 移动端的固定FDS调制。
+- 修复了在大量通道存在时MIDI导入对话框崩溃的问题（仅桌面）
+- 部分电脑（仅台式机）可能降低CPU/GPU使用率
+
+## 版本 3.2.1（热修复）
+
+修复/变更：
+
+- 新增了关闭震动的选项（设置中的新“移动端”部分）
+- 增加了对DPCM采样8位和24位WAV文件导入的支持。
+- 如果NSF2不使用任何高级功能，也增加了导入NSF2的支持。
+- 修复了FamiTracker文本导出问题，没有要求提供文件名。
+- 如果把寻道条精确放在攻击状态，DPCM采样就不会播放。
+- 在特定情况下使用沟槽时，已修复NSF导出节奏问题。
+- 创建新的效果值时，会尊重移动端的捕捉功能。
+- 为力场显示通道绘制音符攻击，以提高可读性。
+- 修复了一个发布笔记超出视觉时长的问题。
+- 在使用立体声导出时正确模拟Tri-Noise-DMC音量（+隐藏INI选项，可同时为不同通道实现）
+- 实验性“双击删除模式/音符”选项（默认关闭）
+- 一些小的UI调整（按钮碰撞框、缩放级别、滚动条问题等）。
+
+## 版本 3.2.0
+
+变化：
+
+- 安卓应用（Play商店免费）
+- 多扩展支持
+- 三角/噪声/DPCM音量交互的正确模拟
+- 尤其是在低端机器或大型项目中，进行显著的图形优化。
+- 次要生活质量特征
+- 一些小的外观UI改动（图标、信封编辑器、用DPCM颜色给钢琴上色等）
+
+行为变化：
+
+- 现在，拍球的精准度以拍子表示。所以默认设置下，1 表示四分音符。
+- 频道音量也做了些微调整，以更贴近NES硬件。
+
+<iframe src="https://www.youtube.com/embed/vXfvDSRZYco" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 3.1.1（热修复）
+
+修复方法：
+
+- 固定钢琴卷轴钢琴键导出视频时不高亮
+- 在 MacOS 上关闭应用时修复了卡顿问题
+- 在Windows上使用>100%缩放时，“高级属性”按钮会变大
+- 当导出MIDI时无法计算拍号时添加保险措施
+- 在便携模式下启动FamiStudio时，将FMS文件关联到FamiStudio。
+- 视频导出中对 OpenH264 的实验性支持
+
+## 版本 3.1.0
+
+变化：
+
+- OGG 导出
+- 示波器视频导出
+- 立体声WAV/MP3/OGG/视频导出
+- 节拍器
+- 噪声滑梯
+- 卷内幻灯片
+- 噪声模拟改进
+- 便携模式（如果检测到设置portable.txt，保存到根目录中）
+- 导入其他项目的采样
+- 选择模式中的循环
+- ROM 导出现在使用 MMC3 映射器
+- DPCM样品的微调+DMC初始值参数
+- 每2分钟自动保存一次副本的选项
+- 加厚卷轴条的选项
+- 小幅音序器选择改进
+- 支持MacOS Monterey Beta，需要Beta 3或更新版本（感谢OpenTK团队！）
+- Sound Engine CC65 绑带（jroweboy 贡献！）
+
+破坏/行为变化：
+
+- 音序器和钢琴卷轴中的模式编号现在从0开始。这纯粹是美观上的改变，对任何事情没有影响。
+
+<iframe src="https://www.youtube.com/embed/GSYfj4MFGGE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 3.0.2（热修复）
+
+修复方法：
+
+- 粘贴超过信封末端时的崩溃问题
+- 固定了当跳跃或跳过效果正好在第255行时导入FamiTracker（FTM/TXT）
+- 修复了FamiStudio导致部分欧洲键盘状态损坏的问题
+- 工具栏中固定示波器垂直方向 + 视频导出
+- 在Linux上使用150%缩放时修复了崩溃问题
+- 修复了使用 VRC6 扩展解析 FamiStudio 文本文件时的崩溃。
+- 又固定了细致效果调整（shift+drag）
+- 当撤销/重做时停止所有音频会改变所选歌曲
+- 使用 N163 扩展导入 MIDI 时显示全部 8 个通道
+- 尝试导入损坏的WAV文件时新增了错误信息
+- 让选曲时的自动滚动在音序器和钢琴卷轴中变得更缓慢。
+
+## 版本 3.0.1（热修复）
+
+修复方法：
+
+- 修复了Linux启动时RtMidi初始化失败时的崩溃问题
+- 当多个值被选中时，固定的细致效果调整（SHIFT + 拖动）
+- 停止播放歌曲时可能导致崩溃的竞争条件已修正
+- 修复了OpenGL的小泄露
+- 在开始拖动时，CTRL+SHIFT 已按下时，固定的模式重复
+- 固定导入包含多音键压力事件的MIDI文件
+- 在导出包含多首歌曲的项目到 Famitone2 或 FamiStudio 音效引擎时，修复了重复标签的问题
+- 在某些网格单元中双击或左键点击时会崩溃
+- 固定将VRC6占空比导出到FamiTracker。
+- 如何在Windows上正确关闭MIDI输入
+- 尝试用多个扩展芯片导入NSF时出现错误信息
+
+## 版本 3.0.0
+
+变化：
+
+- 重新设计的FamiStudio 节奏
+- 重新设计的音符编辑
+- MIDI导入/导出支持
+- 工具栏中的示波器
+- 可选卷轴条
+- 改版Mac版本
+- 播放速度分别为1/2和1/4
+- 可配置QWERTY键盘键
+- 改进的音效引擎音乐数据压缩（减少15-30%）
+- 音频扩展音量/低通滤波器配置
+- S5B和VRC7，现在也做了真正的低通滤波
+- 重新排序歌曲的能力
+- Linux 上的 Hi-DPI 支持
+- 快速DPCM源数据重载
+- 提升视频渲染速度
+
+破坏/行为变化：
+
+- 在三角形通道的音量轨道上设置零音量，声音就会停止。这一直是我的初衷（这也是SoundEngine/NSF和FamiTracker的做法），但在FamiStudio内部并没有正确实现。
+
+<iframe src="https://www.youtube.com/embed/7j9mhY9XNsc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 2.4.2（热修复）
+
+修复方法：
+
+- 修复了启动时崩溃的问题。
+- 修复了从命令行导出音效到音效引擎时的崩溃。
+
+## 版本 2.4.1（热修复）
+
+修复方法：
+
+- 修复了导入循环样本时的损坏。FTI文件。
+- 修复了钢琴卷轴中的小图形问题。
+- 修复了Windows 7安装中缺少部分D3D11组件（如KB2670838）的问题。
+- 移除了320 kbps MP3导出选项，因为它会产生断断续续的音频。
+
+## 版本 2.4.0
+
+变化：
+
+- 基础DPCM样本编辑器
+- 更暗的主题和更多颜色选择
+- 能够在不使用录音模式的情况下使用 QWERTY 键盘输入
+- 音频延迟略有降低，缓冲帧数可配置
+- 右键点击后台任意位置也会开始选择
+- 寻点条可以拖动，并且保证弹射的精准度
+- 模式复制尽可能保留名称
+- 乐器选择工具（长按“I”+点击音符）
+- Sequencer 中的粘贴特殊
+- 添加音符时，图案会自动生成。
+- 通过右键点击按钮或 CTRL+SHIFT+E 快速重复上次导出
+- 同时编辑多个自定义图样
+- 视频导出分辨率/帧率选项（由Thomas McGrew贡献）
+- 多个VRC7修复
+- 多次FamiTracker修复
+- 多项发动机声音改进与修复
+  - Blaarg对音效的平滑颤音支持
+  - 无限音效尺寸（由Brad Smith贡献）
+  - CA65中的链接器支持（基于Brad Smith的想法）
+
+破坏/行为变化：
+
+- 歌曲总是按字母顺序排列。这包括从任何文件格式加载的歌曲。这一直是他们的初衷，但在之前的版本中执行得很差。
+- 在2.3.x版本中出现了一个bug，音量包络完全由零组成的乐器会以最大音量播放。但现在情况已不同，仪表将保持静音。
+
+<iframe src="https://www.youtube.com/embed/zwkIV4VwlLw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 2.3.2（热修复）
+
+变化：
+
+- 为视频导出增加了循环次数。
+
+修复方法：
+
+- 修复了Retina显示器的缩放问题。
+- 修复了在VRC7中拖拽或添加音符时残留的噪音。
+- 已修复多次FamiTracker导入（文本+二进制）问题/崩溃。
+- 在使用延迟音符时，NSF/音效引擎中修正了潜在的不同步问题。
+- 修复了扩展乐器界面的各种问题（VRC7/FDS/N163的滑块/复选框）。
+- 修复了旧版 FamiStudio 文本文件（2.3.0 之前）的导入。
+- 修复了导出空琶音时NSF/音效引擎崩溃的问题。
+- 修复了歌曲循环时琶音有时持续出现的问题。
+
+## 版本 2.3.1（Linux 热修复）
+
+修复方法：
+
+- 修复Linux启动崩溃问题。
+
+## 版本 2.3.0
+
+变化：
+
+- MP3导出
+- 视频导出
+- 歌曲合并功能
+- 占空比效果轨道支持（相当于FamiTracker中的Vxx）
+- 特殊的胶片改进（重复、效果等）
+- 特殊删除
+- 将模式复制到序列器的不同通道
+- 在钢琴卷轴中显示音符标签的选项
+- FamiTracker的节奏改进（延迟音符、切断、修正）。
+- 新增支持Cxx（停）FamiTracker效果。
+- 可以将每个通道导出为独立的WAV/MP3文件。
+- DPCM的小改进（拖拽、位元反转选项）
+- 节奏的小幅改进
+- 音响引擎代码尺寸缩小
+
+<iframe src="https://www.youtube.com/embed/wD5eZTc4H5o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 2.2.1（热修复）
+
+变化：
+
+- 已修复从 FamiStudio 文本格式导入幻灯片笔记的问题。
+- 新增了导出为FamiStudio文本格式时不修剪未使用数据的选项。
+- 修复了在 MacOS 上导出为某些格式时的崩溃
+- 修复了导出 FamiStudio/FamiTone2 超过256字节音效时的崩溃问题。
+- 修复了 2.2.0 版本引入的 Linux 上 glibc 依赖问题。
+
+## 版本 2.2.0
+
+变化：
+
+- 使用MIDI控制器或QWERTY键盘逐音录制的录音模式
+- 琶音支持
+- FamiStudio 官方音效引擎发行
+- 跟随模式
+- 在音序器中显示钢琴卷轴的视角范围
+- FDS磁盘导出
+- 初次使用者的基础教程
+- 导入/导出文件时出现错误日志
+- Wav 导出环计数
+- 关闭歌曲播放时拖拽声音的选项
+
+<iframe src="https://www.youtube.com/embed/X1zPjnM1wb0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 2.1.1（热修复）
+
+变化：
+
+- 固定了第一帧在按播放时听不到声音
+- 修复了导出到 NSF 时多次崩溃和问题
+- 导入NSF时噪声通道中缺失音符已修复
+- 已修复导入使用扩展音频的FamiTracker FTM文件
+- 修复了导出NSF、ROM和FamiTone2时DPCM采样对齐错误的问题
+- 在 Linux 上重命名 .so 文件以支持旧版 Mono
+- 在Linux上保存时如何设置正确的文件扩展名
+- FamiTone2 音效导出修复
+
+## 版本 2.1.0
+
+新功能：
+
+- 首次 Linux 版本
+- 触控板控制
+- 钢琴卷轴中的音符断响
+- 新时间格式（MM：SS：mmm）
+- 命令行界面
+- 从任何支持格式导入乐器
+- 序列器中的图案复制
+- 混合糊
+- 改进的WAV导出
+- FamiTone2 音效导出支持
+- 支持将文本值粘贴在信封中（逗号、分号、空格、制表符或换行分开）
+- FamiStudio 节奏的PAL原生创作
+- MacOS+Linux MIDI 键盘支持
+- Shift+Space从歌曲开头开始播放
+- Alt+右键上下键作为另一种缩放方式
+
+破坏/行为变化：
+
+- 2.0.x版本中出现了一个bug，发布说明会突然中断幻灯片笔记（NSF做得很正确）。但现在情况已不同。
+
+<iframe src="https://www.youtube.com/embed/r3oHXZ3MhyA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 2.0.3（热修复）
+
+新功能：
+
+- 修复在选择不兼容乐器时点击音符时的崩溃问题。
+- 当采样率与44100Hz不同时，请修正WAV文件导出的问题。
+
+## 版本 2.0.2（热修复）
+
+新功能：
+
+- 在 Hi-DPI 上修复序列器中的寻道条位置（MacMacOS 上的 Retina 或 Windows 上的缩放> 100%）。
+- 修复导入包含多首同名歌曲的 FTM 时的崩溃问题。
+- 修复导出到FamiTone2时缺少或顺序不符的歌曲。
+- 根据规范，将事件上的零力度MIDI音符解读为音符。
+- 在钢琴卷轴上拖拽的音符。
+- Windows 7 上音频设备更换检测。
+- 为了提升Windows 7的稳定性，D3D设备的处理功能被取消。
+
+## 版本 2.0.1（热修复）
+
+新功能：
+
+- 150%缩放崩溃的热修复。
+
+## 版本 2.0.0
+
+新功能：
+
+- 更多音频扩展包：FDS、MMC5、VRC7、Namco 163 和 Sunsoft S5B。
+- 实时扩展仪器参数版
+- NSF进口
+- 带音频预览的笔记拖放功能
+- FamiTracker FTM 导入
+- ROM 导出
+- 细音高效果轨道
+- 新节奏模式
+- PAL支持。
+- FamiStudio 文本导入/导出
+- 自定义图案设置与环点
+
+破坏/行为变化：
+
+- VRC6 的锯子不再受职务影响。0到15的音量范围会映射到整个0到31的可能范围。使用VRC6制作的歌曲在2.0.0之前制作，必须将音量减半才能听起来一致（无论是使用音量轨还是乐器包络）。
+- 没有起音的音符将保持无起音状态，直到出现新的带起音的音符（即使停音之后）。
+
+<iframe src="https://www.youtube.com/embed/QRn_ymIdUp8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 1.4.0
+
+新功能：
+
+- VRC6音频扩展支持
+- 幻灯片笔记
+- 颤音效果
+- 方形声道上的变通方法（Blaarg的平滑颤音技巧）
+- 美国国家科学基金会改进
+- 移除音符攻击的能力
+- 相对音高包线
+
+破坏/行为变化：
+
+- 跳跃和跳跃现在会在画面的末尾应用，而不是从开始。这就是FamiTracker和其他平台的做法。
+
+<iframe src="https://www.youtube.com/embed/Ox_D0Z_H2NY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 1.3.0
+
+新功能：
+
+- 钢琴卷轴和音序器的选择、剪切、复制和粘贴支持
+- FamiTracker 乐器文件导入（谢谢@Tgamemaker！）
+- 更多有用的提示
+- 漏洞修复与改进
+
+<iframe src="https://www.youtube.com/embed/7rYloart1wI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 1.2.1（热修复）
+
+新功能：
+
+- Windows 7 热修复
+
+## 版本 1.2.0
+
+新功能：
+
+- macOS 支持
+- 音域扩展至8个八度
+- 音量轨道支持
+- 发布信封与发布说明
+- 高DPI支持（Windows支持100%、150%和200%缩放，macOS上的Retina）
+- 配置对话框
+- MIDI改进（设备选择和音符释放）
+- 改进NSF内存使用率
+- 其他漏洞修复
+
+<iframe src="https://www.youtube.com/embed/o8VI4vKZtXY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 1.1.0
+
+新功能：
+
+- 新的导出对话框
+- 新增WAV导出
+- 新增了FamiTracker文本导出功能（详见维基限制）
+- 新增NSF导出功能（详见维基限制）
+- 修复漏洞和代码重构。
+
+<iframe src="https://www.youtube.com/embed/kpQmQ-PRlaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 660px; height: 371.25px;"></iframe>
+
+
+
+## 版本 1.0.0
+
+初次发布。
