@@ -1,4 +1,3 @@
-FamiStudio中文手册
 
 
 
@@ -6,29 +5,6 @@ FamiStudio中文手册
 
 
 
-# 欢迎
-
-欢迎来到FamiStudio文档。请使用上方**的用户指南**菜单浏览各部分，或使用下方目录。此外，你也可以使用**搜索**按钮搜索特定主题。
-
-# 目录
-
-- [安装流程与故障排除](https://famistudio.org/doc/install/)
-- [FamiStudio 基础](https://famistudio.org/doc/basics/)
-- [编辑笔记](https://famistudio.org/doc/pianoroll/)
-- [编辑模式](https://famistudio.org/doc/sequencer/)
-- [剪辑乐器与琶音](https://famistudio.org/doc/instruments/)
-- [歌曲编辑与项目](https://famistudio.org/doc/song/)
-- [编辑DPCM采样](https://famistudio.org/doc/dpcm/)
-- [导入歌曲](https://famistudio.org/doc/import/)
-- [导出歌曲](https://famistudio.org/doc/export/)
-- [使用扩展音频](https://famistudio.org/doc/expansion/)
-- [清理你的项目](https://famistudio.org/doc/cleanup/)
-- [配置FamiStudio](https://famistudio.org/doc/config/)
-- [命令行处理](https://famistudio.org/doc/cmdline/)
-- [NES/红白机音效引擎](https://famistudio.org/doc/soundengine/)
-- [致谢](https://famistudio.org/doc/thanks/)
-- [故障排除](https://famistudio.org/doc/troubleshooting/)
-- [变更日志](https://famistudio.org/doc/changelog/)
 
 
 
@@ -36,9 +12,91 @@ FamiStudio中文手册
 
 
 
-# 一、安装
 
-## 系统需求
+
+![](0-0.png)
+
+
+
+
+
+
+
+## FamiStudio中文手册（版本：4.5.1）
+
+#### FamiStudio NES Music Editor
+
+![网管小贾 / sysadm.cc](C:/Disks/E/Writing/11_付费课程/03.【玩转UrBackup系列】/202206080805_UrBackup Server 2.4.x 管理手册中文版（收费版）/202206221118_UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）/qrcode.png)
+
+**译者：网管小贾 / sysadm.cc (2026年6月11日)**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 欢迎
+
+欢迎来到FamiStudio文档。
+
+请使用上方**的用户指南**菜单浏览各部分，或使用下方目录。
+
+此外，你也可以使用**搜索**按钮搜索特定主题。
+
+
+
+## 〇 目录
+
+- 一、安装流程与故障排除
+- 二、FamiStudio 基础
+- 三、编辑笔记
+- 四、编辑模式
+- 五、剪辑乐器与琶音
+- 六、歌曲编辑与项目
+- 七、编辑DPCM采样
+- 八、导入歌曲
+- 九、导出歌曲
+- 十、使用扩展音频
+- 十一、清理你的项目
+- 十二、配置FamiStudio
+- 十三、命令行处理
+- 十四、NES/红白机音效引擎
+- 十五、致谢
+- 十六、故障排除
+- 十七、变更日志
+
+
+
+
+
+
+
+## 一、 安装流程与故障排除
+
+### 系统需求
 
 对于所有3个桌面平台，FamiStudio都需要以下软硬件环境：
 
@@ -47,75 +105,118 @@ FamiStudio中文手册
 - .NET 运行时 8.0
 - OpenGL 3.0 或更新版本的支持
 
-## 窗户
 
-### 安装
 
-在Windows上，强烈建议使用安装程序并运行。这样可以解决所有依赖的安装。`Setup.exe`
+### Windows
+
+#### 安装
+
+在Windows上，强烈建议使用安装程序并运行 `Setup.exe` 。
+
+这样可以解决所有依赖的安装。
 
 如果你在运行便携应用时遇到问题，务必安装 .NET 8.0 运行时。
 
 - [.NET 8.0 运行时](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.11-windows-x64-installer)
 
-如果你收到VS2019 C++运行时错误提示，请务必安装以下包。
+如果你收到 `VS2019 C++` 运行时错误提示，请务必安装以下包。
 
 - [Visual Studio 运行时](https://aka.ms/vs/17/release/vc_redist.x64.exe)
 
-### 首次发射警告
 
-首次启动时，SmartScreen 可能会显示“Windows 保护了您的电脑”。
+
+#### 首次运行警告
+
+首次启动时，`SmartScreen` 可能会显示“Windows保护了您的电脑”。
 
 ![](1-1.JPG)
 
-要绕过警告，只需点击“更多信息”，然后选择“无论如何运行”。
+要绕过警告，只需点击“更多信息”，然后选择“始终运行”。
 
 ![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\1-2.JPG)
 
-### Windows 7
 
-Windows 7 没有官方支持。这意味着如果应用崩溃或无法正常工作，你只能自己解决。与 Windows 7 相关的 GitHub 问题或 Discord 上的 bug 报告将被忽略。
 
-话虽如此，如果你愿意经历一些障碍，或许能让它成功：
+#### Windows 7
 
-1. 安装Visual Studio x64运行时，见上方链接。
-2. 运行应用，跟着链接安装.NET 8.0，获取x64版本。安装后重启。
-3. 运行这个应用。如果出现错误，下载[这个更新包](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4457144)。下载Windows 7 x64版本，文件大约有235MB。安装并重启。`hostfxr.dll``.msu`
-4. 运行应用。如果OpenGL初始化失败，可能需要使用软件渲染器。[Mesa](https://fdossena.com/?p=mesa/index.frag)是一个流行的渲染器，只需下载x64版本，并放在与之相同的文件夹中。注意使用软件渲染器会让应用运行更迟缓。`opengl32.dll``FamiStudio.exe`
+Windows 7 不再被官方支持。
 
-## macOS
+这意味着如果应用崩溃或无法正常工作，你只能自己解决。
 
-### 安装
+与 Windows 7 相关的 GitHub 问题或 Discord 上的 bug 报告将被忽略。
 
-在 MacOS 上，你需要安装 .NET 8.0 运行时。这里有一些来自Microsoft的直接下载链接。选择与你硬件相匹配的架构。安装适合你CPU的正确版本很重要，这样可以确保应用在你的Mac上原生运行。
+话虽如此，如果你想绕过一些障碍，或许能让它成功：
+
+1. 安装 `Visual Studio x64` 运行时，见上方链接。
+
+2. 运行应用，跟着链接安装 `.NET 8.0` ，获取 `x64` 版本。安装后重启。
+
+3. 运行这个应用。如果出现 `hostfxr.dll` 错误，下载[这个更新包](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4457144)。
+
+   下载 `Windows 7 x64` 版本，它应该是个 `.msu` 文件，大约有235MB。安装并重启。
+
+4. 运行应用。如果 `OpenGL` 初始化失败，可能需要使用软件渲染器。
+
+   [Mesa](https://fdossena.com/?p=mesa/index.frag) 是一个流行的渲染器，只需下载 `x64` 版本，并将 `opengl32.dll` 放在与 `FamiStudio.exe` 相同的文件夹中。
+
+   注意使用软件渲染器会让应用运行更迟缓。
+
+
+
+### MacOS
+
+#### 安装
+
+在 MacOS 上，你需要安装 .NET 8.0 运行时。
+
+这里有一些来自Microsoft的直接下载链接。
+
+选择与你硬件相匹配的架构。
+
+安装适合你CPU的正确版本很重要，这样可以确保应用在你的Mac上原生运行。
 
 - [.NET 8.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-8.0.11-macos-x64-installer) for x64 （Intel）
 - [.NET 8.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-8.0.11-macos-arm64-installer) for ARM64 （M1/M2）
 
-### 首次发射警告
 
-GateKeeper 在刚运行应用时可能相当激进。一开始看起来你根本无法运行，它会给你一个选项，把FamiStudio扔进回收箱。
+
+#### 首次运行警告
+
+GateKeeper 在刚运行应用时可能相当激进。
+
+一开始看起来你根本无法运行，它会给你一个选项，把FamiStudio扔进回收箱。
 
 ![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\1-3.JPG)
+
+
 
 要绕过这个警告，打开“安全与隐私”设置，看看FamiStudio被屏蔽的警告。
 
 ![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\1-4.JPG)
 
+
+
 点击“无论如何打开”，然后你会有启动它的选项。
 
 ![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\1-5.JPG)
 
-## Linux
 
-### 安装
 
-Linux版本应该能在大多数x64扩展版上运行。但鉴于操作系统非常非标准，体验可能会有所不同。
+### Linux
+
+#### 安装
+
+Linux版本应该能在大多数x64扩展版上运行。
+
+但鉴于操作系统非常的非标准，体验可能会有所不同。
 
 在尝试运行Linux版本之前，请先安装以下依赖程序：
 
 - [.NET 8.0 运行时](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-### 启动
+
+
+#### 启动
 
 然后只需用以下命令启动应用程序：
 
@@ -123,7 +224,15 @@ Linux版本应该能在大多数x64扩展版上运行。但鉴于操作系统非
 dotnet FamiStudio.dll
 ```
 
-如果你运行的是非常老旧的Linux版本，或者你用的是特殊架构，可能会缺少依赖。如果是这样，你可能需要编译一些库。这是一个相当手动的过程。请按照[GitHub](https://github.com/BleuBleu/FamiStudio)上的构建步骤操作。
+
+
+如果你运行的是非常老旧的Linux版本，或者你用的是特殊架构，可能会缺少依赖。
+
+如果是这样，你可能需要编译一些库。
+
+这是一个需要很多手动的过程。
+
+请按照[GitHub](https://github.com/BleuBleu/FamiStudio)上的构建步骤操作。
 
 
 
@@ -135,7 +244,15 @@ dotnet FamiStudio.dll
 
 
 
-# 二、概念
+
+
+
+
+
+
+## 二、FamiStudio 基础
+
+### 概念
 
 FamiStudio 项目包含：
 
@@ -144,9 +261,17 @@ FamiStudio 项目包含：
 - DPCM样本列表
 - 琶音列表
 
-歌曲由Patterns组成，这些模式出现在NES支持的五个频道之一。模式包含由乐器演奏的音符（DPCM采样不需要乐器），可能指琶音。乐器的一些属性（音高、音量、琶音）可能通过包络进行调制。
 
-# 基本桌面控制
+
+歌曲由Patterns组成，这些模式出现在NES支持的五个频道之一。
+
+模式包含由乐器演奏的音符（DPCM采样不需要乐器），可能指琶音。
+
+乐器的一些属性（音高、音量、琶音）可能通过包络进行调制。
+
+
+
+### 基本桌面控制
 
 大多数操作都是用鼠标完成的。总体来说：
 
@@ -160,6 +285,8 @@ FamiStudio 项目包含：
   - **中键点击+并拖拽**可以平移视口。
   - **旋转鼠标滚轮**可以缩放视口的大小。
 
+
+
 或者，如果你的鼠标没有中键或滚轮：
 
 - 只要设置中启用“Alt+Left模拟中键”选项，所有需要按中键的操作都可以通过Alt+左键完成。
@@ -167,15 +294,25 @@ FamiStudio 项目包含：
 
 如果你正在使用触控板，请查看如何在配置对话框中启用[触控板控制](https://famistudio.org/doc/config/#input-configuration)。
 
-# 基本移动控制
+
+
+### 基本移动控制
 
 在手机上，主要有三种手势：
 
-- 快速**点一下**通常能添加内容。点击某些对象（音符、模式、乐器等）有时会在它们周围跳出**白色高亮**。当物体带有白色高亮时，你会允许你执行其他操作，比如移动它们。
-- 在后台点击时，滑**动**通常会平移。在页眉上滑动可以选择时间范围。滑动带有白色高亮的物品通常会拖动或移动它。
+- 快速**点一下**通常能添加内容。点击某些对象（音符、模式、乐器等）有时会在它们周围跳出**白色高亮**。
+
+  当物体带有白色高亮时，你会允许你执行其他操作，比如移动它们。
+
+- 在后台点击时，滑**动**通常会平移。在页眉上滑动可以选择时间范围。
+
+  滑动带有白色高亮的物品通常会拖动或移动它。
+
 - **长时间按**键有时会显示高级选项。
 
-# 主窗口
+
+
+### 主窗口
 
 主窗口有四个主要部分：
 
@@ -186,6 +323,8 @@ FamiStudio 项目包含：
 
 ![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\2-1.JPG)
 
+
+
 在任何时刻，总有：
 
 - 选中的通道，在序列器中**以粗体显示**
@@ -193,25 +332,35 @@ FamiStudio 项目包含：
 - 项目探测器仪器列表中**加粗**的选定乐器。
 - 精选琶音，在项目探索者琶音列表中**以粗体显示**。
 
-音序器和钢琴卷轴会显示当前选中的歌曲信息。按下钢琴卷轴上的按键时，它会为当前选择的乐器演奏音符，并在当前选择的通道上输出。如果你连接了MIDI键盘，情况也是一样。
 
-# 工具栏
+
+音序器和钢琴卷轴会显示当前选中的歌曲信息。
+
+按下钢琴卷轴上的按键时，它会为当前选择的乐器演奏音符，并在当前选择的通道上输出。
+
+如果你连接了MIDI键盘，情况也是一样。
+
+
+
+### 工具栏
 
 主工具栏里有你常用的功能：文件操作、撤销/重做、时间码、示波器和播放控制。
 
 ![img](C:\Disks\E\Writing\44_心理学\28_浥尘伙伴社团原创：音乐治疗\FC音乐心理产品\FamiStudio中文手册\2-2.JPG)
 
+![](2-a.png)
+
 以下是每个工具栏图标的含义以及一些可以执行的额外操作。除非特别说明，额外操作需在桌面端右键点击，或在手机端长按完成。
 
 |                             图标                             |              点击动作              |              附加操作 （桌面右键，移动端长按）               |
 | :----------------------------------------------------------: | :--------------------------------: | :----------------------------------------------------------: |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/File.png#grey) |               新项目               |                                                              |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Open.png#grey) | Open FamiStudio 项目或其他文件格式 |               在桌面端，打开最近打开的文件列表               |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Save.png#grey) |              保存项目              |            打开一个右键菜单，选择“另存为......”。            |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Export.png#grey) |        导出为多种格式的项目        |       打开一个允许重复上次导出的右键菜单（如果有的话）       |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Copy.png#grey) |              文案选择              |                                                              |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Cut.png#grey) |              切割选择              |                                                              |
-| ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Paste.png#grey) |                粘土                |    打开一个右键菜单，选择“特殊粘贴”（粘贴并有高级选项）。    |
+|                         ![](2-a.jpg)                         |               新项目               |                                                              |
+|                         ![](2-b.jpg)                         | Open FamiStudio 项目或其他文件格式 |               在桌面端，打开最近打开的文件列表               |
+|                         ![](2-c.jpg)                         |              保存项目              |            打开一个右键菜单，选择“另存为......”。            |
+|                         ![](2-d.jpg)                         |        导出为多种格式的项目        |       打开一个允许重复上次导出的右键菜单（如果有的话）       |
+|                         ![](2-e.jpg)                         |              文案选择              |                                                              |
+|                         ![](2-f.jpg)                         |              切割选择              |                                                              |
+|                         ![](2-g.jpg)                         |                粘土                |    打开一个右键菜单，选择“特殊粘贴”（粘贴并有高级选项）。    |
 | ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Delete.png#grey) |        删除选择（仅限手机）        |         在手机上，长按“特殊删除”（使用高级选项删除）         |
 | ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Undo.png#grey) |                撤销                |                                                              |
 | ![img](https://raw.githubusercontent.com/BleuBleu/FamiStudio/3.3.0/FamiStudio/Resources/Redo.png#grey) |                重来                |                                                              |
@@ -2152,7 +2301,7 @@ EPSM 方形声道的工作原理与 Sunsoft 5B 方形通道相同，唯一不同
 
 小贴士：你可以按住**Ctrl**，同时使用项目资源管理器的滑块，这样滚动更准确。
 
-
+![](10-12.GIF)
 
 <video src="10-12.mp4" controls width="800">
   抱歉，您的浏览器不支持 video 标签。
@@ -3889,3 +4038,63 @@ FamiStudio还附带了几首演示曲。除非特别说明，这些演示歌曲�
 ## 版本 1.0.0
 
 初次发布。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------
+
+
+
+
+
+
+
+
+
+![](C:/Disks/E/Writing/11_付费课程/03.【玩转UrBackup系列】/202206080805_UrBackup Server 2.4.x 管理手册中文版（收费版）/202206221118_UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）/donate.png)
+
+**来杯冰阔落，扫码捐赠网管小贾~**
+
+
+
+![](C:/Disks/E/Writing/11_付费课程/03.【玩转UrBackup系列】/202206080805_UrBackup Server 2.4.x 管理手册中文版（收费版）/202206221118_UrBackup Server 2.4.x 管理手册中文版（网管小贾高级进阶版）/qrcode.png)
+
+**扫码关注微信公众号@网管小贾，个人微信：sysadmcc**
+
+网管小贾 / sysadm.cc
