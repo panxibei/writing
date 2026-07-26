@@ -1,6 +1,6 @@
-随时随地匿名聊天神器WebChat，连警察都找不着！
+世界上最隐秘的匿名聊天神器WebChat，连警察都找不着？
 
-副标题：随时随地匿名聊天神器WebChat，连警察都找不着！
+副标题：世界上最隐秘的匿名聊天神器WebChat，连警察都找不着？
 
 英文：webchat-the-ultimate-anonymous-chat-tool-is-so-secure-that-even-the-police-cant-find-you
 
