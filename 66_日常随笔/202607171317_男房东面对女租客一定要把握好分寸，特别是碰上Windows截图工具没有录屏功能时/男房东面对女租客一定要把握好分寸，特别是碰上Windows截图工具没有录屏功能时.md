@@ -1,6 +1,6 @@
-ScreenSketch
+男房东面对女租客一定要把握好分寸，特别是碰上Windows截图工具没有录屏功能时
 
-副标题：
+副标题：男房东面对女租客一定要把握好分寸，特别是碰上Windows截图工具没有录屏功能时
 
 英文：
 
@@ -36,7 +36,7 @@ ScreenSketch
 
 如果双击无法运行程序安装，就用命令行吧。
 
-打开 `PowerShell` ，输入以下命令行，回车。
+打开 `PowerShell` ，输入以下命令行，回车。
 
 ```
 Add-AppPackage .\Microsoft.ScreenSketch_2022.2602.49.0_neutral_~_8wekyb3d8bbwe.Msixbundle
@@ -66,7 +66,7 @@ Add-AppPackage .\Microsoft.WindowsAppRuntime.1.8_8000.879.2017.0_x64__8wekyb3d8b
 
 
 
-新安装的 `截图工具` 程序所在路径：
+新安装的 `截图工具` 程序所在路径：
 
 ```
 C:\Program Files\WindowsApps\Microsoft.ScreenSketch_11.2602.49.0_x64__8wekyb3d8bbwe\SnippingTool\SnippingTool.exe
