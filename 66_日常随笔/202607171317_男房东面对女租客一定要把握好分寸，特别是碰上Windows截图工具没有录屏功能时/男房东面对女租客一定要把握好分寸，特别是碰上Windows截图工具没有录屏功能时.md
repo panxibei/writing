@@ -2,9 +2,9 @@
 
 副标题：男房东面对女租客一定要把握好分寸，特别是碰上Windows截图工具没有录屏功能时
 
-英文：
+英文：male-landlords-must-maintain-a-sense-of-propriety-when-dealing-with-female-tenants-especially-when-the-windows-screenshot-tool-lacks-screen-recording-functionality
 
-关键字：
+关键字：ScreenSketch,截图工具,男房东,女租客
 
 
 
@@ -173,6 +173,14 @@ C:\Windows\system32\SnippingTool.exe
 再看看版本，是新版 `11.x` 。
 
 图08
+
+
+
+**Window截图工具带录屏功能离线安装包.7z**
+
+链接: https://pan.baidu.com/s/1LPi9XTJ-MBEVT7Smbu51EA
+
+提取码: p9w6
 
 
 
