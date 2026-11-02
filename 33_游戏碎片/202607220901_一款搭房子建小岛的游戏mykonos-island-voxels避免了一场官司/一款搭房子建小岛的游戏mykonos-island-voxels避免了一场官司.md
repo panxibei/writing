@@ -336,6 +336,15 @@ caddy_windows_amd64.exe file-server
 
 
 
+**mykonos-island-voxels（原版+汉化版）**
+
+
+链接: https://pan.baidu.com/s/1xIR1tXIaY58O78PW1c4Dxw
+
+提取码: jfm5
+
+
+
 “这……让我们打游戏，这不太……”王员外有点疑惑不解，一旁的李员外翻了个白眼。
 
 “二位若是信得过在下，今晚就拿这游戏先练一练、赛一赛，看谁玩得好、设计得棒，明日在下自有定夺！先行告退！”
